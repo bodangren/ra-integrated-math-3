@@ -22,6 +22,7 @@ Scaffolded from `bus-math-v2` (Math for Business Operations). The stack is fully
 | Internal queries | `convex/student.ts`, `convex/teacher.ts`, `convex/activities.ts` | Require server-side admin auth |
 | Server-side client | `lib/convex/server.ts` | `ConvexHttpClient` with admin auth |
 | Admin auth resolution | `lib/convex/admin.ts` | Local admin key or `CONVEX_DEPLOY_KEY` env |
+| Generated types | `convex/_generated/` | **Empty until `npx convex dev` is run.** Must be initialized before pages resolve `@/convex/_generated/api`. |
 
 ## Authentication
 
@@ -40,8 +41,8 @@ Custom JWT-based auth built on Convex. No third-party auth provider.
 | Layer | Technology |
 |-------|-----------|
 | CSS framework | Tailwind CSS ^3.4.1 |
-| Component library | shadcn/ui (new-york style, RSC) |
-| Color system | oklch CSS custom properties |
+| Component library | shadcn/ui (new-york style, RSC) — installed: `button`, `dropdown-menu`, `avatar` |
+| Color system | oklch CSS custom properties — brand orange (hue 40), teal accent (hue 195) |
 | Dark mode | next-themes (class-based) |
 | Typography | @tailwindcss/typography |
 | Animation | tailwindcss-animate |
@@ -61,6 +62,19 @@ Custom JWT-based auth built on Convex. No third-party auth provider.
 | `zod` ^4 | Schema validation |
 | `class-variance-authority` | Component variants |
 | `clsx` + `tailwind-merge` | Class name utilities |
+
+## Shared Business Logic (`lib/`)
+
+| Module | File | Purpose |
+|--------|------|---------|
+| Progress utilities | `lib/progress/published-curriculum.ts` | Phase/lesson progress row assembly, snapshot building |
+| Student dashboard | `lib/student/dashboard.ts` | `buildStudentDashboardViewModel` |
+| Student dashboard UI | `lib/student/dashboard-presentation.ts` | Status badge helpers |
+| Lesson runtime | `lib/student/lesson-runtime.ts` | `resolveLessonLandingPhase`, `buildLessonContinueState` |
+| Gradebook logic | `lib/teacher/gradebook.ts` | `assembleGradebookRows`, cell color computation |
+| Course overview logic | `lib/teacher/course-overview.ts` | `assembleCourseOverviewRows` |
+| Practice contract | `lib/practice/contract.ts` | `practice.v1` zod schema and types |
+| Error analysis | `lib/practice/error-analysis/index.ts` | `buildDeterministicSummary` for teacher review |
 
 ## Testing
 
