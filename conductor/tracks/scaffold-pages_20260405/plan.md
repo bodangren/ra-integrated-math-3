@@ -17,7 +17,7 @@
 
 - [x] Create `app/auth/layout.tsx` — Centered layout for auth pages (minimal chrome) (526125b)
 - [x] Create `app/auth/login/page.tsx` — Login form with username/password fields and demo account buttons (42a89f7)
-- [ ] Create `app/auth/forgot-password/page.tsx` — Password reset request form
+- [x] Create `app/auth/forgot-password/page.tsx` — Password reset request form (55e69a8)
 - [ ] Create `app/auth/update-password/page.tsx` — New password entry form
 - [ ] Create `app/auth/confirm/page.tsx` — Confirmation/status page
 - [ ] Create `app/auth/error/page.tsx` — Auth error display
