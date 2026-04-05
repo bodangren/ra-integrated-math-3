@@ -36,19 +36,19 @@
 
 ## Phase 6: Teacher Pages (Protected)
 
-- [ ] Create `app/teacher/dashboard/page.tsx` — Teacher dashboard with student list and progress
-- [ ] Create `app/teacher/gradebook/page.tsx` — Gradebook grid per unit
-- [ ] Create `app/teacher/students/page.tsx` — Student roster and detail view
-- [ ] Create `app/teacher/units/page.tsx` — Unit overview page
+- [x] Create `app/teacher/dashboard/page.tsx` — Teacher dashboard with student list and progress (1660ca2)
+- [x] Create `app/teacher/gradebook/page.tsx` — Gradebook grid per unit (1660ca2)
+- [x] Create `app/teacher/students/page.tsx` — Student roster and detail view (1660ca2)
+- [x] Create `app/teacher/units/page.tsx` — Unit overview page (1660ca2)
 
 ## Phase 7: Admin & Settings
 
-- [ ] Create `app/admin/dashboard/page.tsx` — Admin dashboard (teacher-compatible)
-- [ ] Create `app/settings/page.tsx` — User settings with change password form
+- [x] Create `app/admin/dashboard/page.tsx` — Admin dashboard (teacher-compatible) (1660ca2)
+- [x] Create `app/settings/page.tsx` — User settings with change password form (1660ca2)
 
 ## Phase 8: Integration Verification
 
-- [ ] Run `npm run lint` and fix any errors
-- [ ] Run `npm run build` and fix any build errors
-- [ ] Write integration tests for API routes (login, session, logout, phase completion)
-- [ ] Write tests for root layout provider hierarchy
+- [x] Run `npm run lint` and fix any errors (869c516)
+- [x] Run `npm run build` and fix any build errors (869c516)
+- [x] Write integration tests for API routes (login, session, logout, phase completion)
+- [x] Write tests for root layout provider hierarchy (869c516)

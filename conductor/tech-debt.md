@@ -8,7 +8,9 @@
 
 | Date | Track | Item | Severity | Status | Notes |
 |------|-------|------|----------|--------|-------|
-| 2026-04-05 | setup | No app/ page files exist — directory structure only | Critical | Open | All pages under app/ need to be created |
+| 2026-04-05 | setup | No app/ page files exist — directory structure only | Critical | Resolved | All pages created in scaffold-pages track |
 | 2026-04-05 | setup | No components in components/student/, components/teacher/, components/dashboard/ | High | Open | Referenced in architecture but directories empty or missing |
 | 2026-04-05 | setup | No seed.ts in convex/ for demo data | Medium | Open | Need seeding script for development |
 | 2026-04-05 | setup | Legacy Supabase types in AuthProvider.tsx (snake_case profile fields) | Low | Open | Should migrate to camelCase matching Convex schema |
+| 2026-04-06 | scaffold-pages | convex/_generated/ is empty — requires running npx convex dev once to generate types | Critical | Open | Dev server fails without generated API types; run npx convex dev to initialize |
+| 2026-04-06 | scaffold-pages | Lesson page shows placeholder content — no LessonRenderer component yet | High | Open | app/student/lesson/[lessonSlug]/page.tsx renders stub; full phase content requires LessonRenderer |
