@@ -12,59 +12,59 @@
     --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
     --font-mono-num: 'Fira Code', 'Courier New', monospace;
 
-    /* Integrated Math 3 Theme — clean academic blue-violet */
-    --background: 0.985 0.004 260;       /* cool off-white */
-    --foreground: 0.14 0.025 265;        /* deep ink */
+    /* Integrated Math 3 Theme — warm academic orange */
+    --background: 0.985 0.003 75;       /* barely warm white */
+    --foreground: 0.13 0.016 45;        /* warm near-black */
     --card: 1 0 0;
-    --card-foreground: 0.14 0.025 265;
+    --card-foreground: 0.13 0.016 45;
     --popover: 1 0 0;
-    --popover-foreground: 0.14 0.025 265;
-    --primary: 0.46 0.18 264;            /* academic blue-violet */
-    --primary-foreground: 0.98 0.003 0;
-    --secondary: 0.94 0.010 260;         /* light slate */
-    --secondary-foreground: 0.26 0.05 264;
-    --muted: 0.955 0.006 260;
-    --muted-foreground: 0.48 0.016 260;
-    --accent: 0.72 0.15 50;              /* warm amber */
-    --accent-foreground: 0.13 0.025 55;
+    --popover-foreground: 0.13 0.016 45;
+    --primary: 0.55 0.19 40;            /* brand orange */
+    --primary-foreground: 0.98 0.003 40;
+    --secondary: 0.94 0.012 70;         /* warm sand */
+    --secondary-foreground: 0.26 0.04 45;
+    --muted: 0.955 0.008 70;
+    --muted-foreground: 0.50 0.012 60;
+    --accent: 0.60 0.14 195;            /* muted teal — complementary to orange */
+    --accent-foreground: 0.98 0.003 200;
     --destructive: 0.55 0.22 15;
     --destructive-foreground: 0.98 0.003 250;
-    --border: 0.87 0.010 260;
-    --input: 0.92 0.008 260;
-    --ring: 0.46 0.18 264;
+    --border: 0.87 0.010 70;
+    --input: 0.92 0.008 70;
+    --ring: 0.55 0.19 40;
     /* Chart colors */
-    --chart-1: 0.46 0.18 264;
-    --chart-2: 0.72 0.15 50;
-    --chart-3: 0.55 0.22 15;
-    --chart-4: 0.65 0.18 45;
-    --chart-5: 0.38 0.16 310;
+    --chart-1: 0.55 0.19 40;            /* orange */
+    --chart-2: 0.60 0.14 195;           /* teal */
+    --chart-3: 0.55 0.22 15;            /* red */
+    --chart-4: 0.72 0.17 80;            /* golden yellow */
+    --chart-5: 0.55 0.18 155;           /* green */
   }
 
   .dark {
-    --background: 0.12 0.012 265;
-    --foreground: 0.93 0.008 260;
-    --card: 0.15 0.016 265;
-    --card-foreground: 0.93 0.008 260;
-    --popover: 0.17 0.018 265;
-    --popover-foreground: 0.93 0.008 260;
-    --primary: 0.62 0.18 264;
-    --primary-foreground: 0.12 0.012 265;
-    --secondary: 0.19 0.022 265;
-    --secondary-foreground: 0.93 0.008 260;
-    --muted: 0.17 0.018 265;
-    --muted-foreground: 0.58 0.025 260;
-    --accent: 0.78 0.16 50;
-    --accent-foreground: 0.12 0.012 55;
+    --background: 0.12 0.012 40;
+    --foreground: 0.93 0.008 70;
+    --card: 0.15 0.016 40;
+    --card-foreground: 0.93 0.008 70;
+    --popover: 0.17 0.018 40;
+    --popover-foreground: 0.93 0.008 70;
+    --primary: 0.70 0.21 40;
+    --primary-foreground: 0.10 0.010 40;
+    --secondary: 0.19 0.022 40;
+    --secondary-foreground: 0.93 0.008 70;
+    --muted: 0.17 0.018 40;
+    --muted-foreground: 0.58 0.020 60;
+    --accent: 0.65 0.16 195;
+    --accent-foreground: 0.10 0.010 195;
     --destructive: 0.65 0.25 15;
     --destructive-foreground: 0.93 0.008 230;
-    --border: 0.24 0.024 265;
-    --input: 0.21 0.022 265;
-    --ring: 0.62 0.18 264;
-    --chart-1: 0.62 0.18 264;
-    --chart-2: 0.78 0.16 50;
+    --border: 0.24 0.024 40;
+    --input: 0.21 0.022 40;
+    --ring: 0.70 0.21 40;
+    --chart-1: 0.70 0.21 40;
+    --chart-2: 0.65 0.16 195;
     --chart-3: 0.65 0.25 15;
-    --chart-4: 0.75 0.22 45;
-    --chart-5: 0.55 0.20 310;
+    --chart-4: 0.78 0.18 80;
+    --chart-5: 0.62 0.20 155;
   }
 }
 
@@ -90,16 +90,16 @@
   .font-mono-num { font-family: var(--font-mono-num); }
 
   /* ── Dark chrome surfaces (header / footer / hero) ── */
-  .bg-slate-dark { background-color: oklch(0.17 0.04 265); }
-  .bg-slate-mid  { background-color: oklch(0.22 0.055 264); }
+  .bg-slate-dark { background-color: oklch(0.14 0.028 40); }
+  .bg-slate-mid  { background-color: oklch(0.19 0.035 40); }
 
   /* ── Hero gradient ── */
   .hero-gradient {
     background: linear-gradient(
       135deg,
-      oklch(0.17 0.04 265) 0%,
-      oklch(0.21 0.055 264) 55%,
-      oklch(0.19 0.045 268) 100%
+      oklch(0.14 0.028 40) 0%,
+      oklch(0.18 0.038 38) 55%,
+      oklch(0.16 0.030 42) 100%
     );
   }
 
@@ -134,7 +134,7 @@
   }
   .section-label-light {
     background-color: oklch(1 0 0 / 0.10);
-    color: oklch(0.78 0.12 264);
+    color: oklch(0.85 0.10 70);
     border-color: oklch(1 0 0 / 0.18);
   }
 
@@ -150,10 +150,10 @@
 
   /* ── Gradients ── */
   .gradient-primary {
-    background: linear-gradient(135deg, oklch(var(--primary)) 0%, oklch(0.58 0.18 264) 100%);
+    background: linear-gradient(135deg, oklch(0.55 0.19 40) 0%, oklch(0.62 0.18 45) 100%);
   }
   .gradient-cta {
-    background: linear-gradient(135deg, oklch(var(--accent)) 0%, oklch(0.78 0.18 50) 100%);
+    background: linear-gradient(135deg, oklch(0.60 0.14 195) 0%, oklch(0.68 0.16 200) 100%);
   }
   .gradient-success {
     background: linear-gradient(135deg, oklch(0.42 0.145 157) 0%, oklch(0.52 0.15 155) 100%);
