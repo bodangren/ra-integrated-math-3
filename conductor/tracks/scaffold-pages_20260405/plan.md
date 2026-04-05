@@ -5,7 +5,7 @@
 - [x] Create `app/globals.css` with Tailwind directives and oklch CSS custom properties (a6a2a3a)
 - [x] Create `app/layout.tsx` with provider hierarchy (ConvexClientProvider → AuthProvider → ThemeProvider) and chrome (header, footer) (397155a)
 
-## Phase 2: Auth API Routes
+## Phase 2: Auth API Routes [checkpoint: e003df9]
 
 - [x] Create `app/api/auth/login/route.ts` — POST endpoint for credential verification and JWT cookie setting (9163510)
 - [x] Create `app/api/auth/session/route.ts` — GET endpoint returning current user + profile from JWT (5f7729c)
