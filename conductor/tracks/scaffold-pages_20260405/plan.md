@@ -19,7 +19,7 @@
 - [x] Create `app/auth/login/page.tsx` — Login form with username/password fields and demo account buttons (42a89f7)
 - [x] Create `app/auth/forgot-password/page.tsx` — Password reset request form (55e69a8)
 - [x] Create `app/auth/update-password/page.tsx` — New password entry form (eff7d8a)
-- [ ] Create `app/auth/confirm/page.tsx` — Confirmation/status page
+- [x] Create `app/auth/confirm/page.tsx` — Confirmation/status page (e379443)
 - [ ] Create `app/auth/error/page.tsx` — Auth error display
 
 ## Phase 4: Public Pages
