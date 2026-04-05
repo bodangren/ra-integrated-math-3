@@ -1,6 +1,6 @@
 # Implementation Plan — Scaffold App Pages & Layouts
 
-## Phase 1: Foundation (Root Layout & Global Styles)
+## Phase 1: Foundation (Root Layout & Global Styles) [checkpoint: 9047660]
 
 - [x] Create `app/globals.css` with Tailwind directives and oklch CSS custom properties (a6a2a3a)
 - [x] Create `app/layout.tsx` with provider hierarchy (ConvexClientProvider → AuthProvider → ThemeProvider) and chrome (header, footer) (397155a)
