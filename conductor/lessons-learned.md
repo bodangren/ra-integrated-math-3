@@ -25,6 +25,7 @@
 - (2026-04-05, setup) Existing `lib/` modules (dashboard.ts, lesson-runtime.ts) are pure functions with clear types — excellent for testing
 - (2026-04-06, scaffold-pages) Mock `@/lib/convex/server` and `@/lib/auth/server` at the top of page tests — keeps page tests fast and isolated without needing a live Convex connection
 - (2026-04-06, scaffold-pages) Copy shadcn/ui components from bus-math-v2 rather than re-running `npx shadcn add` — same package versions, no new dependencies
+- (2026-04-08, setup) Add `typecheck` script to package.json early in project setup — enables `npm run typecheck` for TDD workflow matching AGENTS.md requirements
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->

@@ -6,6 +6,7 @@
     "build": "vinext build",
     "start": "vinext start",
     "lint": "vinext lint",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest watch"
   },
