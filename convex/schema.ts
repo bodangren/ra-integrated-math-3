@@ -92,6 +92,19 @@ export default defineSchema({
     phaseNumber: v.number(),
     title: v.optional(v.string()),
     estimatedMinutes: v.optional(v.number()),
+    phaseType: v.union(
+      v.literal("explore"),
+      v.literal("vocabulary"),
+      v.literal("learn"),
+      v.literal("key_concept"),
+      v.literal("worked_example"),
+      v.literal("guided_practice"),
+      v.literal("independent_practice"),
+      v.literal("assessment"),
+      v.literal("discourse"),
+      v.literal("reflection"),
+    ),
+    metadata: v.optional(v.any()),
     createdAt: v.number(),
   })
     .index("by_lesson_version", ["lessonVersionId"])

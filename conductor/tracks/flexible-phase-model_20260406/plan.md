@@ -1,16 +1,16 @@
 # Implementation Plan — Flexible Phase Model
 
-## Phase 1: Schema & Type Definitions
+## Phase 1: Schema & Type Definitions [~] In Progress
 
-- [ ] Task: Add `phaseType` union field to `phase_versions` in `convex/schema.ts`
-    - [ ] Write unit test validating the schema accepts all 10 phase types
-    - [ ] Add `phaseType` as `v.union(v.literal("explore"), v.literal("vocabulary"), ...)` to `phase_versions`
-    - [ ] Add optional `metadata` field (`v.optional(v.any())`) to `phase_versions`
+- [x] Task: Add `phaseType` union field to `phase_versions` in `convex/schema.ts`
+    - [x] Write unit test validating the schema accepts all 10 phase types
+    - [x] Add `phaseType` as `v.union(v.literal("explore"), v.literal("vocabulary"), ...)` to `phase_versions`
+    - [x] Add optional `metadata` field (`v.optional(v.any())`) to `phase_versions`
 
-- [ ] Task: Create `lib/curriculum/phase-types.ts` with type definitions and display utility
-    - [ ] Write unit tests for `getPhaseDisplayInfo()` — all 10 types return correct label, icon, color
-    - [ ] Write unit tests for `PHASE_TYPES` constant array and `isValidPhaseType()` guard
-    - [ ] Implement `PhaseType` union type, `PHASE_TYPES` array, `isValidPhaseType()`, and `getPhaseDisplayInfo()`
+- [x] Task: Create `lib/curriculum/phase-types.ts` with type definitions and display utility
+    - [x] Write unit tests for `getPhaseDisplayInfo()` — all 10 types return correct label, icon, color
+    - [x] Write unit tests for `PHASE_TYPES` constant array and `isValidPhaseType()` guard
+    - [x] Implement `PhaseType` union type, `PHASE_TYPES` array, `isValidPhaseType()`, and `getPhaseDisplayInfo()`
 
 - [ ] Task: Conductor — Phase Completion Verification 'Schema & Type Definitions' (Protocol in workflow.md)
 
