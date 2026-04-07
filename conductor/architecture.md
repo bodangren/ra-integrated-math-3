@@ -178,7 +178,7 @@ Course
 └── Unit (1-8 + capstone)
     └── Lesson
         └── LessonVersion (draft/review/published/archived)
-            └── Phase (1-6: Hook, Introduction, Guided Practice, Independent Practice, Assessment, Closing)
+            └── Phase (1-N, variable count: Explore, Vocabulary, Learn, Key Concept, Worked Example, Guided Practice, Independent Practice, Assessment, Discourse, Reflection)
                 └── PhaseSection (text | callout | activity | video | image)
 ```
 
@@ -188,7 +188,7 @@ Course
 2. Server fetches lesson content from Convex (`api.getLessonWithContent`)
 3. Server checks student progress via `internal.student.getLessonProgress`
 4. Determines which phase the student should land on (`resolveLessonLandingPhase`)
-5. Renders `<LessonRenderer>` with phases, current phase number, completion state
+5. Renders `<LessonRenderer>` with variable-length phases, current phase number, completion state, and phase type labels (e.g., Explore, Learn, Example)
 6. Student moves through phases sequentially
 7. Each phase has a "Complete" button that POSTs to `/api/phases/complete`
 8. Progress is tracked in `student_progress` table

@@ -8,7 +8,7 @@ Integrated Math 3 is a web-based learning management system for high school Inte
 
 ### Students
 - High school students enrolled in Integrated Math 3
-- Progress through structured, 6-phase lessons (Hook → Introduction → Guided Practice → Independent Practice → Assessment → Closing)
+- Progress through structured, variable-length, typed phase lessons (e.g., Explore → Learn → Worked Example → Practice)
 - Complete interactive activities (spreadsheets, practice problems, drag-and-drop, assessments)
 - Track their own progress via a personal dashboard
 
@@ -25,7 +25,7 @@ Integrated Math 3 is a web-based learning management system for high school Inte
 
 ## Core Features
 
-1. **Phase-Based Lesson System** — Lessons divided into 6 sequential phases with content sections (text, callout, activity, video, image). Students progress linearly through phases.
+1. **Phase-Based Lesson System** — Lessons divided into variable-length, typed phase sequences with content sections (text, callout, activity, video, image). Phase types include Explore, Vocabulary, Learn, Key Concept, Worked Example, Guided Practice, Independent Practice, Assessment, Discourse, and Reflection. Students progress linearly through phases.
 
 2. **Student Dashboard** — Shows overall progress, next lesson recommendation, and unit-by-unit breakdown with per-lesson progress bars.
 
@@ -56,7 +56,7 @@ Course (Integrated Math 3 Honors)
 └── Modules (1–9)
     └── Lessons (52 total)
         └── Lesson Versions (draft/review/published/archived)
-            └── Phases (1–6: Hook, Introduction, Guided Practice, Independent Practice, Assessment, Closing)
+            └── Phases (1–N, variable count: Explore, Vocabulary, Learn, Key Concept, Worked Example, Guided Practice, Independent Practice, Assessment, Discourse, Reflection)
                 └── Phase Sections (text | callout | activity | video | image)
 ```
 
