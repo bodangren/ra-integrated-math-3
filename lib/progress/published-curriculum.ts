@@ -8,6 +8,7 @@ export interface LessonVersionLike {
 export interface PhaseVersionLike {
   _id: string;
   lessonVersionId: string;
+  phaseType: string;
 }
 
 export interface ProgressRowLike {
@@ -59,6 +60,7 @@ export interface UnitProgressRow {
 export interface LessonPhaseLike {
   _id: string;
   phaseNumber: number;
+  phaseType: string;
 }
 
 export interface LessonPhaseProgressRow extends ProgressRowLike {
@@ -70,6 +72,7 @@ export interface LessonPhaseProgressRow extends ProgressRowLike {
 export interface LessonPhaseProgressStatusRow {
   phaseNumber: number;
   phaseId: string;
+  phaseType: string;
   status: "completed" | "current" | "available" | "locked";
   startedAt: string | null;
   completedAt: string | null;
@@ -341,6 +344,7 @@ export function buildLessonPhaseProgress<
     return {
       phaseNumber: phase.phaseNumber,
       phaseId: phase._id,
+      phaseType: phase.phaseType,
       status,
       startedAt: toIsoString(progress?.startedAt ?? null),
       completedAt: toIsoString(progress?.completedAt ?? null),

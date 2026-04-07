@@ -11,8 +11,8 @@ vi.mock('@/lib/auth/server', () => ({
 vi.mock('@/lib/convex/server', () => ({
   fetchInternalQuery: vi.fn().mockResolvedValue({
     phases: [
-      { phaseNumber: 1, status: 'not_started' },
-      { phaseNumber: 2, status: 'not_started' },
+      { phaseNumber: 1, phaseId: 'phase1', phaseType: 'explore', status: 'available', startedAt: null, completedAt: null, timeSpentSeconds: null },
+      { phaseNumber: 2, phaseId: 'phase2', phaseType: 'learn', status: 'available', startedAt: null, completedAt: null, timeSpentSeconds: null },
     ],
   }),
   internal: { student: { getLessonProgress: 'mock' } },
