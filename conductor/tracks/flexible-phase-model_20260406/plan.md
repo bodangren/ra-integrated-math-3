@@ -1,20 +1,20 @@
 # Implementation Plan — Flexible Phase Model
 
-## Phase 1: Schema & Type Definitions [~] In Progress
+## Phase 1: Schema & Type Definitions [x] Completed [checkpoint: cb9c2bb]
 
-- [x] Task: Add `phaseType` union field to `phase_versions` in `convex/schema.ts`
+- [x] Task: Add `phaseType` union field to `phase_versions` in `convex/schema.ts` [7e726d6]
     - [x] Write unit test validating the schema accepts all 10 phase types
     - [x] Add `phaseType` as `v.union(v.literal("explore"), v.literal("vocabulary"), ...)` to `phase_versions`
     - [x] Add optional `metadata` field (`v.optional(v.any())`) to `phase_versions`
 
-- [x] Task: Create `lib/curriculum/phase-types.ts` with type definitions and display utility
+- [x] Task: Create `lib/curriculum/phase-types.ts` with type definitions and display utility [7e726d6]
     - [x] Write unit tests for `getPhaseDisplayInfo()` — all 10 types return correct label, icon, color
     - [x] Write unit tests for `PHASE_TYPES` constant array and `isValidPhaseType()` guard
     - [x] Implement `PhaseType` union type, `PHASE_TYPES` array, `isValidPhaseType()`, and `getPhaseDisplayInfo()`
 
-- [ ] Task: Conductor — Phase Completion Verification 'Schema & Type Definitions' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Schema & Type Definitions' (Protocol in workflow.md) [cb9c2bb]
 
-## Phase 2: Backend Query Updates
+## Phase 2: Backend Query Updates [~] In Progress
 
 - [ ] Task: Update `convex/public.ts` to include `phaseType` in phase data
     - [ ] Write test verifying public query returns `phaseType` for each phase
