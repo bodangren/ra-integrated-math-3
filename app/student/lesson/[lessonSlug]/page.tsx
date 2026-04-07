@@ -3,19 +3,16 @@ import Link from 'next/link';
 import { requireStudentSessionClaims } from '@/lib/auth/server';
 import { fetchInternalQuery, internal } from '@/lib/convex/server';
 import { resolveLessonLandingPhase } from '@/lib/student/lesson-runtime';
-
-const PHASE_NAMES: Record<number, string> = {
-  1: 'Hook',
-  2: 'Introduction',
-  3: 'Guided Practice',
-  4: 'Independent Practice',
-  5: 'Assessment',
-  6: 'Closing',
-};
+import { getPhaseDisplayInfo, type PhaseType } from '@/lib/curriculum/phase-types';
 
 interface PhaseProgress {
   phaseNumber: number;
-  status: 'not_started' | 'in_progress' | 'completed';
+  phaseId: string;
+  phaseType: PhaseType;
+  status: 'completed' | 'current' | 'available' | 'locked';
+  startedAt: string | null;
+  completedAt: string | null;
+  timeSpentSeconds: number | null;
 }
 
 interface LessonProgressResult {
@@ -72,6 +69,7 @@ export default async function StudentLessonPage({ params }: PageProps) {
         {phases.map((phase) => {
           const isCurrent = phase.phaseNumber === currentPhase;
           const isCompleted = phase.status === 'completed';
+          const displayInfo = getPhaseDisplayInfo(phase.phaseType);
           return (
             <button
               key={phase.phaseNumber}
@@ -85,7 +83,7 @@ export default async function StudentLessonPage({ params }: PageProps) {
               ].join(' ')}
               aria-current={isCurrent ? 'step' : undefined}
             >
-              Phase {phase.phaseNumber}
+              {displayInfo.label}
               {isCompleted && ' ✓'}
             </button>
           );
@@ -93,35 +91,44 @@ export default async function StudentLessonPage({ params }: PageProps) {
       </div>
 
       {/* Active phase card */}
-      <div className="rounded-xl border border-border bg-card p-8 space-y-4">
-        <div className="flex items-center gap-3">
-          <span className="section-label">
-            Phase {currentPhase}
-          </span>
-          <h2 className="font-display text-xl font-semibold text-card-foreground">
-            {PHASE_NAMES[currentPhase] ?? `Phase ${currentPhase}`}
-          </h2>
-        </div>
+      {(() => {
+        const currentPhaseData = phases.find(p => p.phaseNumber === currentPhase);
+        const displayInfo = currentPhaseData ? getPhaseDisplayInfo(currentPhaseData.phaseType) : { label: `Phase ${currentPhase}`, icon: '', color: '', bgColor: '' };
+        const prevPhaseData = phases.find(p => p.phaseNumber === currentPhase - 1);
+        const prevDisplayInfo = prevPhaseData ? getPhaseDisplayInfo(prevPhaseData.phaseType) : null;
 
-        <p className="text-muted-foreground text-sm">
-          Lesson content for this phase will appear here.
-        </p>
+        return (
+          <div className="rounded-xl border border-border bg-card p-8 space-y-4">
+            <div className="flex items-center gap-3">
+              <span className="section-label">
+                Phase {currentPhase}
+              </span>
+              <h2 className="font-display text-xl font-semibold text-card-foreground">
+                {displayInfo.label}
+              </h2>
+            </div>
 
-        <div className="flex items-center justify-between pt-4 border-t border-border">
-          {currentPhase > 1 ? (
-            <span className="text-sm text-muted-foreground">
-              Phase {currentPhase - 1}: {PHASE_NAMES[currentPhase - 1]}
-            </span>
-          ) : (
-            <span />
-          )}
-          <button
-            className="inline-flex items-center gap-2 rounded-md px-5 py-2 text-sm font-medium text-primary-foreground bg-primary hover:opacity-90 transition-opacity"
-          >
-            Complete Phase {currentPhase} →
-          </button>
-        </div>
-      </div>
+            <p className="text-muted-foreground text-sm">
+              Lesson content for this phase will appear here.
+            </p>
+
+            <div className="flex items-center justify-between pt-4 border-t border-border">
+              {prevPhaseData && prevDisplayInfo ? (
+                <span className="text-sm text-muted-foreground">
+                  Phase {currentPhase - 1}: {prevDisplayInfo.label}
+                </span>
+              ) : (
+                <span />
+              )}
+              <button
+                className="inline-flex items-center gap-2 rounded-md px-5 py-2 text-sm font-medium text-primary-foreground bg-primary hover:opacity-90 transition-opacity"
+              >
+                Complete Phase {currentPhase} →
+              </button>
+            </div>
+          </div>
+        );
+      })()}
 
       <div className="text-center">
         <Link

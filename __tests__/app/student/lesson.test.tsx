@@ -13,6 +13,8 @@ vi.mock('@/lib/convex/server', () => ({
     phases: [
       { phaseNumber: 1, phaseId: 'phase1', phaseType: 'explore', status: 'available', startedAt: null, completedAt: null, timeSpentSeconds: null },
       { phaseNumber: 2, phaseId: 'phase2', phaseType: 'learn', status: 'available', startedAt: null, completedAt: null, timeSpentSeconds: null },
+      { phaseNumber: 3, phaseId: 'phase3', phaseType: 'worked_example', status: 'available', startedAt: null, completedAt: null, timeSpentSeconds: null },
+      { phaseNumber: 4, phaseId: 'phase4', phaseType: 'independent_practice', status: 'available', startedAt: null, completedAt: null, timeSpentSeconds: null },
     ],
   }),
   internal: { student: { getLessonProgress: 'mock' } },
@@ -35,5 +37,34 @@ describe('StudentLessonPage', () => {
     const jsx = await LessonPage({ params: Promise.resolve({ lessonSlug: 'intro-quadratics' }) });
     render(jsx);
     expect(screen.getAllByText(/phase 1/i).length).toBeGreaterThan(0);
+  });
+
+  it('renders dynamic phase labels from phaseType', async () => {
+    const { default: LessonPage } = await import('@/app/student/lesson/[lessonSlug]/page');
+    const jsx = await LessonPage({ params: Promise.resolve({ lessonSlug: 'intro-quadratics' }) });
+    render(jsx);
+    
+    // Verify phase labels are derived from phaseType and appear in phase navigation
+    const phaseButtons = screen.getAllByRole('button').filter(btn => 
+      !btn.textContent?.includes('Complete') && !btn.textContent?.includes('Back')
+    );
+    const buttonTexts = phaseButtons.map(btn => btn.textContent);
+    
+    expect(buttonTexts).toContain('Explore');
+    expect(buttonTexts).toContain('Learn');
+    expect(buttonTexts).toContain('Example');
+    expect(buttonTexts).toContain('Practice');
+  });
+
+  it('renders variable number of phases correctly', async () => {
+    const { default: LessonPage } = await import('@/app/student/lesson/[lessonSlug]/page');
+    const jsx = await LessonPage({ params: Promise.resolve({ lessonSlug: 'intro-quadratics' }) });
+    render(jsx);
+    
+    // Should render 4 phases (not hardcoded to 6)
+    const phaseButtons = screen.getAllByRole('button').filter(btn => 
+      !btn.textContent?.includes('Complete') && !btn.textContent?.includes('Back')
+    );
+    expect(phaseButtons).toHaveLength(4);
   });
 });
