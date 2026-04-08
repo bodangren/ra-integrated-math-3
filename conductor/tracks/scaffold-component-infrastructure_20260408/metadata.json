@@ -1,0 +1,11 @@
+{
+  "track_id": "scaffold-component-infrastructure_20260408",
+  "type": "chore",
+  "status": "new",
+  "created_at": "2026-04-08T00:00:00Z",
+  "updated_at": "2026-04-08T00:00:00Z",
+  "description": "Scaffold student, teacher, and dashboard component directories with basic infrastructure",
+  "estimated_tasks": 13,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}

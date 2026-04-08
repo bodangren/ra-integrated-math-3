@@ -1,0 +1,70 @@
+# Implementation Plan — Scaffold Component Infrastructure
+
+## Phase 1: Directory Structure & Setup
+
+- [ ] Task: Create component directories and index files
+    - [ ] Create `components/student/` directory
+    - [ ] Create `components/student/index.ts`
+    - [ ] Create `components/teacher/` directory
+    - [ ] Create `components/teacher/index.ts`
+    - [ ] Create `components/dashboard/` directory
+    - [ ] Create `components/dashboard/index.ts`
+
+- [ ] Task: Conductor — Phase Completion Verification 'Directory Structure & Setup' (Protocol in workflow.md)
+
+## Phase 2: Student Components
+
+- [ ] Task: Create StudentNavigation component
+    - [ ] Write tests: renders navigation links, collapses on mobile, highlights active route
+    - [ ] Implement `components/student/StudentNavigation.tsx` with responsive sidebar
+    - [ ] Export from `components/student/index.ts`
+
+- [ ] Task: Create ProgressCard component
+    - [ ] Write tests: displays progress bar, shows percentage, renders next lesson CTA
+    - [ ] Implement `components/student/ProgressCard.tsx` with progress visualization
+    - [ ] Export from `components/student/index.ts`
+
+- [ ] Task: Create LessonCard component
+    - [ ] Write tests: displays lesson metadata, shows completion status, renders link
+    - [ ] Implement `components/student/LessonCard.tsx` with lesson info
+    - [ ] Export from `components/student/index.ts`
+
+- [ ] Task: Conductor — Phase Completion Verification 'Student Components' (Protocol in workflow.md)
+
+## Phase 3: Teacher Components
+
+- [ ] Task: Create TeacherNavigation component
+    - [ ] Write tests: renders navigation links, collapses on mobile, highlights active route
+    - [ ] Implement `components/teacher/TeacherNavigation.tsx` with responsive sidebar
+    - [ ] Export from `components/teacher/index.ts`
+
+- [ ] Task: Create StudentRow component
+    - [ ] Write tests: renders student name, progress percentage, action buttons
+    - [ ] Implement `components/teacher/StudentRow.tsx` as table row
+    - [ ] Export from `components/teacher/index.ts`
+
+- [ ] Task: Create ClassOverviewCard component
+    - [ ] Write tests: displays class statistics, shows key metrics
+    - [ ] Implement `components/teacher/ClassOverviewCard.tsx` with stats grid
+    - [ ] Export from `components/teacher/index.ts`
+
+- [ ] Task: Conductor — Phase Completion Verification 'Teacher Components' (Protocol in workflow.md)
+
+## Phase 4: Dashboard Components
+
+- [ ] Task: Create UnitProgressCard component
+    - [ ] Write tests: displays unit name, progress bar, lesson breakdown
+    - [ ] Implement `components/dashboard/UnitProgressCard.tsx` with unit stats
+    - [ ] Export from `components/dashboard/index.ts`
+
+- [ ] Task: Create NextLessonCard component
+    - [ ] Write tests: displays lesson title, phase count, "Start Lesson" CTA
+    - [ ] Implement `components/dashboard/NextLessonCard.tsx` with prominent CTA
+    - [ ] Export from `components/dashboard/index.ts`
+
+- [ ] Task: Create StatsSummary component
+    - [ ] Write tests: renders grid of metrics, displays correct values
+    - [ ] Implement `components/dashboard/StatsSummary.tsx` with stats grid
+    - [ ] Export from `components/dashboard/index.ts`
+
+- [ ] Task: Conductor — Phase Completion Verification 'Dashboard Components' (Protocol in workflow.md)
