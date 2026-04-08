@@ -2,11 +2,11 @@
 
 ## Phase 1: Math Rendering Foundation
 
-- [ ] Task: Integrate KaTeX for math rendering (**requires user approval for `npm install`**)
-    - [ ] Request user approval to install `katex` and `react-katex` (or `@matejmazur/react-katex`)
-    - [ ] Write unit tests for `<MathBlock>` (display math) and `<MathInline>` (inline math)
-    - [ ] Implement `components/textbook/MathBlock.tsx` and `components/textbook/MathInline.tsx`
-    - [ ] Add KaTeX CSS import to `globals.css` or layout
+- [x] Task: Integrate KaTeX for math rendering (**requires user approval for `npm install`**) — **0d69077**
+    - [x] Request user approval to install `katex` and `react-katex` (or `@matejmazur/react-katex`)
+    - [x] Write unit tests for `<MathBlock>` (display math) and `<MathInline>` (inline math)
+    - [x] Implement `components/textbook/MathBlock.tsx` and `components/textbook/MathInline.tsx`
+    - [x] Add KaTeX CSS import to `globals.css` or layout
 
 - [ ] Task: Extend `MarkdownRenderer` to auto-detect and render math expressions
     - [ ] Write test: markdown containing `$...$` renders inline math via KaTeX
