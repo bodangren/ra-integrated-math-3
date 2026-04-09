@@ -53,15 +53,15 @@
 
 - [x] Task: Conductor — Phase Completion Verification 'Lesson-Level Components' (Protocol in workflow.md)
 
-## Phase 4: Page Integration & Polish
+## Phase 4: Page Integration & Polish [checkpoint: 4335022]
 
 - [x] Task: Wire `LessonRenderer` into `app/student/lesson/[lessonSlug]/page.tsx` — **a665c4f**
     - [x] Write integration test: page renders LessonRenderer with data from Convex queries
     - [x] Replace stub content with `<LessonRenderer>` component
     - [x] Pass lesson data, phase content, student progress, and user role
 
-- [~] Task: Add keyboard navigation between phases
-    - [~] Write tests: left/right arrow keys navigate phases; focus management is correct
-    - [ ] Implement keyboard event handlers in LessonRenderer
+- [x] Task: Add keyboard navigation between phases — **467dd3f**
+    - [x] Write tests: left/right arrow keys navigate phases; focus management is correct
+    - [x] Implement keyboard event handlers in LessonRenderer
 
-- [ ] Task: Conductor — Phase Completion Verification 'Page Integration & Polish' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Page Integration & Polish' (Protocol in workflow.md)
