@@ -16,7 +16,7 @@
 
 - [x] Task: Conductor — Phase Completion Verification 'Math Rendering Foundation' (Protocol in workflow.md) — **7a261a5**
 
-## Phase 2: Content Primitives — Structural
+## Phase 2: Content Primitives — Structural [checkpoint: 3066b25]
 
 - [x] Task: Create `TheoremBox` component — **5b26db4**
     - [x] Write tests: renders title, body, icon; supports custom color variants
