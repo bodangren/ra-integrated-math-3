@@ -1,0 +1,171 @@
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { PhaseRenderer, type PhaseSection } from '@/components/lesson/PhaseRenderer';
+import type { PhaseType } from '@/lib/curriculum/phase-types';
+
+// Mock sub-components to isolate PhaseRenderer logic
+vi.mock('@/components/lesson/MarkdownRenderer', () => ({
+  LessonMarkdownRenderer: ({ content }: { content: string }) => (
+    <div data-testid="markdown-renderer">{content}</div>
+  ),
+}));
+
+vi.mock('@/components/lesson/VideoPlayer', () => ({
+  VideoPlayer: ({ videoUrl }: { videoUrl: string }) => (
+    <div data-testid="video-player">{videoUrl}</div>
+  ),
+}));
+
+vi.mock('@/components/lesson/ActivityRenderer', () => ({
+  ActivityRenderer: ({ componentKey }: { componentKey: string }) => (
+    <div data-testid="activity-renderer">{componentKey}</div>
+  ),
+}));
+
+vi.mock('@/components/textbook/CalloutBox', () => ({
+  CalloutBox: ({ children }: { children: React.ReactNode }) => (
+    <div data-testid="callout-box">{children}</div>
+  ),
+}));
+
+vi.mock('@/components/textbook/PhaseContainer', () => ({
+  PhaseContainer: ({ children, phaseType }: { children: React.ReactNode; phaseType: string }) => (
+    <div data-testid="phase-container" data-phase-type={phaseType}>{children}</div>
+  ),
+}));
+
+const makeSection = (overrides: Partial<PhaseSection>): PhaseSection => ({
+  id: 'sec-1',
+  sequenceOrder: 1,
+  ...overrides,
+} as PhaseSection);
+
+describe('PhaseRenderer', () => {
+  const phaseType: PhaseType = 'learn';
+
+  describe('section type mapping', () => {
+    it('renders text section via LessonMarkdownRenderer', () => {
+      render(
+        <PhaseRenderer
+          phaseType={phaseType}
+          sections={[makeSection({ sectionType: 'text', content: { markdown: 'Hello world' } })]}
+        />
+      );
+      expect(screen.getByTestId('markdown-renderer')).toBeInTheDocument();
+      expect(screen.getByText('Hello world')).toBeInTheDocument();
+    });
+
+    it('renders video section via VideoPlayer', () => {
+      render(
+        <PhaseRenderer
+          phaseType={phaseType}
+          sections={[makeSection({
+            sectionType: 'video',
+            content: { videoUrl: 'https://youtu.be/abc', duration: 5 },
+          })]}
+        />
+      );
+      expect(screen.getByTestId('video-player')).toBeInTheDocument();
+    });
+
+    it('renders callout section via CalloutBox', () => {
+      render(
+        <PhaseRenderer
+          phaseType={phaseType}
+          sections={[makeSection({
+            sectionType: 'callout',
+            content: { variant: 'tip', text: 'This is a tip.' },
+          })]}
+        />
+      );
+      expect(screen.getByTestId('callout-box')).toBeInTheDocument();
+    });
+
+    it('renders activity section via ActivityRenderer', () => {
+      render(
+        <PhaseRenderer
+          phaseType={phaseType}
+          sections={[makeSection({
+            sectionType: 'activity',
+            content: { componentKey: 'graphing-explorer', activityId: 'act-1' },
+          })]}
+        />
+      );
+      expect(screen.getByTestId('activity-renderer')).toBeInTheDocument();
+    });
+
+    it('renders image section with img element', () => {
+      render(
+        <PhaseRenderer
+          phaseType={phaseType}
+          sections={[makeSection({
+            sectionType: 'image',
+            content: { imageUrl: '/img/test.png', alt: 'Test image' },
+          })]}
+        />
+      );
+      expect(screen.getByRole('img')).toBeInTheDocument();
+      expect(screen.getByAltText('Test image')).toBeInTheDocument();
+    });
+
+    it('renders image caption when provided', () => {
+      render(
+        <PhaseRenderer
+          phaseType={phaseType}
+          sections={[makeSection({
+            sectionType: 'image',
+            content: { imageUrl: '/img/test.png', alt: 'alt', caption: 'Figure 1' },
+          })]}
+        />
+      );
+      expect(screen.getByText('Figure 1')).toBeInTheDocument();
+    });
+  });
+
+  describe('PhaseContainer wrapping', () => {
+    it('wraps content in PhaseContainer with correct phaseType', () => {
+      const { container } = render(
+        <PhaseRenderer
+          phaseType="explore"
+          sections={[makeSection({ sectionType: 'text', content: { markdown: 'content' } })]}
+        />
+      );
+      const phaseContainer = container.querySelector('[data-testid="phase-container"]');
+      expect(phaseContainer).toBeInTheDocument();
+      expect(phaseContainer).toHaveAttribute('data-phase-type', 'explore');
+    });
+
+    it('applies different phaseType to PhaseContainer', () => {
+      const { container } = render(
+        <PhaseRenderer
+          phaseType="worked_example"
+          sections={[makeSection({ sectionType: 'text', content: { markdown: 'x' } })]}
+        />
+      );
+      expect(container.querySelector('[data-phase-type="worked_example"]')).toBeInTheDocument();
+    });
+  });
+
+  describe('multiple sections', () => {
+    it('renders multiple sections in order', () => {
+      render(
+        <PhaseRenderer
+          phaseType={phaseType}
+          sections={[
+            makeSection({ id: 's1', sequenceOrder: 1, sectionType: 'text', content: { markdown: 'First' } }),
+            makeSection({ id: 's2', sequenceOrder: 2, sectionType: 'text', content: { markdown: 'Second' } }),
+          ]}
+        />
+      );
+      expect(screen.getByText('First')).toBeInTheDocument();
+      expect(screen.getByText('Second')).toBeInTheDocument();
+    });
+  });
+
+  describe('empty state', () => {
+    it('renders empty state message when no sections', () => {
+      render(<PhaseRenderer phaseType={phaseType} sections={[]} />);
+      expect(screen.getByText(/no content/i)).toBeInTheDocument();
+    });
+  });
+});
