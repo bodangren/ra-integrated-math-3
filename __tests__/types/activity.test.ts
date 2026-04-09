@@ -156,7 +156,7 @@ describe('types/activity', () => {
 
       const props: ActivityComponentProps = {
         activity,
-        mode: 'independent_practice',
+        mode: 'practice',
         onSubmit: (envelope: PracticeSubmissionEnvelope) => {
           expect(envelope.activityId).toBe('activity-123');
         },
@@ -166,7 +166,7 @@ describe('types/activity', () => {
       };
 
       expect(props.activity.componentKey).toBe('graphing-explorer');
-      expect(props.mode).toBe('independent_practice');
+      expect(props.mode).toBe('practice');
       expect(props.onSubmit).toBeDefined();
       expect(props.onComplete).toBeDefined();
     });
@@ -181,7 +181,7 @@ describe('types/activity', () => {
 
       const props: ActivityComponentProps = {
         activity,
-        mode: 'guided_practice',
+        mode: 'guided',
       };
 
       expect(props.activity.componentKey).toBe('comprehension-quiz');
@@ -201,7 +201,7 @@ describe('types/activity', () => {
 
       const props: ActivityComponentProps = {
         activity,
-        mode: 'independent_practice',
+        mode: 'practice',
         onSubmit: (envelope: PracticeSubmissionEnvelope) => {
           capturedEnvelope = envelope;
           // TypeScript should enforce envelope is PracticeSubmissionEnvelope
@@ -213,7 +213,7 @@ describe('types/activity', () => {
       const testEnvelope: PracticeSubmissionEnvelope = {
         contractVersion: 'practice.v1',
         activityId: activity._id,
-        mode: props.mode,
+        mode: 'independent_practice',
         status: 'submitted',
         attemptNumber: 1,
         submittedAt: new Date().toISOString(),
@@ -226,7 +226,7 @@ describe('types/activity', () => {
       }
 
       expect(capturedEnvelope).not.toBeNull();
-      expect(capturedEnvelope?.activityId).toBe(activity._id);
+      expect(capturedEnvelope!.activityId).toBe(activity._id);
     });
   });
 });
