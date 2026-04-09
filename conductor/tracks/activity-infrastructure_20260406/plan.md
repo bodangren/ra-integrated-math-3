@@ -19,28 +19,28 @@
 
 - [x] Task: Conductor — Phase Completion Verification 'Registry & Mode System' (Protocol in workflow.md) [4269236]
 
-## Phase 2: Props Schemas
+## Phase 2: Props Schemas [checkpoint: 946e5b3]
 
-- [ ] Task: Create `lib/activities/schemas/graphing-explorer.schema.ts`
-    - [ ] Write tests: validates correct props (equation, domain, range, points); rejects malformed
-    - [ ] Implement Zod schema
+- [x] Task: Create `lib/activities/schemas/graphing-explorer.schema.ts` [308f449]
+    - [x] Write tests: validates correct props (equation, domain, range, points); rejects malformed
+    - [x] Implement Zod schema
 
-- [ ] Task: Create `lib/activities/schemas/step-by-step-solver.schema.ts`
-    - [ ] Write tests: validates correct props (problemType, steps, equation, hints); rejects malformed
-    - [ ] Implement Zod schema
+- [x] Task: Create `lib/activities/schemas/step-by-step-solver.schema.ts` [9a77480]
+    - [x] Write tests: validates correct props (problemType, steps, equation, hints); rejects malformed
+    - [x] Implement Zod schema
 
-- [ ] Task: Create remaining 4 props schemas
-    - [ ] Write tests for `comprehension-quiz.schema.ts` (questions, choices, correctAnswers)
-    - [ ] Write tests for `fill-in-the-blank.schema.ts` (template, blanks, answers)
-    - [ ] Write tests for `rate-of-change-calculator.schema.ts` (sourceType, data, interval)
-    - [ ] Write tests for `discriminant-analyzer.schema.ts` (equation, coefficients)
-    - [ ] Implement all 4 schemas
+- [x] Task: Create remaining 4 props schemas [2f78751, 1eb1dd3, ea71f0b, 42fc266]
+    - [x] Write tests for `comprehension-quiz.schema.ts` (questions, choices, correctAnswers)
+    - [x] Write tests for `fill-in-the-blank.schema.ts` (template, blanks, answers)
+    - [x] Write tests for `rate-of-change-calculator.schema.ts` (sourceType, data, interval)
+    - [x] Write tests for `discriminant-analyzer.schema.ts` (equation, coefficients)
+    - [x] Implement all 4 schemas
 
-- [ ] Task: Create schema index `lib/activities/schemas/index.ts` mapping componentKey → schema
-    - [ ] Write test: `getPropsSchema(key)` returns correct schema for each key
-    - [ ] Implement index with `getPropsSchema()` function
+- [x] Task: Create schema index `lib/activities/schemas/index.ts` mapping componentKey → schema [5258992]
+    - [x] Write test: `getPropsSchema(key)` returns correct schema for each key
+    - [x] Implement index with `getPropsSchema()` function
 
-- [ ] Task: Conductor — Phase Completion Verification 'Props Schemas' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Props Schemas' (Protocol in workflow.md) [946e5b3]
 
 ## Phase 3: Submission Pipeline
 
