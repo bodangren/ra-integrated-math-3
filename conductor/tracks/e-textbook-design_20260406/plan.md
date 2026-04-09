@@ -30,11 +30,11 @@
     - [x] Write tests: each variant (important, tip, remember, caution) renders correct icon and color
     - [x] Implement `components/textbook/CalloutBox.tsx` replacing the basic `Callout.tsx`
 
-- [~] Task: Create `ExampleHeader` component
-    - [ ] Write tests: renders example number, title, difficulty badge
-    - [ ] Implement `components/textbook/ExampleHeader.tsx`
+- [x] Task: Create `ExampleHeader` component — **055bb55**
+    - [x] Write tests: renders example number, title, difficulty badge
+    - [x] Implement `components/textbook/ExampleHeader.tsx`
 
-- [ ] Task: Conductor — Phase Completion Verification 'Content Primitives — Structural' (Protocol in workflow.md)
+- [~] Task: Conductor — Phase Completion Verification 'Content Primitives — Structural' (Protocol in workflow.md)
 
 ## Phase 3: Content Primitives — Interactive
 
