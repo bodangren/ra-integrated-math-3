@@ -34,7 +34,7 @@
     - [x] Write tests: renders example number, title, difficulty badge
     - [x] Implement `components/textbook/ExampleHeader.tsx`
 
-- [~] Task: Conductor — Phase Completion Verification 'Content Primitives — Structural' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Content Primitives — Structural' (Protocol in workflow.md)
 
 ## Phase 3: Content Primitives — Interactive [checkpoint: cb107ca]
 
@@ -60,23 +60,23 @@
     - [x] Write tests: renders three CAP dimensions with prompts
     - [x] Implement `components/textbook/ReflectionCard.tsx`
 
-- [~] Task: Conductor — Phase Completion Verification 'Content Primitives — Interactive' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Content Primitives — Interactive' (Protocol in workflow.md)
 
-## Phase 4: Layout & Typography
+## Phase 4: Layout & Typography [checkpoint: 3bfc4a2]
 
-- [ ] Task: Create `LessonPageLayout` component
-    - [ ] Write tests: renders header, sidebar, main content area; sidebar collapses on mobile
-    - [ ] Write tests: sticky progress bar reflects phase completion
-    - [ ] Implement `components/textbook/LessonPageLayout.tsx` with responsive breakpoints
+- [x] Task: Create `LessonPageLayout` component — **ee17283**
+    - [x] Write tests: renders header, sidebar, main content area; sidebar collapses on mobile
+    - [x] Write tests: sticky progress bar reflects phase completion
+    - [x] Implement `components/textbook/LessonPageLayout.tsx` with responsive breakpoints
 
-- [ ] Task: Create `PhaseContainer` component
-    - [ ] Write tests: applies distinct visual treatment per phaseType (all 10 types)
-    - [ ] Implement `components/textbook/PhaseContainer.tsx` — maps phaseType to background, border, icon
+- [x] Task: Create `PhaseContainer` component — **da13b7f**
+    - [x] Write tests: applies distinct visual treatment per phaseType (all 10 types)
+    - [x] Implement `components/textbook/PhaseContainer.tsx` — maps phaseType to background, border, icon
 
-- [ ] Task: Add textbook typography and spacing to `globals.css`
-    - [ ] Add `.textbook-content` scope with heading hierarchy, line heights, math spacing
-    - [ ] Add responsive font scaling rules
-    - [ ] Add print-friendly `@media print` styles
-    - [ ] Verify dark mode contrast for all textbook styles
+- [x] Task: Add textbook typography and spacing to `globals.css` — **af4d877**
+    - [x] Add `.textbook-content` scope with heading hierarchy, line heights, math spacing
+    - [x] Add responsive font scaling rules
+    - [x] Add print-friendly `@media print` styles
+    - [x] Verify dark mode contrast for all textbook styles
 
-- [ ] Task: Conductor — Phase Completion Verification 'Layout & Typography' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Layout & Typography' (Protocol in workflow.md)
