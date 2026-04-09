@@ -22,7 +22,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
    *Create student, teacher, and dashboard component directories with basic infrastructure*
    *Link: [./conductor/tracks/scaffold-component-infrastructure_20260408/](./conductor/tracks/scaffold-component-infrastructure_20260408/)*
 
-- [~] **Track 2: E-Textbook Design System** — **IN PROGRESS**
+- [x] **Track 2: E-Textbook Design System** — **COMPLETED**
    *KaTeX math rendering, theorem/callout boxes, step-reveal containers, textbook layout*
    *Link: [./conductor/tracks/e-textbook-design_20260406/](./conductor/tracks/e-textbook-design_20260406/)*
 
