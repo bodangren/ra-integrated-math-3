@@ -71,25 +71,43 @@ export const getLessonProgress = internalQuery({
       .collect();
 
     const latestVersion = resolveLatestPublishedLessonVersion(versions);
-    if (!latestVersion) return { phases: [] };
+    if (!latestVersion) return { lessonTitle: lesson.title, unitNumber: lesson.unitNumber, lessonNumber: lesson.orderIndex, phases: [] };
 
     // 3. Get phases for this version
     const phases = await ctx.db
       .query("phase_versions")
       .withIndex("by_lesson_version", (q) => q.eq("lessonVersionId", latestVersion._id))
       .collect();
-    
+
     // 4. Get student progress
     const userProgress = await ctx.db
       .query("student_progress")
       .withIndex("by_user", (q) => q.eq("userId", args.userId))
       .collect();
 
+    // 5. Fetch sections for each phase
+    const sectionsByPhaseId = new Map<string, { id: string; sequenceOrder: number; sectionType: string; content: unknown }[]>();
+    for (const phase of phases) {
+      const sections = await ctx.db
+        .query("phase_sections")
+        .withIndex("by_phase_version", (q) => q.eq("phaseVersionId", phase._id))
+        .collect();
+      sectionsByPhaseId.set(phase._id, sections
+        .sort((a, b) => a.sequenceOrder - b.sequenceOrder)
+        .map(s => ({ id: s._id, sequenceOrder: s.sequenceOrder, sectionType: s.sectionType, content: s.content }))
+      );
+    }
+
+    const progressRows = buildLessonPhaseProgress({ phases, progressRows: userProgress });
+
     return {
-      phases: buildLessonPhaseProgress({
-        phases,
-        progressRows: userProgress,
-      }),
+      lessonTitle: lesson.title,
+      unitNumber: lesson.unitNumber,
+      lessonNumber: lesson.orderIndex,
+      phases: progressRows.map(p => ({
+        ...p,
+        sections: sectionsByPhaseId.get(p.phaseId) ?? [],
+      })),
     };
   }
 });
