@@ -1,6 +1,6 @@
 # Implementation Plan — E-Textbook Design System
 
-## Phase 1: Math Rendering Foundation
+## Phase 1: Math Rendering Foundation [checkpoint: 7a261a5]
 
 - [x] Task: Integrate KaTeX for math rendering (**requires user approval for `npm install`**) — **0d69077**
     - [x] Request user approval to install `katex` and `react-katex` (or `@matejmazur/react-katex`)
@@ -14,7 +14,7 @@
     - [x] Implement remark/rehype plugin or post-processing to extract math and render via KaTeX components
     - [x] Verify existing markdown content still renders correctly
 
-- [ ] Task: Conductor — Phase Completion Verification 'Math Rendering Foundation' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Math Rendering Foundation' (Protocol in workflow.md) — **7a261a5**
 
 ## Phase 2: Content Primitives — Structural
 
