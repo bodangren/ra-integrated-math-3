@@ -168,3 +168,105 @@
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ── Textbook content scope ── */
+.textbook-content {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.75;
+  color: oklch(var(--foreground));
+}
+
+/* Heading hierarchy within lesson content */
+.textbook-content h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: oklch(var(--foreground));
+}
+.textbook-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: oklch(var(--foreground));
+}
+.textbook-content h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
+  color: oklch(var(--foreground));
+}
+.textbook-content h4 {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.25rem;
+  margin-bottom: 0.3rem;
+  color: oklch(var(--foreground));
+}
+
+/* Paragraph and list spacing */
+.textbook-content p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.textbook-content ul,
+.textbook-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.textbook-content li {
+  margin-bottom: 0.25rem;
+}
+
+/* Math (KaTeX) spacing */
+.textbook-content .katex-display {
+  margin: 1.25rem 0;
+  overflow-x: auto;
+}
+.textbook-content .katex {
+  font-size: 1.05em;
+}
+
+/* ── Print styles ── */
+@media print {
+  /* Hide chrome: nav, sidebars, toggles, progress bar */
+  nav,
+  [data-sidebar],
+  [role="progressbar"],
+  button {
+    display: none !important;
+  }
+
+  .textbook-content {
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #000;
+  }
+
+  .textbook-content h1 { font-size: 18pt; }
+  .textbook-content h2 { font-size: 15pt; }
+  .textbook-content h3 { font-size: 13pt; }
+  .textbook-content h4 { font-size: 11pt; }
+
+  /* Avoid page breaks inside content boxes */
+  .textbook-content section {
+    break-inside: avoid;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555;
+  }
+}
