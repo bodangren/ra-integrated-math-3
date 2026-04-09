@@ -22,11 +22,11 @@
     - [x] Write tests: renders title, body, icon; supports custom color variants
     - [x] Implement `components/textbook/TheoremBox.tsx` — bordered container with tinted bg, oklch tokens
 
-- [~] Task: Create `DefinitionCard` component
-    - [ ] Write tests: renders term, definition, optional related terms
-    - [ ] Implement `components/textbook/DefinitionCard.tsx`
+- [x] Task: Create `DefinitionCard` component — **75acec7**
+    - [x] Write tests: renders term, definition, optional related terms
+    - [x] Implement `components/textbook/DefinitionCard.tsx`
 
-- [ ] Task: Create `CalloutBox` component with variants
+- [~] Task: Create `CalloutBox` component with variants
     - [ ] Write tests: each variant (important, tip, remember, caution) renders correct icon and color
     - [ ] Implement `components/textbook/CalloutBox.tsx` replacing the basic `Callout.tsx`
 
