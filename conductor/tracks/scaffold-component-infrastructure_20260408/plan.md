@@ -14,10 +14,10 @@
 
 ## Phase 2: Student Components
 
-- [ ] Task: Create StudentNavigation component
-    - [ ] Write tests: renders navigation links, collapses on mobile, highlights active route
-    - [ ] Implement `components/student/StudentNavigation.tsx` with responsive sidebar
-    - [ ] Export from `components/student/index.ts`
+- [x] Task: Create StudentNavigation component — **Completed** [ca1935e]
+    - [x] Write tests: renders navigation links, collapses on mobile, highlights active route — Completed [ca1935e]
+    - [x] Implement `components/student/StudentNavigation.tsx` with responsive sidebar — Completed [ca1935e]
+    - [x] Export from `components/student/index.ts` — Completed [ca1935e]
 
 - [ ] Task: Create ProgressCard component
     - [ ] Write tests: displays progress bar, shows percentage, renders next lesson CTA
