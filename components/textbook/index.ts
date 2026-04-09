@@ -7,3 +7,4 @@ export { CalloutBox } from './CalloutBox';
 export { ExampleHeader } from './ExampleHeader';
 export { StepRevealContainer } from './StepRevealContainer';
 export { VocabularyHighlight } from './VocabularyHighlight';
+export { TableOfValues } from './TableOfValues';
