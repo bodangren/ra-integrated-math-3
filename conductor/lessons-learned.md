@@ -31,6 +31,11 @@
 - (2026-04-09, e-textbook-design) Use Tailwind animate-in classes for smooth transitions instead of installing framer-motion — lighter weight, no new dependencies
 - (2026-04-09, e-textbook-design) Client components with useState should be minimal — keep state logic simple and focused; complex state can be extracted to custom hooks if needed
 
+- (2026-04-09, lesson-rendering) `npm run lint ... 2>&1 | tail -N` swallows the non-zero exit code — lint errors are silently ignored and commits proceed; always check lint exit code directly before staging
+- (2026-04-09, lesson-rendering) bus-math-v2 components that depend on `Card` from shadcn/ui must be rewritten with plain Tailwind divs — IM3 only has button/dropdown-menu/avatar/badge; check available components before porting
+- (2026-04-09, lesson-rendering) Convex `getLessonProgress` fetches sections in a per-phase loop (N queries); acceptable for lesson sizes but worth noting for large phase counts
+- (2026-04-09, lesson-rendering) `useEffect` keydown listeners on `document` work well for global keyboard shortcuts — clean up with return function; include `activePhaseNumber` in dep array so the handler always sees fresh state
+
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
 

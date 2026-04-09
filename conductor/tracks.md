@@ -23,10 +23,10 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
    *Link: [./conductor/tracks/scaffold-component-infrastructure_20260408/](./conductor/tracks/scaffold-component-infrastructure_20260408/)*
 
 
-- [ ] **Track 3: Lesson Rendering Engine**
+- [x] **Track 3: Lesson Rendering Engine** — **COMPLETED**
   *Port + adapt LessonStepper, PhaseRenderer, PhaseCompleteButton from bus-math-v2*
   *Depends on: Tracks 1, 2*
-  *Link: [./conductor/tracks/lesson-rendering_20260406/](./conductor/tracks/lesson-rendering_20260406/)*
+  *Link: [./conductor/archive/lesson-rendering_20260406/](./conductor/archive/lesson-rendering_20260406/)*
 
 - [ ] **Track 4: Activity Infrastructure**
   *Registry, mode system, props schemas, submission pipeline, completion tracking*
