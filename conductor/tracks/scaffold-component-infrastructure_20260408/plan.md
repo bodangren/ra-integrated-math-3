@@ -79,7 +79,7 @@
     - [x] Implement `components/dashboard/StatsSummary.tsx` with stats grid — Completed [83688cd]
     - [x] Export from `components/dashboard/index.ts` — Completed [83688cd]
 
-- [ ] Task: Conductor — Phase Completion Verification 'Dashboard Components' (Protocol in workflow.md)
+- [~] Task: Conductor — Phase Completion Verification 'Dashboard Components' (Protocol in workflow.md)
 
 - [ ] Task: Create NextLessonCard component
     - [ ] Write tests: displays lesson title, phase count, "Start Lesson" CTA
