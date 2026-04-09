@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LessonPageLayout, type PhaseNavItem } from '@/components/textbook/LessonPageLayout';
 import { LessonStepper, type StepperPhase } from './LessonStepper';
 import { PhaseRenderer, type PhaseSection } from './PhaseRenderer';
@@ -41,6 +41,27 @@ export function LessonRenderer({
   const [activePhaseNumber, setActivePhaseNumber] = useState(initialPhase?.phaseNumber ?? 1);
 
   const activePhase = phases.find(p => p.phaseNumber === activePhaseNumber) ?? phases[0];
+
+  useEffect(() => {
+    const phaseNumbers = phases.map(p => p.phaseNumber).sort((a, b) => a - b);
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'ArrowRight') {
+        const idx = phaseNumbers.indexOf(activePhaseNumber);
+        if (idx < phaseNumbers.length - 1) {
+          setActivePhaseNumber(phaseNumbers[idx + 1]);
+        }
+      } else if (e.key === 'ArrowLeft') {
+        const idx = phaseNumbers.indexOf(activePhaseNumber);
+        if (idx > 0) {
+          setActivePhaseNumber(phaseNumbers[idx - 1]);
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [phases, activePhaseNumber]);
 
   // Build PhaseNavItems for LessonPageLayout progress bar + sidebar
   const navPhases: PhaseNavItem[] = phases.map(p => ({

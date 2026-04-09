@@ -139,6 +139,65 @@ describe('LessonRenderer', () => {
     });
   });
 
+  describe('keyboard navigation', () => {
+    const multiPhaseProps: LessonRendererProps = {
+      ...defaultProps,
+      phases: [
+        { phaseId: 'p1', phaseNumber: 1, phaseType: 'explore', title: 'Explore', sections: [textSection], status: 'completed', completed: true },
+        { phaseId: 'p2', phaseNumber: 2, phaseType: 'learn', title: 'Learn', sections: [], status: 'current', completed: false },
+        { phaseId: 'p3', phaseNumber: 3, phaseType: 'worked_example', title: 'Example', sections: [], status: 'locked', completed: false },
+      ],
+    };
+
+    it('navigates to the next phase on ArrowRight', () => {
+      render(<LessonRenderer {...multiPhaseProps} />);
+      // Starts on phase 2 (current)
+      expect(screen.getByTestId('lesson-stepper')).toHaveAttribute('data-current', '2');
+
+      fireEvent.keyDown(document.body, { key: 'ArrowRight' });
+
+      expect(screen.getByTestId('lesson-stepper')).toHaveAttribute('data-current', '3');
+    });
+
+    it('navigates to the previous phase on ArrowLeft', () => {
+      render(<LessonRenderer {...multiPhaseProps} />);
+      // Starts on phase 2 (current)
+      fireEvent.keyDown(document.body, { key: 'ArrowLeft' });
+
+      expect(screen.getByTestId('lesson-stepper')).toHaveAttribute('data-current', '1');
+    });
+
+    it('does not go before the first phase on ArrowLeft', () => {
+      render(<LessonRenderer {...defaultProps} />);
+      // Starts on phase 1
+      fireEvent.keyDown(document.body, { key: 'ArrowLeft' });
+
+      expect(screen.getByTestId('lesson-stepper')).toHaveAttribute('data-current', '1');
+    });
+
+    it('does not go past the last phase on ArrowRight', () => {
+      const lastPhaseProps: LessonRendererProps = {
+        ...defaultProps,
+        phases: [
+          { phaseId: 'p1', phaseNumber: 1, phaseType: 'explore', title: 'Explore', sections: [textSection], status: 'completed', completed: true },
+          { phaseId: 'p2', phaseNumber: 2, phaseType: 'learn', title: 'Learn', sections: [], status: 'current', completed: false },
+        ],
+      };
+      render(<LessonRenderer {...lastPhaseProps} />);
+      // Starts on phase 2 (last)
+      fireEvent.keyDown(document.body, { key: 'ArrowRight' });
+
+      expect(screen.getByTestId('lesson-stepper')).toHaveAttribute('data-current', '2');
+    });
+
+    it('ignores other keys', () => {
+      render(<LessonRenderer {...multiPhaseProps} />);
+      fireEvent.keyDown(document.body, { key: 'Enter' });
+
+      expect(screen.getByTestId('lesson-stepper')).toHaveAttribute('data-current', '2');
+    });
+  });
+
   describe('teacher mode', () => {
     it('does not render PhaseCompleteButton in teaching mode', () => {
       render(<LessonRenderer {...defaultProps} mode="teaching" />);

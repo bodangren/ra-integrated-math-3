@@ -55,13 +55,13 @@
 
 ## Phase 4: Page Integration & Polish
 
-- [ ] Task: Wire `LessonRenderer` into `app/student/lesson/[lessonSlug]/page.tsx`
-    - [ ] Write integration test: page renders LessonRenderer with data from Convex queries
-    - [ ] Replace stub content with `<LessonRenderer>` component
-    - [ ] Pass lesson data, phase content, student progress, and user role
+- [x] Task: Wire `LessonRenderer` into `app/student/lesson/[lessonSlug]/page.tsx` — **a665c4f**
+    - [x] Write integration test: page renders LessonRenderer with data from Convex queries
+    - [x] Replace stub content with `<LessonRenderer>` component
+    - [x] Pass lesson data, phase content, student progress, and user role
 
-- [ ] Task: Add keyboard navigation between phases
-    - [ ] Write tests: left/right arrow keys navigate phases; focus management is correct
+- [~] Task: Add keyboard navigation between phases
+    - [~] Write tests: left/right arrow keys navigate phases; focus management is correct
     - [ ] Implement keyboard event handlers in LessonRenderer
 
 - [ ] Task: Conductor — Phase Completion Verification 'Page Integration & Polish' (Protocol in workflow.md)
