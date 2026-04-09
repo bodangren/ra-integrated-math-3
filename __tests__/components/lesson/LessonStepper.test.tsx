@@ -37,7 +37,7 @@ describe('LessonStepper', () => {
 
   describe('completion state', () => {
     it('shows a checkmark icon for completed phases', () => {
-      const { container } = render(
+      render(
         <LessonStepper phases={samplePhases} currentPhase={2} />
       );
       // Completed phase should have a lucide Check icon (svg)
