@@ -36,7 +36,7 @@
 
 - [~] Task: Conductor — Phase Completion Verification 'Content Primitives — Structural' (Protocol in workflow.md)
 
-## Phase 3: Content Primitives — Interactive
+## Phase 3: Content Primitives — Interactive [checkpoint: cb107ca]
 
 - [x] Task: Create `StepRevealContainer` component — **9f5d5cd**
     - [x] Write tests: all steps visible in teaching mode; steps hidden and revealable in guided/practice mode
