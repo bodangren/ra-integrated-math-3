@@ -64,9 +64,14 @@
 
 ## Phase 4: Dashboard Components
 
-- [ ] Task: Create UnitProgressCard component
-    - [ ] Write tests: displays unit name, progress bar, lesson breakdown
-    - [ ] Implement `components/dashboard/UnitProgressCard.tsx` with unit stats
+- [x] Task: Create UnitProgressCard component — **Completed** [2fae932]
+    - [x] Write tests: displays unit name, progress bar, lesson breakdown — Completed [2fae932]
+    - [x] Implement `components/dashboard/UnitProgressCard.tsx` with unit stats — Completed [2fae932]
+    - [x] Export from `components/dashboard/index.ts` — Completed [2fae932]
+
+- [~] Task: Create NextLessonCard component
+    - [ ] Write tests: displays lesson title, phase count, \"Start Lesson\" CTA
+    - [ ] Implement `components/dashboard/NextLessonCard.tsx` with prominent CTA
     - [ ] Export from `components/dashboard/index.ts`
 
 - [ ] Task: Create NextLessonCard component
