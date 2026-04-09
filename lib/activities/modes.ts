@@ -1,5 +1,7 @@
 import type { PhaseType } from '@/lib/curriculum/phase-types';
 
+export type { PhaseType };
+
 export type UserRole = 'student' | 'teacher' | 'admin';
 
 export type ActivityMode = 'teaching' | 'guided' | 'practice';
