@@ -117,7 +117,7 @@ describe('fill-in-the-blank.schema', () => {
       const result = fillInTheBlankSchema.safeParse(props);
       expect(result.success).toBe(false);
       if (!result.success) {
-        expect(result.error.issues.some((issue: { path: (string | number)[] }) => issue.path.includes('template'))).toBe(
+        expect(result.error.issues.some((issue: { path: (string | number | symbol)[] }) => issue.path.includes('template'))).toBe(
           true,
         );
       }

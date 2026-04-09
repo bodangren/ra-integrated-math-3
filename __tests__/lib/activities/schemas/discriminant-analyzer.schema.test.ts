@@ -73,7 +73,7 @@ describe('discriminant-analyzer.schema', () => {
       const result = discriminantAnalyzerSchema.safeParse(props);
       expect(result.success).toBe(false);
       if (!result.success) {
-        expect(result.error.issues.some((issue: { path: (string | number)[] }) => issue.path.includes('equation'))).toBe(
+        expect(result.error.issues.some((issue: { path: (string | number | symbol)[] }) => issue.path.includes('equation'))).toBe(
           true,
         );
       }

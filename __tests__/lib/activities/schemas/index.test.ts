@@ -8,7 +8,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('graphing-explorer');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         equation: 'y = x^2',
       });
       expect(result.success).toBe(true);
@@ -18,7 +18,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('step-by-step-solver');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         problemType: 'quadratic_formula',
         equation: 'x^2 - 4x + 3 = 0',
       });
@@ -29,7 +29,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('comprehension-quiz');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         questions: [
           {
             id: 'q1',
@@ -50,7 +50,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('fill-in-the-blank');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         template: 'The form is ___',
         blanks: [
           {
@@ -70,7 +70,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('rate-of-change-calculator');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         sourceType: 'table',
         data: {
           x: [0, 1, 2],
@@ -88,7 +88,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('discriminant-analyzer');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         equation: 'x^2 - 4x + 3 = 0',
       });
       expect(result.success).toBe(true);
@@ -120,7 +120,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('graphing-explorer');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         equation: '', // Invalid: empty string
       });
       expect(result.success).toBe(false);
@@ -130,7 +130,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('step-by-step-solver');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         problemType: 'invalid_type' as 'quadratic_formula' | 'factoring' | 'completing_the_square' | 'square_root_property' | 'graphing',
         equation: 'x^2 - 4x + 3 = 0',
       });
@@ -141,7 +141,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('comprehension-quiz');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         questions: [],
         choices: {},
         correctAnswers: {},
@@ -153,7 +153,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('fill-in-the-blank');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         template: 'The form is complete',
         blanks: [],
         answers: {},
@@ -165,7 +165,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('rate-of-change-calculator');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         sourceType: 'table',
         data: {
           x: [0, 1, 2],
@@ -183,7 +183,7 @@ describe('schemas index', () => {
       const schema = getPropsSchema('discriminant-analyzer');
       expect(schema).toBeDefined();
 
-      const result = schema.safeParse({
+      const result = schema!.safeParse({
         equation: 'x + 3 = 0', // Invalid: not quadratic
       });
       expect(result.success).toBe(false);

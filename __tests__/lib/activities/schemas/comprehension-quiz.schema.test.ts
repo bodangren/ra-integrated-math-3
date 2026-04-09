@@ -115,7 +115,7 @@ describe('comprehension-quiz.schema', () => {
       const result = comprehensionQuizSchema.safeParse(props);
       expect(result.success).toBe(false);
       if (!result.success) {
-        expect(result.error.issues.some((issue: { path: (string | number)[] }) => issue.path.includes('questions'))).toBe(
+        expect(result.error.issues.some((issue: { path: (string | number | symbol)[] }) => issue.path.includes('questions'))).toBe(
           true,
         );
       }

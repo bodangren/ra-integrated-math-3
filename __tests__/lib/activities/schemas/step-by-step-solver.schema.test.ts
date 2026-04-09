@@ -134,7 +134,7 @@ describe('step-by-step-solver.schema', () => {
       const result = stepByStepSolverSchema.safeParse(props);
       expect(result.success).toBe(false);
       if (!result.success) {
-        expect(result.error.issues.some((issue: { path: (string | number)[] }) => issue.path.includes('problemType'))).toBe(
+        expect(result.error.issues.some((issue: { path: (string | number | symbol)[] }) => issue.path.includes('problemType'))).toBe(
           true,
         );
       }

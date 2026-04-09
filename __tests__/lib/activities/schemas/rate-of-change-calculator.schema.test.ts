@@ -99,7 +99,7 @@ describe('rate-of-change-calculator.schema', () => {
       const result = rateOfChangeCalculatorSchema.safeParse(props);
       expect(result.success).toBe(false);
       if (!result.success) {
-        expect(result.error.issues.some((issue: { path: (string | number)[] }) => issue.path.includes('sourceType'))).toBe(
+        expect(result.error.issues.some((issue: { path: (string | number | symbol)[] }) => issue.path.includes('sourceType'))).toBe(
           true,
         );
       }
