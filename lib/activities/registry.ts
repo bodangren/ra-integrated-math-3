@@ -11,6 +11,24 @@ type ActivityComponent = ComponentType<ActivityComponentProps>;
 
 const registry = new Map<string, ActivityComponent>();
 
+// Placeholder components for Module 1 activities (lazy-loaded implementations to be added)
+const PlaceholderComponent: ActivityComponent = () => null;
+
+// Register Module 1 activity keys with placeholder components
+// These will be replaced with actual implementations in future tracks
+const MODULE_1_KEYS = [
+  'comprehension-quiz',
+  'fill-in-the-blank',
+  'graphing-explorer',
+  'equation-solver',
+  'drag-drop-categorization',
+  'discriminant-analyzer',
+] as const;
+
+MODULE_1_KEYS.forEach(key => {
+  registerActivity(key, PlaceholderComponent);
+});
+
 /**
  * Register an activity component under a componentKey.
  * Called by each activity implementation file.
@@ -32,4 +50,12 @@ export function getActivityComponent(key: string): ActivityComponent | undefined
  */
 export function getRegisteredActivityKeys(): string[] {
   return Array.from(registry.keys());
+}
+
+/**
+ * Clear all registered activities.
+ * NOTE: This is primarily for testing purposes.
+ */
+export function clearActivityRegistry(): void {
+  registry.clear();
 }
