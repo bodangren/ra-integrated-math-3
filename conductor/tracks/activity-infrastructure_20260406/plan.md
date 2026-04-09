@@ -1,23 +1,23 @@
 # Implementation Plan — Activity Infrastructure
 
-## Phase 1: Registry & Mode System
+## Phase 1: Registry & Mode System [checkpoint: 4269236]
 
-- [ ] Task: Create activity registry `lib/activities/registry.ts`
-    - [ ] Write tests: `getActivityComponent()` returns component for registered key, null for unknown
-    - [ ] Write tests: `getRegisteredKeys()` returns all 6 Module 1 keys
-    - [ ] Implement registry with lazy-loaded placeholder components for each key
+- [x] Task: Create activity registry `lib/activities/registry.ts` [ef7cbcd]
+    - [x] Write tests: `getActivityComponent()` returns component for registered key, null for unknown
+    - [x] Write tests: `getRegisteredKeys()` returns all 6 Module 1 keys
+    - [x] Implement registry with lazy-loaded placeholder components for each key
 
-- [ ] Task: Create mode system `lib/activities/modes.ts`
-    - [ ] Write tests: teacher role always resolves to `teaching` mode
-    - [ ] Write tests: student in `worked_example` phase → `guided`; `independent_practice` → `practice`; `assessment` → `practice`
-    - [ ] Write tests: activity-level config override works
-    - [ ] Implement `ActivityMode` type, `resolveActivityMode()` function
+- [x] Task: Create mode system `lib/activities/modes.ts` [b69c4bd]
+    - [x] Write tests: teacher role always resolves to `teaching` mode
+    - [x] Write tests: student in `worked_example` phase → `guided`; `independent_practice` → `practice`; `assessment` → `practice`
+    - [x] Write tests: activity-level config override works
+    - [x] Implement `ActivityMode` type, `resolveActivityMode()` function
 
-- [ ] Task: Define `ActivityComponentProps` interface in `types/activity.ts`
-    - [ ] Write tests: type compatibility with `PracticeSubmissionEnvelope` from contract
-    - [ ] Implement interface with `activity`, `mode`, `onSubmit`, `onComplete`
+- [x] Task: Define `ActivityComponentProps` interface in `types/activity.ts` [d1fd880]
+    - [x] Write tests: type compatibility with `PracticeSubmissionEnvelope` from contract
+    - [x] Implement interface with `activity`, `mode`, `onSubmit`, `onComplete`
 
-- [ ] Task: Conductor — Phase Completion Verification 'Registry & Mode System' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Registry & Mode System' (Protocol in workflow.md) [4269236]
 
 ## Phase 2: Props Schemas
 
