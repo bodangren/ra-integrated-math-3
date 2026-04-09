@@ -28,6 +28,8 @@
 - (2026-04-06, scaffold-pages) Copy shadcn/ui components from bus-math-v2 rather than re-running `npx shadcn add` — same package versions, no new dependencies
 - (2026-04-08, setup) Add `typecheck` script to package.json early in project setup — enables `npm run typecheck` for TDD workflow matching AGENTS.md requirements
 - (2026-04-08, scaffold-component-infrastructure) Empty index.ts files need `export {}` to be recognized as TypeScript modules — otherwise import tests fail with "File is not a module" error
+- (2026-04-09, e-textbook-design) Use Tailwind animate-in classes for smooth transitions instead of installing framer-motion — lighter weight, no new dependencies
+- (2026-04-09, e-textbook-design) Client components with useState should be minimal — keep state logic simple and focused; complex state can be extracted to custom hooks if needed
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
