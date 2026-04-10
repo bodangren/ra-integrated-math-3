@@ -2,27 +2,27 @@
 
 ## Phase 1: Core Canvas
 
-- [ ] Task: Evaluate and select graphing canvas approach; document in `tech-stack.md`
-    - [ ] Spike: test Recharts for interactive point placement; evaluate custom SVG approach
-    - [ ] Decision: document chosen approach with rationale in `tech-stack.md`
+- [x] Task: Evaluate and select graphing canvas approach; document in `tech-stack.md` [63b2a38]
+    - [x] Spike: test Recharts for interactive point placement; evaluate custom SVG approach
+    - [x] Decision: document chosen approach with rationale in `tech-stack.md`
 
-- [ ] Task: Implement `GraphingCanvas` internal component
-    - [ ] Write tests: renders coordinate plane with correct domain/range/grid/axes
-    - [ ] Write tests: plots a quadratic function as a smooth curve
-    - [ ] Write tests: plots a linear function
-    - [ ] Write tests: renders pre-set labeled point markers (vertex, intercepts)
-    - [ ] Implement `components/activities/graphing/GraphingCanvas.tsx`
+- [x] Task: Implement `GraphingCanvas` internal component [63b2a38]
+    - [x] Write tests: renders coordinate plane with correct domain/range/grid/axes
+    - [x] Write tests: plots a quadratic function as a smooth curve
+    - [x] Write tests: plots a linear function
+    - [x] Write tests: renders pre-set labeled point markers (vertex, intercepts)
+    - [x] Implement `components/activities/graphing/GraphingCanvas.tsx`
 
-- [ ] Task: Add interactive point placement to `GraphingCanvas`
-    - [ ] Write tests: click/tap places a point at correct coordinates
-    - [ ] Write tests: snap-to-grid works when enabled
-    - [ ] Write tests: clicking a placed point removes it
-    - [ ] Implement event handlers and state management
+- [x] Task: Add interactive point placement to `GraphingCanvas` [63b2a38]
+    - [x] Write tests: click/tap places a point at correct coordinates
+    - [x] Write tests: snap-to-grid works when enabled
+    - [x] Write tests: clicking a placed point removes it
+    - [x] Implement event handlers and state management
 
-- [ ] Task: Add multi-function overlay support
-    - [ ] Write tests: renders 2 simultaneous functions with distinct colors
-    - [ ] Write tests: renders 3 simultaneous functions (system use case)
-    - [ ] Implement multi-function prop and rendering
+- [x] Task: Add multi-function overlay support [63b2a38]
+    - [x] Write tests: renders 2 simultaneous functions with distinct colors
+    - [x] Write tests: renders 3 simultaneous functions (system use case)
+    - [x] Implement multi-function prop and rendering
 
 - [ ] Task: Conductor — Phase Completion Verification 'Core Canvas' (Protocol in workflow.md)
 
