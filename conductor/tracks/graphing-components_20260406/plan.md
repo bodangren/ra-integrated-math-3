@@ -33,11 +33,11 @@
     - [x] Write tests: completed table enables canvas plotting step
     - [x] Implement table-first scaffold in guided mode
 
-- [ ] Task: Implement hint system
-    - [ ] Write tests: "Show Axis of Symmetry" hint reveals vertical dashed line at x = -b/2a
-    - [ ] Write tests: "Show Vertex" hint places vertex marker; "Show Direction" hint labels opening direction
-    - [ ] Write tests: hint usage recorded in submission envelope
-    - [ ] Implement `HintPanel` component and hint state machine
+- [x] Task: Implement hint system [completed]
+    - [x] Write tests: "Show Axis of Symmetry" hint reveals vertical dashed line at x = -b/2a
+    - [x] Write tests: "Show Vertex" hint places vertex marker; "Show Direction" hint labels opening direction
+    - [x] Write tests: hint usage recorded in submission envelope
+    - [x] Implement `HintPanel` component and hint state machine
 
 - [ ] Task: Implement intercept identification interaction
     - [ ] Write tests: student taps near an x-intercept; snap + label appears; correct/incorrect feedback

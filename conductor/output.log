@@ -1833,3 +1833,528 @@ Changes not staged for commit:
   (use "git restore <file>..." to discard changes in working directory)
 	modified:   conductor/output.log
 [0m
+[0m$ [0mgit add conductor/output.log && git commit -m "feat(graphing): Implement InteractiveTableOfValues component for guided mode
+
+- Created InteractiveTableOfValues component with editable table
+- Pre-populates x-values and validates f(x) entries
+- Shows visual feedback (green/red) for correct/incorrect values
+- Calls onTableComplete when all rows are correctly filled
+- Fixed evaluateFunction regex to handle simple expressions like 'x^2'
+- Added 18 comprehensive tests covering all functionality"
+[master 5366666] feat(graphing): Implement InteractiveTableOfValues component for guided mode
+ 5 files changed, 1959 insertions(+), 29 deletions(-)
+ create mode 100644 __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+ create mode 100644 components/activities/graphing/InteractiveTableOfValues.tsx
+[0m
+[0m$ [0mgit push
+Everything up-to-date
+[0m
+[0m→ [0mRead conductor/tracks/graphing-components_20260406/plan.md[90m [limit=20, offset=30][0m
+Starting next task: Implement hint system.
+[0m
+[0m← [0mEdit conductor/tracks/graphing-components_20260406/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
+@@ -32,9 +32,9 @@
+     - [x] Write tests: table pre-populated with x-values; student fills f(x); each row validates on entry
+     - [x] Write tests: completed table enables canvas plotting step
+     - [x] Implement table-first scaffold in guided mode
+ 
+-- [ ] Task: Implement hint system
++- [~] Task: Implement hint system
+     - [ ] Write tests: "Show Axis of Symmetry" hint reveals vertical dashed line at x = -b/2a
+     - [ ] Write tests: "Show Vertex" hint places vertex marker; "Show Direction" hint labels opening direction
+     - [ ] Write tests: hint usage recorded in submission envelope
+     - [ ] Implement `HintPanel` component and hint state machine
+
+[0m
+[0m← [0mWrite __tests__/components/activities/graphing/HintPanel.test.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/HintPanel.test.tsx 2>&1 | tail -20
+4  |  import { HintPanel } from "@/components/activities/graphing/HintPanel";
+     |                             ^
+  5  |  describe("HintPanel", () => {
+  6  |    const defaultProps = {
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/config.js:28999:43
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/config.js:28996:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/config.js:27119:18
+ ❯ node_modules/vite/dist/node/chunks/config.js:27177:32
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/config.js:27145:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/config.js:28797:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/config.js:22670:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  15:26:54
+   Duration  1.44s (transform 64ms, setup 274ms, import 0ms, tests 0ms, environment 756ms)
+[0m
+[0m← [0mWrite components/activities/graphing/HintPanel.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/HintPanel.test.tsx 2>&1 | tail -20
+Number of calls: 1
+
+ ❯ __tests__/components/activities/graphing/HintPanel.test.tsx:252:39
+    250|       fireEvent.click(axisButton);
+    251|
+    252|       expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+       |                                       ^
+    253|         type: 'axis_of_symmetry',
+    254|         data: null,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/12]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  12 failed | 8 passed (20)
+   Start at  15:31:04
+   Duration  2.26s (transform 115ms, setup 279ms, import 73ms, tests 397ms, environment 1.11s)
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/HintPanel.test.tsx --reporter=verbose 2>&1 | grep "× " | head -10
+× __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > axis of symmetry hint > calls onHintUsed with axis of symmetry data when clicked 47ms
+ × __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > axis of symmetry hint > calculates correct axis of symmetry for quadratic 19ms
+ × __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > axis of symmetry hint > handles simple x^2 expression 22ms
+ × __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > vertex hint > calls onHintUsed with vertex data when clicked 12ms
+ × __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > vertex hint > calculates correct vertex for quadratic 10ms
+ × __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > vertex hint > handles simple x^2 expression 12ms
+ × __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > direction hint > calls onHintUsed with direction data when clicked 14ms
+ × __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > direction hint > identifies upward opening for positive coefficient 11ms
+ × __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > direction hint > identifies downward opening for negative coefficient 8ms
+ × __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > hint usage tracking > passes hint type in callback 18ms
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/HintPanel.test.tsx --reporter=verbose 2>&1 | grep -A 10 "calculates correct axis of symmetry for quadratic"
+× __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > axis of symmetry hint > calculates correct axis of symmetry for quadratic 11ms
+   → expected "vi.fn()" to be called with arguments: [ { type: 'axis_of_symmetry', …(1) } ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+    {
+      "data": {
+        "x": -1,
+--
+ FAIL  __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > axis of symmetry hint > calculates correct axis of symmetry for quadratic
+AssertionError: expected "vi.fn()" to be called with arguments: [ { type: 'axis_of_symmetry', …(1) } ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+    {
+      "data": {
+        "x": -1,
+[0m
+[0m→ [0mRead __tests__/components/activities/graphing/HintPanel.test.tsx[90m [limit=10, offset=45][0m
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/HintPanel.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
+@@ -46,38 +46,44 @@
+ 
+     const axisButton = screen.getByText('Show Axis of Symmetry');
+     fireEvent.click(axisButton);
+ 
+-    expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+-      type: 'axis_of_symmetry',
+-      data: expect.objectContaining({
+-        x: expect.any(Number),
+-      }),
+-    });
++    expect(defaultProps.onHintUsed).toHaveBeenCalledWith(
++      expect.objectContaining({
++        type: 'axis_of_symmetry',
++        data: expect.objectContaining({
++          x: expect.any(Number),
++        }),
++      })
++    );
+   });
+ 
+   it('calculates correct axis of symmetry for quadratic', () => {
+     render(<HintPanel {...defaultProps} />);
+ 
+     const axisButton = screen.getByText('Show Axis of Symmetry');
+     fireEvent.click(axisButton);
+ 
+-    expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+-      type: 'axis_of_symmetry',
+-      data: { x: -1 },
+-    });
++    expect(defaultProps.onHintUsed).toHaveBeenCalledWith(
++      expect.objectContaining({
++        type: 'axis_of_symmetry',
++        data: { x: -1 },
++      })
++    );
+   });
+ 
+   it('handles simple x^2 expression', () => {
+     render(<HintPanel {...defaultProps} functionExpression="x^2" />);
+ 
+     const axisButton = screen.getByText('Show Axis of Symmetry');
+     fireEvent.click(axisButton);
+ 
+-    expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+-      type: 'axis_of_symmetry',
+-      data: { x: 0 },
+-    });
++    expect(defaultProps.onHintUsed).toHaveBeenCalledWith(
++      expect.objectContaining({
++        type: 'axis_of_symmetry',
++        data: { x: 0 },
++      })
++    );
+   });
+ });
+ 
+ describe('vertex hint', () => {
+
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/HintPanel.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
+@@ -92,39 +92,45 @@
+ 
+     const vertexButton = screen.getByText('Show Vertex');
+     fireEvent.click(vertexButton);
+ 
+-    expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+-      type: 'vertex',
+-      data: expect.objectContaining({
+-        x: expect.any(Number),
+-        y: expect.any(Number),
+-      }),
+-    });
++    expect(defaultProps.onHintUsed).toHaveBeenCalledWith(
++      expect.objectContaining({
++        type: 'vertex',
++        data: expect.objectContaining({
++          x: expect.any(Number),
++          y: expect.any(Number),
++        }),
++      })
++    );
+   });
+ 
+   it('calculates correct vertex for quadratic', () => {
+     render(<HintPanel {...defaultProps} />);
+ 
+     const vertexButton = screen.getByText('Show Vertex');
+     fireEvent.click(vertexButton);
+ 
+-    expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+-      type: 'vertex',
+-      data: { x: -1, y: -4 },
+-    });
++    expect(defaultProps.onHintUsed).toHaveBeenCalledWith(
++      expect.objectContaining({
++        type: 'vertex',
++        data: { x: -1, y: -4 },
++      })
++    );
+   });
+ 
+   it('handles simple x^2 expression', () => {
+     render(<HintPanel {...defaultProps} functionExpression="x^2" />);
+ 
+     const vertexButton = screen.getByText('Show Vertex');
+     fireEvent.click(vertexButton);
+ 
+-    expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+-      type: 'vertex',
+-      data: { x: 0, y: 0 },
+-    });
++    expect(defaultProps.onHintUsed).toHaveBeenCalledWith(
++      expect.objectContaining({
++        type: 'vertex',
++        data: { x: 0, y: 0 },
++      })
++    );
+   });
+ });
+ 
+ describe('direction hint', () => {
+
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/HintPanel.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
+@@ -139,38 +139,44 @@
+ 
+     const directionButton = screen.getByText('Show Direction');
+     fireEvent.click(directionButton);
+ 
+-    expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+-      type: 'direction',
+-      data: expect.objectContaining({
+-        opens: expect.stringMatching(/up|down/),
+-      }),
+-    });
++    expect(defaultProps.onHintUsed).toHaveBeenCalledWith(
++      expect.objectContaining({
++        type: 'direction',
++        data: expect.objectContaining({
++          opens: expect.stringMatching(/up|down/),
++        }),
++      })
++    );
+   });
+ 
+   it('identifies upward opening for positive coefficient', () => {
+     render(<HintPanel {...defaultProps} functionExpression="x^2" />);
+ 
+     const directionButton = screen.getByText('Show Direction');
+     fireEvent.click(directionButton);
+ 
+-    expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+-      type: 'direction',
+-      data: { opens: 'up' },
+-    });
++    expect(defaultProps.onHintUsed).toHaveBeenCalledWith(
++      expect.objectContaining({
++        type: 'direction',
++        data: { opens: 'up' },
++      })
++    );
+   });
+ 
+   it('identifies downward opening for negative coefficient', () => {
+     render(<HintPanel {...defaultProps} functionExpression="-x^2" />);
+ 
+     const directionButton = screen.getByText('Show Direction');
+     fireEvent.click(directionButton);
+ 
+-    expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+-      type: 'direction',
+-      data: { opens: 'down' },
+-    });
++    expect(defaultProps.onHintUsed).toHaveBeenCalledWith(
++      expect.objectContaining({
++        type: 'direction',
++        data: { opens: 'down' },
++      })
++    );
+   });
+ });
+ 
+ describe('hint usage tracking', () => {
+
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/HintPanel.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
+@@ -195,17 +195,23 @@
+ 
+   fireEvent.click(screen.getByText('Show Axis of Symmetry'));
+   fireEvent.click(screen.getByText('Show Vertex'));
+ 
+-  expect(defaultProps.onHintUsed).toHaveBeenNthCalledWith(1, {
+-    type: 'axis_of_symmetry',
+-    data: expect.any(Object),
+-  });
++  expect(defaultProps.onHintUsed).toHaveBeenNthCalledWith(
++    1,
++    expect.objectContaining({
++      type: 'axis_of_symmetry',
++      data: expect.any(Object),
++    })
++  );
+ 
+-  expect(defaultProps.onHintUsed).toHaveBeenNthCalledWith(2, {
+-    type: 'vertex',
+-    data: expect.any(Object),
+-  });
++  expect(defaultProps.onHintUsed).toHaveBeenNthCalledWith(
++    2,
++    expect.objectContaining({
++      type: 'vertex',
++      data: expect.any(Object),
++    })
++  );
+ });
+ 
+ it('includes timestamp in hint usage', async () => {
+   render(<HintPanel {...defaultProps} />);
+
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/HintPanel.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/HintPanel.test.tsx
+@@ -260,24 +260,28 @@
+ 
+   const axisButton = screen.getByText('Show Axis of Symmetry');
+   fireEvent.click(axisButton);
+ 
+-  expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+-    type: 'axis_of_symmetry',
+-    data: null,
+-  });
++  expect(defaultProps.onHintUsed).toHaveBeenCalledWith(
++    expect.objectContaining({
++      type: 'axis_of_symmetry',
++      data: null,
++    })
++  );
+ });
+ 
+ it('handles constant functions', () => {
+   render(<HintPanel {...defaultProps} functionExpression="5" />);
+ 
+   const axisButton = screen.getByText('Show Axis of Symmetry');
+   fireEvent.click(axisButton);
+ 
+-  expect(defaultProps.onHintUsed).toHaveBeenCalledWith({
+-    type: 'axis_of_symmetry',
+-    data: null,
+-  });
++  expect(defaultProps.onHintUsed).toHaveBeenCalledWith(
++    expect.objectContaining({
++      type: 'axis_of_symmetry',
++      data: null,
++    })
++  );
+ });
+ 
+ it('handles malformed expressions gracefully', () => {
+   render(<HintPanel {...defaultProps} functionExpression="invalid" />);
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/HintPanel.test.tsx 2>&1 | tail -10
+129|           type: 'vertex',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 18 passed (20)
+   Start at  15:38:45
+   Duration  2.91s (transform 213ms, setup 494ms, import 129ms, tests 496ms, environment 1.32s)
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/HintPanel.test.tsx --reporter=verbose 2>&1 | grep "× "
+× __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > axis of symmetry hint > handles simple x^2 expression 30ms
+ × __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > vertex hint > handles simple x^2 expression 13ms
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/HintPanel.test.tsx --reporter=verbose 2>&1 | grep -A 15 "handles simple x^2 expression"
+× __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > axis of symmetry hint > handles simple x^2 expression 19ms
+   → expected "vi.fn()" to be called with arguments: [ ObjectContaining{…} ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+-   ObjectContaining {
++   {
+      "data": {
+-       "x": 0,
++       "x": -0,
+      },
++     "timestamp": 1775806760461,
+      "type": "axis_of_symmetry",
+--
+ × __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > vertex hint > handles simple x^2 expression 7ms
+   → expected "vi.fn()" to be called with arguments: [ ObjectContaining{…} ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+-   ObjectContaining {
++   {
+      "data": {
+-       "x": 0,
++       "x": -0,
+        "y": 0,
+      },
++     "timestamp": 1775806760491,
+--
+ FAIL  __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > axis of symmetry hint > handles simple x^2 expression
+AssertionError: expected "vi.fn()" to be called with arguments: [ ObjectContaining{…} ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+-   ObjectContaining {
++   {
+      "data": {
+-       "x": 0,
++       "x": -0,
+      },
++     "timestamp": 1775806760461,
+      "type": "axis_of_symmetry",
+--
+ FAIL  __tests__/components/activities/graphing/HintPanel.test.tsx > HintPanel > vertex hint > handles simple x^2 expression
+AssertionError: expected "vi.fn()" to be called with arguments: [ ObjectContaining{…} ]
+
+Received:
+
+  1st vi.fn() call:
+
+  [
+-   ObjectContaining {
++   {
+      "data": {
+-       "x": 0,
++       "x": -0,
+        "y": 0,
+      },
++     "timestamp": 1775806760491,
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/HintPanel.test.tsx 2>&1 | tail -10
+RUN  v4.1.2 /home/daniel-bo/Desktop/integrated-math-3
+
+ ✓ __tests__/components/activities/graphing/HintPanel.test.tsx (20 tests) 302ms
+
+ Test Files  1 passed (1)
+      Tests  20 passed (20)
+   Start at  15:40:01
+   Duration  1.70s (transform 125ms, setup 285ms, import 90ms, tests 302ms, environment 757ms)
+[0m
+[0m← [0mEdit components/activities/graphing/HintPanel.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/HintPanel.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/HintPanel.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/HintPanel.tsx
+@@ -49,14 +49,16 @@
+ const { a, b, c } = coeffs;
+ 
+ switch (type) {
+   case 'axis_of_symmetry':
+-    const axisX = -b / (2 * a);
++    let axisX = -b / (2 * a);
++    if (Object.is(axisX, -0)) axisX = 0;
+     data = { x: axisX };
+     break;
+ 
+   case 'vertex':
+-    const vertexX = -b / (2 * a);
++    let vertexX = -b / (2 * a);
++    if (Object.is(vertexX, -0)) vertexX = 0;
+     const vertexY = a * vertexX * vertexX + b * vertexX + c;
+     data = { x: vertexX, y: vertexY };
+     break;
+ 
+
+[0m
