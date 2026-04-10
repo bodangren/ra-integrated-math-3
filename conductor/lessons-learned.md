@@ -19,6 +19,7 @@
 - (2026-04-06, scaffold-pages) Test files do not need `import React from 'react'` with the new JSX transform — importing it causes `@typescript-eslint/no-unused-vars` lint errors; use JSX syntax directly
 - (2026-04-08, fix-spreadsheet-table) Schema porting from bus-math-v2 requires running `npx tsc --noEmit` to catch missing tables — TypeScript errors only surface when tables referenced in functions are not defined in schema
 - (2026-04-08, setup) Use `npx convex dev --once` for one-time type generation without starting the dev server — faster than running full dev server and suitable for CI/autonomous workflows
+- (2026-04-10, graphing-components) JavaScript's -0 (negative zero) appears in calculations like -b/(2a) when b=0 — use `Object.is(val, -0)` to detect and convert to 0
 
 ## Patterns That Worked Well
 <!-- Approaches worth repeating -->
@@ -44,4 +45,5 @@
 - (2026-04-10, activity-infrastructure) activity_completions schema requires lessonId/phaseNumber which aren't available in practice.v1 envelope — future work should either pass context separately or redesign completion tracking
 - (2026-04-10, activity-infrastructure) Union types in TypeScript require type guards for safe property access — use if/else checks on discriminant (e.g., success boolean) before accessing variant-specific properties
 - (2026-04-10, activity-infrastructure) PhaseActivityTracker provides in-memory completion tracking for UI gating — persistence to Convex deferred until lesson context is available
+- (2026-04-10, graphing-components) Canvas coordinate mapping is complex — allocate more time for interactive components with SVG/canvas; test coordinate transformations thoroughly
 
