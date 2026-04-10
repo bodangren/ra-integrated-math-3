@@ -26,7 +26,7 @@
 
 - [x] Task: Conductor — Phase Completion Verification 'Core Canvas' (Protocol in workflow.md) [f6a168a]
 
-## Phase 2: Guided Interaction Workflows
+## Phase 2: Guided Interaction Workflows [checkpoint: ece8a42]
 
 - [x] Task: Implement `TableOfValues` integration for guided mode [completed]
     - [x] Write tests: table pre-populated with x-values; student fills f(x); each row validates on entry
