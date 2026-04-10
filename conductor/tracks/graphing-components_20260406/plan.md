@@ -28,10 +28,10 @@
 
 ## Phase 2: Guided Interaction Workflows
 
-- [ ] Task: Implement `TableOfValues` integration for guided mode
-    - [ ] Write tests: table pre-populated with x-values; student fills f(x); each row validates on entry
-    - [ ] Write tests: completed table enables canvas plotting step
-    - [ ] Implement table-first scaffold in guided mode
+- [x] Task: Implement `TableOfValues` integration for guided mode [completed]
+    - [x] Write tests: table pre-populated with x-values; student fills f(x); each row validates on entry
+    - [x] Write tests: completed table enables canvas plotting step
+    - [x] Implement table-first scaffold in guided mode
 
 - [ ] Task: Implement hint system
     - [ ] Write tests: "Show Axis of Symmetry" hint reveals vertical dashed line at x = -b/2a

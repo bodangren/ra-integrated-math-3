@@ -87,6 +87,30 @@ export function evaluateLinear(
   return m * x + b;
 }
 
+export function evaluateFunction(
+  expression: string,
+  x: number,
+): number {
+  if (expression.includes('x^2')) {
+    const match = expression.match(/(-?\d*\.?\d*)?x\^2(?:\s*([+-]\s*\d*\.?\d*)?x)?(?:\s*([+-]\s*\d*\.?\d*)?)?/);
+    if (match) {
+      const a = match[1] ? parseFloat(match[1]) : 1;
+      const b = match[2] ? parseFloat(match[2].replace(/\s/g, '')) : 0;
+      const c = match[3] ? parseFloat(match[3].replace(/\s/g, '')) : 0;
+      return evaluateQuadratic(x, a, b, c);
+    }
+  } else if (expression.includes('x')) {
+    const match = expression.match(/(-?\d*\.?\d*)?x(?:\s*([+-]\s*\d*\.?\d*)?)?/);
+    if (match) {
+      const m = match[1] ? parseFloat(match[1]) : 1;
+      const b = match[2] ? parseFloat(match[2].replace(/\s/g, '')) : 0;
+      return evaluateLinear(x, m, b);
+    }
+  }
+
+  return parseFloat(expression) || 0;
+}
+
 export function generateFunctionPath(
   expression: string,
   domain: [number, number],
@@ -98,32 +122,9 @@ export function generateFunctionPath(
   const points: string[] = [];
 
   for (let x = xMin; x <= xMax; x += step) {
-    let y: number;
+    const y = evaluateFunction(expression, x);
 
-    if (expression.includes('x^2')) {
-      const match = expression.match(/(-?\d*\.?\d*)x\^2\s*([+-]\s*\d*\.?\d*)x\s*([+-]\s*\d*\.?\d*)/);
-      if (match) {
-        const a = parseFloat(match[1]) || 1;
-        const b = parseFloat(match[2].replace(/\s/g, '')) || 0;
-        const c = parseFloat(match[3].replace(/\s/g, '')) || 0;
-        y = evaluateQuadratic(x, a, b, c);
-      } else {
-        y = x;
-      }
-    } else if (expression.includes('x')) {
-      const match = expression.match(/(-?\d*\.?\d*)x\s*([+-]\s*\d*\.?\d*)/);
-      if (match) {
-        const m = parseFloat(match[1]) || 1;
-        const b = parseFloat(match[2].replace(/\s/g, '')) || 0;
-        y = evaluateLinear(x, m, b);
-      } else {
-        y = x;
-      }
-    } else {
-      y = parseFloat(expression) || 0;
-    }
-
-    if (isFinite(y)) {
+    if (isFinite(y) && Math.abs(y) < 1000) {
       points.push(`${x},${y}`);
     }
   }

@@ -280,3 +280,1556 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 [0m
+[0m$ [0mgit log -1 --format="%H"
+9ec07a12ca5d14f27b65f928362980a445f63d8b
+[0m
+[0m$ [0mgit add __tests__/app/page.test.tsx conductor/tracks/graphing-components_20260406/plan.md conductor/output.log && git commit -m "fix(tests): Update landing page tests to match current DOM structure"
+[master efa131e] fix(tests): Update landing page tests to match current DOM structure
+ 3 files changed, 269 insertions(+), 4 deletions(-)
+[0m
+[0m$ [0mgit log -1 --format="%H"
+efa131e6f8270abc76a195727218d6b099d96fee
+[0m
+[0m$ [0mgit commit --allow-empty -m "conductor(checkpoint): Checkpoint end of Phase 1 - Core Canvas"
+[master f6a168a] conductor(checkpoint): Checkpoint end of Phase 1 - Core Canvas
+[0m
+[0m$ [0mgit log -2 --oneline
+f6a168a conductor(checkpoint): Checkpoint end of Phase 1 - Core Canvas
+efa131e fix(tests): Update landing page tests to match current DOM structure
+[0m
+[0m$ [0mgit notes add -m "Phase 1 Completion Verification Report - Core Canvas
+
+=== Phase Scope ===
+Phase: Core Canvas
+Previous Checkpoint: 407d59c
+Current Checkpoint: f6a168a
+
+=== Test Coverage Verification ===
+Code Files Modified/Added:
+- components/activities/graphing/GraphingCanvas.tsx (298 lines)
+- lib/activities/graphing/canvas-utils.ts (helper functions)
+
+Test Files Created:
+- __tests__/components/activities/graphing/GraphingCanvas.test.tsx (191 lines)
+
+Test Coverage:
+✓ Coordinate plane rendering (domain/range/grid/axes/ticks)
+✓ Function plotting (quadratic, linear, multiple functions)
+✓ Point markers (pre-set, vertex styling, coordinate labels)
+✓ Interactive point placement (click, snap-to-grid, readonly)
+✓ Responsive design (scaling, aspect ratio)
+
+=== Automated Test Results ===
+Total Test Files: 81
+Total Tests: 759
+Passed: 759
+Failed: 0
+Duration: ~84 seconds
+
+=== Fixed Issues During Verification ===
+- Fixed landing page tests in __tests__/app/page.test.tsx
+  - Updated test to check for 'IM3' heading instead of full text
+  - Fixed curriculum stats test to check elements separately
+
+=== Quality Gates ===
+✓ All tests pass
+✓ Code follows project style guidelines
+✓ No linting errors
+✓ TypeScript compiles without errors
+
+=== Ready for Next Phase ===
+Phase 2: Guided Interaction Workflows
+Dependencies met: Phase 1 complete and verified
+" f6a168a
+[0m
+[0m← [0mEdit conductor/tracks/graphing-components_20260406/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
+@@ -23,9 +23,9 @@
+     - [x] Write tests: renders 2 simultaneous functions with distinct colors
+     - [x] Write tests: renders 3 simultaneous functions (system use case)
+     - [x] Implement multi-function prop and rendering
+ 
+-- [~] Task: Conductor — Phase Completion Verification 'Core Canvas' (Protocol in workflow.md)
++- [x] Task: Conductor — Phase Completion Verification 'Core Canvas' (Protocol in workflow.md) [f6a168a]
+ 
+ ## Phase 2: Guided Interaction Workflows
+ 
+ - [ ] Task: Implement `TableOfValues` integration for guided mode
+
+[0m
+[0m← [0mEdit conductor/tracks/graphing-components_20260406/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
+@@ -1,7 +1,7 @@
+ # Implementation Plan — Graphing Components
+ 
+-## Phase 1: Core Canvas [checkpoint: 407d59c]
++## Phase 1: Core Canvas [checkpoint: f6a168a]
+ 
+ - [x] Task: Evaluate and select graphing canvas approach; document in `tech-stack.md` [63b2a38]
+     - [x] Spike: test Recharts for interactive point placement; evaluate custom SVG approach
+     - [x] Decision: document chosen approach with rationale in `tech-stack.md`
+
+[0m
+[0m$ [0mgit add conductor/tracks/graphing-components_20260406/plan.md && git commit -m "conductor(plan): Mark phase 'Core Canvas' as complete"
+[master 005dbde] conductor(plan): Mark phase 'Core Canvas' as complete
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[0m
+[0m$ [0mgit push
+To https://github.com/bodangren/ra-integrated-math-3.git
+   9ec07a1..005dbde  master -> master
+[0m
+Starting Phase 2: Guided Interaction Workflows.
+[0m← [0mEdit conductor/tracks/graphing-components_20260406/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
+@@ -27,9 +27,9 @@
+ - [x] Task: Conductor — Phase Completion Verification 'Core Canvas' (Protocol in workflow.md) [f6a168a]
+ 
+ ## Phase 2: Guided Interaction Workflows
+ 
+-- [ ] Task: Implement `TableOfValues` integration for guided mode
++- [~] Task: Implement `TableOfValues` integration for guided mode
+     - [ ] Write tests: table pre-populated with x-values; student fills f(x); each row validates on entry
+     - [ ] Write tests: completed table enables canvas plotting step
+     - [ ] Implement table-first scaffold in guided mode
+ 
+
+[0m
+[0m$ [0mfind components -name "*.tsx" -o -name "*.ts" | xargs grep -l "TableOfValues" 2>/dev/null
+components/textbook/index.ts
+components/textbook/TableOfValues.tsx
+[0m
+[0m$ [0mfind . -name "*table*of*values*" -o -name "*TableOfValues*" 2>/dev/null | grep -v node_modules
+./__tests__/components/textbook/TableOfValues.test.tsx
+./components/textbook/TableOfValues.tsx
+[0m
+[0m→ [0mRead components/textbook/TableOfValues.tsx
+[0m→ [0mRead __tests__/components/textbook/TableOfValues.test.tsx
+[0m
+[0m← [0mWrite __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | tail -30
+❯ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx [ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx ]
+Error: Failed to resolve import "@/components/activities/graphing/InteractiveTableOfValues" from "__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx:3:41
+  2  |  import { describe, it, expect, vi } from "vitest";
+  3  |  import { render, screen, fireEvent } from "@testing-library/react";
+  4  |  import { InteractiveTableOfValues } from "@/components/activities/graphing/InteractiveTableOfValues";
+     |                                            ^
+  5  |  describe("InteractiveTableOfValues", () => {
+  6  |    const defaultProps = {
+ ❯ TransformPluginContext._formatLog node_modules/vite/dist/node/chunks/config.js:28999:43
+ ❯ TransformPluginContext.error node_modules/vite/dist/node/chunks/config.js:28996:14
+ ❯ normalizeUrl node_modules/vite/dist/node/chunks/config.js:27119:18
+ ❯ node_modules/vite/dist/node/chunks/config.js:27177:32
+ ❯ TransformPluginContext.transform node_modules/vite/dist/node/chunks/config.js:27145:4
+ ❯ EnvironmentPluginContainer.transform node_modules/vite/dist/node/chunks/config.js:28797:14
+ ❯ loadAndTransform node_modules/vite/dist/node/chunks/config.js:22670:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  14:53:38
+   Duration  1.43s (transform 65ms, setup 276ms, import 0ms, tests 0ms, environment 758ms)
+[0m
+[0m$ [0mfind lib -name "*.ts" | xargs grep -l "math\|evaluate\|expression" 2>/dev/null | head -10
+lib/textbook/parse-math-segments.ts
+lib/activities/graphing/canvas-utils.ts
+lib/activities/schemas/step-by-step-solver.schema.ts
+lib/activities/schemas/rate-of-change-calculator.schema.ts
+[0m
+[0m$ [0mfind . -name "package.json" | xargs grep -l "mathjs\|expr-eval" 2>/dev/null
+[0m→ [0mRead lib/activities/graphing/canvas-utils.ts
+[0m
+[0m← [0mEdit lib/activities/graphing/canvas-utils.ts
+Index: /home/daniel-bo/Desktop/integrated-math-3/lib/activities/graphing/canvas-utils.ts
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/lib/activities/graphing/canvas-utils.ts
++++ /home/daniel-bo/Desktop/integrated-math-3/lib/activities/graphing/canvas-utils.ts
+@@ -86,8 +86,32 @@
+ ): number {
+   return m * x + b;
+ }
+ 
++export function evaluateFunction(
++  expression: string,
++  x: number,
++): number {
++  if (expression.includes('x^2')) {
++    const match = expression.match(/(-?\d*\.?\d*)x\^2\s*([+-]\s*\d*\.?\d*)x\s*([+-]\s*\d*\.?\d*)/);
++    if (match) {
++      const a = parseFloat(match[1]) || 1;
++      const b = parseFloat(match[2].replace(/\s/g, '')) || 0;
++      const c = parseFloat(match[3].replace(/\s/g, '')) || 0;
++      return evaluateQuadratic(x, a, b, c);
++    }
++  } else if (expression.includes('x')) {
++    const match = expression.match(/(-?\d*\.?\d*)x\s*([+-]\s*\d*\.?\d*)/);
++    if (match) {
++      const m = parseFloat(match[1]) || 1;
++      const b = parseFloat(match[2].replace(/\s/g, '')) || 0;
++      return evaluateLinear(x, m, b);
++    }
++  }
++
++  return parseFloat(expression) || 0;
++}
++
+ export function generateFunctionPath(
+   expression: string,
+   domain: [number, number],
+   width: number,
+@@ -97,33 +121,10 @@
+ 
+   const points: string[] = [];
+ 
+   for (let x = xMin; x <= xMax; x += step) {
+-    let y: number;
++    const y = evaluateFunction(expression, x);
+ 
+-    if (expression.includes('x^2')) {
+-      const match = expression.match(/(-?\d*\.?\d*)x\^2\s*([+-]\s*\d*\.?\d*)x\s*([+-]\s*\d*\.?\d*)/);
+-      if (match) {
+-        const a = parseFloat(match[1]) || 1;
+-        const b = parseFloat(match[2].replace(/\s/g, '')) || 0;
+-        const c = parseFloat(match[3].replace(/\s/g, '')) || 0;
+-        y = evaluateQuadratic(x, a, b, c);
+-      } else {
+-        y = x;
+-      }
+-    } else if (expression.includes('x')) {
+-      const match = expression.match(/(-?\d*\.?\d*)x\s*([+-]\s*\d*\.?\d*)/);
+-      if (match) {
+-        const m = parseFloat(match[1]) || 1;
+-        const b = parseFloat(match[2].replace(/\s/g, '')) || 0;
+-        y = evaluateLinear(x, m, b);
+-      } else {
+-        y = x;
+-      }
+-    } else {
+-      y = parseFloat(expression) || 0;
+-    }
+-
+     if (isFinite(y)) {
+       points.push(`${x},${y}`);
+     }
+   }
+
+[0m
+[0m← [0mWrite components/activities/graphing/InteractiveTableOfValues.tsx
+Wrote file successfully.
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | tail -40
+[33mclass[39m=[32m"px-4 py-3 border-b border-border last:border-b-0 font-mono-num"[39m
+            [36m>[39m
+              [0m0[0m
+            [36m</td>[39m
+            [36m<td[39m
+              [33mclass[39m=[32m"px-4 py-3 border-b border-border last:border-b-0"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"f(0)"[39m
+                [33mclass[39m=[32m"w-full px-2 py-1 border border-border rounded focus:outline-none focus:ring-2 focus:ring-primary disabled:bg-muted disabled:cursor-not-allowed"[39m
+                [33mplaceholder[39m=[32m"Enter value"[39m
+                [33mtype[39m=[32m"number"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+            [36m</td>[39m
+          [36m</tr>[39m
+        [36m</tbody>[39m
+      [36m</table>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx:224:29
+    222|       render(<InteractiveTableOfValues {...defaultProps} xValues={[0]}…
+    223|
+    224|       const inputs = screen.getAllByRole('textbox');
+       |                             ^
+    225|       expect(inputs.length).toBe(1);
+    226|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/14]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  14 failed | 4 passed (18)
+   Start at  14:55:28
+   Duration  2.95s (transform 145ms, setup 281ms, import 103ms, tests 1.52s, environment 773ms)
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -33,9 +33,9 @@
+ 
+ it('renders empty input fields for f(x) values', () => {
+   render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+-  const inputs = screen.getAllByRole('textbox');
++  const inputs = screen.getAllByRole('spinbutton');
+   expect(inputs.length).toBe(5);
+ 
+   inputs.forEach(input => {
+     expect(input).toHaveValue('');
+@@ -44,9 +44,9 @@
+ 
+ it('disables all inputs when readonly', () => {
+   render(<InteractiveTableOfValues {...defaultProps} readonly={true} />);
+ 
+-  const inputs = screen.getAllByRole('textbox');
++  const inputs = screen.getAllByRole('spinbutton');
+   inputs.forEach(input => {
+     expect(input).toBeDisabled();
+   });
+ });
+
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -55,9 +55,9 @@
+ describe('row validation on entry', () => {
+   it('validates entered value against function expression', () => {
+     render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+-    const inputs = screen.getAllByRole('textbox');
++    const inputs = screen.getAllByRole('spinbutton');
+     const firstInput = inputs[0];
+ 
+     fireEvent.change(firstInput, { target: { value: '-5' } });
+ 
+@@ -67,9 +67,9 @@
+ 
+   it('shows error styling for incorrect values', () => {
+     render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+-    const inputs = screen.getAllByRole('textbox');
++    const inputs = screen.getAllByRole('spinbutton');
+     const firstInput = inputs[0];
+ 
+     fireEvent.change(firstInput, { target: { value: '999' } });
+ 
+@@ -79,9 +79,9 @@
+ 
+   it('shows success styling for correct values', () => {
+     render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+-    const inputs = screen.getAllByRole('textbox');
++    const inputs = screen.getAllByRole('spinbutton');
+     const firstInput = inputs[0];
+ 
+     fireEvent.change(firstInput, { target: { value: '-5' } });
+ 
+@@ -91,9 +91,9 @@
+ 
+   it('handles decimal values correctly', () => {
+     render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+-    const inputs = screen.getAllByRole('textbox');
++    const inputs = screen.getAllByRole('spinbutton');
+     const secondInput = inputs[1];
+ 
+     fireEvent.change(secondInput, { target: { value: '-4' } });
+ 
+@@ -103,9 +103,9 @@
+ 
+   it('clears error styling when corrected', () => {
+     render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+-    const inputs = screen.getAllByRole('textbox');
++    const inputs = screen.getAllByRole('spinbutton');
+     const firstInput = inputs[0];
+ 
+     fireEvent.change(firstInput, { target: { value: '999' } });
+     let firstRow = firstInput.closest('tr');
+
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -121,9 +121,9 @@
+ describe('table completion', () => {
+   it('calls onTableComplete when all rows are correctly filled', () => {
+     render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+-    const inputs = screen.getAllByRole('textbox');
++    const inputs = screen.getAllByRole('spinbutton');
+ 
+     inputs.forEach((input, index) => {
+       const correctValues = [-5, -4, -3, 0, 5];
+       fireEvent.change(input, { target: { value: String(correctValues[index]) } });
+@@ -142,9 +142,9 @@
+ 
+   it('does not call onTableComplete when some rows are incorrect', () => {
+     render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+-    const inputs = screen.getAllByRole('textbox');
++    const inputs = screen.getAllByRole('spinbutton');
+     fireEvent.change(inputs[0], { target: { value: '-5' } });
+     fireEvent.change(inputs[1], { target: { value: '999' } });
+ 
+     expect(defaultProps.onTableComplete).not.toHaveBeenCalled();
+@@ -152,9 +152,9 @@
+ 
+   it('does not call onTableComplete when some rows are empty', () => {
+     render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+-    const inputs = screen.getAllByRole('textbox');
++    const inputs = screen.getAllByRole('spinbutton');
+     fireEvent.change(inputs[0], { target: { value: '-5' } });
+     fireEvent.change(inputs[1], { target: { value: '-4' } });
+ 
+     expect(defaultProps.onTableComplete).not.toHaveBeenCalled();
+@@ -163,9 +163,9 @@
+   it('passes computed points to onTableComplete callback', () => {
+     const onComplete = vi.fn();
+     render(<InteractiveTableOfValues {...defaultProps} onTableComplete={onComplete} />);
+ 
+-    const inputs = screen.getAllByRole('textbox');
++    const inputs = screen.getAllByRole('spinbutton');
+     const correctValues = [-5, -4, -3, 0, 5];
+ 
+     inputs.forEach((input, index) => {
+       fireEvent.change(input, { target: { value: String(correctValues[index]) } });
+
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -213,16 +213,16 @@
+ 
+   expect(screen.getByText('x')).toBeInTheDocument();
+   expect(screen.getByText('f(x)')).toBeInTheDocument();
+ 
+-  const inputs = screen.getAllByRole('textbox');
++  const inputs = screen.getAllByRole('spinbutton');
+   expect(inputs.length).toBe(0);
+ });
+ 
+ it('handles single row table', () => {
+   render(<InteractiveTableOfValues {...defaultProps} xValues={[0]} />);
+ 
+-  const inputs = screen.getAllByRole('textbox');
++  const inputs = screen.getAllByRole('spinbutton');
+   expect(inputs.length).toBe(1);
+ 
+   fireEvent.change(inputs[0], { target: { value: '-3' } });
+ 
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | tail -20
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx:217:29
+    215|       expect(screen.getByText('f(x)')).toBeInTheDocument();
+    216|
+    217|       const inputs = screen.getAllByRole('spinbutton');
+       |                             ^
+    218|       expect(inputs.length).toBe(0);
+    219|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 10 passed (18)
+   Start at  14:57:17
+   Duration  2.19s (transform 154ms, setup 282ms, import 117ms, tests 761ms, environment 770ms)
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -213,9 +213,9 @@
+ 
+   expect(screen.getByText('x')).toBeInTheDocument();
+   expect(screen.getByText('f(x)')).toBeInTheDocument();
+ 
+-  const inputs = screen.getAllByRole('spinbutton');
++  const inputs = screen.queryAllByRole('spinbutton');
+   expect(inputs.length).toBe(0);
+ });
+ 
+ it('handles single row table', () => {
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | tail -20
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:109:15
+ ❯ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx:197:29
+    195|       );
+    196|
+    197|       const inputs = screen.getAllByRole('textbox');
+       |                             ^
+    198|       const correctValues = [-5, -4, -3, 0, 5];
+    199|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 11 passed (18)
+   Start at  14:57:50
+   Duration  2.17s (transform 141ms, setup 290ms, import 93ms, tests 753ms, environment 767ms)
+[0m
+[0m→ [0mRead __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx[90m [offset=190, limit=15][0m
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -193,9 +193,9 @@
+     }}
+   />
+ );
+ 
+-const inputs = screen.getAllByRole('textbox');
++const inputs = screen.getAllByRole('spinbutton');
+ const correctValues = [-5, -4, -3, 0, 5];
+ 
+ inputs.forEach((input, index) => {
+   fireEvent.change(input, { target: { value: String(correctValues[index]) } });
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | tail -15
+202|       });
+    203|
+    204|       expect(capturedPoints).toHaveLength(5);
+       |                              ^
+    205|       expect(capturedPoints[0]).toEqual({ x: -2, y: -5 });
+    206|       expect(capturedPoints[4]).toEqual({ x: 2, y: 5 });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 11 passed (18)
+   Start at  14:58:24
+   Duration  2.08s (transform 139ms, setup 287ms, import 95ms, tests 663ms, environment 762ms)
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -1,6 +1,6 @@
+ import { describe, it, expect, vi } from 'vitest';
+-import { render, screen, fireEvent } from '@testing-library/react';
++import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+ import { InteractiveTableOfValues } from '@/components/activities/graphing/InteractiveTableOfValues';
+ 
+ describe('InteractiveTableOfValues', () => {
+   const defaultProps = {
+
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -118,9 +118,9 @@
+   });
+ });
+ 
+ describe('table completion', () => {
+-  it('calls onTableComplete when all rows are correctly filled', () => {
++  it('calls onTableComplete when all rows are correctly filled', async () => {
+     render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+     const inputs = screen.getAllByRole('spinbutton');
+ 
+@@ -128,17 +128,19 @@
+       const correctValues = [-5, -4, -3, 0, 5];
+       fireEvent.change(input, { target: { value: String(correctValues[index]) } });
+     });
+ 
+-    expect(defaultProps.onTableComplete).toHaveBeenCalledWith(
+-      expect.arrayContaining([
+-        expect.objectContaining({ x: -2, y: -5 }),
+-        expect.objectContaining({ x: -1, y: -4 }),
+-        expect.objectContaining({ x: 0, y: -3 }),
+-        expect.objectContaining({ x: 1, y: 0 }),
+-        expect.objectContaining({ x: 2, y: 5 }),
+-      ])
+-    );
++    await waitFor(() => {
++      expect(defaultProps.onTableComplete).toHaveBeenCalledWith(
++        expect.arrayContaining([
++          expect.objectContaining({ x: -2, y: -5 }),
++          expect.objectContaining({ x: -1, y: -4 }),
++          expect.objectContaining({ x: 0, y: -3 }),
++          expect.objectContaining({ x: 1, y: 0 }),
++          expect.objectContaining({ x: 2, y: 5 }),
++        ])
++      );
++    });
+   });
+ 
+   it('does not call onTableComplete when some rows are incorrect', () => {
+     render(<InteractiveTableOfValues {...defaultProps} />);
+@@ -159,9 +161,9 @@
+ 
+     expect(defaultProps.onTableComplete).not.toHaveBeenCalled();
+   });
+ 
+-  it('passes computed points to onTableComplete callback', () => {
++  it('passes computed points to onTableComplete callback', async () => {
+     const onComplete = vi.fn();
+     render(<InteractiveTableOfValues {...defaultProps} onTableComplete={onComplete} />);
+ 
+     const inputs = screen.getAllByRole('spinbutton');
+@@ -170,15 +172,17 @@
+     inputs.forEach((input, index) => {
+       fireEvent.change(input, { target: { value: String(correctValues[index]) } });
+     });
+ 
+-    expect(onComplete).toHaveBeenCalledWith([
+-      { x: -2, y: -5 },
+-      { x: -1, y: -4 },
+-      { x: 0, y: -3 },
+-      { x: 1, y: 0 },
+-      { x: 2, y: 5 },
+-    ]);
++    await waitFor(() => {
++      expect(onComplete).toHaveBeenCalledWith([
++        { x: -2, y: -5 },
++        { x: -1, y: -4 },
++        { x: 0, y: -3 },
++        { x: 1, y: 0 },
++        { x: 2, y: 5 },
++      ]);
++    });
+   });
+ });
+ 
+ describe('integration with canvas plotting', () => {
+
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -185,9 +185,9 @@
+   });
+ });
+ 
+ describe('integration with canvas plotting', () => {
+-  it('provides points array that can be used for canvas plotting', () => {
++  it('provides points array that can be used for canvas plotting', async () => {
+     let capturedPoints: Array<{ x: number; y: number }> = [];
+ 
+     render(
+       <InteractiveTableOfValues
+@@ -204,11 +204,13 @@
+     inputs.forEach((input, index) => {
+       fireEvent.change(input, { target: { value: String(correctValues[index]) } });
+     });
+ 
+-    expect(capturedPoints).toHaveLength(5);
+-    expect(capturedPoints[0]).toEqual({ x: -2, y: -5 });
+-    expect(capturedPoints[4]).toEqual({ x: 2, y: 5 });
++    await waitFor(() => {
++      expect(capturedPoints).toHaveLength(5);
++      expect(capturedPoints[0]).toEqual({ x: -2, y: -5 });
++      expect(capturedPoints[4]).toEqual({ x: 2, y: 5 });
++    });
+   });
+ });
+ 
+ describe('edge cases', () => {
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | tail -15
+|                                ^
+    210|         expect(capturedPoints[0]).toEqual({ x: -2, y: -5 });
+    211|         expect(capturedPoints[4]).toEqual({ x: 2, y: 5 });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 11 passed (18)
+   Start at  15:00:03
+   Duration  5.28s (transform 148ms, setup 301ms, import 104ms, tests 3.78s, environment 826ms)
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx --reporter=verbose 2>&1 | grep -A 10 "does not call onTableComplete when some rows are incorrect"
+✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > table completion > does not call onTableComplete when some rows are incorrect 47ms
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > table completion > does not call onTableComplete when some rows are empty 33ms
+ × __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > table completion > passes computed points to onTableComplete callback 1053ms
+   → expected "vi.fn()" to be called with arguments: [ [ { x: -2, y: -5 }, …(4) ] ]
+
+Number of calls: 0
+
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -123,11 +123,11 @@
+ render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+ const inputs = screen.getAllByRole('spinbutton');
+ 
+-inputs.forEach((input, index) => {
+-  const correctValues = [-5, -4, -3, 0, 5];
+-  fireEvent.change(input, { target: { value: String(correctValues[index]) } });
++const correctValues = [-5, -4, -3, 0, 5];
++correctValues.forEach((value, index) => {
++  fireEvent.change(inputs[index], { target: { value: String(value) } });
+ });
+ 
+ await waitFor(() => {
+   expect(defaultProps.onTableComplete).toHaveBeenCalledWith(
+@@ -168,10 +168,10 @@
+ 
+ const inputs = screen.getAllByRole('spinbutton');
+ const correctValues = [-5, -4, -3, 0, 5];
+ 
+-inputs.forEach((input, index) => {
+-  fireEvent.change(input, { target: { value: String(correctValues[index]) } });
++correctValues.forEach((value, index) => {
++  fireEvent.change(inputs[index], { target: { value: String(value) } });
+ });
+ 
+ await waitFor(() => {
+   expect(onComplete).toHaveBeenCalledWith([
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx 2>&1 | tail -20
+> test
+> vitest run __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx
+
+
+ RUN  v4.1.2 /home/daniel-bo/Desktop/integrated-math-3
+
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx (1 test) 166ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  15:02:41
+   Duration  1.53s (transform 112ms, setup 282ms, import 65ms, tests 166ms, environment 767ms)
+[0m
+[0m← [0mWrite __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx
+Wrote file successfully.
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx
+@@ -21,5 +21,29 @@
+     await waitFor(() => {
+       expect(onComplete).toHaveBeenCalledWith([{ x: 0, y: 0 }]);
+     }, { timeout: 3000 });
+   });
++
++  it('test - two row completion', async () => {
++    const onComplete = vi.fn();
++    render(
++      <InteractiveTableOfValues
++        xValues={[0, 1]}
++        functionExpression="x^2"
++        onTableComplete={onComplete}
++      />
++    );
++
++    const inputs = screen.getAllByRole('spinbutton');
++    expect(inputs.length).toBe(2);
++
++    fireEvent.change(inputs[0], { target: { value: '0' } });
++    fireEvent.change(inputs[1], { target: { value: '1' } });
++
++    await waitFor(() => {
++      expect(onComplete).toHaveBeenCalledWith([
++        { x: 0, y: 0 },
++        { x: 1, y: 1 },
++      ]);
++    }, { timeout: 3000 });
++  });
+ });
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx 2>&1 | tail -15
+|                          ^
+     44|         { x: 0, y: 0 },
+     45|         { x: 1, y: 1 },
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  15:03:10
+   Duration  4.64s (transform 124ms, setup 274ms, import 84ms, tests 3.25s, environment 753ms)
+[0m
+[0m← [0mEdit components/activities/graphing/InteractiveTableOfValues.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
+@@ -47,10 +47,9 @@
+   }
+ }, [rows, onTableComplete]);
+ 
+ const handleInputChange = (index: number, value: string) => {
+-  const newRows = [...rows];
+-  const x = newRows[index].x;
++  const x = rows[index].x;
+ 
+   const isEmpty = value.trim() === '';
+   let isCorrect: boolean | null = null;
+ 
+@@ -62,16 +61,16 @@
+       isCorrect = Math.abs(numericValue - expectedValue) < 0.01;
+     }
+   }
+ 
+-  newRows[index] = {
+-    ...newRows[index],
+-    y: value,
+-    isCorrect,
+-    isEmpty,
+-  };
+-
+-  setRows(newRows);
++  setRows(prevRows => {
++    const newRows = prevRows.map((row, i) =>
++      i === index
++        ? { ...row, y: value, isCorrect, isEmpty }
++        : row
++    );
++    return newRows;
++  });
+ };
+ 
+ const getRowClassName = (row: TableRow) => {
+   if (readonly) return '';
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx 2>&1 | tail -10
+❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  15:03:55
+   Duration  4.62s (transform 113ms, setup 283ms, import 66ms, tests 3.25s, environment 759ms)
+[0m
+[0m← [0mEdit components/activities/graphing/InteractiveTableOfValues.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
+@@ -37,13 +37,20 @@
+ useEffect(() => {
+   const allFilled = rows.every(row => !row.isEmpty);
+   const allCorrect = rows.every(row => row.isCorrect === true);
+ 
++  console.log('useEffect triggered:', {
++    rows: rows.map(r => ({ x: r.x, y: r.y, isEmpty: r.isEmpty, isCorrect: r.isCorrect })),
++    allFilled,
++    allCorrect,
++  });
++
+   if (allFilled && allCorrect) {
+     const points = rows.map(row => ({
+       x: row.x,
+       y: parseFloat(row.y),
+     }));
++    console.log('Calling onTableComplete with:', points);
+     onTableComplete(points);
+   }
+ }, [rows, onTableComplete]);
+ 
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx 2>&1 | grep -A 5 "useEffect triggered"
+useEffect triggered: {
+  rows: [ { x: 0, y: '', isEmpty: true, isCorrect: null } ],
+  allFilled: false,
+  allCorrect: false
+}
+useEffect triggered: {
+  rows: [ { x: 0, y: '0', isEmpty: false, isCorrect: true } ],
+  allFilled: true,
+  allCorrect: true
+}
+Calling onTableComplete with: [ { x: 0, y: 0 } ]
+--
+useEffect triggered: {
+  rows: [
+    { x: 0, y: '', isEmpty: true, isCorrect: null },
+    { x: 1, y: '', isEmpty: true, isCorrect: null }
+  ],
+  allFilled: false,
+--
+useEffect triggered: {
+  rows: [
+    { x: 0, y: '0', isEmpty: false, isCorrect: true },
+    { x: 1, y: '', isEmpty: true, isCorrect: null }
+  ],
+  allFilled: false,
+--
+useEffect triggered: {
+  rows: [
+    { x: 0, y: '0', isEmpty: false, isCorrect: true },
+    { x: 1, y: '1', isEmpty: false, isCorrect: false }
+  ],
+  allFilled: true,
+[0m
+[0m← [0mEdit components/activities/graphing/InteractiveTableOfValues.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
+@@ -63,10 +63,20 @@
+ if (!isEmpty) {
+   const numericValue = parseFloat(value);
+   const expectedValue = evaluateFunction(functionExpression, x);
+ 
++  console.log('handleInputChange:', {
++    index,
++    x,
++    value,
++    numericValue,
++    expectedValue,
++    functionExpression,
++  });
++
+   if (!isNaN(numericValue)) {
+     isCorrect = Math.abs(numericValue - expectedValue) < 0.01;
++    console.log('isCorrect:', isCorrect, 'diff:', Math.abs(numericValue - expectedValue));
+   }
+ }
+ 
+ setRows(prevRows => {
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx 2>&1 | grep -A 2 "handleInputChange"
+handleInputChange: {
+  index: 0,
+  x: 0,
+--
+handleInputChange: {
+  index: 0,
+  x: 0,
+--
+handleInputChange: {
+  index: 1,
+  x: 1,
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx 2>&1 | grep -A 5 "handleInputChange"
+handleInputChange: {
+  index: 0,
+  x: 0,
+  value: '0',
+  numericValue: 0,
+  expectedValue: 0,
+--
+handleInputChange: {
+  index: 0,
+  x: 0,
+  value: '0',
+  numericValue: 0,
+  expectedValue: 0,
+--
+handleInputChange: {
+  index: 1,
+  x: 1,
+  value: '1',
+  numericValue: 1,
+  expectedValue: 0,
+[0m
+[0m← [0mEdit lib/activities/graphing/canvas-utils.ts
+Index: /home/daniel-bo/Desktop/integrated-math-3/lib/activities/graphing/canvas-utils.ts
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/lib/activities/graphing/canvas-utils.ts
++++ /home/daniel-bo/Desktop/integrated-math-3/lib/activities/graphing/canvas-utils.ts
+@@ -91,20 +91,20 @@
+   expression: string,
+   x: number,
+ ): number {
+   if (expression.includes('x^2')) {
+-    const match = expression.match(/(-?\d*\.?\d*)x\^2\s*([+-]\s*\d*\.?\d*)x\s*([+-]\s*\d*\.?\d*)/);
++    const match = expression.match(/(-?\d*\.?\d*)?x\^2(?:\s*([+-]\s*\d*\.?\d*)?x)?(?:\s*([+-]\s*\d*\.?\d*)?)?/);
+     if (match) {
+-      const a = parseFloat(match[1]) || 1;
+-      const b = parseFloat(match[2].replace(/\s/g, '')) || 0;
+-      const c = parseFloat(match[3].replace(/\s/g, '')) || 0;
++      const a = match[1] ? parseFloat(match[1]) : 1;
++      const b = match[2] ? parseFloat(match[2].replace(/\s/g, '')) : 0;
++      const c = match[3] ? parseFloat(match[3].replace(/\s/g, '')) : 0;
+       return evaluateQuadratic(x, a, b, c);
+     }
+   } else if (expression.includes('x')) {
+-    const match = expression.match(/(-?\d*\.?\d*)x\s*([+-]\s*\d*\.?\d*)/);
++    const match = expression.match(/(-?\d*\.?\d*)?x(?:\s*([+-]\s*\d*\.?\d*)?)?/);
+     if (match) {
+-      const m = parseFloat(match[1]) || 1;
+-      const b = parseFloat(match[2].replace(/\s/g, '')) || 0;
++      const m = match[1] ? parseFloat(match[1]) : 1;
++      const b = match[2] ? parseFloat(match[2].replace(/\s/g, '')) : 0;
+       return evaluateLinear(x, m, b);
+     }
+   }
+ 
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx 2>&1 | tail -10
+}
+Calling onTableComplete with: [ { x: 0, y: 0 }, { x: 1, y: 1 } ]
+
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx (2 tests) 212ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  15:07:06
+   Duration  1.57s (transform 110ms, setup 279ms, import 64ms, tests 212ms, environment 762ms)
+[0m
+[0m← [0mEdit lib/activities/graphing/canvas-utils.ts
+Index: /home/daniel-bo/Desktop/integrated-math-3/lib/activities/graphing/canvas-utils.ts
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/lib/activities/graphing/canvas-utils.ts
++++ /home/daniel-bo/Desktop/integrated-math-3/lib/activities/graphing/canvas-utils.ts
+@@ -123,9 +123,9 @@
+ 
+ for (let x = xMin; x <= xMax; x += step) {
+   const y = evaluateFunction(expression, x);
+ 
+-  if (isFinite(y)) {
++  if (isFinite(y) && Math.abs(y) < 1000) {
+     points.push(`${x},${y}`);
+   }
+ }
+ 
+
+[0m
+[0m← [0mEdit components/activities/graphing/InteractiveTableOfValues.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
+@@ -63,20 +63,10 @@
+ if (!isEmpty) {
+   const numericValue = parseFloat(value);
+   const expectedValue = evaluateFunction(functionExpression, x);
+ 
+-  console.log('handleInputChange:', {
+-    index,
+-    x,
+-    value,
+-    numericValue,
+-    expectedValue,
+-    functionExpression,
+-  });
+-
+   if (!isNaN(numericValue)) {
+     isCorrect = Math.abs(numericValue - expectedValue) < 0.01;
+-    console.log('isCorrect:', isCorrect, 'diff:', Math.abs(numericValue - expectedValue));
+   }
+ }
+ 
+ setRows(prevRows => {
+
+[0m
+[0m← [0mEdit components/activities/graphing/InteractiveTableOfValues.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InteractiveTableOfValues.tsx
+@@ -37,20 +37,13 @@
+ useEffect(() => {
+   const allFilled = rows.every(row => !row.isEmpty);
+   const allCorrect = rows.every(row => row.isCorrect === true);
+ 
+-  console.log('useEffect triggered:', {
+-    rows: rows.map(r => ({ x: r.x, y: r.y, isEmpty: r.isEmpty, isCorrect: r.isCorrect })),
+-    allFilled,
+-    allCorrect,
+-  });
+-
+   if (allFilled && allCorrect) {
+     const points = rows.map(row => ({
+       x: row.x,
+       y: parseFloat(row.y),
+     }));
+-    console.log('Calling onTableComplete with:', points);
+     onTableComplete(points);
+   }
+ }, [rows, onTableComplete]);
+ 
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | tail -10
+❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 11 passed (18)
+   Start at  15:07:37
+   Duration  5.19s (transform 132ms, setup 278ms, import 89ms, tests 3.78s, environment 769ms)
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx --reporter=verbose 2>&1 | grep "× " | head -10
+× __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > initial rendering > renders empty input fields for f(x) values 128ms
+ × __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > validates entered value against function expression 48ms
+ × __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > shows success styling for correct values 30ms
+ × __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > clears error styling when corrected 31ms
+ × __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > table completion > calls onTableComplete when all rows are correctly filled 1072ms
+ × __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > table completion > passes computed points to onTableComplete callback 1051ms
+ × __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > integration with canvas plotting > provides points array that can be used for canvas plotting 1089ms
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx --reporter=verbose 2>&1 | grep -A 20 "validates entered value against function expression"
+× __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > validates entered value against function expression 47ms
+   → [2mexpect([22m[31melement[39m[2m).not.toHaveClass([22m[32m[32m"bg-red-100"[32m[39m[2m)[22m
+
+Expected the element not to have class:
+[32m  bg-red-100[39m
+Received:
+[31m  hover:bg-muted/30 transition-colors bg-red-100[39m
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > shows error styling for incorrect values 39ms
+ × __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > shows success styling for correct values 30ms
+   → [2mexpect([22m[31melement[39m[2m).toHaveClass([22m[32m[32m"bg-green-100"[32m[39m[2m)[22m
+
+Expected the element to have class:
+[32m  bg-green-100[39m
+Received:
+[31m  hover:bg-muted/30 transition-colors bg-red-100[39m
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > handles decimal values correctly 25ms
+ × __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > clears error styling when corrected 29ms
+   → [2mexpect([22m[31melement[39m[2m).not.toHaveClass([22m[32m[32m"bg-red-100"[32m[39m[2m)[22m
+
+Expected the element not to have class:
+[32m  bg-red-100[39m
+--
+ FAIL  __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > validates entered value against function expression
+Error: [2mexpect([22m[31melement[39m[2m).not.toHaveClass([22m[32m[32m"bg-red-100"[32m[39m[2m)[22m
+
+Expected the element not to have class:
+[32m  bg-red-100[39m
+Received:
+[31m  hover:bg-muted/30 transition-colors bg-red-100[39m
+ ❯ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx:65:28
+     63|
+     64|       const firstRow = firstInput.closest('tr');
+     65|       expect(firstRow).not.toHaveClass('bg-red-100');
+       |                            ^
+     66|     });
+     67|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { context: { assertionName: 'toHaveClass', meta: undefined } }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > shows success styling for correct values
+Error: [2mexpect([22m[31melement[39m[2m).toHaveClass([22m[32m[32m"bg-green-100"[32m[39m[2m)[22m
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | tail -10
+❯ Socket.readFromStdout node_modules/esbuild/lib/main.js:581:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  15:13:07
+   Duration  1.32s (transform 65ms, setup 271ms, import 0ms, tests 0ms, environment 764ms)
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -58,9 +58,9 @@
+ 
+   const inputs = screen.getAllByRole('spinbutton');
+   const firstInput = inputs[0];
+ 
+-  fireEvent.change(firstInput, { target: { value: '-5' } });
++  fireEvent.change(firstInput, { target: { value: '-3' } });
+ 
+   const firstRow = firstInput.closest('tr');
+   expect(firstRow).not.toHaveClass('bg-red-100');
+ });
+@@ -82,9 +82,9 @@
+ 
+   const inputs = screen.getAllByRole('spinbutton');
+   const firstInput = inputs[0];
+ 
+-  fireEvent.change(firstInput, { target: { value: '-5' } });
++  fireEvent.change(firstInput, { target: { value: '-3' } });
+ 
+   const firstRow = firstInput.closest('tr');
+   expect(firstRow).toHaveClass('bg-green-100');
+ });
+@@ -110,9 +110,9 @@
+   fireEvent.change(firstInput, { target: { value: '999' } });
+   let firstRow = firstInput.closest('tr');
+   expect(firstRow).toHaveClass('bg-red-100');
+ 
+-  fireEvent.change(firstInput, { target: { value: '-5' } });
++  fireEvent.change(firstInput, { target: { value: '-3' } });
+   firstRow = firstInput.closest('tr');
+   expect(firstRow).not.toHaveClass('bg-red-100');
+   expect(firstRow).toHaveClass('bg-green-100');
+ });
+
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -123,17 +123,17 @@
+   render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+   const inputs = screen.getAllByRole('spinbutton');
+ 
+-  const correctValues = [-5, -4, -3, 0, 5];
++  const correctValues = [-3, -4, -3, 0, 5];
+   correctValues.forEach((value, index) => {
+     fireEvent.change(inputs[index], { target: { value: String(value) } });
+   });
+ 
+   await waitFor(() => {
+     expect(defaultProps.onTableComplete).toHaveBeenCalledWith(
+       expect.arrayContaining([
+-        expect.objectContaining({ x: -2, y: -5 }),
++        expect.objectContaining({ x: -2, y: -3 }),
+         expect.objectContaining({ x: -1, y: -4 }),
+         expect.objectContaining({ x: 0, y: -3 }),
+         expect.objectContaining({ x: 1, y: 0 }),
+         expect.objectContaining({ x: 2, y: 5 }),
+@@ -145,9 +145,9 @@
+ it('does not call onTableComplete when some rows are incorrect', () => {
+   render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+   const inputs = screen.getAllByRole('spinbutton');
+-  fireEvent.change(inputs[0], { target: { value: '-5' } });
++  fireEvent.change(inputs[0], { target: { value: '-3' } });
+   fireEvent.change(inputs[1], { target: { value: '999' } });
+ 
+   expect(defaultProps.onTableComplete).not.toHaveBeenCalled();
+ });
+@@ -155,9 +155,9 @@
+ it('does not call onTableComplete when some rows are empty', () => {
+   render(<InteractiveTableOfValues {...defaultProps} />);
+ 
+   const inputs = screen.getAllByRole('spinbutton');
+-  fireEvent.change(inputs[0], { target: { value: '-5' } });
++  fireEvent.change(inputs[0], { target: { value: '-3' } });
+   fireEvent.change(inputs[1], { target: { value: '-4' } });
+ 
+   expect(defaultProps.onTableComplete).not.toHaveBeenCalled();
+ });
+@@ -166,17 +166,17 @@
+   const onComplete = vi.fn();
+   render(<InteractiveTableOfValues {...defaultProps} onTableComplete={onComplete} />);
+ 
+   const inputs = screen.getAllByRole('spinbutton');
+-  const correctValues = [-5, -4, -3, 0, 5];
++  const correctValues = [-3, -4, -3, 0, 5];
+ 
+   correctValues.forEach((value, index) => {
+     fireEvent.change(inputs[index], { target: { value: String(value) } });
+   });
+ 
+   await waitFor(() => {
+     expect(onComplete).toHaveBeenCalledWith([
+-      { x: -2, y: -5 },
++      { x: -2, y: -3 },
+       { x: -1, y: -4 },
+       { x: 0, y: -3 },
+       { x: 1, y: 0 },
+       { x: 2, y: 5 },
+
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -198,16 +198,24 @@
+       />
+     );
+ 
+     const inputs = screen.getAllByRole('spinbutton');
+-    const correctValues = [-5, -4, -3, 0, 5];
++    const correctValues = [-3, -4, -3, 0, 5];
+ 
+-    inputs.forEach((input, index) => {
+-      fireEvent.change(input, { target: { value: String(correctValues[index]) } });
++    correctValues.forEach((value, index) => {
++      fireEvent.change(inputs[index], { target: { value: String(value) } });
+     });
+ 
+     await waitFor(() => {
+       expect(capturedPoints).toHaveLength(5);
++      expect(capturedPoints[0]).toEqual({ x: -2, y: -3 });
++      expect(capturedPoints[4]).toEqual({ x: 2, y: 5 });
++    });
++  });
++});
++
++    await waitFor(() => {
++      expect(capturedPoints).toHaveLength(5);
+       expect(capturedPoints[0]).toEqual({ x: -2, y: -5 });
+       expect(capturedPoints[4]).toEqual({ x: 2, y: 5 });
+     });
+   });
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | head -30
+> test
+> vitest run __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+
+
+ RUN  v4.1.2 /home/daniel-bo/Desktop/integrated-math-3
+
+ ❯ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx [ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx ]
+Error: Transform failed with 1 error:
+/home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx:216:6: ERROR: "await" can only be used inside an "async" function
+  Plugin: vite:esbuild
+  File: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx:216:6
+  
+  [33m"await" can only be used inside an "async" function[39m
+  214 |    });
+  215 |  
+  216 |        await waitFor(() => {
+      |        ^
+  217 |          expect(capturedPoints).toHaveLength(5);
+  218 |          expect(capturedPoints[0]).toEqual({ x: -2, y: -5 });
+  
+ ❯ failureErrorWithLog node_modules/esbuild/lib/main.js:1467:15
+ ❯ node_modules/esbuild/lib/main.js:736:50
+ ❯ responseCallbacks.<computed> node_modules/esbuild/lib/main.js:603:9
+ ❯ handleIncomingPacket node_modules/esbuild/lib/main.js:658:12
+ ❯ Socket.readFromStdout node_modules/esbuild/lib/main.js:581:7
+[0m
+[0m✗ [0medit failed
+[91m[1mError: [0mNo changes to apply: oldString and newString are identical.
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | tail -10
+❯ Socket.readFromStdout node_modules/esbuild/lib/main.js:581:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  15:17:08
+   Duration  1.42s (transform 64ms, setup 283ms, import 0ms, tests 0ms, environment 862ms)
+[0m
+[0m→ [0mRead __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx[90m [limit=10, offset=210][0m
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | tail -10
+❯ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx:40:14
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 17 passed (18)
+   Start at  15:17:49
+   Duration  2.08s (transform 145ms, setup 273ms, import 110ms, tests 674ms, environment 758ms)
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -212,16 +212,8 @@
+     });
+   });
+ });
+ 
+-    await waitFor(() => {
+-      expect(capturedPoints).toHaveLength(5);
+-      expect(capturedPoints[0]).toEqual({ x: -2, y: -5 });
+-      expect(capturedPoints[4]).toEqual({ x: 2, y: 5 });
+-    });
+-  });
+-});
+-
+ describe('edge cases', () => {
+   it('handles empty x-values array', () => {
+     render(<InteractiveTableOfValues {...defaultProps} xValues={[]} />);
+ 
+
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx --reporter=verbose 2>&1 | grep "× "
+× __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > initial rendering > renders empty input fields for f(x) values 127ms
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx --reporter=verbose 2>&1 | grep -A 15 "renders empty input fields for f(x) values"
+× __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > initial rendering > renders empty input fields for f(x) values 129ms
+   → [2mexpect([22m[31melement[39m[2m).toHaveValue()[22m
+
+Expected the element to have value:
+[32m[39m
+Received:
+[31m  null[39m
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > initial rendering > disables all inputs when readonly 38ms
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > validates entered value against function expression 52ms
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > shows error styling for incorrect values 29ms
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > shows success styling for correct values 27ms
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > handles decimal values correctly 26ms
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > row validation on entry > clears error styling when corrected 34ms
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > table completion > calls onTableComplete when all rows are correctly filled 53ms
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > table completion > does not call onTableComplete when some rows are incorrect 59ms
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > table completion > does not call onTableComplete when some rows are empty 28ms
+--
+ FAIL  __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx > InteractiveTableOfValues > initial rendering > renders empty input fields for f(x) values
+Error: [2mexpect([22m[31melement[39m[2m).toHaveValue()[22m
+
+Expected the element to have value:
+[32m[39m
+Received:
+[31m  null[39m
+ ❯ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx:41:23
+     39|
+     40|       inputs.forEach(input => {
+     41|         expect(input).toHaveValue('');
+       |                       ^
+     42|       });
+     43|     });
+ ❯ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx:40:14
+[0m
+[0m$ [0mCI=true npm run test -- __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx 2>&1 | tail -10
+RUN  v4.1.2 /home/daniel-bo/Desktop/integrated-math-3
+
+ ✓ __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx (18 tests) 645ms
+
+ Test Files  1 passed (1)
+      Tests  18 passed (18)
+   Start at  15:18:43
+   Duration  2.06s (transform 138ms, setup 281ms, import 96ms, tests 645ms, environment 771ms)
+[0m
+[0m← [0mEdit __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/__tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+@@ -37,9 +37,9 @@
+   const inputs = screen.getAllByRole('spinbutton');
+   expect(inputs.length).toBe(5);
+ 
+   inputs.forEach(input => {
+-    expect(input).toHaveValue('');
++    expect(input.value).toBe('');
+   });
+ });
+ 
+ it('disables all inputs when readonly', () => {
+
+[0m
+[0m$ [0mrm __tests__/components/activities/graphing/InteractiveTableOfValues.debug.test.tsx
+[0m
+[0m$ [0mCI=true npm run test 2>&1 | tail -15
+✓ __tests__/lib/progress/published-curriculum.test.ts (3 tests) 31ms
+ ✓ __tests__/lib/activities/modes.test.ts (18 tests) 34ms
+ ✓ __tests__/app/student/student-redirect.test.tsx (1 test) 68ms
+ ✓ __tests__/lib/student/lesson-runtime.test.ts (12 tests) 32ms
+ ✓ __tests__/app/globals-css-textbook.test.ts (9 tests) 42ms
+ ✓ __tests__/components/student/index.test.ts (1 test) 19ms
+ ✓ __tests__/app/globals-css.test.ts (5 tests) 22ms
+ ✓ __tests__/components/dashboard/index.test.ts (1 test) 19ms
+ ✓ __tests__/components/teacher/index.test.ts (1 test) 12ms
+
+ Test Files  82 passed (82)
+      Tests  777 passed (777)
+   Start at  15:18:55
+   Duration  85.16s (transform 4.90s, setup 35.96s, import 16.97s, tests 34.14s, environment 124.51s)
+[0m
+[0m← [0mEdit conductor/tracks/graphing-components_20260406/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/graphing-components_20260406/plan.md
+@@ -27,12 +27,12 @@
+ - [x] Task: Conductor — Phase Completion Verification 'Core Canvas' (Protocol in workflow.md) [f6a168a]
+ 
+ ## Phase 2: Guided Interaction Workflows
+ 
+-- [~] Task: Implement `TableOfValues` integration for guided mode
+-    - [ ] Write tests: table pre-populated with x-values; student fills f(x); each row validates on entry
+-    - [ ] Write tests: completed table enables canvas plotting step
+-    - [ ] Implement table-first scaffold in guided mode
++- [x] Task: Implement `TableOfValues` integration for guided mode [completed]
++    - [x] Write tests: table pre-populated with x-values; student fills f(x); each row validates on entry
++    - [x] Write tests: completed table enables canvas plotting step
++    - [x] Implement table-first scaffold in guided mode
+ 
+ - [ ] Task: Implement hint system
+     - [ ] Write tests: "Show Axis of Symmetry" hint reveals vertical dashed line at x = -b/2a
+     - [ ] Write tests: "Show Vertex" hint places vertex marker; "Show Direction" hint labels opening direction
+
+[0m
+[0m$ [0mgit add -A && git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   __tests__/components/activities/graphing/InteractiveTableOfValues.test.tsx
+	new file:   components/activities/graphing/InteractiveTableOfValues.tsx
+	modified:   conductor/output.log
+	modified:   conductor/tracks/graphing-components_20260406/plan.md
+	modified:   lib/activities/graphing/canvas-utils.ts
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   conductor/output.log
+[0m
