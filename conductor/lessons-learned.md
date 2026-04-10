@@ -43,4 +43,5 @@
 
 - (2026-04-10, activity-infrastructure) activity_completions schema requires lessonId/phaseNumber which aren't available in practice.v1 envelope — future work should either pass context separately or redesign completion tracking
 - (2026-04-10, activity-infrastructure) Union types in TypeScript require type guards for safe property access — use if/else checks on discriminant (e.g., success boolean) before accessing variant-specific properties
+- (2026-04-10, activity-infrastructure) PhaseActivityTracker provides in-memory completion tracking for UI gating — persistence to Convex deferred until lesson context is available
 
