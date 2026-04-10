@@ -47,7 +47,7 @@ Graphs of exponential functions have **asymptotes**, which are lines the graph a
 
 ---
 
-# Example 1 — Graph Exponential Growth Functions
+## Example 1 — Graph Exponential Growth Functions
 
 Graph:
 
@@ -83,7 +83,7 @@ Why is the range all positive real numbers instead of all real numbers?
 
 ---
 
-# Example 2 — Graph Transformations of Exponential Growth Functions
+## Example 2 — Graph Transformations of Exponential Growth Functions
 
 Graph:
 
@@ -97,7 +97,7 @@ Transform the parent graph `f(x) = 3^x`.
 
 ---
 
-# Example 3 — Analyze Graphs of Exponential Functions
+## Example 3 — Analyze Graphs of Exponential Functions
 
 Identify `k` and write a function for the graph of:
 
@@ -114,7 +114,7 @@ The graph is translated `2` units down, so:
 
 ---
 
-# Example 4 — Use Exponential Growth Functions
+## Example 4 — Use Exponential Growth Functions
 
 Mr. Lopez invests `$50 million` at `5%` annual interest.
 
@@ -154,7 +154,7 @@ The **decay factor** is:
 
 ---
 
-# Example 5 — Interpret Exponential Functions
+## Example 5 — Interpret Exponential Functions
 
 Determine whether each function represents growth or decay.
 
@@ -166,7 +166,7 @@ Determine whether each function represents growth or decay.
 
 ---
 
-# Example 6 — Graph Exponential Decay Functions
+## Example 6 — Graph Exponential Decay Functions
 
 Graph:
 
@@ -188,7 +188,7 @@ Explain how you can use the end behavior of an exponential function to determine
 
 ---
 
-# Example 7 — Graph Transformations of Exponential Decay Functions
+## Example 7 — Graph Transformations of Exponential Decay Functions
 
 Graph:
 
@@ -204,7 +204,7 @@ This is a transformation of:
 
 ---
 
-# Example 8 — Compare Exponential Functions
+## Example 8 — Compare Exponential Functions
 
 Consider:
 
@@ -239,3 +239,10 @@ Graph the exponential part and the linear part.
 ## Think About It
 
 Find the domain and range of `f(x)`. Does `g(x)` have the same domain and range? Explain.
+
+---
+
+## Objective Alignment
+
+- `Graph exponential growth functions`: Primary worked examples: Examples 1-5.
+- `Graph exponential decay functions`: Primary worked examples: Examples 6-8.

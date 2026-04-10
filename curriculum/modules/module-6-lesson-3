@@ -15,7 +15,7 @@ Source: (Module 6, Lesson 6-3, pp. 277–280)
 
 ---
 
-# Learn: Common Logarithms
+## Learn: Common Logarithms
 
 Base `10` logarithms are called **common logarithms** and are usually written without the subscript `10`.
 
@@ -36,7 +36,7 @@ Describe the meaning of `log 8 ≈ 0.9031` in the context of exponents and the d
 
 ---
 
-# Example 1 — Find Common Logarithms by Using Technology
+## Example 1 — Find Common Logarithms by Using Technology
 
 Use a calculator to evaluate `log 8` to the nearest ten-thousandth.
 
@@ -44,7 +44,7 @@ Use a calculator to evaluate `log 8` to the nearest ten-thousandth.
 
 ---
 
-# Example 2 — Solve a Logarithmic Equation by Using Exponential Form
+## Example 2 — Solve a Logarithmic Equation by Using Exponential Form
 
 The amount of energy `E` in ergs released by an earthquake is related to its Richter scale magnitude `M` by:
 
@@ -74,7 +74,7 @@ What approximations were made when determining the energy released by the Cyprus
 
 ---
 
-# Example 3 — Solve an Exponential Equation by Using Logarithms
+## Example 3 — Solve an Exponential Equation by Using Logarithms
 
 Solve:
 
@@ -96,13 +96,13 @@ Solve for `x`:
 
 `x ≈ 1.9247`
 
-## Check
+### Check
 
 The solution can also be checked graphically by comparing `y = 11^x` and `y = 101`.
 
 ---
 
-# Example 4 — Solve an Exponential Inequality by Using Logarithms
+## Example 4 — Solve an Exponential Inequality by Using Logarithms
 
 Solve:
 
@@ -132,7 +132,7 @@ Solve:
 
 `y > -7.1970`
 
-## Check
+### Check
 
 Test `y = 0`:
 
@@ -144,17 +144,17 @@ Test `y = 0`:
 
 This is true.
 
-## Watch Out
+### Watch Out
 
 When multiplying or dividing an inequality by a negative value, the inequality sign reverses. Evaluate expressions if needed to confirm the sign.
 
 ---
 
-# Learn: Change of Base Formula
+## Learn: Change of Base Formula
 
 The Change of Base Formula allows you to write equivalent logarithmic expressions with different bases.
 
-## Key Concept: Change of Base Formula
+### Key Concept: Change of Base Formula
 
 For positive numbers `a`, `b`, and `n`, where `a != 1` and `b != 1`:
 
@@ -170,7 +170,7 @@ Is it possible to evaluate `logpi 5`? Explain.
 
 ---
 
-# Example 5 — Change of Base Formula
+## Example 5 — Change of Base Formula
 
 Evaluate `log2 11` by writing it in terms of common logarithms. Round to the nearest ten-thousandth.
 
@@ -178,13 +178,13 @@ Evaluate `log2 11` by writing it in terms of common logarithms. Round to the nea
 
 `≈ 3.4594`
 
-## Check
+### Check
 
 Evaluate `log8 30`. Round to the nearest ten-thousandth.
 
 ---
 
-# Example 6 — Use the Change of Base Formula
+## Example 6 — Use the Change of Base Formula
 
 The musical cent is a unit of relative pitch. One octave consists of `1200` cents. The formula for the difference `n` in cents between two notes with beginning frequency `a` and ending frequency `b` is:
 
@@ -192,7 +192,7 @@ The musical cent is a unit of relative pitch. One octave consists of `1200` cent
 
 Find the frequency of pitch `a` if pitch `b` is `1661.22` and the difference between the pitches is `1600` cents.
 
-## Step 1: Write the equation in terms of common logarithms
+### Step 1: Write the equation in terms of common logarithms
 
 Substitute the known values:
 
@@ -206,7 +206,7 @@ Use Change of Base:
 
 `4/3 = log(a/1661.22) / log 2`
 
-## Step 2: Use a graphing calculator to solve for `a`
+### Step 2: Use a graphing calculator to solve for `a`
 
 Graph:
 
@@ -227,7 +227,13 @@ Describe how to solve
 
 algebraically.
 
-## Check
+### Check
 
 The revenue of a company is `r = 227 + 44 log5 x`, where `r` is annual revenue in thousands and `x` is advertising spending in thousands. Use a graphing calculator to determine the amount spent on advertising if revenue is `$325,000`.
 
+---
+
+## Objective Alignment
+
+- `Solve exponential equations by using common logarithms`: Primary worked examples: Examples 1-4.
+- `Evaluate logarithmic expressions by using the Change of Base Formula`: Primary worked examples: Examples 5-6.

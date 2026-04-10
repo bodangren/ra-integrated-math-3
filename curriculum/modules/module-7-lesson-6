@@ -25,7 +25,7 @@ How can you solve rational equations by graphing?
 
 ---
 
-# Learn: Solving Rational Equations
+## Learn: Solving Rational Equations
 
 A **rational equation** contains at least one rational expression.
 
@@ -39,7 +39,7 @@ Common contexts include:
 
 ---
 
-# Example 1 — Solve a Rational Equation
+## Example 1 — Solve a Rational Equation
 
 Solve:
 
@@ -61,7 +61,7 @@ Multiply through and simplify:
 
 ---
 
-# Example 2 — Solve a Rational Equation with an Extraneous Solution
+## Example 2 — Solve a Rational Equation with an Extraneous Solution
 
 Solve:
 
@@ -94,7 +94,7 @@ How could you identify the extraneous solution without substituting every result
 
 ---
 
-# Example 3 — Mixture Problem
+## Example 3 — Mixture Problem
 
 You are adding a `50%` isopropyl alcohol liquid to `200` mL of a liquid that is `91%` isopropyl alcohol to create a `70%` solution. How much of the `50%` liquid should be added?
 
@@ -118,7 +118,7 @@ So `210` milliliters of the `50%` liquid should be added.
 
 ---
 
-# Example 4 — Distance Problem
+## Example 4 — Distance Problem
 
 A bat flies `121.8` miles round trip in `5` hours, with an average still-air speed of `25` mph. Determine the wind speed.
 
@@ -142,7 +142,7 @@ So the wind speed is `4` mph.
 
 ---
 
-# Example 5 — Work Problem
+## Example 5 — Work Problem
 
 If a `24`-row planter can plant a field in `10` hours and it takes `6` hours when a `16`-row planter is also used, how long would the `16`-row planter take by itself?
 
@@ -164,11 +164,11 @@ It would take the `16`-row planter `15` hours alone.
 
 ---
 
-# Learn: Solving Rational Inequalities
+## Learn: Solving Rational Inequalities
 
 A **rational inequality** contains at least one rational expression.
 
-## Key Concept: Solving Rational Inequalities
+### Key Concept: Solving Rational Inequalities
 
 1. State the excluded values
 2. Solve the related equation
@@ -177,17 +177,17 @@ A **rational inequality** contains at least one rational expression.
 
 ---
 
-# Example 6 — Solve a Rational Inequality
+## Example 6 — Solve a Rational Inequality
 
 Solve:
 
 `x/2 - 5/(x + 1) > (x - 4)/3`
 
-## Step 1: Find the excluded value
+### Step 1: Find the excluded value
 
 `x = -1`
 
-## Step 2: Solve the related equation
+### Step 2: Solve the related equation
 
 `x/2 - 5/(x + 1) = (x - 4)/3`
 
@@ -203,7 +203,7 @@ Critical values:
 * `x = -1` excluded
 * `x = 2`
 
-## Step 3: Test intervals
+### Step 3: Test intervals
 
 The inequality is true on:
 
@@ -212,19 +212,19 @@ The inequality is true on:
 
 ---
 
-# Apply Example 7 — Write and Solve a Rational Inequality
+## Apply Example 7 — Write and Solve a Rational Inequality
 
 Jamila spends `$378` on an embroidery machine and `$1.85` per hat. How many hats must she make so that the average cost per hat is less than or equal to `$5`?
 
-## 1. What is the task?
+### 1. What is the task?
 
 Find the number of hats needed so the average cost per hat is at most `$5`.
 
-## 2. How will you approach the task?
+### 2. How will you approach the task?
 
 Write an inequality for average cost, identify excluded values, solve the related equation, and test intervals.
 
-## 3. What is your solution?
+### 3. What is your solution?
 
 Average cost inequality:
 
@@ -245,7 +245,13 @@ Only the contextual solution is viable:
 
 Jamila must make at least `120` hats.
 
-## 4. How can you know that your solution is reasonable?
+### 4. How can you know that your solution is reasonable?
 
 As more hats are made, the fixed machine cost is spread across more units, so the average cost falls. Reaching `$5` or less after a fairly large number of hats is reasonable.
 
+---
+
+## Objective Alignment
+
+- `Solve rational equations in one variable`: Primary worked examples: Examples 1-5.
+- `Solve rational inequalities in one variable`: Primary worked examples: Example 6.

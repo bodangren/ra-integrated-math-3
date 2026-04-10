@@ -67,7 +67,7 @@ The recursive form is:
 
 ---
 
-# Example 1 — Identify Geometric Sequences
+## Example 1 — Identify Geometric Sequences
 
 Determine whether:
 
@@ -85,7 +85,7 @@ The ratios are not the same, so the sequence is **not geometric**.
 
 ---
 
-# Example 2 — Graph Geometric Sequences
+## Example 2 — Graph Geometric Sequences
 
 Find and graph the first six terms of:
 
@@ -112,7 +112,7 @@ Is `{1, 2, 3, 4, 5, 6}` also the domain of the original infinite sequence? Expla
 
 ---
 
-# Apply Example 3 — Find the nth Term
+## Apply Example 3 — Find the nth Term
 
 Javier starts with a `50`-gram chocolate bar and eats half of what remains each day.
 
@@ -141,7 +141,7 @@ If you let `a1 = 50`, what would `an` represent?
 
 ---
 
-# Example 4 — Write an Equation for the nth Term
+## Example 4 — Write an Equation for the nth Term
 
 Write an equation for the nth term of each geometric sequence.
 
@@ -171,7 +171,7 @@ So:
 
 ---
 
-# Example 5 — Recursive and Explicit Formulas
+## Example 5 — Recursive and Explicit Formulas
 
 Translate between recursive and explicit form.
 
@@ -200,7 +200,7 @@ Recursive form:
 
 ---
 
-# Example 6 — Find Geometric Means
+## Example 6 — Find Geometric Means
 
 Find four geometric means between `243` and `32`.
 
@@ -263,7 +263,7 @@ and
 
 ---
 
-# Example 7 — Find the Sum of a Geometric Series
+## Example 7 — Find the Sum of a Geometric Series
 
 Kateri sets up dominos so each domino knocks down `2` more, for `6` rows total.
 
@@ -285,7 +285,7 @@ So she needs:
 
 ---
 
-# Example 8 — Find the First Term in a Series
+## Example 8 — Find the First Term in a Series
 
 Find `a1` for a geometric series where:
 
@@ -303,7 +303,7 @@ Solving gives:
 
 ---
 
-# Example 9 — Sum in Sigma Notation
+## Example 9 — Sum in Sigma Notation
 
 Find:
 
@@ -320,3 +320,10 @@ Then:
 `Sn = (48 - 48(-2)^8) / (1 - (-2))`
 
 `= -4080`
+
+---
+
+## Objective Alignment
+
+- `Generate geometric sequences`: Primary worked examples: Examples 1-6.
+- `Find sums of geometric series`: Primary worked examples: Examples 7-9.

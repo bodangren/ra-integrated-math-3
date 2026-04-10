@@ -18,25 +18,25 @@ If you multiply, divide, add, or subtract two rational expressions, is the resul
 
 ---
 
-# Learn: Adding and Subtracting Rational Expressions
+## Learn: Adding and Subtracting Rational Expressions
 
 To add or subtract rational expressions with unlike denominators, first find the least common denominator, rewrite each expression using the LCD, and then combine the numerators.
 
-## Key Concept: Adding Rational Expressions
+### Key Concept: Adding Rational Expressions
 
 `a/b + c/d = (ad + bc) / bd`
 
-## Key Concept: Subtracting Rational Expressions
+### Key Concept: Subtracting Rational Expressions
 
 `a/b - c/d = (ad - bc) / bd`
 
 ---
 
-# Example 1 — Add and Subtract Rational Expressions with Monomial Denominators
+## Example 1 — Add and Subtract Rational Expressions with Monomial Denominators
 
 Simplify each expression.
 
-## a. `(7a / 4b) + (4c^2 / 10)`
+### a. `(7a / 4b) + (4c^2 / 10)`
 
 The LCD is `20b`.
 
@@ -48,7 +48,7 @@ Combine:
 
 `(35a + 8bc^2) / 20b`
 
-## b. `(2x / 9y) - (7y / 6z)`
+### b. `(2x / 9y) - (7y / 6z)`
 
 The LCD is `18yz`.
 
@@ -66,7 +66,7 @@ If you used `54yz` instead of the least LCD and then simplified, would your answ
 
 ---
 
-# Example 2 — Add and Subtract Rational Expressions with Polynomial Denominators
+## Example 2 — Add and Subtract Rational Expressions with Polynomial Denominators
 
 Simplify
 
@@ -91,7 +91,7 @@ Rewrite and combine:
 
 ---
 
-# Example 3 — Use Addition and Subtraction of Rational Expressions
+## Example 3 — Use Addition and Subtraction of Rational Expressions
 
 The rate at which some oil wells pump oil can be modeled by:
 
@@ -111,7 +111,7 @@ Combine:
 
 ---
 
-# Learn: Simplifying Complex Fractions
+## Learn: Simplifying Complex Fractions
 
 Complex fractions can be simplified in two main ways:
 
@@ -120,18 +120,18 @@ Complex fractions can be simplified in two main ways:
 
 ---
 
-# Example 4 — Simplify Complex Fractions by Using Different LCDs
+## Example 4 — Simplify Complex Fractions by Using Different LCDs
 
 Simplify
 
 `((x/y) + 1) / ((y/x) - (1/y))`
 
-## Step 1: Determine the LCDs
+### Step 1: Determine the LCDs
 
 * LCD of the numerator: `y`
 * LCD of the denominator: `xy`
 
-## Step 2: Simplify
+### Step 2: Simplify
 
 `((x + y)/y) / ((y^2 - x)/(xy))`
 
@@ -153,7 +153,7 @@ what is the LCD of the numerator, the denominator, and all denominators in the f
 
 ---
 
-# Example 5 — Simplify Complex Fractions by Using the Same LCD
+## Example 5 — Simplify Complex Fractions by Using the Same LCD
 
 Simplify
 
@@ -170,3 +170,9 @@ So the simplified expression is:
 
 `(2x^2 + 4y) / (x^2y - 2y^2)`
 
+---
+
+## Objective Alignment
+
+- `Simplify rational expressions by adding and subtracting`: Primary worked examples: Examples 1-3.
+- `Simplify complex fractions`: Primary worked examples: Examples 4-5.

@@ -26,13 +26,13 @@ How does adding, subtracting, or multiplying a constant to a function affect the
 
 ---
 
-# Learn: Graphing Square Root Functions
+## Learn: Graphing Square Root Functions
 
 A **radical function** contains radicals with variables in the radicand.
 
 A **square root function** contains the square root of a variable expression.
 
-## Key Concept: Parent Function of Square Root Functions
+### Key Concept: Parent Function of Square Root Functions
 
 Parent function:
 
@@ -67,7 +67,7 @@ Why is the domain limited to `x >= 0` for the parent square root function?
 
 ---
 
-# Example 1 — Identify Domain and Range Algebraically
+## Example 1 — Identify Domain and Range Algebraically
 
 Identify the domain and range of:
 
@@ -95,7 +95,7 @@ So:
 
 ---
 
-# Example 2 — Graph a Transformed Square Root Function
+## Example 2 — Graph a Transformed Square Root Function
 
 Graph:
 
@@ -103,13 +103,13 @@ Graph:
 
 Then identify the domain and range and describe how it is related to the parent graph.
 
-## Step 1: Determine the minimum domain value
+### Step 1: Determine the minimum domain value
 
 `x + 1 >= 0`
 
 `x >= -1`
 
-## Step 2: Make a table and graph
+### Step 2: Make a table and graph
 
 | x  | g(x)   |
 | -- | ------ |
@@ -124,7 +124,7 @@ So:
 * domain: `{x | x >= -1}`
 * range: `{g(x) | g(x) <= 2}`
 
-## Step 3: Compare to the parent function
+### Step 3: Compare to the parent function
 
 * maximum point: `(-1, 2)`
 * `a = -3`, so reflect across the x-axis and stretch vertically by `3`
@@ -137,7 +137,7 @@ How are the values of `h` and `k` related to the domain and range?
 
 ---
 
-# Example 3 — Analyze the Graph of a Square Root Function
+## Example 3 — Analyze the Graph of a Square Root Function
 
 A centrifuge with radius `7.8 cm` has RPM setting:
 
@@ -145,7 +145,7 @@ A centrifuge with radius `7.8 cm` has RPM setting:
 
 where `g` is the required g-force.
 
-## Part A: Write and graph the function
+### Part A: Write and graph the function
 
 Use the function:
 
@@ -161,7 +161,7 @@ Sample table:
 | 1200 | 3611 |
 | 1600 | 4169 |
 
-## Part B: Describe key features
+### Part B: Describe key features
 
 * domain: `{g | g >= 0}`
 * range: `{r | r >= 0}`
@@ -177,13 +177,13 @@ What do the domain and range mean in the context of the situation?
 
 ---
 
-# Example 4 — Graph a Square Root Inequality
+## Example 4 — Graph a Square Root Inequality
 
 Graph:
 
 `y < sqrt(2x + 5)`
 
-## Step 1: Graph the related function
+### Step 1: Graph the related function
 
 Graph the boundary:
 
@@ -191,7 +191,7 @@ Graph the boundary:
 
 Use a dashed line because the inequality is `<`.
 
-## Step 2: Shade
+### Step 2: Shade
 
 * domain: `{x | x > -2.5}`
 * shade below the boundary and within the domain
@@ -199,11 +199,11 @@ Use a dashed line because the inequality is `<`.
 
 ---
 
-# Learn: Graphing Cube Root Functions
+## Learn: Graphing Cube Root Functions
 
 A **cube root function** contains the cube root of a variable expression.
 
-## Key Concept: Parent Function of Cube Root Functions
+### Key Concept: Parent Function of Cube Root Functions
 
 Parent function:
 
@@ -232,11 +232,11 @@ Describe how the domain and range differ for radical functions with odd index ve
 
 ---
 
-# Example 5 — Graph Cube Root Functions
+## Example 5 — Graph Cube Root Functions
 
 Graph each function and state the domain and range.
 
-## a. `g(x) = (1/3) cuberoot(x)`
+### a. `g(x) = (1/3) cuberoot(x)`
 
 This is a vertical compression of the parent function.
 
@@ -253,14 +253,14 @@ Sample table:
 * domain: all real numbers
 * range: all real numbers
 
-## b. `p(x) = cuberoot(x + 5)`
+### b. `p(x) = cuberoot(x + 5)`
 
 This is the parent graph shifted `5` units left.
 
 * domain: all real numbers
 * range: all real numbers
 
-## c. `q(x) = cuberoot(4 - x) + 1`
+### c. `q(x) = cuberoot(4 - x) + 1`
 
 Rewrite as:
 
@@ -277,18 +277,18 @@ Describe the end behavior of `y = cuberoot(4 - x) + 1`.
 
 ---
 
-# Example 6 — Compare Radical Functions
+## Example 6 — Compare Radical Functions
 
 Examine:
 
 * `p(x) = -2 cuberoot(x - 6)`
 * `q(x)` shown in the graph
 
-## Part A: Graph `p(x)`
+### Part A: Graph `p(x)`
 
 Use a table.
 
-## Part B: Compare key features
+### Part B: Compare key features
 
 From the lesson table:
 
@@ -308,11 +308,11 @@ From the lesson table:
 
 ---
 
-# Example 7 — Write a Radical Function
+## Example 7 — Write a Radical Function
 
 Write a radical function for the graph of `g(x)`.
 
-## Step 1: Identify the index
+### Step 1: Identify the index
 
 Because the domain and range are all real numbers, the index is odd.
 
@@ -320,7 +320,7 @@ Use:
 
 `g(x) = a cuberoot(x - h) + k`
 
-## Step 2: Identify transformations
+### Step 2: Identify transformations
 
 The graph is translated:
 
@@ -340,10 +340,17 @@ Use point `(-2, -2)`:
 
 `a = 2`
 
-## Step 3: Write the function
+### Step 3: Write the function
 
 `g(x) = 2 cuberoot(x + 3) - 4`
 
 ## Think About It
 
 Write a cube root function reflected across the x-axis and translated `7` units right and `4` units down from the parent function.
+
+---
+
+## Objective Alignment
+
+- `Graph and analyze square root functions`: Primary worked examples: Examples 1-4.
+- `Graph and analyze cube root functions`: Primary worked examples: Examples 5-7.

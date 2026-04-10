@@ -19,7 +19,7 @@ Source: (Module 8, Lesson 8-3, pp. 387–390)
 
 ---
 
-# Learn: Describing Distributions
+## Learn: Describing Distributions
 
 Measures of center and measures of spread are called **descriptive statistics**.
 
@@ -35,7 +35,7 @@ For skewed distributions or data with outliers:
 
 * the mean is less reliable
 
-## Key Concept: Finding the Standard Deviation
+### Key Concept: Finding the Standard Deviation
 
 1. Find the mean `mu`
 2. Find each squared difference `(x - mu)^2`
@@ -49,27 +49,27 @@ Formula:
 
 ---
 
-# Example 1 — Find a Standard Deviation
+## Example 1 — Find a Standard Deviation
 
 A coach records `400`-meter race times:
 
 `57.1, 59.3, 54.6, 55.2, 55.9, 54.9, 50.3, 53.5`
 
-## Step 1: Find the mean
+### Step 1: Find the mean
 
 `mu = 55.1`
 
-## Step 2: Find the squared differences
+### Step 2: Find the squared differences
 
 These sum to:
 
 `48.18`
 
-## Step 3: Find the variance
+### Step 3: Find the variance
 
 `48.18 / 8 = 6.0225`
 
-## Step 4: Find the standard deviation
+### Step 4: Find the standard deviation
 
 `sqrt(6.0225) ≈ 2.45`
 
@@ -87,7 +87,7 @@ In what case would a standard deviation of `2.45` be considered large? Give a re
 
 ---
 
-# Example 2 — Calculate Statistics
+## Example 2 — Calculate Statistics
 
 Use a graphing calculator to find the mean and standard deviation of:
 
@@ -104,7 +104,7 @@ Did you struggle with anything so far in this lesson? If so, how did you deal wi
 
 ---
 
-# Example 3 — Compare Distributions
+## Example 3 — Compare Distributions
 
 Compare exam score distributions for two Algebra 2 classes using the mean and standard deviation.
 
@@ -122,3 +122,8 @@ Interpretation:
 * Mr. Jackson’s class scored higher on average
 * Ms. Hettrick’s class scores are more spread out
 
+---
+
+## Objective Alignment
+
+- `Describe distributions by finding their mean and standard deviation`: Primary worked examples: Examples 1-3.

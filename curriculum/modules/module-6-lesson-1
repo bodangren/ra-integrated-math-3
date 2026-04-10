@@ -22,7 +22,7 @@ If `logz 16 = y`, find `z^y`.
 
 ---
 
-# Learn: Logarithmic Functions
+## Learn: Logarithmic Functions
 
 Recall the exponential function `f(x) = 2^x`. You can graph its inverse by interchanging the `x`- and `y`-values and graphing the ordered pairs.
 
@@ -56,7 +56,7 @@ The inverse of `y = b^x` is `x = b^y`. In `x = b^y`, `y` is called the logarithm
 
 and is read as "log base `b` of `x`."
 
-## Key Concept: Logarithms with Base `b`
+### Key Concept: Logarithms with Base `b`
 
 Let `b` and `x` be positive numbers, with `b != 1`.
 
@@ -66,51 +66,51 @@ In the expression `logb x`, `x` is called the **argument**.
 
 ---
 
-# Example 1 — Logarithmic to Exponential Form
+## Example 1 — Logarithmic to Exponential Form
 
 Write each equation in exponential form.
 
-## a. `log4 64 = 3`
+### a. `log4 64 = 3`
 
 `64 = 4^3`
 
-## b. `log3 (1/243) = -5`
+### b. `log3 (1/243) = -5`
 
 `1/243 = 3^(-5)`
 
-## c. `log9 3 = 1/2`
+### c. `log9 3 = 1/2`
 
 `3 = 9^(1/2)`
 
-## Check
+### Check
 
 Write `log125 5 = 1/3` in exponential form.
 
 ---
 
-# Example 2 — Exponential to Logarithmic Form
+## Example 2 — Exponential to Logarithmic Form
 
 Write each equation in logarithmic form.
 
-## a. `7^6 = 117,649`
+### a. `7^6 = 117,649`
 
 `log7 117,649 = 6`
 
-## b. `8^(-3) = 1/512`
+### b. `8^(-3) = 1/512`
 
 `log8 (1/512) = -3`
 
-## c. `8^(2/3) = 4`
+### c. `8^(2/3) = 4`
 
 `log8 4 = 2/3`
 
-## Check
+### Check
 
 Write `2^9 = 512` in logarithmic form.
 
 ---
 
-# Example 3 — Evaluate Logarithmic Expressions
+## Example 3 — Evaluate Logarithmic Expressions
 
 Evaluate `log216 6`.
 
@@ -144,7 +144,7 @@ Without evaluating the expression, how can you determine that the value of `log5
 
 ---
 
-# Example 4 — Find Inverses of Exponential Functions
+## Example 4 — Find Inverses of Exponential Functions
 
 The air pressure outside of an aircraft can be determined by:
 
@@ -181,17 +181,17 @@ Use graphing technology to complete the explore.
 **Inquiry Question:**
 How does performing an operation on a logarithmic function affect its graph?
 
-## Watch Out
+### Watch Out
 
 The `LOG` button on a graphing calculator allows you to enter logarithmic functions of base `10` only.
 
 ---
 
-# Learn: Graphing Logarithmic Functions
+## Learn: Graphing Logarithmic Functions
 
 A function of the form `f(x) = logb x`, where `b > 0` and `b != 1`, is a **logarithmic function**.
 
-## Key Concept: Parent Function of Logarithmic Functions
+### Key Concept: Parent Function of Logarithmic Functions
 
 For `f(x) = logb x`:
 
@@ -214,7 +214,7 @@ For the parent function when `0 < b < 1`:
 * as `x -> 0+`, `f(x) -> infinity`
 * as `x -> infinity`, `f(x) -> -infinity`
 
-## Key Concept: Transformations of Logarithmic Functions
+### Key Concept: Transformations of Logarithmic Functions
 
 For:
 
@@ -232,11 +232,11 @@ If `0 < |a| < 1`, the graph is compressed vertically.
 
 ---
 
-# Example 5 — Graph Logarithmic Functions
+## Example 5 — Graph Logarithmic Functions
 
 Graph each function. Then find the intercepts, domain, range, and end behavior.
 
-## a. `f(x) = log6 x`
+### a. `f(x) = log6 x`
 
 Use the points:
 
@@ -254,7 +254,7 @@ Key features:
   * as `x -> 0+`, `f(x) -> -infinity`
   * as `x -> infinity`, `f(x) -> infinity`
 
-## b. `g(x) = log(1/4) x`
+### b. `g(x) = log(1/4) x`
 
 Use the points:
 
@@ -278,7 +278,7 @@ Compare the graphs in parts `a` and `b`.
 
 ---
 
-# Example 6 — Graph Transformations of Logarithmic Functions
+## Example 6 — Graph Transformations of Logarithmic Functions
 
 Graph:
 
@@ -320,7 +320,7 @@ Find the domain and range of `g(x)`.
 
 ---
 
-# Example 7 — Compare Logarithmic Functions
+## Example 7 — Compare Logarithmic Functions
 
 Consider:
 
@@ -328,13 +328,13 @@ Consider:
 
 and `j(x)` shown in the graph.
 
-## Part A: Graph `g(x)`
+### Part A: Graph `g(x)`
 
 `g(x)` is a transformation of `f(x) = log10 x`.
 
 Because `h = 2`, the parent graph is translated `2` units right.
 
-## Part B: Compare the end behavior of `g(x)` and `j(x)`
+### Part B: Compare the end behavior of `g(x)` and `j(x)`
 
 For `g(x)`:
 
@@ -352,7 +352,7 @@ Find the domain and range of `g(x)`. Does `j(x)` have the same domain and range?
 
 ---
 
-# Example 8 — Write Logarithmic Functions From Graphs
+## Example 8 — Write Logarithmic Functions From Graphs
 
 Identify the value of `k`, and write a function for the graph as it relates to:
 
@@ -363,7 +363,13 @@ The graph is translated `5` units up, so:
 * `k = 5`
 * `g(x) = log4 x + 5`
 
-## Check
+### Check
 
 Write a function for each graph as it relates to `f(x) = log3 x`.
 
+---
+
+## Objective Alignment
+
+- `Write logarithmic expressions in exponential form and write exponential expressions in logarithmic form`: Primary worked examples: Examples 1-4.
+- `Graph and analyze logarithmic functions`: Primary worked examples: Examples 5-8.

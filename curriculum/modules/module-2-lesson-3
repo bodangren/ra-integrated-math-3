@@ -18,30 +18,30 @@ Source: (Module 2, Lesson 2-3, pp. 93–96)
 
 ---
 
-# Learn: Adding and Subtracting Polynomials
+## Learn: Adding and Subtracting Polynomials
 
 A polynomial is a monomial or the sum of two or more monomials.
 
-* A **binomial** is the sum of two monomials
-* A **trinomial** is the sum of three monomials
-* The **degree** of a polynomial is the greatest degree of any term
+* A binomial is the sum of two monomials
+* A trinomial is the sum of three monomials
+* The degree of a polynomial is the greatest degree of any term
 
 Polynomials can be added or subtracted by performing the indicated operations and combining like terms.
 
 * To subtract a polynomial, add its additive inverse
 * The sum or difference of polynomials has the same variables and exponents as the original polynomials, but possibly different coefficients
 
-A set is **closed** under an operation if performing that operation on any two elements of the set produces another element of the same set.
+A set is closed under an operation if performing that operation on any two elements of the set produces another element of the same set.
 
 Because adding or subtracting polynomials results in a polynomial, the set of polynomials is closed under addition and subtraction.
 
-## Study Tip
+### Study Tip
 
 Constant terms have degree `0`, and variable terms with no exponent shown have degree `1`.
 
 ---
 
-# Example 1 — Identify Polynomials
+## Example 1 — Identify Polynomials
 
 Determine whether each expression is a polynomial. If it is a polynomial, state its degree.
 
@@ -62,19 +62,19 @@ Identify the like terms in `8x^5 + 3x^2 - 10` and `4x^3 - 7x^2 + 5`.
 
 ---
 
-# Example 2 — Add Polynomials
+## Example 2 — Add Polynomials
 
 Find:
 
 `(6x^3 + 7x^2 - 2x + 5) + (x^3 - 4x^2 - 8x + 1)`
 
-## Method 1: Add horizontally
+### Method 1: Add horizontally
 
 `(6x^3 + x^3) + (7x^2 - 4x^2) + (-2x - 8x) + (5 + 1)`
 
 `= 7x^3 + 3x^2 - 10x + 6`
 
-## Method 2: Add vertically
+### Method 2: Add vertically
 
 ```
   6x^3 + 7x^2 - 2x + 5
@@ -85,19 +85,19 @@ Find:
 
 ---
 
-# Example 3 — Subtract Polynomials
+## Example 3 — Subtract Polynomials
 
 Find:
 
 `(2x^5 + 11x^4 + 7x - 8) - (5x^4 + 9x^3 - 3x + 4)`
 
-## Method 1: Subtract horizontally
+### Method 1: Subtract horizontally
 
 `2x^5 + 11x^4 + 7x - 8 - 5x^4 - 9x^3 + 3x - 4`
 
 `= 2x^5 + 6x^4 - 9x^3 + 10x - 12`
 
-## Method 2: Subtract vertically
+### Method 2: Subtract vertically
 
 ```
    2x^5 + 11x^4 + 0x^3 + 7x - 8
@@ -120,28 +120,28 @@ Why is it helpful to insert placeholders such as `0x^3` and `0x^5` terms?
 
 Use a table to complete the explore.
 
-**Inquiry Question:**
+Inquiry Question:
 How is using a table to multiply polynomials related to the Distributive Property?
 
 ---
 
-# Learn: Multiplying Polynomials
+## Learn: Multiplying Polynomials
 
 Polynomials can be multiplied by using the Distributive Property to multiply each term in one polynomial by each term in the other.
 
 * The product of polynomials is also a polynomial
 * So the set of polynomials is closed under multiplication
 
-To multiply two binomials, you can use the **FOIL method**.
+To multiply two binomials, you can use the FOIL method.
 
-## Key Concept: FOIL Method
+### Key Concept: FOIL Method
 
 Find the sum of the products of:
 
-* **F**irst terms
-* **O**uter terms
-* **I**nner terms
-* **L**ast terms
+* First terms
+* Outer terms
+* Inner terms
+* Last terms
 
 Example:
 
@@ -155,7 +155,7 @@ Example:
 
 ---
 
-# Example 4 — Simplify by Using the Distributive Property
+## Example 4 — Simplify by Using the Distributive Property
 
 Find:
 
@@ -173,7 +173,7 @@ Why are the exponents added when you multiply monomials?
 
 ---
 
-# Example 5 — Multiply Binomials
+## Example 5 — Multiply Binomials
 
 Find:
 
@@ -201,13 +201,21 @@ Find:
 
 ---
 
-# Apply Example 7 — Write and Simplify a Polynomial Expression
+## Example 6 — Online Extra Example
+
+The print source references an online-only Example 6 between Example 5 and Apply Example 7, but the example text is not present in the PDF pages stored in this repo.
+
+This placeholder preserves the lesson's original numbering.
+
+---
+
+## Apply Example 7 — Write and Simplify a Polynomial Expression
 
 Byron is baking a three-tier cake. Each tier has `1/2` the volume of the previous tier. The dimensions of the first tier are given.
 
 Find the total volume of the cake.
 
-## 1. What is the task?
+### 1. What is the task?
 
 Describe the task in your own words and list any questions you have.
 
@@ -215,13 +223,13 @@ Sample answer:
 
 I need to find the total volume of the cake, which is the sum of all 3 tiers. I need to determine how to represent the volume of each tier as a polynomial and which properties will help simplify the result.
 
-## 2. How will you approach the task?
+### 2. How will you approach the task?
 
 Sample answer:
 
 I will find and simplify the volume of each tier and then add them together. I will use the Distributive Property and the FOIL method.
 
-## 3. What is your solution?
+### 3. What is your solution?
 
 ### Volume of each tier
 
@@ -233,7 +241,7 @@ I will find and simplify the volume of each tier and then add them together. I w
 
 `14x^3 - 3.5x^2 - 5.25x`
 
-## 4. How can you know the solution is reasonable?
+### 4. How can you know the solution is reasonable?
 
 Check the volume expression for Tier 1 by factoring:
 
@@ -248,3 +256,10 @@ So the factored form matches the given dimensions.
 ## Think About It
 
 What does `x` represent in the polynomial expression for the volume of the cake?
+
+---
+
+## Objective Alignment
+
+- `Add and subtract polynomials`: Primary worked examples: Examples 2-3.
+- `Multiply polynomials`: Primary worked examples: Examples 4-6 and Apply Example 7.

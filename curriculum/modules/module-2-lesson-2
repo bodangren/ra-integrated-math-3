@@ -9,11 +9,11 @@ Source: (Module 2, Lesson 2-2, pp. 83–88)
 
 ---
 
-# Learn: The Location Principle
+## Learn: The Location Principle
 
-If the value of a polynomial function `f(x)` changes signs from one value of `x` to the next, then there is a zero between those two x-values. This is called the **Location Principle**.
+If the value of a polynomial function `f(x)` changes signs from one value of `x` to the next, then there is a zero between those two x-values. This is called the Location Principle.
 
-## Key Concept: Location Principle
+### Key Concept: Location Principle
 
 Suppose `y = f(x)` is a polynomial function, and `a` and `b` are real numbers such that:
 
@@ -24,7 +24,7 @@ Then the function has at least one real zero between `a` and `b`.
 
 ---
 
-# Example 1 — Locate Zeros of a Function
+## Example 1 — Locate Zeros of a Function
 
 Determine the consecutive integer values of `x` between which each real zero of
 
@@ -62,20 +62,20 @@ How can you adjust the table on a graphing calculator to give a more precise int
 
 ---
 
-# Learn: Extrema of Polynomials
+## Learn: Extrema of Polynomials
 
 Extrema occur at relative maxima or relative minima of a function.
 
-* A relative minimum and a relative maximum are both **extrema**
+* A relative minimum and a relative maximum are both extrema
 * A polynomial of degree `n` has at most `n - 1` extrema
 
-## Study Tip
+### Study Tip
 
-Relative maxima and relative minima are sometimes called **turning points**.
+Relative maxima and relative minima are sometimes called turning points.
 
 ---
 
-# Example 2 — Identify Extrema
+## Example 2 — Identify Extrema
 
 Use a table to graph
 
@@ -98,7 +98,7 @@ You can use a graphing calculator to confirm the estimates.
 
 ---
 
-# Example 3 — Analyze a Polynomial Function
+## Example 3 — Analyze a Polynomial Function
 
 The total number of certified pilots in the United States is approximated by:
 
@@ -164,7 +164,7 @@ Is it reasonable that the trend will continue indefinitely? Explain.
 
 ---
 
-# Example 4 — Use a Polynomial Function and Technology to Model
+## Example 4 — Use a Polynomial Function and Technology to Model
 
 The table shows U.S. backpack sales, in millions of dollars. Make a scatter plot and a curve of best fit to show the trend over time. Then determine the backpack sales in 2015.
 
@@ -183,7 +183,7 @@ Use a scatter plot with:
 
 Compare linear, quadratic, cubic, and quartic regressions using the coefficient of determination `r^2`.
 
-A **quartic function** fits the data best.
+A quartic function fits the data best.
 
 Regression equation, rounded to the nearest tenth:
 
@@ -193,7 +193,7 @@ Regression equation, rounded to the nearest tenth:
 
 To predict backpack sales in 2015, use `x = 15`.
 
-So, in `2015`, backpack sales were about **$3.523 billion**.
+So, in `2015`, backpack sales were about $3.523 billion.
 
 ## Think About It
 
@@ -201,11 +201,11 @@ Explain the approximation that is made when using the model to determine backpac
 
 ---
 
-# Example 5 — Find Average Rate of Change
+## Example 5 — Find Average Rate of Change
 
 The table shows the expected g-force on the Ares-V rocket during a `200`-second launch.
 
-## Part A: Find the average rate of change
+### Part A: Find the average rate of change
 
 From the graph:
 
@@ -220,10 +220,17 @@ Check algebraically:
 
 `(f(200) - f(0)) / (200 - 0) = (2.2 - 1.34) / 200 = 0.0043`
 
-## Part B: Interpret the result
+### Part B: Interpret the result
 
-From `0` to `200` seconds, the average rate of change in acceleration was an **increase of `0.0043` Gs per second**.
+From `0` to `200` seconds, the average rate of change in acceleration was an increase of `0.0043` Gs per second.
 
 ## Think About It
 
 Does the average rate of change from `0` to `200` seconds accurately describe the acceleration of the launch? Justify your reasoning.
+
+---
+
+## Objective Alignment
+
+- `Approximate zeros by graphing polynomial functions`: Primary worked examples: Examples 1, 3, and 4.
+- `Find extrema of polynomial functions`: Primary worked examples: Examples 2-4.

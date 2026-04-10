@@ -24,11 +24,11 @@ Is the Fundamental Theorem of Algebra true for quadratic polynomials?
 
 ---
 
-# Learn: Fundamental Theorem of Algebra
+## Learn: Fundamental Theorem of Algebra
 
 The zero of a function `f(x)` is any value `c` such that `f(c) = 0`.
 
-## Key Concept: Zeros, Factors, Roots, and Intercepts
+### Key Concept: Zeros, Factors, Roots, and Intercepts
 
 Let `P(x)` be a polynomial function. Then the following are equivalent:
 
@@ -46,11 +46,11 @@ For `P(x) = x^2 + 3x - 18`:
 * factors: `(x + 6)` and `(x - 3)`
 * x-intercepts: `(-6, 0)` and `(3, 0)`
 
-## Key Concept: Fundamental Theorem of Algebra
+### Key Concept: Fundamental Theorem of Algebra
 
 Every polynomial equation with degree greater than zero has at least one root in the set of complex numbers.
 
-## Key Concept: Corollary to the Fundamental Theorem of Algebra
+### Key Concept: Corollary to the Fundamental Theorem of Algebra
 
 A polynomial equation of degree `n` has exactly `n` roots in the set of complex numbers, including repeated roots.
 
@@ -70,7 +70,7 @@ What is the multiplicity of the zero at `x = 1` for `p(x) = (x - 1)^5`? Explain 
 
 ---
 
-## Key Concept: Descartes' Rule of Signs
+### Key Concept: Descartes' Rule of Signs
 
 For a polynomial `P(x)` with real coefficients and nonzero constant term:
 
@@ -79,7 +79,7 @@ For a polynomial `P(x)` with real coefficients and nonzero constant term:
 
 ---
 
-# Example 1 — Determine the Number and Type of Roots
+## Example 1 — Determine the Number and Type of Roots
 
 Solve:
 
@@ -103,7 +103,7 @@ Because `x^2` is a factor:
 
 ---
 
-# Example 2 — Find the Number of Positive and Negative Zeros
+## Example 2 — Find the Number of Positive and Negative Zeros
 
 State the possible number of positive real zeros, negative real zeros, and imaginary zeros of:
 
@@ -111,13 +111,13 @@ State the possible number of positive real zeros, negative real zeros, and imagi
 
 Because the degree is `5`, there are `5` zeros total.
 
-## Part A: Positive real zeros
+### Part A: Positive real zeros
 
 There are `4` sign changes in `f(x)`, so there are:
 
 * `4`, `2`, or `0` positive real zeros
 
-## Part B: Negative real zeros
+### Part B: Negative real zeros
 
 Compute `f(-x)` and count sign changes.
 
@@ -125,7 +125,7 @@ There is `1` sign change, so there is:
 
 * `1` negative real zero
 
-## Part C: Imaginary zeros
+### Part C: Imaginary zeros
 
 Possible combinations:
 
@@ -141,9 +141,9 @@ If a polynomial has degree `n` and no real zeros, then how many imaginary zeros 
 
 ---
 
-# Learn: Finding Zeros of Polynomial Functions
+## Learn: Finding Zeros of Polynomial Functions
 
-## Key Concept: Complex Conjugates Theorem
+### Key Concept: Complex Conjugates Theorem
 
 If `a + bi` is a zero of a polynomial with real coefficients, then `a - bi` is also a zero.
 
@@ -158,7 +158,7 @@ When you know all of the zeros of a polynomial function and need the equation:
 
 ---
 
-# Example 3 — Use Synthetic Substitution to Find Zeros
+## Example 3 — Use Synthetic Substitution to Find Zeros
 
 Find all of the zeros of:
 
@@ -166,7 +166,7 @@ Find all of the zeros of:
 
 and use them to sketch a rough graph.
 
-## Part A: Find all zeros
+### Part A: Find all zeros
 
 ### Step 1: Determine the total number of zeros
 
@@ -200,7 +200,7 @@ The zeros are:
 * `-2 - i`
 * `-2 + i`
 
-## Part B: Sketch a rough graph
+### Part B: Sketch a rough graph
 
 The graph:
 
@@ -214,7 +214,7 @@ Use this and table values to sketch the graph.
 
 ---
 
-# Example 4 — Use a Graph to Write a Polynomial Function
+## Example 4 — Use a Graph to Write a Polynomial Function
 
 Write a polynomial function that could be represented by the graph.
 
@@ -244,21 +244,21 @@ So one possible polynomial is:
 
 ---
 
-# Apply Example 5 — Use Zeros to Graph a Polynomial Function
+## Apply Example 5 — Use Zeros to Graph a Polynomial Function
 
 A book publisher knows that if they charge `$5` or `$40`, their profit will be `$0`.
 
 Graph a polynomial function that could represent the company's profit in thousands of dollars as a function of price.
 
-## 1. What is the task?
+### 1. What is the task?
 
 Let `x` represent the price and `y` represent the profit. Write and graph a polynomial function relating `x` and `y`.
 
-## 2. How will you approach the task?
+### 2. How will you approach the task?
 
 Because `5` and `40` are zeros, use them to write factors and then an equation.
 
-## 3. What is your solution?
+### 3. What is your solution?
 
 One function with those zeros is:
 
@@ -270,6 +270,13 @@ A more reasonable model is:
 
 `y = -x^2 + 45x - 200`
 
-## 4. How can you know the solution is reasonable?
+### 4. How can you know the solution is reasonable?
 
 Multiplying by `-1` makes the parabola open downward, so the profit is negative when charging less than `$5`, which makes more sense in context.
+
+---
+
+## Objective Alignment
+
+- `Use the Fundamental Theorem of Algebra to determine the number and type of roots of polynomial equations`: Primary worked examples: Examples 1-2.
+- `Determine the number and type of roots of polynomial equations, find zeros, and use zeros to graph polynomial functions`: Primary worked examples: Examples 2-4.

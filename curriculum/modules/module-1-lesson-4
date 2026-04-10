@@ -1,185 +1,172 @@
-# Lesson 1-4 — Solving Quadratic Equations by Factoring
+# Lesson 1-4 - Solve Quadratic Equations by Factoring
 
-## Today’s Goals
+## Today's Goals
 
 * Solve quadratic equations by factoring
-* Use the Zero Product Property
-* Recognize special factor patterns (GCF, trinomials, difference of squares)
+* Solve quadratic equations by factoring special products
 
 ---
 
 ## Vocabulary
 
-* Zero Product Property
-* factor
 * factored form
 * difference of squares
-* perfect square trinomial
+* perfect square trinomials
 
 ---
 
-## Explore: Finding the Solutions by Factoring
+## Explore: Finding the Solutions of Quadratic Equations by Factoring
 
-**Inquiry Question:**
-How does writing a quadratic expression as a product help you find its solutions?
+Use graphing technology to explore how factoring reveals the roots of a related quadratic function.
 
----
-
-# Learn: Zero Product Property
-
-If a·b = 0, then a = 0 or b = 0.
-
-This is the key idea behind solving quadratic equations by factoring.
+Inquiry Question:
+How can you use factoring to solve a quadratic equation?
 
 ---
 
-# Learn: Solving by Factoring
+## Learn: Solving Quadratic Equations by Factoring
 
-To solve a quadratic equation:
+The factored form of a quadratic equation is:
 
-1. Write the equation in standard form: ax^2 + bx + c = 0
-2. Factor the expression
-3. Set each factor equal to 0
-4. Solve each resulting linear equation
+`0 = a(x - p)(x - q)`
 
----
+where `a != 0`. In this form, `p` and `q` represent the x-intercepts of the related function.
 
-# Example 1 — Factor a Trinomial
+### Key Concept: Zero Product Property
 
-Solve:
-
-x^2 - x - 6 = 0
-
-Factor:
-
-(x - 3)(x + 2) = 0
-
-Set each factor equal to zero:
-
-x - 3 = 0 → x = 3
-x + 2 = 0 → x = -2
-
-Solution: {3, -2}
+If `ab = 0`, then `a = 0`, `b = 0`, or both.
 
 ---
 
-# Example 2 — Factor with Leading Coefficient ≠ 1
+## Example 1 - Factor by Using the Distributive Property
 
-Solve:
+Solve `12x^2 - 2x = x` by factoring.
 
-2x^2 + 7x - 4 = 0
+Move all terms to one side:
 
-Factor:
+`12x^2 - 3x = 0`
 
-(2x - 1)(x + 4) = 0
+Factor the GCF:
 
-Set equal to zero:
+`3x(4x - 1) = 0`
 
-2x - 1 = 0 → x = 1/2
-x + 4 = 0 → x = -4
+Apply the Zero Product Property:
 
-Solution: {1/2, -4}
-
----
-
-# Example 3 — Factor Out GCF First
-
-Solve:
-
-3x^2 - 12x = 0
-
-Factor GCF:
-
-3x(x - 4) = 0
-
-Set equal to zero:
-
-3x = 0 → x = 0
-x - 4 = 0 → x = 4
-
-Solution: {0, 4}
+* `3x = 0`, so `x = 0`
+* `4x - 1 = 0`, so `x = 1/4`
 
 ---
 
-# Example 4 — Difference of Squares
+## Example 2 - Factor a Trinomial
 
-Solve:
+Solve `x^2 - 6x - 9 = 18` by factoring.
 
-x^2 - 25 = 0
+`x^2 - 6x - 27 = 0`
 
-Factor:
+`(x + 3)(x - 9) = 0`
 
-(x - 5)(x + 5) = 0
+So:
 
-Solutions: x = 5, x = -5
-
----
-
-# Example 5 — Perfect Square Trinomial
-
-Solve:
-
-x^2 - 6x + 9 = 0
-
-Factor:
-
-(x - 3)^2 = 0
-
-Solution: x = 3
+* `x = -3`
+* `x = 9`
 
 ---
 
-# Key Idea: When Factoring Works
+## Apply Example 3 - Solve an Equation by Factoring
 
-Factoring works best when:
+Acceleration: The equation `d = vt + 1/2 at^2` represents displacement.
 
-* The quadratic can be written as a product of binomials
-* Integer factors exist
+After converting the velocity to feet per second and substituting the given values, solving the resulting quadratic gives two solutions, `-55` and `11`. Because time cannot be negative, the only reasonable solution is:
 
-If factoring is difficult, other methods (graphing, completing the square, quadratic formula) may be more efficient.
-
----
-
-# Example 6 — Check Your Solution
-
-Solve:
-
-x^2 + x - 2 = 0
-
-Factor:
-
-(x + 2)(x - 1) = 0
-
-Solutions: x = -2, x = 1
-
-Check by substitution:
-
-f(1) = 1 + 1 - 2 = 0 ✔
-f(-2) = 4 - 2 - 2 = 0 ✔
+`t = 11`
 
 ---
 
-# Think About It (Discourse Prompts)
+## Example 4 - Factor a Trinomial Where a Is Not 1
 
-* Why must the equation equal zero before factoring?
-* How do you decide which factoring method to use?
-* What does each factor represent graphically?
+Solve `3x^2 + 5x + 15 = 17` by factoring.
 
----
+`3x^2 + 5x - 2 = 0`
 
-# In-Class Quick Check (Assessment)
+`(3x - 1)(x + 2) = 0`
 
-Solve by factoring:
+So:
 
-1. x^2 + 5x + 6 = 0
-2. 2x^2 - 3x - 2 = 0
-3. x^2 - 16 = 0
-4. 4x^2 - 12x = 0
+* `x = 1/3`
+* `x = -2`
 
 ---
 
-# CAP Reflection
+## Learn: Solving Quadratic Equations by Factoring Special Products
 
-* Courage: Did you attempt factoring even when unsure of the method?
-* Adaptability: How did you adjust when your first factorization didn’t work?
-* Persistence: How did you verify your solutions?
+### Key Concept: Factoring Differences of Squares
+
+`a^2 - b^2 = (a + b)(a - b)`
+
+### Key Concept: Factoring Perfect Square Trinomials
+
+`a^2 + 2ab + b^2 = (a + b)^2`
+
+Some quadratic equations have complex-number solutions.
+
+---
+
+## Example 5 - Factor a Difference of Squares
+
+Solve `81 = x^2` by factoring.
+
+`81 - x^2 = 0`
+
+`(9 + x)(9 - x) = 0`
+
+So:
+
+* `x = -9`
+* `x = 9`
+
+---
+
+## Example 6 - Factor a Perfect Square Trinomial
+
+Solve `16y^2 - 22y + 23 = 26y - 13` by factoring.
+
+Move all terms to one side and rewrite:
+
+`16y^2 - 48y + 36 = 0`
+
+`(4y - 6)^2 = 0`
+
+So:
+
+`y = 3/2`
+
+---
+
+## Example 7 - Complex Solutions
+
+Solve `x^2 = -144` by factoring.
+
+`x^2 + 144 = 0`
+
+`x^2 - (12i)^2 = 0`
+
+`(x + 12i)(x - 12i) = 0`
+
+So:
+
+* `x = -12i`
+* `x = 12i`
+
+---
+
+## Talk About It
+
+* How are the factors of a quadratic equation related to the roots of the related function?
+* Why can factoring sometimes produce complex solutions?
+
+---
+
+## Objective Alignment
+
+- `Solve quadratic equations by factoring`: Primary worked examples: Examples 1-4 and Apply Example 3.
+- `Solve quadratic equations by factoring special products`: Primary worked examples: Examples 5-7.

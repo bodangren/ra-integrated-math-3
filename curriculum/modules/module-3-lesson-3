@@ -24,7 +24,7 @@ How can you prove that two polynomial expressions form a polynomial identity?
 
 ---
 
-# Learn: Proving Polynomial Identities
+## Learn: Proving Polynomial Identities
 
 An **identity** is an equation that is satisfied by any numbers that replace the variables.
 
@@ -32,7 +32,7 @@ A **polynomial identity** is a polynomial equation that is true for any values s
 
 Unlike solving an equation, do not begin by assuming that an identity is true and then perform the same operation to both sides. Instead, verify it algebraically.
 
-## Key Concept: Verifying Identities by Transforming One Side
+### Key Concept: Verifying Identities by Transforming One Side
 
 * Simplify one side of the equation until the two sides are the same
 * It is often easier to transform the more complicated side
@@ -45,7 +45,7 @@ If you multiplied each side of the equation by a variable `z`, would the result 
 
 ---
 
-# Example 1 — Transform One Side
+## Example 1 — Transform One Side
 
 Prove that:
 
@@ -71,7 +71,7 @@ So the right side simplifies to the left side, which proves the identity.
 
 ---
 
-# Example 2 — Use Polynomial Identities
+## Example 2 — Use Polynomial Identities
 
 Pedro claims that for positive integers `x` and `y`, where `x > y`, you can form the sides of a right triangle using:
 
@@ -99,12 +99,18 @@ Both sides are equal, so the identity is true.
 
 Therefore, Pedro is correct.
 
-## Check
+### Check
 
 Complete the proof that:
 
 `x^4 - y^4 = (x - y)(x + y)(x^2 + y^2)`
 
-## Use a Source
+### Use a Source
 
 Research an application of prime numbers. How could a polynomial identity for identifying prime numbers impact the application?
+
+---
+
+## Objective Alignment
+
+- `Prove polynomial identities and use them to describe numerical relationships`: Primary worked examples: Examples 1-2.

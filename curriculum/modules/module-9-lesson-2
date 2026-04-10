@@ -26,11 +26,11 @@ Source: (Module 9, Lesson 9-2, pp. 425–430)
 
 ---
 
-# Learn: Trigonometric Functions in Right Triangles
+## Learn: Trigonometric Functions in Right Triangles
 
 Trigonometry studies relationships among sides and angles of triangles.
 
-## Key Concept: Trigonometric Functions in a Right Triangle
+### Key Concept: Trigonometric Functions in a Right Triangle
 
 For angle `theta`:
 
@@ -43,7 +43,7 @@ For angle `theta`:
 
 ---
 
-# Example 1 — Evaluate Trigonometric Functions
+## Example 1 — Evaluate Trigonometric Functions
 
 Given a right triangle with:
 
@@ -62,7 +62,7 @@ find the six trigonometric functions.
 
 ---
 
-# Example 2 — Find Trigonometric Ratios
+## Example 2 — Find Trigonometric Ratios
 
 If `cos A = 9/13`, find the other five trigonometric functions.
 
@@ -87,7 +87,7 @@ So:
 
 ---
 
-# Learn: Trigonometric Functions of General Angles
+## Learn: Trigonometric Functions of General Angles
 
 If point `P(x, y)` lies on the terminal side of angle `theta`, and
 
@@ -106,7 +106,7 @@ A **quadrantal angle** has its terminal side on an axis.
 
 ---
 
-# Example 3 — Evaluate Trigonometric Functions Given a Point
+## Example 3 — Evaluate Trigonometric Functions Given a Point
 
 The terminal side of `theta` contains `(-6, 4)`.
 
@@ -125,7 +125,7 @@ Then:
 
 ---
 
-# Example 4 — Evaluate Trigonometric Functions of Quadrantal Angles
+## Example 4 — Evaluate Trigonometric Functions of Quadrantal Angles
 
 The terminal side contains `(-5, 0)`, so `theta = 180°`.
 
@@ -140,11 +140,11 @@ Using `x = -5`, `y = 0`, and `r = 5`:
 
 ---
 
-# Learn: Trigonometric Functions with Reference Angles
+## Learn: Trigonometric Functions with Reference Angles
 
 The **reference angle** is the acute angle between the terminal side and the x-axis.
 
-## Key Concept: Evaluating with Reference Angles
+### Key Concept: Evaluating with Reference Angles
 
 1. Find the reference angle
 2. Evaluate the function at the reference angle
@@ -152,15 +152,15 @@ The **reference angle** is the acute angle between the terminal side and the x-a
 
 ---
 
-# Example 5 — Find Reference Angles
+## Example 5 — Find Reference Angles
 
-## a. `155°`
+### a. `155°`
 
 This lies in Quadrant II, so:
 
 `theta' = 180° - 155° = 25°`
 
-## b. `-8pi/3`
+### b. `-8pi/3`
 
 First find a positive coterminal angle:
 
@@ -172,7 +172,7 @@ This lies in Quadrant III, so:
 
 ---
 
-# Example 6 — Use a Reference Angle to Find a Trigonometric Value
+## Example 6 — Use a Reference Angle to Find a Trigonometric Value
 
 Find the exact value of `tan(7pi/4)`.
 
@@ -188,7 +188,7 @@ Since tangent is negative in Quadrant IV:
 
 ---
 
-# Example 7 — Use Trigonometric Functions
+## Example 7 — Use Trigonometric Functions
 
 A softball pitcher has arm length `28` inches and shoulder height `57` inches. Find the height of the ball when the arm is positioned as shown, with reference angle `42°`.
 
@@ -206,3 +206,10 @@ Add shoulder height:
 
 The ball is about `75.7` inches high.
 
+---
+
+## Objective Alignment
+
+- `Find values of trigonometric functions for acute angles`: Primary worked examples: Examples 1-3.
+- `Find values of trigonometric functions of general angles`: Primary worked examples: Examples 4-7.
+- `Find values of trigonometric functions by using reference angles`: Primary worked examples: Examples 5-6.

@@ -19,7 +19,7 @@ Source: (Module 9, Lesson 9-4, pp. 445–450)
 
 ---
 
-# Learn: Graphing Sine and Cosine Functions
+## Learn: Graphing Sine and Cosine Functions
 
 Sine and cosine are oscillating functions.
 
@@ -33,7 +33,7 @@ For `y = a sin bx` or `y = a cos bx`:
 
 ---
 
-# Example 1 — Identify the Amplitude and Period from a Graph
+## Example 1 — Identify the Amplitude and Period from a Graph
 
 From the graph:
 
@@ -54,7 +54,7 @@ The graph repeats every `pi`, so the period is:
 
 ---
 
-# Example 2 — Identify the Amplitude and Period from an Equation
+## Example 2 — Identify the Amplitude and Period from an Equation
 
 For `f(x) = 3 cos 5x`:
 
@@ -63,21 +63,21 @@ For `f(x) = 3 cos 5x`:
 
 ---
 
-# Example 3 — Graph a Sine Function
+## Example 3 — Graph a Sine Function
 
 Graph:
 
 `y = 0.5 sin 4x`
 
-## Step 1: Find the amplitude
+### Step 1: Find the amplitude
 
 `|a| = 0.5`
 
-## Step 2: Find the period
+### Step 2: Find the period
 
 `360°/4 = 90°`
 
-## Step 3: Find key points
+### Step 3: Find key points
 
 x-intercepts:
 
@@ -97,21 +97,21 @@ Plot these points and draw the sine curve.
 
 ---
 
-# Example 4 — Graph a Cosine Function
+## Example 4 — Graph a Cosine Function
 
 Graph:
 
 `y = 2 cos 3x`
 
-## Step 1: Find the amplitude
+### Step 1: Find the amplitude
 
 `|a| = 2`
 
-## Step 2: Find the period
+### Step 2: Find the period
 
 `360°/3 = 120°`
 
-## Step 3: Find key points
+### Step 3: Find key points
 
 * maximum at `(0, 2)`
 * x-intercepts at `(30°, 0)` and `(90°, 0)`
@@ -121,13 +121,13 @@ Plot the points and sketch the curve.
 
 ---
 
-# Learn: Modeling with Sine and Cosine Functions
+## Learn: Modeling with Sine and Cosine Functions
 
 Sine and cosine functions are also called **sinusoidal functions**.
 
 The **frequency** is the number of cycles per unit time and is the reciprocal of the period.
 
-## Key Concept: Modeling with `y = a sin bx` and `y = a cos bx`
+### Key Concept: Modeling with `y = a sin bx` and `y = a cos bx`
 
 1. Use the amplitude to find `a`
 2. Use the period or frequency to find `b`
@@ -135,13 +135,13 @@ The **frequency** is the number of cycles per unit time and is the reciprocal of
 
 ---
 
-# Example 5 — Characteristics of the Sine and Cosine Functions
+## Example 5 — Characteristics of the Sine and Cosine Functions
 
 For:
 
 `y = 40 cos(pi t)`
 
-## Part A: Find period and frequency
+### Part A: Find period and frequency
 
 `period = 2pi/pi = 2`
 
@@ -151,22 +151,22 @@ Interpretation:
 
 The object completes half a cycle per second and reaches its maximum every `2` seconds.
 
-## Part B: Identify domain and range in context
+### Part B: Identify domain and range in context
 
 * relevant domain: `[0, infinity)`
 * range: `[-40, 40]`
 
 ---
 
-# Example 6 — Model Periodic Situations
+## Example 6 — Model Periodic Situations
 
 The voltage in an outlet oscillates between `-120` and `120` volts with frequency `50` cycles per second. Write a function for voltage `v` as a function of time `t`.
 
-## Step 1: Find the amplitude
+### Step 1: Find the amplitude
 
 `a = 120`
 
-## Step 2: Find the period and `b`
+### Step 2: Find the period and `b`
 
 `period = 1/50`
 
@@ -178,9 +178,15 @@ So:
 
 `b = 100pi`
 
-## Step 3: Write the function
+### Step 3: Write the function
 
 `v = 120 sin(100pi t)`
 
 This models the voltage as a periodic sine function.
 
+---
+
+## Objective Alignment
+
+- `Graph and analyze sine and cosine functions`: Primary worked examples: Examples 1-5.
+- `Model periodic real-world situations with sine and cosine functions`: Primary worked examples: Example 6.

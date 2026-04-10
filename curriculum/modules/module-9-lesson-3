@@ -28,7 +28,7 @@ How can you use special right triangles and the unit circle to find the exact tr
 
 ---
 
-# Learn: Circular Functions
+## Learn: Circular Functions
 
 A **unit circle** has radius `1` and center at the origin.
 
@@ -45,7 +45,7 @@ These are **circular functions** because they describe points on the unit circle
 
 ---
 
-# Example 1 — Find Sine and Cosine Given a Point on the Unit Circle
+## Example 1 — Find Sine and Cosine Given a Point on the Unit Circle
 
 If the terminal side intersects the unit circle at
 
@@ -58,7 +58,7 @@ then:
 
 ---
 
-# Example 2 — Find Trigonometric Values of Special Angles
+## Example 2 — Find Trigonometric Values of Special Angles
 
 Find the six trigonometric functions for `5pi/4`.
 
@@ -77,7 +77,7 @@ So:
 
 ---
 
-# Learn: Periodic Functions
+## Learn: Periodic Functions
 
 A **periodic function** repeats its values at regular intervals.
 
@@ -93,7 +93,7 @@ so both have period `2pi`.
 
 ---
 
-# Example 3 — Identify the Period of a Function
+## Example 3 — Identify the Period of a Function
 
 From the graph, the pattern repeats every `3pi/2`.
 
@@ -103,19 +103,19 @@ So the period is:
 
 ---
 
-# Apply Example 4 — Graph Periodic Functions
+## Apply Example 4 — Graph Periodic Functions
 
 A carousel rider starts at the point closest to a wall, `20` feet away. The carousel diameter is `50` feet and it completes `10` rotations per minute.
 
-## 1. What is the task?
+### 1. What is the task?
 
 Identify the period of the rider’s distance from the wall and graph the function.
 
-## 2. How will you approach the task?
+### 2. How will you approach the task?
 
 Use the carousel’s rotation rate and geometry to determine one cycle and key points.
 
-## 3. What is your solution?
+### 3. What is your solution?
 
 * closest distance: `20` ft
 * farthest distance: `70` ft
@@ -140,13 +140,13 @@ Key table:
 
 The graph repeats every `6` seconds.
 
-## 4. How can you know that your solution is reasonable?
+### 4. How can you know that your solution is reasonable?
 
 The graph repeats as expected, and the minimum and maximum distances match the geometry of the carousel.
 
 ---
 
-# Example 5 — Evaluate Trigonometric Expressions
+## Example 5 — Evaluate Trigonometric Expressions
 
 Find `cos(10pi/3)`.
 
@@ -162,3 +162,9 @@ So:
 
 `cos(10pi/3) = -1/2`
 
+---
+
+## Objective Alignment
+
+- `Find values of trigonometric functions given a point on a unit circle or the measure of a special angle`: Primary worked examples: Examples 1-2.
+- `Find values of trigonometric functions that model periodic events`: Primary worked examples: Examples 3-5.

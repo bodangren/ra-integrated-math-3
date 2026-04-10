@@ -23,14 +23,14 @@ Use graphing technology to explore how the shaded region changes for inequalitie
 * y < ax^2 + bx + c
 * y ≤ ax^2 + bx + c
 
-**Inquiry Question:**
+Inquiry Question:
 How can you represent a quadratic inequality graphically?
 
 ---
 
-# Learn: Graphing Quadratic Inequalities
+## Learn: Graphing Quadratic Inequalities
 
-A **quadratic inequality** is an inequality of the form:
+A quadratic inequality is an inequality of the form:
 
 * y > ax^2 + bx + c
 * y ≥ ax^2 + bx + c
@@ -39,7 +39,7 @@ A **quadratic inequality** is an inequality of the form:
 
 ---
 
-## Key Concept: Graphing Quadratic Inequalities
+### Key Concept: Graphing Quadratic Inequalities
 
 ### Step 1
 
@@ -49,8 +49,8 @@ Graph the related quadratic function.
 
 Decide whether the boundary is solid or dashed.
 
-* Use a **solid parabola** for ≤ or ≥
-* Use a **dashed parabola** for < or >
+* Use a solid parabola for ≤ or ≥
+* Use a dashed parabola for < or >
 
 ### Step 3
 
@@ -62,7 +62,7 @@ Shade the region that makes the inequality true.
 
 ---
 
-# Example 1 — Graph a Quadratic Inequality (≤)
+## Example 1 — Graph a Quadratic Inequality (≤)
 
 Graph:
 
@@ -74,7 +74,7 @@ Graph the related function:
 
 y = x^2 - 2x + 8
 
-Because the inequality is ≤, use a **solid** parabola.
+Because the inequality is ≤, use a solid parabola.
 
 ### Step 2
 
@@ -91,7 +91,7 @@ Shade the region containing (0, 0).
 
 ---
 
-# Example 2 — Graph a Quadratic Inequality (>)
+## Example 2 — Graph a Quadratic Inequality (>)
 
 Graph:
 
@@ -103,7 +103,7 @@ Graph the related function:
 
 y = -5x^2 + 10x
 
-Because the inequality is >, use a **dashed** parabola.
+Because the inequality is >, use a dashed parabola.
 
 ### Step 2
 
@@ -116,11 +116,11 @@ This is false.
 
 ### Step 3
 
-Shade the region that does **not** contain (1, 0).
+Shade the region that does not contain (1, 0).
 
 ---
 
-# Learn: Solving Quadratic Inequalities in One Variable
+## Learn: Solving Quadratic Inequalities in One Variable
 
 To solve inequalities like:
 
@@ -137,16 +137,16 @@ Then determine where the graph is above or below the x-axis.
 
 ---
 
-## Key Concept: Solving by Graphing
+### Key Concept: Solving by Graphing
 
-* For **ax^2 + bx + c < 0**, find where the graph lies **below** the x-axis
-* For **ax^2 + bx + c ≤ 0**, include the x-intercepts
-* For **ax^2 + bx + c > 0**, find where the graph lies **above** the x-axis
-* For **ax^2 + bx + c ≥ 0**, include the x-intercepts
+* For ax^2 + bx + c < 0, find where the graph lies below the x-axis
+* For ax^2 + bx + c ≤ 0, include the x-intercepts
+* For ax^2 + bx + c > 0, find where the graph lies above the x-axis
+* For ax^2 + bx + c ≥ 0, include the x-intercepts
 
 ---
 
-# Example 3 — Solve x^2 + x - 6 < 0 by Graphing
+## Example 3 — Solve x^2 + x - 6 < 0 by Graphing
 
 ### Step 1
 
@@ -178,7 +178,7 @@ Interval notation: (-3, 2)
 
 ---
 
-# Example 4 — Solve x^2 - 3x - 4 ≥ 0 by Graphing
+## Example 4 — Solve x^2 - 3x - 4 ≥ 0 by Graphing
 
 ### Step 1
 
@@ -212,7 +212,7 @@ Interval notation: (-∞, -1] ∪ [4, ∞)
 
 ---
 
-# Example 5 — Solve a Quadratic Inequality in Context
+## Example 5 — Solve a Quadratic Inequality in Context
 
 Marcus wants to enlarge a 5 ft by 10 ft garden by increasing both dimensions by the same amount x. He has enough soil to cover at most 104 square feet.
 
@@ -256,11 +256,11 @@ So the practical solution is:
 
 0 ≤ x ≤ 3
 
-Marcus can increase the dimensions by up to **3 feet**.
+Marcus can increase the dimensions by up to 3 feet.
 
 ---
 
-# Think About It (Discourse Prompts)
+## Think About It (Discourse Prompts)
 
 * Why does the sign of a affect which intervals satisfy the inequality?
 * Why do strict inequalities use parentheses in interval notation?
@@ -268,7 +268,7 @@ Marcus can increase the dimensions by up to **3 feet**.
 
 ---
 
-# In-Class Quick Check
+## In-Class Quick Check
 
 Solve each inequality.
 
@@ -279,8 +279,16 @@ Solve each inequality.
 
 ---
 
-# CAP Reflection
+## CAP Reflection
 
 * Courage: Did you attempt the graph even when the shading was unclear?
 * Adaptability: How did you change your strategy when a test point failed?
 * Persistence: How did you verify the interval you chose?
+
+---
+
+## Objective Alignment
+
+- `Graph quadratic inequalities in two variables`: Primary worked examples: Examples 1-2.
+- `Solve quadratic inequalities in one variable by graphing`: Primary worked examples: Examples 3-4.
+- `Interpret solutions in context`: Primary worked examples: Example 5.

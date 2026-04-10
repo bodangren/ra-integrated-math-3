@@ -32,7 +32,7 @@ What is the relationship between the expected value of a discrete random variabl
 
 ---
 
-# Learn: Probability Distributions
+## Learn: Probability Distributions
 
 A **probability distribution** maps each outcome of a random variable to its probability.
 
@@ -46,7 +46,7 @@ Conditions for a probability distribution:
 
 ---
 
-# Example 1 — Classify Random Variables
+## Example 1 — Classify Random Variables
 
 Classify each variable.
 
@@ -55,7 +55,7 @@ Classify each variable.
 
 ---
 
-# Example 2 — Analyze a Probability Distribution
+## Example 2 — Analyze a Probability Distribution
 
 A candy company records the number of prize-winning wrappers for each cash amount.
 
@@ -72,7 +72,7 @@ Graph the distribution with separated bars because the outcomes are discrete.
 
 ---
 
-# Example 3 — Misleading Distributions
+## Example 3 — Misleading Distributions
 
 A business publishes a salary probability distribution to suggest that most employees earn at least `$40,000`.
 
@@ -87,18 +87,18 @@ The graph visually overstates how much more likely the `$40,000` to `$50,000` ra
 
 ---
 
-# Learn: Normal Distributions
+## Learn: Normal Distributions
 
 The **normal distribution** is a continuous, bell-shaped, symmetric distribution.
 
-## Key Concept: The Normal Distribution
+### Key Concept: The Normal Distribution
 
 * the graph is bell-shaped and symmetric
 * the mean, median, and mode are equal
 * the curve approaches but never touches the x-axis
 * the total area under the curve is `1`
 
-## Key Concept: The Empirical Rule
+### Key Concept: The Empirical Rule
 
 For a normal distribution with mean `mu` and standard deviation `sigma`:
 
@@ -108,7 +108,7 @@ For a normal distribution with mean `mu` and standard deviation `sigma`:
 
 ---
 
-# Example 4 — Approximate Data by Using a Normal Distribution
+## Example 4 — Approximate Data by Using a Normal Distribution
 
 A histogram of goals scored by soccer players is skewed.
 
@@ -118,14 +118,14 @@ The data cannot be approximated by a normal distribution because it is not symme
 
 ---
 
-# Example 5 — Use the Empirical Rule to Analyze Data
+## Example 5 — Use the Empirical Rule to Analyze Data
 
 A normal distribution has:
 
 * mean `= 42`
 * standard deviation `= 6`
 
-## a. Find the middle `95%`
+### a. Find the middle `95%`
 
 Use `mu ± 2sigma`:
 
@@ -134,7 +134,7 @@ Use `mu ± 2sigma`:
 
 So the middle `95%` is from `30` to `54`.
 
-## b. What percent of the data is greater than `36`?
+### b. What percent of the data is greater than `36`?
 
 `36` is one standard deviation below the mean.
 
@@ -149,7 +149,7 @@ Total:
 
 ---
 
-# Learn: The Standard Normal Distribution
+## Learn: The Standard Normal Distribution
 
 Data can be standardized using **z-values**:
 
@@ -164,7 +164,7 @@ Areas under the curve correspond to probabilities.
 
 ---
 
-# Example 6 — Use z-Values to Locate Position
+## Example 6 — Use z-Values to Locate Position
 
 Find `z` if:
 
@@ -176,7 +176,7 @@ Find `z` if:
 
 ---
 
-# Example 7 — Find Area Under the Standard Normal Curve by Using a Table
+## Example 7 — Find Area Under the Standard Normal Curve by Using a Table
 
 Find the area under the normal curve for:
 
@@ -192,7 +192,7 @@ So the area is:
 
 ---
 
-# Example 8 — Find Area Under the Standard Normal Curve by Using a Calculator
+## Example 8 — Find Area Under the Standard Normal Curve by Using a Calculator
 
 Daily hits to a website are normally distributed with:
 
@@ -203,11 +203,11 @@ Find:
 
 `P(X > 100,000)`
 
-## Step 1: Find the z-value
+### Step 1: Find the z-value
 
 `z = (100,000 - 98,452) / 10,325 ≈ 0.150`
 
-## Step 2: Use a calculator
+### Step 2: Use a calculator
 
 Use `normalcdf` to find the area from `z = 0.150` to a large upper bound.
 
@@ -219,3 +219,10 @@ So the probability is about:
 
 `44.0%`
 
+---
+
+## Objective Alignment
+
+- `Classify variables and analyze probability distributions to determine expected outcomes`: Primary worked examples: Examples 1-3.
+- `Analyze normally distributed variables by using the Empirical Rule`: Primary worked examples: Examples 4-5.
+- `Analyze standardized data and distributions by using z-values`: Primary worked examples: Examples 6-8.

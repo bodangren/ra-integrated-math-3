@@ -44,7 +44,7 @@ Describe the reliability of using a regression function to make predictions for 
 
 ---
 
-# Example 1 — Examine Scatter Plots
+## Example 1 — Examine Scatter Plots
 
 Use a graphing calculator to make a scatter plot of the given data and determine whether it is best modeled by a linear, quadratic, or exponential function.
 
@@ -57,7 +57,7 @@ So the data are likely best modeled by an **exponential function**.
 
 ---
 
-# Example 2 — Model Data by Using Technology
+## Example 2 — Model Data by Using Technology
 
 A coffee company grew to more than `17,000` shops over `40` years.
 
@@ -93,3 +93,9 @@ Based on the scatter plot, is it reasonable that the data could be modeled by an
 ## Think About It
 
 What approximations were made when determining the number of shops at a given year?
+
+---
+
+## Objective Alignment
+
+- `Choose the best function type to model sets of data`: Primary worked examples: Examples 1-2.

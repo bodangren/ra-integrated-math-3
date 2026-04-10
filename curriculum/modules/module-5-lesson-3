@@ -55,7 +55,7 @@ where:
 
 ---
 
-# Example 1 — Expressions with Base e
+## Example 1 — Expressions with Base e
 
 Simplify each expression.
 
@@ -81,7 +81,7 @@ Use exponent properties before evaluating on a calculator so answers stay exact.
 
 ---
 
-# Example 2 — Graph Functions with Base e
+## Example 2 — Graph Functions with Base e
 
 Consider:
 
@@ -126,7 +126,7 @@ Does a base-`e` exponential function behave in the same way as other exponential
 
 ---
 
-# Example 3 — Apply Functions with Base e
+## Example 3 — Apply Functions with Base e
 
 LaShawndra deposits `$1500` in an account paying `2.5%` annual interest compounded continuously.
 
@@ -148,7 +148,7 @@ If another account offers `2.5%` annual interest compounded monthly, which shoul
 
 ---
 
-# Example 4 — Solve an Exponential Equation by Using Technology
+## Example 4 — Solve an Exponential Equation by Using Technology
 
 Use a graphing calculator to solve:
 
@@ -174,3 +174,9 @@ The solution is the x-coordinate:
 ## Step 4: Use a table
 
 Using a table near `x = 0.916` confirms the two y-values are nearly equal.
+
+---
+
+## Objective Alignment
+
+- `Analyze expressions and functions involving the natural base `e``: Primary worked examples: Examples 1-4.

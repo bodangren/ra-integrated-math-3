@@ -1,217 +1,280 @@
-# Lesson 1-5 — Solving Quadratic Equations by Completing the Square
+# Lesson 1-5 - Solving Quadratic Equations by Completing the Square
 
-## Today’s Goals
+## Today's Goal
 
-* Solve quadratic equations by completing the square
-* Rewrite quadratic expressions as perfect square trinomials
-* Connect completing the square to vertex form
+* Solve quadratic equations by using the Square Root Property
+* Complete the square in quadratic expressions to solve quadratic equations
+* Complete the square in a quadratic function to interpret key features of its graph
 
 ---
 
 ## Vocabulary
 
 * completing the square
-* perfect square trinomial
 * vertex form
+* projectile motion problems
 
 ---
 
-## Explore: Using Algebra Tiles to Complete the Square
+## Learn: Solving Quadratic Equations by Using the Square Root Property
 
-**Inquiry Question:**
-How can you transform a quadratic expression into a perfect square?
+You can use square roots to solve equations of the form `x^2 = n`.
 
----
+### Key Concept: Square Root Property
 
-# Learn: Completing the Square
+For any number `n >= 0`, if `x^2 = n`, then:
 
-Completing the square is a method used to rewrite a quadratic expression in the form:
+`x = +-sqrt(n)`
 
-(x + p)^2
-
-This allows us to solve equations that are not easily factorable.
+Some quadratic equations have irrational solutions, and some have complex solutions.
 
 ---
 
-## Key Idea: Creating a Perfect Square Trinomial
+## Example 1 - Solve a Quadratic Equation with Rational Roots
 
-Given:
+Solve `x^2 - 4x + 4 = 25` by using the Square Root Property.
 
-x^2 + bx
+`(x - 2)^2 = 25`
 
-Add:
+`x - 2 = +-5`
 
-(b/2)^2
+`x = 2 +- 5`
 
-to complete the square.
+So:
 
----
-
-# Learn: Solving by Completing the Square
-
-Steps:
-
-1. Move constant term to the other side
-2. Add (b/2)^2 to both sides
-3. Factor the left side
-4. Take the square root of both sides
-5. Solve for x
+* `x = 7`
+* `x = -3`
 
 ---
 
-# Example 1 — Basic Completing the Square
+## Example 2 - Solve a Quadratic Equation with Irrational Roots
 
-Solve:
+Solve `x^2 + 24x + 144 = 192` by using the Square Root Property.
 
-x^2 + 6x + 5 = 0
+`(x + 12)^2 = 192`
 
-Step 1: Move constant
+`x + 12 = +-sqrt(192)`
 
-x^2 + 6x = -5
+`x + 12 = +-8sqrt(3)`
 
-Step 2: Add (6/2)^2 = 9
+So the exact solutions are:
 
-x^2 + 6x + 9 = -5 + 9
+* `x = -12 + 8sqrt(3)`
+* `x = -12 - 8sqrt(3)`
 
-Step 3: Factor
+Approximate solutions:
 
-(x + 3)^2 = 4
-
-Step 4: Square root
-
-x + 3 = ±2
-
-Step 5: Solve
-
-x = -3 ± 2
-
-Solutions: x = -1, -5
+* `x ~= 1.86`
+* `x ~= -25.86`
 
 ---
 
-# Example 2 — Leading Coefficient Not 1
+## Example 3 - Solve a Quadratic Equation with Complex Solutions
 
-Solve:
+Solve `2x^2 - 92x + 1058 = -72` by using the Square Root Property.
 
-2x^2 + 8x + 6 = 0
+Divide by `2`:
 
-Step 1: Divide by 2
+`x^2 - 46x + 529 = -36`
 
-x^2 + 4x + 3 = 0
+`(x - 23)^2 = -36`
 
-Step 2: Move constant
+`x - 23 = +-sqrt(-36)`
 
-x^2 + 4x = -3
+`x - 23 = +-6i`
 
-Step 3: Add (4/2)^2 = 4
+So:
 
-x^2 + 4x + 4 = 1
-
-Step 4: Factor
-
-(x + 2)^2 = 1
-
-Step 5: Solve
-
-x + 2 = ±1
-
-x = -2 ± 1
-
-Solutions: x = -1, -3
+* `x = 23 + 6i`
+* `x = 23 - 6i`
 
 ---
 
-# Example 3 — Imaginary Solutions
+## Learn: Completing the Square
 
-Solve:
+All quadratic equations can be solved by manipulating the equation until one side is a perfect square.
 
-x^2 - 4x + 8 = 0
+### Key Concept: Completing the Square
 
-Step 1:
+For an expression of the form `x^2 + bx`:
 
-x^2 - 4x = -8
+1. Find one half of `b`
+2. Square that value
+3. Add the result to `x^2 + bx`
 
-Step 2: Add (−4/2)^2 = 4
+Symbolically:
 
-x^2 - 4x + 4 = -4
-
-Step 3:
-
-(x - 2)^2 = -4
-
-Step 4:
-
-x - 2 = ±√(-4)
-
-x - 2 = ±2i
-
-Step 5:
-
-x = 2 ± 2i
+`x^2 + bx + (b/2)^2 = (x + b/2)^2`
 
 ---
 
-# Learn: Vertex Form Connection
+## Example 4 - Complete the Square
 
-Completing the square can rewrite:
+Find the value of `c` that makes `x^2 - 7x + c` a perfect square. Then write the expression as a perfect square trinomial.
 
-ax^2 + bx + c
+Half of `-7` is `-3.5`.
 
-into:
+Square it:
 
-y = a(x - h)^2 + k
+`(-3.5)^2 = 12.25`
 
-The vertex is (h, k)
+So:
 
----
-
-# Example 4 — Convert to Vertex Form
-
-Rewrite:
-
-y = x^2 + 6x + 5
-
-Complete the square:
-
-= x^2 + 6x + 9 - 9 + 5
-
-= (x + 3)^2 - 4
-
-Vertex: (-3, -4)
+`x^2 - 7x + 12.25 = (x - 3.5)^2`
 
 ---
 
-# Key Idea: When to Use Completing the Square
+## Example 5 - Solve by Completing the Square
 
-Use this method when:
+Solve `x^2 + 18x - 4 = 0` by completing the square.
 
-* Factoring is difficult or impossible
-* You want to convert to vertex form
-* You need exact solutions (including imaginary)
+`x^2 + 18x = 4`
 
----
+`x^2 + 18x + 81 = 85`
 
-# In-Class Quick Check
+`(x + 9)^2 = 85`
 
-Solve by completing the square:
+`x + 9 = +-sqrt(85)`
 
-1. x^2 + 2x - 3 = 0
-2. x^2 - 8x + 5 = 0
-3. x^2 + 10x + 30 = 0
-4. 3x^2 + 12x + 9 = 0
+So:
 
----
+* `x = -9 + sqrt(85)`
+* `x = -9 - sqrt(85)`
 
-# Think About It
+Approximate solutions:
 
-* Why do we add (b/2)^2 specifically?
-* How does completing the square reveal the vertex?
-* When is this method more efficient than factoring?
+* `x ~= 0.22`
+* `x ~= -18.22`
 
 ---
 
-# CAP Reflection
+## Example 6 - Online Extra Example
 
-* Courage: Did you try the full process even when it felt long?
-* Adaptability: How did you adjust when fractions or negatives appeared?
-* Persistence: How did you check your solutions?
+The print source references an online-only Example 6, but the example text is not present in the current PDF pages extracted into this repo.
+
+This placeholder preserves the lesson's original numbering.
+
+---
+
+## Example 7 - Solve When a Is Not 1
+
+Solve `4x^2 - 12x - 27 = 0` by completing the square.
+
+Divide by `4`:
+
+`x^2 - 3x - 27/4 = 0`
+
+`x^2 - 3x = 27/4`
+
+`x^2 - 3x + 9/4 = 9`
+
+`(x - 3/2)^2 = 9`
+
+`x - 3/2 = +-3`
+
+So:
+
+* `x = 9/2`
+* `x = -3/2`
+
+---
+
+## Example 8 - Solve Equations with Imaginary Solutions
+
+Solve `3x^2 - 72x + 465 = 0` by completing the square.
+
+Divide by `3`:
+
+`x^2 - 24x + 155 = 0`
+
+`x^2 - 24x = -155`
+
+`x^2 - 24x + 144 = -11`
+
+`(x - 12)^2 = -11`
+
+`x - 12 = +-i sqrt(11)`
+
+So:
+
+* `x = 12 + i sqrt(11)`
+* `x = 12 - i sqrt(11)`
+
+---
+
+## Learn: Quadratic Functions in Vertex Form
+
+When a function is given in standard form `y = ax^2 + bx + c`, you can complete the square to write it in vertex form.
+
+### Key Concept: Vertex Form of a Quadratic Function
+
+`y = a(x - h)^2 + k`
+
+The vertex is `(h, k)`.
+
+The axis of symmetry is `x = h`.
+
+---
+
+## Example 9 - Write Functions in Vertex Form
+
+Write `y = -x^2 - 12x - 9` in vertex form.
+
+`y = -(x^2 + 12x) - 9`
+
+`y = -(x^2 + 12x + 36) - 9 + 36`
+
+`y = -(x + 6)^2 + 27`
+
+---
+
+## Example 10 - Determine the Vertex and Axis of Symmetry
+
+Consider `y = 3x^2 - 12x + 5`.
+
+Write in vertex form:
+
+`y = 3(x - 2)^2 - 7`
+
+So:
+
+* axis of symmetry: `x = 2`
+* vertex: `(2, -7)`
+
+Because `a > 0`, the vertex is a minimum.
+
+---
+
+## Example 11 - Model with a Quadratic Function
+
+Fireworks: If a firework is launched `1` foot off the ground at a velocity of `128` feet per second, write a function for the situation and interpret the axis of symmetry and vertex.
+
+Using `h(t) = -1/2 gt^2 + vt + h0` with `g = 32`, `v = 128`, and `h0 = 1`:
+
+`h(t) = -16t^2 + 128t + 1`
+
+Write in vertex form:
+
+`h(t) = -16(t - 4)^2 + 257`
+
+So:
+
+* axis of symmetry: `t = 4`
+* vertex: `(4, 257)`
+
+The firework reaches a maximum height of `257` feet after `4` seconds.
+
+---
+
+## Talk About It
+
+* Why does completing the square reveal the vertex?
+* Why must the coefficient of `x^2` be `1` before you complete the square?
+
+---
+
+## Objective Alignment
+
+- `Solve quadratic equations by using the Square Root Property`: Primary worked examples: Examples 1-3.
+- `Complete the square in quadratic expressions to solve quadratic equations`: Primary worked examples: Examples 4-8.
+- `Complete the square in a quadratic function to interpret key features of its graph`: Primary worked examples: Examples 9-11.

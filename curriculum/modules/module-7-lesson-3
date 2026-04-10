@@ -19,7 +19,7 @@ Source: (Module 7, Lesson 7-3, pp. 327–332)
 
 ---
 
-# Learn: Graphing Reciprocal Functions
+## Learn: Graphing Reciprocal Functions
 
 A reciprocal function has the form:
 
@@ -33,7 +33,7 @@ The parent function is:
 
 Its graph is a hyperbola.
 
-## Key Concept: Reciprocal Functions
+### Key Concept: Reciprocal Functions
 
 For `f(x) = 1/x`:
 
@@ -47,15 +47,15 @@ The vertical asymptote is determined by the excluded value of `x`. The horizonta
 
 ---
 
-# Example 1 — Limitations on the Domains of Reciprocal Functions
+## Example 1 — Limitations on the Domains of Reciprocal Functions
 
 Determine the excluded value of `x` for each function.
 
-## a. `g(x) = 6/x`
+### a. `g(x) = 6/x`
 
 Undefined when `x = 0`
 
-## b. `g(x) = 2/(x - 7)`
+### b. `g(x) = 2/(x - 7)`
 
 Set the denominator equal to `0`:
 
@@ -63,7 +63,7 @@ Set the denominator equal to `0`:
 
 `x = 7`
 
-## c. `g(x) = -5/(3x + 4)`
+### c. `g(x) = -5/(3x + 4)`
 
 Set the denominator equal to `0`:
 
@@ -77,13 +77,13 @@ Explain why reciprocal functions have a restricted domain.
 
 ---
 
-# Example 2 — Graph a Reciprocal Function by Using a Table
+## Example 2 — Graph a Reciprocal Function by Using a Table
 
 Consider:
 
 `g(x) = 1/(2x - 5) + 2`
 
-## Part A: Identify key features
+### Part A: Identify key features
 
 Set the denominator equal to `0`:
 
@@ -98,7 +98,7 @@ So:
 * domain: `{x | x != 5/2}`
 * range: `{g(x) | g(x) != 2}`
 
-## Part B: Find the intercepts
+### Part B: Find the intercepts
 
 For the x-intercept, set `g(x) = 0`:
 
@@ -123,7 +123,7 @@ So:
 
 ---
 
-# Example 3 — Analyze a Reciprocal Function
+## Example 3 — Analyze a Reciprocal Function
 
 Ohm’s law is:
 
@@ -133,7 +133,7 @@ For a `110`-volt curling iron:
 
 `I = 110/R`
 
-## Part A: Write and graph a function
+### Part A: Write and graph a function
 
 The function is:
 
@@ -144,7 +144,7 @@ with asymptotes:
 * `R = 0`
 * `I = 0`
 
-## Part B: Analyze the key features
+### Part B: Analyze the key features
 
 * domain: `{R | R != 0}`
 * range: `{I | I != 0}`
@@ -167,7 +167,7 @@ How does performing an operation on a reciprocal function affect its graph?
 
 ---
 
-# Learn: Transformations of Reciprocal Functions
+## Learn: Transformations of Reciprocal Functions
 
 For:
 
@@ -179,7 +179,7 @@ For:
 
 ---
 
-# Example 4 — Graph a Transformation of a Reciprocal Function
+## Example 4 — Graph a Transformation of a Reciprocal Function
 
 Graph:
 
@@ -200,7 +200,7 @@ So:
 
 ---
 
-# Example 5 — Write a Reciprocal Function from a Graph
+## Example 5 — Write a Reciprocal Function from a Graph
 
 Write a function in the form:
 
@@ -228,3 +228,9 @@ So the function is:
 
 `g(x) = 5/(x + 4) - 2`
 
+---
+
+## Objective Alignment
+
+- `Graph reciprocal functions by making tables of values`: Primary worked examples: Examples 1-3.
+- `Graph and write reciprocal functions by using transformations`: Primary worked examples: Examples 4-5.

@@ -17,11 +17,11 @@ Source: (Module 4, Lesson 4-5, pp. 193–198)
 
 ---
 
-# Learn: Properties of Radicals
+## Learn: Properties of Radicals
 
 The properties used to simplify square roots extend to nth roots.
 
-## Key Concept: Product Property of Radicals
+### Key Concept: Product Property of Radicals
 
 For real numbers `a`, `b` and integer `n > 1`:
 
@@ -34,7 +34,7 @@ Examples:
 * `sqrt(12) * sqrt(3) = sqrt(36) = 6`
 * `cuberoot(4) * cuberoot(16) = cuberoot(64) = 4`
 
-## Key Concept: Quotient Property of Radicals
+### Key Concept: Quotient Property of Radicals
 
 For real numbers `a` and `b != 0`:
 
@@ -47,7 +47,7 @@ Examples:
 * `sqrt(x^4 / 25) = x^2 / 5`
 * `cuberoot(27/8) = 3/2`
 
-## Key Concept: Simplest Form of Radical Expressions
+### Key Concept: Simplest Form of Radical Expressions
 
 A radical expression is in simplest form when:
 
@@ -58,9 +58,9 @@ A radical expression is in simplest form when:
 
 ---
 
-# Example 1 — Simplify Expressions with the Product Property
+## Example 1 — Simplify Expressions with the Product Property
 
-## a. `cuberoot(-27a^6b^14)`
+### a. `cuberoot(-27a^6b^14)`
 
 Factor into cubes:
 
@@ -68,7 +68,7 @@ Factor into cubes:
 
 `= -3a^2b^4 cuberoot(b^2)`
 
-## b. `sqrt(75x^12y^7)`
+### b. `sqrt(75x^12y^7)`
 
 Factor into squares:
 
@@ -82,9 +82,9 @@ Why are absolute value symbols not necessary around `y^3` in part `b`?
 
 ---
 
-# Example 2 — Simplify Expressions with the Quotient Property
+## Example 2 — Simplify Expressions with the Quotient Property
 
-## a. `cuberoot((24a^6)/125)`
+### a. `cuberoot((24a^6)/125)`
 
 `= cuberoot(24a^6) / cuberoot(125)`
 
@@ -92,7 +92,7 @@ Why are absolute value symbols not necessary around `y^3` in part `b`?
 
 `= 2a^2 cuberoot(3) / 5`
 
-## b. `fourthroot((80y^14)/(256z^4))`
+### b. `fourthroot((80y^14)/(256z^4))`
 
 `= fourthroot(80y^14) / fourthroot(256z^4)`
 
@@ -106,7 +106,7 @@ Jon says that `cuberoot(40)` and `6 cuberoot(5)` cannot be combined because they
 
 ---
 
-# Learn: Adding and Subtracting Radical Expressions
+## Learn: Adding and Subtracting Radical Expressions
 
 Radicals can be added or subtracted like monomials, but only if they are **like radical expressions**.
 
@@ -130,7 +130,7 @@ For expressions with more than one term, use the Distributive Property or FOIL.
 
 ---
 
-# Example 3 — Add and Subtract Radicals
+## Example 3 — Add and Subtract Radicals
 
 Simplify:
 
@@ -150,7 +150,7 @@ Simplify radicals:
 
 ---
 
-# Example 4 — Multiply Radicals
+## Example 4 — Multiply Radicals
 
 Simplify:
 
@@ -166,4 +166,97 @@ Factor and simplify:
 
 `= 12(-1)xy^2 fifthroot(5x)`
 
-The lesson continues this unit with rationalizing denominators and multiplying by conjugates.
+---
+
+## Example 5 — Use the Distributive Property to Multiply Radicals
+
+SPORTS: A sports pennant has the dimensions shown. Find the area, in square inches.
+
+* base: `3sqrt(8) + 4`
+* height: `7sqrt(8) + 6sqrt(3)`
+
+Use `Area = 1/2 * base * height`:
+
+`Area = 1/2 (3sqrt(8) + 4)(7sqrt(8) + 6sqrt(3))`
+
+Apply the Distributive Property:
+
+`= 1/2 [3sqrt(8) * 7sqrt(8) + 3sqrt(8) * 6sqrt(3) + 4 * 7sqrt(8) + 4 * 6sqrt(3)]`
+
+`= 1/2 [21sqrt(8^2) + 18sqrt(24) + 28sqrt(8) + 24sqrt(3)]`
+
+Simplify each radical:
+
+`= 1/2 [168 + 36sqrt(6) + 56sqrt(2) + 24sqrt(3)]`
+
+`= 84 + 18sqrt(6) + 28sqrt(2) + 12sqrt(3)`
+
+So the area of the pennant is:
+
+`84 + 18sqrt(6) + 28sqrt(2) + 12sqrt(3)` square inches.
+
+---
+
+## Learn: Rationalizing the Denominator
+
+If a radical expression contains a radical in the denominator, you can rationalize the denominator by multiplying the numerator and denominator by a quantity that produces an exact root in the denominator.
+
+### Watch Out
+
+Do not stop until the result is in simplest form. Check that no radicals remain in the denominator and that individual radicals cannot be simplified further.
+
+---
+
+## Example 6 — Rationalize the Denominator
+
+Simplify:
+
+`cuberoot(250a^6) / cuberoot(7a)`
+
+Use the Quotient Property of Radicals:
+
+`= cuberoot(250a^6) / cuberoot(7a)`
+
+Factor into cubes:
+
+`= cuberoot(5^3 * 2 * (a^2)^3) / cuberoot(7a)`
+
+`= 5a^2 cuberoot(2) / cuberoot(7a)`
+
+Multiply numerator and denominator by `cuberoot(7^2 a^2)` to rationalize the denominator:
+
+`= (5a^2 cuberoot(2) / cuberoot(7a)) * (cuberoot(7^2 a^2) / cuberoot(7^2 a^2))`
+
+`= 5a^2 cuberoot(98a^2) / cuberoot(7^3 a^3)`
+
+`= 5a^2 cuberoot(98a^2) / (7a)`
+
+`= 5a cuberoot(98a^2) / 7`
+
+---
+
+## Example 7 — Use Conjugates to Rationalize the Denominator
+
+Simplify:
+
+`4x / (2sqrt(7) - 5)`
+
+Multiply numerator and denominator by the conjugate `2sqrt(7) + 5`:
+
+`= (4x / (2sqrt(7) - 5)) * ((2sqrt(7) + 5) / (2sqrt(7) + 5))`
+
+Multiply:
+
+`= [4x(2sqrt(7)) + 4x(5)] / [(2sqrt(7))^2 + 5(2sqrt(7)) - 5(2sqrt(7)) - 5^2]`
+
+`= (8xsqrt(7) + 20x) / (28 - 25)`
+
+`= (8xsqrt(7) + 20x) / 3`
+
+---
+
+## Objective Alignment
+
+- `Simplify radical expressions`: Primary worked examples: Examples 1-2.
+- `Add, subtract, and multiply radicals`: Primary worked examples: Examples 3-5.
+- `Divide and simplify radical expressions by rationalizing the denominator`: Primary worked examples: Examples 6-7.

@@ -18,16 +18,16 @@ Source: (Module 2, Lesson 2-5, pp. 109–110)
 
 Use the interactive tool to complete the explore.
 
-**Inquiry Question:**
+Inquiry Question:
 How can you use Pascal's triangle to write expansions of binomials?
 
 ---
 
-# Learn: Powers of Binomials
+## Learn: Powers of Binomials
 
 You can expand binomials by following patterns and rules.
 
-## Key Concept: Binomial Expansion
+### Key Concept: Binomial Expansion
 
 In the binomial expansion of `(a + b)^n`:
 
@@ -38,14 +38,14 @@ In the binomial expansion of `(a + b)^n`:
 * the sum of the exponents in each term is `n`
 * the coefficients are symmetric
 
-**Pascal's triangle** is a triangle of numbers in which each row gives the coefficients of an expanded binomial `(a + b)^n`.
+Pascal's triangle is a triangle of numbers in which each row gives the coefficients of an expanded binomial `(a + b)^n`.
 
 * Each row begins and ends with `1`
 * Each interior number is the sum of the two numbers above it
 
-Instead of writing the triangle, you can use the **Binomial Theorem**.
+Instead of writing the triangle, you can use the Binomial Theorem.
 
-## Key Concept: Binomial Theorem
+### Key Concept: Binomial Theorem
 
 If `n` is a natural number, then:
 
@@ -59,7 +59,7 @@ Both `nC0` and `nCn` equal `1`. What does this mean for the terms of a binomial 
 
 ---
 
-# Example 1 — Use Pascal's Triangle
+## Example 1 — Use Pascal's Triangle
 
 Use Pascal's triangle to expand `(x + y)^7`.
 
@@ -73,7 +73,7 @@ So:
 
 ---
 
-# Example 2 — Use the Binomial Theorem
+## Example 2 — Use the Binomial Theorem
 
 In 2016, the Chicago Cubs played the Atlanta Braves `6` times, winning `3` games and losing `3` games. If the Cubs were equally likely to win or lose, find the probability of this outcome by expanding `(w + l)^6`.
 
@@ -97,7 +97,7 @@ Therefore, the probability is:
 
 `20 / 64`
 
-which is about **31%**.
+which is about 31%.
 
 ## Talk About It
 
@@ -105,7 +105,7 @@ Describe a shortcut you could use to write rows of Pascal's triangle instead of 
 
 ---
 
-# Example 3 — Coefficients Other Than 1
+## Example 3 — Coefficients Other Than 1
 
 Expand:
 
@@ -119,6 +119,12 @@ Use the Binomial Theorem:
 
 `= 16c^4 - 192c^3d + 864c^2d^2 - 1728cd^3 + 1296d^4`
 
-## Study Tip
+### Study Tip
 
 When the coefficients in the binomial are not `1`, the coefficients in the expansion are no longer symmetric, so the Binomial Theorem is often easier to use.
+
+---
+
+## Objective Alignment
+
+- `Expand powers of binomials by using Pascal's Triangle and the Binomial Theorem`: Primary worked examples: Examples 1-3.

@@ -22,7 +22,7 @@ Are all rational expressions defined for all values of `x`? Justify your argumen
 
 ---
 
-# Learn: Simplifying Rational Expressions
+## Learn: Simplifying Rational Expressions
 
 A **rational expression** is a ratio of two polynomial expressions.
 
@@ -30,7 +30,7 @@ To simplify a rational expression, factor the numerator and denominator and divi
 
 ---
 
-# Example 1 — Simplify a Rational Expression
+## Example 1 — Simplify a Rational Expression
 
 Simplify
 
@@ -38,7 +38,7 @@ Simplify
 
 and state when the original expression is undefined.
 
-## Part A: Simplify
+### Part A: Simplify
 
 Factor:
 
@@ -50,7 +50,7 @@ So:
 
 `((x + 4)(x - 6)) / (2x(x + 4)(x - 1)) = (x - 6) / (2x(x - 1))`
 
-## Part B: State when the expression is undefined
+### Part B: State when the expression is undefined
 
 The original denominator is `0` when:
 
@@ -58,7 +58,7 @@ The original denominator is `0` when:
 * `x = -4`
 * `x = 1`
 
-## Check
+### Check
 
 Simplify
 
@@ -68,7 +68,7 @@ and state when the original expression is undefined.
 
 ---
 
-# Example 2 — Simplify by Using `-1`
+## Example 2 — Simplify by Using `-1`
 
 Simplify
 
@@ -101,15 +101,15 @@ Can you simplify complex fractions that contain polynomials in the numerator or 
 
 ---
 
-# Learn: Multiplying and Dividing Rational Expressions
+## Learn: Multiplying and Dividing Rational Expressions
 
-## Key Concept: Multiplying Rational Expressions
+### Key Concept: Multiplying Rational Expressions
 
 To multiply rational expressions, multiply the numerators and the denominators.
 
 `(a/b) * (c/d) = ac / bd`
 
-## Key Concept: Dividing Rational Expressions
+### Key Concept: Dividing Rational Expressions
 
 To divide rational expressions, multiply by the reciprocal of the divisor.
 
@@ -119,17 +119,17 @@ A **complex fraction** is a rational expression whose numerator and/or denominat
 
 ---
 
-# Example 3 — Multiply and Divide Rational Expressions
+## Example 3 — Multiply and Divide Rational Expressions
 
 Simplify each expression.
 
-## a. `(3x / 8y) * (12x^2y / 9xy^3)`
+### a. `(3x / 8y) * (12x^2y / 9xy^3)`
 
 Factor and divide out common factors to get:
 
 `x^2 / (2y^3)`
 
-## b. `(10d^5 / 6cd) / (30c^3d^2 / 4c)`
+### b. `(10d^5 / 6cd) / (30c^3d^2 / 4c)`
 
 Rewrite as multiplication by the reciprocal and simplify:
 
@@ -141,7 +141,7 @@ Why do multiplying rational expressions require `b != 0` and `d != 0`, while div
 
 ---
 
-# Example 4 — Multiply and Divide Polynomial Expressions
+## Example 4 — Multiply and Divide Polynomial Expressions
 
 A manufacturer compares the areas of two rectangular planters:
 
@@ -168,7 +168,7 @@ Simplify:
 
 ---
 
-# Example 5 — Simplify Complex Fractions
+## Example 5 — Simplify Complex Fractions
 
 Simplify
 
@@ -186,3 +186,9 @@ Rewrite as division, multiply by the reciprocal, factor, and simplify:
 
 If you simplify a ratio of two rational expressions that both contain polynomials in their numerators and denominators, will the simplified expression always, sometimes, or never still be a rational expression with polynomials? Explain.
 
+---
+
+## Objective Alignment
+
+- `Simplify rational expressions`: Primary worked examples: Examples 1-2.
+- `Simplify rational expressions by multiplying and dividing`: Primary worked examples: Examples 3-4.

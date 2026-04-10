@@ -17,7 +17,7 @@ How can you solve a polynomial equation by using the graph of a related polynomi
 
 ---
 
-# Learn: Solving Polynomial Equations by Graphing
+## Learn: Solving Polynomial Equations by Graphing
 
 A **related function** is found by rewriting the equation with `0` on one side and then replacing `0` with `f(x)`.
 
@@ -40,13 +40,13 @@ Explain how you could use the table feature to more accurately estimate the zero
 
 ---
 
-# Example 1 — Solve a Polynomial Equation by Graphing
+## Example 1 — Solve a Polynomial Equation by Graphing
 
 Use a graphing calculator to solve:
 
 `x^4 + 3x^2 - 5 = -4x^3`
 
-## Step 1: Find a related function
+### Step 1: Find a related function
 
 Write the equation with `0` on the right:
 
@@ -60,11 +60,11 @@ So the related function is:
 
 `f(x) = x^4 + 4x^3 + 3x^2 - 5`
 
-## Step 2: Graph the related function
+### Step 2: Graph the related function
 
 Enter the function in the graphing calculator and graph it.
 
-## Step 3: Find the zeros
+### Step 3: Find the zeros
 
 Use the `zero` feature from the `CALC` menu.
 
@@ -79,7 +79,7 @@ How can you use the structure of the related function to determine the number of
 
 ---
 
-# Example 2 — Solve a Polynomial Equation by Using a System
+## Example 2 — Solve a Polynomial Equation by Using a System
 
 For an exhibit with five Emperor penguins, a pool must have a minimum volume of `217 ft^3` per bird. The pool dimensions are shown as:
 
@@ -89,7 +89,7 @@ For an exhibit with five Emperor penguins, a pool must have a minimum volume of 
 
 What should the pool dimensions be to meet the minimum requirements?
 
-## Part A: Write a polynomial equation
+### Part A: Write a polynomial equation
 
 Since the minimum required volume is:
 
@@ -115,7 +115,7 @@ Simplify:
 
 `20x^3 + 22x^2 - 12x = 1085`
 
-## Part B: Write and solve a system of equations
+### Part B: Write and solve a system of equations
 
 Set each side equal to `y`:
 
@@ -128,7 +128,7 @@ The real solution is:
 
 `x = 3.5`
 
-## Part C: Find the dimensions
+### Part C: Find the dimensions
 
 Substitute `x = 3.5`:
 
@@ -139,3 +139,9 @@ Substitute `x = 3.5`:
 ## Think About It
 
 Is your solution reasonable? Justify your conclusion.
+
+---
+
+## Objective Alignment
+
+- `Solve polynomial equations by graphing`: Primary worked examples: Examples 1-2.

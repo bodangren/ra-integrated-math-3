@@ -1,173 +1,218 @@
-# Lesson 1-8 — Solving Linear–Nonlinear Systems
+# Lesson 1-8 - Solving Linear-Nonlinear Systems
 
-## Today’s Goals
+## Today's Goals
 
-* Solve systems involving a linear and a quadratic equation
-* Interpret solutions as points of intersection
+* Solve systems of linear and quadratic equations
+* Solve systems of two quadratic equations
 
 ---
 
 ## Vocabulary
 
-* system of equations
-* solution of a system
-* point of intersection
+* quadratic relations
 
 ---
 
-## Explore: Linear–Quadratic Systems
+## Explore: Linear-Quadratic Systems
 
-**Inquiry Question:**
-How can you determine how many solutions a system of a line and a parabola has?
+Use graphing technology to explore how many solutions a linear-quadratic system can have.
 
----
-
-# Learn: Systems of Linear and Quadratic Equations
-
-A system may include:
-
-* a linear equation (y = mx + b)
-* a quadratic equation (y = ax^2 + bx + c)
-
-The solutions are the points where the graphs intersect.
+Inquiry Question:
+How many solutions can a linear-quadratic system of equations have?
 
 ---
 
-# Key Idea: Number of Solutions
+## Learn: Solving Linear-Quadratic Systems
 
-* Two intersection points → 2 solutions
-* One intersection point → 1 solution
-* No intersection points → no solution
+Like systems of linear equations, linear-quadratic systems can be solved by graphical or algebraic methods. A system can also be used to solve a quadratic equation by writing each side as a related function.
 
 ---
 
-# Example 1 — Solve by Graphing
+## Example 1 - Solve a Linear-Quadratic System by Using Substitution
 
-Solve:
+Solve the system:
 
-y = x^2 - 4
-y = x
+`x = 2y^2 + 3y + 1`
 
-Graph both equations.
+`-x + y = -1`
 
-Points of intersection occur where:
+From the second equation:
 
-x = x^2 - 4
+`x = y + 1`
+
+Substitute:
+
+`y + 1 = 2y^2 + 3y + 1`
+
+`0 = 2y^2 + 2y`
+
+`0 = 2y(y + 1)`
+
+So:
+
+* `y = 0`
+* `y = -1`
+
+Then:
+
+* if `y = 0`, `x = 1`
+* if `y = -1`, `x = 0`
 
 Solutions:
 
-x = -2, x = 2
-
-Points: (-2, -2), (2, 2)
+* `(1, 0)`
+* `(0, -1)`
 
 ---
 
-# Example 2 — Solve Algebraically (Substitution)
+## Example 2 - Solve a Linear-Quadratic System by Using Elimination
+
+Solve the system:
+
+`x^2 = y + 5`
+
+`-x + y = 7`
+
+Rearrange the second equation so the `y`-terms can be eliminated, then add:
+
+`x^2 - x = 12`
+
+`x^2 - x - 12 = 0`
+
+`(x - 4)(x + 3) = 0`
+
+So:
+
+* `x = 4`
+* `x = -3`
+
+Then:
+
+* `(4, 11)`
+* `(-3, 4)`
+
+---
+
+## Example 3 - Use a System to Solve a Quadratic Equation
+
+Use a system to solve `x^2 - 2x + 6 = 4x + 1`.
+
+Create the system:
+
+* `y = x^2 - 2x + 6`
+* `y = 4x + 1`
+
+From the graph, the functions intersect at:
+
+* `(1, 5)`
+* `(5, 21)`
+
+So the equation solutions are:
+
+* `x = 1`
+* `x = 5`
+
+---
+
+## Example 4 - Solve a Linear-Quadratic System by Graphing
+
+Production: A company's revenue is modeled by:
+
+`R = -0.1x^2 + 4x`
+
+To determine the price for which the company earns `$4.2` million, graph the system:
+
+* `R = -0.1x^2 + 4x`
+* `R = 42`
+
+The graphs do not intersect, so the system has:
+
+`0 solutions`
+
+---
+
+## Learn: Solving Quadratic-Quadratic Systems
+
+If a system contains two quadratic relations, it may have `0` to `4` solutions. These systems can be solved graphically or algebraically.
+
+---
+
+## Example 5 - Solve a Quadratic-Quadratic System Graphically
 
 Solve:
 
-y = x^2 + 2x
-y = x + 6
+* `y = x^2`
+* `x = 1/5 (y - 6)^2 + 6/5`
 
-Step 1: Substitute
+From the graph, the relations intersect at:
 
-x + 6 = x^2 + 2x
+* `(2, 4)`
+* `(3, 9)`
 
-Step 2: Rearrange
+---
 
-0 = x^2 + x - 6
+## Example 6 - Solve a Quadratic-Quadratic System Algebraically
 
-Step 3: Factor
+Solve:
 
-(x + 3)(x - 2) = 0
+* `2x^2 - y = 4`
+* `y = -1/2 x^2 + 6`
 
-x = -3, x = 2
+Substitute:
 
-Step 4: Find y-values
+`2x^2 - (-1/2 x^2 + 6) = 4`
 
-For x = -3: y = 3
-For x = 2: y = 8
+`5/2 x^2 - 10 = 0`
+
+`x^2 - 4 = 0`
+
+`(x + 2)(x - 2) = 0`
+
+So:
+
+* `x = 2`
+* `x = -2`
+
+Substitute into an original equation:
+
+`y = 4`
 
 Solutions:
 
-(-3, 3), (2, 8)
+* `(2, 4)`
+* `(-2, 4)`
 
 ---
 
-# Example 3 — One Solution
+## Example 7 - Use a System to Solve a Quadratic Equation
 
-Solve:
+Use a system to solve `2x^2 - 3x + 8 = 11 - 4x^2`.
 
-y = x^2
-y = -2x + 1
+Create the system:
 
-Set equal:
+* `y = 2x^2 - 3x + 8`
+* `y = 11 - 4x^2`
 
-x^2 = -2x + 1
+From the graph, the functions intersect at:
 
-x^2 + 2x - 1 = 0
+* `(-1/2, 10)`
+* `(1, 7)`
 
-Solve using quadratic formula:
+So the equation solutions are:
 
-x = [-2 ± √(4 + 4)] / 2
-= [-2 ± √8] / 2
-= -1 ± √2
-
-One or two solutions depending on intersection behavior (approximate graph shows two intersections)
+* `x = -1/2`
+* `x = 1`
 
 ---
 
-# Example 4 — No Solution
+## Talk About It
 
-Solve:
-
-y = x^2 + 1
-y = -x - 5
-
-Set equal:
-
-x^2 + 1 = -x - 5
-
-x^2 + x + 6 = 0
-
-Discriminant:
-
-b^2 - 4ac = 1 - 24 = -23
-
-Since negative, no real solutions
+* Can a linear-quadratic system have infinitely many solutions? Why or why not?
+* Why is graphing still useful even when solving a system algebraically?
 
 ---
 
-# Key Idea: Methods
+## Objective Alignment
 
-You can solve systems by:
-
-* Graphing
-* Substitution
-* Using quadratic methods (factoring, formula)
-
----
-
-# In-Class Quick Check
-
-Solve each system:
-
-1. y = x^2 - 1 and y = x
-2. y = x^2 + x and y = 2x + 3
-3. y = x^2 + 4 and y = -x
-
----
-
-# Think About It
-
-* How does the discriminant relate to the number of intersections?
-* Why can a system have at most two solutions?
-* When is graphing more useful than algebra?
-
----
-
-# CAP Reflection
-
-* Courage: Did you attempt both algebraic and graphical approaches?
-* Adaptability: How did you switch methods when stuck?
-* Persistence: How did you verify your intersection
+- `Solve systems of linear and quadratic equations`: Primary worked examples: Examples 1-4 and 7.
+- `Solve systems of two quadratic equations`: Primary worked examples: Examples 5-6.

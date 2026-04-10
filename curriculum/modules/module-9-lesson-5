@@ -15,7 +15,7 @@ Source: (Module 9, Lesson 9-5, pp. 455–460)
 
 ---
 
-# Learn: Graphing Tangent Functions
+## Learn: Graphing Tangent Functions
 
 Because:
 
@@ -23,7 +23,7 @@ Because:
 
 tangent is undefined where `cos x = 0`, so its graph has vertical asymptotes there.
 
-## Key Concept: Graphs of Tangent Functions
+### Key Concept: Graphs of Tangent Functions
 
 For `y = tan x`:
 
@@ -42,7 +42,7 @@ For `y = a tan bx`:
 
 ---
 
-# Example 1 — Graph a Tangent Function with a Dilation
+## Example 1 — Graph a Tangent Function with a Dilation
 
 Graph:
 
@@ -57,7 +57,7 @@ The graph is horizontally compressed relative to `y = tan x`.
 
 ---
 
-# Example 2 — Graph a Tangent Function with a Dilation and a Reflection
+## Example 2 — Graph a Tangent Function with a Dilation and a Reflection
 
 Graph:
 
@@ -76,7 +76,7 @@ Transformations:
 
 ---
 
-# Learn: Graphing Reciprocal Trigonometric Functions
+## Learn: Graphing Reciprocal Trigonometric Functions
 
 The reciprocal trigonometric functions are:
 
@@ -86,7 +86,7 @@ The reciprocal trigonometric functions are:
 
 Their asymptotes occur where the corresponding sine, cosine, or tangent value is `0`.
 
-## Key Concept: Graphs of Reciprocal Functions
+### Key Concept: Graphs of Reciprocal Functions
 
 * `y = csc x`
   * period `360°`
@@ -100,7 +100,7 @@ Their asymptotes occur where the corresponding sine, cosine, or tangent value is
 
 ---
 
-# Example 3 — Graph a Cosecant Function
+## Example 3 — Graph a Cosecant Function
 
 Graph:
 
@@ -116,7 +116,7 @@ Relative extrema occur at the same x-values as the corresponding maxima and mini
 
 ---
 
-# Example 4 — Graph a Cotangent Function
+## Example 4 — Graph a Cotangent Function
 
 Graph:
 
@@ -131,11 +131,11 @@ Since cotangent is the reciprocal of tangent:
 
 ---
 
-# Example 5 — Apply a Reciprocal Trigonometric Function
+## Example 5 — Apply a Reciprocal Trigonometric Function
 
 A banner plane is `1200` feet above a festival. Let `d` be the distance from the crowd to the banner and `x` the angle of elevation.
 
-## Part A: Write a function
+### Part A: Write a function
 
 Use:
 
@@ -145,12 +145,12 @@ So:
 
 `d = 1200/sin x = 1200 csc x`
 
-## Part B: Graph the function
+### Part B: Graph the function
 
 * period `= 360°`
 * asymptotes where `sin x = 0`, so `x = 180n°`
 
-## Part C: Analyze key features in context
+### Part C: Analyze key features in context
 
 For `0° < x < 180°`:
 
@@ -162,3 +162,9 @@ For `0° < x < 180°`:
 * decreasing on `(0, 90)`
 * increasing on `(90, 180)`
 
+---
+
+## Objective Alignment
+
+- `Graph and analyze tangent functions`: Primary worked examples: Examples 1-2.
+- `Graph and analyze reciprocal trigonometric functions`: Primary worked examples: Examples 3-5.

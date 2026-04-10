@@ -1,19 +1,15 @@
-## 📘 Lesson 1-1: Graphing Quadratic Functions
+# Lesson 1-1 — Graphing Quadratic Functions
 
-Source:  (Module 1, Lesson 1-1, pp. 3–7)
+Source: (Module 1, Lesson 1-1, pp. 3–7)
 
----
-
-# **Lesson 1-1 — Graphing Quadratic Functions**
-
-## **Today’s Goals**
+## Today’s Goals
 
 * Graph quadratic functions
 * Find and interpret the average rate of change
 
 ---
 
-## **Vocabulary**
+## Vocabulary
 
 * quadratic function
 * axis of symmetry
@@ -25,45 +21,45 @@ Source:  (Module 1, Lesson 1-1, pp. 3–7)
 
 ---
 
-## **Explore: Transforming Quadratic Functions**
+## Explore: Transforming Quadratic Functions
 
 Use graphing technology to explore how changes to (a), (b), and (c) affect the graph of
 [
 y = ax^2 + bx + c
 ]
 
-**Inquiry Question:**
+Inquiry Question:
 How can you use the values of (a), (b), and (c) to visualize the graph?
 
 ---
 
-# **Learn: Graphing Quadratic Functions**
+## Learn: Graphing Quadratic Functions
 
-A **quadratic function** has the form:
+A quadratic function has the form:
 [
 y = ax^2 + bx + c, \quad a \ne 0
 ]
 
-* The graph is a **parabola**
-* The **y-intercept** is (c)
+* The graph is a parabola
+* The y-intercept is (c)
 
 ---
 
-## **Key Concept: Graph of a Quadratic Function**
+### Key Concept: Graph of a Quadratic Function
 
 * Axis of symmetry:
   [
   x = -\frac{b}{2a}
   ]
 
-* The axis of symmetry passes through the **vertex**
+* The axis of symmetry passes through the vertex
 
 ---
 
-## **Key Concept: Maximum and Minimum**
+### Key Concept: Maximum and Minimum
 
-* If (a > 0): parabola opens **up** → vertex is a **minimum**
-* If (a < 0): parabola opens **down** → vertex is a **maximum**
+* If (a > 0): parabola opens up → vertex is a minimum
+* If (a < 0): parabola opens down → vertex is a maximum
 
 ⚠️ Important:
 
@@ -72,7 +68,7 @@ y = ax^2 + bx + c, \quad a \ne 0
 
 ---
 
-# **Example 1 — Graph Using a Table**
+## Example 1 — Graph Using a Table
 
 Graph:
 [
@@ -90,7 +86,7 @@ x = -\frac{2}{2(1)} = -1
 ]
 
 Vertex x-value: (-1)
-Since (a > 0), vertex is a **minimum**
+Since (a > 0), vertex is a minimum
 
 ---
 
@@ -113,16 +109,16 @@ Since (a > 0), vertex is a **minimum**
 
 ---
 
-# **Example 2 — Compare Quadratic Functions**
+## Example 2 — Compare Quadratic Functions
 
 * (f(x)) has a maximum of about 5 (from graph)
 * (g(x)): vertex (1, 2), y-intercept -1
 
-Since (5 > 2), **(f(x)) has the greater maximum**
+Since (5 > 2), (f(x)) has the greater maximum
 
 ---
 
-# **Example 3 — Real-World Application (Modeling)**
+## Example 3 — Real-World Application (Modeling)
 
 A ski resort sells:
 
@@ -168,7 +164,7 @@ Best price:
 120 + 5(5) = 145
 ]
 
-✅ Maximum profit at **$145 per pass**
+✅ Maximum profit at $145 per pass
 
 ---
 
@@ -179,9 +175,9 @@ Best price:
 
 ---
 
-# **Learn: Average Rate of Change**
+## Learn: Average Rate of Change
 
-## **Key Concept**
+### Key Concept
 
 [
 \text{Average Rate of Change} = \frac{f(b) - f(a)}{b - a}
@@ -189,7 +185,7 @@ Best price:
 
 ---
 
-# **Example 4 — From an Equation**
+## Example 4 — From an Equation
 
 Find average rate of change of:
 [
@@ -204,11 +200,11 @@ f(4) = -9,\quad f(-4) = -25
 \frac{-9 - (-25)}{4 - (-4)} = \frac{16}{8} = 2
 ]
 
-✅ Answer: **2**
+✅ Answer: 2
 
 ---
 
-# **Example 5 — From a Table**
+## Example 5 — From a Table
 
 Given:
 
@@ -221,11 +217,11 @@ Given:
 \frac{-24 - 48}{3 - (-3)} = \frac{-72}{6} = -12
 ]
 
-✅ Answer: **-12**
+✅ Answer: -12
 
 ---
 
-# **Example 6 — From a Graph (Estimation + Algebra)**
+## Example 6 — From a Graph (Estimation + Algebra)
 
 * Change in y ≈ 5.5
 * Change in x = 10
@@ -243,11 +239,11 @@ Exact:
 
 ### Interpretation
 
-Spending increased by about **$527 million per year**
+Spending increased by about $527 million per year
 
 ---
 
-# **Think About It (Discourse Prompts)**
+## Think About It
 
 * Why does the vertex represent a maximum or minimum?
 * How can you tell a function is nonlinear without graphing?
@@ -255,9 +251,15 @@ Spending increased by about **$527 million per year**
 
 ---
 
-# **CAP Reflection (Student Mindset)**
+## CAP Reflection
 
-* **Courage:** What part of graphing felt unfamiliar today?
-* **Adaptability:** How did you adjust when the graph didn’t look right?
-* **Persistence:** What strategy helped you finish the examples?
+* Courage: What part of graphing felt unfamiliar today?
+* Adaptability: How did you adjust when the graph didn’t look right?
+* Persistence: What strategy helped you finish the examples?
 
+---
+
+## Objective Alignment
+
+- `Graph quadratic functions`: Primary worked examples: Examples 1-3.
+- `Find and interpret the average rate of change`: Primary worked examples: Examples 4-6.

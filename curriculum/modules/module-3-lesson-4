@@ -25,7 +25,7 @@ How are the divisor and quotient of a polynomial related to its factors when the
 
 ---
 
-# Learn: The Remainder Theorem
+## Learn: The Remainder Theorem
 
 From the Division Algorithm:
 
@@ -53,7 +53,7 @@ Evaluate at `x = a`:
 
 So the remainder is the value of the polynomial at `a`.
 
-## Key Concept: Remainder Theorem
+### Key Concept: Remainder Theorem
 
 For a polynomial `p(x)` and a number `a`, the remainder upon division by `x - a` is `p(a)`.
 
@@ -68,7 +68,7 @@ Applying the Remainder Theorem to evaluate a function is called **synthetic subs
 
 ---
 
-# Example 1 — Synthetic Substitution
+## Example 1 — Synthetic Substitution
 
 Use synthetic substitution to find `f(-3)` if:
 
@@ -94,13 +94,13 @@ Check with direct substitution:
 
 `= -81`
 
-## Study Tip
+### Study Tip
 
 Use `0` as a placeholder for any missing terms.
 
 ---
 
-# Example 2 — Apply the Remainder Theorem
+## Example 2 — Apply the Remainder Theorem
 
 Egg production in the United States can be modeled by:
 
@@ -124,13 +124,13 @@ How could you use the function and synthetic substitution to estimate the number
 
 ---
 
-# Learn: The Factor Theorem
+## Learn: The Factor Theorem
 
 When a binomial evenly divides a polynomial, the binomial is a factor of the polynomial.
 
 The quotient from this division is called a **depressed polynomial**. It has degree one less than the original polynomial.
 
-## Key Concept: Factor Theorem
+### Key Concept: Factor Theorem
 
 The binomial `x - a` is a factor of the polynomial `p(x)` **if and only if** `p(a) = 0`.
 
@@ -140,7 +140,7 @@ If dividing `x^3 - x^2 - 30x + 72` by `x + 6` gives remainder `0`, then `x + 6` 
 
 ---
 
-# Example 3 — Use the Factor Theorem
+## Example 3 — Use the Factor Theorem
 
 Show that `x + 8` is a factor of:
 
@@ -170,6 +170,13 @@ Suppose you were asked to determine whether `3x + 4` is a factor of `3x^3 - 2x^2
 
 ---
 
-# Pause and Reflect
+## Pause and Reflect
 
 Did you struggle with anything in this lesson? If so, how did you deal with it?
+
+---
+
+## Objective Alignment
+
+- `Evaluate functions by using synthetic substitution`: Primary worked examples: Examples 1-2.
+- `Use the Factor Theorem to determine factors of polynomials`: Primary worked examples: Examples 2-3.

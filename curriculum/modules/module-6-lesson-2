@@ -24,11 +24,11 @@ How can you determine `logb(xy)` and `logb(x/y)` given `logb x` and `logb y`?
 
 ---
 
-# Learn: Logarithmic Equations
+## Learn: Logarithmic Equations
 
 A **logarithmic equation** contains one or more logarithms.
 
-## Key Concept: Property of Equality for Logarithmic Equations
+### Key Concept: Property of Equality for Logarithmic Equations
 
 If `b` is a positive number other than `1`, then:
 
@@ -38,7 +38,7 @@ This property also holds true for inequalities.
 
 ---
 
-# Example 1 — Solve a Logarithmic Equation by Using Definitions
+## Example 1 — Solve a Logarithmic Equation by Using Definitions
 
 Solve:
 
@@ -58,13 +58,13 @@ Because `4 = 2^2`,
 
 ---
 
-# Example 2 — Solve a Logarithmic Equation by Using Properties of Equality
+## Example 2 — Solve a Logarithmic Equation by Using Properties of Equality
 
 Solve:
 
 `log5(2x^2 - 6) = log5(4x)`
 
-## Step 1: Solve for `x`
+### Step 1: Solve for `x`
 
 Because the bases are the same:
 
@@ -81,7 +81,7 @@ So:
 * `x = 3`
 * `x = -1`
 
-## Step 2: Check for extraneous solutions
+### Step 2: Check for extraneous solutions
 
 For `x = 3`:
 
@@ -101,7 +101,7 @@ Final answer:
 
 Why does the property also include the statement "If `x = 7`, then `log3 x = log3 7`"?
 
-## Check
+### Check
 
 Solve:
 
@@ -109,23 +109,23 @@ Solve:
 
 ---
 
-# Learn: Properties of Logarithms
+## Learn: Properties of Logarithms
 
 Because logarithms are exponents, the properties of logarithms can be derived from the properties of exponents.
 
-## Key Concept: Product Property of Logarithms
+### Key Concept: Product Property of Logarithms
 
 The logarithm of a product is the sum of the logarithms of its factors.
 
 `logb(mn) = logb m + logb n`
 
-## Key Concept: Quotient Property of Logarithms
+### Key Concept: Quotient Property of Logarithms
 
 The logarithm of a quotient is the difference of the logarithms of the numerator and denominator.
 
 `logb(m/n) = logb m - logb n`
 
-## Key Concept: Power Property of Logarithms
+### Key Concept: Power Property of Logarithms
 
 The logarithm of a power is the product of the logarithm and the exponent.
 
@@ -133,7 +133,7 @@ The logarithm of a power is the product of the logarithm and the exponent.
 
 ---
 
-# Example 3 — Product Property of Logarithms
+## Example 3 — Product Property of Logarithms
 
 Use `log3 5 ≈ 1.465` to approximate `log3 405`.
 
@@ -153,13 +153,13 @@ Then:
 
 `≈ 5.465`
 
-## Check
+### Check
 
 Use `log8 5 ≈ 0.7740` to approximate `log8 320`.
 
 ---
 
-# Example 4 — Quotient Property of Logarithms
+## Example 4 — Quotient Property of Logarithms
 
 Use `log3 5 ≈ 1.465` to approximate `log3(9/5)`.
 
@@ -179,13 +179,13 @@ Then:
 
 `≈ 0.535`
 
-## Check
+### Check
 
 Use `log6 5 ≈ 0.8982` to approximate `log6(5/1296)`.
 
 ---
 
-# Example 5 — Power Property of Logarithms
+## Example 5 — Power Property of Logarithms
 
 Use `log2 6 ≈ 2.585` to approximate `log2 1296`.
 
@@ -203,13 +203,13 @@ Then:
 
 `≈ 10.34`
 
-## Check
+### Check
 
 Use `log2 3 ≈ 1.5850` to approximate `log2 243`.
 
 ---
 
-# Apply Example 6 — Solve a Logarithmic Equation by Using Properties
+## Apply Example 6 — Solve a Logarithmic Equation by Using Properties
 
 The loudness of a sound `L` in decibels is defined by:
 
@@ -219,15 +219,15 @@ where `R` is the relative intensity of the sound.
 
 A choir director wants to determine how many choir members could sing while maintaining a safe level of sound, about `80` decibels. If one person has a relative intensity of `10^6` when singing, then how many people could sing with the same relative intensity to achieve a loudness of `80` decibels?
 
-## 1. What is the task?
+### 1. What is the task?
 
 Describe the task in your own words and identify the needed information.
 
-## 2. How will you approach the task?
+### 2. How will you approach the task?
 
 Represent the total relative intensity `R` in terms of the number of singers `x`, then solve the equation.
 
-## 3. What is your solution?
+### 3. What is your solution?
 
 If one singer has relative intensity `10^6`, then a choir with `x` members has:
 
@@ -251,7 +251,7 @@ So:
 
 A choir of `100` members would reach `80` decibels.
 
-## 4. How can you know that your solution is reasonable?
+### 4. How can you know that your solution is reasonable?
 
 Check by substituting `x = 100`:
 
@@ -259,7 +259,13 @@ Check by substituting `x = 100`:
 
 `L = 10 log10(10^8) = 10(8) = 80`
 
-## Check
+### Check
 
 Recall that the Richter scale magnitude is given by `m = log10 x`, where `x` is the amplitude of the seismic wave. Determine the reading of an earthquake that is `10` times less intense than an earthquake that measures `4.5` on the Richter scale.
 
+---
+
+## Objective Alignment
+
+- `Solve logarithmic equations using properties of equality`: Primary worked examples: Examples 1-2.
+- `Simplify and evaluate expressions by using the properties of logarithms`: Primary worked examples: Examples 3-5.
