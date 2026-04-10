@@ -42,7 +42,7 @@
 
 - [x] Task: Conductor — Phase Completion Verification 'Props Schemas' (Protocol in workflow.md) [946e5b3]
 
-## Phase 3: Submission Pipeline
+## Phase 3: Submission Pipeline [checkpoint: b6c0580]
 
 - [x] Task: Create client-side submission handler `lib/activities/submission.ts` [d6d968a]
     - [x] Write tests: builds valid envelope, validates against practice.v1 schema
