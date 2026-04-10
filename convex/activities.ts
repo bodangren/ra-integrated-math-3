@@ -305,3 +305,68 @@ export const submitAssessment = internalMutation({
     return { id };
   },
 });
+
+export const submitActivity = internalMutation({
+  args: {
+    userId: v.id("profiles"),
+    activityId: v.id("activities"),
+    submissionData: practiceSubmissionEnvelopeValidator,
+  },
+  handler: async (ctx, args) => {
+    const now = Date.now();
+
+    const activity = await ctx.db.get(args.activityId);
+    if (!activity) {
+      throw new Error("Activity not found");
+    }
+
+    const submissionScore = args.submissionData.parts.reduce((sum, part) => sum + (part.score ?? 0), 0);
+    const maxScore = args.submissionData.parts.reduce((sum, part) => sum + (part.maxScore ?? 0), 0);
+
+    const submissionId = await ctx.db.insert("activity_submissions", {
+      userId: args.userId,
+      activityId: args.activityId,
+      submissionData: args.submissionData,
+      score: submissionScore,
+      maxScore,
+      submittedAt: now,
+      gradedAt: now,
+      createdAt: now,
+      updatedAt: now,
+    });
+
+    if (activity.standardId) {
+      const existingCompetency = await ctx.db
+        .query("student_competency")
+        .withIndex("by_student_and_standard", (q) =>
+          q.eq("studentId", args.userId).eq("standardId", activity.standardId!)
+        )
+        .unique();
+
+      if (existingCompetency) {
+        const percentage = maxScore > 0 ? (submissionScore / maxScore) * 100 : 0;
+        const masteryIncrement = Math.round(percentage);
+
+        const newLevel = Math.min(existingCompetency.masteryLevel + masteryIncrement, 100);
+        await ctx.db.patch(existingCompetency._id, {
+          masteryLevel: newLevel,
+          evidenceActivityId: args.activityId,
+          lastUpdated: now,
+          updatedBy: args.userId,
+        });
+      } else {
+        await ctx.db.insert("student_competency", {
+          studentId: args.userId,
+          standardId: activity.standardId,
+          masteryLevel: 50,
+          evidenceActivityId: args.activityId,
+          lastUpdated: now,
+          createdAt: now,
+          updatedBy: args.userId,
+        });
+      }
+    }
+
+    return { id: submissionId, score: submissionScore, maxScore };
+  },
+});
