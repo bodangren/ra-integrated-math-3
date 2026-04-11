@@ -13,15 +13,23 @@
 
 ## Phase 2: Update canvas-utils.ts [in_progress]
 
-- [x] Task: Refactor `evaluateFunction()` to use shared parser [checkpoint: <commit-hash>]
+- [x] Task: Refactor `evaluateFunction()` to use shared parser [checkpoint: 95911de]
     - [x] Write tests: verify `evaluateFunction()` still works with linear expressions
     - [x] Import `parseLinear()` from new utility
     - [x] Replace inline regex with call to shared parser
     - [x] Verify coefficient extraction logic matches original
 
-- [x] Task: Conductor — Phase Completion Verification 'Update canvas-utils.ts' (Protocol in workflow.md) [<commit-hash>]
+- [x] Task: Conductor — Phase Completion Verification 'Update canvas-utils.ts' (Protocol in workflow.md) [95911de]
 
 ## Phase 3: Update InterceptIdentification.tsx [in_progress]
+
+- [ ] Task: Refactor `calculateXIntercepts()` to use shared parser [in_progress]
+    - [ ] Write tests: verify intercept identification still works correctly for linear functions
+    - [ ] Import `parseLinear()` from new utility
+    - [ ] Replace inline regex with call to shared parser
+    - [ ] Verify intercept calculation logic matches original
+
+- [ ] Task: Conductor — Phase Completion Verification 'Update InterceptIdentification.tsx' (Protocol in workflow.md)
 
 - [ ] Task: Refactor `calculateXIntercepts()` to use shared parser
     - [ ] Write tests: verify intercept identification still works correctly for linear functions

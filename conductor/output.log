@@ -2289,3 +2289,98 @@ Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear
      - [ ] Replace inline regex with call to shared parser
 
 [0m
+[0m$ [0mgit add -A && git commit -m "Phase 2: Update canvas-utils.ts to use shared parser" && git log -1 --format='%H'
+[master 95911de] Phase 2: Update canvas-utils.ts to use shared parser
+ 3 files changed, 198 insertions(+), 21 deletions(-)
+95911deeb8f599ada9f24aa884afe24ca055cac9
+[0m
+[0m← [0mEdit conductor/tracks/extract-linear-regex_20260412/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+@@ -12,18 +12,26 @@
+ - [x] Task: Conductor — Phase Completion Verification 'Create Shared Parser Utility' (Protocol in workflow.md) [7a14107]
+ 
+ ## Phase 2: Update canvas-utils.ts [in_progress]
+ 
+-- [x] Task: Refactor `evaluateFunction()` to use shared parser [checkpoint: <commit-hash>]
++- [x] Task: Refactor `evaluateFunction()` to use shared parser [checkpoint: 95911de]
+     - [x] Write tests: verify `evaluateFunction()` still works with linear expressions
+     - [x] Import `parseLinear()` from new utility
+     - [x] Replace inline regex with call to shared parser
+     - [x] Verify coefficient extraction logic matches original
+ 
+-- [x] Task: Conductor — Phase Completion Verification 'Update canvas-utils.ts' (Protocol in workflow.md) [<commit-hash>]
++- [x] Task: Conductor — Phase Completion Verification 'Update canvas-utils.ts' (Protocol in workflow.md) [95911de]
+ 
+ ## Phase 3: Update InterceptIdentification.tsx [in_progress]
+ 
++- [ ] Task: Refactor `calculateXIntercepts()` to use shared parser [in_progress]
++    - [ ] Write tests: verify intercept identification still works correctly for linear functions
++    - [ ] Import `parseLinear()` from new utility
++    - [ ] Replace inline regex with call to shared parser
++    - [ ] Verify intercept calculation logic matches original
++
++- [ ] Task: Conductor — Phase Completion Verification 'Update InterceptIdentification.tsx' (Protocol in workflow.md)
++
+ - [ ] Task: Refactor `calculateXIntercepts()` to use shared parser
+     - [ ] Write tests: verify intercept identification still works correctly for linear functions
+     - [ ] Import `parseLinear()` from new utility
+     - [ ] Replace inline regex with call to shared parser
+
+[0m
+[0m← [0mEdit components/activities/graphing/InterceptIdentification.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InterceptIdentification.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InterceptIdentification.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InterceptIdentification.tsx
+@@ -2,8 +2,9 @@
+ 
+ import React, { useState, useCallback, useRef } from 'react';
+ import { evaluateFunction, transformDataToCanvas } from '@/lib/activities/graphing/canvas-utils';
+ import { parseQuadratic } from '@/lib/activities/graphing/quadratic-parser';
++import { parseLinear } from '@/lib/activities/graphing/linear-parser';
+ 
+ export interface InterceptData {
+   type: 'intercept' | 'no_intercepts';
+   data: { x: number; y: number } | null;
+
+[0m
+[0m← [0mEdit components/activities/graphing/InterceptIdentification.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InterceptIdentification.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InterceptIdentification.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InterceptIdentification.tsx
+@@ -67,12 +67,11 @@
+       return [x];
+     }
+   }
+ } else {
+-  const linearMatch = expr.match(/(-?\d*\.?\d*)?x(?:\s*([+-]\s*\d*\.?\d*)?)?/);
+-  if (linearMatch) {
+-    const m = linearMatch[1] ? parseFloat(linearMatch[1]) : 1;
+-    const b = linearMatch[2] ? parseFloat(linearMatch[2].replace(/\s/g, '')) : 0;
++  const coeffs = parseLinear(expr);
++  if (coeffs) {
++    const { m, b } = coeffs;
+     if (m !== 0) {
+       const x = -b / m;
+       return [x];
+     }
+
+[0m
+[0m$ [0mnpm test -- InterceptIdentification.test.tsx 2>&1 | tail -20
+> test
+> vitest run InterceptIdentification.test.tsx
+
+
+ RUN  v4.1.2 /home/daniel-bo/Desktop/integrated-math-3
+
+ ✓ __tests__/components/activities/graphing/InterceptIdentification.test.tsx (23 tests) 404ms
+
+ Test Files  1 passed (1)
+      Tests  23 passed (23)
+   Start at  02:38:23
+   Duration  1.77s (transform 167ms, setup 262ms, import 131ms, tests 404ms, environment 719ms)
+[0m

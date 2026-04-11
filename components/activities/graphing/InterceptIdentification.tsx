@@ -3,6 +3,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { evaluateFunction, transformDataToCanvas } from '@/lib/activities/graphing/canvas-utils';
 import { parseQuadratic } from '@/lib/activities/graphing/quadratic-parser';
+import { parseLinear } from '@/lib/activities/graphing/linear-parser';
 
 export interface InterceptData {
   type: 'intercept' | 'no_intercepts';
@@ -67,10 +68,9 @@ export function InterceptIdentification({
         }
       }
     } else {
-      const linearMatch = expr.match(/(-?\d*\.?\d*)?x(?:\s*([+-]\s*\d*\.?\d*)?)?/);
-      if (linearMatch) {
-        const m = linearMatch[1] ? parseFloat(linearMatch[1]) : 1;
-        const b = linearMatch[2] ? parseFloat(linearMatch[2].replace(/\s/g, '')) : 0;
+      const coeffs = parseLinear(expr);
+      if (coeffs) {
+        const { m, b } = coeffs;
         if (m !== 0) {
           const x = -b / m;
           return [x];
