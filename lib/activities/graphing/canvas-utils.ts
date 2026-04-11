@@ -1,4 +1,5 @@
 import { parseQuadratic } from './quadratic-parser';
+import { parseLinear } from './linear-parser';
 
 export interface Point {
   x: number;
@@ -99,11 +100,9 @@ export function evaluateFunction(
       return evaluateQuadratic(x, coeffs.a, coeffs.b, coeffs.c);
     }
   } else if (expression.includes('x')) {
-    const match = expression.match(/(-?\d*\.?\d*)?x(?:\s*([+-]\s*\d*\.?\d*)?)?/);
-    if (match) {
-      const m = match[1] ? parseFloat(match[1]) : 1;
-      const b = match[2] ? parseFloat(match[2].replace(/\s/g, '')) : 0;
-      return evaluateLinear(x, m, b);
+    const coeffs = parseLinear(expression);
+    if (coeffs) {
+      return evaluateLinear(x, coeffs.m, coeffs.b);
     }
   }
 

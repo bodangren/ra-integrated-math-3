@@ -1,27 +1,27 @@
 # Implementation Plan — Extract Linear Regex to Shared Utility
 
-## Phase 1: Create Shared Parser Utility
+## Phase 1: Create Shared Parser Utility [checkpoint: 7a14107]
 
-- [ ] Task: Create `linear-parser.ts` utility module
-    - [ ] Write tests: `parseLinear()` correctly extracts m, b coefficients
-    - [ ] Write tests: handles implicit coefficients (e.g., "x" → m=1, b=0)
-    - [ ] Write tests: handles negative coefficients and signs with spaces
-    - [ ] Write tests: returns null for non-linear expressions
-    - [ ] Implement `lib/activities/graphing/linear-parser.ts`
+- [x] Task: Create `linear-parser.ts` utility module [<commit-hash>]
+    - [x] Write tests: `parseLinear()` correctly extracts m, b coefficients
+    - [x] Write tests: handles implicit coefficients (e.g., "x" → m=1, b=0)
+    - [x] Write tests: handles negative coefficients and signs with spaces
+    - [x] Write tests: returns null for non-linear expressions
+    - [x] Implement `lib/activities/graphing/linear-parser.ts`
 
-- [ ] Task: Conductor — Phase Completion Verification 'Create Shared Parser Utility' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Create Shared Parser Utility' (Protocol in workflow.md) [7a14107]
 
-## Phase 2: Update canvas-utils.ts
+## Phase 2: Update canvas-utils.ts [in_progress]
 
-- [ ] Task: Refactor `evaluateFunction()` to use shared parser
-    - [ ] Write tests: verify `evaluateFunction()` still works with linear expressions
-    - [ ] Import `parseLinear()` from new utility
-    - [ ] Replace inline regex with call to shared parser
-    - [ ] Verify coefficient extraction logic matches original
+- [x] Task: Refactor `evaluateFunction()` to use shared parser [checkpoint: <commit-hash>]
+    - [x] Write tests: verify `evaluateFunction()` still works with linear expressions
+    - [x] Import `parseLinear()` from new utility
+    - [x] Replace inline regex with call to shared parser
+    - [x] Verify coefficient extraction logic matches original
 
-- [ ] Task: Conductor — Phase Completion Verification 'Update canvas-utils.ts' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Update canvas-utils.ts' (Protocol in workflow.md) [<commit-hash>]
 
-## Phase 3: Update InterceptIdentification.tsx
+## Phase 3: Update InterceptIdentification.tsx [in_progress]
 
 - [ ] Task: Refactor `calculateXIntercepts()` to use shared parser
     - [ ] Write tests: verify intercept identification still works correctly for linear functions
