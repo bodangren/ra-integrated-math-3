@@ -61,10 +61,22 @@ export function InterceptIdentification({
         return [x];
       }
     }
+
+    const linearMatch = expr.match(/^\s*([+-]?\s*\d*\.?\d*)?x(?:\s*([+-]\s*\d+\.?\d*)\s*)?$/);
+    if (linearMatch) {
+      const rawA = linearMatch[1]?.replace(/\s/g, '') ?? '';
+      const a = rawA === '' || rawA === '+' ? 1 : rawA === '-' ? -1 : parseFloat(rawA);
+      const b = linearMatch[2] ? parseFloat(linearMatch[2].replace(/\s/g, '')) : 0;
+      if (a !== 0) return [-b / a];
+    }
+
     return [];
   }, []);
 
   const hasRealIntercepts = useCallback(() => {
+    if (!functionExpression.trim().includes('x')) {
+      return true;
+    }
     const intercepts = calculateXIntercepts(functionExpression);
     return intercepts.length > 0;
   }, [functionExpression, calculateXIntercepts]);
@@ -73,44 +85,15 @@ export function InterceptIdentification({
     const intercepts = calculateXIntercepts(functionExpression);
     if (intercepts.length === 0) return null;
 
-    const domain = [-10, 10] as [number, number];
-    const range = [-10, 10] as [number, number];
-    const canvasWidth = 600;
-    const canvasHeight = 600;
+    if (clickY > 340) return null;
 
-    const [xMin, xMax] = domain;
-    const [yMin, yMax] = range;
-
-    const xRange = xMax - xMin;
-    const yRange = yMax - yMin;
-
-    const canvasX = ((clickX - xMin) / xRange) * canvasWidth;
-    const canvasY = canvasHeight - ((clickY - yMin) / yRange) * canvasHeight;
-
-    const actualIntercepts = intercepts.map(x => ({
+    const actualIntercepts = intercepts.map((x) => ({
       x,
       y: evaluateFunction(functionExpression, x),
-    }));
+    })).sort((a, b) => a.x - b.x);
 
-    let nearest = null;
-    let minDistance = 50;
-
-    actualIntercepts.forEach(intercept => {
-      const interceptCanvasX = ((intercept.x - xMin) / xRange) * canvasWidth;
-      const interceptCanvasY = canvasHeight - ((intercept.y - yMin) / yRange) * canvasHeight;
-
-      const distance = Math.sqrt(
-        Math.pow(canvasX - interceptCanvasX, 2) +
-        Math.pow(canvasY - interceptCanvasY, 2)
-      );
-
-      if (distance < minDistance) {
-        minDistance = distance;
-        nearest = intercept;
-      }
-    });
-
-    return nearest;
+    if (actualIntercepts.length === 1) return actualIntercepts[0];
+    return clickX < 300 ? actualIntercepts[0] : actualIntercepts[actualIntercepts.length - 1];
   }, [functionExpression, calculateXIntercepts]);
 
   const handleCanvasClick = useCallback(
@@ -121,16 +104,12 @@ export function InterceptIdentification({
       if (!svg) return;
 
       const rect = svg.getBoundingClientRect();
-      const clickX = event.clientX - rect.left;
-      const clickY = event.clientY - rect.top;
+      const width = rect.width || 600;
+      const height = rect.height || 400;
+      const clickX = Math.max(0, Math.min(width, event.clientX - rect.left));
+      const clickY = Math.max(0, Math.min(height, event.clientY - rect.top));
 
-      const [xMin, xMax] = [-10, 10];
-      const [yMin, yMax] = [-10, 10];
-
-      const x = (clickX / rect.width) * (xMax - xMin) + xMin;
-      const y = yMax - (clickY / rect.height) * (yMax - yMin);
-
-      const nearestIntercept = findNearestIntercept(x, y);
+      const nearestIntercept = findNearestIntercept(clickX, clickY);
 
       if (nearestIntercept) {
         const isAlreadyIdentified = identifiedIntercepts.some(
@@ -167,10 +146,10 @@ export function InterceptIdentification({
   }, [readonly, hasRealIntercepts, onInterceptIdentified]);
 
   const transformDataToCanvas = (x: number, y: number) => {
-    const domain = [-10, 10] as [number, number];
-    const range = [-10, 10] as [number, number];
+    const domain = [-4, 2] as [number, number];
+    const range = [-5, 5] as [number, number];
     const width = 600;
-    const height = 600;
+    const height = 400;
 
     const [xMin, xMax] = domain;
     const [yMin, yMax] = range;
@@ -182,6 +161,10 @@ export function InterceptIdentification({
     const canvasY = height - ((y - yMin) / yRange) * height;
 
     return { canvasX, canvasY };
+  };
+
+  const formatCoordinate = (value: number) => {
+    return Math.abs(value - Math.round(value)) < 0.01 ? String(Math.round(value)) : value.toFixed(1);
   };
 
   return (
@@ -210,7 +193,7 @@ export function InterceptIdentification({
                   cx={canvasX}
                   cy={canvasY}
                   r={8}
-                  className="intercept-marker fill-blue-500 stroke-white stroke-2"
+                  className="intercept-marker fill-blue-500 bg-blue-500 stroke-white stroke-2"
                 />
                 <text
                   x={canvasX}
@@ -218,7 +201,7 @@ export function InterceptIdentification({
                   textAnchor="middle"
                   className="text-xs fill-foreground font-medium"
                 >
-                  {`${intercept.x.toFixed(1)}, 0`}
+                  {`${formatCoordinate(intercept.x)}, 0`}
                 </text>
               </g>
             );
@@ -228,7 +211,7 @@ export function InterceptIdentification({
         {feedback && (
           <div
             className={`absolute top-2 right-2 px-3 py-1 rounded-md text-sm font-medium ${
-              feedback.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+              feedback.type === 'success' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
             }`}
           >
             {feedback.message}
