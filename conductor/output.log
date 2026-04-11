@@ -2618,3 +2618,141 @@ Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear
  - [ ] Task: Conductor — Phase Completion Verification 'Final Verification' (Protocol in workflow.md)
 
 [0m
+[0m$ [0mgit add -A && git commit -m "Phase 4: Update tracks.md, tech-debt.md, and lessons-learned.md" && git log -1 --format='%H'
+[master 5d02245] Phase 4: Update tracks.md, tech-debt.md, and lessons-learned.md
+ 5 files changed, 122 insertions(+), 11 deletions(-)
+5d022452691bcf97fe33b0ca460fb67b575f3190
+[0m
+[0m✗ [0medit failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m
+[0m← [0mEdit conductor/tracks/extract-linear-regex_20260412/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+@@ -1,9 +1,9 @@
+ # Implementation Plan — Extract Linear Regex to Shared Utility
+ 
+ ## Phase 1: Create Shared Parser Utility [checkpoint: 7a14107]
+ 
+-- [x] Task: Create `linear-parser.ts` utility module [<commit-hash>]
++- [x] Task: Create `linear-parser.ts` utility module [7a14107]
+     - [x] Write tests: `parseLinear()` correctly extracts m, b coefficients
+     - [x] Write tests: handles implicit coefficients (e.g., "x" → m=1, b=0)
+     - [x] Write tests: handles negative coefficients and signs with spaces
+     - [x] Write tests: returns null for non-linear expressions
+
+[0m
+[0m✗ [0medit failed
+[91m[1mError: [0mFound multiple matches for oldString. Provide more surrounding context to make the match unique.
+[0m→ [0mRead conductor/tracks/extract-linear-regex_20260412/plan.md
+[0m
+[0m← [0mEdit conductor/tracks/extract-linear-regex_20260412/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+@@ -10,11 +10,11 @@
+     - [x] Implement `lib/activities/graphing/linear-parser.ts`
+ 
+ - [x] Task: Conductor — Phase Completion Verification 'Create Shared Parser Utility' (Protocol in workflow.md) [7a14107]
+ 
+-## Phase 2: Update canvas-utils.ts [in_progress]
++## Phase 2: Update canvas-utils.ts [completed]
+ 
+-- [x] Task: Refactor `evaluateFunction()` to use shared parser [checkpoint: 95911de]
++- [x] Task: Refactor `evaluateFunction()` to use shared parser [95911de]
+     - [x] Write tests: verify `evaluateFunction()` still works with linear expressions
+     - [x] Import `parseLinear()` from new utility
+     - [x] Replace inline regex with call to shared parser
+     - [x] Verify coefficient extraction logic matches original
+
+[0m
+[0m← [0mEdit conductor/tracks/extract-linear-regex_20260412/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+@@ -20,11 +20,11 @@
+     - [x] Verify coefficient extraction logic matches original
+ 
+ - [x] Task: Conductor — Phase Completion Verification 'Update canvas-utils.ts' (Protocol in workflow.md) [95911de]
+ 
+-## Phase 3: Update InterceptIdentification.tsx [in_progress]
++## Phase 3: Update InterceptIdentification.tsx [completed]
+ 
+-- [x] Task: Refactor `calculateXIntercepts()` to use shared parser [checkpoint: d042a3e]
++- [x] Task: Refactor `calculateXIntercepts()` to use shared parser [d042a3e]
+     - [x] Write tests: verify intercept identification still works correctly for linear functions
+     - [x] Import `parseLinear()` from new utility
+     - [x] Replace inline regex with call to shared parser
+     - [x] Verify intercept calculation logic matches original
+
+[0m
+[0m← [0mEdit conductor/tracks/extract-linear-regex_20260412/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+@@ -30,11 +30,11 @@
+     - [x] Verify intercept calculation logic matches original
+ 
+ - [x] Task: Conductor — Phase Completion Verification 'Update InterceptIdentification.tsx' (Protocol in workflow.md) [d042a3e]
+ 
+-## Phase 4: Final Verification [in_progress]
++## Phase 4: Final Verification [completed]
+ 
+-- [x] Task: Run full test suite [checkpoint: 5c289ab]
++- [x] Task: Run full test suite [5c289ab]
+     - [x] Run `npm test` to ensure all tests pass (883/883)
+     - [x] Run `npm run lint` to ensure no lint errors (pass)
+     - [x] Run `npm run typecheck` to ensure no TypeScript errors (1 pre-existing error in PhaseCompleteButton.test.tsx, unrelated)
+ 
+
+[0m
+[0m← [0mEdit conductor/tracks/extract-linear-regex_20260412/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+@@ -37,13 +37,13 @@
+     - [x] Run `npm test` to ensure all tests pass (883/883)
+     - [x] Run `npm run lint` to ensure no lint errors (pass)
+     - [x] Run `npm run typecheck` to ensure no TypeScript errors (1 pre-existing error in PhaseCompleteButton.test.tsx, unrelated)
+ 
+-- [x] Task: Verify no regressions [checkpoint: <commit-hash>]
++- [x] Task: Verify no regressions [5d02245]
+     - [x] Test graphing canvas with linear functions (existing tests pass)
+     - [x] Test intercept identification with linear functions (existing tests pass)
+ 
+-- [x] Task: Update tracks.md and tech-debt.md [checkpoint: <commit-hash>]
++- [x] Task: Update tracks.md and tech-debt.md [5d02245]
+     - [x] Add new track to tracks.md
+     - [x] Mark "Linear regex duplicated in canvas-utils.ts and InterceptIdentification.tsx" as Resolved in tech-debt.md
+ 
+-- [ ] Task: Conductor — Phase Completion Verification 'Final Verification' (Protocol in workflow.md)
++- [x] Task: Conductor — Phase Completion Verification 'Final Verification' (Protocol in workflow.md) [5d02245]
+
+[0m
+[0m← [0mEdit conductor/tracks/extract-linear-regex_20260412/metadata.json
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/metadata.json
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/metadata.json
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/metadata.json
+@@ -1,10 +1,10 @@
+ {
+   "track_id": "extract-linear-regex_20260412",
+   "title": "Refactor: Extract Linear Regex to Shared Utility",
+-  "status": "in_progress",
++  "status": "completed",
+   "priority": "medium",
+   "created": "2026-04-12",
+-  "completed": null,
++  "completed": "2026-04-12",
+   "depends_on": ["graphing-components_20260406"],
+-  "phase": 0
++  "phase": 4
+ }
+
+[0m
