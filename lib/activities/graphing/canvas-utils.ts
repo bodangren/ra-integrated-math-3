@@ -87,17 +87,16 @@ export function evaluateLinear(
   return m * x + b;
 }
 
+import { parseQuadratic } from './quadratic-parser';
+
 export function evaluateFunction(
   expression: string,
   x: number,
 ): number {
   if (expression.includes('x^2')) {
-    const match = expression.match(/(-?\d*\.?\d*)?x\^2(?:\s*([+-]\s*\d*\.?\d*)?x)?(?:\s*([+-]\s*\d*\.?\d*)?)?/);
-    if (match) {
-      const a = match[1] ? parseFloat(match[1]) : 1;
-      const b = match[2] ? parseFloat(match[2].replace(/\s/g, '')) : 0;
-      const c = match[3] ? parseFloat(match[3].replace(/\s/g, '')) : 0;
-      return evaluateQuadratic(x, a, b, c);
+    const coeffs = parseQuadratic(expression);
+    if (coeffs) {
+      return evaluateQuadratic(x, coeffs.a, coeffs.b, coeffs.c);
     }
   } else if (expression.includes('x')) {
     const match = expression.match(/(-?\d*\.?\d*)?x(?:\s*([+-]\s*\d*\.?\d*)?)?/);

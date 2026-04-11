@@ -9,15 +9,17 @@
     - [x] Write tests: returns null for non-quadratic expressions
     - [x] Implement `lib/activities/graphing/quadratic-parser.ts`
 
-- [ ] Task: Conductor — Phase Completion Verification 'Create Shared Parser Utility' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Create Shared Parser Utility' (Protocol in workflow.md) [e7e0fc6]
 
-## Phase 2: Update canvas-utils.ts
+## Phase 2: Update canvas-utils.ts [in_progress]
 
-- [ ] Task: Refactor `evaluateFunction()` to use shared parser
-    - [ ] Write tests: verify `evaluateFunction()` still works with quadratic expressions
-    - [ ] Import `parseQuadratic()` from new utility
-    - [ ] Replace inline regex with call to shared parser
-    - [ ] Verify coefficient extraction logic matches original
+## Phase 2: Update canvas-utils.ts [in_progress]
+
+- [x] Task: Refactor `evaluateFunction()` to use shared parser [checkpoint: 2ce56bd]
+    - [x] Write tests: verify `evaluateFunction()` still works with quadratic expressions
+    - [x] Import `parseQuadratic()` from new utility
+    - [x] Replace inline regex with call to shared parser
+    - [x] Verify coefficient extraction logic matches original
 
 - [ ] Task: Conductor — Phase Completion Verification 'Update canvas-utils.ts' (Protocol in workflow.md)
 
