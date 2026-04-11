@@ -761,3 +761,131 @@ Index: /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/
    Start at  23:45:04
    Duration  1.64s (transform 133ms, setup 273ms, import 90ms, tests 296ms, environment 723ms)
 [0m
+[0m← [0mEdit conductor/tracks/extract-quadratic-regex_20260411/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-quadratic-regex_20260411/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-quadratic-regex_20260411/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-quadratic-regex_20260411/plan.md
+@@ -26,13 +26,13 @@
+ ## Phase 3: Update HintPanel.tsx [in_progress]
+ 
+ ## Phase 3: Update HintPanel.tsx [in_progress]
+ 
+-- [ ] Task: Refactor `parseQuadratic()` to use shared parser [in_progress]
+-    - [ ] Write tests: verify hint panel still correctly identifies vertex, axis, direction
+-    - [ ] Import `parseQuadratic()` from new utility
+-    - [ ] Remove local `parseQuadratic()` implementation
+-    - [ ] Verify all hint types work correctly
++- [x] Task: Refactor `parseQuadratic()` to use shared parser [checkpoint: <commit-hash>]
++    - [x] Write tests: verify hint panel still correctly identifies vertex, axis, direction
++    - [x] Import `parseQuadratic()` from new utility
++    - [x] Remove local `parseQuadratic()` implementation
++    - [x] Verify all hint types work correctly
+ 
+ - [ ] Task: Conductor — Phase Completion Verification 'Update HintPanel.tsx' (Protocol in workflow.md)
+ 
+ ## Phase 4: Update InterceptIdentification.tsx
+
+[0m
+[0m$ [0mgit add -A && git commit -m "Phase 3: Update HintPanel.tsx to use shared parser" && git log -1 --format='%H'
+[master 6a869b6] Phase 3: Update HintPanel.tsx to use shared parser
+ 3 files changed, 194 insertions(+), 25 deletions(-)
+6a869b63c6ffeee6516eda949e6d12a351c40d9c
+[0m
+[0m← [0mEdit conductor/tracks/extract-quadratic-regex_20260411/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-quadratic-regex_20260411/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-quadratic-regex_20260411/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-quadratic-regex_20260411/plan.md
+@@ -26,9 +26,9 @@
+ ## Phase 3: Update HintPanel.tsx [in_progress]
+ 
+ ## Phase 3: Update HintPanel.tsx [in_progress]
+ 
+-- [x] Task: Refactor `parseQuadratic()` to use shared parser [checkpoint: <commit-hash>]
++- [x] Task: Refactor `parseQuadratic()` to use shared parser [checkpoint: 6a869b6]
+     - [x] Write tests: verify hint panel still correctly identifies vertex, axis, direction
+     - [x] Import `parseQuadratic()` from new utility
+     - [x] Remove local `parseQuadratic()` implementation
+     - [x] Verify all hint types work correctly
+
+[0m
+[0m← [0mEdit conductor/tracks/extract-quadratic-regex_20260411/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-quadratic-regex_20260411/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-quadratic-regex_20260411/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-quadratic-regex_20260411/plan.md
+@@ -32,13 +32,13 @@
+     - [x] Import `parseQuadratic()` from new utility
+     - [x] Remove local `parseQuadratic()` implementation
+     - [x] Verify all hint types work correctly
+ 
+-- [ ] Task: Conductor — Phase Completion Verification 'Update HintPanel.tsx' (Protocol in workflow.md)
++- [x] Task: Conductor — Phase Completion Verification 'Update HintPanel.tsx' (Protocol in workflow.md) [6a869b6]
+ 
+-## Phase 4: Update InterceptIdentification.tsx
++## Phase 4: Update InterceptIdentification.tsx [in_progress]
+ 
+-- [ ] Task: Refactor `calculateXIntercepts()` to use shared parser
++- [ ] Task: Refactor `calculateXIntercepts()` to use shared parser [in_progress]
+     - [ ] Write tests: verify intercept identification still works correctly
+     - [ ] Import `parseQuadratic()` from new utility
+     - [ ] Replace inline regex with call to shared parser
+     - [ ] Verify intercept calculation logic matches original
+
+[0m
+[0m$ [0mgit add conductor/tracks/extract-quadratic-regex_20260411/plan.md && git commit --amend --no-edit && git push
+[master 758d333] Phase 3: Update HintPanel.tsx to use shared parser
+ Date: Sat Apr 11 23:45:32 2026 +0800
+ 3 files changed, 197 insertions(+), 28 deletions(-)
+To https://github.com/bodangren/ra-integrated-math-3.git
+   dd69b87..758d333  master -> master
+[0m
+[0m← [0mEdit components/activities/graphing/InterceptIdentification.tsx
+Index: /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InterceptIdentification.tsx
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InterceptIdentification.tsx
++++ /home/daniel-bo/Desktop/integrated-math-3/components/activities/graphing/InterceptIdentification.tsx
+@@ -1,8 +1,9 @@
+ 'use client';
+ 
+ import React, { useState, useCallback, useRef } from 'react';
+ import { evaluateFunction, transformDataToCanvas } from '@/lib/activities/graphing/canvas-utils';
++import { parseQuadratic } from '@/lib/activities/graphing/quadratic-parser';
+ 
+ export interface InterceptData {
+   type: 'intercept' | 'no_intercepts';
+   data: { x: number; y: number } | null;
+@@ -40,13 +41,11 @@
+       return [];
+     }
+ 
+     if (trimmedExpr.includes('x^2')) {
+-      const match = expr.match(/(-?\d*\.?\d*)?x\^2(?:\s*([+-]\s*\d*\.?\d*)?x)?(?:\s*([+-]\s*\d*\.?\d*)?)?/);
+-      if (match) {
+-        const a = match[1] ? parseFloat(match[1]) : 1;
+-        const b = match[2] ? parseFloat(match[2].replace(/\s/g, '')) : 0;
+-        const c = match[3] ? parseFloat(match[3].replace(/\s/g, '')) : 0;
++      const coeffs = parseQuadratic(expr);
++      if (coeffs) {
++        const { a, b, c } = coeffs;
+ 
+         if (a !== 0) {
+           const discriminant = b * b - 4 * a * c;
+           if (discriminant > 0) {
+
+[0m
+[0m$ [0mnpm test -- InterceptIdentification.test.tsx 2>&1 | tail -30
+> test
+> vitest run InterceptIdentification.test.tsx
+
+
+ RUN  v4.1.2 /home/daniel-bo/Desktop/integrated-math-3
+
+ ✓ __tests__/components/activities/graphing/InterceptIdentification.test.tsx (23 tests) 422ms
+
+ Test Files  1 passed (1)
+      Tests  23 passed (23)
+   Start at  23:47:03
+   Duration  1.81s (transform 164ms, setup 280ms, import 125ms, tests 422ms, environment 723ms)
+[0m

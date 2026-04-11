@@ -2,6 +2,7 @@
 
 import React, { useState, useCallback, useRef } from 'react';
 import { evaluateFunction, transformDataToCanvas } from '@/lib/activities/graphing/canvas-utils';
+import { parseQuadratic } from '@/lib/activities/graphing/quadratic-parser';
 
 export interface InterceptData {
   type: 'intercept' | 'no_intercepts';
@@ -41,11 +42,9 @@ export function InterceptIdentification({
     }
 
     if (trimmedExpr.includes('x^2')) {
-      const match = expr.match(/(-?\d*\.?\d*)?x\^2(?:\s*([+-]\s*\d*\.?\d*)?x)?(?:\s*([+-]\s*\d*\.?\d*)?)?/);
-      if (match) {
-        const a = match[1] ? parseFloat(match[1]) : 1;
-        const b = match[2] ? parseFloat(match[2].replace(/\s/g, '')) : 0;
-        const c = match[3] ? parseFloat(match[3].replace(/\s/g, '')) : 0;
+      const coeffs = parseQuadratic(expr);
+      if (coeffs) {
+        const { a, b, c } = coeffs;
 
         if (a !== 0) {
           const discriminant = b * b - 4 * a * c;
