@@ -33,6 +33,7 @@
 - (2026-04-09, e-textbook-design) Client components with useState should be minimal — keep state logic simple and focused; complex state can be extracted to custom hooks if needed
 - (2026-04-10, scaffold-component-infrastructure) Test button elements by their accessible name (aria-label) rather than just visual text — buttons with icons rely on aria-label for screen readers
 - (2026-04-10, scaffold-component-infrastructure) Use color-coded backgrounds and icons for visual hierarchy in dashboard cards — helps users quickly identify different metric types
+- (2026-04-11, fix-bundle-size) Use `next/dynamic` with `ssr: true` for heavy components like MarkdownRenderer — reduces initial bundle from 687 KB to 262 KB (62% reduction) without breaking SSR
 
 - (2026-04-09, lesson-rendering) `npm run lint ... 2>&1 | tail -N` swallows the non-zero exit code — lint errors are silently ignored and commits proceed; always check lint exit code directly before staging
 - (2026-04-09, lesson-rendering) bus-math-v2 components that depend on `Card` from shadcn/ui must be rewritten with plain Tailwind divs — IM3 only has button/dropdown-menu/avatar/badge; check available components before porting

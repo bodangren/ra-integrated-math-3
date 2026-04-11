@@ -3,8 +3,12 @@ import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { HeaderSimple } from "@/components/header-simple";
 import { Footer } from "@/components/footer";
-import { ConvexClientProvider } from "@/components/ConvexClientProvider";
+import dynamic from "next/dynamic";
 import "./globals.css";
+
+const ConvexClientProvider = dynamic(() => import("@/components/ConvexClientProvider").then(m => ({ default: m.ConvexClientProvider })), {
+  ssr: false,
+});
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
