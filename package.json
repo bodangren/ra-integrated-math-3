@@ -38,6 +38,7 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.31.2",
     "@eslint/eslintrc": "^3",
     "@playwright/test": "^1.56.1",
     "@testing-library/jest-dom": "^6.6.3",
@@ -59,7 +60,8 @@
     "typescript": "^5",
     "vinext": "^0.0.5",
     "vite": "^7.3.1",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.16",
+    "wrangler": "^4.81.1"
   },
   "type": "module"
 }
