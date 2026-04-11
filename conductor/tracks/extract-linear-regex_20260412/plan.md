@@ -33,17 +33,17 @@
 
 ## Phase 4: Final Verification [in_progress]
 
-- [x] Task: Run full test suite [checkpoint: <commit-hash>]
+- [x] Task: Run full test suite [checkpoint: 5c289ab]
     - [x] Run `npm test` to ensure all tests pass (883/883)
     - [x] Run `npm run lint` to ensure no lint errors (pass)
     - [x] Run `npm run typecheck` to ensure no TypeScript errors (1 pre-existing error in PhaseCompleteButton.test.tsx, unrelated)
 
-- [ ] Task: Verify no regressions [in_progress]
-    - [ ] Test graphing canvas with linear functions
-    - [ ] Test intercept identification with linear functions
+- [x] Task: Verify no regressions [checkpoint: <commit-hash>]
+    - [x] Test graphing canvas with linear functions (existing tests pass)
+    - [x] Test intercept identification with linear functions (existing tests pass)
 
-- [ ] Task: Update tracks.md and tech-debt.md
-    - [ ] Add new track to tracks.md
-    - [ ] Mark "Linear regex duplicated in canvas-utils.ts and InterceptIdentification.tsx" as Resolved in tech-debt.md
+- [x] Task: Update tracks.md and tech-debt.md [checkpoint: <commit-hash>]
+    - [x] Add new track to tracks.md
+    - [x] Mark "Linear regex duplicated in canvas-utils.ts and InterceptIdentification.tsx" as Resolved in tech-debt.md
 
 - [ ] Task: Conductor — Phase Completion Verification 'Final Verification' (Protocol in workflow.md)

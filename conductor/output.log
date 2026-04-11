@@ -2507,3 +2507,114 @@ Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear
  - [ ] Task: Update tracks.md and tech-debt.md
 
 [0m
+[0m$ [0mgit add -A && git commit -m "Phase 4: Run full test suite" && git log -1 --format='%H'
+[master 5c289ab] Phase 4: Run full test suite
+ 2 files changed, 135 insertions(+), 20 deletions(-)
+5c289ab7975316a6fd1a198cb8bf6f9738480c62
+[0m
+[0m← [0mEdit conductor/tracks/extract-linear-regex_20260412/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+@@ -32,9 +32,9 @@
+ - [x] Task: Conductor — Phase Completion Verification 'Update InterceptIdentification.tsx' (Protocol in workflow.md) [d042a3e]
+ 
+ ## Phase 4: Final Verification [in_progress]
+ 
+-- [x] Task: Run full test suite [checkpoint: <commit-hash>]
++- [x] Task: Run full test suite [checkpoint: 5c289ab]
+     - [x] Run `npm test` to ensure all tests pass (883/883)
+     - [x] Run `npm run lint` to ensure no lint errors (pass)
+     - [x] Run `npm run typecheck` to ensure no TypeScript errors (1 pre-existing error in PhaseCompleteButton.test.tsx, unrelated)
+ 
+
+[0m
+[0m← [0mEdit conductor/tracks.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks.md
+@@ -77,9 +77,9 @@
+  - [x] **Track: Refactor — Extract Quadratic Regex** — **COMPLETED**
+    *Extract duplicated quadratic regex from canvas-utils, HintPanel, InterceptIdentification to shared utility*
+    *Link: [./conductor/tracks/extract-quadratic-regex_20260411/](./conductor/tracks/extract-quadratic-regex_20260411/)*
+ 
+- - [ ] **Track: Refactor — Extract Linear Regex**
++ - [x] **Track: Refactor — Extract Linear Regex** — **COMPLETED**
+    *Extract duplicated linear regex from canvas-utils, InterceptIdentification to shared utility*
+    *Link: [./conductor/tracks/extract-linear-regex_20260412/](./conductor/tracks/extract-linear-regex_20260412/)*
+ 
+ ## Archived Tracks
+
+[0m
+[0m← [0mEdit conductor/tech-debt.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tech-debt.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tech-debt.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tech-debt.md
+@@ -13,5 +13,5 @@
+ | 2026-04-09 | lesson-rendering | TypeScript error in PhaseCompleteButton.test.tsx — Promise type mismatch | Medium | Open | Type '(value: CompletePhaseResponse | PromiseLike<CompletePhaseResponse>) => void' not assignable to '(v: unknown) => void' |
+ | 2026-04-10 | activity-infrastructure | activity_completions table requires lessonId/phaseNumber not available in submission | Medium | Open | Submission mutation can't create completions without lesson context; PhaseActivityTracker handles client-side tracking |
+ | 2026-04-11 | graphing-components | Quadratic regex duplicated across 3 files (canvas-utils, HintPanel, InterceptIdentification) | Medium | Resolved | **Fixed in track extract-quadratic-regex_20260411:** Extracted to shared `parseQuadratic()` in `lib/activities/graphing/quadratic-parser.ts`. All three files now import and use the shared utility. |
+ | 2026-04-11 | bundle | Facade RSC entry chunk 687 KB (limit 500 KB) — no code-splitting | High | Resolved | **Fixed in track fix-bundle-size_20260411:** Lazy-loaded MarkdownRenderer via next/dynamic. Result: 262 KB (was 687 KB) = 425 KB reduction (62%). Target met! |
+-| 2026-04-12 | graphing-components | Linear regex duplicated in canvas-utils.ts and InterceptIdentification.tsx | Medium | Open | `evaluateFunction` in canvas-utils and `calculateXIntercepts` in InterceptIdentification both contain inline `/(-?\d*\.?\d*)?x(?:\s*([+-]\s*\d*\.?\d*)?)?/`. Should extract to shared `parseLinear()` utility matching the pattern used for `parseQuadratic()`. |
++| 2026-04-12 | graphing-components | Linear regex duplicated in canvas-utils.ts and InterceptIdentification.tsx | Medium | Resolved | **Fixed in track extract-linear-regex_20260412:** Extracted to shared `parseLinear()` in `lib/activities/graphing/linear-parser.ts`. Both files now import and use the shared utility. |
+
+[0m
+[0m✗ [0medit failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m→ [0mRead conductor/lessons-learned.md
+[0m
+[0m← [0mEdit conductor/lessons-learned.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/lessons-learned.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/lessons-learned.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/lessons-learned.md
+@@ -45,11 +45,11 @@
+ 
+ - (2026-04-10, activity-infrastructure) activity_completions schema requires lessonId/phaseNumber which aren't available in practice.v1 envelope — future work should either pass context separately or redesign completion tracking
+ - (2026-04-10, activity-infrastructure) Union types in TypeScript require type guards for safe property access — use if/else checks on discriminant (e.g., success boolean) before accessing variant-specific properties
+ - (2026-04-10, activity-infrastructure) PhaseActivityTracker provides in-memory completion tracking for UI gating — persistence to Convex deferred until lesson context is available
+-- (2026-04-10, graphing-components) Canvas coordinate mapping is complex — allocate more time for interactive components with SVG/canvas; test coordinate transformations thoroughly
++ - (2026-04-10, graphing-components) Canvas coordinate mapping is complex — allocate more time for interactive components with SVG/canvas; test coordinate transformations thoroughly
+  - (2026-04-11, graphing-components) Test coordinates must match actual canvas coordinates — verify coordinate transformations before writing tests; component's transformDataToCanvas is the source of truth
+  - (2026-04-11, fix-intercept-tests) Test failures were due to incorrect test coordinates, not component logic — always verify test assumptions match implementation before fixing component code
+  - (2026-04-11, extract-quadratic-regex) Regex patterns with optional sign-only captures (e.g., `+` or `-`) cause `parseFloat()` to return `NaN` — handle by checking `isNaN()` and defaulting to ±1 based on sign
+- - (2026-04-11, extract-quadratic-regex) Extracting duplicated code to shared utilities improves maintainability and can reveal hidden bugs in original implementations
++ - (2026-04-12, extract-linear-regex) The `parseLinear()` function must reject expressions with `x^2` to avoid incorrectly parsing the linear term from quadratic expressions. Use early return if `expression.includes('x^2')`.
+ 
+ 
+
+[0m
+[0m✗ [0medit failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m→ [0mRead conductor/tracks/extract-linear-regex_20260412/plan.md
+[0m
+[0m← [0mEdit conductor/tracks/extract-linear-regex_20260412/plan.md
+Index: /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+===================================================================
+--- /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
++++ /home/daniel-bo/Desktop/integrated-math-3/conductor/tracks/extract-linear-regex_20260412/plan.md
+@@ -37,13 +37,13 @@
+     - [x] Run `npm test` to ensure all tests pass (883/883)
+     - [x] Run `npm run lint` to ensure no lint errors (pass)
+     - [x] Run `npm run typecheck` to ensure no TypeScript errors (1 pre-existing error in PhaseCompleteButton.test.tsx, unrelated)
+ 
+-- [ ] Task: Verify no regressions [in_progress]
+-    - [ ] Test graphing canvas with linear functions
+-    - [ ] Test intercept identification with linear functions
++- [x] Task: Verify no regressions [checkpoint: <commit-hash>]
++    - [x] Test graphing canvas with linear functions (existing tests pass)
++    - [x] Test intercept identification with linear functions (existing tests pass)
+ 
+-- [ ] Task: Update tracks.md and tech-debt.md
+-    - [ ] Add new track to tracks.md
+-    - [ ] Mark "Linear regex duplicated in canvas-utils.ts and InterceptIdentification.tsx" as Resolved in tech-debt.md
++- [x] Task: Update tracks.md and tech-debt.md [checkpoint: <commit-hash>]
++    - [x] Add new track to tracks.md
++    - [x] Mark "Linear regex duplicated in canvas-utils.ts and InterceptIdentification.tsx" as Resolved in tech-debt.md
+ 
+ - [ ] Task: Conductor — Phase Completion Verification 'Final Verification' (Protocol in workflow.md)
+
+[0m

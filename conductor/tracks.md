@@ -78,7 +78,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
    *Extract duplicated quadratic regex from canvas-utils, HintPanel, InterceptIdentification to shared utility*
    *Link: [./conductor/tracks/extract-quadratic-regex_20260411/](./conductor/tracks/extract-quadratic-regex_20260411/)*
 
- - [ ] **Track: Refactor — Extract Linear Regex**
+ - [x] **Track: Refactor — Extract Linear Regex** — **COMPLETED**
    *Extract duplicated linear regex from canvas-utils, InterceptIdentification to shared utility*
    *Link: [./conductor/tracks/extract-linear-regex_20260412/](./conductor/tracks/extract-linear-regex_20260412/)*
 
