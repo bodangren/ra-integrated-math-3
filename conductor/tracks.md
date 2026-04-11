@@ -10,17 +10,21 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
 
 ## Active Tracks
 
+- [~] **[URGENT] Fix: InterceptIdentification Test Failures** — **IN PROGRESS**
+   *Fix 13/23 failing tests in InterceptIdentification component*
+   *Link: [./conductor/tracks/fix-intercept-tests_20260411/](./conductor/tracks/fix-intercept-tests_20260411/)*
+
 - [x] **[URGENT] Fix: Missing student_spreadsheet_responses Table** — **COMPLETED**
-  *Add missing table to convex/schema.ts to resolve 38 TypeScript errors*
-  *Link: [./conductor/tracks/fix-spreadsheet-table_20260408/](./conductor/tracks/fix-spreadsheet-table_20260408/)*
+   *Add missing table to convex/schema.ts to resolve 38 TypeScript errors*
+   *Link: [./conductor/tracks/fix-spreadsheet-table_20260408/](./conductor/tracks/fix-spreadsheet-table_20260408/)*
 
 - [x] **Track 1: Flexible Phase Model** — **COMPLETED**
-  *Replace hardcoded 6-phase assumptions with a typed, variable-length phase system*
-  *Link: [./conductor/tracks/flexible-phase-model_20260406/](./conductor/tracks/flexible-phase-model_20260406/)*
+   *Replace hardcoded 6-phase assumptions with a typed, variable-length phase system*
+   *Link: [./conductor/tracks/flexible-phase-model_20260406/](./conductor/tracks/flexible-phase-model_20260406/)*
 
- - [x] **Track: Scaffold Component Infrastructure** — **COMPLETED**
-    *Create student, teacher, and dashboard component directories with basic infrastructure*
-    *Link: [./conductor/tracks/scaffold-component-infrastructure_20260408/](./conductor/tracks/scaffold-component-infrastructure_20260408/)*
+  - [x] **Track: Scaffold Component Infrastructure** — **COMPLETED**
+     *Create student, teacher, and dashboard component directories with basic infrastructure*
+     *Link: [./conductor/tracks/scaffold-component-infrastructure_20260408/](./conductor/tracks/scaffold-component-infrastructure_20260408/)*
 
 
 - [x] **Track 3: Lesson Rendering Engine** — **COMPLETED**
