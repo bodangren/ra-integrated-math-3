@@ -21,6 +21,11 @@ interface IdentifiedIntercept {
   y: number;
 }
 
+const CANVAS_DOMAIN: [number, number] = [-10, 10];
+const CANVAS_RANGE: [number, number] = [-10, 10];
+const CANVAS_WIDTH = 600;
+const CANVAS_HEIGHT = 400;
+
 export function InterceptIdentification({
   functionExpression,
   onInterceptIdentified,
@@ -84,11 +89,6 @@ export function InterceptIdentification({
     const intercepts = calculateXIntercepts(functionExpression);
     if (intercepts.length === 0) return null;
 
-    const domain = [-10, 10] as [number, number];
-    const range = [-10, 10] as [number, number];
-    const canvasWidth = 600;
-    const canvasHeight = 400;
-
     const actualIntercepts = intercepts.map(x => ({
       x,
       y: evaluateFunction(functionExpression, x),
@@ -101,10 +101,10 @@ export function InterceptIdentification({
       const { canvasX: interceptCanvasX, canvasY: interceptCanvasY } = transformDataToCanvas(
         intercept.x,
         intercept.y,
-        domain,
-        range,
-        canvasWidth,
-        canvasHeight
+        CANVAS_DOMAIN,
+        CANVAS_RANGE,
+        CANVAS_WIDTH,
+        CANVAS_HEIGHT
       );
 
       const distance = Math.sqrt(
@@ -168,24 +168,6 @@ export function InterceptIdentification({
     });
   }, [readonly, hasRealIntercepts, onInterceptIdentified]);
 
-  const localTransformDataToCanvas = (x: number, y: number) => {
-    const domain = [-10, 10] as [number, number];
-    const range = [-10, 10] as [number, number];
-    const width = 600;
-    const height = 400;
-
-    const [xMin, xMax] = domain;
-    const [yMin, yMax] = range;
-
-    const xRange = xMax - xMin;
-    const yRange = yMax - yMin;
-
-    const canvasX = ((x - xMin) / xRange) * width;
-    const canvasY = height - ((y - yMin) / yRange) * height;
-
-    return { canvasX, canvasY };
-  };
-
   return (
     <div className="space-y-4">
       <h3 className="text-sm font-semibold text-foreground">Identify the X-Intercepts</h3>
@@ -205,7 +187,7 @@ export function InterceptIdentification({
           <line x1="300" y1="0" x2="300" y2="400" stroke="#374151" strokeWidth={2} />
 
           {identifiedIntercepts.map((intercept, index) => {
-            const { canvasX, canvasY } = localTransformDataToCanvas(intercept.x, intercept.y);
+            const { canvasX, canvasY } = transformDataToCanvas(intercept.x, intercept.y, CANVAS_DOMAIN, CANVAS_RANGE, CANVAS_WIDTH, CANVAS_HEIGHT);
             return (
               <g key={index}>
                 <circle

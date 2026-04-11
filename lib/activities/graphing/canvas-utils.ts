@@ -1,3 +1,5 @@
+import { parseQuadratic } from './quadratic-parser';
+
 export interface Point {
   x: number;
   y: number;
@@ -86,8 +88,6 @@ export function evaluateLinear(
 ): number {
   return m * x + b;
 }
-
-import { parseQuadratic } from './quadratic-parser';
 
 export function evaluateFunction(
   expression: string,
