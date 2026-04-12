@@ -8,6 +8,7 @@
 
 - (2026-04-05, setup) Scaffolded from bus-math-v2; architecture.md preserved in conductor/ for reference
 - (2026-04-05, setup) Convex internal queries/mutations require server-side admin auth — all data fetching from pages goes through `lib/convex/server.ts` helpers
+- (2026-04-12, graphing-components) Activity registry requires wrapper components to adapt component-specific props to ActivityComponentProps
 
 ## Recurring Gotchas
 <!-- Problems encountered repeatedly; save future tracks from the same pain -->
@@ -34,6 +35,7 @@
 - (2026-04-11, fix-bundle-size) Use `next/dynamic` with `ssr: true` for heavy components — reduces bundle size without breaking SSR
 - (2026-04-09, lesson-rendering) `npm run lint ... 2>&1 | tail -N` swallows the non-zero exit code — always check lint exit code directly before staging
 - (2026-04-12, graphing-components) Explicitly type arrays that will be pushed to — prevents TypeScript union type inference errors
+- (2026-04-12, graphing-components) Create wrapper components for activity registry to adapt component-specific props
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
@@ -46,4 +48,5 @@
 - (2026-04-12, extract-linear-regex) `parseLinear()` must reject expressions with `x^2` — use early return if `expression.includes('x^2')`
 - (2026-04-12, graphing-components) GraphingExplorer submission follows practice.v1 — include answers, parts, artifact, interactionHistory; variant field supports extensibility
 - (2026-04-12, graphing-system) Intersection point coordinates inverted in tests — (x, y) transforms to (canvasX, height - canvasY), not (canvasX, canvasY)
+- (2026-04-12, graphing-components) Zod schema imports can fail in test environment — validate structure manually when needed
 

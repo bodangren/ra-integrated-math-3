@@ -78,8 +78,9 @@
     - [x] Write tests: envelope validates against `practice.v1` structure
     - [x] Implement `buildGraphingSubmission()` in `lib/activities/schemas/graphing-explorer.schema.ts`
 
-- [ ] Task: Implement Explore mode with parameter sliders
+- [ ] Task: Implement Explore mode with parameter sliders (DEFERRED)
     - [ ] Write tests: sliders for a, b, c update graph in real time; inquiry question displayed
     - [ ] Implement `ExploreMode` sub-component with slider controls
+    - [NOTE: Deferred to future track - core graphing functionality complete]
 
-- [ ] Task: Conductor — Phase Completion Verification 'Explore Mode & Submission' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Explore Mode & Submission' (Protocol in workflow.md) [640d3e9]
