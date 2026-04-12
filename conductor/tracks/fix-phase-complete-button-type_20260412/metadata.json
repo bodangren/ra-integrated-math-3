@@ -1,0 +1,9 @@
+{
+  "id": "fix-phase-complete-button-type_20260412",
+  "title": "[URGENT] Fix: Promise Type Mismatch in PhaseCompleteButton.test.tsx",
+  "description": "Fix TypeScript error in __tests__/components/lesson/PhaseCompleteButton.test.tsx - Promise type mismatch in mock",
+  "type": "bug",
+  "priority": "high",
+  "createdAt": "2026-04-12",
+  "status": "active"
+}
