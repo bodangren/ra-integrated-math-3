@@ -1,6 +1,6 @@
 # Implementation Plan — Algebraic Worked-Example Components
 
-## Phase 1: Foundation — Math Input & Step Rendering
+## Phase 1: Foundation — Math Input & Step Rendering [checkpoint: 021c426]
 
 - [x] Task: Create `MathInputField` component [64957ca]
     - [x] Write tests: renders live KaTeX preview as user types
