@@ -14,7 +14,7 @@
 
 - [x] Task: Conductor — Phase Completion Verification 'Schema & Type Definitions' (Protocol in workflow.md) [cb9c2bb]
 
-## Phase 2: Backend Query Updates [~] In Progress
+## Phase 2: Backend Query Updates [x] Completed
 
 - [x] Task: Update `convex/public.ts` to include `phaseType` in phase data [N/A]
     - [x] Write test verifying public query returns `phaseType` for each phase
@@ -33,7 +33,7 @@
 
 - [x] Task: Conductor — Phase Completion Verification 'Backend Query Updates' (Protocol in workflow.md) [1e205e5]
 
-## Phase 3: Frontend Updates [~] In Progress
+## Phase 3: Frontend Updates [x] Completed
 
 - [x] Task: Refactor `app/student/lesson/[lessonSlug]/page.tsx` to use dynamic phase display [32ec64f]
     - [x] Write test verifying lesson page renders N phases with correct labels from `phaseType`
