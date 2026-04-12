@@ -48,5 +48,8 @@
 - (2026-04-12, graphing-system) Intersection point coordinates inverted in tests — (x, y) transforms to (canvasX, height - canvasY)
 - (2026-04-12, algebraic-examples) Pattern-matching equivalence works for Module 1 but has limits — 88% acceptable; symbolic math library needed for production
 - (2026-04-12, algebraic-examples) Polynomial expansion regex patterns were too strict — consolidate multiple patterns into single unified pattern handling all sign combinations
-- (2026-04-12, algebraic-examples) Coefficient formatting must omit 1 (e.g., -1x -> -x) — add special case handling for ±1 coefficients
-  
+ - (2026-04-12, algebraic-examples) Coefficient formatting must omit 1 (e.g., -1x -> -x) — add special case handling for ±1 coefficients
+- (2026-04-13, algebraic-examples) Guided mode tests need explicit distractors in test data — KaTeX rendering makes text matching unreliable for identifying correct/incorrect answers
+- (2026-04-13, algebraic-examples) Completion state for guided mode triggers on last step + explanation shown — not just index >= length
+- (2026-04-13, algebraic-examples) Test isolation issues can occur with React state — tests may pass in isolation but fail when run together
+
