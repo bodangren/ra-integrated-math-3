@@ -8,10 +8,10 @@
     - [x] Write tests: validates structural equivalence for common forms (e.g., `(x-3)(x+2)` == `x^2-x-6`)
     - [x] Implement `components/activities/algebraic/MathInputField.tsx`
 
-- [ ] Task: Create expression equivalence validator `lib/activities/algebraic/equivalence.ts`
-    - [ ] Write tests: identical strings → true; algebraic equivalents → true; wrong answers → false
-    - [ ] Write tests: handles complex numbers (`2 + 3i`), fractions, radicals
-    - [ ] Implement pattern-matching equivalence checker for Module 1 expression types
+- [x] Task: Create expression equivalence validator `lib/activities/algebraic/equivalence.ts` [ab372d0]
+    - [x] Write tests: identical strings → true; algebraic equivalents → true; wrong answers → false
+    - [x] Write tests: handles complex numbers (`2 + 3i`), fractions, radicals
+    - [x] Implement pattern-matching equivalence checker for Module 1 expression types
 
 - [ ] Task: Create `StepByStepper` base component (teaching mode only)
     - [ ] Write tests: renders all steps with expression and explanation; uses StepRevealContainer in full-reveal state
