@@ -787,7 +787,7 @@ describe('GraphingExplorer - compare_functions variant', () => {
         ...defaultProps,
         comparisonEquation: 'y = x^2',
         comparisonQuestion: 'Which function has a greater y-intercept?',
-        comparisonAnswer: 'second',
+        comparisonAnswer: 'second' as const,
       };
       render(<GraphingExplorer {...props} mode="teaching" />);
 
@@ -802,7 +802,7 @@ describe('GraphingExplorer - compare_functions variant', () => {
         ...defaultProps,
         comparisonEquation: 'y = x^2',
         comparisonQuestion: 'Which function has a greater y-intercept?',
-        comparisonAnswer: 'second',
+        comparisonAnswer: 'second' as const,
       };
       render(<GraphingExplorer {...props} mode="teaching" />);
 
@@ -814,7 +814,7 @@ describe('GraphingExplorer - compare_functions variant', () => {
         ...defaultProps,
         comparisonEquation: 'y = x^2',
         comparisonQuestion: 'Which function has a greater y-intercept?',
-        comparisonAnswer: 'second',
+        comparisonAnswer: 'second' as const,
       };
       render(<GraphingExplorer {...props} mode="teaching" />);
 
@@ -829,7 +829,7 @@ describe('GraphingExplorer - compare_functions variant', () => {
         ...defaultProps,
         comparisonEquation: 'y = x^2',
         comparisonQuestion: 'Which function has a greater y-intercept?',
-        comparisonAnswer: 'second',
+        comparisonAnswer: 'second' as const,
       };
       render(<GraphingExplorer {...props} mode="guided" />);
 
@@ -843,7 +843,7 @@ describe('GraphingExplorer - compare_functions variant', () => {
         ...defaultProps,
         comparisonEquation: 'y = x^2',
         comparisonQuestion: 'Which function has a greater y-intercept?',
-        comparisonAnswer: 'second',
+        comparisonAnswer: 'second' as const,
       };
       render(<GraphingExplorer {...props} mode="guided" />);
 
@@ -861,7 +861,7 @@ describe('GraphingExplorer - compare_functions variant', () => {
         ...defaultProps,
         comparisonEquation: 'y = x^2',
         comparisonQuestion: 'Which function has a greater y-intercept?',
-        comparisonAnswer: 'second',
+        comparisonAnswer: 'second' as const,
         onSubmit,
       };
       render(<GraphingExplorer {...props} mode="guided" />);
@@ -888,7 +888,7 @@ describe('GraphingExplorer - compare_functions variant', () => {
         ...defaultProps,
         comparisonEquation: 'y = x^2',
         comparisonQuestion: 'Which function has a greater y-intercept?',
-        comparisonAnswer: 'second',
+        comparisonAnswer: 'second' as const,
         onSubmit,
       };
       render(<GraphingExplorer {...props} mode="guided" />);
@@ -915,7 +915,7 @@ describe('GraphingExplorer - compare_functions variant', () => {
         ...defaultProps,
         comparisonEquation: 'y = x^2',
         comparisonQuestion: 'Which function has a greater y-intercept?',
-        comparisonAnswer: 'second',
+        comparisonAnswer: 'second' as const,
         onSubmit,
       };
       render(<GraphingExplorer {...props} mode="guided" />);
@@ -953,7 +953,7 @@ describe('GraphingExplorer - compare_functions variant', () => {
         ...defaultProps,
         comparisonEquation: 'y = x^2',
         comparisonQuestion: 'Which function has a greater y-intercept?',
-        comparisonAnswer: 'second',
+        comparisonAnswer: 'second' as const,
       };
       render(<GraphingExplorer {...props} mode="practice" />);
 
@@ -968,7 +968,7 @@ describe('GraphingExplorer - compare_functions variant', () => {
         ...defaultProps,
         comparisonEquation: 'y = x^2',
         comparisonQuestion: 'Which function has a greater y-intercept?',
-        comparisonAnswer: 'second',
+        comparisonAnswer: 'second' as const,
         onSubmit,
       };
       render(<GraphingExplorer {...props} mode="practice" />);
@@ -990,7 +990,7 @@ describe('GraphingExplorer - compare_functions variant', () => {
         ...defaultProps,
         comparisonEquation: 'y = x^2',
         comparisonQuestion: 'Which function has a greater y-intercept?',
-        comparisonAnswer: 'second',
+        comparisonAnswer: 'second' as const,
         onSubmit,
       };
       render(<GraphingExplorer {...props} mode="practice" />);

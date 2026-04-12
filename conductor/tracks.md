@@ -10,6 +10,10 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
 
 ## Active Tracks
 
+- [~] **[LOW] Fix: GraphingExplorer Test Type Errors** — **IN PROGRESS**
+   *Fix 11 TypeScript errors - comparisonAnswer prop type mismatch in test fixtures*
+   *Link: [./conductor/tracks/fix-graphing-test-types_20260412/](./conductor/tracks/fix-graphing-test-types_20260412/)*
+
 - [x] **[URGENT] Fix: Type Error in graphing-explorer.schema.ts** — **COMPLETED**
    *Fix TypeScript error - parts array type inference issue*
    *Link: [./conductor/tracks/fix-graphing-schema-type_20260412/](./conductor/tracks/fix-graphing-schema-type_20260412/)*

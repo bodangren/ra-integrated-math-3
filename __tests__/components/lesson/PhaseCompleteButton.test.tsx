@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { PhaseCompleteButton } from '@/components/lesson/PhaseCompleteButton';
+import type { CompletePhaseResponse } from '@/types/api';
 
 // Mock the phase completion client
 vi.mock('@/lib/phase-completion/client', () => ({
@@ -121,7 +122,7 @@ describe('PhaseCompleteButton', () => {
 
   describe('loading state', () => {
     it('disables button while request is in flight', async () => {
-      let resolve: (v: unknown) => void;
+      let resolve: (v: CompletePhaseResponse) => void;
       mockCompletePhase.mockReturnValueOnce(new Promise(r => { resolve = r; }));
 
       render(
