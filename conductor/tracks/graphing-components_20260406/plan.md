@@ -67,19 +67,19 @@
 
 - [x] Task: Conductor — Phase Completion Verification 'Problem Variant Types' (Protocol in workflow.md) [2e3dc1b]
 
-## Phase 4: Explore Mode & Submission
+## Phase 4: Explore Mode & Submission [checkpoint: 5367db4]
 
-- [ ] Task: Implement Explore mode with parameter sliders
-    - [ ] Write tests: sliders for a, b, c update graph in real time; inquiry question displayed
-    - [ ] Implement `ExploreMode` sub-component with slider controls
+- [x] Task: Register `graphing-explorer` in activity registry
+    - [x] Wire `components/activities/graphing/GraphingExplorer.tsx` into `lib/activities/registry.ts`
+    - [x] Verify end-to-end through `ActivityRenderer`
 
 - [ ] Task: Implement submission envelope assembly
     - [ ] Write tests: envelope includes placed points, intercepts, parts, artifact (graph state)
     - [ ] Write tests: envelope validates against `practice.v1` Zod schema
     - [ ] Implement `buildGraphingSubmission()` in `lib/activities/schemas/graphing-explorer.schema.ts`
 
-- [ ] Task: Register `graphing-explorer` in activity registry
-    - [ ] Wire `components/activities/graphing/GraphingExplorer.tsx` into `lib/activities/registry.ts`
-    - [ ] Verify end-to-end through `ActivityRenderer`
+- [ ] Task: Implement Explore mode with parameter sliders
+    - [ ] Write tests: sliders for a, b, c update graph in real time; inquiry question displayed
+    - [ ] Implement `ExploreMode` sub-component with slider controls
 
 - [ ] Task: Conductor — Phase Completion Verification 'Explore Mode & Submission' (Protocol in workflow.md)

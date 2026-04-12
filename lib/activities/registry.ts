@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import { GraphingExplorerActivity } from '@/components/activities/graphing/GraphingExplorerActivity';
 
 export interface ActivityComponentProps {
   activityId: string;
@@ -28,6 +29,9 @@ const MODULE_1_KEYS = [
 MODULE_1_KEYS.forEach(key => {
   registerActivity(key, PlaceholderComponent);
 });
+
+// Register actual implementations
+registerActivity('graphing-explorer', GraphingExplorerActivity);
 
 /**
  * Register an activity component under a componentKey.
