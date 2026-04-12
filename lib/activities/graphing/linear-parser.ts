@@ -23,5 +23,9 @@ export function parseLinear(expression: string): LinearCoefficients | null {
     }
     return { m, b };
   }
+  const constantMatch = expression.match(/y\s*=\s*(-?\d+\.?\d*)/);
+  if (constantMatch) {
+    return { m: 0, b: parseFloat(constantMatch[1]) };
+  }
   return null;
 }

@@ -594,8 +594,8 @@ describe('GraphingExplorer - graph_system variant', () => {
       });
 
       const canvas = screen.getByRole('img', { name: /coordinate plane/i });
-      fireEvent.click(canvas, { clientX: 240, clientY: 240 });
-      fireEvent.click(canvas, { clientX: 360, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 240, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 360, clientY: 240 });
 
       await waitFor(() => {
         const point1Labels = screen.queryAllByText(/-2\.0, -2\.0/i);
@@ -626,8 +626,8 @@ describe('GraphingExplorer - graph_system variant', () => {
       });
 
       const canvas = screen.getByRole('img', { name: /coordinate plane/i });
-      fireEvent.click(canvas, { clientX: 240, clientY: 240 });
-      fireEvent.click(canvas, { clientX: 360, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 240, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 360, clientY: 240 });
 
       const submitButton = screen.getByText(/submit/i);
       fireEvent.click(submitButton);
@@ -670,8 +670,8 @@ describe('GraphingExplorer - graph_system variant', () => {
       });
 
       const canvas = screen.getByRole('img', { name: /coordinate plane/i });
-      fireEvent.click(canvas, { clientX: 240, clientY: 240 });
-      fireEvent.click(canvas, { clientX: 360, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 240, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 360, clientY: 240 });
 
       const submitButton = screen.getByText(/submit/i);
       fireEvent.click(submitButton);
@@ -704,8 +704,8 @@ describe('GraphingExplorer - graph_system variant', () => {
       render(<GraphingExplorer {...defaultProps} mode="practice" onSubmit={onSubmit} />);
 
       const canvas = screen.getByRole('img', { name: /coordinate plane/i });
-      fireEvent.click(canvas, { clientX: 240, clientY: 240 });
-      fireEvent.click(canvas, { clientX: 360, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 240, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 360, clientY: 240 });
 
       await waitFor(() => {
         const point1Labels = screen.queryAllByText(/-2\.0, -2\.0/i);
@@ -725,8 +725,8 @@ describe('GraphingExplorer - graph_system variant', () => {
       render(<GraphingExplorer {...props} mode="practice" />);
 
       const canvas = screen.getByRole('img', { name: /coordinate plane/i });
-      fireEvent.click(canvas, { clientX: 240, clientY: 240 });
-      fireEvent.click(canvas, { clientX: 360, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 240, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 360, clientY: 240 });
 
       const submitButton = screen.getByText(/submit/i);
       fireEvent.click(submitButton);
@@ -750,8 +750,8 @@ describe('GraphingExplorer - graph_system variant', () => {
       render(<GraphingExplorer {...props} mode="practice" />);
 
       const canvas = screen.getByRole('img', { name: /coordinate plane/i });
-      fireEvent.click(canvas, { clientX: 240, clientY: 240 });
-      fireEvent.click(canvas, { clientX: 360, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 240, clientY: 360 });
+      fireEvent.click(canvas, { clientX: 360, clientY: 240 });
 
       const submitButton = screen.getByText(/submit/i);
       fireEvent.click(submitButton);

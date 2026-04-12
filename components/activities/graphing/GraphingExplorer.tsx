@@ -174,14 +174,27 @@ export function GraphingExplorer({
     const quadraticMatch = equation.match(/y\s*=\s*([+-]?\d*\.?\d*)\*?x\^2(?:\s*([+-]\s*\d*\.?\d*)\*?x)?\s*([+-]\s*\d*\.?\d*)/);
     const linearMatch = linearEquation.match(/y\s*=\s*([+-]?\d*\.?\d*)\*?x(?:\s*([+-]\s*\d*\.?\d*))?/);
 
-    if (!quadraticMatch || !linearMatch) return true;
+    if (!quadraticMatch) return true;
 
     const a = parseFloat(quadraticMatch[1].replace(/\s/g, '')) || 1;
     const b = quadraticMatch[2] ? parseFloat(quadraticMatch[2].replace(/\s/g, '')) : 0;
     const c = parseFloat(quadraticMatch[3].replace(/\s/g, '')) || 0;
 
-    const m = parseFloat(linearMatch[1].replace(/\s/g, '')) || 1;
-    const k = linearMatch[2] ? parseFloat(linearMatch[2].replace(/\s/g, '')) : 0;
+    let m = 0;
+    let k = 0;
+
+    if (linearMatch) {
+      m = parseFloat(linearMatch[1].replace(/\s/g, '')) || 1;
+      k = linearMatch[2] ? parseFloat(linearMatch[2].replace(/\s/g, '')) : 0;
+    } else {
+      const constantMatch = linearEquation.match(/y\s*=\s*(-?\d+\.?\d*)/);
+      if (constantMatch) {
+        m = 0;
+        k = parseFloat(constantMatch[1]);
+      } else {
+        return true;
+      }
+    }
 
     const discriminant = (b - m) ** 2 - 4 * a * (c - k);
     return discriminant >= 0;
@@ -190,7 +203,12 @@ export function GraphingExplorer({
   const handleSubmit = useCallback(() => {
     if (!onSubmit) return;
 
-    const parts = [
+    const parts: Array<{
+      partId: string;
+      rawAnswer: unknown;
+      isCorrect?: boolean;
+      hintsUsed?: number;
+    }> = [
       {
         partId: 'placed_points',
         rawAnswer: placedPoints.map(p => ({ x: p.x, y: p.y })),
