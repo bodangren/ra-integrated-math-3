@@ -19,6 +19,7 @@
 - (2026-04-08, setup) Schema porting from bus-math-v2 requires running `npx tsc --noEmit` to catch missing tables
 - (2026-04-08, setup) Use `npx convex dev --once` for one-time type generation — faster for CI/autonomous workflows
 - (2026-04-10, graphing-components) JavaScript's -0 (negative zero) appears in calculations like -b/(2a) when b=0 — use `Object.is(val, -0)` to detect
+- (2026-04-12, graphing-components) Constant linear equations (e.g., 'y = 0') need special regex handling — check for constant pattern after variable pattern fails
 
 ## Patterns That Worked Well
 <!-- Approaches worth repeating -->
@@ -32,6 +33,7 @@
 - (2026-04-10, scaffold-component-infrastructure) Test button elements by their accessible name (aria-label) — buttons with icons rely on aria-label
 - (2026-04-11, fix-bundle-size) Use `next/dynamic` with `ssr: true` for heavy components — reduces bundle size without breaking SSR
 - (2026-04-09, lesson-rendering) `npm run lint ... 2>&1 | tail -N` swallows the non-zero exit code — always check lint exit code directly before staging
+- (2026-04-12, graphing-components) Explicitly type arrays that will be pushed to — prevents TypeScript union type inference errors
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
@@ -43,4 +45,5 @@
 - (2026-04-11, extract-quadratic-regex) Regex with optional sign-only captures causes `parseFloat()` to return `NaN` — handle with `isNaN()` check
 - (2026-04-12, extract-linear-regex) `parseLinear()` must reject expressions with `x^2` — use early return if `expression.includes('x^2')`
 - (2026-04-12, graphing-components) GraphingExplorer submission follows practice.v1 — include answers, parts, artifact, interactionHistory; variant field supports extensibility
+- (2026-04-12, graphing-system) Intersection point coordinates inverted in tests — (x, y) transforms to (canvasX, height - canvasY), not (canvasX, canvasY)
 
