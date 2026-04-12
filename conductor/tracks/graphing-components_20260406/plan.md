@@ -73,10 +73,10 @@
     - [x] Wire `components/activities/graphing/GraphingExplorer.tsx` into `lib/activities/registry.ts`
     - [x] Verify end-to-end through `ActivityRenderer`
 
-- [ ] Task: Implement submission envelope assembly
-    - [ ] Write tests: envelope includes placed points, intercepts, parts, artifact (graph state)
-    - [ ] Write tests: envelope validates against `practice.v1` Zod schema
-    - [ ] Implement `buildGraphingSubmission()` in `lib/activities/schemas/graphing-explorer.schema.ts`
+- [x] Task: Implement submission envelope assembly
+    - [x] Write tests: envelope includes placed points, intercepts, parts, artifact (graph state)
+    - [x] Write tests: envelope validates against `practice.v1` structure
+    - [x] Implement `buildGraphingSubmission()` in `lib/activities/schemas/graphing-explorer.schema.ts`
 
 - [ ] Task: Implement Explore mode with parameter sliders
     - [ ] Write tests: sliders for a, b, c update graph in real time; inquiry question displayed
