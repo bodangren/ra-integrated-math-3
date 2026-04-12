@@ -57,9 +57,9 @@
      - [x] Write tests: renders two functions; student identifies which has greater max/min/intercepts
      - [x] Implement variant; comparison question UI
 
-- [ ] Task: Implement `find_intercepts` variant
-    - [ ] Write tests: student identifies 0, 1, or 2 intercepts; submission graded correctly
-    - [ ] Implement variant; handles all three solution cases
+ - [x] Task: Implement `find_intercepts` variant [3c56823]
+     - [x] Write tests: student identifies 0, 1, or 2 intercepts; submission graded correctly
+     - [x] Implement variant; handles all three solution cases
 
 - [ ] Task: Implement `graph_system` variant (linear + quadratic)
     - [ ] Write tests: student places intersection points; graded against computed intersections
