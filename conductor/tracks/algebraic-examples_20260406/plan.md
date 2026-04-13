@@ -18,7 +18,7 @@
     - [x] Write tests: `isKeyStep` flag applies visual emphasis
     - [x] Implement `components/activities/algebraic/StepByStepper.tsx` — teaching mode
 
-- [ ] Task: Conductor — Phase Completion Verification 'Foundation' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Foundation' (Protocol in workflow.md)
 
 ## Phase 2: Guided & Practice Modes
 
@@ -28,11 +28,11 @@
     - [x] Write tests: hint usage count recorded in component state
     - [x] Implement guided mode state machine in `StepByStepper`
 
-- [ ] Task: Add practice mode to `StepByStepper`
-    - [ ] Write tests: fresh problem from pool presented; partial steps shown at configured scaffold level
-    - [ ] Write tests: blank expressions accept math input; validated on submit
-    - [ ] Write tests: correct solution overlaid on submit for comparison
-    - [ ] Implement practice mode with `MathInputField` blank slots
+ - [x] Task: Add practice mode to `StepByStepper` [44517c1]
+    - [x] Write tests: fresh problem from pool presented; partial steps shown at configured scaffold level
+    - [x] Write tests: blank expressions accept math input; validated on submit
+    - [x] Write tests: correct solution overlaid on submit for comparison
+    - [x] Implement practice mode with `MathInputField` blank slots
 
 - [ ] Task: Implement distractor generation utility `lib/activities/algebraic/distractors.ts`
     - [ ] Write tests: common misconception distractors for each step type are plausible
