@@ -70,17 +70,17 @@
     - [x] Write tests: a=1, a≠1, imaginary solutions — all 3 modes
     - [x] Implement step sequence; vertex form conversion variant
 
-- [ ] Task: Implement `quadratic_formula` problem type
-    - [ ] Write tests: real solutions (factorable), real solutions (non-factorable), imaginary solutions — all 3 modes
-    - [ ] Implement step sequence; radical simplification step validated
+- [x] Task: Implement `quadratic_formula` problem type [5ac4e1f]
+    - [x] Write tests: real solutions (factorable), real solutions (non-factorable), imaginary solutions — all 3 modes
+    - [x] Implement step sequence; radical simplification step validated
 
-- [ ] Task: Implement `discriminant_analysis` problem type
-    - [ ] Write tests: D > 0, D = 0, D < 0 cases — all 3 modes
-    - [ ] Implement step sequence; classification answer validated
+- [x] Task: Implement `discriminant_analysis` problem type [5ac4e1f]
+    - [x] Write tests: D > 0, D = 0, D < 0 cases — all 3 modes
+    - [x] Implement step sequence; classification answer validated
 
-- [ ] Task: Implement `system_substitution` problem type
-    - [ ] Write tests: 2-solution, 1-solution, 0-solution cases — all 3 modes
-    - [ ] Implement step sequence; solution pairs validated
+- [x] Task: Implement `system_substitution` problem type [5ac4e1f]
+    - [x] Write tests: 2-solution, 1-solution, 0-solution cases — all 3 modes
+    - [x] Implement step sequence; solution pairs validated
 
 - [ ] Task: Build submission envelope assembly and register component
     - [ ] Write tests: envelope includes step attempts, hints used, filled answers, final correctness
