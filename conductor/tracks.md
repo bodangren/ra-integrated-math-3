@@ -79,6 +79,8 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
    *All 8 lessons seeded with phases, sections, activities, standards, and demo environment*
    *Depends on: Tracks 1, 4 (activity keys must be defined before seeding)*
    *Link: [./conductor/tracks/module-1-seed_20260406/](./conductor/tracks/module-1-seed_20260406/)*
+   - Phase 1: Infrastructure & Types [COMPLETE]
+   - Phase 2: Lesson 1-7 Content Authoring [COMPLETE]
 
 - [ ] **Track 9: Student Lesson Flow**
   *End-to-end: dashboard → lesson → phases → activities → completion → progress persistence*

@@ -1,6 +1,6 @@
 # Implementation Plan — Module 1 Curriculum Seed
 
-## Phase 1: Infrastructure & Types
+## Phase 1: Infrastructure & Types [checkpoint: 1ee8018]
 
 - [x] Task: Create seed type definitions `convex/seed/types.ts`
     - [x] Write tests: seed types match Convex schema shapes for all relevant tables
@@ -15,9 +15,9 @@
     - [x] Write tests: orchestrates lessons 1-1 through 1-8 in order; handles errors per-lesson
     - [x] Implement `main()` Convex action calling each lesson seed function
 
-- [ ] Task: Conductor — Phase Completion Verification 'Infrastructure & Types' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Infrastructure & Types' (Protocol in workflow.md) [checkpoint: 1ee8018]
 
-## Phase 2: Lesson 1-7 Content Authoring
+## Phase 2: Lesson 1-7 Content Authoring [checkpoint: 67148b7]
 
 - [x] Task: Author corrected `curriculum/modules/module-1-lesson-7` — Quadratic Inequalities
     - [x] Write Explore phase: graphical inquiry on where parabola is above/below x-axis
@@ -28,7 +28,7 @@
     - [x] Write Example 4: real-world height-above-threshold context problem
     - [x] Write Think About It, In-Class Quick Check, CAP Reflection sections
 
-- [ ] Task: Conductor — Phase Completion Verification 'Lesson 1-7 Content Authoring' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Lesson 1-7 Content Authoring' (Protocol in workflow.md) [checkpoint: 67148b7]
 
 ## Phase 3: Competency Standards & Demo Environment
 
