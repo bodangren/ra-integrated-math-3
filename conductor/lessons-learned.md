@@ -48,3 +48,4 @@
 - (2026-04-13, test-infra) `vi.mock` factories are hoisted — variables used inside them must be declared with `vi.hoisted()`
 - (2026-04-13, content-hash) Node.js `crypto` module not available in V8/edge runtimes — use Web Crypto API (`crypto.subtle.digest`)
 - (2026-04-13, blanks) Template parsing with regex `\{\{blank:(\w+)\}\}` can extract blank IDs and preserve surrounding text for rendering
+- (2026-04-14, roc) RateOfChangeCalculator uses compute helper functions for ROC calculation that work across source types (function/table/graph)
