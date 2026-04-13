@@ -34,25 +34,25 @@
 
 ## Phase 2: Review Queries and Mutations
 
-- [~] Task: Add developer-only review queue queries
-    - [ ] Write tests for filtering by component kind, approval status, stale state, lesson/phase placement, issue tag, and priority
-    - [ ] Implement queries that assemble review queue items without exposing student data
-    - [ ] Include current content hash, stored approval hash, stale state, placement context, and unresolved review notes
+- [x] Task: Add developer-only review queue queries (0dea25f)
+    - [x] Write tests for filtering by component kind, approval status, stale state, lesson/phase placement, issue tag, and priority
+    - [x] Implement queries that assemble review queue items without exposing student data
+    - [x] Include current content hash, stored approval hash, stale state, placement context, and unresolved review notes
 
-- [ ] Task: Add developer-only review decision mutation
-    - [ ] Write tests that approving updates the component approval summary and creates a review row
-    - [ ] Write tests that `needs_changes` and `rejected` require comments
-    - [ ] Write tests that review submissions use the current content hash
-    - [ ] Implement approve, needs-changes, and reject paths
-    - [ ] Ensure previous review rows are preserved rather than overwritten
+- [x] Task: Add developer-only review decision mutation (0dea25f)
+    - [x] Write tests that approving updates the component approval summary and creates a review row
+    - [x] Write tests that `needs_changes` and `rejected` require comments
+    - [x] Write tests that review submissions use the current content hash
+    - [x] Implement approve, needs-changes, and reject paths
+    - [x] Ensure previous review rows are preserved rather than overwritten
 
-- [ ] Task: Add developer-only LLM audit context query
-    - [ ] Write tests that only unresolved non-approved notes are returned
-    - [ ] Write tests that stale hash information is included
-    - [ ] Implement a query/helper returning component content, unresolved comments, tags, priority, and placement context
-    - [ ] Ensure the query excludes student submissions and personally identifying student data
+- [x] Task: Add developer-only LLM audit context query (0dea25f)
+    - [x] Write tests that only unresolved non-approved notes are returned
+    - [x] Write tests that stale hash information is included
+    - [x] Implement a query/helper returning component content, unresolved comments, tags, priority, and placement context
+    - [x] Ensure the query excludes student submissions and personally identifying student data
 
-- [ ] Task: Conductor - Phase Completion Verification 'Review Queries and Mutations' (Protocol in workflow.md)
+- [~] Task: Conductor - Phase Completion Verification 'Review Queries and Mutations' (Protocol in workflow.md)
 
 ## Phase 3: Developer-Only Access Guard
 
