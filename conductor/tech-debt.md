@@ -18,4 +18,4 @@
 | 2026-04-13 | component-approval | createdBy accepted as function arg not derived from ctx.auth | Medium | Open | Acceptable for internal mutations but must verify at public API boundaries |
 | 2026-04-13 | content-hash | undefined values silently dropped by JSON.stringify | Low | Open | `{a: undefined}` hashes identically to `{}`; no regression test. Low risk for current usage |
 | 2026-04-13 | algebraic-examples | Algebraic test coverage is structurally weak | Medium | Open | Tests named "all steps" check only 20-50%; guided/practice modes near no-ops; distractors/isKeyStep untested |
-| 2026-04-13 | content-hash | Node.js crypto in V8 runtime | Low | Open | Works today (V8 polyfill) but could break with runtime changes; consider pure-JS alternative if needed |
+| 2026-04-13 | content-hash | Node.js crypto in V8 runtime | Low | Resolved | Switched to Web Crypto API (crypto.subtle.digest) - works in all runtimes |

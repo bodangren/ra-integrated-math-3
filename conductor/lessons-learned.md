@@ -52,5 +52,6 @@
 - (2026-04-13, component-approval) Use `.take(n)` instead of `.collect()` to bound query results and avoid transaction size limits
 - (2026-04-13, test-infra) `vi.mock` factories are hoisted — variables used inside them must be declared with `vi.hoisted()` or they'll throw "cannot access before initialization"
 - (2026-04-13, test-infra) `next/dynamic` mock must export `default` alongside named exports because dynamic import resolution expects `{ default: Component }` shape
+- (2026-04-13, content-hash) Node.js `crypto` module not available in V8/edge runtimes — use Web Crypto API (`crypto.subtle.digest`) for cross-runtime compatibility
 
 
