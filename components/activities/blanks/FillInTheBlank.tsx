@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { DragDropContext, Droppable, Draggable, type DropResult } from '@hello-pangea/dnd';
 import { MathInputField } from '@/components/activities/algebraic/MathInputField';
 import { buildPracticeSubmissionEnvelope } from '@/lib/practice/contract';
 
@@ -10,17 +11,24 @@ interface Blank {
   isMath?: boolean;
 }
 
+interface WordBankItem {
+  id: string;
+  text: string;
+}
+
 interface FillInTheBlankProps {
   activityId: string;
   mode: 'teaching' | 'guided' | 'practice';
   template: string;
   blanks: Blank[];
+  wordBank?: WordBankItem[];
   onSubmit?: (payload: unknown) => void;
   onComplete?: () => void;
 }
 
 interface FitBState {
   answers: Record<string, string>;
+  wordBankAssignments: Record<string, string>;
   currentBlankIndex: number;
   feedbackShown: Record<string, boolean>;
   submitted: boolean;
@@ -58,11 +66,13 @@ export function FillInTheBlank({
   mode,
   template,
   blanks,
+  wordBank,
   onSubmit,
   onComplete,
 }: FillInTheBlankProps) {
   const [state, setState] = useState<FitBState>({
     answers: {},
+    wordBankAssignments: {},
     currentBlankIndex: 0,
     feedbackShown: {},
     submitted: false,
@@ -90,13 +100,57 @@ export function FillInTheBlank({
     }
   };
 
+  const handleDragEnd = (result: DropResult) => {
+    const { destination, source, draggableId } = result;
+    if (!destination) return;
+
+    if (destination.droppableId === 'word-bank' && source.droppableId !== 'word-bank') {
+      setState(prev => {
+        const newAssignments = { ...prev.wordBankAssignments };
+        delete newAssignments[source.droppableId];
+        return { ...prev, wordBankAssignments: newAssignments };
+      });
+    } else if (destination.droppableId !== 'word-bank' && source.droppableId === 'word-bank') {
+      const item = wordBank?.find(w => w.id === draggableId);
+      if (item) {
+        setState(prev => ({
+          ...prev,
+          answers: { ...prev.answers, [destination.droppableId]: item.text },
+          wordBankAssignments: { ...prev.wordBankAssignments, [destination.droppableId]: item.id },
+        }));
+      }
+    } else if (destination.droppableId !== source.droppableId) {
+      const item = wordBank?.find(w => w.id === draggableId);
+      if (item) {
+        setState(prev => ({
+          ...prev,
+          answers: { ...prev.answers, [destination.droppableId]: item.text },
+          wordBankAssignments: { ...prev.wordBankAssignments, [destination.droppableId]: item.id },
+        }));
+      }
+    }
+  };
+
+  const handleClearWordBank = (blankId: string) => {
+    setState(prev => {
+      const newAssignments = { ...prev.wordBankAssignments };
+      delete newAssignments[blankId];
+      return {
+        ...prev,
+        answers: { ...prev.answers, [blankId]: '' },
+        wordBankAssignments: newAssignments,
+      };
+    });
+  };
+
   const handlePracticeSubmit = () => {
     const answers: Record<string, unknown> = {};
     const parts = blankIds.map((id, index) => {
       const blank = blanks.find(b => b.id === id)!;
       const answer = state.answers[id] || '';
       const correct = isAnswerCorrect(blank, answer);
-      answers[id] = { answer, isCorrect: correct };
+      const usedWordBank = !!state.wordBankAssignments[id];
+      answers[id] = { answer, isCorrect: correct, usedWordBank };
       return {
         partId: id,
         partIndex: index,
@@ -104,11 +158,13 @@ export function FillInTheBlank({
         isCorrect: correct,
         score: correct ? 1 : 0,
         maxScore: 1,
+        usedWordBank,
       };
     });
 
     const correctCount = parts.filter(p => p.isCorrect).length;
     const score = Math.round((correctCount / blankIds.length) * 100);
+    const wordBankUsedCount = Object.keys(state.wordBankAssignments).length;
 
     const envelope = buildPracticeSubmissionEnvelope({
       activityId,
@@ -117,7 +173,7 @@ export function FillInTheBlank({
       attemptNumber: 1,
       answers,
       parts,
-      analytics: { score, totalBlanks: blankIds.length, correctCount },
+      analytics: { score, totalBlanks: blankIds.length, correctCount, wordBankUsedCount },
     });
 
     onSubmit?.(envelope);
@@ -265,6 +321,120 @@ export function FillInTheBlank({
 
   if (mode === 'practice') {
     const allAnswered = blankIds.every(id => state.answers[id] !== undefined);
+
+    if (wordBank && wordBank.length > 0) {
+      const unusedWordBankItems = wordBank.filter(item => !Object.values(state.wordBankAssignments).includes(item.id));
+
+      return (
+        <DragDropContext onDragEnd={handleDragEnd}>
+          <div className="space-y-8 p-4">
+            <h2 className="text-xl font-bold">Fill in the Blank</h2>
+
+            {unusedWordBankItems.length > 0 && (
+              <div className="bg-gray-50 rounded-lg p-4">
+                <p className="text-sm font-medium mb-2">Word Bank</p>
+                <Droppable droppableId="word-bank" direction="horizontal">
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                      className="flex flex-wrap gap-2"
+                    >
+                      {unusedWordBankItems.map((item, index) => (
+                        <Draggable key={item.id} draggableId={item.id} index={index}>
+                          {(provided, snapshot) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              className={`px-3 py-1 bg-white border border-gray-300 rounded cursor-move ${
+                                snapshot.isDragging ? 'shadow-lg' : ''
+                              }`}
+                            >
+                              {item.text}
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </div>
+            )}
+
+            <div className="space-y-4">
+              <p className="text-lg leading-relaxed">
+                {templateParts.map((part, index) => {
+                  if (part.type === 'text') {
+                    return <span key={index}>{part.value}</span>;
+                  }
+                  const answer = state.answers[part.blankId!];
+                  const usedWordBank = !!state.wordBankAssignments[part.blankId!];
+                  return (
+                    <Droppable key={index} droppableId={part.blankId!} direction="horizontal">
+                      {(provided, snapshot) => (
+                        <span
+                          ref={provided.innerRef}
+                          {...provided.droppableProps}
+                          className={`inline-block px-2 py-1 rounded border mx-1 ${
+                            snapshot.isDraggingOver
+                              ? 'bg-blue-200 border-blue-400'
+                              : answer
+                              ? 'bg-blue-100 border-blue-300'
+                              : 'bg-gray-50 border-gray-300 border-dashed'
+                          }`}
+                        >
+                          {answer || '____'}
+                          {provided.placeholder}
+                          {usedWordBank && answer && (
+                            <button
+                              onClick={() => handleClearWordBank(part.blankId!)}
+                              className="ml-1 text-xs text-gray-500 hover:text-red-500"
+                            >
+                              ×
+                            </button>
+                          )}
+                        </span>
+                      )}
+                    </Droppable>
+                  );
+                })}
+              </p>
+
+              <div className="space-y-4 mt-4">
+                {blankIds.map((id, index) => {
+                  const blank = blanks.find(b => b.id === id)!;
+                  return (
+                    <div key={id} className="border rounded-lg p-4">
+                      <p className="text-sm text-muted-foreground mb-2">
+                        Blank {index + 1}
+                        {state.wordBankAssignments[id] && (
+                          <span className="ml-2 text-xs text-blue-600">(from word bank)</span>
+                        )}
+                      </p>
+                      <MathInputField
+                        value={state.answers[id] || ''}
+                        onChange={(value) => handleAnswer(id, value)}
+                        label="Your answer"
+                        correctAnswer={blank.correctAnswer}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <button
+              onClick={handlePracticeSubmit}
+              disabled={!allAnswered}
+              className="px-6 py-2 bg-primary text-primary-foreground rounded-md disabled:opacity-50"
+            >
+              Submit All Answers
+            </button>
+          </div>
+        </DragDropContext>
+      );
+    }
 
     return (
       <div className="space-y-8 p-4">

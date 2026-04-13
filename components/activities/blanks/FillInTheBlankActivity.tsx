@@ -13,6 +13,10 @@ export interface FillInTheBlankActivityProps {
     correctAnswer: string;
     isMath?: boolean;
   }>;
+  wordBank?: Array<{
+    id: string;
+    text: string;
+  }>;
 }
 
 export function FillInTheBlankActivity({
@@ -20,6 +24,7 @@ export function FillInTheBlankActivity({
   mode,
   template,
   blanks,
+  wordBank,
   onSubmit,
   onComplete,
 }: FillInTheBlankActivityProps) {
@@ -34,6 +39,7 @@ export function FillInTheBlankActivity({
       mode={mode}
       template={template}
       blanks={blanks}
+      wordBank={wordBank}
       onSubmit={handleSubmit}
       onComplete={onComplete}
     />

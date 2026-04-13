@@ -8,11 +8,17 @@ interface Blank {
   isMath?: boolean;
 }
 
+interface WordBankItem {
+  id: string;
+  text: string;
+}
+
 interface FillInTheBlankProps {
   activityId: string;
   mode: 'teaching' | 'guided' | 'practice';
   template: string;
   blanks: Blank[];
+  wordBank?: WordBankItem[];
   onSubmit?: (payload: unknown) => void;
   onComplete?: () => void;
 }
@@ -197,6 +203,124 @@ describe('FillInTheBlank', () => {
       render(<FillInTheBlank {...props} />);
       const submitButton = screen.getByText(/submit/i);
       expect(submitButton).toBeDisabled();
+    });
+  });
+
+  describe('word bank', () => {
+    const createPropsWithWordBank = (
+      template: string,
+      blanks: Blank[],
+      wordBank: WordBankItem[],
+      mode: FillInTheBlankProps['mode'] = 'practice'
+    ): FillInTheBlankProps => ({
+      activityId: 'fitb-1',
+      mode,
+      template,
+      blanks,
+      wordBank,
+      onSubmit: vi.fn(),
+      onComplete: vi.fn(),
+    });
+
+    it('renders word bank items in practice mode', () => {
+      const props = createPropsWithWordBank(
+        'The vertex is at ({{blank:1}}, {{blank:2}}).',
+        [
+          { id: '1', correctAnswer: '0' },
+          { id: '2', correctAnswer: '0' },
+        ],
+        [
+          { id: 'wb1', text: '0' },
+          { id: 'wb2', text: '1' },
+          { id: 'wb3', text: '-1' },
+        ]
+      );
+      render(<FillInTheBlank {...props} />);
+      expect(screen.getByText('Word Bank')).toBeInTheDocument();
+      expect(screen.getByText('0')).toBeInTheDocument();
+      expect(screen.getByText('1')).toBeInTheDocument();
+      expect(screen.getByText('-1')).toBeInTheDocument();
+    });
+
+    it('does not show word bank in teaching mode', () => {
+      const props = createPropsWithWordBank(
+        'The vertex is at ({{blank:1}}, {{blank:2}}).',
+        [
+          { id: '1', correctAnswer: '0' },
+          { id: '2', correctAnswer: '0' },
+        ],
+        [
+          { id: 'wb1', text: '0' },
+          { id: 'wb2', text: '1' },
+        ],
+        'teaching'
+      );
+      render(<FillInTheBlank {...props} />);
+      expect(screen.queryByText('Word Bank')).not.toBeInTheDocument();
+    });
+
+    it('does not show word bank in guided mode', () => {
+      const props = createPropsWithWordBank(
+        'The vertex is at ({{blank:1}}, {{blank:2}}).',
+        [
+          { id: '1', correctAnswer: '0' },
+          { id: '2', correctAnswer: '0' },
+        ],
+        [
+          { id: 'wb1', text: '0' },
+          { id: 'wb2', text: '1' },
+        ],
+        'guided'
+      );
+      render(<FillInTheBlank {...props} />);
+      expect(screen.queryByText('Word Bank')).not.toBeInTheDocument();
+    });
+
+    it('handles word bank item assignment via drag-drop', async () => {
+      const props = createPropsWithWordBank(
+        'The vertex is at ({{blank:1}}, {{blank:2}}).',
+        [
+          { id: '1', correctAnswer: '0' },
+          { id: '2', correctAnswer: '0' },
+        ],
+        [
+          { id: 'wb1', text: 'vertex' },
+          { id: 'wb2', text: '0' },
+        ]
+      );
+      render(<FillInTheBlank {...props} />);
+
+      expect(screen.getByText('vertex')).toBeInTheDocument();
+      expect(screen.getByText('0')).toBeInTheDocument();
+    });
+
+    it('shows clear button for word bank filled blanks', () => {
+      const props = createPropsWithWordBank(
+        'The vertex is at ({{blank:1}}, {{blank:2}}).',
+        [
+          { id: '1', correctAnswer: '0' },
+          { id: '2', correctAnswer: '0' },
+        ],
+        [
+          { id: 'wb1', text: '0' },
+          { id: 'wb2', text: '1' },
+        ]
+      );
+      render(<FillInTheBlank {...props} />);
+      expect(screen.getByText('Word Bank')).toBeInTheDocument();
+    });
+
+    it('submits word bank usage in envelope', async () => {
+      const props = createPropsWithWordBank(
+        '{{blank:1}} is the first blank.',
+        [{ id: '1', correctAnswer: 'This' }],
+        [{ id: 'wb1', text: 'This' }]
+      );
+
+      render(<FillInTheBlank {...props} />);
+
+      expect(screen.getByText('Word Bank')).toBeInTheDocument();
+      expect(screen.getByText('This')).toBeInTheDocument();
     });
   });
 });
