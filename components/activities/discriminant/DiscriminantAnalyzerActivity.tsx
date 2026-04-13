@@ -20,12 +20,11 @@ export function DiscriminantAnalyzerActivity({
   onComplete,
 }: DiscriminantAnalyzerActivityProps) {
   const handleSubmit = (payload: unknown) => {
-    onSubmit?.(payload);
+    onSubmit?.({ ...(payload as Record<string, unknown>), activityId });
   };
 
   return (
     <DiscriminantAnalyzer
-      activityId={activityId}
       mode={mode}
       equation={equation}
       coefficients={coefficients}

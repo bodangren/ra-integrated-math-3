@@ -21,12 +21,11 @@ export function RateOfChangeCalculatorActivity({
   onComplete,
 }: RateOfChangeCalculatorActivityProps) {
   const handleSubmit = (payload: unknown) => {
-    onSubmit?.(payload);
+    onSubmit?.({ ...(payload as Record<string, unknown>), activityId });
   };
 
   return (
     <RateOfChangeCalculator
-      activityId={activityId}
       mode={mode}
       sourceType={sourceType}
       data={data}

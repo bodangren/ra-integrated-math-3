@@ -168,7 +168,7 @@ export function FillInTheBlank({
     });
 
     const correctCount = parts.filter(p => p.isCorrect).length;
-    const score = Math.round((correctCount / blankIds.length) * 100);
+    const score = blankIds.length > 0 ? Math.round((correctCount / blankIds.length) * 100) : 0;
     const wordBankUsedCount = Object.keys(state.wordBankAssignments).length;
 
     const envelope = buildPracticeSubmissionEnvelope({

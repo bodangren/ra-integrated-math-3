@@ -14,8 +14,6 @@
 <!-- Problems encountered repeatedly; save future tracks from the same pain -->
 
 - (2026-04-05, setup) vinext (Vite-backed Next.js) may have subtle differences from stock Next.js — test builds early
-- (2026-04-08, setup) Schema porting from bus-math-v2 requires `npx tsc --noEmit` to catch missing tables; use `npx convex dev --once` for one-time type generation (faster for CI)
-- (2026-04-13, review) Known-failing tests landed with tech-debt notes (equivalence 44/50, InterceptIdentification 8/23) accumulate risk — enforce green baseline or scope the API down to what passes
 - (2026-04-12, submission-schema) Zod 4.x `z.record()` requires explicit key type — use `z.record(z.string(), z.unknown())`, not `z.record(z.unknown())`
 - (2026-04-12, graphing-schema) TypeScript array type inference narrows from first elements — use explicit type annotation when pushing different types
 
@@ -25,7 +23,6 @@
 - (2026-04-05, setup) Existing `lib/` modules are pure functions with clear types — excellent for testing
 - (2026-04-06, scaffold-pages) Mock `@/lib/convex/server` and `@/lib/auth/server` at the top of page tests — keeps tests fast and isolated
 - (2026-04-09, e-textbook-design) Use Tailwind animate-in classes for smooth transitions — lighter weight than framer-motion
-- (2026-04-11, fix-bundle-size) Use `next/dynamic` with `ssr: true` for heavy components — reduces bundle size without breaking SSR
 - (2026-04-12, graphing-components) Create wrapper components for activity registry to adapt component-specific props
 - (2026-04-12, fix-graphing-test-types) Use `as const` on string literals in test props to preserve literal types
 
@@ -48,3 +45,6 @@
 - (2026-04-14, discriminant) Discriminant classification: >0 = two real roots, =0 = one repeated root, <0 = two complex roots; keep UI explanation brief
 - (2026-04-14, step-by-step) Activity wrapper props should be optional when used in registry — provide sensible defaults so component works without all data
 - (2026-04-14, seed) Seed types mirror Convex schema but omit IDs/timestamps — seed modules define input shapes, Convex mutations handle actual inserts
+- (2026-04-14, code-review) Activity wrappers should inject activityId into submission payloads, not pass it to inner components — keeps inner components focused on domain logic
+- (2026-04-14, code-review) Always guard division by zero in score calculations; NaN propagates silently through analytics
+- (2026-04-14, code-review) Optional dependencies in vite.config need `@ts-expect-error` on dynamic import to avoid TS2307

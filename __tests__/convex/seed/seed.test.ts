@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { SeedLesson, SeedCompetencyStandard, SeedDemoEnvironment } from '../../convex/seed/types';
+import type { SeedLesson, SeedCompetencyStandard, SeedDemoEnvironment } from '@/convex/seed/types';
 
 describe('seed main entry point', () => {
   describe('seed orchestration', () => {

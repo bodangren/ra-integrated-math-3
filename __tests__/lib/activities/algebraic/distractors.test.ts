@@ -139,7 +139,7 @@ describe('generateDistractors', () => {
 
     it('handles unknown step types gracefully', () => {
       const correctAnswer = 'some expression';
-      const distractors = generateDistractors(correctAnswer, 'unknown_type');
+      const distractors = generateDistractors(correctAnswer, 'unknown_type' as unknown as import('@/lib/activities/algebraic/distractors').DistractorType);
 
       expect(distractors).toHaveLength(2);
     });

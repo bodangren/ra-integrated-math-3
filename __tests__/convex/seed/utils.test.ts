@@ -196,7 +196,7 @@ function idempotentInsert<T>(args: IdempotentInsertArgs<T>): string {
     (record) => record[args.keyField] === args.key
   );
   if (existing) {
-    return (existing as { id: string }).id;
+    return (existing as unknown as { id: string }).id;
   }
   return args.insertFn();
 }

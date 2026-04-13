@@ -1,73 +1,74 @@
 # Current Directive
 
-> Updated: 2026-04-14 (post-review)
+> Updated: 2026-04-14 (post-code-review)
 
 ## Status Summary
 
-- **Tests**: 1280 passing, 6 known equivalence failures (pattern-matching limits, 88% — exceeds 80% target), 0 flaky
-- **Build**: passing (RSC chunk 686 KB — above 500 KB warning threshold; pre-existing)
+- **Tests**: 1354 passing, 6 known equivalence failures (pattern-matching limits, 88% — exceeds 80% target), 1 flaky (StepByStepper-guided hint tracking — passes in isolation)
+- **Build**: passing (RSC chunk 708 KB — above 500 KB warning threshold; pre-existing)
 - **Lint**: passing
-- **Completed Tracks**: supporting-activities Phase 1-4 (ComprehensionQuiz, FillInTheBlank, RateOfChangeCalculator, DiscriminantAnalyzer), component-approval (all 6 phases), algebraic-examples (all 4 phases), extract-linear-regex, extract-quadratic-regex, curriculum-gap-remediation, reconcile-activity-schemas
+- **TypeScript**: passing (0 errors — resolved 16 TS errors from prior tracks)
+- **Completed Tracks**: supporting-activities Phase 1-4, component-approval (all 6 phases), algebraic-examples (all 4 phases), extract-linear-regex, extract-quadratic-regex, curriculum-gap-remediation, reconcile-activity-schemas, wire-step-by-step-solver (Phase 1-2), module-1-seed Phase 1
 
 ## Code Review Findings (2026-04-14)
 
-### Fixed
-- **Double onComplete in all Activity wrappers** — removed redundant `onComplete?.()` from `handleSubmit`; inner component handles onComplete after onSubmit
-- **FillInTheBlank word bank blank-to-blank drag** — source blank's wordBankAssignments now cleared when dragging between blanks
-- **RateOfChangeCalculator Function() constructor** — added `safeEvalPolynomial` with input validation; only arithmetic characters allowed after x substitution
-- **RateOfChangeCalculator table lookup bug** — `getValueAtIndex` now uses `indexOf` instead of treating x-values as array indices
-- **ComprehensionQuiz select_all retry** — reset value type matches question shape (`[]` for array, `''` for string)
-- **ComprehensionQuiz onComplete null guard** — changed `onClick={onComplete}` to `onClick={() => onComplete?.()}`
-- **Mode mapping `'guided'` -> `'guided_practice'`** — all 3 components now emit valid PracticeMode values
-- **RateOfChangeCalculator guided mode leaked answer** — correct answer only shown after submission
-- **Object.is(-0, 0) graph comparison** — replaced with `===` after normalizing -0 to 0
-- **Component approval componentKind filter** — simplified to correctly skip activities when filtering by example/practice
+### Fixed (this review session)
+- **16 TypeScript errors** across seed tests, registry, activity components, discriminant-analyzer, rate-of-change-calculator, comprehension-quiz, vite config
+- **activityId prop type mismatch** — DiscriminantAnalyzer and RateOfChangeCalculator destructured `activityId` but schema-derived types didn't include it; moved `activityId` injection to Activity wrapper level
+- **ActivityComponent registry type** — widened to `ComponentType<any>` to accept components with varying required props
+- **ShortAnswerQuestion onChange** — added missing `onChange` type to function signature
+- **Seed test import path** — fixed `../../convex/seed/types` → `@/convex/seed/types`
+- **convex/seed.ts** — removed unused argument `demo` passed to `seedDemo()`
+- **vite.config.ts** — added `@ts-expect-error` for optional Cloudflare plugin import
+- **Division by zero NaN scores** — FillInTheBlank and ComprehensionQuiz now guard against empty arrays
+- **NaN from parseFloat** — ROC and DiscriminantAnalyzer now check `isNaN` before computing `isCorrect`
+- **DiscriminantAnalyzer silent fallback** — shows error message when equation can't be parsed and no coefficients provided
 
-### Known Tech Debt (see `conductor/tech-debt.md` for full list)
-- ~~Zod schemas disconnected from ComprehensionQuiz and FillInTheBlank props~~ — **RESOLVED**
+### Pre-existing (from prior reviews, still open)
 - Placeholder hash for example/practice components (`convex/dev.ts:113`)
 - `createdBy` accepted as mutation arg, not derived from auth context
-- Guided mode submissions not recorded (no onSubmit call)
-- StepByStepSolverActivity ignores activityId/onSubmit/onComplete props
-- No tests for Convex dev functions
-- Distractor generation placeholder in StepByStepper
-- Algebraic test coverage structurally weak
+- Guided mode submissions not recorded (no onSubmit call for guided practice)
+- No tests for Convex dev functions (listReviewQueue, submitReview, getAuditContext)
+- Algebraic test coverage structurally weak (20-50% step assertion coverage)
+- Unbounded `take(500)` in listReviewQueue with N+1 hash computation
+- Approval status overwritten without version/lock — race condition on concurrent reviews
 
 ## Immediate Priorities
 
-1. ~~**Track 7 Phase 4: Discriminant Analyzer**~~ — **COMPLETED** (2026-04-14)
-   - Last remaining component in supporting-activities track
-   - Depends on Tracks 2, 4 (both complete)
-
-2. ~~**Reconcile Zod schemas with component props (Critical)**~~ — **COMPLETED** (2026-04-14)
-   - ComprehensionQuiz: schema now uses `prompt`/`options`/`correctAnswer` (string | string[])
-   - FillInTheBlank: schema now uses `{{blank:id}}` markers and inline `correctAnswer`
-   - Must align before curriculum content authoring begins
-
-3. **Wire StepByStepSolverActivity to real props**
-   - Replace hardcoded sample steps with activity data from registry
-   - Connect `onSubmit`/`onComplete` callbacks
-   - Integrate `distractors.ts` module into StepByStepper
-
-4. **Track 8: Module 1 Curriculum Seed**
-   - All 8 lessons with phases, activities, standards
+1. **Track 8: Module 1 Curriculum Seed (Phase 2-5)**
+   - Phase 1 infrastructure complete (types, utils, entry point)
+   - Phase 2: Lesson 1-7 content authoring
+   - Phase 3: Competency standards and demo environment
+   - Phase 4-5: Lesson seeds 1-1 through 1-8
    - Depends on Tracks 1, 4 (both complete)
 
-5. **Track 5: Graphing Components — Explore Mode**
+2. **Track 5: Graphing Components — Explore Mode**
    - Deferred from earlier; parameter slider interaction
+
+3. **Track 9: Student Lesson Flow**
+   - End-to-end: dashboard → lesson → phases → activities → completion → progress persistence
+   - Depends on: Tracks 3, 5, 6, 7, 8
+
+4. **Track 10: Teacher Module 1 Experience**
+   - Dashboard, gradebook, student detail, submission review, lesson preview
+   - Depends on: Tracks 3, 5, 6, 7, 8
 
 ## Medium-Term
 
-6. **Track 9: Student Lesson Flow** — end-to-end dashboard → lesson → completion
-7. **Track 10: Teacher Module 1 Experience** — gradebook, student detail, submission review
-8. **Add Convex dev function tests** — listReviewQueue, submitReview, getAuditContext
-9. **Replace placeholder content hash for example/practice** — `convex/dev.ts:113`
-10. **Guided mode submission recording** — FillInTheBlank and ComprehensionQuiz should call onSubmit in guided mode
+5. **Add Convex dev function tests** — listReviewQueue, submitReview, getAuditContext
+6. **Replace placeholder content hash for example/practice** — `convex/dev.ts:113`
+7. **Guided mode submission recording** — FillInTheBlank and ComprehensionQuiz should call onSubmit in guided mode
+8. **Resolve approval race condition** — add compare-and-swap or conflict detection to submitReview
+9. **Optimize listReviewQueue** — use indexes for pre-filtering, limit hash computation
 
 ## Tech Debt to Address
 
-- Zod schemas disconnected from components (**Critical**, blocks content authoring)
+- ~~16 TypeScript errors from prior tracks~~ — **RESOLVED** (2026-04-14)
+- ~~NaN scores from division by zero~~ — **RESOLVED** (2026-04-14)
+- ~~NaN from parseFloat in submissions~~ — **RESOLVED** (2026-04-14)
+- ~~DiscriminantAnalyzer silent coefficient fallback~~ — **RESOLVED** (2026-04-14)
 - Placeholder hash for example/practice components
 - `createdBy` should be derived from auth at public API boundaries
-- Algebraic test coverage needs strengthening (20-50% step assertion coverage)
+- Algebraic test coverage needs strengthening (88% but structural weakness)
 - Consider symbolic math library for equivalence validation (production)
+- Unbounded `take(500)` in listReviewQueue — performance concern for Convex billing

@@ -61,7 +61,7 @@ export const seedAll = internalAction({
 
     const demo = getDemoEnvironment();
     if (demo) {
-      await seedDemo(demo);
+      await seedDemo();
     }
 
     return results;

@@ -110,7 +110,7 @@ export function ComprehensionQuiz({
     });
 
     const correctCount = parts.filter(p => p.isCorrect).length;
-    const score = Math.round((correctCount / questions.length) * 100);
+    const score = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0;
 
     const envelope = buildPracticeSubmissionEnvelope({
       activityId,
@@ -408,7 +408,7 @@ function ShortAnswerQuestion({
   onChange,
   disabled,
   showCorrect,
-}: QuestionProps & { value: string }) {
+}: Omit<QuestionProps, 'onAnswer'> & { value: string; onChange: (value: string) => void }) {
   return (
     <div className="space-y-3">
       <p className="font-medium">{question.prompt}</p>

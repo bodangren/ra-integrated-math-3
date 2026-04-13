@@ -201,7 +201,7 @@ describe('StepByStepper - Graph Analysis Problem Type', () => {
       input.focus();
       
       // Simulate typing the correct answer
-      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set;
       nativeInputValueSetter?.call(input, 'a = 1, b = -4, c = 3');
       input.dispatchEvent(new Event('input', { bubbles: true }));
 

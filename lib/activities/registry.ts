@@ -13,7 +13,8 @@ export interface ActivityComponentProps {
   onComplete?: () => void;
 }
 
-type ActivityComponent = ComponentType<ActivityComponentProps>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ActivityComponent = ComponentType<any>;
 
 const registry = new Map<string, ActivityComponent>();
 

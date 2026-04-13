@@ -37,12 +37,16 @@ See `conductor/product.md` for the full lesson-by-lesson breakdown with learning
 
 ## Demo Credentials
 
-| Role    | Username       | Password |
-|---------|----------------|----------|
-| Teacher | `demo_teacher` | `demo123` |
-| Student | `demo_student` | `demo123` |
+| Role    | Username          | Password    |
+|---------|-------------------|-------------|
+| Teacher | `teacher@demo`    | `Demo1234!` |
+| Student | `student1@demo`   | `Demo1234!` |
+| Student | `student2@demo`   | `Demo1234!` |
+| Student | `student3@demo`   | `Demo1234!` |
+| Student | `student4@demo`   | `Demo1234!` |
+| Student | `student5@demo`   | `Demo1234!` |
 
-Demo accounts are for local development and test environments only.
+Demo accounts are seeded via `convex/seed.ts`. Run the seed action to create demo data.
 
 ## Getting Started
 
@@ -112,9 +116,10 @@ integrated-math-3/
 │   ├── student/      # Student-facing components
 │   ├── teacher/      # Teacher-facing components
 │   ├── lesson/       # Lesson rendering (PhaseRenderer, LessonStepper, etc.)
-│   ├── activities/   # Activity components (graphing, algebraic, quiz, blanks, roc)
+│   ├── activities/   # Activity components (graphing, algebraic, quiz, blanks, roc, discriminant)
 │   └── dev/          # Developer-only review queue and harnesses
 ├── convex/           # Convex schema, queries, mutations, seeds
+│   └── seed/         # Seed data types, utils, and entry point
 ├── lib/
 │   ├── auth/         # JWT session helpers and role guards
 │   ├── convex/       # Convex client config and server helpers

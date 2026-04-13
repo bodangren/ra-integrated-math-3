@@ -8,32 +8,23 @@
 
 | Date | Track | Item | Severity | Status | Notes |
 |------|-------|------|----------|--------|-------|
-| 2026-04-05 | setup | No seed.ts in convex/ for demo data | Medium | Partial | **2026-04-14:** Seed infrastructure created (Phase 1 complete) - types, utils, seedAll action; full seed execution (actual DB writes) pending Phase 4-5 |
+| 2026-04-05 | setup | No seed.ts in convex/ for demo data | Medium | Partial | **2026-04-14:** Seed Phase 1 infrastructure complete; full seed execution (DB writes) pending Phase 4-5 |
 | 2026-04-05 | setup | Legacy Supabase types in AuthProvider.tsx (snake_case profile fields) | Low | Open | Should migrate to camelCase matching Convex schema |
-| 2026-04-10 | activity-infrastructure | activity_completions table requires lessonId/phaseNumber not available in submission | Medium | Open | Submission mutation can't create completions without lesson context; PhaseActivityTracker handles client-side tracking |
-| 2026-04-12 | graphing-components | Explore mode with parameter sliders not implemented | Low | Open | Deferred to future track - core graphing functionality is complete. |
-| 2026-04-12 | algebraic-examples | Equivalence validator 6/50 tests failing for complex cases | Low | Open | Pattern-matching approach doesn't handle all polynomial/fraction/radical combinations; 44/50 passing (88%) exceeds 80% target. Consider symbolic math library for production. |
+| 2026-04-10 | activity-infrastructure | activity_completions table requires lessonId/phaseNumber not available in submission | Medium | Open | Submission mutation can't create completions without lesson context |
+| 2026-04-12 | algebraic-examples | Equivalence validator 6/50 tests failing for complex cases | Low | Open | Pattern-matching limits; 88% passing exceeds 80% target. Consider symbolic math library for production. |
 | 2026-04-13 | component-approval | Placeholder hash for example/practice components in submitReview | High | Open | `convex/dev.ts:113` uses static string; blocks staleness detection for 2/3 component kinds |
-| 2026-04-13 | component-approval | `submitReview` takes `createdBy` as arg instead of deriving from auth | High | Open | Mitigated by route-level derivation; must remain internal-only; add assertion |
-| 2026-04-13 | component-approval | No auth checks in convex/dev.ts internal functions | Medium | Open | Route guard implemented; Convex function auth deferred to future work |
+| 2026-04-13 | component-approval | `submitReview` takes `createdBy` as arg instead of deriving from auth | High | Open | Mitigated by route-level derivation; must remain internal-only |
+| 2026-04-13 | component-approval | No auth checks in convex/dev.ts internal functions | Medium | Open | Route guard implemented; Convex function auth deferred |
 | 2026-04-13 | component-approval | Review harnesses use hardcoded sample data not real component props | Medium | Open | ComponentHarnessPanel passes static data regardless of selected queue item |
-| 2026-04-13 | component-approval | No tests for Convex dev functions (listReviewQueue, submitReview, getAuditContext) | High | Open | Schema tests are vacuous (assert objects are `toBeDefined`); no mutation/query behavior tested |
-| 2026-04-13 | algebraic-examples | StepByStepSolverActivity ignores activityId/onSubmit/onComplete props | Medium | Resolved | **Fixed 2026-04-14:** Props now accepted with defaults; onSubmit wired to buildAlgebraicSubmission; onComplete called after submission. |
+| 2026-04-13 | component-approval | No tests for Convex dev functions | High | Open | Schema tests vacuous; no mutation/query behavior tested |
+| 2026-04-13 | component-approval | Unbounded `take(500)` with N+1 hash computation in listReviewQueue | High | Open | 500 SHA-256 hashes per query; no index-based pre-filtering; Convex billing concern |
+| 2026-04-13 | component-approval | Approval status overwritten without version/lock — race condition | High | Open | Concurrent reviews on same component silently overwrite each other |
 | 2026-04-13 | algebraic-examples | Algebraic test coverage is structurally weak | Medium | Open | Tests named "all steps" check only 20-50%; guided/practice modes near no-ops |
-| 2026-04-13 | algebraic-examples | Distractor generation is placeholder in StepByStepper.tsx | Medium | Resolved | **Fixed 2026-04-14:** Replaced local placeholder with import from `distractors.ts`; problemType prop added for targeted distractor generation. |
-| 2026-04-14 | supporting-activities | Zod schemas disconnected from ComprehensionQuiz and FillInTheBlank components | Critical | Resolved | **Fixed 2026-04-14:** Schemas rewritten to match component props - ComprehensionQuiz uses `prompt`/`options`/`correctAnswer`, FillInTheBlank uses `{{blank:id}}` markers and inline `correctAnswer`. |
-| 2026-04-14 | supporting-activities | Guided mode submissions not recorded for FillInTheBlank or ComprehensionQuiz | Medium | Open | Guided mode calls onComplete without onSubmit; no analytics/grading data produced |
-| 2026-04-14 | supporting-activities | Activity wrappers had double-onComplete bug (all 3) | Critical | Resolved | **Fixed 2026-04-14:** Removed redundant onComplete from Activity wrapper handleSubmit; inner component calls onComplete after onSubmit. |
-| 2026-04-14 | supporting-activities | FillInTheBlank word bank blank-to-blank drag orphaned source blank | Critical | Resolved | **Fixed 2026-04-14:** handleDragEnd now clears source blank's wordBankAssignments and answers when dragging between blanks. |
-| 2026-04-14 | supporting-activities | RateOfChangeCalculator used Function() constructor for expression eval | Critical | Resolved | **Fixed 2026-04-14:** Added safeEvalPolynomial with input validation (only arithmetic chars allowed after x substitution). |
-| 2026-04-14 | supporting-activities | RateOfChangeCalculator getValueAtIndex treated x-values as array indices for table | High | Resolved | **Fixed 2026-04-14:** Now uses indexOf to look up x-values in table data, matching computeRateOfChange behavior. |
-| 2026-04-14 | supporting-activities | ComprehensionQuiz select_all retry reset to '' not [] | High | Resolved | **Fixed 2026-04-14:** Retry now resets to correct type based on question.correctAnswer shape. |
-| 2026-04-14 | supporting-activities | ComprehensionQuiz onComplete not null-guarded in guided mode | High | Resolved | **Fixed 2026-04-14:** Changed `onClick={onComplete}` to `onClick={() => onComplete?.()}`. |
-| 2026-04-14 | supporting-activities | Mode mapping `'guided'` not valid PracticeMode in submissions | High | Resolved | **Fixed 2026-04-14:** All 3 components now map `'guided'` -> `'guided_practice'` in submission envelopes. |
-| 2026-04-14 | supporting-activities | RateOfChangeCalculator guided mode showed correct answer unconditionally | Medium | Resolved | **Fixed 2026-04-14:** Correct answer now only shown after submission. |
-| 2026-04-14 | supporting-activities | Object.is(-0, 0) returned false for zero-boundary graph points | Medium | Resolved | **Fixed 2026-04-14:** Replaced Object.is with === comparison after normalizing -0 to 0. |
-| 2026-04-13 | component-approval | `isStale` boolean coercion — was claimed as bug but code is correct | None | Resolved | **Inaccurate tech-debt entry:** Code uses ternary (not short-circuit); returns proper boolean. Removed from registry. |
-| 2026-04-13 | component-approval | `convex/dev.ts:45` componentKind filter confused when kind="practice" | Medium | Resolved | **Fixed 2026-04-14:** Simplified to `if (args.componentKind && args.componentKind !== "activity") continue;`. |
-| 2026-04-13 | component-approval | content-hash.ts imports Node crypto | Medium | Resolved | **Already fixed:** Code uses Web Crypto API (crypto.subtle.digest). Was stale entry. |
+| 2026-04-14 | supporting-activities | Guided mode submissions not recorded | Medium | Open | Guided mode calls onComplete without onSubmit; no analytics/grading data produced |
 | 2026-04-13 | bundle | MarkdownRenderer lazy-load may affect TTI on lesson pages | Low | Open | Verify with lighthouse on a representative lesson page |
 | 2026-04-13 | content-hash | undefined values silently dropped by JSON.stringify | Low | Open | `{a: undefined}` hashes identically to `{}`; no regression test |
+| 2026-04-14 | code-review | NaN scores from division by zero in FillInTheBlank/ComprehensionQuiz | High | Resolved | **Fixed 2026-04-14:** Guard `blankIds.length` and `questions.length` before division |
+| 2026-04-14 | code-review | NaN from parseFloat in ROC/DiscriminantAnalyzer submissions | Medium | Resolved | **Fixed 2026-04-14:** Added `!isNaN()` check before computing isCorrect |
+| 2026-04-14 | code-review | DiscriminantAnalyzer silent coefficient fallback showing wrong results | High | Resolved | **Fixed 2026-04-14:** Shows error message when equation can't be parsed |
+| 2026-04-14 | code-review | 16 TypeScript errors from prior tracks | High | Resolved | **Fixed 2026-04-14:** Registry types, activity props, seed imports, vite config |
+| 2026-04-14 | code-review | Activity components pass activityId to inner components that don't accept it | High | Resolved | **Fixed 2026-04-14:** Moved activityId injection to Activity wrapper level |

@@ -55,7 +55,6 @@ function extractCoefficients(
 }
 
 export function DiscriminantAnalyzer({
-  activityId,
   mode,
   equation,
   coefficients,
@@ -79,6 +78,15 @@ export function DiscriminantAnalyzer({
 
   const totalSteps = mode === 'guided' ? 3 : 1;
 
+  if (!extractedCoeffs && !coefficients) {
+    return (
+      <div className="p-4 bg-red-50 rounded-lg">
+        <p className="text-red-800 font-medium">Unable to parse coefficients from equation: <code>{equation}</code></p>
+        <p className="text-red-600 text-sm mt-1">Please provide coefficients explicitly.</p>
+      </div>
+    );
+  }
+
   const handleGuidedStep = (field: keyof DAState['identifiedCoefficients'], value: string) => {
     setState(prev => ({
       ...prev,
@@ -94,10 +102,9 @@ export function DiscriminantAnalyzer({
 
   const handlePracticeSubmit = () => {
     const userDiscriminant = parseFloat(state.computedDiscriminant);
-    const isCorrect = Math.abs(userDiscriminant - discriminant) < 0.001;
+    const isCorrect = !isNaN(userDiscriminant) && Math.abs(userDiscriminant - discriminant) < 0.001;
 
     const envelope = {
-      activityId,
       mode: mode === 'practice' ? 'independent_practice' : mode === 'guided' ? 'guided_practice' : mode,
       status: 'submitted',
       attemptNumber: 1,

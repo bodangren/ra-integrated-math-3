@@ -108,7 +108,6 @@ function getValueAtIndex(
 }
 
 export function RateOfChangeCalculator({
-  activityId,
   mode,
   sourceType,
   data,
@@ -142,17 +141,19 @@ export function RateOfChangeCalculator({
   };
 
   const handlePracticeSubmit = () => {
+    const userValue = parseFloat(state.calculatedAnswer);
+    const isCorrect = !isNaN(userValue) && Math.abs(userValue - rocValue) < 0.001;
+
     const envelope = {
-      activityId,
       mode: mode === 'practice' ? 'independent_practice' : mode === 'guided' ? 'guided_practice' : mode,
       status: 'submitted',
       attemptNumber: 1,
       identifiedValues: state.identifiedValues,
       finalAnswer: state.calculatedAnswer,
       correctAnswer: String(rocValue),
-      isCorrect: Math.abs(parseFloat(state.calculatedAnswer) - rocValue) < 0.001,
+      isCorrect,
       analytics: {
-        score: Math.abs(parseFloat(state.calculatedAnswer) - rocValue) < 0.001 ? 100 : 0,
+        score: isCorrect ? 100 : 0,
       },
     };
 
