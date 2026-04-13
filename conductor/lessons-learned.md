@@ -47,4 +47,4 @@
 - (2026-04-13, component-approval) Use `.take(n)` instead of `.collect()` to bound query results and avoid transaction size limits
 - (2026-04-13, test-infra) `vi.mock` factories are hoisted — variables used inside them must be declared with `vi.hoisted()`
 - (2026-04-13, content-hash) Node.js `crypto` module not available in V8/edge runtimes — use Web Crypto API (`crypto.subtle.digest`)
-- (2026-04-13, component-approval) Review harnesses should mock component rendering for testability — use preview components that don't require full activity props
+- (2026-04-13, blanks) Template parsing with regex `\{\{blank:(\w+)\}\}` can extract blank IDs and preserve surrounding text for rendering
