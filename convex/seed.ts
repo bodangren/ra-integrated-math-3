@@ -1,16 +1,9 @@
 import { internalAction } from "./_generated/server";
+import { internal } from "./_generated/api";
 import type { SeedLesson, SeedDemoEnvironment } from "./seed/types";
-import { seedDemoEnv } from "./seed/seed-demo-env";
-import { seedStandards } from "./seed/seed-standards";
-import { seedDemoProgress } from "./seed/seed-demo-progress";
-import { seedLesson1 } from "./seed/seed-lesson-1-1";
-import { seedLesson2 } from "./seed/seed-lesson-1-2";
-import { seedLesson3 } from "./seed/seed-lesson-1-3";
-import { seedLesson4 } from "./seed/seed-lesson-1-4";
-import { seedLesson5 } from "./seed/seed-lesson-1-5";
-import { seedLesson6 } from "./seed/seed-lesson-1-6";
-import { seedLesson7 } from "./seed/seed-lesson-1-7";
-import { seedLesson8 } from "./seed/seed-lesson-1-8";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const seedInternal = (internal as any).seed;
 
 export const seedAll = internalAction({
   args: {},
@@ -28,7 +21,7 @@ export const seedAll = internalAction({
     };
 
     try {
-      const standardResults = await ctx.runMutation(seedStandards, {});
+      const standardResults = await ctx.runMutation(seedInternal.seedStandards, {});
       for (const result of standardResults) {
         results.standards.push({ code: result.code, success: true });
       }
@@ -45,28 +38,28 @@ export const seedAll = internalAction({
       try {
         switch (lesson.slug) {
           case "module-1-lesson-1":
-            await ctx.runMutation(seedLesson1, {});
+            await ctx.runMutation(seedInternal.seedLesson1, {});
             break;
           case "module-1-lesson-2":
-            await ctx.runMutation(seedLesson2, {});
+            await ctx.runMutation(seedInternal.seedLesson2, {});
             break;
           case "module-1-lesson-3":
-            await ctx.runMutation(seedLesson3, {});
+            await ctx.runMutation(seedInternal.seedLesson3, {});
             break;
           case "module-1-lesson-4":
-            await ctx.runMutation(seedLesson4, {});
+            await ctx.runMutation(seedInternal.seedLesson4, {});
             break;
           case "module-1-lesson-5":
-            await ctx.runMutation(seedLesson5, {});
+            await ctx.runMutation(seedInternal.seedLesson5, {});
             break;
           case "module-1-lesson-6":
-            await ctx.runMutation(seedLesson6, {});
+            await ctx.runMutation(seedInternal.seedLesson6, {});
             break;
           case "module-1-lesson-7":
-            await ctx.runMutation(seedLesson7, {});
+            await ctx.runMutation(seedInternal.seedLesson7, {});
             break;
           case "module-1-lesson-8":
-            await ctx.runMutation(seedLesson8, {});
+            await ctx.runMutation(seedInternal.seedLesson8, {});
             break;
           default:
             break;
@@ -84,7 +77,7 @@ export const seedAll = internalAction({
     const demo = getDemoEnvironment();
     if (demo) {
       try {
-        await ctx.runMutation(seedDemoEnv, {});
+        await ctx.runMutation(seedInternal.seedDemoEnv, {});
         results.demo = { success: true };
       } catch (error) {
         results.demo = {
@@ -94,7 +87,7 @@ export const seedAll = internalAction({
       }
 
       try {
-        await ctx.runMutation(seedDemoProgress, {});
+        await ctx.runMutation(seedInternal.seedDemoProgress, {});
         results.progress = { success: true };
       } catch (error) {
         results.progress = {

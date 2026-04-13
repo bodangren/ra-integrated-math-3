@@ -101,14 +101,14 @@ describe('GraphingExplorer - explore mode', () => {
 
     it('displays the live equation with current coefficient values', () => {
       render(<GraphingExplorer {...defaultExploreProps} />);
-      expect(screen.getByText(/y = 1x\^2 \+ 0x \+ 0/i)).toBeInTheDocument();
+      expect(screen.getByText(/y\s*=\s*x²/i)).toBeInTheDocument();
     });
 
     it('updates equation display when sliders change', async () => {
       render(<GraphingExplorer {...defaultExploreProps} />);
       const sliders = screen.getAllByRole('slider');
       fireEvent.change(sliders[0], { target: { value: '2' } });
-      expect(screen.getByText(/y = 2x\^2/i)).toBeInTheDocument();
+      expect(screen.getByText(/y\s*=\s*2x²/i)).toBeInTheDocument();
     });
   });
 

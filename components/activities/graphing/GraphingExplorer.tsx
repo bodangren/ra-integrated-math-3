@@ -314,7 +314,22 @@ export function GraphingExplorer({
   const isPractice = mode === 'practice';
   const isExplore = mode === 'explore';
 
-  const exploreEquation = `y = ${sliderA}x^2 ${sliderB >= 0 ? '+' : ''} ${sliderB}x ${sliderC >= 0 ? '+' : ''} ${sliderC}`;
+  const formatCoefficient = (coeff: number, variable: string, isFirst: boolean): string => {
+    if (coeff === 0) return '';
+    const sign = coeff > 0 ? (isFirst ? '' : ' + ') : ' - ';
+    const absCoeff = Math.abs(coeff);
+    const coeffStr = absCoeff === 1 && variable ? '' : absCoeff.toString();
+    return `${sign}${coeffStr}${variable}`;
+  };
+
+  const exploreEquation = (() => {
+    let result = 'y = ';
+    const aPart = formatCoefficient(sliderA, 'x²', true);
+    const bPart = formatCoefficient(sliderB, 'x', !aPart);
+    const cPart = formatCoefficient(sliderC, '', !aPart && !bPart);
+    result += aPart + bPart + cPart;
+    return result || 'y = 0';
+  })();
 
   const handleSliderReset = () => {
     setSliderA(sliderDefaults?.a ?? 1);

@@ -30,3 +30,6 @@
 | 2026-04-14 | code-review | Activity components pass activityId to inner components that don't accept it | High | Resolved | **Fixed 2026-04-14:** Moved activityId injection to Activity wrapper level |
 | 2026-04-14 | code-review | seed.ts infinite loop calling seedStandards for each standard | High | Resolved | **Fixed 2026-04-14:** seedStandards now called once; it seeds all standards at once |
 | 2026-04-14 | code-review | Security risk using Function() constructor in RateOfChangeCalculator | High | Resolved | **Fixed 2026-04-14:** Replaced with recursive descent parser for expression evaluation |
+| 2026-04-14 | module-1-seed | seed.ts passes RegisteredMutation to ctx.runMutation instead of FunctionReference | Critical | Resolved | **Fixed 2026-04-14:** Use `internal` from `_generated/api` with type assertion until types regenerated |
+| 2026-04-14 | module-1-seed | seed-demo-env.ts TypeScript error: profileId possibly undefined | Medium | Resolved | **Fixed 2026-04-14:** Added non-null assertion after guard clause |
+| 2026-04-14 | graphing-explore | Explore equation formatting shows `1x^2 + 0x + 0` | Low | Resolved | **Fixed 2026-04-14:** Smart coefficient formatting omits 0 terms and 1 coefficients |

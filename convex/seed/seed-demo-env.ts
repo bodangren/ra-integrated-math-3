@@ -222,7 +222,7 @@ export const seedDemoEnv = internalMutation({
       const existingEnrollment = await ctx.db
         .query('class_enrollments')
         .withIndex('by_class_and_student', (q) =>
-          q.eq('classId', classId).eq('studentId', student.profileId)
+          q.eq('classId', classId).eq('studentId', student.profileId!)
         )
         .unique();
 
