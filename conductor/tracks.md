@@ -71,6 +71,9 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
    *Depends on: Tracks 2, 4*
    *Link: [./conductor/tracks/supporting-activities_20260406/](./conductor/tracks/supporting-activities_20260406/)*
    - Phase 1: Comprehension Quiz [COMPLETE]
+   - Phase 2: Fill-in-the-Blank [COMPLETE]
+   - Phase 3: Rate-of-Change Calculator [COMPLETE]
+   - Phase 4: Discriminant Analyzer [COMPLETE]
 
 - [ ] **Track 8: Module 1 Curriculum Seed**
   *All 8 lessons seeded with phases, sections, activities, standards, and demo environment*

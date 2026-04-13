@@ -63,17 +63,17 @@
 
 ## Phase 4: Discriminant Analyzer
 
-- [ ] Task: Implement `discriminant-analyzer` teaching mode
-    - [ ] Write tests: renders equation → labeled a, b, c → formula → computed value → classification
-    - [ ] Implement `components/activities/discriminant/DiscriminantAnalyzer.tsx` — teaching mode
+- [x] Task: Implement `discriminant-analyzer` teaching mode
+    - [x] Write tests: renders equation → labeled a, b, c → formula → computed value → classification
+    - [x] Implement `components/activities/discriminant/DiscriminantAnalyzer.tsx` — teaching mode
 
-- [ ] Task: Add guided and practice modes
-    - [ ] Write tests: guided — stepped (identify → compute → classify); each sub-step validated
-    - [ ] Write tests: practice — full computation; batch validated on submit
-    - [ ] Implement guided and practice modes
+- [x] Task: Add guided and practice modes
+    - [x] Write tests: guided — stepped (identify → compute → classify); each sub-step validated
+    - [x] Write tests: practice — full computation; batch validated on submit
+    - [x] Implement guided and practice modes
 
-- [ ] Task: Implement submission and register
-    - [ ] Write tests: envelope includes coefficient identification, discriminant value, classification
-    - [ ] Register in activity registry
+- [x] Task: Implement submission and register
+    - [x] Write tests: envelope includes coefficient identification, discriminant value, classification
+    - [x] Register in activity registry
 
-- [ ] Task: Conductor — Phase Completion Verification 'Discriminant Analyzer' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Discriminant Analyzer' (Protocol in workflow.md)

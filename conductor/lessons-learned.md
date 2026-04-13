@@ -50,3 +50,4 @@
 - (2026-04-14, supporting-activities) Zod schemas must be written to match actual component props, not an idealized API — write component first, then schema, not vice versa
 - (2026-04-14, roc) Table data lookups must use indexOf for x-value matching, not direct array indexing — x-values aren't guaranteed sequential
 - (2026-04-14, roc) Normalize -0 to 0 before comparison; Object.is(-0, 0) returns false which breaks zero-boundary point matching
+- (2026-04-14, discriminant) Discriminant classification: >0 = two real roots, =0 = one repeated root, <0 = two complex roots; keep UI explanation brief
