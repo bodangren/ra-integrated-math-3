@@ -72,18 +72,18 @@
 
 ## Phase 4: Review Queue UI
 
-- [~] Task: Build review queue filters and list
-    - [ ] Write component tests for status, kind, stale, tag, priority, and placement filters
-    - [ ] Implement queue list using the developer-only review query
-    - [ ] Show current status, stale indicator, last review, unresolved notes, and placement context
-    - [ ] Handle empty and error states without exposing the feature outside dev access
+- [x] Task: Build review queue filters and list [e74f3f5]
+    - [x] Write component tests for status, kind, stale, tag, priority, and placement filters
+    - [x] Implement queue list using the developer-only review query
+    - [x] Show current status, stale indicator, last review, unresolved notes, and placement context
+    - [x] Handle empty and error states without exposing the feature outside dev access
 
-- [ ] Task: Build review decision panel
-    - [ ] Write tests that approve is available only for the current review target state
-    - [ ] Write tests that comments are required for `needs_changes` and `rejected`
-    - [ ] Implement status buttons, issue tags, priority, and comment input
-    - [ ] Submit review decisions through the developer-only mutation/API path
-    - [ ] Refresh queue state after review submission
+- [x] Task: Build review decision panel [e74f3f5]
+    - [x] Write tests that approve is available only for the current review target state
+    - [x] Write tests that comments are required for `needs_changes` and `rejected`
+    - [x] Implement status buttons, issue tags, priority, and comment input
+    - [x] Submit review decisions through the developer-only mutation/API path
+    - [x] Refresh queue state after review submission
 
 - [ ] Task: Conductor - Phase Completion Verification 'Review Queue UI' (Protocol in workflow.md)
 
