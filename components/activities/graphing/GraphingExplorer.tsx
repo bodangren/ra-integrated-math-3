@@ -8,7 +8,7 @@ import { InterceptIdentification, InterceptData } from './InterceptIdentificatio
 
 export interface GraphingExplorerProps {
   activityId: string;
-  mode: 'teaching' | 'guided' | 'practice';
+  mode: 'teaching' | 'guided' | 'practice' | 'explore';
   onSubmit?: (payload: PracticeSubmissionEnvelope) => void;
   variant?: 'plot_from_equation' | 'compare_functions' | 'find_intercepts' | 'graph_system';
   equation: string;
@@ -19,12 +19,15 @@ export interface GraphingExplorerProps {
   comparisonQuestion?: string;
   comparisonAnswer?: 'first' | 'second';
   linearEquation?: string;
+  exploreQuestion?: string;
+  explorationPrompts?: string[];
+  sliderDefaults?: { a: number; b: number; c: number };
 }
 
 interface PracticeSubmissionEnvelope {
   contractVersion: 'practice.v1';
   activityId: string;
-  mode: 'teaching' | 'guided' | 'practice';
+  mode: 'teaching' | 'guided' | 'practice' | 'explore';
   status: 'draft' | 'submitted' | 'graded' | 'returned';
   attemptNumber: number;
   submittedAt: string;
@@ -68,6 +71,9 @@ export function GraphingExplorer({
   comparisonQuestion,
   comparisonAnswer,
   linearEquation,
+  exploreQuestion,
+  explorationPrompts,
+  sliderDefaults,
 }: GraphingExplorerProps) {
   const [placedPoints, setPlacedPoints] = useState<Point[]>([]);
   const [tableComplete, setTableComplete] = useState(false);
@@ -78,6 +84,9 @@ export function GraphingExplorer({
   const [comparisonAnswerSelected, setComparisonAnswerSelected] = useState<'first' | 'second' | null>(null);
   const [showComparisonFeedback, setShowComparisonFeedback] = useState(false);
   const [intersectionPoints, setIntersectionPoints] = useState<Point[]>([]);
+  const [sliderA, setSliderA] = useState(sliderDefaults?.a ?? 1);
+  const [sliderB, setSliderB] = useState(sliderDefaults?.b ?? 0);
+  const [sliderC, setSliderC] = useState(sliderDefaults?.c ?? 0);
 
   const addInteraction = useCallback((type: string, data?: unknown) => {
     setInteractionHistory(prev => [...prev, { type, timestamp: Date.now(), data }]);
@@ -303,37 +312,154 @@ export function GraphingExplorer({
   const isTeaching = mode === 'teaching';
   const isGuided = mode === 'guided';
   const isPractice = mode === 'practice';
+  const isExplore = mode === 'explore';
+
+  const exploreEquation = `y = ${sliderA}x^2 ${sliderB >= 0 ? '+' : ''} ${sliderB}x ${sliderC >= 0 ? '+' : ''} ${sliderC}`;
+
+  const handleSliderReset = () => {
+    setSliderA(sliderDefaults?.a ?? 1);
+    setSliderB(sliderDefaults?.b ?? 0);
+    setSliderC(sliderDefaults?.c ?? 0);
+  };
+
+  const exploreFunctions: FunctionPlot[] = [{ expression: exploreEquation, color: '#3b82f6' }];
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-xl font-semibold text-foreground mb-2">
-          {variant === 'compare_functions'
-            ? 'Compare the Functions'
-            : variant === 'find_intercepts'
-            ? 'Find the X-Intercepts'
-            : variant === 'graph_system'
-            ? 'Graph the System of Equations'
-            : 'Graph the Function'}
-        </h2>
-        <p className="text-muted-foreground">
-          {equation}
-          {variant === 'compare_functions' && comparisonEquation && (
-            <>
-              <br />
-              {comparisonEquation}
-            </>
+      {isExplore ? (
+        <>
+          {exploreQuestion && (
+            <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
+              <p className="text-lg font-medium text-blue-900">{exploreQuestion}</p>
+            </div>
           )}
-          {variant === 'graph_system' && linearEquation && (
-            <>
-              <br />
-              {linearEquation}
-            </>
-          )}
-        </p>
-      </div>
 
-      {variant === 'graph_system' && (
+          <div className="bg-slate-50 border border-slate-200 rounded-md p-4 space-y-4">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-lg font-semibold text-foreground">Parameter Controls</h3>
+              <button
+                onClick={handleSliderReset}
+                className="px-3 py-1 text-sm bg-slate-200 hover:bg-slate-300 rounded-md transition-colors"
+              >
+                Reset
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <label className="w-24 font-medium text-foreground">
+                  a: <span className="text-blue-600">{sliderA.toFixed(1)}</span>
+                </label>
+                <input
+                  type="range"
+                  min="-5"
+                  max="5"
+                  step="0.1"
+                  value={sliderA}
+                  onChange={(e) => setSliderA(parseFloat(e.target.value))}
+                  className="flex-1 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  aria-label="Coefficient a"
+                />
+              </div>
+
+              <div className="flex items-center gap-4">
+                <label className="w-24 font-medium text-foreground">
+                  b: <span className="text-blue-600">{sliderB.toFixed(1)}</span>
+                </label>
+                <input
+                  type="range"
+                  min="-10"
+                  max="10"
+                  step="0.5"
+                  value={sliderB}
+                  onChange={(e) => setSliderB(parseFloat(e.target.value))}
+                  className="flex-1 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  aria-label="Coefficient b"
+                />
+              </div>
+
+              <div className="flex items-center gap-4">
+                <label className="w-24 font-medium text-foreground">
+                  c: <span className="text-blue-600">{sliderC.toFixed(1)}</span>
+                </label>
+                <input
+                  type="range"
+                  min="-10"
+                  max="10"
+                  step="0.5"
+                  value={sliderC}
+                  onChange={(e) => setSliderC(parseFloat(e.target.value))}
+                  className="flex-1 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                  aria-label="Coefficient c"
+                />
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-slate-200">
+              <p className="text-lg font-mono text-center text-blue-700">
+                {exploreEquation}
+              </p>
+            </div>
+          </div>
+
+          {explorationPrompts && explorationPrompts.length > 0 && (
+            <div className="bg-amber-50 border border-amber-200 rounded-md p-4">
+              <h4 className="font-medium text-amber-900 mb-2">Explore Further:</h4>
+              <ul className="space-y-2">
+                {explorationPrompts.map((prompt, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <input
+                      type="checkbox"
+                      id={`prompt-${index}`}
+                      className="mt-1 w-4 h-4 text-amber-600 border-amber-300 rounded focus:ring-amber-500"
+                    />
+                    <label htmlFor={`prompt-${index}`} className="text-amber-800 cursor-pointer">
+                      {prompt}
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <GraphingCanvas
+            domain={domain}
+            range={range}
+            functions={exploreFunctions}
+            points={[]}
+            readonly={true}
+          />
+        </>
+      ) : (
+      <>
+        <div>
+          <h2 className="text-xl font-semibold text-foreground mb-2">
+            {variant === 'compare_functions'
+              ? 'Compare the Functions'
+              : variant === 'find_intercepts'
+              ? 'Find the X-Intercepts'
+              : variant === 'graph_system'
+              ? 'Graph the System of Equations'
+              : 'Graph the Function'}
+          </h2>
+          <p className="text-muted-foreground">
+            {equation}
+            {variant === 'compare_functions' && comparisonEquation && (
+              <>
+                <br />
+                {comparisonEquation}
+              </>
+            )}
+            {variant === 'graph_system' && linearEquation && (
+              <>
+                <br />
+                {linearEquation}
+              </>
+            )}
+          </p>
+        </div>
+
+        {variant === 'graph_system' && (
         <p className="text-sm text-muted-foreground">
           Find the intersection points
         </p>
@@ -492,6 +618,8 @@ export function GraphingExplorer({
             Submit
           </button>
         )
+      )}
+      </>
       )}
     </div>
   );
