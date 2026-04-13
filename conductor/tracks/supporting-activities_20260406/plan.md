@@ -26,11 +26,11 @@
     - [x] Write tests: teaching mode shows blanks pre-filled as highlighted labels
     - [x] Implement `components/activities/blanks/FillInTheBlank.tsx` — teaching mode [8b325bc]
 
-- [~] Task: Add guided and practice modes to `FillInTheBlank`
-    - [ ] Write tests: guided — immediate per-blank feedback on submit; incorrect blanks show correct answer
-    - [ ] Write tests: practice — all blanks, feedback only after full submit
-    - [ ] Write tests: `MathInputField` used for expression blanks; plain text for word blanks
-    - [ ] Implement guided and practice modes
+- [x] Task: Add guided and practice modes to `FillInTheBlank`
+    - [x] Write tests: guided — immediate per-blank feedback on submit; incorrect blanks show correct answer
+    - [x] Write tests: practice — all blanks, feedback only after full submit
+    - [x] Write tests: `MathInputField` used for expression blanks; plain text for word blanks
+    - [x] Implement guided and practice modes
 
 - [ ] Task: Implement optional word bank drag-and-drop
     - [ ] Write tests: word bank items drag into blanks; blank shows dragged term; can be cleared
