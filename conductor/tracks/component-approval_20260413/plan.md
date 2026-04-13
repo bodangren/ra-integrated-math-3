@@ -87,27 +87,27 @@
 
 - [x] Task: Conductor - Phase Completion Verification 'Review Queue UI' (Protocol in workflow.md) [0933956]
 
-## Phase 5: Component Review Harnesses
+## Phase 5: Component Review Harnesses [checkpoint: c1e4ea1]
 
-- [ ] Task: Build example review harness
-    - [ ] Write tests that teaching, guided, and practice modes can be selected
-    - [ ] Write tests that approval is disabled until required modes are reviewed
-    - [ ] Add controls for generating multiple practice variants where supported
-    - [ ] Add reviewer checkboxes for algorithmic practice behavior and coherent feedback/solution behavior
+- [x] Task: Build example review harness [c1e4ea1]
+    - [x] Write tests that teaching, guided, and practice modes can be selected
+    - [x] Write tests that approval is disabled until required modes are reviewed
+    - [x] Add controls for generating multiple practice variants where supported
+    - [x] Add reviewer checkboxes for algorithmic practice behavior and coherent feedback/solution behavior
 
-- [ ] Task: Build practice review harness
-    - [ ] Write tests that a practice component can render from stored props
-    - [ ] Write tests that emitted `practice.v1` envelopes can be inspected
-    - [ ] Add controls for correct and incorrect attempts where component APIs support them
-    - [ ] Add randomized variant checks for randomized practice components
+- [x] Task: Build practice review harness [c1e4ea1]
+    - [x] Write tests that a practice component can render from stored props
+    - [x] Write tests that emitted `practice.v1` envelopes can be inspected
+    - [x] Add controls for correct and incorrect attempts where component APIs support them
+    - [x] Add randomized variant checks for randomized practice components
 
-- [ ] Task: Build activity review harness
-    - [ ] Write tests that activity components render from stored activity props
-    - [ ] Write tests that completion and submission callbacks are visible to the reviewer
-    - [ ] Add a mode/context selector when a component supports multiple relevant placements
-    - [ ] Surface validation or render errors as review evidence
+- [x] Task: Build activity review harness [c1e4ea1]
+    - [x] Write tests that activity components render from stored activity props
+    - [x] Write tests that completion and submission callbacks are visible to the reviewer
+    - [x] Add a mode/context selector when a component supports multiple relevant placements
+    - [x] Surface validation or render errors as review evidence
 
-- [ ] Task: Conductor - Phase Completion Verification 'Component Review Harnesses' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Component Review Harnesses' (Protocol in workflow.md) [c1e4ea1]
 
 ## Phase 6: End-to-End Verification and Documentation
 

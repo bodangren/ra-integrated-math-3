@@ -102,6 +102,8 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
    *Developer-only approval workflow for example, activity, and practice components with structured review notes for later LLM audits*
    *Link: [./conductor/tracks/component-approval_20260413/](./conductor/tracks/component-approval_20260413/)*
    - Phase 3: Developer-Only Access Guard [COMPLETE]
+   - Phase 4: Review Queue UI [COMPLETE]
+   - Phase 5: Component Review Harnesses [COMPLETE]
 
 ## Archived Tracks
 
