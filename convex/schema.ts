@@ -291,7 +291,8 @@ export default defineSchema({
   })
     .index("by_component", ["componentKind", "componentId"])
     .index("by_status", ["status"])
-    .index("by_created_at", ["createdAt"]),
+    .index("by_created_at", ["createdAt"])
+    .index("by_resolved", ["resolvedAt"]),
 
   component_approvals: defineTable({
     componentKind: v.union(v.literal("example"), v.literal("activity"), v.literal("practice")),

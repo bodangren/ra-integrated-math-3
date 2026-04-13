@@ -29,8 +29,9 @@ export const listReviewQueue = internalQuery({
   },
   handler: async (ctx, args): Promise<ReviewQueueItem[]> => {
     const items: ReviewQueueItem[] = [];
+    const MAX_ITEMS = 500;
 
-    const activities = await ctx.db.query("activities").collect();
+    const activities = await ctx.db.query("activities").take(MAX_ITEMS);
     for (const activity of activities) {
       const currentHash = computeComponentContentHash({
         componentKind: "activity",
@@ -39,7 +40,7 @@ export const listReviewQueue = internalQuery({
         gradingConfig: activity.gradingConfig,
       });
       const storedHash = activity.approval?.contentHash;
-      const isStale = storedHash && storedHash !== currentHash;
+      const isStale = storedHash ? storedHash !== currentHash : false;
 
       if (args.componentKind && args.componentKind !== "activity" && args.componentKind !== "practice") continue;
       if (args.status && activity.approval?.status !== args.status) continue;
@@ -57,7 +58,7 @@ export const listReviewQueue = internalQuery({
       });
     }
 
-    const componentApprovals = await ctx.db.query("component_approvals").collect();
+    const componentApprovals = await ctx.db.query("component_approvals").take(MAX_ITEMS);
     for (const approval of componentApprovals) {
       if (args.componentKind && args.componentKind !== approval.componentKind) continue;
       if (args.status && approval.status !== args.status) continue;
@@ -126,7 +127,7 @@ export const submitReview = internalMutation({
     });
 
     const approvalSummary = {
-      status: args.status === "approved" ? "approved" : args.status === "needs_changes" ? "needs_changes" : "rejected",
+      status: args.status,
       contentHash: componentContentHash,
       reviewedAt: Date.now(),
       reviewedBy: args.createdBy,
@@ -168,8 +169,8 @@ export const getAuditContext = internalQuery({
   handler: async (ctx): Promise<Doc<"component_reviews">[]> => {
     const unresolvedReviews = await ctx.db
       .query("component_reviews")
-      .filter((q) => q.eq(q.field("resolvedAt"), undefined))
-      .collect();
+      .withIndex("by_resolved", (q) => q.eq("resolvedAt", undefined))
+      .take(200);
 
     return unresolvedReviews;
   },

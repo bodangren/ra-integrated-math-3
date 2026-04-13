@@ -8,7 +8,7 @@ This project doubles as a **course template**: Next.js App Router + Convex backe
 
 ## Features
 
-- **Phase-Based Lessons**: 6-phase learning structure (Hook, Introduction, Guided Practice, Independent Practice, Assessment, Closing)
+- **Phase-Based Lessons**: Flexible typed phase system (Explore, Vocabulary, Learn, Key Concept, Worked Example, Guided Practice, Independent Practice, Assessment, Discourse, Reflection)
 - **Progress Tracking**: Per-student, per-phase completion with time tracking
 - **Student Dashboard**: Course progress, next-lesson recommendations, unit-by-unit breakdown
 - **Teacher Dashboard**: Organization-scoped student roster with progress and analytics
@@ -115,14 +115,16 @@ integrated-math-3/
 ├── components/       # React components
 │   ├── auth/         # AuthProvider (React context)
 │   ├── ui/           # shadcn/ui components
-│   ├── student/      # Student-facing UI (to be built)
-│   ├── teacher/      # Teacher-facing UI (to be built)
-│   └── dashboard/    # Dashboard shared components (to be built)
+│   ├── student/      # Student-facing components
+│   ├── teacher/      # Teacher-facing components
+│   ├── lesson/       # Lesson rendering (PhaseRenderer, LessonStepper, etc.)
+│   └── activities/   # Interactive activity components (graphing, algebraic)
 ├── convex/           # Convex schema, queries, mutations, seeds
 ├── lib/
 │   ├── auth/         # JWT session helpers and role guards
 │   ├── convex/       # Convex client config and server helpers
-│   └── student/      # Dashboard and lesson runtime logic
+│   ├── activities/   # Activity registry, schemas, content hashing
+│   └── curriculum/   # Phase types, lesson helpers
 ├── hooks/            # Custom React hooks
 ├── types/            # Shared TypeScript types
 ├── conductor/        # Spec-driven development docs (Conductor)
