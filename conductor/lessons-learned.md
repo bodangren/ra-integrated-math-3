@@ -37,7 +37,6 @@
 - (2026-04-12, algebraic-examples) Pattern-matching equivalence works for Module 1 (88% passing) but has limits; polynomial expansion patterns need unified sign handling
 - (2026-04-13, algebraic-examples) Algebraic component testing requires KaTeX-aware assertions — text matching fails with KaTeX HTML; use specific assertions and avoid regex on rendered math
 - (2026-04-13, algebraic-examples) Problem type implementation is configuration-driven — StepByStepper handles all modes; problem types are step configurations
-- (2026-04-13, review) Conductor autonomous runs produce ~60% bookkeeping commits — squash into phase-completion commits so `git log` stays navigable
 - (2026-04-13, review) Convex `internalMutation` args should not accept identity (e.g. `createdBy: v.id("profiles")`) — derive from auth context or clearly mark CLI-only to avoid a trust-boundary bug if ever exposed
 - (2026-04-13, component-approval) Convex queries must use `.withIndex()` not `.filter()` — always define an index in schema and use it
 - (2026-04-13, component-approval) Use `.take(n)` instead of `.collect()` to bound query results and avoid transaction size limits
@@ -48,3 +47,4 @@
 - (2026-04-14, roc) Normalize -0 to 0 before comparison; Object.is(-0, 0) returns false which breaks zero-boundary point matching
 - (2026-04-14, discriminant) Discriminant classification: >0 = two real roots, =0 = one repeated root, <0 = two complex roots; keep UI explanation brief
 - (2026-04-14, step-by-step) Activity wrapper props should be optional when used in registry — provide sensible defaults so component works without all data
+- (2026-04-14, seed) Seed types mirror Convex schema but omit IDs/timestamps — seed modules define input shapes, Convex mutations handle actual inserts
