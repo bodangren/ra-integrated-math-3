@@ -131,4 +131,72 @@ describe('FillInTheBlank', () => {
       expect(screen.getByText(/x =/)).toBeInTheDocument();
     });
   });
+
+  describe('guided mode', () => {
+    it('shows one blank at a time with placeholder', () => {
+      const props = createProps(
+        '{{blank:1}} is first. {{blank:2}} is second.',
+        [
+          { id: '1', correctAnswer: 'This' },
+          { id: '2', correctAnswer: 'That' },
+        ],
+        'guided'
+      );
+      render(<FillInTheBlank {...props} />);
+      expect(screen.getAllByText('____').length).toBe(2);
+    });
+
+    it('shows progress indicator', () => {
+      const props = createProps(
+        '{{blank:1}} is first.',
+        [{ id: '1', correctAnswer: 'This' }],
+        'guided'
+      );
+      render(<FillInTheBlank {...props} />);
+      expect(screen.getByText(/Blank 1 of 1/)).toBeInTheDocument();
+    });
+
+    it('has math input for answer entry', () => {
+      const props = createProps(
+        'The vertex is ({{blank:1}}, {{blank:2}}).',
+        [
+          { id: '1', correctAnswer: '0' },
+          { id: '2', correctAnswer: '0' },
+        ],
+        'guided'
+      );
+      render(<FillInTheBlank {...props} />);
+      const inputs = screen.getAllByRole('textbox');
+      expect(inputs.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('practice mode', () => {
+    it('shows all blanks with placeholders at once', () => {
+      const props = createProps(
+        '{{blank:1}} is first. {{blank:2}} is second.',
+        [
+          { id: '1', correctAnswer: 'This' },
+          { id: '2', correctAnswer: 'That' },
+        ],
+        'practice'
+      );
+      render(<FillInTheBlank {...props} />);
+      expect(screen.getAllByText('____').length).toBe(2);
+    });
+
+    it('has submit button disabled until all answered', () => {
+      const props = createProps(
+        '{{blank:1}} and {{blank:2}}.',
+        [
+          { id: '1', correctAnswer: 'This' },
+          { id: '2', correctAnswer: 'That' },
+        ],
+        'practice'
+      );
+      render(<FillInTheBlank {...props} />);
+      const submitButton = screen.getByText(/submit/i);
+      expect(submitButton).toBeDisabled();
+    });
+  });
 });
