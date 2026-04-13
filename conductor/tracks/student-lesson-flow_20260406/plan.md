@@ -2,21 +2,21 @@
 
 ## Phase 1: Dashboard Enhancements
 
-- [~] Task: Update student dashboard to show Module 1 with lesson cards and progress
-    - [ ] Write tests: renders 8 lesson cards with correct titles, progress bars, locked/unlocked state
-    - [ ] Write tests: estimated time shown per lesson from phase `estimatedMinutes` sum
-    - [ ] Update `app/student/dashboard/page.tsx` and `lib/student/dashboard.ts` view model
+- [x] Task: Update student dashboard to show Module 1 with lesson cards and progress [b551e9d]
+    - [x] Write tests: renders 8 lesson cards with correct titles, progress bars, locked/unlocked state
+    - [x] Write tests: estimated time shown per lesson from phase `estimatedMinutes` sum
+    - [x] Update `app/student/dashboard/page.tsx` and `lib/student/dashboard.ts` view model
 
-- [ ] Task: Implement lesson lock/unlock logic
-    - [ ] Write tests: lesson 1-2 locked until lesson 1-1 assessment phase complete
-    - [ ] Write tests: lesson 1-1 always unlocked (first lesson)
-    - [ ] Implement `isLessonUnlocked()` in `lib/student/dashboard.ts`
+- [x] Task: Implement lesson lock/unlock logic [b551e9d]
+    - [x] Write tests: lesson 1-2 locked until lesson 1-1 assessment phase complete
+    - [x] Write tests: lesson 1-1 always unlocked (first lesson)
+    - [x] Implement `isLessonUnlocked()` in `lib/student/dashboard.ts`
 
-- [ ] Task: Implement "Continue" smart navigation
-    - [ ] Write tests: no progress → points to lesson 1-1 phase 1
-    - [ ] Write tests: partial progress → points to first incomplete phase of current lesson
-    - [ ] Write tests: all Module 1 complete → points to completion summary
-    - [ ] Update `buildStudentDashboardViewModel()` to include `continueUrl`
+- [x] Task: Implement "Continue" smart navigation [b551e9d]
+    - [x] Write tests: no progress → points to lesson 1-1 phase 1
+    - [x] Write tests: partial progress → points to first incomplete phase of current lesson
+    - [x] Write tests: all Module 1 complete → points to completion summary
+    - [x] Update `buildStudentDashboardViewModel()` to include `continueUrl`
 
 - [ ] Task: Conductor — Phase Completion Verification 'Dashboard Enhancements' (Protocol in workflow.md)
 
