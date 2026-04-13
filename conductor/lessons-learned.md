@@ -45,5 +45,8 @@
 - (2026-04-12, algebraic-examples) Pattern-matching equivalence works for Module 1 (88% passing) but has limits — consider symbolic math library for production
 - (2026-04-12, algebraic-examples) Polynomial expansion patterns need unified handling of all sign combinations; coefficient formatting must omit 1 (e.g., -1x -> -x)
 - (2026-04-13, algebraic-examples) Algebraic component testing requires KaTeX-aware assertions — text matching fails with KaTeX HTML; use specific assertions and avoid regex on rendered math
+- (2026-04-13, algebraic-examples) Problem type implementation is configuration-driven — StepByStepper component handles all modes; problem types are just step configurations with expressions, explanations, hints, and distractors
+- (2026-04-13, algebraic-examples) Rate of change problems support multiple input types — equation, table, and graph readout all use same step sequence with different data sources
+- (2026-04-13, distractors) ESLint unused variable warnings for destructuring — use `,` instead of `_` to ignore elements, or use eslint-disable comments
 
 
