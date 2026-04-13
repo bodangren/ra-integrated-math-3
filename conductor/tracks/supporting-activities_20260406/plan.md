@@ -59,7 +59,7 @@
     - [x] Write tests: envelope includes identified values, step correctness, final answer
     - [x] Register in activity registry
 
-- [ ] Task: Conductor — Phase Completion Verification 'Rate-of-Change Calculator' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Rate-of-Change Calculator' (Protocol in workflow.md) [checkpoint: 58fe51a]
 
 ## Phase 4: Discriminant Analyzer
 
