@@ -2,22 +2,22 @@
 
 ## Phase 1: Comprehension Quiz
 
-- [ ] Task: Implement `comprehension-quiz` base component
-    - [ ] Write tests: renders multiple_choice, true_false, short_answer, select_all question types
-    - [ ] Write tests: teaching mode shows correct answers highlighted; read-only
-    - [ ] Implement `components/activities/quiz/ComprehensionQuiz.tsx` — teaching mode
+- [x] Task: Implement `comprehension-quiz` base component
+    - [x] Write tests: renders multiple_choice, true_false, short_answer, select_all question types
+    - [x] Write tests: teaching mode shows correct answers highlighted; read-only
+    - [x] Implement `components/activities/quiz/ComprehensionQuiz.tsx` — teaching mode
 
-- [ ] Task: Add guided and practice modes to `ComprehensionQuiz`
-    - [ ] Write tests: guided — one-at-a-time; immediate feedback; one retry before reveal
-    - [ ] Write tests: practice — all shown; feedback only after batch submit
-    - [ ] Write tests: score computed correctly for all question types (including select_all partial credit)
-    - [ ] Implement guided and practice mode state machines
+- [x] Task: Add guided and practice modes to `ComprehensionQuiz`
+    - [x] Write tests: guided — one-at-a-time; immediate feedback; one retry before reveal
+    - [x] Write tests: practice — all shown; feedback only after batch submit
+    - [x] Write tests: score computed correctly for all question types (including select_all partial credit)
+    - [x] Implement guided and practice mode state machines
 
-- [ ] Task: Implement quiz submission envelope
-    - [ ] Write tests: envelope includes per-question answer, correctness, retry count, total score
-    - [ ] Implement `buildQuizSubmission()`; register in activity registry
+- [x] Task: Implement quiz submission envelope
+    - [x] Write tests: envelope includes per-question answer, correctness, retry count, total score
+    - [x] Implement `buildQuizSubmission()`; register in activity registry
 
-- [ ] Task: Conductor — Phase Completion Verification 'Comprehension Quiz' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Comprehension Quiz' (Protocol in workflow.md)
 
 ## Phase 2: Fill-in-the-Blank
 

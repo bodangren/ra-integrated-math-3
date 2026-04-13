@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react';
 import { GraphingExplorerActivity } from '@/components/activities/graphing/GraphingExplorerActivity';
 import { StepByStepSolverActivity } from '@/components/activities/algebraic/StepByStepSolverActivity';
+import { ComprehensionQuizActivity } from '@/components/activities/quiz/ComprehensionQuizActivity';
 
 export interface ActivityComponentProps {
   activityId: string;
@@ -19,13 +20,10 @@ const PlaceholderComponent: ActivityComponent = () => null;
 // Register Module 1 activity keys with placeholder components
 // These will be replaced with actual implementations in future tracks
 const MODULE_1_KEYS = [
-  'comprehension-quiz',
   'fill-in-the-blank',
-  'graphing-explorer',
   'equation-solver',
   'drag-drop-categorization',
   'discriminant-analyzer',
-  'step-by-step-solver',
 ] as const;
 
 MODULE_1_KEYS.forEach(key => {
@@ -35,6 +33,7 @@ MODULE_1_KEYS.forEach(key => {
 // Register actual implementations
 registerActivity('graphing-explorer', GraphingExplorerActivity);
 registerActivity('step-by-step-solver', StepByStepSolverActivity);
+registerActivity('comprehension-quiz', ComprehensionQuizActivity);
 
 /**
  * Register an activity component under a componentKey.
