@@ -1,4 +1,9 @@
-import { createHash } from "crypto";
+async function sha256(message: string): Promise<string> {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
 export type ComponentKind = "example" | "activity" | "practice";
 
@@ -9,7 +14,7 @@ export interface HashableComponent {
   gradingConfig?: Record<string, unknown>;
 }
 
-export function computeComponentContentHash(component: HashableComponent): string {
+export async function computeComponentContentHash(component: HashableComponent): Promise<string> {
   const hashable = {
     componentKind: component.componentKind,
     componentKey: component.componentKey,
@@ -19,7 +24,7 @@ export function computeComponentContentHash(component: HashableComponent): strin
 
   const sorted = deepSortKeys(hashable);
   const json = JSON.stringify(sorted);
-  return createHash("sha256").update(json).digest("hex");
+  return sha256(json);
 }
 
 function deepSortKeys(obj: unknown): unknown {

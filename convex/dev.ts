@@ -33,7 +33,7 @@ export const listReviewQueue = internalQuery({
 
     const activities = await ctx.db.query("activities").take(MAX_ITEMS);
     for (const activity of activities) {
-      const currentHash = computeComponentContentHash({
+      const currentHash = await computeComponentContentHash({
         componentKind: "activity",
         componentKey: activity.componentKey,
         props: activity.props,
@@ -60,6 +60,7 @@ export const listReviewQueue = internalQuery({
 
     const componentApprovals = await ctx.db.query("component_approvals").take(MAX_ITEMS);
     for (const approval of componentApprovals) {
+      if (approval.componentKind === "activity") continue;
       if (args.componentKind && args.componentKind !== approval.componentKind) continue;
       if (args.status && approval.status !== args.status) continue;
 
@@ -102,7 +103,7 @@ export const submitReview = internalMutation({
     if (args.componentKind === "activity") {
       const activity = await ctx.db.get(args.componentId as Id<"activities">);
       if (!activity) throw new Error("Activity not found");
-      componentContentHash = computeComponentContentHash({
+      componentContentHash = await computeComponentContentHash({
         componentKind: "activity",
         componentKey: activity.componentKey,
         props: activity.props,

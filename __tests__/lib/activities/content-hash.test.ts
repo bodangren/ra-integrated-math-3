@@ -1,7 +1,7 @@
 import { expect, test } from "vitest";
 import { computeComponentContentHash } from "@/lib/activities/content-hash";
 
-test("hash is stable for equivalent content with different key order", () => {
+test("hash is stable for equivalent content with different key order", async () => {
   const component1 = {
     componentKind: "activity" as const,
     componentKey: "graphing-explorer",
@@ -12,12 +12,12 @@ test("hash is stable for equivalent content with different key order", () => {
     componentKey: "graphing-explorer",
     props: { b: 2, a: 1 },
   };
-  expect(computeComponentContentHash(component1)).toBe(
-    computeComponentContentHash(component2)
+  await expect(computeComponentContentHash(component1)).resolves.toBe(
+    await computeComponentContentHash(component2)
   );
 });
 
-test("hash changes when props change", () => {
+test("hash changes when props change", async () => {
   const component1 = {
     componentKind: "practice" as const,
     props: { a: 1 },
@@ -26,12 +26,12 @@ test("hash changes when props change", () => {
     componentKind: "practice" as const,
     props: { a: 2 },
   };
-  expect(computeComponentContentHash(component1)).not.toBe(
-    computeComponentContentHash(component2)
+  await expect(computeComponentContentHash(component1)).resolves.not.toBe(
+    await computeComponentContentHash(component2)
   );
 });
 
-test("hash changes when componentKind changes", () => {
+test("hash changes when componentKind changes", async () => {
   const component1 = {
     componentKind: "example" as const,
     componentKey: "test",
@@ -40,12 +40,12 @@ test("hash changes when componentKind changes", () => {
     componentKind: "activity" as const,
     componentKey: "test",
   };
-  expect(computeComponentContentHash(component1)).not.toBe(
-    computeComponentContentHash(component2)
+  await expect(computeComponentContentHash(component1)).resolves.not.toBe(
+    await computeComponentContentHash(component2)
   );
 });
 
-test("hash changes when gradingConfig changes", () => {
+test("hash changes when gradingConfig changes", async () => {
   const component1 = {
     componentKind: "activity" as const,
     gradingConfig: { maxScore: 10 },
@@ -54,12 +54,12 @@ test("hash changes when gradingConfig changes", () => {
     componentKind: "activity" as const,
     gradingConfig: { maxScore: 20 },
   };
-  expect(computeComponentContentHash(component1)).not.toBe(
-    computeComponentContentHash(component2)
+  await expect(computeComponentContentHash(component1)).resolves.not.toBe(
+    await computeComponentContentHash(component2)
   );
 });
 
-test("hash ignores approval metadata and timestamps", () => {
+test("hash ignores approval metadata and timestamps", async () => {
   const componentBase = {
     componentKind: "activity" as const,
     componentKey: "graphing-explorer",
@@ -79,10 +79,10 @@ test("hash ignores approval metadata and timestamps", () => {
     createdAt: Date.now(),
     updatedAt: Date.now(),
   };
-  expect(computeComponentContentHash(componentBase)).toBe(
-    computeComponentContentHash(componentWithApproval)
+  await expect(computeComponentContentHash(componentBase)).resolves.toBe(
+    await computeComponentContentHash(componentWithApproval)
   );
-  expect(computeComponentContentHash(componentBase)).toBe(
-    computeComponentContentHash(componentWithTimestamps)
+  await expect(computeComponentContentHash(componentBase)).resolves.toBe(
+    await computeComponentContentHash(componentWithTimestamps)
   );
 });
