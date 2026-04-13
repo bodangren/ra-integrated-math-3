@@ -3,6 +3,10 @@ import type { SeedLesson, SeedCompetencyStandard, SeedDemoEnvironment } from "./
 import { seedDemoEnv } from "./seed/seed-demo-env";
 import { seedStandards } from "./seed/seed-standards";
 import { seedDemoProgress } from "./seed/seed-demo-progress";
+import { seedLesson1 } from "./seed/seed-lesson-1-1";
+import { seedLesson2 } from "./seed/seed-lesson-1-2";
+import { seedLesson3 } from "./seed/seed-lesson-1-3";
+import { seedLesson4 } from "./seed/seed-lesson-1-4";
 
 export const seedAll = internalAction({
   args: {},
@@ -35,6 +39,22 @@ export const seedAll = internalAction({
     const lessons = getLessons();
     for (const lesson of lessons) {
       try {
+        switch (lesson.slug) {
+          case "module-1-lesson-1":
+            await ctx.runMutation(seedLesson1, {});
+            break;
+          case "module-1-lesson-2":
+            await ctx.runMutation(seedLesson2, {});
+            break;
+          case "module-1-lesson-3":
+            await ctx.runMutation(seedLesson3, {});
+            break;
+          case "module-1-lesson-4":
+            await ctx.runMutation(seedLesson4, {});
+            break;
+          default:
+            break;
+        }
         results.lessons.push({ slug: lesson.slug, success: true });
       } catch (error) {
         results.lessons.push({

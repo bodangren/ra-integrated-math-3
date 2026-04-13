@@ -45,26 +45,26 @@
     - [x] Write test: student5 shows 100% completion on lesson 1-1 phases after seed
     - [x] Implement progress records for students 2-5 at 25/50/75/100%
 
-- [ ] Task: Conductor — Phase Completion Verification 'Standards & Demo Environment' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Standards & Demo Environment' (Protocol in workflow.md) [checkpoint: 3f6160c]
 
 ## Phase 4: Lesson Seeds — 1-1 through 1-4
 
-- [ ] Task: Seed lesson 1-1 — Graphing Quadratic Functions
-    - [ ] Write test: correct phase sequence (explore, vocab, learn, 3×worked_example, learn, 3×worked_example, discourse, reflection)
-    - [ ] Write test: activity records created for all worked examples and explore phase
-    - [ ] Implement `convex/seed/seed-lesson-1-1.ts`
+- [x] Task: Seed lesson 1-1 — Graphing Quadratic Functions
+    - [x] Write test: correct phase sequence (explore, vocab, learn, 3×worked_example, learn, 3×worked_example, discourse, reflection)
+    - [x] Write test: activity records created for all worked examples and explore phase
+    - [x] Implement `convex/seed/seed-lesson-1-1.ts`
 
-- [ ] Task: Seed lesson 1-2 — Solving Quadratics by Graphing
-    - [ ] Write test: correct phase sequence (explore, vocab, learn, 4×worked_example, discourse, reflection)
-    - [ ] Implement `convex/seed/seed-lesson-1-2.ts`
+- [x] Task: Seed lesson 1-2 — Solving Quadratics by Graphing
+    - [x] Write test: correct phase sequence (explore, vocab, learn, 4×worked_example, discourse, reflection)
+    - [x] Implement `convex/seed/seed-lesson-1-2.ts`
 
-- [ ] Task: Seed lesson 1-3 — Complex Numbers
-    - [ ] Write test: correct phase sequence (explore, vocab, 2×learn, 3×worked_example, learn, 3×worked_example, discourse, reflection)
-    - [ ] Implement `convex/seed/seed-lesson-1-3.ts`
+- [x] Task: Seed lesson 1-3 — Complex Numbers
+    - [x] Write test: correct phase sequence (explore, vocab, 2×learn, 3×worked_example, learn, 3×worked_example, discourse, reflection)
+    - [x] Implement `convex/seed/seed-lesson-1-3.ts`
 
-- [ ] Task: Seed lesson 1-4 — Solving by Factoring
-    - [ ] Write test: correct phase sequence (explore, vocab, 2×learn, 6×worked_example, discourse, assessment, reflection)
-    - [ ] Implement `convex/seed/seed-lesson-1-4.ts`
+- [x] Task: Seed lesson 1-4 — Solving by Factoring
+    - [x] Write test: correct phase sequence (explore, vocab, 2×learn, 6×worked_example, discourse, assessment, reflection)
+    - [x] Implement `convex/seed/seed-lesson-1-4.ts`
 
 - [ ] Task: Conductor — Phase Completion Verification 'Lesson Seeds 1-1 through 1-4' (Protocol in workflow.md)
 
