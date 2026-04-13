@@ -9,6 +9,7 @@ export interface PhaseVersionLike {
   _id: string;
   lessonVersionId: string;
   phaseType: string;
+  estimatedMinutes?: number;
 }
 
 export interface ProgressRowLike {
@@ -49,6 +50,7 @@ export interface UnitLessonProgressRow {
   totalPhases: number;
   completedPhases: number;
   progressPercentage: number;
+  estimatedMinutes?: number;
 }
 
 export interface UnitProgressRow {
@@ -273,6 +275,8 @@ export function buildPublishedUnitProgressRows<
   );
 
   const units = new Map<number, UnitProgressRow>();
+  const phaseVersionById = new Map(phaseVersions.map(pv => [pv._id, pv]));
+
   for (const lesson of sortedLessons) {
     const versionedLesson = latestVersionByLessonId.get(lesson._id);
     const phaseIds = phaseIdsByLessonId.get(lesson._id) ?? [];
@@ -280,6 +284,15 @@ export function buildPublishedUnitProgressRows<
     const completedPhases = phaseIds.filter((phaseId) => completedPhaseIds.has(phaseId)).length;
     const progressPercentage =
       totalPhases > 0 ? Math.round((completedPhases / totalPhases) * 100) : 0;
+
+    let estimatedMinutes: number | undefined;
+    for (const phaseId of phaseIds) {
+      const phaseVersion = phaseVersionById.get(phaseId);
+      if (phaseVersion?.estimatedMinutes != null) {
+        estimatedMinutes = (estimatedMinutes ?? 0) + phaseVersion.estimatedMinutes;
+      }
+    }
+
     const unit = units.get(lesson.unitNumber) ?? {
       unitNumber: lesson.unitNumber,
       unitTitle:
@@ -302,6 +315,7 @@ export function buildPublishedUnitProgressRows<
       totalPhases,
       completedPhases,
       progressPercentage,
+      estimatedMinutes,
     });
 
     units.set(lesson.unitNumber, unit);

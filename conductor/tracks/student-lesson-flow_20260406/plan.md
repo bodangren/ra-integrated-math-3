@@ -2,7 +2,7 @@
 
 ## Phase 1: Dashboard Enhancements
 
-- [ ] Task: Update student dashboard to show Module 1 with lesson cards and progress
+- [~] Task: Update student dashboard to show Module 1 with lesson cards and progress
     - [ ] Write tests: renders 8 lesson cards with correct titles, progress bars, locked/unlocked state
     - [ ] Write tests: estimated time shown per lesson from phase `estimatedMinutes` sum
     - [ ] Update `app/student/dashboard/page.tsx` and `lib/student/dashboard.ts` view model

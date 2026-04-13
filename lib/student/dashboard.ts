@@ -7,6 +7,8 @@ export interface StudentDashboardLesson {
   completedPhases: number;
   totalPhases: number;
   progressPercentage: number;
+  estimatedMinutes?: number;
+  isLocked: boolean;
 }
 
 export interface StudentDashboardUnit {
@@ -43,6 +45,7 @@ export interface StudentDashboardViewModel {
   summary: StudentDashboardSummary;
   nextLesson: DashboardLessonAction | null;
   units: StudentDashboardUnitView[];
+  continueUrl: string | null;
 }
 
 function clampPercentage(value: number) {
@@ -104,10 +107,29 @@ export function buildStudentDashboardViewModel(
   let completedLessons = 0;
   let inProgressLessons = 0;
 
-  const unitViews = units.map<StudentDashboardUnitView>((unit) => {
-    const lessons = [...unit.lessons];
+  const allLessonsFlat: StudentDashboardLesson[] = [];
+  for (const unit of units) {
+    for (const lesson of unit.lessons) {
+      allLessonsFlat.push(lesson);
+    }
+  }
 
-    for (const lesson of lessons) {
+  const isLessonUnlocked = (lessonIndex: number): boolean => {
+    if (lessonIndex === 0) return true;
+    const previousLesson = allLessonsFlat[lessonIndex - 1];
+    return previousLesson.totalPhases > 0 && previousLesson.completedPhases >= previousLesson.totalPhases;
+  };
+
+  const unitViews = units.map<StudentDashboardUnitView>((unit) => {
+    const lessonsWithLock: StudentDashboardLesson[] = unit.lessons.map((lesson) => {
+      const globalIndex = allLessonsFlat.findIndex(l => l.id === lesson.id);
+      return {
+        ...lesson,
+        isLocked: !isLessonUnlocked(globalIndex),
+      };
+    });
+
+    for (const lesson of lessonsWithLock) {
       completedPhases += lesson.completedPhases;
       totalPhases += lesson.totalPhases;
 
@@ -117,16 +139,16 @@ export function buildStudentDashboardViewModel(
     }
 
     const nextLesson =
-      lessons.map(toLessonAction).find((lesson): lesson is DashboardLessonAction => lesson?.status === 'in_progress') ??
-      lessons.map(toLessonAction).find((lesson): lesson is DashboardLessonAction => lesson?.status === 'not_started') ??
+      lessonsWithLock.map(toLessonAction).find((lesson): lesson is DashboardLessonAction => lesson?.status === 'in_progress') ??
+      lessonsWithLock.map(toLessonAction).find((lesson): lesson is DashboardLessonAction => lesson?.status === 'not_started') ??
       null;
 
-    const unitCompletedLessons = lessons.filter((lesson) => getLessonStatus(lesson) === 'completed').length;
-    const unitCompletedPhases = lessons.reduce(
+    const unitCompletedLessons = lessonsWithLock.filter((lesson) => getLessonStatus(lesson) === 'completed').length;
+    const unitCompletedPhases = lessonsWithLock.reduce(
       (sum, lesson) => sum + lesson.completedPhases,
       0,
     );
-    const unitTotalPhases = lessons.reduce(
+    const unitTotalPhases = lessonsWithLock.reduce(
       (sum, lesson) => sum + lesson.totalPhases,
       0,
     );
@@ -137,10 +159,10 @@ export function buildStudentDashboardViewModel(
 
     return {
       ...unit,
-      lessons,
+      lessons: lessonsWithLock,
       completedLessons: unitCompletedLessons,
       progressPercentage: unitProgress,
-      status: getUnitStatus(lessons, unitCompletedLessons, nextLesson),
+      status: getUnitStatus(lessonsWithLock, unitCompletedLessons, nextLesson),
       nextLesson,
     };
   });
@@ -154,6 +176,25 @@ export function buildStudentDashboardViewModel(
       .find((lesson): lesson is DashboardLessonAction => lesson?.status === 'not_started') ??
     null;
 
+  const allComplete = allLessonsFlat.length > 0 && allLessonsFlat.every(
+    lesson => lesson.totalPhases > 0 && lesson.completedPhases >= lesson.totalPhases
+  );
+
+  let continueUrl: string | null = null;
+  if (allLessonsFlat.length === 0) {
+    continueUrl = null;
+  } else if (allComplete) {
+    continueUrl = '/student/dashboard?complete=module-1';
+  } else {
+    const firstIncomplete = allLessonsFlat.find(
+      lesson => lesson.totalPhases === 0 || lesson.completedPhases < lesson.totalPhases
+    );
+    if (firstIncomplete) {
+      const nextPhase = (firstIncomplete.completedPhases || 0) + 1;
+      continueUrl = `/student/lesson/${firstIncomplete.slug}?phase=${nextPhase}`;
+    }
+  }
+
   return {
     summary: {
       totalUnits: unitViews.length,
@@ -166,5 +207,6 @@ export function buildStudentDashboardViewModel(
     },
     nextLesson,
     units: unitViews,
+    continueUrl,
   };
 }

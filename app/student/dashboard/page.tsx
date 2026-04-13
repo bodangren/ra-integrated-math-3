@@ -40,21 +40,21 @@ export default async function StudentDashboardPage() {
         ))}
       </div>
 
-      {/* Next lesson */}
-      {vm.nextLesson && (
+      {/* Continue banner */}
+      {vm.continueUrl && (
         <div className="rounded-xl border border-primary/30 bg-primary/5 p-6 space-y-3">
-          <span className="section-label">Up Next</span>
+          <span className="section-label">Continue</span>
           <h2 className="font-display text-xl font-semibold text-foreground">
-            {vm.nextLesson.title}
+            {vm.nextLesson?.title ?? 'Module 1'}
           </h2>
-          {vm.nextLesson.description && (
+          {vm.nextLesson?.description && (
             <p className="text-sm text-muted-foreground">{vm.nextLesson.description}</p>
           )}
           <Link
-            href={`/student/lesson/${vm.nextLesson.slug}`}
+            href={vm.continueUrl}
             className="inline-flex items-center gap-2 rounded-md px-5 py-2 text-sm font-medium text-primary-foreground bg-primary hover:opacity-90 transition-opacity"
           >
-            {vm.nextLesson.actionLabel} →
+            {vm.nextLesson?.actionLabel ?? 'Start'} →
           </Link>
         </div>
       )}
@@ -84,20 +84,37 @@ export default async function StudentDashboardPage() {
             </div>
 
             <div className="space-y-2">
-              {unit.lessons.map((lesson) => (
-                <Link
-                  key={lesson.id}
-                  href={`/student/lesson/${lesson.slug}`}
-                  className="flex items-center justify-between p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-muted/40 transition-colors group"
-                >
-                  <span className="text-sm text-foreground group-hover:text-primary transition-colors">
-                    {lesson.title}
-                  </span>
-                  <span className="font-mono-num text-xs text-muted-foreground">
-                    {lesson.completedPhases}/{lesson.totalPhases}
-                  </span>
-                </Link>
-              ))}
+              {unit.lessons.map((lesson) => {
+                const isLocked = lesson.isLocked;
+                return (
+                  <Link
+                    key={lesson.id}
+                    href={isLocked ? '#' : `/student/lesson/${lesson.slug}`}
+                    className={`flex items-center justify-between p-3 rounded-lg border transition-colors ${
+                      isLocked
+                        ? 'border-border bg-muted/20 cursor-not-allowed opacity-60'
+                        : 'border-border hover:border-primary/40 hover:bg-muted/40'
+                    }`}
+                    aria-disabled={isLocked}
+                    onClick={isLocked ? (e) => e.preventDefault() : undefined}
+                  >
+                    <span className={`flex items-center gap-2 text-sm ${isLocked ? 'text-muted-foreground' : 'text-foreground group-hover:text-primary'} transition-colors`}>
+                      {isLocked && (
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                      )}
+                      {lesson.title}
+                    </span>
+                    <span className="flex items-center gap-3 font-mono-num text-xs text-muted-foreground">
+                      {lesson.estimatedMinutes != null && (
+                        <span>{lesson.estimatedMinutes} min</span>
+                      )}
+                      <span>{lesson.completedPhases}/{lesson.totalPhases}</span>
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         ))}
