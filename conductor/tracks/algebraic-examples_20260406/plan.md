@@ -20,7 +20,7 @@
 
 - [x] Task: Conductor — Phase Completion Verification 'Foundation' (Protocol in workflow.md)
 
-## Phase 2: Guided & Practice Modes
+## Phase 2: Guided & Practice Modes [checkpoint: 9ba018d]
 
 - [x] Task: Add guided mode to `StepByStepper` [4cd3ee4]
     - [x] Write tests: steps hidden on load; multiple-choice shows correct + 2 distractors
@@ -38,7 +38,7 @@
     - [x] Write tests: common misconception distractors for each step type are plausible
     - [x] Implement distractor pool for Module 1 step types, falling back to prop-provided distractors
 
- - [~] Task: Conductor — Phase Completion Verification 'Guided & Practice Modes' (Protocol in workflow.md)
+ - [x] Task: Conductor — Phase Completion Verification 'Guided & Practice Modes' (Protocol in workflow.md) [9ba018d]
 
 ## Phase 3: Problem Types — Simple Procedures
 
