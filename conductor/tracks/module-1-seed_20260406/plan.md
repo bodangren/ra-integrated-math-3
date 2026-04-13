@@ -36,10 +36,10 @@
     - [x] Write test: all 6 standards inserted with correct codes and descriptions
     - [x] Implement `convex/seed/seed-standards.ts`
 
-- [ ] Task: Seed demo org, users, and class
-    - [ ] Write test: teacher + 5 students created with correct credentials and roles
-    - [ ] Write test: class "IM3 Period 1" created with all 5 students enrolled
-    - [ ] Implement `convex/seed/seed-demo-env.ts`
+- [x] Task: Seed demo org, users, and class
+    - [x] Write test: teacher + 5 students created with correct credentials and roles
+    - [x] Write test: class "IM3 Period 1" created with all 5 students enrolled
+    - [x] Implement `convex/seed/seed-demo-env.ts`
 
 - [ ] Task: Seed demo student progress for lesson 1-1
     - [ ] Write test: student5 shows 100% completion on lesson 1-1 phases after seed

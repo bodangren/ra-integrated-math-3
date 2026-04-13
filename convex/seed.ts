@@ -1,9 +1,11 @@
 import { internalAction } from "./_generated/server";
 import type { SeedLesson, SeedCompetencyStandard, SeedDemoEnvironment } from "./seed/types";
+import { seedDemoEnv } from "./seed/seed-demo-env";
+import { seedStandards } from "./seed/seed-standards";
 
 export const seedAll = internalAction({
   args: {},
-  handler: async () => {
+  handler: async (ctx) => {
     const results: {
       lessons: { slug: string; success: boolean; error?: string }[];
       standards: { code: string; success: boolean; error?: string }[];
@@ -14,21 +16,22 @@ export const seedAll = internalAction({
       demo: { success: true },
     };
 
-    const seedStandards = async (standards: SeedCompetencyStandard[]) => {
-      for (const standard of standards) {
-        try {
-          results.standards.push({ code: standard.code, success: true });
-        } catch (error) {
-          results.standards.push({
-            code: standard.code,
-            success: false,
-            error: error instanceof Error ? error.message : "Unknown error",
-          });
-        }
+    const standards = getStandards();
+    for (const standard of standards) {
+      try {
+        await ctx.runMutation(seedStandards, {});
+        results.standards.push({ code: standard.code, success: true });
+      } catch (error) {
+        results.standards.push({
+          code: standard.code,
+          success: false,
+          error: error instanceof Error ? error.message : "Unknown error",
+        });
       }
-    };
+    }
 
-    const seedLesson = async (lesson: SeedLesson) => {
+    const lessons = getLessons();
+    for (const lesson of lessons) {
       try {
         results.lessons.push({ slug: lesson.slug, success: true });
       } catch (error) {
@@ -38,10 +41,12 @@ export const seedAll = internalAction({
           error: error instanceof Error ? error.message : "Unknown error",
         });
       }
-    };
+    }
 
-    const seedDemo = async () => {
+    const demo = getDemoEnvironment();
+    if (demo) {
       try {
+        await ctx.runMutation(seedDemoEnv, {});
         results.demo = { success: true };
       } catch (error) {
         results.demo = {
@@ -49,19 +54,6 @@ export const seedAll = internalAction({
           error: error instanceof Error ? error.message : "Unknown error",
         };
       }
-    };
-
-    const standards = getStandards();
-    await seedStandards(standards);
-
-    const lessons = getLessons();
-    for (const lesson of lessons) {
-      await seedLesson(lesson);
-    }
-
-    const demo = getDemoEnvironment();
-    if (demo) {
-      await seedDemo();
     }
 
     return results;
