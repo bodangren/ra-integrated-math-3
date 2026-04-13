@@ -60,7 +60,7 @@
 
 - [x] Task: Conductor — Phase Completion Verification 'Problem Types — Simple' (Protocol in workflow.md)
 
-## Phase 4: Problem Types — Multi-Step Procedures
+## Phase 4: Problem Types — Multi-Step Procedures [checkpoint: 9570164]
 
 - [x] Task: Implement `factor_trinomial` problem type (all factoring patterns from 1-4) [22691c7]
     - [x] Write tests: a=1 trinomials, a≠1, GCF first, difference of squares, perfect square — all 3 modes
@@ -87,4 +87,4 @@
     - [x] Implement `buildAlgebraicSubmission()` in schema file
     - [x] Register `step-by-step-solver` in `lib/activities/registry.ts`
 
-- [~] Task: Conductor — Phase Completion Verification 'Multi-Step Problem Types' (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification 'Multi-Step Problem Types' (Protocol in workflow.md) [9570164]
