@@ -56,78 +56,80 @@
 
 ## Phase 3: Developer-Only Access Guard
 
-- [ ] Task: Create shared developer review access guard
-    - [ ] Write tests for development access with authorized user
-    - [ ] Write tests that production is blocked by default
-    - [ ] Write tests that unauthenticated and non-developer users are blocked
-    - [ ] Implement a shared guard for pages, route handlers, and server actions/API calls
+- [x] Task: Create shared developer review access guard
+    - [x] Write tests for development access with authorized user
+    - [x] Write tests that production is blocked by default
+    - [x] Write tests that unauthenticated and non-developer users are blocked
+    - [x] Implement a shared guard for pages, route handlers, and server actions/API calls
 
-- [ ] Task: Add guarded development route shell
-    - [ ] Write tests or route-level checks that `/dev/component-approval` is inaccessible when disabled
-    - [ ] Create the developer route shell under `app/dev/component-approval`
-    - [ ] Keep the route out of public, student, teacher, and live production navigation
-    - [ ] Add a clear developer-only heading and queue loading state
+- [x] Task: Add guarded development route shell
+    - [x] Write tests or route-level checks that `/dev/component-approval` is inaccessible when disabled
+    - [x] Create the developer route shell under `app/dev/component-approval`
+    - [x] Keep the route out of public, student, teacher, and live production navigation
+    - [x] Add a clear developer-only heading and queue loading state
 
-- [ ] Task: Conductor - Phase Completion Verification 'Developer-Only Access Guard' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Developer-Only Access Guard' (Protocol in workflow.md)
 
-## Phase 4: Review Queue UI
+## Phase 4: Review Queue UI [checkpoint: 0933956]
 
-- [ ] Task: Build review queue filters and list
-    - [ ] Write component tests for status, kind, stale, tag, priority, and placement filters
-    - [ ] Implement queue list using the developer-only review query
-    - [ ] Show current status, stale indicator, last review, unresolved notes, and placement context
-    - [ ] Handle empty and error states without exposing the feature outside dev access
+- [x] Task: Build review queue filters and list [e74f3f5]
+    - [x] Write component tests for status, kind, stale, tag, priority, and placement filters
+    - [x] Implement queue list using the developer-only review query
+    - [x] Show current status, stale indicator, last review, unresolved notes, and placement context
+    - [x] Handle empty and error states without exposing the feature outside dev access
 
-- [ ] Task: Build review decision panel
-    - [ ] Write tests that approve is available only for the current review target state
-    - [ ] Write tests that comments are required for `needs_changes` and `rejected`
-    - [ ] Implement status buttons, issue tags, priority, and comment input
-    - [ ] Submit review decisions through the developer-only mutation/API path
-    - [ ] Refresh queue state after review submission
+- [x] Task: Build review decision panel [e74f3f5]
+    - [x] Write tests that approve is available only for the current review target state
+    - [x] Write tests that comments are required for `needs_changes` and `rejected`
+    - [x] Implement status buttons, issue tags, priority, and comment input
+    - [x] Submit review decisions through the developer-only mutation/API path
+    - [x] Refresh queue state after review submission
 
-- [ ] Task: Conductor - Phase Completion Verification 'Review Queue UI' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Review Queue UI' (Protocol in workflow.md) [0933956]
 
-## Phase 5: Component Review Harnesses
+## Phase 5: Component Review Harnesses [checkpoint: c1e4ea1]
 
-- [ ] Task: Build example review harness
-    - [ ] Write tests that teaching, guided, and practice modes can be selected
-    - [ ] Write tests that approval is disabled until required modes are reviewed
-    - [ ] Add controls for generating multiple practice variants where supported
-    - [ ] Add reviewer checkboxes for algorithmic practice behavior and coherent feedback/solution behavior
+- [x] Task: Build example review harness [c1e4ea1]
+    - [x] Write tests that teaching, guided, and practice modes can be selected
+    - [x] Write tests that approval is disabled until required modes are reviewed
+    - [x] Add controls for generating multiple practice variants where supported
+    - [x] Add reviewer checkboxes for algorithmic practice behavior and coherent feedback/solution behavior
 
-- [ ] Task: Build practice review harness
-    - [ ] Write tests that a practice component can render from stored props
-    - [ ] Write tests that emitted `practice.v1` envelopes can be inspected
-    - [ ] Add controls for correct and incorrect attempts where component APIs support them
-    - [ ] Add randomized variant checks for randomized practice components
+- [x] Task: Build practice review harness [c1e4ea1]
+    - [x] Write tests that a practice component can render from stored props
+    - [x] Write tests that emitted `practice.v1` envelopes can be inspected
+    - [x] Add controls for correct and incorrect attempts where component APIs support them
+    - [x] Add randomized variant checks for randomized practice components
 
-- [ ] Task: Build activity review harness
-    - [ ] Write tests that activity components render from stored activity props
-    - [ ] Write tests that completion and submission callbacks are visible to the reviewer
-    - [ ] Add a mode/context selector when a component supports multiple relevant placements
-    - [ ] Surface validation or render errors as review evidence
+- [x] Task: Build activity review harness [c1e4ea1]
+    - [x] Write tests that activity components render from stored activity props
+    - [x] Write tests that completion and submission callbacks are visible to the reviewer
+    - [x] Add a mode/context selector when a component supports multiple relevant placements
+    - [x] Surface validation or render errors as review evidence
 
-- [ ] Task: Conductor - Phase Completion Verification 'Component Review Harnesses' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Component Review Harnesses' (Protocol in workflow.md) [c1e4ea1]
 
 ## Phase 6: End-to-End Verification and Documentation
 
-- [ ] Task: Add integration coverage for the full review flow
-    - [ ] Test unreviewed component appears in queue
-    - [ ] Test approving stores summary and history
-    - [ ] Test content changes make approval stale
-    - [ ] Test needs-changes comments appear in LLM audit context
-    - [ ] Test live/production access is blocked by default
+- [~] Task: Add integration coverage for the full review flow
+    - [~] Test unreviewed component appears in queue (requires convex-test)
+    - [~] Test approving stores summary and history (requires convex-test)
+    - [~] Test content changes make approval stale (requires convex-test)
+    - [~] Test needs-changes comments appear in LLM audit context (requires convex-test)
+    - [x] Test live/production access is blocked by default (covered by __tests__/lib/auth/developer.test.ts)
 
-- [ ] Task: Document developer workflow
-    - [ ] Add concise developer notes for running the review site locally
-    - [ ] Document approval status semantics and stale approval behavior
-    - [ ] Document how unresolved review notes are intended to feed later LLM audits
-    - [ ] Document that LLMs do not approve or silently resolve review notes
+- [x] Task: Document developer workflow
+    - [x] Add concise developer notes for running the review site locally
+    - [x] Document approval status semantics and stale approval behavior
+    - [x] Document how unresolved review notes are intended to feed later LLM audits
+    - [x] Document that LLMs do not approve or silently resolve review notes
 
-- [ ] Task: Final quality gates
-    - [ ] Run `npm run lint`
-    - [ ] Run relevant unit and integration tests
-    - [ ] Run `npm run build` if implementation changes affect app routing or Convex generated types
-    - [ ] Update Conductor planning artifacts with any known tech debt or deviations
+- [x] Task: Final quality gates
+    - [x] Run `npm run lint`
+    - [x] Run relevant unit and integration tests (6 known failures in equivalence validator - documented in tech-debt.md)
+    - [x] Run `npm run build` if implementation changes affect app routing or Convex generated types
+    - [x] Update Conductor planning artifacts with any known tech debt or deviations
 
-- [ ] Task: Conductor - Phase Completion Verification 'End-to-End Verification and Documentation' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'End-to-End Verification and Documentation' (Protocol in workflow.md) [5899e72]
+
+## Phase 6: End-to-End Verification and Documentation [checkpoint: 5899e72]

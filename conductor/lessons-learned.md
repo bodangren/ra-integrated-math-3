@@ -13,6 +13,7 @@
 ## Recurring Gotchas
 <!-- Problems encountered repeatedly; save future tracks from the same pain -->
 
+- (2026-04-05, setup) vinext (Vite-backed Next.js) may have subtle differences from stock Next.js — test builds early
 - (2026-04-08, setup) Schema porting from bus-math-v2 requires `npx tsc --noEmit` to catch missing tables; use `npx convex dev --once` for one-time type generation (faster for CI)
 - (2026-04-13, review) Known-failing tests landed with tech-debt notes (equivalence 44/50, InterceptIdentification 8/23) accumulate risk — enforce green baseline or scope the API down to what passes
 - (2026-04-12, submission-schema) Zod 4.x `z.record()` requires explicit key type — use `z.record(z.string(), z.unknown())`, not `z.record(z.unknown())`
@@ -24,24 +25,16 @@
 
 - (2026-04-05, setup) Existing `lib/` modules are pure functions with clear types — excellent for testing
 - (2026-04-06, scaffold-pages) Mock `@/lib/convex/server` and `@/lib/auth/server` at the top of page tests — keeps tests fast and isolated
-- (2026-04-08, setup) Add `typecheck` script to package.json early — enables `npm run typecheck` for TDD workflow
-- (2026-04-08, scaffold-component-infrastructure) Empty index.ts files need `export {}` to be recognized as TypeScript modules
 - (2026-04-09, e-textbook-design) Use Tailwind animate-in classes for smooth transitions — lighter weight than framer-motion
-- (2026-04-09, e-textbook-design) Client components with useState should be minimal — keep state logic simple and focused
-- (2026-04-10, scaffold-component-infrastructure) Test button elements by their accessible name (aria-label) — buttons with icons rely on aria-label
 - (2026-04-11, fix-bundle-size) Use `next/dynamic` with `ssr: true` for heavy components — reduces bundle size without breaking SSR
-- (2026-04-12, graphing-components) Explicitly type arrays that will be pushed to — prevents TypeScript union type inference errors
 - (2026-04-12, graphing-components) Create wrapper components for activity registry to adapt component-specific props
-- (2026-04-12, fix-graphing-test-types) Use `as const` on string literals in test props to preserve literal types instead of widening to `string`
+- (2026-04-12, fix-graphing-test-types) Use `as const` on string literals in test props to preserve literal types
 
 ## Planning Improvements
 <!-- Notes on where estimates were wrong and why -->
 
 - (2026-04-10, activity-infrastructure) activity_completions schema requires lessonId/phaseNumber not in practice.v1 — future work: pass context or redesign
-- (2026-04-10, graphing-components) Canvas coordinate mapping is complex — allocate more time; test transformations thoroughly; verify coordinates match transformDataToCanvas
 - (2026-04-11, fix-intercept-tests) Test failures were due to incorrect test coordinates — verify assumptions match implementation before fixing code
-- (2026-04-12, graphing-components) GraphingExplorer submission follows practice.v1 — include answers, parts, artifact, interactionHistory; variant field supports extensibility
-- (2026-04-12, graphing-system) Intersection point coordinates inverted in tests — (x, y) transforms to (canvasX, height - canvasY)
 - (2026-04-12, algebraic-examples) Pattern-matching equivalence works for Module 1 (88% passing) but has limits — consider symbolic math library for production
 - (2026-04-12, algebraic-examples) Polynomial expansion patterns need unified handling of all sign combinations; coefficient formatting must omit 1 (e.g., -1x -> -x)
 - (2026-04-13, algebraic-examples) Algebraic component testing requires KaTeX-aware assertions — text matching fails with KaTeX HTML; use specific assertions and avoid regex on rendered math
@@ -50,5 +43,8 @@
 - (2026-04-13, distractors) ESLint unused variable warnings for destructuring — use `,` instead of `_` to ignore elements, or use eslint-disable comments
 - (2026-04-13, review) Conductor autonomous runs produce ~60% bookkeeping commits (`Mark X complete`, output-log updates) — squash into phase-completion commits so `git log` stays navigable
 - (2026-04-13, review) Convex `internalMutation` args should not accept identity (e.g. `createdBy: v.id("profiles")`) — derive from auth context or clearly mark CLI-only to avoid a trust-boundary bug if ever exposed
-
-
+- (2026-04-13, component-approval) Convex queries must use `.withIndex()` not `.filter()` — always define an index in schema and use it
+- (2026-04-13, component-approval) Use `.take(n)` instead of `.collect()` to bound query results and avoid transaction size limits
+- (2026-04-13, test-infra) `vi.mock` factories are hoisted — variables used inside them must be declared with `vi.hoisted()`
+- (2026-04-13, content-hash) Node.js `crypto` module not available in V8/edge runtimes — use Web Crypto API (`crypto.subtle.digest`)
+- (2026-04-13, component-approval) Review harnesses should mock component rendering for testability — use preview components that don't require full activity props

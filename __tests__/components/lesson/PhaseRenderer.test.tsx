@@ -5,23 +5,35 @@ import type { PhaseType } from '@/lib/curriculum/phase-types';
 
 import React from 'react';
 
+const { MockLessonMarkdownRenderer } = vi.hoisted(() => ({
+  MockLessonMarkdownRenderer: ({ content }: { content: string }) => (
+    <div data-testid="markdown-renderer">{content}</div>
+  ),
+}));
+
 // Mock next/dynamic to return component synchronously for tests
 type DynamicComponentProps = Record<string, unknown>;
 
 vi.mock('next/dynamic', () => ({
   default: (fn: () => Promise<{ default: React.ComponentType<DynamicComponentProps> }>) => {
-    const Component = (props: DynamicComponentProps) => {
-      const [loadedModule, setLoadedModule] = React.useState<{ default: React.ComponentType<DynamicComponentProps> } | null>(null);
+    // Resolve the import eagerly; the mock intercepts import() so it resolves in a microtask.
+    // We lazily cache the resolved module on first render.
+    let cached: { default: React.ComponentType<DynamicComponentProps> } | undefined;
+    const pending = fn().then((m) => { cached = m; });
 
+    const Component = (props: DynamicComponentProps) => {
+      // Hooks must be called unconditionally (lint: react-hooks/rules-of-hooks)
+      const [, setTick] = React.useState(0);
       React.useEffect(() => {
-        fn().then(setLoadedModule);
+        if (!cached) {
+          pending.then(() => setTick((t) => t + 1));
+        }
       }, []);
 
-      if (!loadedModule) {
+      if (!cached) {
         return <div data-testid="dynamic-loading">Loading...</div>;
       }
-
-      const LoadedComponent = loadedModule.default;
+      const LoadedComponent = cached.default;
       return <LoadedComponent {...props} />;
     };
 
@@ -32,9 +44,8 @@ vi.mock('next/dynamic', () => ({
 
 // Mock sub-components to isolate PhaseRenderer logic
 vi.mock('@/components/lesson/MarkdownRenderer', () => ({
-  LessonMarkdownRenderer: ({ content }: { content: string }) => (
-    <div data-testid="markdown-renderer">{content}</div>
-  ),
+  LessonMarkdownRenderer: MockLessonMarkdownRenderer,
+  default: MockLessonMarkdownRenderer,
 }));
 
 vi.mock('@/components/lesson/VideoPlayer', () => ({

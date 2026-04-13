@@ -29,17 +29,18 @@ export const listReviewQueue = internalQuery({
   },
   handler: async (ctx, args): Promise<ReviewQueueItem[]> => {
     const items: ReviewQueueItem[] = [];
+    const MAX_ITEMS = 500;
 
-    const activities = await ctx.db.query("activities").collect();
+    const activities = await ctx.db.query("activities").take(MAX_ITEMS);
     for (const activity of activities) {
-      const currentHash = computeComponentContentHash({
+      const currentHash = await computeComponentContentHash({
         componentKind: "activity",
         componentKey: activity.componentKey,
         props: activity.props,
         gradingConfig: activity.gradingConfig,
       });
       const storedHash = activity.approval?.contentHash;
-      const isStale = storedHash && storedHash !== currentHash;
+      const isStale = storedHash ? storedHash !== currentHash : false;
 
       if (args.componentKind && args.componentKind !== "activity" && args.componentKind !== "practice") continue;
       if (args.status && activity.approval?.status !== args.status) continue;
@@ -57,8 +58,9 @@ export const listReviewQueue = internalQuery({
       });
     }
 
-    const componentApprovals = await ctx.db.query("component_approvals").collect();
+    const componentApprovals = await ctx.db.query("component_approvals").take(MAX_ITEMS);
     for (const approval of componentApprovals) {
+      if (approval.componentKind === "activity") continue;
       if (args.componentKind && args.componentKind !== approval.componentKind) continue;
       if (args.status && approval.status !== args.status) continue;
 
@@ -101,7 +103,7 @@ export const submitReview = internalMutation({
     if (args.componentKind === "activity") {
       const activity = await ctx.db.get(args.componentId as Id<"activities">);
       if (!activity) throw new Error("Activity not found");
-      componentContentHash = computeComponentContentHash({
+      componentContentHash = await computeComponentContentHash({
         componentKind: "activity",
         componentKey: activity.componentKey,
         props: activity.props,
@@ -126,7 +128,7 @@ export const submitReview = internalMutation({
     });
 
     const approvalSummary = {
-      status: args.status === "approved" ? "approved" : args.status === "needs_changes" ? "needs_changes" : "rejected",
+      status: args.status,
       contentHash: componentContentHash,
       reviewedAt: Date.now(),
       reviewedBy: args.createdBy,
@@ -166,11 +168,18 @@ export const submitReview = internalMutation({
 export const getAuditContext = internalQuery({
   args: {},
   handler: async (ctx): Promise<Doc<"component_reviews">[]> => {
-    const unresolvedReviews = await ctx.db
+    const needsChanges = await ctx.db
       .query("component_reviews")
+      .withIndex("by_status", (q) => q.eq("status", "needs_changes"))
       .filter((q) => q.eq(q.field("resolvedAt"), undefined))
-      .collect();
+      .take(100);
 
-    return unresolvedReviews;
+    const rejected = await ctx.db
+      .query("component_reviews")
+      .withIndex("by_status", (q) => q.eq("status", "rejected"))
+      .filter((q) => q.eq(q.field("resolvedAt"), undefined))
+      .take(100);
+
+    return [...needsChanges, ...rejected];
   },
 });
