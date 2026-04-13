@@ -7,7 +7,7 @@
 - **Tests**: 1280 passing, 6 known equivalence failures (pattern-matching limits, 88% — exceeds 80% target), 0 flaky
 - **Build**: passing (RSC chunk 686 KB — above 500 KB warning threshold; pre-existing)
 - **Lint**: passing
-- **Completed Tracks**: supporting-activities Phase 1-3 (ComprehensionQuiz, FillInTheBlank, RateOfChangeCalculator), component-approval (all 6 phases), algebraic-examples (all 4 phases), extract-linear-regex, extract-quadratic-regex, curriculum-gap-remediation
+- **Completed Tracks**: supporting-activities Phase 1-4 (ComprehensionQuiz, FillInTheBlank, RateOfChangeCalculator, DiscriminantAnalyzer), component-approval (all 6 phases), algebraic-examples (all 4 phases), extract-linear-regex, extract-quadratic-regex, curriculum-gap-remediation, reconcile-activity-schemas
 
 ## Code Review Findings (2026-04-14)
 
@@ -24,7 +24,7 @@
 - **Component approval componentKind filter** — simplified to correctly skip activities when filtering by example/practice
 
 ### Known Tech Debt (see `conductor/tech-debt.md` for full list)
-- Zod schemas disconnected from ComprehensionQuiz and FillInTheBlank props (**Critical** — must reconcile before curriculum content is authored)
+- ~~Zod schemas disconnected from ComprehensionQuiz and FillInTheBlank props~~ — **RESOLVED**
 - Placeholder hash for example/practice components (`convex/dev.ts:113`)
 - `createdBy` accepted as mutation arg, not derived from auth context
 - Guided mode submissions not recorded (no onSubmit call)
@@ -35,13 +35,13 @@
 
 ## Immediate Priorities
 
-1. **Track 7 Phase 4: Discriminant Analyzer**
+1. ~~**Track 7 Phase 4: Discriminant Analyzer**~~ — **COMPLETED** (2026-04-14)
    - Last remaining component in supporting-activities track
    - Depends on Tracks 2, 4 (both complete)
 
-2. **Reconcile Zod schemas with component props (Critical)**
-   - ComprehensionQuiz: schema uses `text`/`choices`/`correctAnswers` (numeric); component uses `prompt`/`options`/`correctAnswer` (text)
-   - FillInTheBlank: schema uses `___` markers and `Record<string, string[]>`; component uses `{{blank:id}}` markers and `Record<string, string>`
+2. ~~**Reconcile Zod schemas with component props (Critical)**~~ — **COMPLETED** (2026-04-14)
+   - ComprehensionQuiz: schema now uses `prompt`/`options`/`correctAnswer` (string | string[])
+   - FillInTheBlank: schema now uses `{{blank:id}}` markers and inline `correctAnswer`
    - Must align before curriculum content authoring begins
 
 3. **Wire StepByStepSolverActivity to real props**
