@@ -10,9 +10,12 @@ export interface ActivityComponentProps {
 }
 
 export function StepByStepSolverActivity({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   activityId,
   mode,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onSubmit,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onComplete,
 }: ActivityComponentProps) {
   const sampleSteps = [

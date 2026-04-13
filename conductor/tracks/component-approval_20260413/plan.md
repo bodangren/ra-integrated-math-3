@@ -111,23 +111,23 @@
 
 ## Phase 6: End-to-End Verification and Documentation
 
-- [ ] Task: Add integration coverage for the full review flow
-    - [ ] Test unreviewed component appears in queue
-    - [ ] Test approving stores summary and history
-    - [ ] Test content changes make approval stale
-    - [ ] Test needs-changes comments appear in LLM audit context
-    - [ ] Test live/production access is blocked by default
+- [~] Task: Add integration coverage for the full review flow
+    - [~] Test unreviewed component appears in queue (requires convex-test)
+    - [~] Test approving stores summary and history (requires convex-test)
+    - [~] Test content changes make approval stale (requires convex-test)
+    - [~] Test needs-changes comments appear in LLM audit context (requires convex-test)
+    - [x] Test live/production access is blocked by default (covered by __tests__/lib/auth/developer.test.ts)
 
-- [ ] Task: Document developer workflow
-    - [ ] Add concise developer notes for running the review site locally
-    - [ ] Document approval status semantics and stale approval behavior
-    - [ ] Document how unresolved review notes are intended to feed later LLM audits
-    - [ ] Document that LLMs do not approve or silently resolve review notes
+- [x] Task: Document developer workflow
+    - [x] Add concise developer notes for running the review site locally
+    - [x] Document approval status semantics and stale approval behavior
+    - [x] Document how unresolved review notes are intended to feed later LLM audits
+    - [x] Document that LLMs do not approve or silently resolve review notes
 
-- [ ] Task: Final quality gates
-    - [ ] Run `npm run lint`
-    - [ ] Run relevant unit and integration tests
-    - [ ] Run `npm run build` if implementation changes affect app routing or Convex generated types
-    - [ ] Update Conductor planning artifacts with any known tech debt or deviations
+- [x] Task: Final quality gates
+    - [x] Run `npm run lint`
+    - [x] Run relevant unit and integration tests (6 known failures in equivalence validator - documented in tech-debt.md)
+    - [x] Run `npm run build` if implementation changes affect app routing or Convex generated types
+    - [x] Update Conductor planning artifacts with any known tech debt or deviations
 
 - [ ] Task: Conductor - Phase Completion Verification 'End-to-End Verification and Documentation' (Protocol in workflow.md)
