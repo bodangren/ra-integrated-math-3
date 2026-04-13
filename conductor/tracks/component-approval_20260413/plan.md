@@ -70,7 +70,7 @@
 
 - [x] Task: Conductor - Phase Completion Verification 'Developer-Only Access Guard' (Protocol in workflow.md)
 
-## Phase 4: Review Queue UI
+## Phase 4: Review Queue UI [checkpoint: 0933956]
 
 - [x] Task: Build review queue filters and list [e74f3f5]
     - [x] Write component tests for status, kind, stale, tag, priority, and placement filters
@@ -85,7 +85,7 @@
     - [x] Submit review decisions through the developer-only mutation/API path
     - [x] Refresh queue state after review submission
 
-- [ ] Task: Conductor - Phase Completion Verification 'Review Queue UI' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Review Queue UI' (Protocol in workflow.md) [0933956]
 
 ## Phase 5: Component Review Harnesses
 
