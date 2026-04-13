@@ -82,9 +82,9 @@
     - [x] Write tests: 2-solution, 1-solution, 0-solution cases — all 3 modes
     - [x] Implement step sequence; solution pairs validated
 
-- [~] Task: Build submission envelope assembly and register component
-    - [ ] Write tests: envelope includes step attempts, hints used, filled answers, final correctness
-    - [ ] Implement `buildAlgebraicSubmission()` in schema file
-    - [ ] Register `step-by-step-solver` in `lib/activities/registry.ts`
+- [x] Task: Build submission envelope assembly and register component [c2f6f5f]
+    - [x] Write tests: envelope includes step attempts, hints used, filled answers, final correctness
+    - [x] Implement `buildAlgebraicSubmission()` in schema file
+    - [x] Register `step-by-step-solver` in `lib/activities/registry.ts`
 
-- [ ] Task: Conductor — Phase Completion Verification 'Multi-Step Problem Types' (Protocol in workflow.md)
+- [~] Task: Conductor — Phase Completion Verification 'Multi-Step Problem Types' (Protocol in workflow.md)
