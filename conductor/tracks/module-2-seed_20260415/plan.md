@@ -14,14 +14,14 @@
 
 ## Phase 2: Seed Lesson 2-2 (Polynomials, Linear Factors, and Zeros)
 
-- [ ] Task: Author curriculum content for lesson 2-2 (if not complete)
-  - [ ] Verify curriculum/modules/module-2-lesson-2 has required sections
-  - [ ] Ensure content covers synthetic division and Remainder Theorem
+- [x] Task: Author curriculum content for lesson 2-2 (if not complete)
+  - [x] Verify curriculum/modules/module-2-lesson-2 has required sections
+  - [x] Ensure content covers synthetic division and Remainder Theorem
 
-- [ ] Task: Create seed function `convex/seed/seed-lesson-2-2.ts`
-  - [ ] Write test: correct phase sequence (explore, vocabulary, learn, worked_example ×3, learn, worked_example ×3, discourse, reflection)
-  - [ ] Write test: idempotent insert
-  - [ ] Implement `seedLesson2_2()`
+- [x] Task: Create seed function `convex/seed/seed-lesson-2-2.ts`
+  - [x] Write test: correct phase sequence (explore, vocabulary, learn, worked_example ×3, learn, worked_example ×3, discourse, reflection)
+  - [x] Write test: idempotent insert
+  - [x] Implement `seedLesson2_2()`
 
 ## Phase 3: Seed Lesson 2-3 (The Remainder and Factor Theorems)
 
