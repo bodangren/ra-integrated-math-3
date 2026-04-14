@@ -20,7 +20,7 @@
 
 ## Phase 2: Gradebook
 
-- [ ] Task: Implement Module 1 gradebook grid
+- [~] Task: Implement Module 1 gradebook grid
     - [ ] Write tests: grid renders 5 student rows × 8 lesson columns; cells show correct percentages
     - [ ] Write tests: cell color coding uses `lib/teacher/gradebook.ts` logic adapted for percentages
     - [ ] Update `app/teacher/gradebook/page.tsx` with real data and grid component
