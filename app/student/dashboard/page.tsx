@@ -5,8 +5,16 @@ import {
   buildStudentDashboardViewModel,
   type StudentDashboardUnit,
 } from '@/lib/student/dashboard';
+import { ModuleCompleteScreen } from '@/components/lesson/ModuleCompleteScreen';
 
-export default async function StudentDashboardPage() {
+interface PageProps {
+  searchParams: Promise<{ complete?: string }>;
+}
+
+export default async function StudentDashboardPage({ searchParams }: PageProps) {
+  const params = await searchParams;
+  const showModuleComplete = params.complete === 'module-1';
+
   const claims = await requireStudentSessionClaims('/auth/login');
 
   const rawUnits: StudentDashboardUnit[] = await fetchInternalQuery(
@@ -15,6 +23,19 @@ export default async function StudentDashboardPage() {
   );
 
   const vm = buildStudentDashboardViewModel(rawUnits ?? []);
+
+  if (showModuleComplete && vm.summary.completedLessons === vm.summary.totalLessons) {
+    return (
+      <div className="max-w-4xl mx-auto space-y-10 py-8">
+        <ModuleCompleteScreen
+          moduleLabel="Module 1: Linear Functions"
+          lessonsCompleted={vm.summary.completedLessons}
+          totalLessons={vm.summary.totalLessons}
+          totalTimeMinutes={0}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-4xl mx-auto space-y-10 py-8">

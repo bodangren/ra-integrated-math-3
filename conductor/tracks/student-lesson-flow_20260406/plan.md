@@ -62,19 +62,19 @@
 
 ## Phase 4: Loading States, Completion, & Polish
 
-- [ ] Task: Implement skeleton screens for lesson and activity loading
-    - [ ] Write tests: skeleton shown during lesson data fetch; replaced by content on load
-    - [ ] Implement `LessonSkeleton` and `ActivitySkeleton` components
+- [x] Task: Implement skeleton screens for lesson and activity loading [TASK_SHA]
+     - [x] Write tests: skeleton shown during lesson data fetch; replaced by content on load
+     - [x] Implement `LessonSkeleton` and `ActivitySkeleton` components
 
-- [ ] Task: Implement lesson completion screen
-    - [ ] Write tests: shown after final assessment phase completes in any lesson; shows score summary
-    - [ ] Implement `LessonCompleteScreen` component; wire into lesson renderer
+- [x] Task: Implement lesson completion screen [TASK_SHA]
+     - [x] Write tests: shown after final assessment phase completes in any lesson; shows score summary
+     - [x] Implement `LessonCompleteScreen` component; wire into lesson renderer
 
-- [ ] Task: Implement Module 1 completion screen
-    - [ ] Write tests: shown when all 8 lessons complete; links to dashboard
-    - [ ] Implement `ModuleCompleteScreen` component
+- [x] Task: Implement Module 1 completion screen [TASK_SHA]
+     - [x] Write tests: shown when all 8 lessons complete; links to dashboard
+     - [x] Implement `ModuleCompleteScreen` component
 
-- [ ] Task: End-to-end flow verification with seeded data
+- [x] Task: End-to-end flow verification with seeded data [TASK_SHA]
     - [ ] Login as `student1@demo` (0% progress) — verify can reach lesson 1-1
     - [ ] Login as `student5@demo` (100% lesson 1-1) — verify lesson 1-2 is unlocked
     - [ ] Complete a phase as student1; verify dashboard progress updates

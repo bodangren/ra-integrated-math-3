@@ -24,14 +24,14 @@ vi.mock('@/lib/convex/server', () => ({
 describe('StudentDashboardPage', () => {
   it('renders dashboard heading', async () => {
     const { default: DashboardPage } = await import('@/app/student/dashboard/page');
-    const jsx = await DashboardPage();
+    const jsx = await DashboardPage({ searchParams: Promise.resolve({}) });
     render(jsx);
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/dashboard/i);
   });
 
   it('renders unit section', async () => {
     const { default: DashboardPage } = await import('@/app/student/dashboard/page');
-    const jsx = await DashboardPage();
+    const jsx = await DashboardPage({ searchParams: Promise.resolve({}) });
     render(jsx);
     expect(screen.getByText(/quadratic functions/i)).toBeInTheDocument();
   });

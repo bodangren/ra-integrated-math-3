@@ -5,6 +5,8 @@ import { LessonPageLayout, type PhaseNavItem } from '@/components/textbook/Lesso
 import { LessonStepper, type StepperPhase } from './LessonStepper';
 import { PhaseRenderer, type PhaseSection } from './PhaseRenderer';
 import { PhaseCompleteButton } from './PhaseCompleteButton';
+import { LessonSkeleton } from './LessonSkeleton';
+import { LessonCompleteScreen } from './LessonCompleteScreen';
 import { submitActivity, type PracticeMode } from '@/lib/activities/submission';
 import type { PhaseType } from '@/lib/curriculum/phase-types';
 
@@ -26,6 +28,8 @@ export interface LessonRendererProps {
   goals?: string;
   phases: LessonPhase[];
   mode?: 'teaching' | 'guided' | 'practice';
+  isLoading?: boolean;
+  onLessonComplete?: (lessonId: string) => void;
 }
 
 export function LessonRenderer({
@@ -36,6 +40,8 @@ export function LessonRenderer({
   goals,
   phases,
   mode = 'practice',
+  isLoading = false,
+  onLessonComplete,
 }: LessonRendererProps) {
   const initialPhase = phases.find(p => p.status === 'current') ?? phases[0];
   const [activePhaseNumber, setActivePhaseNumber] = useState(initialPhase?.phaseNumber ?? 1);
@@ -44,6 +50,7 @@ export function LessonRenderer({
 
   const [completedActivities, setCompletedActivities] = useState<Set<string>>(new Set());
   const [completedPhases, setCompletedPhases] = useState<Set<number>>(new Set());
+  const [showLessonComplete, setShowLessonComplete] = useState(false);
 
   const requiredActivityIds = useMemo(() => {
     if (!activePhase) return [];
@@ -115,9 +122,12 @@ export function LessonRenderer({
         setTimeout(() => {
           setActivePhaseNumber(phases[idx + 1].phaseNumber);
         }, 300);
+      } else {
+        setShowLessonComplete(true);
+        onLessonComplete?.(lessonId);
       }
     }
-  }, [activePhase, phases]);
+  }, [activePhase, phases, lessonId, onLessonComplete]);
 
   const navPhases: PhaseNavItem[] = phases.map(p => ({
     phaseType: p.phaseType,
@@ -135,6 +145,40 @@ export function LessonRenderer({
   }));
 
   const isTeachingMode = mode === 'teaching';
+
+  if (isLoading) {
+    return (
+      <LessonPageLayout
+        lessonTitle={lessonTitle}
+        moduleLabel={moduleLabel}
+        lessonNumber={lessonNumber}
+        goals={goals}
+        phases={[]}
+      >
+        <LessonSkeleton phaseCount={phases.length || 4} />
+      </LessonPageLayout>
+    );
+  }
+
+  if (showLessonComplete) {
+    return (
+      <LessonPageLayout
+        lessonTitle={lessonTitle}
+        moduleLabel={moduleLabel}
+        lessonNumber={lessonNumber}
+        goals={goals}
+        phases={navPhases}
+      >
+        <LessonCompleteScreen
+          lessonTitle={lessonTitle}
+          lessonNumber={lessonNumber}
+          phasesCompleted={completedPhases.size || phases.filter(p => p.completed).length}
+          totalPhases={phases.length}
+          onContinue={() => {}}
+        />
+      </LessonPageLayout>
+    );
+  }
 
   return (
     <LessonPageLayout

@@ -31,22 +31,19 @@
 
 - (2026-04-10, activity-infrastructure) activity_completions schema requires lessonId/phaseNumber not in practice.v1 — future work: pass context or redesign
 - (2026-04-11, fix-intercept-tests) Test failures were due to incorrect test coordinates — verify assumptions match implementation before fixing code
-- (2026-04-12, algebraic-examples) Pattern-matching equivalence works for Module 1 (88% passing) but has limits; polynomial expansion patterns need unified sign handling
-- (2026-04-13, algebraic-examples) Algebraic component testing requires KaTeX-aware assertions — text matching fails with KaTeX HTML; use specific assertions and avoid regex on rendered math
+- (2026-04-12, algebraic-examples) Pattern-matching equivalence works for Module 1 (88% passing) but has limits; polynomial expansion patterns need unified sign handling. Algebraic component testing requires KaTeX-aware assertions — use specific assertions and avoid regex on rendered math.
 - (2026-04-13, algebraic-examples) Problem type implementation is configuration-driven — StepByStepper handles all modes; problem types are step configurations
 - (2026-04-13, review) Convex `internalMutation` args should not accept identity (e.g. `createdBy: v.id("profiles")`) — derive from auth context or clearly mark CLI-only to avoid a trust-boundary bug if ever exposed
 - (2026-04-13, component-approval) Convex queries: use `.withIndex()` not `.filter()`, and `.take(n)` instead of `.collect()` to bound results and avoid transaction size limits
 - (2026-04-13, content-hash) Node.js `crypto` module not available in V8/edge runtimes — use Web Crypto API (`crypto.subtle.digest`)
-- (2026-04-14, supporting-activities) Activity wrapper pattern: wrapper calls onSubmit, inner component calls onComplete — never both in wrapper AND inner component (double-onComplete bug)
-- (2026-04-14, supporting-activities) Zod schemas must be written to match actual component props, not an idealized API — write component first, then schema, not vice versa
-- (2026-04-14, roc) Table data lookups must use indexOf for x-value matching, not direct array indexing; normalize -0 to 0 before comparison (Object.is(-0, 0) is false)
-- (2026-04-14, discriminant) Discriminant classification: >0 = two real roots, =0 = one repeated root, <0 = two complex roots; keep UI explanation brief
-- (2026-04-14, step-by-step) Activity wrapper props should be optional when used in registry — provide sensible defaults so component works without all data
+- (2026-04-14, supporting-activities) Activity wrapper: wrapper calls onSubmit, inner component calls onComplete — never both (double-onComplete bug). Zod schemas must match actual component props; write component first, then schema.
+- (2026-04-14, roc) Table data lookups must use indexOf for x-value matching; normalize -0 to 0 before comparison (Object.is(-0, 0) is false)
+- (2026-04-14, discriminant/step-by-step) Discriminant: >0 = two real roots, =0 = one repeated, <0 = complex. Activity wrapper props should be optional with sensible defaults for registry use.
 - (2026-04-14, seed) Seed types mirror Convex schema but omit IDs/timestamps — seed modules define input shapes, Convex mutations handle actual inserts
 - (2026-04-14, code-review) Activity wrappers should inject activityId into submission payloads, not pass it to inner components — keeps inner components focused on domain logic
 - (2026-04-14, code-review) Always guard division by zero in score calculations; NaN propagates silently through analytics
 - (2026-04-14, code-review) Optional dependencies in vite.config need `@ts-expect-error` on dynamic import to avoid TS2307
-- (2026-04-14, student-lesson-flow) Adding new Convex function requires regenerating types via `npx convex dev`; use `(internal.module as any).fn` workaround if types stale
-- (2026-04-14, student-lesson-flow) Use React state (not mutable class) for activity tracking — React must see state changes to re-render; optimistic updates need rollback on API failure
+- (2026-04-14, student-lesson-flow) Adding new Convex function requires regenerating types via `npx convex dev`; use `(internal.module as any).fn` workaround if types stale. Use React state (not mutable class) for activity tracking; optimistic updates need rollback on API failure.
 - (2026-04-14, student-lesson-flow) PhaseCompleteButton onStatusChange callback wires parent state to component lifecycle — use to drive auto-advance and update stepper; useEffect syncs initialStatus only on mount, so parent must re-render with new prop
 - (2026-04-14, code-review) Progress counting must include "skipped" alongside "completed" — skipped phases are "done" for unlock gating; filter by `status === "completed" || status === "skipped"` when computing lesson readiness
+- (2026-04-14, student-lesson-flow) Lesson completion screens: LessonCompleteScreen for individual lessons, ModuleCompleteScreen for full module; wire via `showLessonComplete` state in LessonRenderer and `complete=module-1` query param on dashboard

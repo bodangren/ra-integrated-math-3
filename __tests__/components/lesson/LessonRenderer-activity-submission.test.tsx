@@ -348,17 +348,29 @@ describe('LessonRenderer - Activity Submission Flow', () => {
     });
 
     it('phase completion updates stepper phase status', async () => {
-      const singlePhaseProps: LessonRendererProps = {
+      const threePhaseProps: LessonRendererProps = {
         ...defaultProps,
-        phases: [{
-          phaseId: 'p1', phaseNumber: 1, phaseType: 'explore', title: 'Explore',
-          sections: [activitySection('act-s1', 'act-1')], status: 'current', completed: false,
-        }],
+        phases: [
+          {
+            phaseId: 'p1', phaseNumber: 1, phaseType: 'explore', title: 'Explore',
+            sections: [activitySection('act-s1', 'act-1')], status: 'completed', completed: true,
+          },
+          {
+            phaseId: 'p2', phaseNumber: 2, phaseType: 'learn', title: 'Learn',
+            sections: [activitySection('act-s2', 'act-2')], status: 'current', completed: false,
+          },
+          {
+            phaseId: 'p3', phaseNumber: 3, phaseType: 'worked_example', title: 'Example',
+            sections: [], status: 'locked', completed: false,
+          },
+        ],
       };
 
-      render(<LessonRenderer {...singlePhaseProps} />);
+      render(<LessonRenderer {...threePhaseProps} />);
 
-      fireEvent.click(screen.getByTestId('activity-submit-act-1'));
+      expect(screen.getByTestId('lesson-stepper')).toHaveAttribute('data-current', '2');
+
+      fireEvent.click(screen.getByTestId('activity-submit-act-2'));
 
       await waitFor(() => {
         const btn = screen.getByTestId('phase-complete-btn');
@@ -368,8 +380,11 @@ describe('LessonRenderer - Activity Submission Flow', () => {
       fireEvent.click(screen.getByTestId('phase-complete-btn'));
 
       await waitFor(() => {
-        expect(screen.getByTestId('phase-complete-btn')).toBeDisabled();
-        expect(screen.getByTestId('phase-complete-btn')).toHaveTextContent(/completed/i);
+        const stepper = screen.getByTestId('lesson-stepper');
+        expect(stepper).toHaveAttribute('data-current', '3');
+        const btn = screen.getByTestId('phase-complete-btn');
+        expect(btn).toBeDisabled();
+        expect(btn).toHaveTextContent(/completed/i);
       });
     });
   });
