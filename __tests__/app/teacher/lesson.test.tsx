@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 const mockClaims = { sub: 'p1', username: 'teacher1', role: 'teacher' as const, organizationId: 'org1', iat: 0, exp: 9999999999 };
 
@@ -101,5 +101,65 @@ describe('TeacherLessonPreviewPage', () => {
       const jsx = await TeacherLessonPreviewPage({ params: Promise.resolve({ lessonSlug: 'nonexistent' }) });
       render(jsx);
     }).rejects.toThrow();
+  });
+
+  it('renders in teaching mode without PhaseCompleteButton', async () => {
+    const { fetchInternalQuery } = await import('@/lib/convex/server');
+    vi.mocked(fetchInternalQuery).mockResolvedValue(createMockLessonData());
+
+    const { default: TeacherLessonPreviewPage } = await import('@/app/teacher/lesson/[lessonSlug]/page');
+    const jsx = await TeacherLessonPreviewPage({ params: Promise.resolve({ lessonSlug: 'intro-quadratics' }) });
+    render(jsx);
+
+    expect(screen.queryByRole('button', { name: /mark complete/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /completed/i })).not.toBeInTheDocument();
+  });
+
+  it('allows free phase navigation for teacher regardless of phase status', async () => {
+    const { fetchInternalQuery } = await import('@/lib/convex/server');
+    vi.mocked(fetchInternalQuery).mockResolvedValue(createMockLessonData({
+      phases: [
+        {
+          phaseId: 'phase1',
+          phaseNumber: 1,
+          phaseType: 'explore' as const,
+          title: 'Explore',
+          status: 'completed' as const,
+          completed: true,
+          sections: [{ id: 's1', sectionType: 'text' as const, sequenceOrder: 1, content: { html: '<p>Explore content</p>' } }],
+        },
+        {
+          phaseId: 'phase2',
+          phaseNumber: 2,
+          phaseType: 'learn' as const,
+          title: 'Learn',
+          status: 'available' as const,
+          completed: false,
+          sections: [{ id: 's2', sectionType: 'text' as const, sequenceOrder: 1, content: { html: '<p>Learn content</p>' } }],
+        },
+        {
+          phaseId: 'phase3',
+          phaseNumber: 3,
+          phaseType: 'worked_example' as const,
+          title: 'Example',
+          status: 'available' as const,
+          completed: false,
+          sections: [],
+        },
+      ],
+    }));
+
+    const { default: TeacherLessonPreviewPage } = await import('@/app/teacher/lesson/[lessonSlug]/page');
+    const jsx = await TeacherLessonPreviewPage({ params: Promise.resolve({ lessonSlug: 'intro-quadratics' }) });
+    render(jsx);
+
+    const phase3Btns = screen.getAllByRole('button', { name: /phase 3: example/i });
+    const phase3Btn = phase3Btns[0];
+
+    expect(phase3Btn).not.toBeDisabled();
+
+    fireEvent.click(phase3Btn);
+
+    expect(phase3Btn).toHaveAttribute('aria-current', 'step');
   });
 });

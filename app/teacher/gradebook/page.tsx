@@ -88,7 +88,7 @@ export default async function GradebookPage({ searchParams }: PageProps) {
                       {row.displayName}
                     </Link>
                   </td>
-                  {row.cells.map((cell) => (
+                  {row.cells.map((cell, cellIndex) => (
                     <td
                       key={cell.lesson.lessonId}
                       className={`text-center px-2 py-2 ${cellBgClass(cell.color)}`}
