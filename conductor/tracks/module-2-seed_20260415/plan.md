@@ -35,19 +35,19 @@
 
 ## Phase 4: Seed Lessons 2-4 and 2-5
 
-- [ ] Task: Author curriculum content for lessons 2-4 and 2-5 (if not complete)
-  - [ ] Verify curriculum/modules/module-2-lesson-4 has Fundamental Theorem content
-  - [ ] Verify curriculum/modules/module-2-lesson-5 has graphs of polynomials content
+- [x] Task: Author curriculum content for lessons 2-4 and 2-5 (if not complete)
+  - [x] Verify curriculum/modules/module-2-lesson-4 has Dividing Polynomials content
+  - [x] Verify curriculum/modules/module-2-lesson-5 has Powers of Binomials content
 
-- [ ] Task: Create seed function `convex/seed/seed-lesson-2-4.ts`
-  - [ ] Write test: correct phase sequence (explore, vocabulary, learn, worked_example ×4, assessment, discourse, reflection)
-  - [ ] Write test: idempotent insert
-  - [ ] Implement `seedLesson2_4()`
+- [x] Task: Create seed function `convex/seed/seed-lesson-2-4.ts`
+  - [x] Write test: correct phase sequence (explore, vocabulary, learn, worked_example ×4, assessment, discourse, reflection)
+  - [x] Write test: idempotent insert
+  - [x] Implement `seedLesson2_4()`
 
-- [ ] Task: Create seed function `convex/seed/seed-lesson-2-5.ts`
-  - [ ] Write test: correct phase sequence (explore, vocabulary, learn, worked_example ×3, learn, worked_example ×3, assessment, discourse, reflection)
-  - [ ] Write test: idempotent insert
-  - [ ] Implement `seedLesson2_5()`
+- [x] Task: Create seed function `convex/seed/seed-lesson-2-5.ts`
+  - [x] Write test: correct phase sequence (explore, vocabulary, learn, worked_example ×3, discourse, reflection)
+  - [x] Write test: idempotent insert
+  - [x] Implement `seedLesson2_5()`
 
 ## Phase 5: Update seed.ts and Verify
 
