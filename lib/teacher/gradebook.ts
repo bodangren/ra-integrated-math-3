@@ -9,7 +9,7 @@
 // Types
 // ---------------------------------------------------------------------------
 
-export type PhaseProgressStatus = 'not_started' | 'in_progress' | 'completed';
+export type PhaseProgressStatus = 'not_started' | 'in_progress' | 'completed' | 'skipped';
 export type LessonCompletionStatus = 'not_started' | 'in_progress' | 'completed';
 export type CellColor = 'green' | 'yellow' | 'red' | 'gray';
 

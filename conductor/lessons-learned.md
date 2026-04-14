@@ -48,3 +48,4 @@
 - (2026-04-14, code-review) Activity wrappers should inject activityId into submission payloads, not pass it to inner components — keeps inner components focused on domain logic
 - (2026-04-14, code-review) Always guard division by zero in score calculations; NaN propagates silently through analytics
 - (2026-04-14, code-review) Optional dependencies in vite.config need `@ts-expect-error` on dynamic import to avoid TS2307
+- (2026-04-14, student-lesson-flow) Adding new Convex function requires regenerating types via `npx convex dev`; use `(internal.module as any).fn` workaround if types stale

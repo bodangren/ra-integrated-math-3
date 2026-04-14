@@ -1,11 +1,11 @@
 'use client';
 
-import { Check, Circle, CircleDot, Lock } from 'lucide-react';
+import { Check, Circle, CircleDot, Lock, SkipForward } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { PhaseType } from '@/lib/curriculum/phase-types';
 import { getPhaseDisplayInfo } from '@/lib/curriculum/phase-types';
 
-export type PhaseStatus = 'completed' | 'current' | 'available' | 'locked';
+export type PhaseStatus = 'completed' | 'current' | 'available' | 'locked' | 'skipped';
 
 export interface StepperPhase {
   phaseNumber: number;
@@ -87,6 +87,7 @@ function StepButton({
     current: 'bg-primary text-primary-foreground border-primary',
     available: 'bg-background text-foreground border-border hover:border-primary/60',
     locked: 'bg-muted text-muted-foreground border-muted cursor-not-allowed',
+    skipped: 'bg-amber-500 text-white border-amber-500',
   }[phase.status];
 
   const StepIcon = () => {
@@ -94,6 +95,7 @@ function StepButton({
       case 'completed': return <Check className="h-4 w-4" aria-hidden />;
       case 'current':   return <CircleDot className="h-4 w-4" aria-hidden />;
       case 'locked':    return <Lock className="h-4 w-4" aria-hidden />;
+      case 'skipped':   return <SkipForward className="h-4 w-4" aria-hidden />;
       default:          return <Circle className="h-4 w-4" aria-hidden />;
     }
   };

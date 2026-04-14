@@ -11,3 +11,15 @@ export interface CompletePhaseResponse {
   alreadyCompleted?: boolean;
   nextPhaseUnlocked?: boolean;
 }
+
+export interface SkipPhaseRequest {
+  lessonId: string;
+  phaseNumber: number;
+  idempotencyKey: string;
+}
+
+export interface SkipPhaseResponse {
+  success: boolean;
+  alreadySkipped?: boolean;
+  nextPhaseUnlocked?: boolean;
+}

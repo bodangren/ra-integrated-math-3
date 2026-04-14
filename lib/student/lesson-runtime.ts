@@ -7,16 +7,18 @@ import {
 export function resolveLessonLandingPhase({
   totalPhases,
   completedPhaseNumbers,
+  skippedPhaseNumbers = new Set<number>(),
 }: {
   totalPhases: number;
   completedPhaseNumbers: ReadonlySet<number>;
+  skippedPhaseNumbers?: ReadonlySet<number>;
 }) {
   if (totalPhases <= 1) {
     return Math.max(totalPhases, 1);
   }
 
   for (let phaseNumber = 1; phaseNumber <= totalPhases; phaseNumber += 1) {
-    if (!completedPhaseNumbers.has(phaseNumber)) {
+    if (!completedPhaseNumbers.has(phaseNumber) && !skippedPhaseNumbers.has(phaseNumber)) {
       return phaseNumber;
     }
   }

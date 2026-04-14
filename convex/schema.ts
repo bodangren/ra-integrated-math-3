@@ -205,7 +205,7 @@ export default defineSchema({
   student_progress: defineTable({
     userId: v.id("profiles"),
     phaseId: v.id("phase_versions"),
-    status: v.union(v.literal("not_started"), v.literal("in_progress"), v.literal("completed")),
+    status: v.union(v.literal("not_started"), v.literal("in_progress"), v.literal("completed"), v.literal("skipped")),
     startedAt: v.optional(v.number()),
     completedAt: v.optional(v.number()),
     timeSpentSeconds: v.optional(v.number()),

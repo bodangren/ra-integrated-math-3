@@ -41,7 +41,7 @@ export function PhaseCompleteButton({
     setStatus(initialStatus);
   }, [initialStatus]);
 
-  const handleClick = useCallback(async () => {
+  const handleComplete = useCallback(async () => {
     if (isDisabled) return;
 
     setIsCompleting(true);
@@ -72,7 +72,7 @@ export function PhaseCompleteButton({
         variant={isCompleted ? 'outline' : 'default'}
         aria-pressed={isCompleted}
         disabled={isDisabled}
-        onClick={handleClick}
+        onClick={handleComplete}
         className={cn(
           'w-full justify-center font-semibold',
           isCompleted ? 'border-green-300 text-green-700 dark:text-green-300' : '',

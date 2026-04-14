@@ -14,7 +14,7 @@ export interface PhaseVersionLike {
 
 export interface ProgressRowLike {
   phaseId: string;
-  status: "not_started" | "in_progress" | "completed";
+  status: "not_started" | "in_progress" | "completed" | "skipped";
   updatedAt?: number | null;
 }
 
@@ -75,7 +75,7 @@ export interface LessonPhaseProgressStatusRow {
   phaseNumber: number;
   phaseId: string;
   phaseType: string;
-  status: "completed" | "current" | "available" | "locked";
+  status: "completed" | "current" | "available" | "locked" | "skipped";
   startedAt: string | null;
   completedAt: string | null;
   timeSpentSeconds: number | null;
@@ -345,12 +345,14 @@ export function buildLessonPhaseProgress<
       status = "completed";
     } else if (progress?.status === "in_progress") {
       status = "current";
+    } else if (progress?.status === "skipped") {
+      status = "skipped";
     } else if (index === 0) {
       status = "available";
     } else {
       const previousPhase = sortedPhases[index - 1];
       const previousProgress = progressByPhaseId.get(previousPhase._id);
-      if (previousProgress?.status === "completed") {
+      if (previousProgress?.status === "completed" || previousProgress?.status === "skipped") {
         status = "available";
       }
     }

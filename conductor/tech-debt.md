@@ -33,3 +33,5 @@
 | 2026-04-14 | module-1-seed | seed.ts passes RegisteredMutation to ctx.runMutation instead of FunctionReference | Critical | Resolved | **Fixed 2026-04-14:** Use `internal` from `_generated/api` with type assertion until types regenerated |
 | 2026-04-14 | module-1-seed | seed-demo-env.ts TypeScript error: profileId possibly undefined | Medium | Resolved | **Fixed 2026-04-14:** Added non-null assertion after guard clause |
 | 2026-04-14 | graphing-explore | Explore equation formatting shows `1x^2 + 0x + 0` | Low | Resolved | **Fixed 2026-04-14:** Smart coefficient formatting omits 0 terms and 1 coefficients |
+| 2026-04-14 | student-lesson-flow | Phase skip infrastructure ready but UI not wired | Medium | Open | Schema has 'skipped' status; skipPhase mutation exists; isSkippable() helper added; PhaseCompleteButton skip UI pending |
+| 2026-04-14 | student-lesson-flow | Pre-existing dashboard.test.ts TypeScript errors | Low | Open | 12 tests missing `isLocked` property; existed before Phase 2 changes |

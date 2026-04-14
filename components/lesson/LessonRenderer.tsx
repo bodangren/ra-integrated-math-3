@@ -13,7 +13,7 @@ export interface LessonPhase {
   phaseType: PhaseType;
   title: string;
   sections: PhaseSection[];
-  status: 'completed' | 'current' | 'available' | 'locked';
+  status: 'completed' | 'current' | 'available' | 'locked' | 'skipped';
   completed: boolean;
 }
 

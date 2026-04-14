@@ -1,4 +1,4 @@
-import type { CompletePhaseRequest, CompletePhaseResponse } from '@/types/api';
+import type { CompletePhaseRequest, CompletePhaseResponse, SkipPhaseRequest, SkipPhaseResponse } from '@/types/api';
 
 export class PhaseCompletionError extends Error {
   status?: number;
@@ -59,4 +59,47 @@ export async function completePhaseRequest(
   }
 
   return (responsePayload ?? {}) as CompletePhaseResponse;
+}
+
+export class PhaseSkipError extends Error {
+  status?: number;
+  details?: unknown;
+  transient: boolean;
+
+  constructor(message: string, options?: { status?: number; details?: unknown }) {
+    super(message);
+    this.name = 'PhaseSkipError';
+    this.status = options?.status;
+    this.details = options?.details;
+    this.transient = isTransientStatus(options?.status);
+  }
+}
+
+export async function skipPhaseRequest(
+  payload: SkipPhaseRequest,
+): Promise<SkipPhaseResponse> {
+  const response = await fetch('/api/phases/skip', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+    keepalive: true,
+  });
+
+  let responsePayload: unknown = null;
+  try {
+    responsePayload = await response.json();
+  } catch {
+    responsePayload = null;
+  }
+
+  if (!response.ok) {
+    throw new PhaseSkipError(
+      extractMessage(responsePayload, `HTTP error! status: ${response.status}`),
+      { status: response.status, details: responsePayload },
+    );
+  }
+
+  return (responsePayload ?? {}) as SkipPhaseResponse;
 }

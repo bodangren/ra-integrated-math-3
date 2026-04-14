@@ -100,3 +100,12 @@ const PHASE_DISPLAY_INFO: Record<PhaseType, PhaseDisplayInfo> = {
 export function getPhaseDisplayInfo(phaseType: PhaseType): PhaseDisplayInfo {
   return PHASE_DISPLAY_INFO[phaseType];
 }
+
+export const SKIPPABLE_PHASE_TYPES: readonly PhaseType[] = [
+  'explore',
+  'discourse',
+] as const;
+
+export function isSkippable(phaseType: PhaseType): boolean {
+  return SKIPPABLE_PHASE_TYPES.includes(phaseType);
+}

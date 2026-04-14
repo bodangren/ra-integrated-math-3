@@ -228,3 +228,82 @@ export const completePhase = internalMutation({
     };
   }
 });
+
+export const skipPhase = internalMutation({
+  args: {
+    userId: v.id("profiles"),
+    lessonId: v.string(),
+    phaseNumber: v.number(),
+    idempotencyKey: v.string(),
+  },
+  handler: async (ctx, args) => {
+    // 1. Find lesson
+    let lesson = null;
+    try {
+      lesson = await ctx.db.get(args.lessonId as Id<"lessons">);
+    } catch {}
+
+    if (!lesson) {
+      lesson = await ctx.db
+        .query("lessons")
+        .withIndex("by_slug", (q) => q.eq("slug", args.lessonId))
+        .unique();
+    }
+    if (!lesson) throw new Error("Lesson not found");
+
+    // 2. Get latest published version
+    const versions = await ctx.db
+      .query("lesson_versions")
+      .withIndex("by_lesson", (q) => q.eq("lessonId", lesson._id))
+      .collect();
+    const latestVersion = resolveLatestPublishedLessonVersion(versions);
+    if (!latestVersion) throw new Error("Published lesson version not found");
+
+    // 3. Find specific phase
+    const phase = await ctx.db
+      .query("phase_versions")
+      .withIndex("by_lesson_version_and_phase", (q) => 
+        q.eq("lessonVersionId", latestVersion._id).eq("phaseNumber", args.phaseNumber)
+      )
+      .unique();
+    if (!phase) throw new Error("Phase not found");
+
+    // 4. Check idempotency
+    const existing = await ctx.db
+      .query("student_progress")
+      .withIndex("by_user_and_phase", (q) => 
+        q.eq("userId", args.userId).eq("phaseId", phase._id)
+      )
+      .unique();
+
+    if (existing?.status === "skipped") {
+      return { success: true, alreadySkipped: true };
+    }
+
+    const now = Date.now();
+
+    // 5. Update or create progress
+    if (existing) {
+      await ctx.db.patch(existing._id, {
+        status: "skipped",
+        updatedAt: now,
+        idempotencyKey: args.idempotencyKey,
+      });
+    } else {
+      await ctx.db.insert("student_progress", {
+        userId: args.userId,
+        phaseId: phase._id,
+        status: "skipped",
+        startedAt: now,
+        idempotencyKey: args.idempotencyKey,
+        createdAt: now,
+        updatedAt: now,
+      });
+    }
+
+    return { 
+      success: true, 
+      nextPhaseUnlocked: true
+    };
+  }
+});

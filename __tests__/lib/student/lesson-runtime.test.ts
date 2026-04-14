@@ -111,4 +111,56 @@ describe('resolveLessonLandingPhase', () => {
       expect(result).toBe(1);
     });
   });
+
+  describe('handles skipped phases', () => {
+    it('returns next non-skipped phase when current phase is skipped', () => {
+      const result = resolveLessonLandingPhase({
+        totalPhases: 4,
+        completedPhaseNumbers: new Set([1, 2]),
+        skippedPhaseNumbers: new Set([3]),
+      });
+
+      expect(result).toBe(4);
+    });
+
+    it('skips over multiple skipped phases to find next incomplete', () => {
+      const result = resolveLessonLandingPhase({
+        totalPhases: 6,
+        completedPhaseNumbers: new Set([1]),
+        skippedPhaseNumbers: new Set([2, 3]),
+      });
+
+      expect(result).toBe(4);
+    });
+
+    it('returns last phase when all remaining phases are skipped', () => {
+      const result = resolveLessonLandingPhase({
+        totalPhases: 4,
+        completedPhaseNumbers: new Set([1, 2, 3]),
+        skippedPhaseNumbers: new Set([4]),
+      });
+
+      expect(result).toBe(4);
+    });
+
+    it('handles mix of completed and skipped phases', () => {
+      const result = resolveLessonLandingPhase({
+        totalPhases: 6,
+        completedPhaseNumbers: new Set([1, 4]),
+        skippedPhaseNumbers: new Set([2]),
+      });
+
+      expect(result).toBe(3);
+    });
+
+    it('returns first phase when first phase is skipped', () => {
+      const result = resolveLessonLandingPhase({
+        totalPhases: 4,
+        completedPhaseNumbers: new Set(),
+        skippedPhaseNumbers: new Set([1]),
+      });
+
+      expect(result).toBe(2);
+    });
+  });
 });
