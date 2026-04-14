@@ -44,19 +44,19 @@
     - [x] Update `app/teacher/students/page.tsx` and student detail components
     - [checkpoint: 58f83c0]
 
-- [ ] Task: Implement activity submission review panel
-    - [ ] Write tests: "Review" button appears for completed activity phases
-    - [ ] Write tests: panel shows teaching-mode activity + student submission answers side by side
-    - [ ] Implement `SubmissionReviewPanel` component
+- [x] Task: Implement activity submission review panel
+    - [x] Write tests: "Review" button appears for completed activity phases
+    - [x] Write tests: panel shows teaching-mode activity + student submission answers side by side
+    - [x] Implement `SubmissionReviewPanel` component
 
-- [ ] Task: Implement error analysis display in review panel
-    - [ ] Write tests: `buildDeterministicSummary()` output rendered as readable summary
-    - [ ] Write tests: misconception tags shown per part; hints used count shown
-    - [ ] Integrate `lib/practice/error-analysis/` into submission review panel
+- [x] Task: Implement error analysis display in review panel
+    - [x] Write tests: `buildDeterministicSummary()` output rendered as readable summary
+    - [x] Write tests: misconception tags shown per part; hints used count shown
+    - [x] Integrate `lib/practice/error-analysis/` into submission review panel
 
-- [ ] Task: Implement progress timeline
-    - [ ] Write tests: timeline shows phases in chronological order with correct timestamps
-    - [ ] Implement `ProgressTimeline` component using `completedAt` data from Convex
+- [x] Task: Implement progress timeline
+    - [x] Write tests: timeline shows phases in chronological order with correct timestamps
+    - [x] Implement `ProgressTimeline` component using `completedAt` data from Convex
 
 - [ ] Task: Conductor — Phase Completion Verification 'Student Detail View' (Protocol in workflow.md)
 
