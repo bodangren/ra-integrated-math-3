@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { requireTeacherSessionClaims } from '@/lib/auth/server';
 import { fetchInternalQuery, internal } from '@/lib/convex/server';
 import { cellBgClass, type GradebookRow, type GradebookLesson } from '@/lib/teacher/gradebook';
+import { GradebookExportButton } from '@/components/teacher/GradebookExportButton';
 
 const UNIT_COUNT = 9;
 
@@ -25,8 +26,11 @@ export default async function GradebookPage({ searchParams }: PageProps) {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 py-8">
-      <div className="space-y-1">
-        <h1 className="text-3xl font-display font-bold text-foreground">Gradebook</h1>
+      <div className="flex items-center justify-between">
+        <div className="space-y-1">
+          <h1 className="text-3xl font-display font-bold text-foreground">Gradebook</h1>
+        </div>
+        <GradebookExportButton rows={rows} lessons={lessons} />
       </div>
 
       {/* Unit selector */}
@@ -74,7 +78,7 @@ export default async function GradebookPage({ searchParams }: PageProps) {
                 </td>
               </tr>
             ) : (
-              rows.map((row) => (
+              rows.map((row, rowIndex) => (
                 <tr key={row.studentId} className="hover:bg-muted/10 transition-colors">
                   <td className="px-4 py-2 font-medium text-foreground sticky left-0 bg-card">
                     <Link
@@ -84,12 +88,18 @@ export default async function GradebookPage({ searchParams }: PageProps) {
                       {row.displayName}
                     </Link>
                   </td>
-                  {row.cells.map((cell) => (
+                  {row.cells.map((cell, cellIndex) => (
                     <td
                       key={cell.lesson.lessonId}
                       className={`text-center px-2 py-2 ${cellBgClass(cell.color)}`}
                     >
-                      {cell.masteryLevel !== null ? `${cell.masteryLevel}%` : '—'}
+                      <Link
+                        href={`/teacher/students?id=${row.studentId}&lesson=${cellIndex}`}
+                        className="block hover:opacity-80 transition-opacity"
+                        title={`${cell.lesson.lessonTitle} - ${cell.completionStatus}`}
+                      >
+                        {cell.masteryLevel !== null ? `${cell.masteryLevel}%` : '—'}
+                      </Link>
                     </td>
                   ))}
                 </tr>

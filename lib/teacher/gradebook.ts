@@ -55,8 +55,8 @@ export interface GradebookRow {
  */
 export function computeLessonStatus(phaseStatuses: PhaseProgressStatus[]): LessonCompletionStatus {
   if (phaseStatuses.length === 0) return 'not_started';
-  if (phaseStatuses.every(s => s === 'completed')) return 'completed';
-  if (phaseStatuses.some(s => s === 'completed' || s === 'in_progress')) return 'in_progress';
+  if (phaseStatuses.every(s => s === 'completed' || s === 'skipped')) return 'completed';
+  if (phaseStatuses.some(s => s === 'completed' || s === 'in_progress' || s === 'skipped')) return 'in_progress';
   return 'not_started';
 }
 
