@@ -50,9 +50,9 @@
     - [x] Write tests: multi-activity phase → button enabled only after all required activities complete
     - [x] Implement activity tracking state in lesson renderer
 
-- [ ] Task: Wire `PhaseCompleteButton` to phase completion API and stepper
-    - [ ] Write integration tests: button click → POST `/api/phases/complete` → stepper dot updates → auto-advance
-    - [ ] Implement phase advance animation (smooth transition between phases)
+- [x] Task: Wire `PhaseCompleteButton` to phase completion API and stepper
+    - [x] Write integration tests: button click → POST `/api/phases/complete` → stepper dot updates → auto-advance
+    - [x] Implement phase advance animation (smooth transition between phases)
 
 - [x] Task: Implement failed submission recovery [70afbd5]
     - [x] Write tests: network failure on submit → error state shown; retry button works; work not lost

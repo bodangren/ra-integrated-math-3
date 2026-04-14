@@ -43,6 +43,7 @@ export function LessonRenderer({
   const activePhase = phases.find(p => p.phaseNumber === activePhaseNumber) ?? phases[0];
 
   const [completedActivities, setCompletedActivities] = useState<Set<string>>(new Set());
+  const [completedPhases, setCompletedPhases] = useState<Set<number>>(new Set());
 
   const requiredActivityIds = useMemo(() => {
     if (!activePhase) return [];
@@ -103,6 +104,18 @@ export function LessonRenderer({
     setCompletedActivities(prev => new Set([...prev, activityId]));
   }, []);
 
+  const handlePhaseStatusChange = useCallback((status: 'not_started' | 'in_progress' | 'completed') => {
+    if (status === 'completed' && activePhase) {
+      setCompletedPhases(prev => new Set([...prev, activePhase.phaseNumber]));
+      const idx = phases.findIndex(p => p.phaseNumber === activePhase.phaseNumber);
+      if (idx < phases.length - 1) {
+        setTimeout(() => {
+          setActivePhaseNumber(phases[idx + 1].phaseNumber);
+        }, 300);
+      }
+    }
+  }, [activePhase, phases]);
+
   const navPhases: PhaseNavItem[] = phases.map(p => ({
     phaseType: p.phaseType,
     label: p.title,
@@ -151,8 +164,9 @@ export function LessonRenderer({
           <PhaseCompleteButton
             lessonId={lessonId}
             phaseNumber={activePhase.phaseNumber}
-            initialStatus={activePhase.completed ? 'completed' : 'not_started'}
+            initialStatus={activePhase.completed || completedPhases.has(activePhase.phaseNumber) ? 'completed' : 'not_started'}
             disabled={isPhaseGated}
+            onStatusChange={handlePhaseStatusChange}
           />
         )}
       </div>

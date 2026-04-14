@@ -1,3 +1,4 @@
+import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { LessonRenderer, type LessonRendererProps } from '@/components/lesson/LessonRenderer';
@@ -78,22 +79,34 @@ vi.mock('@/components/lesson/PhaseRenderer', () => ({
   ),
 }));
 
-vi.mock('@/components/lesson/PhaseCompleteButton', () => ({
-  PhaseCompleteButton: ({ lessonId, phaseNumber, disabled }: {
-    lessonId: string;
-    phaseNumber: number;
-    disabled?: boolean;
-  }) => (
-    <button
-      data-testid="phase-complete-btn"
-      data-lesson={lessonId}
-      data-phase={phaseNumber}
-      disabled={disabled}
-    >
-      Mark Complete
-    </button>
-  ),
-}));
+vi.mock('@/components/lesson/PhaseCompleteButton', () => {
+  return {
+    PhaseCompleteButton: ({ lessonId, phaseNumber, disabled, initialStatus, onStatusChange }: {
+      lessonId: string;
+      phaseNumber: number;
+      disabled?: boolean;
+      initialStatus?: 'not_started' | 'in_progress' | 'completed';
+      onStatusChange?: (status: 'completed') => void;
+    }) => {
+      const [status, setStatus] = React.useState(initialStatus ?? 'not_started');
+      const isCompleted = status === 'completed';
+      return (
+        <button
+          data-testid="phase-complete-btn"
+          data-lesson={lessonId}
+          data-phase={phaseNumber}
+          disabled={disabled || isCompleted}
+          onClick={() => {
+            setStatus('completed');
+            onStatusChange?.('completed');
+          }}
+        >
+          {isCompleted ? 'Completed' : 'Mark Complete'}
+        </button>
+      );
+    },
+  };
+});
 
 const textSection: PhaseSection = {
   id: 's1', sequenceOrder: 1, sectionType: 'text', content: { markdown: 'Content' },
@@ -294,6 +307,66 @@ describe('LessonRenderer - Activity Submission Flow', () => {
       await waitFor(() => {
         const btn = screen.getByTestId('phase-complete-btn');
         expect(btn).toBeDisabled();
+      });
+    });
+  });
+
+  describe('phase completion and auto-advance', () => {
+    it('auto-advances to next phase after phase completion', async () => {
+      const twoPhaseProps: LessonRendererProps = {
+        ...defaultProps,
+        phases: [
+          {
+            phaseId: 'p1', phaseNumber: 1, phaseType: 'explore', title: 'Explore',
+            sections: [activitySection('act-s1', 'act-1')], status: 'current', completed: false,
+          },
+          {
+            phaseId: 'p2', phaseNumber: 2, phaseType: 'learn', title: 'Learn',
+            sections: [activitySection('act-s2', 'act-2')], status: 'available', completed: false,
+          },
+        ],
+      };
+
+      render(<LessonRenderer {...twoPhaseProps} />);
+
+      fireEvent.click(screen.getByTestId('activity-submit-act-1'));
+
+      await waitFor(() => {
+        const btn = screen.getByTestId('phase-complete-btn');
+        expect(btn).not.toBeDisabled();
+      });
+
+      fireEvent.click(screen.getByTestId('phase-complete-btn'));
+
+      await waitFor(() => {
+        const stepper = screen.getByTestId('lesson-stepper');
+        expect(stepper).toHaveAttribute('data-current', '2');
+      });
+    });
+
+    it('phase completion updates stepper phase status', async () => {
+      const singlePhaseProps: LessonRendererProps = {
+        ...defaultProps,
+        phases: [{
+          phaseId: 'p1', phaseNumber: 1, phaseType: 'explore', title: 'Explore',
+          sections: [activitySection('act-s1', 'act-1')], status: 'current', completed: false,
+        }],
+      };
+
+      render(<LessonRenderer {...singlePhaseProps} />);
+
+      fireEvent.click(screen.getByTestId('activity-submit-act-1'));
+
+      await waitFor(() => {
+        const btn = screen.getByTestId('phase-complete-btn');
+        expect(btn).not.toBeDisabled();
+      });
+
+      fireEvent.click(screen.getByTestId('phase-complete-btn'));
+
+      await waitFor(() => {
+        expect(screen.getByTestId('phase-complete-btn')).toBeDisabled();
+        expect(screen.getByTestId('phase-complete-btn')).toHaveTextContent(/completed/i);
       });
     });
   });
