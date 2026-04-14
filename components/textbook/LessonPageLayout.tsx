@@ -18,6 +18,7 @@ export interface LessonPageLayoutProps {
   goals?: string;
   phases: PhaseNavItem[];
   children: React.ReactNode;
+  showTeacherPreviewBadge?: boolean;
 }
 
 export function LessonPageLayout({
@@ -27,6 +28,7 @@ export function LessonPageLayout({
   goals,
   phases,
   children,
+  showTeacherPreviewBadge = false,
 }: LessonPageLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -64,6 +66,11 @@ export function LessonPageLayout({
             <h1 className="font-display text-xl font-semibold text-foreground truncate">
               {lessonTitle}
             </h1>
+            {showTeacherPreviewBadge && (
+              <span className="inline-flex items-center gap-1 mt-1 px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-xs font-medium">
+                Teacher Preview
+              </span>
+            )}
             {goals && (
               <p className="mt-0.5 text-sm text-muted-foreground">{goals}</p>
             )}

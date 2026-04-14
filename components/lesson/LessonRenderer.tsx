@@ -30,6 +30,7 @@ export interface LessonRendererProps {
   mode?: 'teaching' | 'guided' | 'practice';
   isLoading?: boolean;
   onLessonComplete?: (lessonId: string) => void;
+  showTeacherPreviewBadge?: boolean;
 }
 
 export function LessonRenderer({
@@ -42,6 +43,7 @@ export function LessonRenderer({
   mode = 'practice',
   isLoading = false,
   onLessonComplete,
+  showTeacherPreviewBadge = false,
 }: LessonRendererProps) {
   const initialPhase = phases.find(p => p.status === 'current') ?? phases[0];
   const [activePhaseNumber, setActivePhaseNumber] = useState(initialPhase?.phaseNumber ?? 1);
@@ -154,6 +156,7 @@ export function LessonRenderer({
         lessonNumber={lessonNumber}
         goals={goals}
         phases={[]}
+        showTeacherPreviewBadge={showTeacherPreviewBadge}
       >
         <LessonSkeleton phaseCount={phases.length || 4} />
       </LessonPageLayout>
@@ -168,6 +171,7 @@ export function LessonRenderer({
         lessonNumber={lessonNumber}
         goals={goals}
         phases={navPhases}
+        showTeacherPreviewBadge={showTeacherPreviewBadge}
       >
         <LessonCompleteScreen
           lessonTitle={lessonTitle}
@@ -187,6 +191,7 @@ export function LessonRenderer({
       lessonNumber={lessonNumber}
       goals={goals}
       phases={navPhases}
+      showTeacherPreviewBadge={showTeacherPreviewBadge}
     >
       <div className="space-y-6">
         <LessonStepper

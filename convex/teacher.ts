@@ -971,3 +971,156 @@ export const getLessonErrorSummary = internalQuery({
     );
   },
 });
+
+export const getTeacherLessonPreview = internalQuery({
+  args: { lessonIdentifier: v.string() },
+  handler: async (ctx, args) => {
+    let lesson = null;
+    try {
+      lesson = await ctx.db.get(args.lessonIdentifier as Id<"lessons">);
+    } catch {}
+
+    if (!lesson) {
+      lesson = await ctx.db
+        .query("lessons")
+        .withIndex("by_slug", (q) => q.eq("slug", args.lessonIdentifier))
+        .unique();
+    }
+
+    if (!lesson) return null;
+
+    const versions = await ctx.db
+      .query("lesson_versions")
+      .withIndex("by_lesson", (q) => q.eq("lessonId", lesson._id))
+      .collect();
+
+    const latestVersion = resolveLatestPublishedLessonVersion(versions);
+    if (!latestVersion) {
+      return {
+        lessonTitle: lesson.title,
+        unitNumber: lesson.unitNumber,
+        lessonNumber: lesson.orderIndex,
+        phases: [],
+      };
+    }
+
+    const phases = await ctx.db
+      .query("phase_versions")
+      .withIndex("by_lesson_version", (q) => q.eq("lessonVersionId", latestVersion._id))
+      .collect();
+
+    phases.sort((a, b) => a.phaseNumber - b.phaseNumber);
+
+    const sectionsByPhaseId = new Map<string, { id: string; sequenceOrder: number; sectionType: string; content: unknown }[]>();
+    for (const phase of phases) {
+      const sections = await ctx.db
+        .query("phase_sections")
+        .withIndex("by_phase_version", (q) => q.eq("phaseVersionId", phase._id))
+        .collect();
+      sectionsByPhaseId.set(phase._id, sections
+        .sort((a, b) => a.sequenceOrder - b.sequenceOrder)
+        .map(s => ({ id: s._id, sequenceOrder: s.sequenceOrder, sectionType: s.sectionType, content: s.content }))
+      );
+    }
+
+    return {
+      lessonTitle: lesson.title,
+      unitNumber: lesson.unitNumber,
+      lessonNumber: lesson.orderIndex,
+      phases: phases.map(p => ({
+        phaseId: p._id,
+        phaseNumber: p.phaseNumber,
+        phaseType: p.phaseType,
+        title: p.title ?? DEFAULT_PHASE_LABELS[p.phaseType] ?? 'Phase',
+        sections: sectionsByPhaseId.get(p._id) ?? [],
+        status: 'available' as const,
+        completed: false,
+      })),
+    };
+  },
+});
+
+const DEFAULT_PHASE_LABELS: Record<string, string> = {
+  explore: 'Explore',
+  vocabulary: 'Vocabulary',
+  learn: 'Learn',
+  key_concept: 'Key Concept',
+  worked_example: 'Example',
+  guided_practice: 'Guided Practice',
+  independent_practice: 'Practice',
+  assessment: 'Assessment',
+  discourse: 'Think About It',
+  reflection: 'Reflection',
+};
+
+export const getStandardsCoverage = internalQuery({
+  args: { unitNumber: v.optional(v.number()) },
+  handler: async (ctx, args) => {
+    const allStandards = await ctx.db.query("competency_standards").collect();
+    const activeStandards = allStandards.filter(s => s.isActive);
+
+    const allLessons = await ctx.db.query("lessons").collect();
+    const moduleLessons = args.unitNumber != null
+      ? allLessons.filter(l => l.unitNumber === args.unitNumber)
+      : allLessons;
+    moduleLessons.sort((a, b) => {
+      if (a.unitNumber !== b.unitNumber) return a.unitNumber - b.unitNumber;
+      return a.orderIndex - b.orderIndex;
+    });
+
+    const lessonVersions = await ctx.db.query("lesson_versions").collect();
+    const latestVersionMap = buildLatestPublishedLessonVersionMap(lessonVersions);
+
+    const lessonStandards = await ctx.db.query("lesson_standards").collect();
+
+    const standardsCoverage = activeStandards.map(standard => {
+      const lessonsCoveringStandard: Array<{
+        lessonId: string;
+        lessonTitle: string;
+        lessonSlug: string;
+        lessonOrderIndex: number;
+        isPrimary: boolean;
+      }> = [];
+
+      for (const lesson of moduleLessons) {
+        const latestVersion = latestVersionMap.get(lesson._id);
+        if (!latestVersion) continue;
+
+        const lessonStandardEntries = lessonStandards.filter(
+          ls => ls.lessonVersionId === latestVersion._id && ls.standardId === standard._id
+        );
+
+        for (const ls of lessonStandardEntries) {
+          lessonsCoveringStandard.push({
+            lessonId: lesson._id,
+            lessonTitle: lesson.title,
+            lessonSlug: lesson.slug,
+            lessonOrderIndex: lesson.orderIndex,
+            isPrimary: ls.isPrimary,
+          });
+        }
+      }
+
+      return {
+        standardId: standard._id,
+        standardCode: standard.code,
+        standardDescription: standard.description,
+        studentFriendlyDescription: standard.studentFriendlyDescription,
+        category: standard.category,
+        lessons: lessonsCoveringStandard,
+      };
+    });
+
+    return {
+      standards: standardsCoverage,
+      lessons: moduleLessons.map(l => ({
+        id: l._id,
+        title: l.title,
+        slug: l.slug,
+        unitNumber: l.unitNumber,
+        orderIndex: l.orderIndex,
+        learningObjectives: l.learningObjectives ?? [],
+      })),
+    };
+  },
+});
