@@ -183,6 +183,9 @@ export const seedAll = internalAction({
           case "module-9-lesson-3":
             await ctx.runMutation(seedInternal.seedLesson9_3, {});
             break;
+          case "module-9-lesson-4":
+            await ctx.runMutation(seedInternal.seedLesson9_4, {});
+            break;
           default:
             break;
         }
@@ -1249,6 +1252,27 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
         { phaseNumber: 10, title: "Discourse", phaseType: "discourse", sections: [] },
         { phaseNumber: 11, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 9,
+      title: "Graphing Sine and Cosine Functions",
+      slug: "module-9-lesson-4",
+      description: "Students graph and analyze sine and cosine functions, and model periodic real-world situations with sine and cosine functions.",
+      orderIndex: 4,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Graphing Sine and Cosine Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Learn: Modeling with Sine and Cosine Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 11, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 12, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
   ];
