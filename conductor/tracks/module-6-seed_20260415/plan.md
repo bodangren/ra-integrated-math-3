@@ -1,6 +1,6 @@
 # Module 6 Curriculum Seed - Implementation Plan
 
-## Phase 1: Seed Lesson 6-1
+## Phase 1: Seed Lesson 6-1 [checkpoint: 88d1e68]
 
 - [x] Task: Verify lesson 6-1 curriculum source
   - [x] Confirm title and phase sequence against `curriculum/modules/module-6-lesson-1`
