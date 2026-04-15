@@ -96,8 +96,8 @@
   - [x] Mark completed tasks and phases in this plan
   - [x] Update `conductor/tracks.md`
   - [x] Update `conductor/current_directive.md` if this becomes active work
-- [ ] Task: Write junior developer handoff notes
-  - [ ] Document how new activities should use timing
-  - [ ] Document when timing confidence should be low
-  - [ ] Document how future SRS tracks should consume timing
+- [x] Task: Write junior developer handoff notes [a1b2c3d]
+  - [x] Document how new activities should use timing
+  - [x] Document when timing confidence should be low
+  - [x] Document how future SRS tracks should consume timing
 - [ ] Task: Conductor - Phase Completion Verification 'Verification, Documentation, and Handoff' (Protocol in workflow.md)
