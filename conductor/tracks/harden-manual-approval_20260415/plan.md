@@ -48,21 +48,21 @@
 
 - [x] Task: Conductor - Phase Completion Verification 'Harness Data and Approval Gating' (Protocol in workflow.md) [ab3e604]
 
-## Phase 4: Convex Integration Coverage and Auth Boundaries
+## Phase 4: Convex Integration Coverage and Auth Boundaries [checkpoint: PENDING]
 
-- [ ] Task: Add Convex behavior tests for dev approval functions
-  - [ ] Test unreviewed component appears in queue
-  - [ ] Test approving stores summary and review history
-  - [ ] Test content changes make approval stale
-  - [ ] Test needs-changes comments appear in LLM audit context
+- [x] Task: Add Convex behavior tests for dev approval functions
+  - [x] Test unreviewed component appears in queue
+  - [x] Test approving stores summary and review history
+  - [x] Test content changes make approval stale
+  - [x] Test needs-changes comments appear in LLM audit context
 
-- [ ] Task: Strengthen review mutation trust boundary
-  - [ ] Evaluate deriving reviewer identity inside the trusted server/Convex boundary
-  - [ ] Keep route-level `requireDeveloperRequestClaims` in place
-  - [ ] Document any remaining internal-function auth assumptions
-  - [ ] Add regression tests for unauthorized API access
+- [x] Task: Strengthen review mutation trust boundary
+  - [x] Evaluate deriving reviewer identity inside the trusted server/Convex boundary
+  - [x] Keep route-level `requireDeveloperRequestClaims` in place
+  - [x] Document any remaining internal-function auth assumptions
+  - [x] Add regression tests for unauthorized API access
 
-- [ ] Task: Conductor - Phase Completion Verification 'Convex Integration Coverage and Auth Boundaries' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Convex Integration Coverage and Auth Boundaries' (Protocol in workflow.md)
 
 ## Phase 5: Documentation and Status Reconciliation
 
