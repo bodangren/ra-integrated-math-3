@@ -106,6 +106,9 @@ export const seedAll = internalAction({
           case "module-4-lesson-5":
             await ctx.runMutation(seedInternal.seedLesson4_5, {});
             break;
+          case "module-4-lesson-6":
+            await ctx.runMutation(seedInternal.seedLesson4_6, {});
+            break;
           default:
             break;
         }
@@ -609,6 +612,28 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 12, title: "Worked Example 7", phaseType: "worked_example", sections: [] },
         { phaseNumber: 13, title: "Discourse", phaseType: "discourse", sections: [] },
         { phaseNumber: 14, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 4,
+      title: "Solving Radical Equations",
+      slug: "module-4-lesson-6",
+      description: "Students solve radical equations in one variable, identify extraneous solutions, and solve radical equations by graphing systems of equations.",
+      orderIndex: 6,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Solving Radical Equations Algebraically", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Learn: Solving Radical Equations by Graphing", phaseType: "learn", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 11, title: "Worked Example 7", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 12, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 13, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
   ];

@@ -50,15 +50,15 @@
   - [x] Implement lesson, phases, sections, and activities
 - [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 4-5' (Protocol in workflow.md)
 
-## Phase 6: Seed Lesson 4-6
+## Phase 6: Seed Lesson 4-6 [checkpoint: TBD]
 
-- [ ] Task: Verify lesson 4-6 curriculum source
-  - [ ] Confirm title and phase sequence against `curriculum/modules/module-4-lesson-6`
-  - [ ] Confirm extraneous solution checks are represented
-- [ ] Task: Create seed function `convex/seed/seed-lesson-4-6.ts`
-  - [ ] Write tests for phase sequence and idempotency
-  - [ ] Implement lesson, phases, sections, and activities
-- [ ] Task: Conductor - Phase Completion Verification 'Seed Lesson 4-6' (Protocol in workflow.md)
+- [x] Task: Verify lesson 4-6 curriculum source
+  - [x] Confirm title and phase sequence against `curriculum/modules/module-4-lesson-6`
+  - [x] Confirm extraneous solution checks are represented
+- [x] Task: Create seed function `convex/seed/seed-lesson-4-6.ts`
+  - [x] Write tests for phase sequence and idempotency
+  - [x] Implement lesson, phases, sections, and activities
+- [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 4-6' (Protocol in workflow.md)
 
 ## Phase 7: Module Integration and Verification
 

@@ -12,7 +12,7 @@
 - **Module 2 Seed**: Complete; all 5 lessons wired into seed.ts.
 - **Module 3 Seed**: Complete; all 5 lessons wired into seed.ts with MPM.3.x standards.
 - **Manual Component Approval**: All 5 phases complete.
-- **Module 4 Seed**: Phases 1-4 complete (lessons 4-1 through 4-4).
+- **Module 4 Seed**: Phases 1-6 complete (lessons 4-1 through 4-6).
 
 ## Current In-Progress Track
 
@@ -24,7 +24,7 @@ Seed Module 4 inverses and radical functions lessons (4-1 through 4-6) into Conv
 
 ## Planned Upcoming Tracks
 
-1. **Module 4 Curriculum Seed** — Phases 5-7 remaining (lessons 4-5, 4-6, integration)
+1. **Module 4 Curriculum Seed** — Phase 7 remaining (integration and verification)
 2. **Module 5 Curriculum Seed** — `module-5-seed_20260415` (5 lessons)
 3. **Module 6 Curriculum Seed** — `module-6-seed_20260415` (5 lessons)
 4. **Module 7 Curriculum Seed** — `module-7-seed_20260415` (6 lessons)
