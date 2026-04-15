@@ -20,7 +20,7 @@
 
 Track: `conductor/tracks/module-9-seed_20260415/`
 
-Seed Module 9 trigonometric functions lessons (9-1 through 9-7) into Convex database. Lessons 9-1, 9-2, and 9-3 complete.
+Seed Module 9 trigonometric functions lessons (9-1 through 9-7) into Convex database. Lessons 9-1 through 9-5 complete.
 
 ## Planned Upcoming Tracks
 

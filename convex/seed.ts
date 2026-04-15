@@ -186,6 +186,9 @@ export const seedAll = internalAction({
           case "module-9-lesson-4":
             await ctx.runMutation(seedInternal.seedLesson9_4, {});
             break;
+          case "module-9-lesson-5":
+            await ctx.runMutation(seedInternal.seedLesson9_5, {});
+            break;
           default:
             break;
         }
@@ -1273,6 +1276,26 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
         { phaseNumber: 11, title: "Discourse", phaseType: "discourse", sections: [] },
         { phaseNumber: 12, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 9,
+      title: "Graphing Other Trigonometric Functions",
+      slug: "module-9-lesson-5",
+      description: "Students graph and analyze tangent functions and reciprocal trigonometric functions.",
+      orderIndex: 5,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Graphing Tangent Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Learn: Graphing Reciprocal Trigonometric Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 11, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
   ];
