@@ -24,24 +24,24 @@
 
 ## Phase 2: Baseline Persistence and Aggregation
 
-- [ ] Task: Design Convex persistence for timing baselines
-  - [ ] Decide whether baselines belong in a dedicated table or problem-family metadata
-  - [ ] Add indexes for problem family and last computed time
-  - [ ] Ensure schema remains compatible with future courses
-- [ ] Task: Write Convex tests for baseline aggregation
-  - [ ] Seed submissions with mixed confidence levels
-  - [ ] Verify only valid timing evidence contributes
-  - [ ] Verify aggregation is idempotent
-  - [ ] Verify stale baseline recomputation updates the expected row
-- [ ] Task: Implement baseline aggregation
-  - [ ] Query eligible practice reviews/submissions by problem family
-  - [ ] Compute robust timing statistics
-  - [ ] Store sample count, median, percentiles, and computation timestamp
-- [ ] Task: Add operational safeguards
-  - [ ] Batch work to avoid Convex transaction limits
-  - [ ] Avoid unbounded scans in hot student or teacher queries
-  - [ ] Document any remaining performance shortcuts as tech debt
-- [ ] Task: Conductor - Phase Completion Verification 'Baseline Persistence and Aggregation' (Protocol in workflow.md)
+- [x] Task: Design Convex persistence for timing baselines [72e0c83]
+  - [x] Decide whether baselines belong in a dedicated table or problem-family metadata
+  - [x] Add indexes for problem family and last computed time
+  - [x] Ensure schema remains compatible with future courses
+- [x] Task: Write Convex tests for baseline aggregation [72e0c83]
+  - [x] Seed submissions with mixed confidence levels
+  - [x] Verify only valid timing evidence contributes
+  - [x] Verify aggregation is idempotent
+  - [x] Verify stale baseline recomputation updates the expected row
+- [x] Task: Implement baseline aggregation [72e0c83]
+  - [x] Query eligible practice reviews/submissions by problem family
+  - [x] Compute robust timing statistics
+  - [x] Store sample count, median, percentiles, and computation timestamp
+- [x] Task: Add operational safeguards [72e0c83]
+  - [x] Batch work to avoid Convex transaction limits
+  - [x] Avoid unbounded scans in hot student or teacher queries
+  - [x] Document any remaining performance shortcuts as tech debt
+- [x] Task: Conductor - Phase Completion Verification 'Baseline Persistence and Aggregation' (Protocol in workflow.md)
 
 ## Phase 3: Time-Aware SRS Rating Adapter
 

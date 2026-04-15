@@ -313,4 +313,17 @@ export default defineSchema({
   })
     .index("by_component", ["componentKind", "componentId"])
     .index("by_status", ["status"]),
+
+  timing_baselines: defineTable({
+    problemFamilyId: v.string(),
+    sampleCount: v.number(),
+    medianActiveMs: v.number(),
+    p25ActiveMs: v.optional(v.number()),
+    p75ActiveMs: v.optional(v.number()),
+    p90ActiveMs: v.optional(v.number()),
+    lastComputedAt: v.string(),
+    minSamplesMet: v.boolean(),
+  })
+    .index("by_problem_family", ["problemFamilyId"])
+    .index("by_last_computed", ["lastComputedAt"]),
 });
