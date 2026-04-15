@@ -60,23 +60,23 @@
 
 - [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 3-5' (Protocol in workflow.md)
 
-## Phase 6: Module Integration and Verification [PENDING]
+## Phase 6: Module Integration and Verification [checkpoint: 65e1530]
 
-- [x] Task: Update seed orchestration
+- [x] Task: Update seed orchestration [65e1530]
   - [x] Add imports/cases for Module 3 lesson seeds
   - [x] Ensure `getLessons()` metadata matches canonical titles
 
-- [x] Task: Add Module 3 standards
+- [x] Task: Add Module 3 standards [65e1530]
   - [x] Identify standard codes from curriculum/source mapping
   - [x] Added 5 MPM.3.x standards for Module 3 topics
 
-- [x] Task: Run seed verification
+- [x] Task: Run seed verification [65e1530]
   - [x] Run relevant seed tests
   - [x] Run curriculum consistency tests
   - [x] Lint and build pass; 6 known equivalence failures
 
-- [ ] Task: Update Conductor status
-  - [ ] Mark completed phases in this plan
-  - [ ] Update `conductor/tracks.md` and `conductor/current_directive.md`
+- [x] Task: Update Conductor status [PENDING]
+  - [x] Mark completed phases in this plan
+  - [x] Update `conductor/tracks.md` and `conductor/current_directive.md`
 
-- [ ] Task: Conductor - Phase Completion Verification 'Module Integration and Verification' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Module Integration and Verification' (Protocol in workflow.md) [PENDING]

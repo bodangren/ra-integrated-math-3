@@ -15,16 +15,17 @@
 
 ## Current In-Progress Track
 
-### Module 3 Curriculum Seed
+### Harden Manual Component Approval
+
+Track: `conductor/tracks/harden-manual-approval_20260415/`
+
+Phase 1 ready: Queue Coverage and Real Review Targets.
+
+### Module 3 Curriculum Seed — COMPLETE
 
 Track: `conductor/tracks/module-3-seed_20260415/`
 
-Phase 1 complete: Seed Lesson 3-1 (Solving Polynomial Equations by Graphing).
-Phase 2 complete: Seed Lesson 3-2 (Solving Polynomial Equations Algebraically).
-Phase 3 complete: Seed Lesson 3-3 (Proving Polynomial Identities).
-Phase 4 complete: Seed Lesson 3-4 (The Remainder and Factor Theorems).
-Phase 5 complete: Seed Lesson 3-5 (Roots and Zeros).
-Phase 6 partial: Seed orchestration wired (getLessons + switch cases). Standards and verification remain.
+All phases complete. Lessons 3-1 through 3-5 seeded with phases, sections, activities, and MPM.3.x standards.
 
 ## Code Review Findings (2026-04-15)
 
