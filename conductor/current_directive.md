@@ -22,7 +22,7 @@ Seed Module 6 logarithmic functions lessons (6-1 through 6-5) into Convex databa
 
 ## Planned Upcoming Tracks
 
-1. **Module 6 Curriculum Seed** — `module-6-seed_20260415` (4 lessons remaining: 6-2 through 6-5)
+1. **Module 6 Curriculum Seed** — `module-6-seed_20260415` (3 lessons remaining: 6-3 through 6-5)
 2. **Module 7 Curriculum Seed** — `module-7-seed_20260415` (6 lessons)
 3. **Module 8 Curriculum Seed** — `module-8-seed_20260415` (5 lessons)
 4. **Module 9 Curriculum Seed** — `module-9-seed_20260415` (7 lessons)
