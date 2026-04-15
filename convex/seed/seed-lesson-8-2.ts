@@ -68,11 +68,15 @@ export const seedLesson8_2 = internalMutation({
             sequenceOrder: 2,
             sectionType: "activity" as const,
             content: {
-              componentKey: "graphing-explorer",
+              componentKey: "comprehension-quiz",
               props: {
-                variant: "explore",
-                equation: "y = 1/x",
-                title: "Probability Explorer",
+                questions: [
+                  {
+                    question: "A restaurant uses a random number generator to pick a daily winner from 200 customers. Which best describes the probability of any single customer winning?",
+                    options: ["1/200", "50/200", "1/100", "200/200"],
+                    correctIndex: 0,
+                  },
+                ],
               },
             },
           },

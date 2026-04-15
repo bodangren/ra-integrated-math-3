@@ -68,11 +68,15 @@ export const seedLesson8_3 = internalMutation({
             sequenceOrder: 2,
             sectionType: "activity" as const,
             content: {
-              componentKey: "graphing-explorer",
+              componentKey: "comprehension-quiz",
               props: {
-                variant: "explore",
-                equation: "y = 1/x",
-                title: "Distribution Explorer",
+                questions: [
+                  {
+                    question: "A population has values {2, 4, 6, 8, 10}. What is the mean of this population?",
+                    options: ["5", "6", "7", "8"],
+                    correctIndex: 1,
+                  },
+                ],
               },
             },
           },

@@ -156,7 +156,7 @@ export const seedLesson8_4 = internalMutation({
             sectionType: "text" as const,
             content: {
               markdown:
-                "## Example 2 — Analyze a Probability Distribution\n\nA candy company records the number of prize-winning wrappers for each cash amount.\n\nConstruct a relative frequency table by dividing each frequency by the total number of winning wrappers, `4000`.\n\nSample probabilities:\n\n- `$5`: `0.3125`\n- `$10`: `0.2500`\n- `$20$: `0.1875`\n- `$50$: `0.1500`\n\nGraph the distribution with separated bars because the outcomes are discrete.",
+                "## Example 2 — Analyze a Probability Distribution\n\nA candy company records the number of prize-winning wrappers for each cash amount.\n\nConstruct a relative frequency table by dividing each frequency by the total number of winning wrappers, `4000`.\n\nSample probabilities:\n\n- `$5`: `0.3125`\n- `$10`: `0.2500`\n- `$20`: `0.1875`\n- `$50`: `0.1500`\n\nGraph the distribution with separated bars because the outcomes are discrete.",
             },
           },
           {

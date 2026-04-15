@@ -17,7 +17,7 @@
 | No Convex-layer authorization | Med-High | Open | Auth boundary is entirely in Next.js server layer |
 | submitReviewHandler hashes with client-sent componentKind | High | Open | Hash may mismatch queue's resolved kind |
 | Missing CCSS standards for M2/M3/M9 | High | Open | ~30 of ~50+ standards defined; M8 resolved 2026-04-16 |
-| No lesson_standards links for modules 1-5 | High | Open | Only modules 6-7 have lesson-standard links |
+| No lesson_standards links for modules 1-5 | High | Open | Only modules 6-8 have lesson-standard links; M9 pending |
 | Module 3/4/5 seed standards lack lesson-standard links | Medium | Open | lesson_standards table needs linking |
 | Seed tests are tautological (inline data, not actual seed files) | Medium | Open | Zero regression protection |
 | No unit tests for error-analysis module (8 exported functions) | High | Open | Non-trivial aggregation logic untested |
@@ -42,3 +42,5 @@
 | Incorrect CCSS description for HSA-APR.B.2 | High | Resolved | Fixed 2026-04-16; corrected to Remainder Theorem |
 | Missing HSF-LE.A.1 and HSA-CED.A.2 standards | High | Resolved | Added to seed-standards.ts 2026-04-16; M7 L5 links will now work |
 | Hardened manual approval (6 items) | Critical | Resolved | Fixed 2026-04-15; harness gating, hash, hook, submissions |
+| Malformed dollar formatting in seed-lesson-8-4 Example 2 | High | Resolved | Fixed 2026-04-16; `$20$`→`$20`, `$50$`→`$50` |
+| Wrong componentKey in M8 lesson 8-2/8-3 Explore phases | High | Resolved | Fixed 2026-04-16; graphing-explorer y=1/x replaced with comprehension-quiz |

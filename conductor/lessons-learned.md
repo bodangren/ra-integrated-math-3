@@ -37,3 +37,4 @@
 - (2026-04-15, module-7-seed) Wire seed files into seed.ts orchestration immediately after creation; orphan seed files are dead code
 - (2026-04-15, module-7-seed) When adding lesson_standards links, verify every referenced standard code exists in seed-standards.ts first — otherwise links silently fail
 - (2026-04-16, module-8-seed) Review previous phase seed.ts integration before starting new phases; missing getLessons() entries cause silent seed skips even when switch cases exist
+- (2026-04-16, code-review) Explore phase activities must match lesson domain — copy-pasted graphing-explorer with y=1/x in statistics lessons is a silent content error; always verify componentKey+props relevance

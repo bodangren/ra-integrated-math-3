@@ -1,16 +1,18 @@
 # Current Directive
 
-> Updated: 2026-04-17 (Module 9 Phase 1: Seed Lesson 9-1 complete)
+> Updated: 2026-04-16 (Code review complete — Module 8/9 seed phases audited)
 
 ## Status Summary
 
-- **Tests**: 2194 passing, 9 known failures (equivalence validator - radicals/fractions, pre-existing).
+- **Tests**: 2209 passing, 8 known failures (6 equivalence validator + 2 pre-existing test-file errors).
 - **Build**: Passing; RSC chunk warning remains pre-existing (735 KB).
 - **Lint**: Passing.
 - **TypeScript**: 25 pre-existing test-file errors remain (students.test.tsx, dashboard.test.ts). No new TS errors.
 - **Module 1-8 Roadmap**: Complete.
 - **Module 8 Seed**: All phases complete (Lessons 8-1 through 8-5, Module Integration and Verification).
-- **Code Review**: Completed 2026-04-16. Fixed 2 issues (HSA-APR.B.2 incorrect description, missing HSF-LE.A.1 and HSA-CED.A.2 standards).
+- **Code Review**: Completed 2026-04-16. Fixed 4 issues across 2 reviews:
+  - Review 1 (2026-04-16): HSA-APR.B.2 incorrect description, missing HSF-LE.A.1 and HSA-CED.A.2 standards.
+  - Review 2 (2026-04-16): Malformed dollar formatting in seed-lesson-8-4, wrong graphing-explorer componentKey in lesson 8-2/8-3 Explore phases.
 
 ## Current In-Progress Track
 
@@ -33,7 +35,7 @@ See `conductor/daily-practice-srs-roadmap.md` for the post-Module-9 daily practi
 
 1. **Fix submitReviewHandler componentKind derivation** — derive from placement, not client args; prevents permanent stale mismatches.
 2. **Add missing CCSS standards for all modules** — only 21 of ~50+ standards defined; modules 2, 3, 5, 8-9 have gaps.
-3. **Build lesson_standards seeding pipeline for all modules** — modules 6-7 have links; modules 1-5 and 8-9 need them.
+3. **Build lesson_standards seeding pipeline for all modules** — modules 6-8 have links; modules 1-5 and 9 need them.
 4. **Add tests for error-analysis module** — 8 untested exported functions with aggregation logic.
 5. **Fix parseAIResponse fragile line-based parsing** — use structured JSON output.
 6. **StepByStepSolver schema/component mismatch** — Zod schema step shape diverges from AlgebraicStep interface.
