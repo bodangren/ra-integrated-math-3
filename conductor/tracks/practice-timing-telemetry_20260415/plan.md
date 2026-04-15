@@ -87,11 +87,11 @@
 
 ## Phase 5: Verification, Documentation, and Handoff
 
-- [ ] Task: Run validation commands
-  - [ ] Run focused practice contract/timing tests
-  - [ ] Run relevant activity submission tests
-  - [ ] Run `npm run lint`
-  - [ ] Run `npm run typecheck` or document known pre-existing failures
+- [x] Task: Run validation commands [6f8a2c3]
+  - [x] Run focused practice contract/timing tests (65 passed)
+  - [x] Run relevant activity submission tests (35 passed)
+  - [x] Run `npm run lint` (passed)
+  - [x] Run `npm run typecheck` or document known pre-existing failures (25 pre-existing errors in students.test.tsx and dashboard.test.ts)
 - [ ] Task: Update Conductor planning artifacts
   - [ ] Mark completed tasks and phases in this plan
   - [ ] Update `conductor/tracks.md`
