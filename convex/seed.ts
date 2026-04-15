@@ -112,6 +112,18 @@ export const seedAll = internalAction({
           case "module-5-lesson-1":
             await ctx.runMutation(seedInternal.seedLesson5_1, {});
             break;
+          case "module-5-lesson-2":
+            await ctx.runMutation(seedInternal.seedLesson5_2, {});
+            break;
+          case "module-5-lesson-3":
+            await ctx.runMutation(seedInternal.seedLesson5_3, {});
+            break;
+          case "module-5-lesson-4":
+            await ctx.runMutation(seedInternal.seedLesson5_4, {});
+            break;
+          case "module-5-lesson-5":
+            await ctx.runMutation(seedInternal.seedLesson5_5, {});
+            break;
           default:
             break;
         }
@@ -660,6 +672,84 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 12, title: "Worked Example 8", phaseType: "worked_example", sections: [] },
         { phaseNumber: 13, title: "Discourse", phaseType: "discourse", sections: [] },
         { phaseNumber: 14, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 5,
+      title: "Solving Exponential Equations and Inequalities",
+      slug: "module-5-lesson-2",
+      description: "Students solve exponential equations and inequalities in one variable.",
+      orderIndex: 2,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Solving Exponential Equations", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Learn: Solving Exponential Inequalities", phaseType: "learn", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 11, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 5,
+      title: "Special Exponential Functions",
+      slug: "module-5-lesson-3",
+      description: "Students analyze expressions and functions involving the natural base e.",
+      orderIndex: 3,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Exponential Functions with Base e", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 9, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 5,
+      title: "Geometric Sequences and Series",
+      slug: "module-5-lesson-4",
+      description: "Students generate geometric sequences and find sums of geometric series.",
+      orderIndex: 4,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Sequences", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Learn: Geometric Series", phaseType: "learn", sections: [] },
+        { phaseNumber: 11, title: "Worked Example 7", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 12, title: "Worked Example 8", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 13, title: "Worked Example 9", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 14, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 15, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 5,
+      title: "Modeling Data",
+      slug: "module-5-lesson-5",
+      description: "Students choose the best function type to model sets of data.",
+      orderIndex: 5,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Choosing the Best Model", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 7, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
   ];

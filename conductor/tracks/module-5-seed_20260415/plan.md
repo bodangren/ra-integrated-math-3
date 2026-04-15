@@ -42,13 +42,13 @@
 
 ## Phase 5: Seed Lesson 5-5
 
-- [ ] Task: Verify lesson 5-5 curriculum source
-  - [ ] Confirm title and phase sequence against `curriculum/modules/module-5-lesson-5`
-  - [ ] Confirm modeling data examples are represented faithfully
-- [ ] Task: Create seed function `convex/seed/seed-lesson-5-5.ts`
-  - [ ] Write tests for phase sequence and idempotency
-  - [ ] Implement lesson, phases, sections, and activities
-- [ ] Task: Conductor - Phase Completion Verification 'Seed Lesson 5-5' (Protocol in workflow.md)
+- [x] Task: Verify lesson 5-5 curriculum source
+  - [x] Confirm title and phase sequence against `curriculum/modules/module-5-lesson-5`
+  - [x] Confirm modeling data examples are represented faithfully
+- [x] Task: Create seed function `convex/seed/seed-lesson-5-5.ts`
+  - [x] Write tests for phase sequence and idempotency
+  - [x] Implement lesson, phases, sections, and activities
+- [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 5-5' (Protocol in workflow.md) [checkpoint: 8149814]
 
 ## Phase 6: Module Integration and Verification
 
