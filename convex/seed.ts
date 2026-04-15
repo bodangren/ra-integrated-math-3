@@ -91,6 +91,18 @@ export const seedAll = internalAction({
           case "module-3-lesson-5":
             await ctx.runMutation(seedInternal.seedLesson3_5, {});
             break;
+          case "module-4-lesson-1":
+            await ctx.runMutation(seedInternal.seedLesson4_1, {});
+            break;
+          case "module-4-lesson-2":
+            await ctx.runMutation(seedInternal.seedLesson4_2, {});
+            break;
+          case "module-4-lesson-3":
+            await ctx.runMutation(seedInternal.seedLesson4_3, {});
+            break;
+          case "module-4-lesson-4":
+            await ctx.runMutation(seedInternal.seedLesson4_4, {});
+            break;
           default:
             break;
         }
@@ -486,6 +498,91 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
         { phaseNumber: 10, title: "Discourse", phaseType: "discourse", sections: [] },
         { phaseNumber: 11, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 4,
+      title: "Operations on Functions",
+      slug: "module-4-lesson-1",
+      description: "Students find sums, differences, products, quotients, and compositions of functions.",
+      orderIndex: 1,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Operations on Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Learn: Compositions of Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 11, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 12, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 4,
+      title: "Inverse Relations and Functions",
+      slug: "module-4-lesson-2",
+      description: "Students find inverses of relations, verify inverse functions using compositions, and apply the horizontal line test.",
+      orderIndex: 2,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Inverse Relations and Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Learn: Verifying Inverses", phaseType: "learn", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 11, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 12, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 4,
+      title: "nth Roots and Rational Exponents",
+      slug: "module-4-lesson-3",
+      description: "Students simplify expressions involving radicals and rational exponents, and convert between exponential and radical forms.",
+      orderIndex: 3,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: nth Roots", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Learn: Rational Exponents", phaseType: "learn", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 11, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 12, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 4,
+      title: "Graphing Radical Functions",
+      slug: "module-4-lesson-4",
+      description: "Students graph and analyze square root and cube root functions.",
+      orderIndex: 4,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Graphing Square Root Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Learn: Graphing Cube Root Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 11, title: "Worked Example 7", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 12, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 13, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
   ];
