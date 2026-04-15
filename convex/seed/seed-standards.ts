@@ -61,6 +61,48 @@ export const seedStandards = internalMutation({
         category: "Number",
         isActive: true,
       },
+      {
+        code: "N-RN.A.1",
+        description: "Understanding nth roots and rational exponents",
+        studentFriendlyDescription: "I can convert between radical and exponential forms.",
+        category: "Number",
+        isActive: true,
+      },
+      {
+        code: "N-RN.A.2",
+        description: "Rewriting expressions involving radicals and rational exponents",
+        studentFriendlyDescription: "I can simplify expressions with radicals and exponents.",
+        category: "Number",
+        isActive: true,
+      },
+      {
+        code: "HSF-IF.B.4",
+        description: "Interpreting key features of functions from graphs and tables",
+        studentFriendlyDescription: "I can describe what a function graph tells us.",
+        category: "Functions",
+        isActive: true,
+      },
+      {
+        code: "HSF-BF.A.1",
+        description: "Building functions that describe relationships between quantities",
+        studentFriendlyDescription: "I can write functions that model real situations.",
+        category: "Functions",
+        isActive: true,
+      },
+      {
+        code: "HSF-BF.B.3",
+        description: "Effects of transformations on function graphs",
+        studentFriendlyDescription: "I can describe how changing a function changes its graph.",
+        category: "Functions",
+        isActive: true,
+      },
+      {
+        code: "HSF-BF.B.4",
+        description: "Finding inverse functions",
+        studentFriendlyDescription: "I can find and verify inverse functions.",
+        category: "Functions",
+        isActive: true,
+      },
     ];
 
     const results: { code: string; id: string }[] = [];

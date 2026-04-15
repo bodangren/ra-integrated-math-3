@@ -1,35 +1,33 @@
 # Current Directive
 
-> Updated: 2026-04-15 (code review: module 4 seeds Phases 1-4)
+> Updated: 2026-04-15 (Module 4 seed complete, Phase 7 done)
 
 ## Status Summary
 
-- **Tests**: 1900 passing, 9 known failures (6 equivalence, 1 flaky StepByStepper-guided, 2 flaky lesson.test.tsx).
+- **Tests**: 1900 passing, 6 known failures (equivalence validator - radicals).
 - **Build**: Passing; RSC chunk warning remains pre-existing (734 KB).
 - **Lint**: Passing.
 - **TypeScript**: 25 pre-existing test-file errors remain (students.test.tsx, dashboard.test.ts). No new TS errors.
 - **Module 1 Roadmap**: Complete.
 - **Module 2 Seed**: Complete; all 5 lessons wired into seed.ts.
 - **Module 3 Seed**: Complete; all 5 lessons wired into seed.ts with MPM.3.x standards.
-- **Manual Component Approval**: All 5 phases complete.
-- **Module 4 Seed**: Phases 1-6 complete (lessons 4-1 through 4-6).
+- **Module 4 Seed**: Complete; all 6 lessons wired into seed.ts with N-RN.A.1/A.2, HSF-IF.B.4, HSF-BF.A.1/B.3/B.4 standards.
 
 ## Current In-Progress Track
 
-### Module 4 Curriculum Seed
+### Module 5 Curriculum Seed
 
-Track: `conductor/tracks/module-4-seed_20260415/`
+Track: `conductor/tracks/module-5-seed_20260415/`
 
-Seed Module 4 inverses and radical functions lessons (4-1 through 4-6) into Convex database.
+Seed Module 5 exponential functions and geometric series lessons (5-1 through 5-5) into Convex database.
 
 ## Planned Upcoming Tracks
 
-1. **Module 4 Curriculum Seed** — Phase 7 remaining (integration and verification)
-2. **Module 5 Curriculum Seed** — `module-5-seed_20260415` (5 lessons)
-3. **Module 6 Curriculum Seed** — `module-6-seed_20260415` (5 lessons)
-4. **Module 7 Curriculum Seed** — `module-7-seed_20260415` (6 lessons)
-5. **Module 8 Curriculum Seed** — `module-8-seed_20260415` (5 lessons)
-6. **Module 9 Curriculum Seed** — `module-9-seed_20260415` (7 lessons)
+1. **Module 5 Curriculum Seed** — `module-5-seed_20260415` (5 lessons)
+2. **Module 6 Curriculum Seed** — `module-6-seed_20260415` (5 lessons)
+3. **Module 7 Curriculum Seed** — `module-7-seed_20260415` (6 lessons)
+4. **Module 8 Curriculum Seed** — `module-8-seed_20260415` (5 lessons)
+5. **Module 9 Curriculum Seed** — `module-9-seed_20260415` (7 lessons)
 
 See `conductor/modules-3-9-roadmap.md` for the module inventory and repeated implementation pattern.
 
@@ -46,3 +44,4 @@ See `conductor/modules-3-9-roadmap.md` for the module inventory and repeated imp
 9. Compute real `nextPhaseUnlocked`.
 10. Reduce RSC bundle size.
 11. Fix pre-existing TypeScript test errors.
+12. Fix equivalence validator for radical expressions.
