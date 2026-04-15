@@ -64,26 +64,26 @@
   - [x] Ensure teachers can inspect "slow because timing was reliable" versus "timing ignored"
 - [x] Task: Conductor - Phase Completion Verification 'Time-Aware SRS Rating Adapter' (Protocol in workflow.md)
 
-## Phase 4: Objective Proficiency and Fluency Signals
+## Phase 4: Objective Proficiency and Fluency Signals [COMPLETE]
 
-- [ ] Task: Write objective proficiency tests with timing features
-  - [ ] Narrow objective with enough families can reach high confidence
-  - [ ] Broad essential objective requires its configured evidence policy
-  - [ ] Triaged objective is excluded or labeled separately
-  - [ ] Slow but correct work affects fluency confidence, not raw correctness
-- [ ] Task: Implement time-aware evidence confidence
-  - [ ] Add timing/fluency confidence as a separate dimension
-  - [ ] Keep retention strength separate from fluency
-  - [ ] Keep practice coverage separate from retention and fluency
-- [ ] Task: Integrate with objective practice policy
-  - [ ] Respect priority values: essential, supporting, extension, triaged
-  - [ ] Respect expected problem-family counts per objective
-  - [ ] Avoid global card-count assumptions across objectives
-- [ ] Task: Add reporting-ready view models
-  - [ ] Provide fields for student progress summaries
-  - [ ] Provide fields for teacher diagnostics
-  - [ ] Include explanations for low confidence and missing baselines
-- [ ] Task: Conductor - Phase Completion Verification 'Objective Proficiency and Fluency Signals' (Protocol in workflow.md)
+- [x] Task: Write objective proficiency tests with timing features
+  - [x] Narrow objective with enough families can reach high confidence
+  - [x] Broad essential objective requires its configured evidence policy
+  - [x] Triaged objective is excluded or labeled separately
+  - [x] Slow but correct work affects fluency confidence, not raw correctness
+- [x] Task: Implement time-aware evidence confidence
+  - [x] Add timing/fluency confidence as a separate dimension
+  - [x] Keep retention strength separate from fluency
+  - [x] Keep practice coverage separate from retention and fluency
+- [x] Task: Integrate with objective practice policy
+  - [x] Respect priority values: essential, supporting, extension, triaged
+  - [x] Respect expected problem-family counts per objective
+  - [x] Avoid global card-count assumptions across objectives
+- [x] Task: Add reporting-ready view models
+  - [x] Provide fields for student progress summaries
+  - [x] Provide fields for teacher diagnostics
+  - [x] Include explanations for low confidence and missing baselines
+- [x] Task: Conductor - Phase Completion Verification 'Objective Proficiency and Fluency Signals' (Protocol in workflow.md)
 
 ## Phase 5: UI Integration, Validation, and Handoff
 

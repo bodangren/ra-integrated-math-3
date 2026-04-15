@@ -257,6 +257,8 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
        - Phase 1: Baseline and Feature Model [COMPLETE]
        - Phase 2: Baseline Persistence and Aggregation [COMPLETE]
        - Phase 3: Time-Aware SRS Rating Adapter [COMPLETE]
+       - Phase 4: Objective Proficiency and Fluency Signals [COMPLETE]
+       - Phase 5: UI Integration, Validation, and Handoff [PENDING]
 
 - [x] **Track: Fix submitReviewHandler componentKind Derivation**
       *Derive componentKind from placement.phaseType on write path to prevent permanent isStale mismatches*
