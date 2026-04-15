@@ -34,7 +34,7 @@
 | getTeacherCourseOverviewData N+1 for student_competency | Medium | Open | One query per student via Promise.all |
 | Seed tests decoupled from seed implementations (inline data) | Medium | Open | Changes to seed files won't break tests |
 | Module 1 seed implementation compresses current curriculum examples | Medium | Resolved | Fixed 2026-04-15; seed files now align counts/order with curriculum guardrail |
-| Module 2 standards incomplete (missing HSA-APR.A.1, HSA-APR.B.2) | Medium | Open | To be addressed in module-2-seed Phase 5 |
+| Module 2 standards incomplete (missing HSA-APR.A.1, HSA-APR.B.2) | Medium | Resolved | Fixed 2026-04-15; both added to seed-standards.ts |
 | Legacy Supabase types in AuthProvider.tsx | Low | Open | snake_case profile fields should match Convex schema |
 | Equivalence validator 6/50 tests failing | Low | Open | Pattern-matching limits; 88% passing exceeds 80% target |
 | StepByStepper-guided hint tracking test intermittently fails | Low | Open | Passes in isolation, flaky in full suite |
