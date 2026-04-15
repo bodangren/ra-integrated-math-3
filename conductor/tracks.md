@@ -67,15 +67,15 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
 
 - [x] **Track 5b: Graphing Explorer Explore Mode** (continuation of Track 5)
    *Implement Explore mode with parameter sliders for quadratic exploration in Explore phases*
-   *Link: [./conductor/tracks/graphing-explore-mode_20260414/](./conductor/tracks/graphing-explore-mode_20260414/)]
+   *Link: [./conductor/tracks/graphing-explore-mode_20260414/](./conductor/tracks/graphing-explore-mode_20260414/)*
    - Phase 1: Explore Mode with Parameter Sliders [COMPLETE]
 
-- [ ] **Track 6: Algebraic Worked-Example Components**
+- [x] **Track 6: Algebraic Worked-Example Components** — **COMPLETED**
   *step-by-step-solver — all 11 algebraic problem types in teaching/guided/practice modes*
   *Depends on: Tracks 2, 4*
   *Link: [./conductor/tracks/algebraic-examples_20260406/](./conductor/tracks/algebraic-examples_20260406/)*
 
-- [ ] **Track 7: Supporting Activity Components**
+- [x] **Track 7: Supporting Activity Components** — **COMPLETED**
    *comprehension-quiz, fill-in-the-blank, rate-of-change-calculator, discriminant-analyzer*
    *Depends on: Tracks 2, 4*
    *Link: [./conductor/tracks/supporting-activities_20260406/](./conductor/tracks/supporting-activities_20260406/)*
@@ -132,15 +132,19 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
     - Phase 5: Component Review Harnesses [COMPLETE]
     - Phase 6: End-to-End Verification and Documentation [COMPLETE]
 
+- [ ] **Track: Harden Manual Component Approval**
+   *Complete trustworthy manual approval hardening: real example/practice queue coverage, deterministic hashes, harness-gated approval, and Convex integration tests*
+   *Link: [./conductor/tracks/harden-manual-approval_20260415/](./conductor/tracks/harden-manual-approval_20260415/)*
+
 - [x] **Track: Reconcile Activity Schemas** — **COMPLETED**
    *Align Zod schemas for comprehension-quiz and fill-in-the-blank with actual component props (Critical — blocks curriculum authoring)*
-   *Link: [./conductor/tracks/reconcile-activity-schemas_20260414/](./conductor/tracks/reconcile-activity-schemas_20260414/)]
+   *Link: [./conductor/tracks/reconcile-activity-schemas_20260414/](./conductor/tracks/reconcile-activity-schemas_20260414/)*
    - Phase 1: ComprehensionQuiz Schema Reconciliation [COMPLETE]
    - Phase 2: FillInTheBlank Schema Reconciliation [COMPLETE]
 
 - [x] **Track: Wire StepByStepSolverActivity to Real Props** — **COMPLETED**
    *Replace hardcoded steps with real props, wire onSubmit/onComplete, integrate distractors.ts (Priority 3)*
-   *Link: [./conductor/tracks/wire-step-by-step-solver_20260414/](./conductor/tracks/wire-step-by-step-solver_20260414/)]
+   *Link: [./conductor/tracks/wire-step-by-step-solver_20260414/](./conductor/tracks/wire-step-by-step-solver_20260414/)*
    - Phase 1: Prop Interface & Submission Wiring [COMPLETE]
    - Phase 2: Integrate distractors.ts into StepByStepper [COMPLETE]
 
@@ -148,7 +152,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
     *Wire existing phase skip infrastructure to PhaseCompleteButton UI — show Skip button for explore and discourse phases*
     *Link: [./conductor/tracks/phase-skip-ui_20260414/](./conductor/tracks/phase-skip-ui_20260414/)*
 
-- [ ] **Track: Module 2 Curriculum Seed**
+- [~] **Track: Module 2 Curriculum Seed**
      *Seed Module 2 lessons (2-1 through 2-5) into Convex database following module-1-seed pattern*
      *Link: [./conductor/tracks/module-2-seed_20260415/](./conductor/tracks/module-2-seed_20260415/)*
      - Phase 1: Seed Lesson 2-1 (Polynomial Functions) [COMPLETE]
@@ -156,6 +160,34 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
      - Phase 3: Seed Lesson 2-3 (Operations with Polynomials) [COMPLETE]
      - Phase 4: Seed Lessons 2-4 and 2-5 [COMPLETE]
      - Phase 5: Update seed.ts and Verify [ ]
+
+- [ ] **Track: Module 3 Curriculum Seed**
+     *Seed Module 3 polynomial equations lessons (3-1 through 3-5) into Convex database*
+     *Link: [./conductor/tracks/module-3-seed_20260415/](./conductor/tracks/module-3-seed_20260415/)*
+
+- [ ] **Track: Module 4 Curriculum Seed**
+     *Seed Module 4 inverses and radical functions lessons (4-1 through 4-6) into Convex database*
+     *Link: [./conductor/tracks/module-4-seed_20260415/](./conductor/tracks/module-4-seed_20260415/)*
+
+- [ ] **Track: Module 5 Curriculum Seed**
+     *Seed Module 5 exponential functions and geometric series lessons (5-1 through 5-5) into Convex database*
+     *Link: [./conductor/tracks/module-5-seed_20260415/](./conductor/tracks/module-5-seed_20260415/)*
+
+- [ ] **Track: Module 6 Curriculum Seed**
+     *Seed Module 6 logarithmic functions lessons (6-1 through 6-5) into Convex database*
+     *Link: [./conductor/tracks/module-6-seed_20260415/](./conductor/tracks/module-6-seed_20260415/)*
+
+- [ ] **Track: Module 7 Curriculum Seed**
+     *Seed Module 7 rational functions and equations lessons (7-1 through 7-6) into Convex database*
+     *Link: [./conductor/tracks/module-7-seed_20260415/](./conductor/tracks/module-7-seed_20260415/)*
+
+- [ ] **Track: Module 8 Curriculum Seed**
+     *Seed Module 8 inferential statistics lessons (8-1 through 8-5) into Convex database*
+     *Link: [./conductor/tracks/module-8-seed_20260415/](./conductor/tracks/module-8-seed_20260415/)*
+
+- [ ] **Track: Module 9 Curriculum Seed**
+     *Seed Module 9 trigonometric functions lessons (9-1 through 9-7) into Convex database*
+     *Link: [./conductor/tracks/module-9-seed_20260415/](./conductor/tracks/module-9-seed_20260415/)*
 
 ## Archived Tracks
 

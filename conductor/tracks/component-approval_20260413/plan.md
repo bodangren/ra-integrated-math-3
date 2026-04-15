@@ -111,11 +111,11 @@
 
 ## Phase 6: End-to-End Verification and Documentation
 
-- [~] Task: Add integration coverage for the full review flow
-    - [~] Test unreviewed component appears in queue (requires convex-test)
-    - [~] Test approving stores summary and history (requires convex-test)
-    - [~] Test content changes make approval stale (requires convex-test)
-    - [~] Test needs-changes comments appear in LLM audit context (requires convex-test)
+- [x] Task: Move remaining hardening coverage to follow-up track
+    - [x] Test unreviewed component appears in queue moved to `harden-manual-approval_20260415`
+    - [x] Test approving stores summary and history moved to `harden-manual-approval_20260415`
+    - [x] Test content changes make approval stale moved to `harden-manual-approval_20260415`
+    - [x] Test needs-changes comments appear in LLM audit context moved to `harden-manual-approval_20260415`
     - [x] Test live/production access is blocked by default (covered by __tests__/lib/auth/developer.test.ts)
 
 - [x] Task: Document developer workflow
@@ -132,4 +132,6 @@
 
 - [x] Task: Conductor - Phase Completion Verification 'End-to-End Verification and Documentation' (Protocol in workflow.md) [5899e72]
 
-## Phase 6: End-to-End Verification and Documentation [checkpoint: 5899e72]
+## Follow-Up
+
+The initial manual approval workflow is implemented, but production-hardening work is tracked separately in `conductor/tracks/harden-manual-approval_20260415/`.

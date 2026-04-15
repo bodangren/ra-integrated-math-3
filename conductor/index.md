@@ -15,4 +15,5 @@
 | **Tech Specs** | `./tech-specs.md` |
 | **Code Styleguides** | `./code_styleguides/` |
 | **Practice Component Contract** | `./practice-component-contract.md` |
+| **Modules 3-9 Roadmap** | `./modules-3-9-roadmap.md` |
 | **Curriculum** | `../curriculum/` |

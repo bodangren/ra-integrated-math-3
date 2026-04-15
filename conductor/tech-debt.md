@@ -19,6 +19,9 @@
 | No Convex-layer authorization — admin token = full access | Med-High | Open | Auth boundary is entirely in Next.js server layer |
 | No auth checks in convex/dev.ts internal functions | Medium | Open | Route guard implemented; Convex function auth deferred |
 | Review harnesses use hardcoded sample data | Medium | Open | ComponentHarnessPanel passes static data |
+| Manual approval queue may miss embedded examples/practice placements | Medium | Open | Track in harden-manual-approval_20260415; enumerate real persisted targets |
+| Approval UI does not enforce harness checklist before approve | Medium | Open | Track in harden-manual-approval_20260415; decision panel can approve independently |
+| Review queue filter state may be split between view/list/client hook | Medium | Open | Track in harden-manual-approval_20260415; verify filters affect fetch query |
 | Algebraic test coverage structurally weak (20-50% step assertion) | Medium | Open | Tests named "all steps" check only fraction |
 | Guided mode submissions not recorded | Medium | Open | No onSubmit for guided practice; no analytics data |
 | activity_completions requires lessonId/phaseNumber not in submission | Medium | Open | Submission mutation can't create completions without lesson context |
@@ -30,7 +33,7 @@
 | getStandardsCoverage unbounded query | Medium | Open | `.collect()` fetches all lesson_standards rows |
 | getTeacherCourseOverviewData N+1 for student_competency | Medium | Open | One query per student via Promise.all |
 | Seed tests decoupled from seed implementations (inline data) | Medium | Open | Changes to seed files won't break tests |
-| Module 1 seed implementation compresses current curriculum examples | Medium | Open | Track spec now matches source counts, but seed files/tests still use older condensed phase patterns; needs a dedicated remediation track before reseeding Module 1 |
+| Module 1 seed implementation compresses current curriculum examples | Medium | Resolved | Fixed 2026-04-15; seed files now align counts/order with curriculum guardrail |
 | Module 2 standards incomplete (missing HSA-APR.A.1, HSA-APR.B.2) | Medium | Open | To be addressed in module-2-seed Phase 5 |
 | Legacy Supabase types in AuthProvider.tsx | Low | Open | snake_case profile fields should match Convex schema |
 | Equivalence validator 6/50 tests failing | Low | Open | Pattern-matching limits; 88% passing exceeds 80% target |
