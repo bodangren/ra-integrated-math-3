@@ -127,6 +127,73 @@ describe('seed-standards', () => {
     });
   });
 
+  describe('Module 6 competency standards', () => {
+    const module6Standards: SeedCompetencyStandard[] = [
+      {
+        code: 'HSF-BF.B.5',
+        description: 'Understanding the inverse relationship between exponents and logarithms',
+        studentFriendlyDescription: 'I can use the relationship between exponents and logarithms to solve problems.',
+        category: 'Functions',
+        isActive: true,
+      },
+      {
+        code: 'HSF-LE.A.4',
+        description: 'Expressing solutions to exponential models as logarithms',
+        studentFriendlyDescription: 'I can solve exponential equations using logarithms and technology.',
+        category: 'Functions',
+        isActive: true,
+      },
+      {
+        code: 'HSF-IF.C.7e',
+        description: 'Graphing exponential and logarithmic functions, showing intercepts and end behavior',
+        studentFriendlyDescription: 'I can graph exponential and logarithmic functions and identify their key features.',
+        category: 'Functions',
+        isActive: true,
+      },
+    ];
+
+    it('seeds exactly 3 standards for Module 6', () => {
+      expect(module6Standards).toHaveLength(3);
+    });
+
+    it('all Module 6 standards have valid codes', () => {
+      module6Standards.forEach((standard) => {
+        expect(standard.code).toMatch(/^[A-Z]+-[A-Z]+\.[A-Z]\.[0-9]+[a-z]?$/);
+      });
+    });
+
+    it('all Module 6 standards have non-empty descriptions', () => {
+      module6Standards.forEach((standard) => {
+        expect(standard.description.length).toBeGreaterThan(0);
+      });
+    });
+
+    it('all Module 6 standards have student-friendly descriptions', () => {
+      module6Standards.forEach((standard) => {
+        expect(standard.studentFriendlyDescription).toBeDefined();
+        expect(standard.studentFriendlyDescription!.length).toBeGreaterThan(0);
+      });
+    });
+
+    it('all Module 6 standards are active', () => {
+      module6Standards.forEach((standard) => {
+        expect(standard.isActive).toBe(true);
+      });
+    });
+
+    it('all Module 6 standards belong to Functions category', () => {
+      module6Standards.forEach((standard) => {
+        expect(standard.category).toBe('Functions');
+      });
+    });
+
+    it('all Module 6 standards have unique codes', () => {
+      const codes = module6Standards.map((s) => s.code);
+      const uniqueCodes = new Set(codes);
+      expect(uniqueCodes.size).toBe(codes.length);
+    });
+  });
+
   describe('idempotent insertion logic', () => {
     it('returns existing record ID when standard already exists', () => {
       const existingRecords = [

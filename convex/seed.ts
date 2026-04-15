@@ -11,11 +11,13 @@ export const seedAll = internalAction({
     const results: {
       lessons: { slug: string; success: boolean; error?: string }[];
       standards: { code: string; success: boolean; error?: string }[];
+      lessonStandards: { lessonSlug: string; standardCode: string; success: boolean; error?: string }[];
       demo: { success: boolean; error?: string };
       progress: { success: boolean; error?: string };
     } = {
       lessons: [],
       standards: [],
+      lessonStandards: [],
       demo: { success: true },
       progress: { success: true },
     };
@@ -150,6 +152,25 @@ export const seedAll = internalAction({
           error: error instanceof Error ? error.message : "Unknown error",
         });
       }
+    }
+
+    try {
+      const lessonStandardResults = await ctx.runMutation(seedInternal.seedModule6LessonStandards, {});
+      for (const result of lessonStandardResults) {
+        results.lessonStandards.push({
+          lessonSlug: result.lessonSlug,
+          standardCode: result.standardCode,
+          success: result.success,
+          error: result.error,
+        });
+      }
+    } catch (error) {
+      results.lessonStandards.push({
+        lessonSlug: "module-6",
+        standardCode: "ALL",
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown error",
+      });
     }
 
     const demo = getDemoEnvironment();

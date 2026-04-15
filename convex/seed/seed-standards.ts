@@ -103,6 +103,27 @@ export const seedStandards = internalMutation({
         category: "Functions",
         isActive: true,
       },
+      {
+        code: "HSF-BF.B.5",
+        description: "Understanding the inverse relationship between exponents and logarithms",
+        studentFriendlyDescription: "I can use the relationship between exponents and logarithms to solve problems.",
+        category: "Functions",
+        isActive: true,
+      },
+      {
+        code: "HSF-LE.A.4",
+        description: "Expressing solutions to exponential models as logarithms",
+        studentFriendlyDescription: "I can solve exponential equations using logarithms and technology.",
+        category: "Functions",
+        isActive: true,
+      },
+      {
+        code: "HSF-IF.C.7e",
+        description: "Graphing exponential and logarithmic functions, showing intercepts and end behavior",
+        studentFriendlyDescription: "I can graph exponential and logarithmic functions and identify their key features.",
+        category: "Functions",
+        isActive: true,
+      },
     ];
 
     const results: { code: string; id: string }[] = [];
