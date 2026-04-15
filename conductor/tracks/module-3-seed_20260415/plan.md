@@ -1,6 +1,6 @@
 # Module 3 Curriculum Seed - Implementation Plan
 
-## Phase 1: Seed Lesson 3-1
+## Phase 1: Seed Lesson 3-1 [checkpoint: 0ea60c9]
 
 - [x] Task: Verify lesson 3-1 curriculum source [2e24f59]
   - [x] Confirm title and phase sequence against `curriculum/modules/module-3-lesson-1`
