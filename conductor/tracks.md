@@ -250,15 +250,15 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
        - Phase 4: Persistence and Review Surfaces [COMPLETE] [checkpoint: 7c3d8e1]
        - Phase 5: Verification, Documentation, and Handoff [COMPLETE] [checkpoint: b210dce]
 
-- [~] **Track: Practice Timing Baselines**
-       *Build timing baselines and time-aware SRS evidence features after reliable practice timing telemetry exists*
-       *Depends on: Practice Timing Telemetry and stable practice problem-family identifiers*
-       *Link: [./conductor/tracks/practice-timing-baselines_20260415/](./conductor/tracks/practice-timing-baselines_20260415/)
-       - Phase 1: Baseline and Feature Model [COMPLETE]
-       - Phase 2: Baseline Persistence and Aggregation [COMPLETE]
-       - Phase 3: Time-Aware SRS Rating Adapter [COMPLETE]
-       - Phase 4: Objective Proficiency and Fluency Signals [COMPLETE]
-       - Phase 5: UI Integration, Validation, and Handoff [PENDING]
+- [x] **Track: Practice Timing Baselines** — **COMPLETED**
+        *Build timing baselines and time-aware SRS evidence features after reliable practice timing telemetry exists*
+        *Depends on: Practice Timing Telemetry and stable practice problem-family identifiers*
+        *Link: [./conductor/tracks/practice-timing-baselines_20260415/](./conductor/tracks/practice-timing-baselines_20260415/)
+        - Phase 1: Baseline and Feature Model [COMPLETE]
+        - Phase 2: Baseline Persistence and Aggregation [COMPLETE]
+        - Phase 3: Time-Aware SRS Rating Adapter [COMPLETE]
+        - Phase 4: Objective Proficiency and Fluency Signals [COMPLETE]
+        - Phase 5: UI Integration, Validation, and Handoff [COMPLETE]
 
 - [x] **Track: Fix submitReviewHandler componentKind Derivation**
       *Derive componentKind from placement.phaseType on write path to prevent permanent isStale mismatches*

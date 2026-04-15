@@ -1,23 +1,22 @@
 # Current Directive
 
-> Updated: 2026-04-16 (Phase 4 complete; Phase 5 UI integration next)
+> Updated: 2026-04-16 (Practice Timing Baselines complete)
 
 ## Status Summary
 
-- **Tests**: 2472 passing, 6 known failures (equivalence validator — fraction/radical expressions).
+- **Tests**: 2493 passing, 6 known failures (equivalence validator — fraction/radical expressions).
 - **Build**: Passing; RSC chunk 750 KB (pre-existing).
 - **Lint**: Passing.
 - **TypeScript**: 25 pre-existing test-file errors remain (students.test.tsx, dashboard.test.ts). No new TS errors.
 - **Module 1-9 Roadmap**: All modules seeded (M1-M9 complete).
 - **Practice Timing Telemetry**: All 5 phases complete.
-- **Practice Timing Baselines**: Phase 4 complete — objective proficiency module added with timing-aware evidence confidence.
+- **Practice Timing Baselines**: All 5 phases complete — timing baselines, SRS adapter, objective proficiency, and UI components wired.
 - **Code Review**: 2026-04-16 review found and fixed 4 issues (2 critical, 2 high). 14 medium/low issues documented.
 
 ## Current In-Progress Track
 
-- **Track**: Practice Timing Baselines
-- **Phase**: 5 — UI Integration, Validation, and Handoff
-- **Goal**: Wire student/teacher proficiency views into UI surfaces and validate with integration tests.
+- **Track**: None — Practice Timing Baselines is complete.
+- **Next**: See High-Priority Next Steps below.
 
 ## High-Priority Next Steps
 

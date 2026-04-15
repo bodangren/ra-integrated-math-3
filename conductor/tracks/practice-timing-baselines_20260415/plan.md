@@ -85,23 +85,23 @@
   - [x] Include explanations for low confidence and missing baselines
 - [x] Task: Conductor - Phase Completion Verification 'Objective Proficiency and Fluency Signals' (Protocol in workflow.md)
 
-## Phase 5: UI Integration, Validation, and Handoff
+## Phase 5: UI Integration, Validation, and Handoff [COMPLETE]
 
-- [ ] Task: Write student and teacher display tests
-  - [ ] Test student copy does not create speed pressure
-  - [ ] Test teacher copy distinguishes retention, coverage, and fluency
-  - [ ] Test missing baseline states render clearly
-- [ ] Task: Implement minimal UI surfaces
-  - [ ] Add student-facing fluency/progress language only where useful
-  - [ ] Add teacher-facing diagnostics for slow reliable timing and baseline gaps
-  - [ ] Avoid leaderboards or comparative speed rankings
-- [ ] Task: Run validation commands
-  - [ ] Run focused baseline/rating/proficiency tests
-  - [ ] Run relevant dashboard/view-model tests
-  - [ ] Run `npm run lint`
-  - [ ] Run `npm run typecheck` or document known pre-existing failures
-- [ ] Task: Update Conductor planning artifacts
-  - [ ] Mark completed tasks and phases in this plan
-  - [ ] Update `conductor/tracks.md`
-  - [ ] Update `conductor/current_directive.md` if this becomes active work
-- [ ] Task: Conductor - Phase Completion Verification 'UI Integration, Validation, and Handoff' (Protocol in workflow.md)
+- [x] Task: Write student and teacher display tests
+  - [x] Test student copy does not create speed pressure
+  - [x] Test teacher copy distinguishes retention, coverage, and fluency
+  - [x] Test missing baseline states render clearly
+- [x] Task: Implement minimal UI surfaces
+  - [x] Add student-facing fluency/progress language only where useful
+  - [x] Add teacher-facing diagnostics for slow reliable timing and baseline gaps
+  - [x] Avoid leaderboards or comparative speed rankings
+- [x] Task: Run validation commands
+  - [x] Run focused baseline/rating/proficiency tests
+  - [x] Run relevant dashboard/view-model tests
+  - [x] Run `npm run lint`
+  - [x] Run `npm run typecheck` or document known pre-existing failures
+- [x] Task: Update Conductor planning artifacts
+  - [x] Mark completed tasks and phases in this plan
+  - [x] Update `conductor/tracks.md`
+  - [x] Update `conductor/current_directive.md` if this becomes active work
+- [x] Task: Conductor - Phase Completion Verification 'UI Integration, Validation, and Handoff' (Protocol in workflow.md)
