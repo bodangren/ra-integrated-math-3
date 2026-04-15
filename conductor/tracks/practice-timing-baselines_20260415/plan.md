@@ -43,7 +43,7 @@
   - [x] Document any remaining performance shortcuts as tech debt
 - [x] Task: Conductor - Phase Completion Verification 'Baseline Persistence and Aggregation' (Protocol in workflow.md)
 
-## Phase 3: Time-Aware SRS Rating Adapter [COMPLETE]
+## Phase 3: Time-Aware SRS Rating Adapter [COMPLETE] [checkpoint: c74f8b9]
 
 - [x] Task: Write rating adapter tests for timing influence
   - [x] Correct plus fast plus clean evidence may become `Easy`
