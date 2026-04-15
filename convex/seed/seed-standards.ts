@@ -20,6 +20,20 @@ export const seedStandards = internalMutation({
         isActive: true,
       },
       {
+        code: "HSA-APR.A.1",
+        description: "Adding, subtracting, and multiplying polynomials",
+        studentFriendlyDescription: "I can add, subtract, and multiply polynomial expressions.",
+        category: "Algebra",
+        isActive: true,
+      },
+      {
+        code: "HSA-APR.B.2",
+        description: "Polynomial identities and the Binomial Theorem",
+        studentFriendlyDescription: "I can use the Binomial Theorem to expand powers of binomials.",
+        category: "Algebra",
+        isActive: true,
+      },
+      {
         code: "HSA-APR.B.3",
         description: "Identifying zeros of polynomials",
         studentFriendlyDescription: "I can find where polynomials equal zero.",

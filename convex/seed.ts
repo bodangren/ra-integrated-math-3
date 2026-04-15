@@ -61,6 +61,21 @@ export const seedAll = internalAction({
           case "module-1-lesson-8":
             await ctx.runMutation(seedInternal.seedLesson8, {});
             break;
+          case "module-2-lesson-1":
+            await ctx.runMutation(seedInternal.seedLesson2_1, {});
+            break;
+          case "module-2-lesson-2":
+            await ctx.runMutation(seedInternal.seedLesson2_2, {});
+            break;
+          case "module-2-lesson-3":
+            await ctx.runMutation(seedInternal.seedLesson2_3, {});
+            break;
+          case "module-2-lesson-4":
+            await ctx.runMutation(seedInternal.seedLesson2_4, {});
+            break;
+          case "module-2-lesson-5":
+            await ctx.runMutation(seedInternal.seedLesson2_5, {});
+            break;
           default:
             break;
         }
@@ -264,6 +279,106 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 8, title: "Assessment", phaseType: "assessment", sections: [] },
         { phaseNumber: 9, title: "Discourse", phaseType: "discourse", sections: [] },
         { phaseNumber: 10, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 2,
+      title: "Polynomial Functions",
+      slug: "module-2-lesson-1",
+      description: "Students graph and analyze power functions and polynomial functions.",
+      orderIndex: 1,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Graphing Power Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Learn: Graphing Polynomial Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 11, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 12, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 2,
+      title: "Analyzing Graphs of Polynomial Functions",
+      slug: "module-2-lesson-2",
+      description: "Students analyze graphs of polynomial functions, approximate zeros, and find extrema.",
+      orderIndex: 2,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Learn", phaseType: "learn", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 11, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 2,
+      title: "Operations with Polynomials",
+      slug: "module-2-lesson-3",
+      description: "Students add, subtract, and multiply polynomials.",
+      orderIndex: 3,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Learn", phaseType: "learn", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 11, title: "Worked Example 7", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 12, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 13, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 2,
+      title: "Dividing Polynomials",
+      slug: "module-2-lesson-4",
+      description: "Students divide polynomials using long division and synthetic division.",
+      orderIndex: 4,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Learn", phaseType: "learn", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 11, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 2,
+      title: "Powers of Binomials",
+      slug: "module-2-lesson-5",
+      description: "Students use the Binomial Theorem to expand powers of binomials.",
+      orderIndex: 5,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 8, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
   ];
