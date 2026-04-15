@@ -124,6 +124,27 @@ export const seedStandards = internalMutation({
         category: "Functions",
         isActive: true,
       },
+      {
+        code: "HSA-APR.D.6",
+        description: "Add, subtract, multiply, and divide rational expressions",
+        studentFriendlyDescription: "I can add, subtract, multiply, and divide rational expressions.",
+        category: "Algebra",
+        isActive: true,
+      },
+      {
+        code: "HSF-IF.C.7d",
+        description: "Graph rational functions, showing intercepts and asymptotes when suitable factorizations are available",
+        studentFriendlyDescription: "I can graph rational functions and identify key features like intercepts and asymptotes.",
+        category: "Functions",
+        isActive: true,
+      },
+      {
+        code: "HSA-REI.A.2",
+        description: "Solve rational equations in one variable and give examples showing how extraneous solutions can arise",
+        studentFriendlyDescription: "I can solve rational equations and check for extraneous solutions.",
+        category: "Algebra",
+        isActive: true,
+      },
     ];
 
     const results: { code: string; id: string }[] = [];

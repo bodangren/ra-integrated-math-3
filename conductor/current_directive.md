@@ -9,25 +9,24 @@
 - **Lint**: Passing.
 - **TypeScript**: 25 pre-existing test-file errors remain (students.test.tsx, dashboard.test.ts). No new TS errors.
 - **Module 1-6 Roadmap**: Complete.
-- **Module 7 Seed**: In progress — Lessons 7-1 through 7-6 seeded, wired into seed.ts orchestration. Phase 7 (Module Integration, CCSS standards, lesson-standard links) pending.
+- **Module 7 Seed**: Complete — Lessons 7-1 through 7-6 seeded, CCSS standards added, lesson-standard links wired.
 - **Code Review**: Completed 2026-04-15. Fixed 3 critical issues (harness hook gating, hardcoded submissions, dead seed code).
 
 ## Current In-Progress Track
 
-### Module 7 Curriculum Seed
+### Module 8 Curriculum Seed
 
-Track: `conductor/tracks/module-7-seed_20260415/`
+Track: `conductor/tracks/module-8-seed_20260415/`
 
-Seed Module 7 rational functions and equations lessons (7-1 through 7-6) into Convex database. Phases 1-5 complete; Phase 6 pending.
+Seed Module 8 inferential statistics lessons (8-1 through 8-5) into Convex database. Pending.
 
 ## Planned Upcoming Tracks
 
-1. **Module 7 Curriculum Seed** — Phases 3-6: Lessons 7-3 through 7-6
-2. **Module 7 Curriculum Seed** — Phase 7: Module integration, CCSS standards, lesson-standard links
-3. **Module 8 Curriculum Seed** — `module-8-seed_20260415` (5 lessons)
-4. **Module 9 Curriculum Seed** — `module-9-seed_20260415` (7 lessons)
-5. **Practice Timing Telemetry** — `practice-timing-telemetry_20260415` (post-Module 9 SRS foundation)
-6. **Practice Timing Baselines** — `practice-timing-baselines_20260415` (depends on timing telemetry and stable practice problem-family identifiers)
+1. **Module 8 Curriculum Seed** — Phase 1: Lesson 8-1
+2. **Module 8 Curriculum Seed** — Phases 2-6: Lessons 8-2 through 8-5
+3. **Module 9 Curriculum Seed** — `module-9-seed_20260415` (7 lessons)
+4. **Practice Timing Telemetry** — `practice-timing-telemetry_20260415` (post-Module 9 SRS foundation)
+5. **Practice Timing Baselines** — `practice-timing-baselines_20260415` (depends on timing telemetry and stable practice problem-family identifiers)
 
 See `conductor/modules-3-9-roadmap.md` for the module inventory and repeated implementation pattern.
 See `conductor/daily-practice-srs-roadmap.md` for the post-Module-9 daily practice SRS sequence.
