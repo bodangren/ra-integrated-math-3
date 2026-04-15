@@ -2,13 +2,13 @@
 
 ## Phase 1: Seed Lesson 7-1
 
-- [ ] Task: Verify lesson 7-1 curriculum source
-  - [ ] Confirm title and phase sequence against `curriculum/modules/module-7-lesson-1`
-  - [ ] Confirm rational expression restrictions are preserved
-- [ ] Task: Create seed function `convex/seed/seed-lesson-7-1.ts`
-  - [ ] Write tests for phase sequence and idempotency
-  - [ ] Implement lesson, phases, sections, and activities
-- [ ] Task: Conductor - Phase Completion Verification 'Seed Lesson 7-1' (Protocol in workflow.md)
+- [x] Task: Verify lesson 7-1 curriculum source
+  - [x] Confirm title and phase sequence against `curriculum/modules/module-7-lesson-1`
+  - [x] Confirm rational expression restrictions are preserved
+- [x] Task: Create seed function `convex/seed/seed-lesson-7-1.ts`
+  - [x] Write tests for phase sequence and idempotency
+  - [x] Implement lesson, phases, sections, and activities
+- [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 7-1' (Protocol in workflow.md)
 
 ## Phase 2: Seed Lesson 7-2
 
