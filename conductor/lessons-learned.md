@@ -37,3 +37,4 @@
 - (2026-04-14, code-review) Progress counting must include "skipped" alongside "completed" when computing lesson readiness
 - (2026-04-15, module-6-seed) Curriculum consistency tests validate seed implementation phase counts/order against source files. Keep multi-part textbook examples within a single worked_example phase unless the curriculum explicitly splits them.
 - (2026-04-15, code-review) Module seed tracks need CCSS standards added to seed-standards.ts alongside lesson content; track standards per-module to avoid accumulation of gaps
+- (2026-04-15, module-6-seed) Build focused lesson_standards seeders per module: query lesson + version + standard by natural keys, then insert idempotently via `by_lesson_version_and_standard` index

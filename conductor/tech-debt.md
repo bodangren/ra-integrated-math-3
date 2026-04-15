@@ -20,8 +20,8 @@
 | Approve button disabled logic had unreachable branch | Critical | Resolved | Fixed 2026-04-15; simplified to `disabled={!harnessCanApprove}` |
 | ExampleReviewHarness canApprove ignored verification checkboxes | High | Resolved | Fixed 2026-04-15; algorithmicChecked+coherentFeedbackChecked now gate approval |
 | generateAISummary silently swallowed all errors | High | Resolved | Fixed 2026-04-15; added console.error logging |
-| Missing CCSS standards for M5/M6 (HSF-LE.A.x, HSF-IF.C.7e, HSF-BF.B.5) | High | Open | seed-standards.ts lacks exponential/logarithmic standards |
-| No lesson_standards seeding pipeline | High | Open | Standards seeded but never linked to lessons; progress tracking broken |
+| Missing CCSS standards for M5/M6 (HSF-LE.A.x, HSF-IF.C.7e, HSF-BF.B.5) | High | Resolved | Added to seed-standards.ts 2026-04-15; M5/M6 lesson links pending |
+| No lesson_standards seeding pipeline | High | Partial | Module 6 pipeline built 2026-04-15; extend pattern to M3-M5 |
 | Incorrect CCSS description for HSA-APR.B.2 (seed-standards.ts) | High | Open | Describes Binomial Theorem instead of Remainder Theorem |
 | Missing CCSS standards for M2/M3 (HSA-APR.C.4, HSA-APR.C.5, HSA-REI.D.11) | Medium | Open | Standards gap in seed-standards.ts |
 | Module 3/4 seed standards lack lesson-standard links | Medium | Open | lesson_standards table needs linking in seed functions |

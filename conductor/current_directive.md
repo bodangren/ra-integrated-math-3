@@ -9,23 +9,22 @@
 - **Lint**: Passing.
 - **TypeScript**: 25 pre-existing test-file errors remain (students.test.tsx, dashboard.test.ts). No new TS errors.
 - **Module 1-5 Roadmap**: Complete.
-- **Module 6 Seed**: Phases 1-5 (Lessons 6-1 through 6-5) complete. Phase 6 pending.
+- **Module 6 Seed**: Complete (Lessons 6-1 through 6-5 seeded, standards and lesson-standard links added).
 - **Code Review**: Completed 2026-04-15. Fixed 3 critical + 2 high issues (dual state bug, approval gating, silent errors).
 
 ## Current In-Progress Track
 
-### Module 6 Curriculum Seed
+### Module 7 Curriculum Seed
 
-Track: `conductor/tracks/module-6-seed_20260415/`
+Track: `conductor/tracks/module-7-seed_20260415/`
 
-Seed Module 6 logarithmic functions lessons (6-1 through 6-5) into Convex database.
+Seed Module 7 rational functions and equations lessons (7-1 through 7-6) into Convex database.
 
 ## Planned Upcoming Tracks
 
-1. **Module 6 Curriculum Seed** — `module-6-seed_20260415` (2 lessons remaining: 6-4 through 6-5)
-2. **Module 7 Curriculum Seed** — `module-7-seed_20260415` (6 lessons)
-3. **Module 8 Curriculum Seed** — `module-8-seed_20260415` (5 lessons)
-4. **Module 9 Curriculum Seed** — `module-9-seed_20260415` (7 lessons)
+1. **Module 7 Curriculum Seed** — `module-7-seed_20260415` (6 lessons)
+2. **Module 8 Curriculum Seed** — `module-8-seed_20260415` (5 lessons)
+3. **Module 9 Curriculum Seed** — `module-9-seed_20260415` (7 lessons)
 
 See `conductor/modules-3-9-roadmap.md` for the module inventory and repeated implementation pattern.
 
