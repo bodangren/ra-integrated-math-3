@@ -132,9 +132,10 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
     - Phase 5: Component Review Harnesses [COMPLETE]
     - Phase 6: End-to-End Verification and Documentation [COMPLETE]
 
-- [ ] **Track: Harden Manual Component Approval**
+- [~] **Track: Harden Manual Component Approval**
    *Complete trustworthy manual approval hardening: real example/practice queue coverage, deterministic hashes, harness-gated approval, and Convex integration tests*
    *Link: [./conductor/tracks/harden-manual-approval_20260415/](./conductor/tracks/harden-manual-approval_20260415/)*
+   - Phase 1: Queue Coverage and Real Review Targets [IN PROGRESS]
 
 - [x] **Track: Reconcile Activity Schemas** — **COMPLETED**
    *Align Zod schemas for comprehension-quiz and fill-in-the-blank with actual component props (Critical — blocks curriculum authoring)*

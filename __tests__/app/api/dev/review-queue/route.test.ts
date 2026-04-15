@@ -77,6 +77,43 @@ describe('GET /api/dev/review-queue', () => {
     expect(json).toEqual(mockItems);
   });
 
+  it('returns 200 with example and practice targets discovered from curriculum', async () => {
+    const mockItems = [
+      {
+        componentKind: 'example',
+        componentId: 'act2',
+        componentKey: 'step-by-step-solver',
+        displayName: 'Example: Factoring',
+        currentHash: 'hash-ex',
+        storedHash: undefined,
+        isStale: false,
+        approval: undefined,
+      },
+      {
+        componentKind: 'practice',
+        componentId: 'act3',
+        componentKey: 'comprehension-quiz',
+        displayName: 'Practice: Quiz',
+        currentHash: 'hash-pr',
+        storedHash: undefined,
+        isStale: false,
+        approval: undefined,
+      },
+    ];
+    mockRequireDeveloperRequestClaims.mockResolvedValue({
+      sub: 'admin-user',
+      role: 'admin',
+    });
+    mockFetchInternalQuery.mockResolvedValue(mockItems);
+    const { GET } = await import('@/app/api/dev/review-queue/route');
+    const res = await GET(makeRequest('/api/dev/review-queue'));
+    expect(res.status).toBe(200);
+    const json = await res.json();
+    expect(json).toHaveLength(2);
+    expect(json[0].componentKind).toBe('example');
+    expect(json[1].componentKind).toBe('practice');
+  });
+
   it('passes query parameters to the internal query', async () => {
     mockRequireDeveloperRequestClaims.mockResolvedValue({
       sub: 'admin-user',

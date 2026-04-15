@@ -2,24 +2,11 @@ import { internalQuery, internalMutation } from "./_generated/server";
 import { v } from "convex/values";
 import { Doc, Id } from "./_generated/dataModel";
 import { computeComponentContentHash } from "../lib/activities/content-hash";
-
-type ReviewQueueItem =
-  | {
-      componentKind: "activity";
-      componentId: Id<"activities">;
-      componentKey: string;
-      displayName: string;
-      currentHash: string;
-      storedHash?: string;
-      isStale: boolean;
-      approval?: Doc<"activities">["approval"];
-    }
-  | {
-      componentKind: "example" | "practice";
-      componentId: string;
-      componentKey?: string;
-      approval: Doc<"component_approvals">;
-    };
+import {
+  buildActivityPlacementMap,
+  assembleReviewQueueItem,
+  type ReviewQueueItem,
+} from "../lib/activities/review-queue";
 
 export const listReviewQueue = internalQuery({
   args: {
@@ -31,44 +18,78 @@ export const listReviewQueue = internalQuery({
     const items: ReviewQueueItem[] = [];
     const MAX_ITEMS = 500;
 
-    const activities = await ctx.db.query("activities").take(MAX_ITEMS);
-    for (const activity of activities) {
-      const currentHash = await computeComponentContentHash({
-        componentKind: "activity",
-        componentKey: activity.componentKey,
-        props: activity.props,
-        gradingConfig: activity.gradingConfig,
-      });
-      const storedHash = activity.approval?.contentHash;
-      const isStale = storedHash ? storedHash !== currentHash : false;
-
-      if (args.componentKind && args.componentKind !== "activity") continue;
-      if (args.status && activity.approval?.status !== args.status) continue;
-      if (args.onlyStale && !isStale) continue;
-
-      items.push({
-        componentKind: "activity",
-        componentId: activity._id,
-        componentKey: activity.componentKey,
-        displayName: activity.displayName,
-        currentHash,
-        storedHash,
-        isStale,
-        approval: activity.approval,
-      });
+    // Build activity placement map from curriculum data
+    const sections = await ctx.db.query("phase_sections").take(MAX_ITEMS);
+    const phaseIds = new Set<Id<"phase_versions">>();
+    for (const section of sections) {
+      const activityId = (section.content as { activityId?: string })?.activityId;
+      if (activityId) {
+        phaseIds.add(section.phaseVersionId);
+      }
     }
 
+    const phases: Array<Pick<Doc<"phase_versions">, "_id" | "phaseType">> = [];
+    for (const phaseId of phaseIds) {
+      const phase = await ctx.db.get(phaseId);
+      if (phase) {
+        phases.push(phase);
+      }
+    }
+
+    const placementMap = buildActivityPlacementMap(sections, phases);
+
+    // Build component approvals lookup map for example/practice
     const componentApprovals = await ctx.db.query("component_approvals").take(MAX_ITEMS);
+    const approvalsMap = new Map<string, Doc<"component_approvals">>();
+    for (const approval of componentApprovals) {
+      approvalsMap.set(`${approval.componentKind}:${approval.componentId}`, approval);
+    }
+
+    // Process all activities with their resolved component kinds
+    const activities = await ctx.db.query("activities").take(MAX_ITEMS);
+    for (const activity of activities) {
+      const placement = placementMap.get(activity._id);
+      const approvalRecord = placement
+        ? approvalsMap.get(`${placement.phaseType === "worked_example" ? "example" : "practice"}:${activity._id}`)
+        : undefined;
+
+      const item = await assembleReviewQueueItem({
+        activity,
+        placement,
+        approvalRecord,
+        filterKind: args.componentKind,
+        filterStatus: args.status,
+        onlyStale: args.onlyStale,
+      });
+
+      if (item) {
+        items.push(item);
+      }
+    }
+
+    // Include any orphaned component_approvals that don't map to an existing activity
+    // (e.g., from deleted curriculum data) to preserve review history accessibility
     for (const approval of componentApprovals) {
       if (approval.componentKind === "activity") continue;
+      // Skip if this approval already matched an activity above
+      const activityExists = activities.some((a) => a._id === approval.componentId);
+      if (activityExists) continue;
+
       if (args.componentKind && args.componentKind !== approval.componentKind) continue;
-      if (args.status && approval.status !== args.status) continue;
+      const effectiveStatus = approval.status || "unreviewed";
+      if (args.status && args.status !== effectiveStatus) continue;
 
       items.push({
         componentKind: approval.componentKind,
         componentId: approval.componentId,
-        componentKey: approval.componentKey,
-        approval,
+        componentKey: approval.componentKey || approval.componentId,
+        displayName: approval.componentKey || approval.componentId,
+        approval: {
+          status: approval.status,
+          contentHash: approval.contentHash ?? undefined,
+          reviewedAt: approval.reviewedAt ?? undefined,
+          reviewedBy: approval.reviewedBy ?? undefined,
+        },
       });
     }
 
