@@ -20,15 +20,15 @@
   - [x] Implement lesson, phases, sections, and activities
 - [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 9-2' (Protocol in workflow.md) [ec08cc8]
 
-## Phase 3: Seed Lesson 9-3
+## Phase 3: Seed Lesson 9-3 [checkpoint: cfd278b]
 
-- [ ] Task: Verify lesson 9-3 curriculum source
-  - [ ] Confirm title and phase sequence against `curriculum/modules/module-9-lesson-3`
-  - [ ] Confirm circular and periodic function examples preserve unit-circle context
-- [ ] Task: Create seed function `convex/seed/seed-lesson-9-3.ts`
-  - [ ] Write tests for phase sequence and idempotency
-  - [ ] Implement lesson, phases, sections, and activities
-- [ ] Task: Conductor - Phase Completion Verification 'Seed Lesson 9-3' (Protocol in workflow.md)
+- [x] Task: Verify lesson 9-3 curriculum source [cfd278b]
+  - [x] Confirm title and phase sequence against `curriculum/modules/module-9-lesson-3`
+  - [x] Confirm circular and periodic function examples preserve unit-circle context
+- [x] Task: Create seed function `convex/seed/seed-lesson-9-3.ts` [cfd278b]
+  - [x] Write tests for phase sequence and idempotency
+  - [x] Implement lesson, phases, sections, and activities
+- [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 9-3' (Protocol in workflow.md) [cfd278b]
 
 ## Phase 4: Seed Lesson 9-4
 
