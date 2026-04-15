@@ -174,6 +174,9 @@ export const seedAll = internalAction({
           case "module-8-lesson-5":
             await ctx.runMutation(seedInternal.seedLesson8_5, {});
             break;
+          case "module-9-lesson-1":
+            await ctx.runMutation(seedInternal.seedLesson9_1, {});
+            break;
           default:
             break;
         }
@@ -1176,6 +1179,27 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
         { phaseNumber: 9, title: "Discourse", phaseType: "discourse", sections: [] },
         { phaseNumber: 10, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 9,
+      title: "Angles and Angle Measure",
+      slug: "module-9-lesson-1",
+      description: "Students draw angles in standard position, identify coterminal angles, and convert between degree and radian measures.",
+      orderIndex: 1,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Angles in Standard Position", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Learn: Degrees and Radians", phaseType: "learn", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 11, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 12, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
   ];
