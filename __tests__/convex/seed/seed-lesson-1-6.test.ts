@@ -2,10 +2,10 @@ import { describe, it, expect } from 'vitest';
 import type { SeedLesson, SeedPhase } from '@/convex/seed/types';
 
 describe('seed-lesson-1-6', () => {
-  describe('Lesson 1-6: Quadratic Formula and Discriminant', () => {
+  describe('Lesson 1-6: Using the Quadratic Formula and the Discriminant', () => {
     const lesson6Seed: SeedLesson = {
       unitNumber: 1,
-      title: 'Quadratic Formula and Discriminant',
+      title: 'Using the Quadratic Formula and the Discriminant',
       slug: 'module-1-lesson-6',
       description: 'Use the Quadratic Formula to solve equations and the discriminant to determine the number and type of solutions.',
       orderIndex: 6,
@@ -27,7 +27,7 @@ describe('seed-lesson-1-6', () => {
 
     it('lesson has correct metadata', () => {
       expect(lesson6Seed.unitNumber).toBe(1);
-      expect(lesson6Seed.title).toBe('Quadratic Formula and Discriminant');
+      expect(lesson6Seed.title).toBe('Using the Quadratic Formula and the Discriminant');
       expect(lesson6Seed.slug).toBe('module-1-lesson-6');
       expect(lesson6Seed.orderIndex).toBe(6);
     });

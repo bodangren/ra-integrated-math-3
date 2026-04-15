@@ -20,8 +20,9 @@ describe('seed-lesson-2-3', () => {
         { phaseNumber: 8, title: 'Worked Example 4', phaseType: 'worked_example', sections: [] },
         { phaseNumber: 9, title: 'Worked Example 5', phaseType: 'worked_example', sections: [] },
         { phaseNumber: 10, title: 'Worked Example 6', phaseType: 'worked_example', sections: [] },
-        { phaseNumber: 11, title: 'Discourse', phaseType: 'discourse', sections: [] },
-        { phaseNumber: 12, title: 'Reflection', phaseType: 'reflection', sections: [] },
+        { phaseNumber: 11, title: 'Worked Example 7', phaseType: 'worked_example', sections: [] },
+        { phaseNumber: 12, title: 'Discourse', phaseType: 'discourse', sections: [] },
+        { phaseNumber: 13, title: 'Reflection', phaseType: 'reflection', sections: [] },
       ],
     };
 
@@ -32,11 +33,11 @@ describe('seed-lesson-2-3', () => {
       expect(lesson2Seed.orderIndex).toBe(3);
     });
 
-    it('has exactly 12 phases', () => {
-      expect(lesson2Seed.phases).toHaveLength(12);
+    it('has exactly 13 phases', () => {
+      expect(lesson2Seed.phases).toHaveLength(13);
     });
 
-    it('correct phase sequence: explore, vocab, learn, 3×worked_example, learn, 3×worked_example, discourse, reflection', () => {
+    it('correct phase sequence: explore, vocab, learn, 3×worked_example, learn, 4×worked_example, discourse, reflection', () => {
       const expectedSequence: SeedPhase['phaseType'][] = [
         'explore',
         'vocabulary',
@@ -45,6 +46,7 @@ describe('seed-lesson-2-3', () => {
         'worked_example',
         'worked_example',
         'learn',
+        'worked_example',
         'worked_example',
         'worked_example',
         'worked_example',
@@ -76,22 +78,22 @@ describe('seed-lesson-2-3', () => {
       expect(learnPhases[1]?.phaseNumber).toBe(7);
     });
 
-    it('discourse phase is phase 11', () => {
+    it('discourse phase is phase 12', () => {
       const discoursePhase = lesson2Seed.phases.find((p) => p.phaseType === 'discourse');
-      expect(discoursePhase?.phaseNumber).toBe(11);
+      expect(discoursePhase?.phaseNumber).toBe(12);
     });
 
-    it('reflection phase is phase 12', () => {
+    it('reflection phase is phase 13', () => {
       const reflectionPhase = lesson2Seed.phases.find((p) => p.phaseType === 'reflection');
-      expect(reflectionPhase?.phaseNumber).toBe(12);
+      expect(reflectionPhase?.phaseNumber).toBe(13);
     });
 
-    it('has exactly 6 worked_example phases', () => {
+    it('has exactly 7 worked_example phases', () => {
       const workedExamples = lesson2Seed.phases.filter((p) => p.phaseType === 'worked_example');
-      expect(workedExamples).toHaveLength(6);
+      expect(workedExamples).toHaveLength(7);
     });
 
-    it('worked examples are numbered 1-6 in order', () => {
+    it('worked examples are numbered 1-7 in order', () => {
       const workedExamples = lesson2Seed.phases.filter((p) => p.phaseType === 'worked_example');
       workedExamples.forEach((we, idx) => {
         expect(we.title).toBe(`Worked Example ${idx + 1}`);

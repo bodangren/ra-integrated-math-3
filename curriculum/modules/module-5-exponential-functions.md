@@ -9,7 +9,7 @@ Students model exponential growth/decay and connect recursive patterns to explic
 ### 5-1 Graphing Exponential Functions
 Growth vs decay, transformations, asymptotes.
 
-### 5-2 Solving Exponential Equations/Inequalities
+### 5-2 Solving Exponential Equations and Inequalities
 Using properties of exponents and rewriting bases.
 
 ### 5-3 Special Exponential Functions

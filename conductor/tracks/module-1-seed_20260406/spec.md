@@ -36,13 +36,13 @@ Each lesson must be seeded with the correct `phaseType` sequence and `title`. Th
 | Lesson | Phase Sequence |
 |--------|----------------|
 | 1-1 | explore, vocabulary, learn, worked_example ×3, learn, worked_example ×3, discourse, reflection |
-| 1-2 | explore, vocabulary, learn, worked_example ×4, discourse, reflection |
-| 1-3 | explore, vocabulary, learn, learn, worked_example ×3, learn, worked_example ×3, discourse, reflection |
-| 1-4 | explore, vocabulary, learn, learn, worked_example ×6, discourse, assessment, reflection |
-| 1-5 | explore, vocabulary, learn, learn, worked_example ×4, learn, assessment, discourse, reflection |
-| 1-6 | explore, vocabulary, learn, worked_example ×3, learn, worked_example ×2, assessment, discourse, reflection |
-| 1-7 | explore, vocabulary, learn, worked_example ×4, assessment, discourse, reflection |
-| 1-8 | explore, vocabulary, learn, worked_example ×4, assessment, discourse, reflection |
+| 1-2 | explore, vocabulary, learn, worked_example ×5, discourse, reflection |
+| 1-3 | explore, vocabulary, learn, worked_example ×3, learn, worked_example ×4, discourse, reflection |
+| 1-4 | explore, vocabulary, learn, worked_example ×4, learn, worked_example ×3, discourse, reflection |
+| 1-5 | explore, vocabulary, learn, worked_example ×3, learn, worked_example ×5, learn, worked_example ×3, discourse, reflection |
+| 1-6 | explore, vocabulary, learn, worked_example ×3, learn, worked_example ×2, discourse, reflection |
+| 1-7 | explore, vocabulary, learn, worked_example ×4, discourse, reflection |
+| 1-8 | explore, vocabulary, learn, worked_example ×4, learn, worked_example ×3, discourse, reflection |
 
 ### Section Content
 

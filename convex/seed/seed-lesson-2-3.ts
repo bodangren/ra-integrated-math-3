@@ -320,6 +320,38 @@ export const seedLesson2_3 = internalMutation({
       },
       {
         phaseNumber: 11,
+        title: "Worked Example 7",
+        phaseType: "worked_example" as const,
+        estimatedMinutes: 12,
+        sections: [
+          {
+            sequenceOrder: 1,
+            sectionType: "text" as const,
+            content: {
+              markdown: "## Apply Example 7: Write and Simplify a Polynomial Expression\n\nA three-tier cake has rectangular prisms with dimensions expressed in terms of $x$.\n\nWrite and simplify a polynomial expression for the total volume.\n\n### Volume of each tier\n\n- Tier 1: $8x^3 - 2x^2 - 3x$\n- Tier 2: $4x^3 - x^2 - 1.5x$\n- Tier 3: $2x^3 - 0.5x^2 - 0.75x$\n\n### Total volume\n\n$14x^3 - 3.5x^2 - 5.25x$",
+            },
+          },
+          {
+            sequenceOrder: 2,
+            sectionType: "activity" as const,
+            content: {
+              componentKey: "step-by-step-solver",
+              props: {
+                problemType: "polynomial",
+                equation: "(8x^3 - 2x^2 - 3x) + (4x^3 - x^2 - 1.5x) + (2x^3 - 0.5x^2 - 0.75x)",
+                steps: [
+                  { expression: "8x^3 + 4x^3 + 2x^3 = 14x^3", explanation: "Combine cubic terms" },
+                  { expression: "-2x^2 - x^2 - 0.5x^2 = -3.5x^2", explanation: "Combine quadratic terms" },
+                  { expression: "-3x - 1.5x - 0.75x = -5.25x", explanation: "Combine linear terms" },
+                  { expression: "14x^3 - 3.5x^2 - 5.25x", explanation: "Write the total volume expression" },
+                ],
+              },
+            },
+          },
+        ],
+      },
+      {
+        phaseNumber: 12,
         title: "Discourse",
         phaseType: "discourse" as const,
         estimatedMinutes: 15,
@@ -363,7 +395,7 @@ export const seedLesson2_3 = internalMutation({
         ],
       },
       {
-        phaseNumber: 12,
+        phaseNumber: 13,
         title: "Reflection",
         phaseType: "reflection" as const,
         estimatedMinutes: 5,

@@ -23,7 +23,7 @@ export const seedLesson2 = internalMutation({
       ? existingLesson._id
       : await ctx.db.insert("lessons", {
           unitNumber: 1,
-          title: "Solving Quadratics by Graphing",
+          title: "Solving Quadratic Equations by Graphing",
           slug: lessonSlug,
           description: "Students interpret x-intercepts as solutions.",
           orderIndex: 2,
@@ -41,7 +41,7 @@ export const seedLesson2 = internalMutation({
       : await ctx.db.insert("lesson_versions", {
           lessonId,
           version: 1,
-          title: "Solving Quadratics by Graphing",
+          title: "Solving Quadratic Equations by Graphing",
           description: "Students interpret x-intercepts as solutions.",
           status: "published",
           createdAt: now,

@@ -2,10 +2,10 @@ import { describe, it, expect } from 'vitest';
 import type { SeedLesson, SeedPhase } from '@/convex/seed/types';
 
 describe('seed-lesson-1-2', () => {
-  describe('Lesson 1-2: Solving Quadratics by Graphing', () => {
+  describe('Lesson 1-2: Solving Quadratic Equations by Graphing', () => {
     const lesson2Seed: SeedLesson = {
       unitNumber: 1,
-      title: 'Solving Quadratics by Graphing',
+      title: 'Solving Quadratic Equations by Graphing',
       slug: 'module-1-lesson-2',
       description: 'Students interpret x-intercepts as solutions.',
       orderIndex: 2,
@@ -24,7 +24,7 @@ describe('seed-lesson-1-2', () => {
 
     it('lesson has correct metadata', () => {
       expect(lesson2Seed.unitNumber).toBe(1);
-      expect(lesson2Seed.title).toBe('Solving Quadratics by Graphing');
+      expect(lesson2Seed.title).toBe('Solving Quadratic Equations by Graphing');
       expect(lesson2Seed.slug).toBe('module-1-lesson-2');
       expect(lesson2Seed.orderIndex).toBe(2);
     });

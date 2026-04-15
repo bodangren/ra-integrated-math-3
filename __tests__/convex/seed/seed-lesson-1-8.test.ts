@@ -2,10 +2,10 @@ import { describe, it, expect } from 'vitest';
 import type { SeedLesson, SeedPhase } from '@/convex/seed/types';
 
 describe('seed-lesson-1-8', () => {
-  describe('Lesson 1-8: Linear-Quadratic Systems', () => {
+  describe('Lesson 1-8: Solving Linear-Nonlinear Systems', () => {
     const lesson8Seed: SeedLesson = {
       unitNumber: 1,
-      title: 'Linear-Quadratic Systems',
+      title: 'Solving Linear-Nonlinear Systems',
       slug: 'module-1-lesson-8',
       description: 'Solve systems of linear and quadratic equations.',
       orderIndex: 8,
@@ -25,7 +25,7 @@ describe('seed-lesson-1-8', () => {
 
     it('lesson has correct metadata', () => {
       expect(lesson8Seed.unitNumber).toBe(1);
-      expect(lesson8Seed.title).toBe('Linear-Quadratic Systems');
+      expect(lesson8Seed.title).toBe('Solving Linear-Nonlinear Systems');
       expect(lesson8Seed.slug).toBe('module-1-lesson-8');
       expect(lesson8Seed.orderIndex).toBe(8);
     });

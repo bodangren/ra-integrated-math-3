@@ -2,10 +2,10 @@ import { describe, it, expect } from 'vitest';
 import type { SeedLesson, SeedPhase } from '@/convex/seed/types';
 
 describe('seed-lesson-2-2', () => {
-  describe('Lesson 2-2: Polynomials, Linear Factors, and Zeros', () => {
+  describe('Lesson 2-2: Analyzing Graphs of Polynomial Functions', () => {
     const lesson2Seed: SeedLesson = {
       unitNumber: 2,
-      title: 'Polynomials, Linear Factors, and Zeros',
+      title: 'Analyzing Graphs of Polynomial Functions',
       slug: 'module-2-lesson-2',
       description: 'Students analyze graphs of polynomial functions, approximate zeros, and find extrema.',
       orderIndex: 2,
@@ -14,37 +14,35 @@ describe('seed-lesson-2-2', () => {
         { phaseNumber: 2, title: 'Vocabulary', phaseType: 'vocabulary', sections: [] },
         { phaseNumber: 3, title: 'Learn: The Location Principle', phaseType: 'learn', sections: [] },
         { phaseNumber: 4, title: 'Worked Example 1', phaseType: 'worked_example', sections: [] },
-        { phaseNumber: 5, title: 'Worked Example 2', phaseType: 'worked_example', sections: [] },
-        { phaseNumber: 6, title: 'Worked Example 3', phaseType: 'worked_example', sections: [] },
-        { phaseNumber: 7, title: 'Learn: Extrema of Polynomials', phaseType: 'learn', sections: [] },
+        { phaseNumber: 5, title: 'Learn: Extrema of Polynomials', phaseType: 'learn', sections: [] },
+        { phaseNumber: 6, title: 'Worked Example 2', phaseType: 'worked_example', sections: [] },
+        { phaseNumber: 7, title: 'Worked Example 3', phaseType: 'worked_example', sections: [] },
         { phaseNumber: 8, title: 'Worked Example 4', phaseType: 'worked_example', sections: [] },
         { phaseNumber: 9, title: 'Worked Example 5', phaseType: 'worked_example', sections: [] },
-        { phaseNumber: 10, title: 'Worked Example 6', phaseType: 'worked_example', sections: [] },
-        { phaseNumber: 11, title: 'Discourse', phaseType: 'discourse', sections: [] },
-        { phaseNumber: 12, title: 'Reflection', phaseType: 'reflection', sections: [] },
+        { phaseNumber: 10, title: 'Discourse', phaseType: 'discourse', sections: [] },
+        { phaseNumber: 11, title: 'Reflection', phaseType: 'reflection', sections: [] },
       ],
     };
 
     it('lesson has correct metadata', () => {
       expect(lesson2Seed.unitNumber).toBe(2);
-      expect(lesson2Seed.title).toBe('Polynomials, Linear Factors, and Zeros');
+      expect(lesson2Seed.title).toBe('Analyzing Graphs of Polynomial Functions');
       expect(lesson2Seed.slug).toBe('module-2-lesson-2');
       expect(lesson2Seed.orderIndex).toBe(2);
     });
 
-    it('has exactly 12 phases', () => {
-      expect(lesson2Seed.phases).toHaveLength(12);
+    it('has exactly 11 phases', () => {
+      expect(lesson2Seed.phases).toHaveLength(11);
     });
 
-    it('correct phase sequence: explore, vocab, learn, 3×worked_example, learn, 3×worked_example, discourse, reflection', () => {
+    it('correct phase sequence: explore, vocab, learn, worked_example, learn, 4×worked_example, discourse, reflection', () => {
       const expectedSequence: SeedPhase['phaseType'][] = [
         'explore',
         'vocabulary',
         'learn',
         'worked_example',
-        'worked_example',
-        'worked_example',
         'learn',
+        'worked_example',
         'worked_example',
         'worked_example',
         'worked_example',
@@ -71,27 +69,27 @@ describe('seed-lesson-2-2', () => {
       expect(learnPhases[0]?.phaseNumber).toBe(3);
     });
 
-    it('second learn phase is phase 7', () => {
+    it('second learn phase is phase 5', () => {
       const learnPhases = lesson2Seed.phases.filter((p) => p.phaseType === 'learn');
-      expect(learnPhases[1]?.phaseNumber).toBe(7);
+      expect(learnPhases[1]?.phaseNumber).toBe(5);
     });
 
-    it('discourse phase is phase 11', () => {
+    it('discourse phase is phase 10', () => {
       const discoursePhase = lesson2Seed.phases.find((p) => p.phaseType === 'discourse');
-      expect(discoursePhase?.phaseNumber).toBe(11);
+      expect(discoursePhase?.phaseNumber).toBe(10);
     });
 
-    it('reflection phase is phase 12', () => {
+    it('reflection phase is phase 11', () => {
       const reflectionPhase = lesson2Seed.phases.find((p) => p.phaseType === 'reflection');
-      expect(reflectionPhase?.phaseNumber).toBe(12);
+      expect(reflectionPhase?.phaseNumber).toBe(11);
     });
 
-    it('has exactly 6 worked_example phases', () => {
+    it('has exactly 5 worked_example phases', () => {
       const workedExamples = lesson2Seed.phases.filter((p) => p.phaseType === 'worked_example');
-      expect(workedExamples).toHaveLength(6);
+      expect(workedExamples).toHaveLength(5);
     });
 
-    it('worked examples are numbered 1-6 in order', () => {
+    it('worked examples are numbered 1-5 in order', () => {
       const workedExamples = lesson2Seed.phases.filter((p) => p.phaseType === 'worked_example');
       workedExamples.forEach((we, idx) => {
         expect(we.title).toBe(`Worked Example ${idx + 1}`);

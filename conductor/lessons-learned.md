@@ -6,8 +6,7 @@
 ## Architecture & Design
 <!-- Decisions made that future tracks should be aware of -->
 
-- (2026-04-05, setup) Scaffolded from bus-math-v2; architecture.md preserved in conductor/ for reference
-- (2026-04-05, setup) Convex internal queries/mutations require server-side admin auth — all data fetching from pages goes through `lib/convex/server.ts` helpers
+- (2026-04-05, setup) Scaffolded from bus-math-v2; architecture.md preserved in conductor/. Convex internal queries/mutations require server-side admin auth — pages fetch through `lib/convex/server.ts` helpers
 
 ## Recurring Gotchas
 <!-- Problems encountered repeatedly; save future tracks from the same pain -->
@@ -48,3 +47,4 @@
 - (2026-04-14, student-lesson-flow) Lesson completion screens: LessonCompleteScreen for individual lessons, ModuleCompleteScreen for full module; wire via `showLessonComplete` state in LessonRenderer and `complete=module-1` query param on dashboard
 - (2026-04-14, teacher-dashboard) When adding new computed fields to a Convex query result (currentLesson, atGlanceStatus), build lookup maps in the handler and pass them to helper functions to avoid N+1 queries; chain: phaseId → lessonVersionId → lessonId → title
 - (2026-04-14, teacher-module1) Teacher lesson preview: use try/catch on ctx.db.get with Id cast, then fall back to slug-based index query. Set all phases to 'available' so LessonStepper allows free navigation in teaching mode.
+- (2026-04-15, module-2-seed) Treat `curriculum/modules/` and audited class-period plans as canonical when track specs disagree; Module 2 spec had wrong 2-2 through 2-5 titles/counts, 2-5 has 8 phases, 2-4 splits long/synthetic division, and 2-3 includes Apply Example 7.

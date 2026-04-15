@@ -2,10 +2,10 @@ import { describe, it, expect } from 'vitest';
 import type { SeedLesson, SeedPhase } from '@/convex/seed/types';
 
 describe('seed-lesson-1-5', () => {
-  describe('Lesson 1-5: Completing the Square', () => {
+  describe('Lesson 1-5: Solving Quadratic Equations by Completing the Square', () => {
     const lesson5Seed: SeedLesson = {
       unitNumber: 1,
-      title: 'Completing the Square',
+      title: 'Solving Quadratic Equations by Completing the Square',
       slug: 'module-1-lesson-5',
       description: 'Solve quadratic equations by using the Square Root Property and completing the square.',
       orderIndex: 5,
@@ -27,7 +27,7 @@ describe('seed-lesson-1-5', () => {
 
     it('lesson has correct metadata', () => {
       expect(lesson5Seed.unitNumber).toBe(1);
-      expect(lesson5Seed.title).toBe('Completing the Square');
+      expect(lesson5Seed.title).toBe('Solving Quadratic Equations by Completing the Square');
       expect(lesson5Seed.slug).toBe('module-1-lesson-5');
       expect(lesson5Seed.orderIndex).toBe(5);
     });

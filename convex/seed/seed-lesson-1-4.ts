@@ -23,7 +23,7 @@ export const seedLesson4 = internalMutation({
       ? existingLesson._id
       : await ctx.db.insert("lessons", {
           unitNumber: 1,
-          title: "Solving by Factoring",
+          title: "Solve Quadratic Equations by Factoring",
           slug: lessonSlug,
           description: "Students factor trinomials and apply the zero product property.",
           orderIndex: 4,
@@ -41,7 +41,7 @@ export const seedLesson4 = internalMutation({
       : await ctx.db.insert("lesson_versions", {
           lessonId,
           version: 1,
-          title: "Solving by Factoring",
+          title: "Solve Quadratic Equations by Factoring",
           description: "Students factor trinomials and apply the zero product property.",
           status: "published",
           createdAt: now,

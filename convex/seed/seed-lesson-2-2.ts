@@ -23,7 +23,7 @@ export const seedLesson2_2 = internalMutation({
       ? existingLesson._id
       : await ctx.db.insert("lessons", {
           unitNumber: 2,
-          title: "Polynomials, Linear Factors, and Zeros",
+          title: "Analyzing Graphs of Polynomial Functions",
           slug: lessonSlug,
           description: "Students analyze graphs of polynomial functions, approximate zeros, and find extrema.",
           orderIndex: 2,
@@ -41,7 +41,7 @@ export const seedLesson2_2 = internalMutation({
       : await ctx.db.insert("lesson_versions", {
           lessonId,
           version: 1,
-          title: "Polynomials, Linear Factors, and Zeros",
+          title: "Analyzing Graphs of Polynomial Functions",
           description: "Students analyze graphs of polynomial functions, approximate zeros, and find extrema.",
           status: "published",
           createdAt: now,
@@ -137,6 +137,21 @@ export const seedLesson2_2 = internalMutation({
       },
       {
         phaseNumber: 5,
+        title: "Learn: Extrema of Polynomials",
+        phaseType: "learn" as const,
+        estimatedMinutes: 15,
+        sections: [
+          {
+            sequenceOrder: 1,
+            sectionType: "text" as const,
+            content: {
+              markdown: "## Extrema of Polynomials\n\nExtrema occur at relative maxima or relative minima of a function.\n\n- A **relative minimum** and a **relative maximum** are both extrema\n- A polynomial of degree $n$ has at most $n - 1$ extrema\n\n### Study Tip\n\nRelative maxima and relative minima are sometimes called **turning points**.\n\n### Key Facts\n\n- A quartic function (degree 4) can have at most 3 turning points\n- A cubic function (degree 3) can have at most 2 turning points\n- Extrema can be estimated from a graph or table of values",
+            },
+          },
+        ],
+      },
+      {
+        phaseNumber: 6,
         title: "Worked Example 2",
         phaseType: "worked_example" as const,
         estimatedMinutes: 10,
@@ -175,7 +190,7 @@ export const seedLesson2_2 = internalMutation({
         ],
       },
       {
-        phaseNumber: 6,
+        phaseNumber: 7,
         title: "Worked Example 3",
         phaseType: "worked_example" as const,
         estimatedMinutes: 12,
@@ -205,21 +220,6 @@ export const seedLesson2_2 = internalMutation({
                   { expression: "y-intercept: (0, 7.708)", explanation: "Initial value in 1930" },
                 ],
               },
-            },
-          },
-        ],
-      },
-      {
-        phaseNumber: 7,
-        title: "Learn: Extrema of Polynomials",
-        phaseType: "learn" as const,
-        estimatedMinutes: 15,
-        sections: [
-          {
-            sequenceOrder: 1,
-            sectionType: "text" as const,
-            content: {
-              markdown: "## Extrema of Polynomials\n\nExtrema occur at relative maxima or relative minima of a function.\n\n- A **relative minimum** and a **relative maximum** are both extrema\n- A polynomial of degree $n$ has at most $n - 1$ extrema\n\n### Study Tip\n\nRelative maxima and relative minima are sometimes called **turning points**.\n\n### Key Facts\n\n- A quartic function (degree 4) can have at most 3 turning points\n- A cubic function (degree 3) can have at most 2 turning points\n- Extrema can be found using the first derivative or graphically",
             },
           },
         ],
@@ -294,33 +294,6 @@ export const seedLesson2_2 = internalMutation({
       },
       {
         phaseNumber: 10,
-        title: "Worked Example 6",
-        phaseType: "worked_example" as const,
-        estimatedMinutes: 10,
-        sections: [
-          {
-            sequenceOrder: 1,
-            sectionType: "text" as const,
-            content: {
-              markdown: "## Example 6: Compare Polynomial Functions\n\nExamine $f(x) = x^3 + x^2 - 5x - 2$ and $g(x)$ shown in the graph.\n\n**Part A**: Graph $f(x)$ using a table of values.\n\n**Part B**: Analyze the key features including zeros, intercepts, and end behavior.",
-            },
-          },
-          {
-            sequenceOrder: 2,
-            sectionType: "activity" as const,
-            content: {
-              componentKey: "graphing-explorer",
-              props: {
-                variant: "compare",
-                equations: ["f(x) = x^3 + x^2 - 5x - 2", "g(x)"],
-                title: "Compare Polynomial Functions",
-              },
-            },
-          },
-        ],
-      },
-      {
-        phaseNumber: 11,
         title: "Discourse",
         phaseType: "discourse" as const,
         estimatedMinutes: 15,
@@ -360,7 +333,7 @@ export const seedLesson2_2 = internalMutation({
         ],
       },
       {
-        phaseNumber: 12,
+        phaseNumber: 11,
         title: "Reflection",
         phaseType: "reflection" as const,
         estimatedMinutes: 5,

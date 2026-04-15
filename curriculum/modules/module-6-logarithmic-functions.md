@@ -6,7 +6,7 @@ Students formalize logarithms as inverses of exponentials and apply them to solv
 
 ## Lessons
 
-### 6-1 Logarithmic Functions
+### 6-1 Logarithms and Logarithmic Functions
 Definition, graphs, and transformations.
 
 ### 6-2 Properties of Logarithms
@@ -18,7 +18,7 @@ Base-10 applications.
 ### 6-4 Natural Logarithms
 Base e and applications.
 
-### 6-5 Exponential and Logarithmic Models
+### 6-5 Using Exponential and Logarithmic Functions
 Solving real-world problems.
 
 ## Skills Developed

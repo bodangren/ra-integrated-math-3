@@ -6,10 +6,10 @@ Module 1 curriculum (8 lessons) is fully seeded and functional. Module 2 contain
 
 Module 2 Topic: Polynomial Functions
 - Lesson 2-1: Polynomial Functions
-- Lesson 2-2: Polynomials, Linear Factors, and Zeros (synthetic division, Remainder Theorem)
-- Lesson 2-3: The Remainder and Factor Theorems
-- Lesson 2-4: The Fundamental Theorem of Algebra (complex roots, conjugates)
-- Lesson 2-5: Graphs of Polynomial Functions (end behavior, turning points)
+- Lesson 2-2: Analyzing Graphs of Polynomial Functions (Location Principle, extrema)
+- Lesson 2-3: Operations with Polynomials (add, subtract, multiply)
+- Lesson 2-4: Dividing Polynomials (long division, synthetic division)
+- Lesson 2-5: Powers of Binomials (Pascal's Triangle, Binomial Theorem)
 
 ## Requirements
 
@@ -20,10 +20,10 @@ Each lesson must be seeded with the correct `phaseType` sequence derived from th
 | Lesson | Phase Sequence |
 |--------|----------------|
 | 2-1 | explore, vocabulary, learn, worked_example ×2, learn, worked_example ×4, discourse, reflection |
-| 2-2 | explore, vocabulary, learn, worked_example ×3, learn, worked_example ×3, discourse, reflection |
-| 2-3 | explore, vocabulary, learn, worked_example ×3, learn, worked_example ×3, discourse, reflection |
-| 2-4 | explore, vocabulary, learn, worked_example ×4, assessment, discourse, reflection |
-| 2-5 | explore, vocabulary, learn, worked_example ×3, learn, worked_example ×3, assessment, discourse, reflection |
+| 2-2 | explore, vocabulary, learn, worked_example, learn, worked_example ×4, discourse, reflection |
+| 2-3 | explore, vocabulary, learn, worked_example ×3, learn, worked_example ×4, discourse, reflection |
+| 2-4 | explore, vocabulary, learn, worked_example ×3, learn, worked_example ×2, discourse, reflection |
+| 2-5 | explore, vocabulary, learn, worked_example ×3, discourse, reflection |
 
 ### Section Content
 
@@ -35,7 +35,7 @@ Each lesson must be seeded with the correct `phaseType` sequence derived from th
 
 1. **explore** phases: `graphing-explorer` with `problemVariant: "explore"`
 2. **worked_example** phases: `step-by-step-solver` with appropriate problem type config
-3. **assessment** phases: `comprehension-quiz` with quick-check questions
+3. **discourse** phases: `comprehension-quiz` with discussion or quick-check questions
 
 ### Competency Standards
 
@@ -55,7 +55,7 @@ All seed functions must be idempotent: check for existing data before inserting 
 2. Each lesson has correct number of phases with correct `phaseType` and `title`
 3. Idempotent re-run produces no duplicates
 4. All worked example phases have activity records with valid props
-5. Assessment phases have `comprehension-quiz` activity records
+5. Discourse phases have `comprehension-quiz` activity records where interactive checks are present
 6. Module 2 competency standards seeded and linked to lessons
 7. `npm run lint` passes on seed files
 8. Seed can be run via `npx convex run seed:main -- until `seedModule2Lessons` is called

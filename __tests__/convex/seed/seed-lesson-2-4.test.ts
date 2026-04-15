@@ -12,14 +12,15 @@ describe('seed-lesson-2-4', () => {
       phases: [
         { phaseNumber: 1, title: 'Explore', phaseType: 'explore', sections: [] },
         { phaseNumber: 2, title: 'Vocabulary', phaseType: 'vocabulary', sections: [] },
-        { phaseNumber: 3, title: 'Learn: Dividing Polynomials', phaseType: 'learn', sections: [] },
+        { phaseNumber: 3, title: 'Learn: Dividing Polynomials by Using Long Division', phaseType: 'learn', sections: [] },
         { phaseNumber: 4, title: 'Worked Example 1', phaseType: 'worked_example', sections: [] },
         { phaseNumber: 5, title: 'Worked Example 2', phaseType: 'worked_example', sections: [] },
         { phaseNumber: 6, title: 'Worked Example 3', phaseType: 'worked_example', sections: [] },
-        { phaseNumber: 7, title: 'Worked Example 4', phaseType: 'worked_example', sections: [] },
-        { phaseNumber: 8, title: 'Assessment', phaseType: 'assessment', sections: [] },
-        { phaseNumber: 9, title: 'Discourse', phaseType: 'discourse', sections: [] },
-        { phaseNumber: 10, title: 'Reflection', phaseType: 'reflection', sections: [] },
+        { phaseNumber: 7, title: 'Learn: Dividing Polynomials by Using Synthetic Division', phaseType: 'learn', sections: [] },
+        { phaseNumber: 8, title: 'Worked Example 4', phaseType: 'worked_example', sections: [] },
+        { phaseNumber: 9, title: 'Worked Example 5', phaseType: 'worked_example', sections: [] },
+        { phaseNumber: 10, title: 'Discourse', phaseType: 'discourse', sections: [] },
+        { phaseNumber: 11, title: 'Reflection', phaseType: 'reflection', sections: [] },
       ],
     };
 
@@ -30,11 +31,11 @@ describe('seed-lesson-2-4', () => {
       expect(lesson2Seed.orderIndex).toBe(4);
     });
 
-    it('has exactly 10 phases', () => {
-      expect(lesson2Seed.phases).toHaveLength(10);
+    it('has exactly 11 phases', () => {
+      expect(lesson2Seed.phases).toHaveLength(11);
     });
 
-    it('correct phase sequence: explore, vocab, learn, 4×worked_example, assessment, discourse, reflection', () => {
+    it('correct phase sequence: explore, vocab, learn, 3×worked_example, learn, 2×worked_example, discourse, reflection', () => {
       const expectedSequence: SeedPhase['phaseType'][] = [
         'explore',
         'vocabulary',
@@ -42,8 +43,9 @@ describe('seed-lesson-2-4', () => {
         'worked_example',
         'worked_example',
         'worked_example',
+        'learn',
         'worked_example',
-        'assessment',
+        'worked_example',
         'discourse',
         'reflection',
       ];
@@ -62,32 +64,32 @@ describe('seed-lesson-2-4', () => {
       expect(vocabPhase?.phaseNumber).toBe(2);
     });
 
-    it('learn phase is phase 3', () => {
-      const learnPhase = lesson2Seed.phases.find((p) => p.phaseType === 'learn');
-      expect(learnPhase?.phaseNumber).toBe(3);
+    it('first learn phase is phase 3', () => {
+      const learnPhases = lesson2Seed.phases.filter((p) => p.phaseType === 'learn');
+      expect(learnPhases[0]?.phaseNumber).toBe(3);
     });
 
-    it('assessment phase is phase 8', () => {
-      const assessmentPhase = lesson2Seed.phases.find((p) => p.phaseType === 'assessment');
-      expect(assessmentPhase?.phaseNumber).toBe(8);
+    it('second learn phase is phase 7', () => {
+      const learnPhases = lesson2Seed.phases.filter((p) => p.phaseType === 'learn');
+      expect(learnPhases[1]?.phaseNumber).toBe(7);
     });
 
-    it('discourse phase is phase 9', () => {
+    it('discourse phase is phase 10', () => {
       const discoursePhase = lesson2Seed.phases.find((p) => p.phaseType === 'discourse');
-      expect(discoursePhase?.phaseNumber).toBe(9);
+      expect(discoursePhase?.phaseNumber).toBe(10);
     });
 
-    it('reflection phase is phase 10', () => {
+    it('reflection phase is phase 11', () => {
       const reflectionPhase = lesson2Seed.phases.find((p) => p.phaseType === 'reflection');
-      expect(reflectionPhase?.phaseNumber).toBe(10);
+      expect(reflectionPhase?.phaseNumber).toBe(11);
     });
 
-    it('has exactly 4 worked_example phases', () => {
+    it('has exactly 5 worked_example phases', () => {
       const workedExamples = lesson2Seed.phases.filter((p) => p.phaseType === 'worked_example');
-      expect(workedExamples).toHaveLength(4);
+      expect(workedExamples).toHaveLength(5);
     });
 
-    it('worked examples are numbered 1-4 in order', () => {
+    it('worked examples are numbered 1-5 in order', () => {
       const workedExamples = lesson2Seed.phases.filter((p) => p.phaseType === 'worked_example');
       workedExamples.forEach((we, idx) => {
         expect(we.title).toBe(`Worked Example ${idx + 1}`);
@@ -138,22 +140,6 @@ describe('seed-lesson-2-4', () => {
 
       expect(workedExampleSection.content.componentKey).toBe('step-by-step-solver');
       expect(validComponentKeys).toContain(workedExampleSection.content.componentKey);
-    });
-
-    it('assessment phase should have comprehension-quiz activity', () => {
-      const assessmentSection = {
-        sequenceOrder: 1,
-        sectionType: 'activity' as const,
-        content: {
-          componentKey: 'comprehension-quiz' as const,
-          props: {
-            questions: [],
-          },
-        },
-      };
-
-      expect(assessmentSection.content.componentKey).toBe('comprehension-quiz');
-      expect(validComponentKeys).toContain(assessmentSection.content.componentKey);
     });
 
     it('discourse phase should have comprehension-quiz activity', () => {

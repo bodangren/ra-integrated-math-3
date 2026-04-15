@@ -23,7 +23,7 @@ export const seedLesson8 = internalMutation({
       ? existingLesson._id
       : await ctx.db.insert("lessons", {
           unitNumber: 1,
-          title: "Linear-Quadratic Systems",
+          title: "Solving Linear-Nonlinear Systems",
           slug: lessonSlug,
           description: "Solve systems of linear and quadratic equations.",
           orderIndex: 8,
@@ -41,7 +41,7 @@ export const seedLesson8 = internalMutation({
       : await ctx.db.insert("lesson_versions", {
           lessonId,
           version: 1,
-          title: "Linear-Quadratic Systems",
+          title: "Solving Linear-Nonlinear Systems",
           description: "Solve systems of linear and quadratic equations.",
           status: "published",
           createdAt: now,

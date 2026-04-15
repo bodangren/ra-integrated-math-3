@@ -85,7 +85,7 @@ export const seedLesson2_4 = internalMutation({
       },
       {
         phaseNumber: 3,
-        title: "Learn: Dividing Polynomials",
+        title: "Learn: Dividing Polynomials by Using Long Division",
         phaseType: "learn" as const,
         estimatedMinutes: 15,
         sections: [
@@ -206,6 +206,21 @@ export const seedLesson2_4 = internalMutation({
       },
       {
         phaseNumber: 7,
+        title: "Learn: Dividing Polynomials by Using Synthetic Division",
+        phaseType: "learn" as const,
+        estimatedMinutes: 15,
+        sections: [
+          {
+            sequenceOrder: 1,
+            sectionType: "text" as const,
+            content: {
+              markdown: "## Dividing Polynomials by Using Synthetic Division\n\nSynthetic division is a shortcut for dividing a polynomial by a binomial of the form $x - a$.\n\n### Key Steps\n\n1. Write the coefficients of the dividend in descending degree order.\n2. Include $0$ placeholders for missing terms.\n3. Use the zero of the divisor, $a$, in the synthetic division setup.\n4. The last entry is the remainder; the other entries give the quotient coefficients.",
+            },
+          },
+        ],
+      },
+      {
+        phaseNumber: 8,
         title: "Worked Example 4",
         phaseType: "worked_example" as const,
         estimatedMinutes: 10,
@@ -243,35 +258,34 @@ export const seedLesson2_4 = internalMutation({
         ],
       },
       {
-        phaseNumber: 8,
-        title: "Assessment",
-        phaseType: "assessment" as const,
-        estimatedMinutes: 15,
+        phaseNumber: 9,
+        title: "Worked Example 5",
+        phaseType: "worked_example" as const,
+        estimatedMinutes: 12,
         sections: [
           {
             sequenceOrder: 1,
             sectionType: "text" as const,
             content: {
-              markdown: "## Quick Check\n\nTest your understanding of dividing polynomials.",
+              markdown: "## Example 5: Divisor with a Coefficient Other Than 1\n\nFind: $(4x^4 - 37x^2 + 4x + 9) / (2x - 1)$\n\nTo use synthetic division, the leading coefficient of the divisor must be $1$.\n\nDivide numerator and denominator by $2$:\n\n$\\frac{(4x^4 - 37x^2 + 4x + 9) / 2}{(2x - 1) / 2} = \\frac{2x^4 - \\frac{37}{2}x^2 + 2x + \\frac{9}{2}}{x - \\frac{1}{2}}$\n\nNow use synthetic division with $a = \\frac{1}{2}$.\n\nThe final answer is:\n\n$2x^3 + x^2 - 18x - 7 + \\frac{2}{2x - 1}$",
             },
           },
           {
             sequenceOrder: 2,
             sectionType: "activity" as const,
             content: {
-              componentKey: "comprehension-quiz",
+              componentKey: "step-by-step-solver",
               props: {
-                questions: [
-                  {
-                    question: "When dividing $(x^2 - 9) / (x - 3)$, the quotient is:",
-                    options: ["x + 3", "x - 3", "x - 9"],
-                    correctIndex: 0,
-                  },
-                  {
-                    question: "In synthetic division, what is the divisor form?",
-                    options: ["x + a", "x - a", "ax + b"],
-                    correctIndex: 1,
-                  },
+                problemType: "polynomial",
+                equation: "(4x^4 - 37x^2 + 4x + 9) / (2x - 1)",
+                steps: [
+                  { expression: "(2x - 1) / 2 = x - 1/2", explanation: "Normalize the divisor" },
+                  { expression: "a = 1/2", explanation: "Identify the synthetic division value" },
+                  { expression: "2x^4 + 0x^3 - (37/2)x^2 + 2x + 9/2", explanation: "Include the missing cubic placeholder" },
+                  { expression: "2x^3 + x^2 - 18x - 7", explanation: "Use synthetic division to find the quotient" },
+                  { expression: "remainder = 1", explanation: "Find the remainder for the normalized divisor" },
+                  { expression: "1 / (x - 1/2) = 2 / (2x - 1)", explanation: "Rewrite the remainder with the original divisor" },
+                  { expression: "2x^3 + x^2 - 18x - 7 + 2/(2x - 1)", explanation: "Write the final answer" },
                 ],
               },
             },
@@ -279,7 +293,7 @@ export const seedLesson2_4 = internalMutation({
         ],
       },
       {
-        phaseNumber: 9,
+        phaseNumber: 10,
         title: "Discourse",
         phaseType: "discourse" as const,
         estimatedMinutes: 15,
@@ -314,7 +328,7 @@ export const seedLesson2_4 = internalMutation({
         ],
       },
       {
-        phaseNumber: 10,
+        phaseNumber: 11,
         title: "Reflection",
         phaseType: "reflection" as const,
         estimatedMinutes: 5,

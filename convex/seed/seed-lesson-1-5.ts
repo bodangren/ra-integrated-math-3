@@ -23,7 +23,7 @@ export const seedLesson5 = internalMutation({
       ? existingLesson._id
       : await ctx.db.insert("lessons", {
           unitNumber: 1,
-          title: "Completing the Square",
+          title: "Solving Quadratic Equations by Completing the Square",
           slug: lessonSlug,
           description: "Solve quadratic equations by using the Square Root Property and completing the square.",
           orderIndex: 5,
@@ -41,7 +41,7 @@ export const seedLesson5 = internalMutation({
       : await ctx.db.insert("lesson_versions", {
           lessonId,
           version: 1,
-          title: "Completing the Square",
+          title: "Solving Quadratic Equations by Completing the Square",
           description: "Solve quadratic equations by using the Square Root Property and completing the square.",
           status: "published",
           createdAt: now,

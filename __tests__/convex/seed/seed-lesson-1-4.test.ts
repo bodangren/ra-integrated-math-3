@@ -2,10 +2,10 @@ import { describe, it, expect } from 'vitest';
 import type { SeedLesson, SeedPhase } from '@/convex/seed/types';
 
 describe('seed-lesson-1-4', () => {
-  describe('Lesson 1-4: Solving by Factoring', () => {
+  describe('Lesson 1-4: Solve Quadratic Equations by Factoring', () => {
     const lesson4Seed: SeedLesson = {
       unitNumber: 1,
-      title: 'Solving by Factoring',
+      title: 'Solve Quadratic Equations by Factoring',
       slug: 'module-1-lesson-4',
       description: 'Students factor trinomials and apply the zero product property.',
       orderIndex: 4,
@@ -28,7 +28,7 @@ describe('seed-lesson-1-4', () => {
 
     it('lesson has correct metadata', () => {
       expect(lesson4Seed.unitNumber).toBe(1);
-      expect(lesson4Seed.title).toBe('Solving by Factoring');
+      expect(lesson4Seed.title).toBe('Solve Quadratic Equations by Factoring');
       expect(lesson4Seed.slug).toBe('module-1-lesson-4');
       expect(lesson4Seed.orderIndex).toBe(4);
     });

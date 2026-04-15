@@ -23,7 +23,7 @@ export const seedLesson6 = internalMutation({
       ? existingLesson._id
       : await ctx.db.insert("lessons", {
           unitNumber: 1,
-          title: "Quadratic Formula and Discriminant",
+          title: "Using the Quadratic Formula and the Discriminant",
           slug: lessonSlug,
           description: "Use the Quadratic Formula to solve equations and the discriminant to determine the number and type of solutions.",
           orderIndex: 6,
@@ -41,7 +41,7 @@ export const seedLesson6 = internalMutation({
       : await ctx.db.insert("lesson_versions", {
           lessonId,
           version: 1,
-          title: "Quadratic Formula and Discriminant",
+          title: "Using the Quadratic Formula and the Discriminant",
           description: "Use the Quadratic Formula to solve equations and the discriminant to determine the number and type of solutions.",
           status: "published",
           createdAt: now,

@@ -30,6 +30,7 @@
 | getStandardsCoverage unbounded query | Medium | Open | `.collect()` fetches all lesson_standards rows |
 | getTeacherCourseOverviewData N+1 for student_competency | Medium | Open | One query per student via Promise.all |
 | Seed tests decoupled from seed implementations (inline data) | Medium | Open | Changes to seed files won't break tests |
+| Module 1 seed implementation compresses current curriculum examples | Medium | Open | Track spec now matches source counts, but seed files/tests still use older condensed phase patterns; needs a dedicated remediation track before reseeding Module 1 |
 | Module 2 standards incomplete (missing HSA-APR.A.1, HSA-APR.B.2) | Medium | Open | To be addressed in module-2-seed Phase 5 |
 | Legacy Supabase types in AuthProvider.tsx | Low | Open | snake_case profile fields should match Convex schema |
 | Equivalence validator 6/50 tests failing | Low | Open | Pattern-matching limits; 88% passing exceeds 80% target |

@@ -9,7 +9,7 @@ Students extend quadratic ideas to higher-degree polynomials, focusing on struct
 ### 2-1 Polynomial Functions
 Definitions, degree, leading coefficient, and basic graph shapes.
 
-### 2-2 Analyzing Graphs
+### 2-2 Analyzing Graphs of Polynomial Functions
 End behavior, turning points, and multiplicity of roots.
 
 ### 2-3 Operations with Polynomials

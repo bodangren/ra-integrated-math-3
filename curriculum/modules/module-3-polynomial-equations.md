@@ -6,16 +6,16 @@ Students focus on solving higher-degree equations and understanding polynomial s
 
 ## Lessons
 
-### 3-1 Solving by Graphing
+### 3-1 Solving Polynomial Equations by Graphing
 Using graphs to approximate solutions and understand multiplicity.
 
-### 3-2 Algebraic Solutions
+### 3-2 Solving Polynomial Equations Algebraically
 Factoring, substitution, and decomposition strategies.
 
-### 3-3 Polynomial Identities
+### 3-3 Proving Polynomial Identities
 Understanding and proving identities conceptually.
 
-### 3-4 Remainder and Factor Theorems
+### 3-4 The Remainder and Factor Theorems
 Using division to test factors and evaluate functions.
 
 ### 3-5 Roots and Zeros
