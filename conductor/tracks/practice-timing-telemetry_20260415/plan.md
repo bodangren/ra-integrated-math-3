@@ -21,28 +21,28 @@
   - [x] Document timing as optional process evidence, not a standalone grade [e64ead6]
 - [x] Task: Conductor - Phase Completion Verification 'Canonical Contract and Schema Reconciliation' (Protocol in workflow.md) [e64ead6]
 
-## Phase 2: Reusable Timing Core and React Instrumentation [checkpoint: pending]
+## Phase 2: Reusable Timing Core and React Instrumentation [checkpoint: a973651]
 
-- [x] Task: Write unit tests for the pure timing accumulator [pending]
+- [x] Task: Write unit tests for the pure timing accumulator [a973651]
   - [x] Test wall-clock and active time accumulation
   - [x] Test idle threshold handling with a 30 second default
   - [x] Test pause/resume behavior
   - [x] Test confidence downgrade reasons
-- [x] Task: Implement a course-agnostic timing accumulator [pending]
+- [x] Task: Implement a course-agnostic timing accumulator [a973651]
   - [x] Create a pure module for timing session state and transitions
   - [x] Use serializable timestamps and numeric durations
   - [x] Keep browser APIs out of the pure module
-- [x] Task: Implement a React timing hook or wrapper [pending]
+- [x] Task: Implement a React timing hook or wrapper [a973651]
   - [x] Use `Date.now()` for persisted timestamps
   - [x] Use `performance.now()` for elapsed duration math
   - [x] Subscribe to `visibilitychange`, `focus`, `blur`, and `pagehide`
   - [x] Clean up all listeners on unmount
-- [x] Task: Add browser-event tests [pending]
+- [x] Task: Add browser-event tests [a973651]
   - [x] Test hidden-tab intervals are not counted as active time
   - [x] Test blur/focus intervals affect confidence
   - [x] Test pagehide marks an interrupted or low-confidence session
   - [x] Test a long interaction gap is counted as idle time
-- [ ] Task: Conductor - Phase Completion Verification 'Reusable Timing Core and React Instrumentation' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Reusable Timing Core and React Instrumentation' (Protocol in workflow.md) [a973651]
 
 ## Phase 3: Activity Submission Integration
 

@@ -245,6 +245,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
      *Depends on: Module 9 Curriculum Seed completion*
      *Link: [./conductor/tracks/practice-timing-telemetry_20260415/](./conductor/tracks/practice-timing-telemetry_20260415/)*
      - Phase 1: Canonical Contract and Schema Reconciliation [COMPLETE] [checkpoint: 790e2f5]
+     - Phase 2: Reusable Timing Core and React Instrumentation [COMPLETE] [checkpoint: a973651]
 
 - [ ] **Track: Practice Timing Baselines**
      *Build timing baselines and time-aware SRS evidence features after reliable practice timing telemetry exists*
