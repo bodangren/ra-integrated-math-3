@@ -159,6 +159,9 @@ export const seedAll = internalAction({
           case "module-7-lesson-6":
             await ctx.runMutation(seedInternal.seedLesson7_6, {});
             break;
+          case "module-8-lesson-1":
+            await ctx.runMutation(seedInternal.seedLesson8_1, {});
+            break;
           default:
             break;
         }
@@ -1038,6 +1041,28 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 7, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
         { phaseNumber: 8, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
         { phaseNumber: 9, title: "Learn: Solving Rational Inequalities", phaseType: "learn", sections: [] },
+        { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 11, title: "Worked Example 7", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 12, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 13, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 8,
+      title: "Random Sampling",
+      slug: "module-8-lesson-1",
+      description: "Students classify sampling methods, identify bias, and distinguish among sample surveys, experiments, and observational studies.",
+      orderIndex: 1,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Randomness and Bias", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Learn: Types of Studies", phaseType: "learn", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
         { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
         { phaseNumber: 11, title: "Worked Example 7", phaseType: "worked_example", sections: [] },
         { phaseNumber: 12, title: "Discourse", phaseType: "discourse", sections: [] },

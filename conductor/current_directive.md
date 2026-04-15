@@ -18,12 +18,12 @@
 
 Track: `conductor/tracks/module-8-seed_20260415/`
 
-Seed Module 8 inferential statistics lessons (8-1 through 8-5) into Convex database. Pending.
+Seed Module 8 inferential statistics lessons (8-1 through 8-5) into Convex database. Phase 1 complete.
 
 ## Planned Upcoming Tracks
 
-1. **Module 8 Curriculum Seed** — Phase 1: Lesson 8-1
-2. **Module 8 Curriculum Seed** — Phases 2-6: Lessons 8-2 through 8-5
+1. **Module 8 Curriculum Seed** — Phase 2: Lesson 8-2
+2. **Module 8 Curriculum Seed** — Phases 3-6: Lessons 8-3 through 8-5 and integration
 3. **Module 9 Curriculum Seed** — `module-9-seed_20260415` (7 lessons)
 4. **Practice Timing Telemetry** — `practice-timing-telemetry_20260415` (post-Module 9 SRS foundation)
 5. **Practice Timing Baselines** — `practice-timing-baselines_20260415` (depends on timing telemetry and stable practice problem-family identifiers)
