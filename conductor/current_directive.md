@@ -11,47 +11,19 @@
 - **Module 1 Roadmap**: Complete.
 - **Module 2 Seed**: Complete; all 5 lessons wired into seed.ts.
 - **Module 3 Seed**: Complete; all 5 lessons wired into seed.ts with MPM.3.x standards.
-- **Manual Component Approval**: Phases 1-4 complete. Phase 5 (docs/reconciliation) pending.
-
-## Code Review Findings (2026-04-15, review 2)
-
-### Fixed This Review
-- **CRITICAL**: ReviewQueueView filter state disconnected from ReviewQueueClient — filters were cosmetic-only. Now uses client's filters/setFilters directly.
-- **HIGH**: Selected item not cleared after successful review submission. Panel remained open showing reviewed item.
-- **MEDIUM**: ReviewDecisionPanel submitting state never reset on success (only on error). Now uses `finally` block.
-- **MEDIUM**: Duplicate `Date.now()` in submitReviewHandler creating inconsistent timestamps. Single `now` variable reused.
-- **TS FIX**: review-queue.test.ts phaseVersionId type mismatch (3 errors fixed via proper Doc type casting).
-- **TS FIX**: SubmissionEvidence type missing from error-analysis exports (fixed both component and test errors).
-- **TS FIX**: teacher/students/page.tsx `detail` possibly null (added non-null assertion consistent with existing pattern).
-
-### New Issues Recorded in tech-debt.md
-- submitReviewHandler componentKind not validated server-side (Medium)
-- Incorrect CCSS description for HSA-APR.B.2 (High)
-- No lesson_standards seeding pipeline (High)
-- Missing CCSS standards for M2/M3 content (Medium)
-
-### Confirmed Pre-Existing (unchanged)
-- submitReview takes createdBy as arg (trust boundary risk).
-- N+1 queries in getLessonProgress, getTeacherLessonMonitoringData, getTeacherLessonPreview.
-- Unbounded collect() calls in multiple teacher.ts queries.
-- Silent catch blocks in student.ts.
-- No timeSpent >= 0 validation.
-- nextPhaseUnlocked hardcoded to true.
-- No Convex-layer authorization.
-- Approval race condition (no version/lock).
-- 6 equivalence test failures (pattern-matching limits, 88% passing).
+- **Manual Component Approval**: All 5 phases complete.
 
 ## Current In-Progress Track
 
-### Harden Manual Component Approval
+### Module 4 Curriculum Seed
 
-Track: `conductor/tracks/harden-manual-approval_20260415/`
+Track: `conductor/tracks/module-4-seed_20260415/`
 
-Phases 1-4 complete. Phase 5 ready: Documentation and Status Reconciliation.
+Seed Module 4 inverses and radical functions lessons (4-1 through 4-6) into Convex database.
 
 ## Planned Upcoming Tracks
 
-1. **Module 4 Curriculum Seed** — `module-4-seed_20260415` (6 lessons)
+1. **Module 5 Curriculum Seed** — `module-5-seed_20260415` (5 lessons)
 2. **Module 5 Curriculum Seed** — `module-5-seed_20260415` (5 lessons)
 3. **Module 6 Curriculum Seed** — `module-6-seed_20260415` (5 lessons)
 4. **Module 7 Curriculum Seed** — `module-7-seed_20260415` (6 lessons)
