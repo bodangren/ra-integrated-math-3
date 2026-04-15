@@ -1,17 +1,18 @@
 # Current Directive
 
-> Updated: 2026-04-15 (code review: harden-manual-approval Phases 3-4, module 2-3 seeds)
+> Updated: 2026-04-15 (code review: module 4 seeds Phases 1-4)
 
 ## Status Summary
 
-- **Tests**: 1847 passing, 6 known equivalence failures.
+- **Tests**: 1900 passing, 9 known failures (6 equivalence, 1 flaky StepByStepper-guided, 2 flaky lesson.test.tsx).
 - **Build**: Passing; RSC chunk warning remains pre-existing (734 KB).
 - **Lint**: Passing.
-- **TypeScript**: Fixed 6 new TS errors from harden-manual-approval track. 25 pre-existing test-file errors remain (students.test.tsx, dashboard.test.ts).
+- **TypeScript**: 25 pre-existing test-file errors remain (students.test.tsx, dashboard.test.ts). No new TS errors.
 - **Module 1 Roadmap**: Complete.
 - **Module 2 Seed**: Complete; all 5 lessons wired into seed.ts.
 - **Module 3 Seed**: Complete; all 5 lessons wired into seed.ts with MPM.3.x standards.
 - **Manual Component Approval**: All 5 phases complete.
+- **Module 4 Seed**: Phases 1-4 complete (lessons 4-1 through 4-4).
 
 ## Current In-Progress Track
 
@@ -23,7 +24,7 @@ Seed Module 4 inverses and radical functions lessons (4-1 through 4-6) into Conv
 
 ## Planned Upcoming Tracks
 
-1. **Module 5 Curriculum Seed** — `module-5-seed_20260415` (5 lessons)
+1. **Module 4 Curriculum Seed** — Phases 5-7 remaining (lessons 4-5, 4-6, integration)
 2. **Module 5 Curriculum Seed** — `module-5-seed_20260415` (5 lessons)
 3. **Module 6 Curriculum Seed** — `module-6-seed_20260415` (5 lessons)
 4. **Module 7 Curriculum Seed** — `module-7-seed_20260415` (6 lessons)

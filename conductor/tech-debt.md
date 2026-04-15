@@ -39,6 +39,7 @@
 | Legacy Supabase types in AuthProvider.tsx | Low | Open | snake_case profile fields should match Convex schema |
 | Equivalence validator 6/50 tests failing | Low | Open | Pattern-matching limits; 88% passing exceeds 80% target |
 | StepByStepper-guided hint tracking test intermittently fails | Low | Open | Passes in isolation, flaky in full suite |
+| TeacherLessonPreview test intermittently fails in full suite | Low | Open | Renders preview badge/title pass in isolation, flaky in full suite |
 | dashboard.test.ts TypeScript errors (missing isLocked) | Low | Open | 12 tests; pre-existing |
 | LessonRenderer initialStatus ignored skipped phases | High | Resolved | **Fixed 2026-04-15** |
 | submitReviewHandler componentKind not validated server-side | Medium | Open | Client sends kind; server doesn't verify against actual placement |
