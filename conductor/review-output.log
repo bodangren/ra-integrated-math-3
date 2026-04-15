@@ -1,84 +1,70 @@
-# Code Review Report — 2026-04-16 (Phases 4–5 Audit)
+# Code Review Report — 2026-04-16 (Timing Baselines & Component Kind Fix)
 
 ## Scope
-Tracks reviewed since last audit (~3 days):
-- Practice Timing Telemetry (Phases 1-5)
-- Module 9 Curriculum Seed (Phases 1-8)
-- Harden Manual Component Approval (Phases 1-5)
+Tracks reviewed since previous audit (64d7dca..db83550):
+- Fix submitReviewHandler componentKind Derivation (Phase 1)
+- Practice Timing Baselines (Phases 1–5)
+
+16 commits, ~2922 lines across 23 files.
 
 ## Test/Lint/Build Baseline
-- **Tests**: 2394 passed, 6 failed (pre-existing equivalence validator — fraction/radical expressions)
+- **Tests**: 2493 passed, 6 failed (pre-existing equivalence validator — fraction/radical expressions)
 - **Lint**: Passing
 - **Build**: Passing (RSC chunk 750 KB, pre-existing sourcemap warnings)
+- **README**: Accurate — tech stack, project structure, features all current
 
 ## Files Reviewed
 
 | File | Verdict |
 |------|---------|
-| `components/practice-timing.tsx` | **Fixed** — CRITICAL mixed time base bug |
-| `lib/practice/timing.ts` | **Fixed** — idle double-counting bug |
-| `__tests__/lib/practice/timing.test.ts` | **Fixed** — corrected test expectations |
-| `lib/practice/contract.ts` | Clean, timing schemas properly structured |
-| `convex/practice_submission.ts` | Clean, known Convex V refinement gap documented |
-| `components/lesson/ActivityRenderer.tsx` | Clean, timing injection correct |
-| `components/teacher/SubmissionReviewPanel.tsx` | Minor: local type redefinition (noted) |
-| `convex/seed/seed-lesson-9-1.ts` | **Fixed** — wrong componentKey in Explore phase |
-| `convex/seed/seed-lesson-9-2.ts` | **Fixed** — wrong correctIndex in discourse quiz |
-| `convex/seed/seed-lesson-9-3.ts` through `seed-lesson-9-7.ts` | Clean |
-| `convex/seed/seed-standards.ts` | Clean, M9 standards added |
-| `convex/seed/seed-lesson-standards.ts` | Clean, M9 links complete |
-| `convex/dev.ts` | Known issues documented in tech-debt |
-| `lib/activities/review-queue.ts` | Clean, resolveComponentKind documented |
-| `components/dev/review-harness/ActivityReviewHarness.tsx` | Known handleError gap documented |
+| `convex/dev.ts` | **Clean** — componentKind fix correct, derives from placement.phaseType |
+| `__tests__/convex/dev.test.ts` | **Clean** — 3 new tests cover derivation, fallback, and cross-kind cases |
+| `lib/practice/timing-baseline.ts` | **Clean** — pure functions, no Convex/React deps, well-tested |
+| `lib/practice/srs-rating.ts` | **Clean** — conservative timing modifier, correctness hierarchy enforced |
+| `lib/practice/objective-proficiency.ts` | **Clean** — 3-dimension separation, priority defaults, triaged policy |
+| `components/student/ObjectiveProficiencyBadge.tsx` | **Clean** — no speed pressure language, privacy-compliant |
+| `components/teacher/TeacherObjectiveDiagnosticCard.tsx` | **Clean** — diagnostic details, baseline gap warnings |
+| `__tests__/lib/practice/timing-baseline.test.ts` | **Clean** — 220 lines, covers percentile, outlier, threshold cases |
+| `__tests__/lib/practice/srs-rating.test.ts` | **Clean** — 202 lines, covers all rating transitions |
+| `__tests__/lib/practice/objective-proficiency.test.ts` | **Clean** — 428 lines, covers priority defaults, evidence, proficiency |
+| `__tests__/components/student/ObjectiveProficiencyBadge.test.tsx` | **Clean** — privacy compliance, all proficiency states |
+| `__tests__/components/teacher/TeacherObjectiveDiagnosticCard.test.tsx` | **Clean** — baseline gaps, low confidence, problem families |
+| `convex/timing_baseline.ts` | Medium issues noted (N+1, scaling concerns) |
+| `convex/schema.ts` | **Clean** — timing_baselines table with proper indexes |
+| `lib/practice/timing-baseline.md` | **Clean** — excellent developer docs with examples |
 
-## Issues Found & Fixed
+## Issues Found
 
 ### Critical
-1. **`components/practice-timing.tsx:41,96`** — `performance.now()` vs `Date.now()` mixed time bases.
-   The hook initialized the accumulator with `Date.now()` (epoch) but fed events with `performance.now()` (page-relative). First delta ≈ -55 years, silently dropped. All intermediate idle/active/confidence tracking was broken; only `wallClockMs` was salvaged by `finalize()`.
-   Fix: Use `performance.now()` consistently for all accumulator calls.
-
-2. **`lib/practice/timing.ts:155-198`** — Idle double-counting.
-   When an explicit `idle` event was followed by an `interaction`, both the explicit idle duration AND the gap from `lastActiveTime` contributed to `idleMs`, subtracting the threshold allowance twice.
-   Fix: After processing explicit idle in Block 1, set `lastActiveTime = currTime` and return early.
+None.
 
 ### High
-3. **`convex/seed/seed-lesson-9-2.ts:398`** — Wrong `correctIndex: 1` for Quadrant II reference angle.
-   "180° minus the angle" (correct) was at index 0; "90° minus the angle" (wrong) was marked correct.
-   Fix: Changed to `correctIndex: 0`.
-
-4. **`convex/seed/seed-lesson-9-1.ts:71`** — `graphing-explorer` with `y = x` in angle-measure lesson.
-   Same class of bug previously fixed in Module 8 (lessons 8-2/8-3). Domain mismatch.
-   Fix: Replaced with `comprehension-quiz` containing arc-length and radian conversion questions.
+None — all high-severity items from previous review have been resolved.
 
 ### Medium (Noted, Not Fixed)
-5. **`convex/dev.ts:165`** — `submitReviewHandler` derives `componentKind` from client args, not placement. Write-path hash may mismatch read-path hash (which correctly uses `resolveComponentKind`). Causes permanent `isStale: true` for misclassified components.
-6. **`convex/dev.ts:54-59`** — N+1 sequential `ctx.db.get()` in phase loop. Use `Promise.all`.
-7. **`ActivityReviewHarness.tsx:49-58`** — `handleError` is unreachable dead code. `ActivityPreview` has no error boundary; render errors crash the tree silently.
-8. **`ActivityReviewHarness.tsx:80`** and `PracticeReviewHarness.tsx:81`** — `canApprove` gate incomplete. Checklist items not gated: mode selector (Activity), variant inspection (Practice).
-9. **`__tests__/convex/seed/seed-lesson-9-*.test.ts`** — All seed tests are tautological: inline data, never import/execute actual seed functions. Zero regression protection (known pattern across all modules).
-10. **All Module 9 lesson seeds** — Activities table has no deduplication check. Phase insertion is idempotent but activity insertion is not. Re-seeding creates duplicate activity rows.
+1. **`convex/timing_baseline.ts:138-160`** — `collectEligibleTimings` queries activity_submissions per activityId in a loop (N+1). Acceptable at current scale (~3 activities per family) but needs batching for production baseline recomputation.
+2. **`convex/timing_baseline.ts:107-115`** — `getStaleBaselines` does `.take(1000)` then filters in-memory instead of using `by_last_computed` index for range filtering. Won't scale past 1000 families (currently ~156 families across 52 lessons).
+3. **`lib/practice/objective-proficiency.ts:69,81`** — `mastered` proficiency label in union type is dead code. `buildStudentProficiencyView` and `buildTeacherProficiencyView` never produce `mastered` — the label exists for future use but has no production path.
+4. **`convex/timing_baseline.ts:150`** — Fragile type assertion `(submission.submissionData as { timing?: TimingSummary })?.timing`. If submission data shape changes upstream, this silently returns undefined with no compile-time protection.
+5. **`convex/timing_baseline.ts:78-110`** — `batchRecomputeTimingBaselines` runs N+1 queries per problem family within a `Promise.all` of 5 concurrent recomputations. Total query count per batch: ~25 operations. Manageable but should be documented as bounded.
+6. **Double filtering** — Low-confidence submissions are filtered both in `collectEligibleTimings` (Convex layer, line 152-153) and `computeTimingBaseline` (pure layer, timing-baseline.ts:87). Harmless redundancy but adds maintenance burden.
 
 ### Low (Noted)
-11. **`timing.ts:34`** — `confidenceReasons` is `string[]` not a union type.
-12. **`SubmissionReviewPanel.tsx:206-212`** — Local `PracticeTimingEvidence` type redefines contract type, omitting fields.
-13. **`ActivityRenderer.tsx:16`** — Mode type `'teaching'|'guided'|'practice'` cast to `PracticeMode` with implicit mapping.
-14. **`timing.ts:63`** — `totalFocusLossMs` accumulated but never exposed (dead code).
-15. **`timing.test.ts:207,235`** — Test names contradict assertions ("keeps confidence at high" but asserts `medium`).
-16. **All M9 seeds** — `unit-circle-trainer` and `function-analyzer` components listed in contract for Module 9 but never used.
-17. **`seed-lesson-9-5.ts:108,160`** — Degrees in Learn section formula, radians in worked example without bridge.
-18. **All M9 seeds** — `as` cast on section content with no Zod validation against contract schemas.
+7. **`components/student/ObjectiveProficiencyBadge.tsx:19-30` + `components/teacher/TeacherObjectiveDiagnosticCard.tsx:13-24`** — Duplicate `LABEL_CLASSES` and `FLUENCY_CLASSES` mappings. Should be shared constants.
+8. **`lib/practice/srs-rating.ts:108-116`** — `baseRating === 'Easy'` case falls through to default return. `computeBaseRating` never returns `Easy`, making this dead code. Intentional for future use but should have a comment.
 
 ## Architectural Observations
-- Practice timing telemetry is now functional but has weak integration tests (`practice-timing.test.tsx` fully mocks the accumulator).
-- Module 9 seed is complete but follows the same tautological test pattern as all other modules.
-- The `submitReviewHandler` componentKind derivation remains the most impactful unfixed issue — it corrupts stale detection permanently.
-- Convex V validators cannot enforce Zod-style refinements (negative durations accepted server-side). Client-side validation is the only guard.
+- **Practice Timing Baselines** is a well-structured track. Pure functions isolated from Convex/React, testable, and well-documented. The two-step SRS rating adapter pattern (correctness first, timing second) is sound.
+- **submitReviewHandler fix** correctly resolves the write-path/read-path hash mismatch. The three test cases cover the critical scenarios.
+- **Objective proficiency** correctly separates evidence quality from policy compliance. The `PRIORITY_DEFAULTS` pattern is clean and configurable.
+- **Test coverage is excellent**: 1354 new test lines across 5 test files covering pure logic, Convex integration, and UI rendering.
 
 ## Summary
 | Severity | Found | Fixed | Remaining |
 |----------|-------|-------|-----------|
-| Critical | 2 | 2 | 0 |
-| High | 2 | 2 | 0 |
+| Critical | 0 | 0 | 0 |
+| High | 0 | 0 | 0 |
 | Medium | 6 | 0 | 6 |
-| Low | 8 | 0 | 8 |
+| Low | 2 | 0 | 2 |
+
+Overall quality: **Good**. No blockers. All new code follows project conventions, style guides, and architectural patterns. The practice timing baselines track is production-ready pending scale testing.

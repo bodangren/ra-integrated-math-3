@@ -41,3 +41,8 @@
 | totalFocusLossMs accumulated but never exposed | Low | Open | Dead code in timing.ts |
 | Flaky tests: StepByStepper hint tracking, TeacherLessonPreview | Low | Open | Pass in isolation, flaky in full suite |
 | M9 seed lesson 9-5 Learn section uses degrees, example uses radians | Low | Open | Unexplained unit switch |
+| collectEligibleTimings N+1 in timing_baseline.ts | Medium | Open | Queries activity_submissions per activityId in loop; acceptable at ~3 activities/family |
+| getStaleBaselines doesn't use by_last_computed index | Medium | Open | take(1000) + in-memory filter; won't scale past 1000 families |
+| mastered proficiency label is dead code | Medium | Open | Union type includes mastered but no code path produces it |
+| Fragile type assertion on submissionData.timing | Medium | Open | collectEligibleTimings casts to local TimingSummary; no compile-time protection |
+| Duplicate LABEL/FLUENCY_CLASSES in badge + diagnostic card | Low | Open | Should be shared constants |
