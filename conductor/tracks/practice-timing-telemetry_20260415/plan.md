@@ -85,7 +85,7 @@
   - [x] Add a tech-debt note if any legacy submission schema remains unresolved
 - [x] Task: Conductor - Phase Completion Verification 'Persistence and Review Surfaces' (Protocol in workflow.md) [checkpoint: 7c3d8e1]
 
-## Phase 5: Verification, Documentation, and Handoff
+## Phase 5: Verification, Documentation, and Handoff [checkpoint: b210dce]
 
 - [x] Task: Run validation commands [6f8a2c3]
   - [x] Run focused practice contract/timing tests (65 passed)

@@ -240,7 +240,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
          - Phase 7: Seed Lesson 9-7 [COMPLETE]
          - Phase 8: Module Integration and Verification [COMPLETE]
 
-- [~] **Track: Practice Timing Telemetry**
+- [x] **Track: Practice Timing Telemetry** — **COMPLETED**
      *Add canonical wall-clock, active-time, idle-time, and timing-confidence evidence to practice.v1 submissions for future SRS scoring*
      *Depends on: Module 9 Curriculum Seed completion*
      *Link: [./conductor/tracks/practice-timing-telemetry_20260415/](./conductor/tracks/practice-timing-telemetry_20260415/)*
@@ -248,7 +248,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
        - Phase 2: Reusable Timing Core and React Instrumentation [COMPLETE] [checkpoint: a973651]
        - Phase 3: Activity Submission Integration [COMPLETE] [checkpoint: 733bef3]
        - Phase 4: Persistence and Review Surfaces [COMPLETE] [checkpoint: 7c3d8e1]
-       - Phase 5: Verification, Documentation, and Handoff [IN PROGRESS]
+       - Phase 5: Verification, Documentation, and Handoff [COMPLETE] [checkpoint: b210dce]
 
 - [ ] **Track: Practice Timing Baselines**
      *Build timing baselines and time-aware SRS evidence features after reliable practice timing telemetry exists*
