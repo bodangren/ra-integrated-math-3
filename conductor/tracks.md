@@ -152,14 +152,14 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
     *Wire existing phase skip infrastructure to PhaseCompleteButton UI — show Skip button for explore and discourse phases*
     *Link: [./conductor/tracks/phase-skip-ui_20260414/](./conductor/tracks/phase-skip-ui_20260414/)*
 
-- [~] **Track: Module 2 Curriculum Seed**
-     *Seed Module 2 lessons (2-1 through 2-5) into Convex database following module-1-seed pattern*
-     *Link: [./conductor/tracks/module-2-seed_20260415/](./conductor/tracks/module-2-seed_20260415/)*
-     - Phase 1: Seed Lesson 2-1 (Polynomial Functions) [COMPLETE]
-     - Phase 2: Seed Lesson 2-2 (Analyzing Graphs of Polynomial Functions) [COMPLETE]
-     - Phase 3: Seed Lesson 2-3 (Operations with Polynomials) [COMPLETE]
-     - Phase 4: Seed Lessons 2-4 and 2-5 [COMPLETE]
-     - Phase 5: Update seed.ts and Verify [ ]
+- [x] **Track: Module 2 Curriculum Seed**
+      *Seed Module 2 lessons (2-1 through 2-5) into Convex database following module-1-seed pattern*
+      *Link: [./conductor/tracks/module-2-seed_20260415/](./conductor/tracks/module-2-seed_20260415/)*
+      - Phase 1: Seed Lesson 2-1 (Polynomial Functions) [COMPLETE]
+      - Phase 2: Seed Lesson 2-2 (Analyzing Graphs of Polynomial Functions) [COMPLETE]
+      - Phase 3: Seed Lesson 2-3 (Operations with Polynomials) [COMPLETE]
+      - Phase 4: Seed Lessons 2-4 and 2-5 [COMPLETE]
+      - Phase 5: Update seed.ts and Verify [COMPLETE]
 
 - [ ] **Track: Module 3 Curriculum Seed**
      *Seed Module 3 polynomial equations lessons (3-1 through 3-5) into Convex database*

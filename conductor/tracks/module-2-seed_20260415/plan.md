@@ -51,18 +51,18 @@
 
 ## Phase 5: Update seed.ts and Verify
 
-- [ ] Task: Update `convex/seed.ts` to call new lesson seed functions
-  - [ ] Add case statements for module-2-lesson-1 through module-2-lesson-5
-  - [ ] Import new seed internal mutations
+- [x] Task: Update `convex/seed.ts` to call new lesson seed functions
+   - [x] Add case statements for module-2-lesson-1 through module-2-lesson-5
+   - [x] Import new seed internal mutations
 
-- [ ] Task: Update `convex/seed/seed-standards.ts` for Module 2 standards
-  - [ ] Write test: all 4 Module 2 standards inserted with correct codes
-  - [ ] Implement HSA-APR.A.1, HSA-APR.B.2, HSA-APR.B.3, HSA-CED.A.1
+- [x] Task: Update `convex/seed/seed-standards.ts` for Module 2 standards
+   - [x] Write test: all 4 Module 2 standards inserted with correct codes
+   - [x] Implement HSA-APR.A.1, HSA-APR.B.2, HSA-APR.B.3, HSA-CED.A.1
 
-- [ ] Task: Run full seed verification
-  - [ ] Run `npx convex run seed:main` or equivalent
-  - [ ] Verify all 5 Module 2 lessons appear in database
-  - [ ] Verify phase counts and types are correct
-  - [ ] Verify lesson_standards links exist
+- [x] Task: Run full seed verification
+   - [x] Run `npx convex run seed:main` or equivalent
+   - [x] Verify all 5 Module 2 lessons appear in database
+   - [x] Verify phase counts and types are correct
+   - [x] Verify lesson_standards links exist
 
-- [ ] Task: Conductor — Phase Completion Verification (Protocol in workflow.md)
+- [x] Task: Conductor — Phase Completion Verification (Protocol in workflow.md)

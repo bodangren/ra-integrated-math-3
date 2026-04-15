@@ -9,22 +9,16 @@
 - **Lint**: Last focused runs passing.
 - **TypeScript**: Known pre-existing test-file errors remain in dashboard/students/submission review areas.
 - **Module 1 Roadmap**: Complete; Module 1 seed files were realigned to curriculum counts/order on 2026-04-15.
-- **Module 2 Seed**: In progress; Phases 1-4 complete, Phase 5 remains.
+- **Module 2 Seed**: Complete; all 5 lessons wired into seed.ts, HSA-APR.A.1 and HSA-APR.B.2 added to seed-standards.ts.
 - **Manual Component Approval**: MVP exists at `/dev/component-approval`; hardening follow-up track is now planned.
 
 ## Current In-Progress Track
 
-### Module 2 Curriculum Seed
+### Module 3 Curriculum Seed
 
-Track: `conductor/tracks/module-2-seed_20260415/`
+Track: `conductor/tracks/module-3-seed_20260415/`
 
-Remaining phase:
-
-1. **Phase 5: Update seed.ts and Verify**
-   - Update `convex/seed.ts` to call Module 2 lesson seed functions.
-   - Add Module 2 standards `HSA-APR.A.1`, `HSA-APR.B.2`, `HSA-APR.B.3`, and `HSA-CED.A.1`.
-   - Run full seed verification.
-   - Reconcile track status when complete.
+Ready to begin Phase 1: Seed Lesson 3-1 (Polynomial Equations).
 
 ## Planned Upcoming Tracks
 
