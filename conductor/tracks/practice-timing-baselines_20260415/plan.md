@@ -12,10 +12,10 @@
   - [x] Test outlier resistance
   - [x] Test low-confidence submissions are excluded
   - [x] Test below-minimum sample count returns inactive baseline
-- [ ] Task: Implement reusable baseline calculations
-  - [ ] Add a course-agnostic baseline module
-  - [ ] Keep Convex and React dependencies out of pure calculations
-  - [ ] Return serializable baseline objects
+- [x] Task: Implement reusable baseline calculations [188b24d]
+  - [x] Add a course-agnostic baseline module
+  - [x] Keep Convex and React dependencies out of pure calculations
+  - [x] Return serializable baseline objects
 - [ ] Task: Document baseline feature contract
   - [ ] Add developer docs explaining `timeRatio`, `speedBand`, and timing confidence
   - [ ] Include examples for narrow/easy and broad/hard objectives
