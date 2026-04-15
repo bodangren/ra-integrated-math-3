@@ -247,6 +247,7 @@ export function ReviewDecisionPanel({
       await onSubmit(status, comment || undefined, selectedTags.length > 0 ? selectedTags : undefined, priority || undefined);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Submission failed');
+    } finally {
       setSubmitting(false);
     }
   }
@@ -372,15 +373,10 @@ type ReviewView = 'decision' | 'harness';
 
 export function ReviewQueueView() {
   const [selectedItem, setSelectedItem] = useState<ReviewQueueItem | null>(null);
-  const [filters, setFilters] = useState<Filters>({
-    componentKind: '',
-    status: '',
-    onlyStale: false,
-  });
   const [reviewView, setReviewView] = useState<ReviewView>('decision');
   const [harnessCanApprove, setHarnessCanApprove] = useState(false);
 
-  const { items, loading, error, handleReviewSubmit } = ReviewQueueClient();
+  const { items, loading, error, filters, setFilters, handleReviewSubmit } = ReviewQueueClient();
 
   const handleItemSelect = useCallback((item: ReviewQueueItem) => {
     setSelectedItem(item);
@@ -451,6 +447,7 @@ export function ReviewQueueView() {
                     issueTags,
                     priority
                   );
+                  setSelectedItem(null);
                 }}
                 onCancel={() => setSelectedItem(null)}
               />

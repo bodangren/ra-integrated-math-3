@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import type { Doc } from '@/convex/_generated/dataModel';
 import {
   resolveComponentKind,
   buildActivityPlacementMap,
@@ -66,7 +67,10 @@ describe('buildActivityPlacementMap', () => {
       { _id: 'phase2', phaseType: 'guided_practice', lessonVersionId: 'lv1' },
     ];
 
-    const map = buildActivityPlacementMap(sections, phases);
+    const map = buildActivityPlacementMap(
+      sections as Array<Pick<Doc<"phase_sections">, "_id" | "phaseVersionId" | "content">>,
+      phases as unknown as Array<Pick<Doc<"phase_versions">, "_id" | "phaseType">>,
+    );
 
     expect(map.get('act1')).toEqual({
       phaseType: 'worked_example',
@@ -92,7 +96,10 @@ describe('buildActivityPlacementMap', () => {
       { _id: 'phase1', phaseType: 'learn', lessonVersionId: 'lv1' },
     ];
 
-    const map = buildActivityPlacementMap(sections, phases);
+    const map = buildActivityPlacementMap(
+      sections as Array<Pick<Doc<"phase_sections">, "_id" | "phaseVersionId" | "content">>,
+      phases as unknown as Array<Pick<Doc<"phase_versions">, "_id" | "phaseType">>,
+    );
 
     expect(map.size).toBe(0);
   });
@@ -115,7 +122,10 @@ describe('buildActivityPlacementMap', () => {
       { _id: 'phase2', phaseType: 'learn', lessonVersionId: 'lv1' },
     ];
 
-    const map = buildActivityPlacementMap(sections, phases);
+    const map = buildActivityPlacementMap(
+      sections as Array<Pick<Doc<"phase_sections">, "_id" | "phaseVersionId" | "content">>,
+      phases as unknown as Array<Pick<Doc<"phase_versions">, "_id" | "phaseType">>,
+    );
 
     expect(map.get('act1')).toEqual({
       phaseType: 'worked_example',

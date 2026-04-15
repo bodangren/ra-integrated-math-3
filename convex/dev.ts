@@ -159,6 +159,8 @@ export async function submitReviewHandler(ctx: MutationCtx, args: SubmitReviewAr
     gradingConfig: activity.gradingConfig,
   });
 
+  const now = Date.now();
+
   const reviewId = await ctx.db.insert("component_reviews", {
     componentKind: args.componentKind,
     componentId: args.componentId,
@@ -170,13 +172,13 @@ export async function submitReviewHandler(ctx: MutationCtx, args: SubmitReviewAr
     priority: args.priority,
     placement: args.placement,
     createdBy: args.createdBy,
-    createdAt: Date.now(),
+    createdAt: now,
   });
 
   const approvalSummary = {
     status: args.status,
     contentHash: componentContentHash,
-    reviewedAt: Date.now(),
+    reviewedAt: now,
     reviewedBy: args.createdBy,
     reviewId,
   };
@@ -193,7 +195,7 @@ export async function submitReviewHandler(ctx: MutationCtx, args: SubmitReviewAr
     if (existingApproval) {
       await ctx.db.patch(existingApproval._id, {
         ...approvalSummary,
-        updatedAt: Date.now(),
+        updatedAt: now,
       });
     } else {
       await ctx.db.insert("component_approvals", {
@@ -201,8 +203,8 @@ export async function submitReviewHandler(ctx: MutationCtx, args: SubmitReviewAr
         componentId: args.componentId,
         componentKey: args.componentKey,
         ...approvalSummary,
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
+        createdAt: now,
+        updatedAt: now,
       });
     }
   }

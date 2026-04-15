@@ -17,6 +17,36 @@ export interface MisconceptionSummary {
   affectedStudents: string[];
 }
 
+export interface PracticeSubmissionEvidence {
+  contractVersion?: string;
+  activityId?: string;
+  mode?: string;
+  status?: string;
+  attemptNumber?: number;
+  submittedAt?: string;
+  answers?: Record<string, unknown>;
+  parts?: Array<Record<string, unknown>>;
+  artifact?: Record<string, unknown>;
+  interactionHistory?: unknown[];
+  analytics?: Record<string, unknown>;
+  studentFeedback?: string;
+  teacherSummary?: string;
+}
+
+export interface SubmissionEvidence {
+  kind: 'spreadsheet' | 'practice';
+  activityId: string;
+  activityTitle: string;
+  componentKey: string;
+  submittedAt: string;
+  spreadsheetData?: unknown;
+  submissionData?: PracticeSubmissionEvidence | Record<string, unknown>;
+  attemptNumber?: number;
+  score?: number | null;
+  maxScore?: number | null;
+  feedback?: string | null;
+}
+
 export interface PartOutcomeSummary {
   partId: string;
   totalAttempts: number;

@@ -263,7 +263,7 @@ export default async function StudentsPage({ searchParams }: PageProps) {
     <div className="max-w-5xl mx-auto space-y-8 py-8">
       <div className="space-y-1">
         <h1 className="text-3xl font-display font-bold text-foreground">
-          {showDetail ? detail.student?.displayName ?? detail.student?.username ?? 'Student' : 'Students'}
+          {showDetail ? (detail!.student?.displayName ?? detail!.student?.username ?? 'Student') : 'Students'}
         </h1>
         <p className="text-muted-foreground text-sm">
           {showDetail ? 'Lesson progress detail' : `${students.length} enrolled`}

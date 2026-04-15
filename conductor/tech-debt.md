@@ -21,7 +21,7 @@
 | Review harnesses use hardcoded sample data | Medium | Resolved | Fixed 2026-04-15; ComponentHarnessPanel now passes storedProps/steps from queue item |
 | Manual approval queue may miss embedded examples/practice placements | Medium | Resolved | Fixed 2026-04-15; listReviewQueue now discovers example/practice from phase_sections + phase_versions |
 | Approval UI does not enforce harness checklist before approve | Medium | Resolved | Fixed 2026-04-15; harnessCanApprove state gates approve button in ReviewDecisionPanel |
-| Review queue filter state may be split between view/list/client hook | Medium | Open | Track in harden-manual-approval_20260415; verify filters affect fetch query |
+| Review queue filter state may be split between view/list/client hook | Medium | Resolved | **Fixed 2026-04-15**: ReviewQueueView now uses client's filters/setFilters directly |
 | Algebraic test coverage structurally weak (20-50% step assertion) | Medium | Open | Tests named "all steps" check only fraction |
 | Guided mode submissions not recorded | Medium | Open | No onSubmit for guided practice; no analytics data |
 | activity_completions requires lessonId/phaseNumber not in submission | Medium | Open | Submission mutation can't create completions without lesson context |
@@ -41,3 +41,8 @@
 | StepByStepper-guided hint tracking test intermittently fails | Low | Open | Passes in isolation, flaky in full suite |
 | dashboard.test.ts TypeScript errors (missing isLocked) | Low | Open | 12 tests; pre-existing |
 | LessonRenderer initialStatus ignored skipped phases | High | Resolved | **Fixed 2026-04-15** |
+| submitReviewHandler componentKind not validated server-side | Medium | Open | Client sends kind; server doesn't verify against actual placement |
+| Duplicate Date.now() in submitReviewHandler | Low | Resolved | **Fixed 2026-04-15**: single `now` timestamp reused |
+| Incorrect CCSS description for HSA-APR.B.2 (seed-standards.ts) | High | Open | Describes Binomial Theorem instead of Remainder Theorem |
+| No lesson_standards seeding pipeline | High | Open | Standards seeded but never linked to lessons; progress tracking broken |
+| Missing CCSS standards for M2/M3 (HSA-APR.C.4, HSA-APR.C.5, HSA-REI.D.11) | Medium | Open | Standards gap in seed-standards.ts |
