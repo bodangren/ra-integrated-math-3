@@ -71,11 +71,11 @@
   - [x] Document remaining manual-review limitations, if any
   - [x] Confirm LLM repair restrictions remain explicit
 
-- [ ] Task: Reconcile Conductor records
-  - [ ] Mark moved/deferred items in the original component-approval plan coherently
-  - [ ] Update `conductor/tech-debt.md` for resolved approval items
-  - [ ] Update `conductor/current_directive.md` with the next priority
-  - [ ] Update `conductor/tracks.md` with final track status
+- [x] Task: Reconcile Conductor records [38ab9c2]
+  - [x] Mark moved/deferred items in the original component-approval plan coherently
+  - [x] Update `conductor/tech-debt.md` for resolved approval items
+  - [x] Update `conductor/current_directive.md` with the next priority
+  - [x] Update `conductor/tracks.md` with final track status
 
 - [ ] Task: Final quality gates
   - [ ] Run `npm run lint`
