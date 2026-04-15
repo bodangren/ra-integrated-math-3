@@ -52,13 +52,13 @@
 
 ## Phase 6: Seed Lesson 7-6
 
-- [ ] Task: Verify lesson 7-6 curriculum source
-  - [ ] Confirm title and phase sequence against `curriculum/modules/module-7-lesson-6`
-  - [ ] Confirm rational equation and inequality examples include solution checks
-- [ ] Task: Create seed function `convex/seed/seed-lesson-7-6.ts`
-  - [ ] Write tests for phase sequence and idempotency
-  - [ ] Implement lesson, phases, sections, and activities
-- [ ] Task: Conductor - Phase Completion Verification 'Seed Lesson 7-6' (Protocol in workflow.md)
+- [x] Task: Verify lesson 7-6 curriculum source
+  - [x] Confirm title and phase sequence against `curriculum/modules/module-7-lesson-6`
+  - [x] Confirm rational equation and inequality examples include solution checks
+- [x] Task: Create seed function `convex/seed/seed-lesson-7-6.ts`
+  - [x] Write tests for phase sequence and idempotency
+  - [x] Implement lesson, phases, sections, and activities
+- [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 7-6' (Protocol in workflow.md)
 
 ## Phase 7: Module Integration and Verification
 

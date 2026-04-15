@@ -9,7 +9,7 @@
 - **Lint**: Passing.
 - **TypeScript**: 25 pre-existing test-file errors remain (students.test.tsx, dashboard.test.ts). No new TS errors.
 - **Module 1-6 Roadmap**: Complete.
-- **Module 7 Seed**: In progress — Lessons 7-1 and 7-2 seeded, wired into seed.ts orchestration. Lessons 7-3 through 7-6 pending.
+- **Module 7 Seed**: In progress — Lessons 7-1 through 7-6 seeded, wired into seed.ts orchestration. Phase 7 (Module Integration, CCSS standards, lesson-standard links) pending.
 - **Code Review**: Completed 2026-04-15. Fixed 3 critical issues (harness hook gating, hardcoded submissions, dead seed code).
 
 ## Current In-Progress Track
