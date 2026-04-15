@@ -87,7 +87,7 @@ describe('ExampleReviewHarness', () => {
       expect(screen.getByText(/All modes must be reviewed before approving/i)).toBeInTheDocument();
     });
 
-    it('does not show approval message when all modes are reviewed', () => {
+    it('does not show approval message when all modes are reviewed and verification checkboxes are checked', () => {
       render(<ExampleReviewHarness {...defaultProps} />);
 
       const guidedButton = screen.getByRole('button', { name: /guided/i });
@@ -95,6 +95,16 @@ describe('ExampleReviewHarness', () => {
 
       const practiceButton = screen.getByRole('button', { name: /practice/i });
       fireEvent.click(practiceButton);
+
+      const generateButton = screen.getByRole('button', { name: /generate variant/i });
+      fireEvent.click(generateButton);
+      fireEvent.click(generateButton);
+
+      const algorithmicCheckbox = screen.getByLabelText(/algorithmic practice behavior verified/i) as HTMLInputElement;
+      fireEvent.click(algorithmicCheckbox);
+
+      const coherentFeedbackCheckbox = screen.getByLabelText(/coherent feedback\/solution behavior verified/i) as HTMLInputElement;
+      fireEvent.click(coherentFeedbackCheckbox);
 
       expect(screen.queryByText(/All modes must be reviewed before approving/i)).not.toBeInTheDocument();
     });
@@ -182,7 +192,7 @@ describe('ExampleReviewHarness', () => {
       expect(onCanApproveChange).toHaveBeenCalledWith(false);
     });
 
-    it('calls onCanApproveChange with true when all modes reviewed', () => {
+    it('calls onCanApproveChange with true when all modes reviewed and verification checkboxes are checked', () => {
       const onCanApproveChange = vi.fn();
       render(<ExampleReviewHarness {...defaultProps} onCanApproveChange={onCanApproveChange} />);
       onCanApproveChange.mockClear();
@@ -192,6 +202,16 @@ describe('ExampleReviewHarness', () => {
 
       const practiceButton = screen.getByRole('button', { name: /practice/i });
       fireEvent.click(practiceButton);
+
+      const generateButton = screen.getByRole('button', { name: /generate variant/i });
+      fireEvent.click(generateButton);
+      fireEvent.click(generateButton);
+
+      const algorithmicCheckbox = screen.getByLabelText(/algorithmic practice behavior verified/i) as HTMLInputElement;
+      fireEvent.click(algorithmicCheckbox);
+
+      const coherentFeedbackCheckbox = screen.getByLabelText(/coherent feedback\/solution behavior verified/i) as HTMLInputElement;
+      fireEvent.click(coherentFeedbackCheckbox);
 
       expect(onCanApproveChange).toHaveBeenCalledWith(true);
     });
