@@ -106,6 +106,69 @@ export function SubmissionReviewPanel({
     return null;
   };
 
+  const renderTimingSummary = () => {
+    if (evidence.kind !== 'practice' || !evidence.submissionData) return null;
+    const data = evidence.submissionData as { timing?: PracticeTimingEvidence };
+    if (!data.timing) return null;
+
+    const { wallClockMs, activeMs, idleMs, confidence, confidenceReasons } = data.timing;
+    const formatDuration = (ms: number) => {
+      const seconds = Math.floor(ms / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = seconds % 60;
+      if (minutes > 0) {
+        return `${minutes}m ${remainingSeconds}s`;
+      }
+      return `${seconds}s`;
+    };
+
+    const confidenceColor =
+      confidence === 'high'
+        ? 'bg-green-100 text-green-800'
+        : confidence === 'medium'
+          ? 'bg-yellow-100 text-yellow-800'
+          : 'bg-red-100 text-red-800';
+
+    return (
+      <div className="mt-4 p-4 bg-muted/50 rounded-lg space-y-3">
+        <div className="flex items-center justify-between">
+          <h4 className="text-sm font-semibold text-foreground">Timing Evidence</h4>
+          <span className={`px-2 py-0.5 rounded text-xs font-medium ${confidenceColor}`}>
+            {confidence} confidence
+          </span>
+        </div>
+
+        <div className="grid grid-cols-3 gap-4 text-sm">
+          <div>
+            <span className="text-muted-foreground">Wall Clock</span>
+            <p className="font-mono-num font-medium">{formatDuration(wallClockMs)}</p>
+          </div>
+          <div>
+            <span className="text-muted-foreground">Active Time</span>
+            <p className="font-mono-num font-medium">{formatDuration(activeMs)}</p>
+          </div>
+          <div>
+            <span className="text-muted-foreground">Idle Time</span>
+            <p className="font-mono-num font-medium">{formatDuration(idleMs)}</p>
+          </div>
+        </div>
+
+        {confidenceReasons && confidenceReasons.length > 0 && (
+          <div className="flex flex-wrap gap-1 mt-2">
+            {confidenceReasons.map((reason) => (
+              <span
+                key={reason}
+                className="px-2 py-0.5 bg-orange-100 text-orange-800 rounded text-xs"
+              >
+                {reason.replace('_', ' ')}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
   const renderErrorSummary = () => {
     if (!errorSummary) return null;
 
@@ -139,6 +202,14 @@ export function SubmissionReviewPanel({
       </div>
     );
   };
+
+  interface PracticeTimingEvidence {
+    wallClockMs: number;
+    activeMs: number;
+    idleMs: number;
+    confidence: 'high' | 'medium' | 'low';
+    confidenceReasons?: string[];
+  }
 
   return (
     <div className="space-y-2">
@@ -182,6 +253,7 @@ export function SubmissionReviewPanel({
           </div>
 
           {renderStudentAnswers()}
+          {renderTimingSummary()}
           {renderErrorSummary()}
         </div>
       )}

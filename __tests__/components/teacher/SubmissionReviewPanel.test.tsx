@@ -206,4 +206,152 @@ describe('SubmissionReviewPanel', () => {
       expect(screen.getByText(/Hints used: 1/i)).toBeInTheDocument();
     });
   });
+
+  describe('Timing evidence display', () => {
+    const mockSubmissionDataWithTiming = {
+      ...mockSubmissionData,
+      timing: {
+        wallClockMs: 120000,
+        activeMs: 90000,
+        idleMs: 30000,
+        confidence: 'medium' as const,
+        confidenceReasons: ['focus_loss'],
+      },
+    };
+
+    const mockEvidenceWithTiming: SubmissionEvidence = {
+      ...mockPracticeEvidence,
+      submissionData: mockSubmissionDataWithTiming,
+    };
+
+    it('shows timing evidence section when timing is present', () => {
+      const onOpenReview = vi.fn();
+      render(
+        <SubmissionReviewPanel
+          evidence={mockEvidenceWithTiming}
+          errorSummary={null}
+          onOpenReview={onOpenReview}
+          isOpen={true}
+        />
+      );
+
+      expect(screen.getByText(/Timing Evidence/i)).toBeInTheDocument();
+    });
+
+    it('does not show timing section when timing is absent', () => {
+      const onOpenReview = vi.fn();
+      render(
+        <SubmissionReviewPanel
+          evidence={mockPracticeEvidence}
+          errorSummary={null}
+          onOpenReview={onOpenReview}
+          isOpen={true}
+        />
+      );
+
+      expect(screen.queryByText(/Timing Evidence/i)).not.toBeInTheDocument();
+    });
+
+    it('displays wall clock, active time, and idle time', () => {
+      const onOpenReview = vi.fn();
+      render(
+        <SubmissionReviewPanel
+          evidence={mockEvidenceWithTiming}
+          errorSummary={null}
+          onOpenReview={onOpenReview}
+          isOpen={true}
+        />
+      );
+
+      expect(screen.getByText(/Wall Clock/i)).toBeInTheDocument();
+      expect(screen.getByText(/Active Time/i)).toBeInTheDocument();
+      expect(screen.getByText(/Idle Time/i)).toBeInTheDocument();
+    });
+
+    it('shows medium confidence badge', () => {
+      const onOpenReview = vi.fn();
+      render(
+        <SubmissionReviewPanel
+          evidence={mockEvidenceWithTiming}
+          errorSummary={null}
+          onOpenReview={onOpenReview}
+          isOpen={true}
+        />
+      );
+
+      expect(screen.getByText(/medium confidence/i)).toBeInTheDocument();
+    });
+
+    it('shows confidence reasons as tags', () => {
+      const onOpenReview = vi.fn();
+      render(
+        <SubmissionReviewPanel
+          evidence={mockEvidenceWithTiming}
+          errorSummary={null}
+          onOpenReview={onOpenReview}
+          isOpen={true}
+        />
+      );
+
+      expect(screen.getByText(/focus loss/i)).toBeInTheDocument();
+    });
+
+    it('handles high confidence timing', () => {
+      const highConfidenceTiming = {
+        ...mockSubmissionDataWithTiming,
+        timing: {
+          ...mockSubmissionDataWithTiming.timing,
+          confidence: 'high' as const,
+          confidenceReasons: [],
+        },
+      };
+      const highConfidenceEvidence: SubmissionEvidence = {
+        ...mockPracticeEvidence,
+        submissionData: { ...mockSubmissionData, timing: highConfidenceTiming.timing },
+      };
+      const onOpenReview = vi.fn();
+      render(
+        <SubmissionReviewPanel
+          evidence={highConfidenceEvidence}
+          errorSummary={null}
+          onOpenReview={onOpenReview}
+          isOpen={true}
+        />
+      );
+
+      expect(screen.getByText(/high confidence/i)).toBeInTheDocument();
+    });
+
+    it('handles low confidence timing with multiple reasons', () => {
+      const lowConfidenceTiming = {
+        ...mockSubmissionDataWithTiming,
+        timing: {
+          wallClockMs: 120000,
+          activeMs: 50000,
+          idleMs: 70000,
+          confidence: 'low' as const,
+          confidenceReasons: ['long_idle', 'focus_loss', 'visibility_hidden', 'interrupted'],
+        },
+      };
+      const lowConfidenceEvidence: SubmissionEvidence = {
+        ...mockPracticeEvidence,
+        submissionData: { ...mockSubmissionData, timing: lowConfidenceTiming.timing },
+      };
+      const onOpenReview = vi.fn();
+      render(
+        <SubmissionReviewPanel
+          evidence={lowConfidenceEvidence}
+          errorSummary={null}
+          onOpenReview={onOpenReview}
+          isOpen={true}
+        />
+      );
+
+      expect(screen.getByText(/low confidence/i)).toBeInTheDocument();
+      expect(screen.getByText(/long idle/i)).toBeInTheDocument();
+      expect(screen.getByText(/focus loss/i)).toBeInTheDocument();
+      expect(screen.getByText(/visibility hidden/i)).toBeInTheDocument();
+      expect(screen.getByText(/interrupted/i)).toBeInTheDocument();
+    });
+  });
 });

@@ -36,6 +36,7 @@
 | Silent catch blocks in convex/student.ts and convex/teacher.ts | Medium | Open | Swallows all exceptions |
 | RSC entry chunk 735 KB (pre-existing) | Medium | Open | Code-splitting needed to get under 500 KB |
 | Algebraic test coverage structurally weak | Medium | Open | Tests named "all steps" check only fraction |
+| Convex V validator does not enforce timing refinements | Medium | Open | V validators lack Zod-style refinements; negative durations and activeMs > wallClockMs are accepted |
 | Equivalence validator 6/50 tests failing | Low | Open | Pattern-matching limits for fraction/radical expressions |
 | ReviewQueueItem type duplicated between component and lib | Low | Open | Slightly different shapes cause type mismatch risk |
 | Legacy Supabase types in AuthProvider.tsx | Low | Open | snake_case profile fields should match Convex schema |

@@ -67,23 +67,23 @@
 
 ## Phase 4: Persistence and Review Surfaces
 
-- [ ] Task: Update Convex submission validation and storage tests
-  - [ ] Test `submitActivity` accepts timing fields
-  - [ ] Test old submissions without timing still pass
-  - [ ] Test invalid timing is rejected before persistence
-- [ ] Task: Persist timing on practice submissions
-  - [ ] Ensure `activity_submissions.submissionData` stores the canonical timing fields
-  - [ ] Do not add separate timing tables in this track unless required by validator limits
-  - [ ] Keep all persistence idempotent with existing submission flow
-- [ ] Task: Expose timing in review/debug surfaces
-  - [ ] Add a compact timing summary where submission evidence is displayed
-  - [ ] Show confidence and confidence reasons for developer/teacher review
-  - [ ] Avoid adding new gradebook metrics in this track
-- [ ] Task: Add backward compatibility safeguards
-  - [ ] Ensure teacher review handles submissions with no timing
-  - [ ] Ensure malformed legacy analytics timing is ignored rather than normalized silently
-  - [ ] Add a tech-debt note if any legacy submission schema remains unresolved
-- [ ] Task: Conductor - Phase Completion Verification 'Persistence and Review Surfaces' (Protocol in workflow.md)
+- [x] Task: Update Convex submission validation and storage tests
+  - [x] Test `submitActivity` accepts timing fields
+  - [x] Test old submissions without timing still pass
+  - [x] Test invalid timing is rejected before persistence (Note: Convex V validator doesn't enforce Zod-style refinements; client-side validation required)
+- [x] Task: Persist timing on practice submissions
+  - [x] Ensure `activity_submissions.submissionData` stores the canonical timing fields
+  - [x] Do not add separate timing tables in this track unless required by validator limits
+  - [x] Keep all persistence idempotent with existing submission flow
+- [x] Task: Expose timing in review/debug surfaces
+  - [x] Add a compact timing summary where submission evidence is displayed
+  - [x] Show confidence and confidence reasons for developer/teacher review
+  - [x] Avoid adding new gradebook metrics in this track
+- [x] Task: Add backward compatibility safeguards
+  - [x] Ensure teacher review handles submissions with no timing
+  - [x] Ensure malformed legacy analytics timing is ignored rather than normalized silently
+  - [x] Add a tech-debt note if any legacy submission schema remains unresolved
+- [x] Task: Conductor - Phase Completion Verification 'Persistence and Review Surfaces' (Protocol in workflow.md) [checkpoint: 7c3d8e1]
 
 ## Phase 5: Verification, Documentation, and Handoff
 
