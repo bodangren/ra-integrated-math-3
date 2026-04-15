@@ -10,7 +10,7 @@
 |------|-----|--------|-------|
 | Placeholder hash for example/practice components (`convex/dev.ts:113`) | High | Resolved | Fixed 2026-04-15; computeComponentContentHash now used for all kinds |
 | `submitReview` takes `createdBy` as arg instead of deriving from auth | High | Open | Mitigated by route-level derivation; must remain internal-only |
-| No tests for Convex dev functions | High | Open | Schema tests vacuous; no mutation/query behavior tested |
+| No tests for Convex dev functions | High | Resolved | Added behavior tests for listReviewQueue, submitReview, getAuditContext in __tests__/convex/dev.test.ts |
 | Unbounded `take(500)` + N+1 hash in listReviewQueue | High | Open | 500 SHA-256 hashes/query; Convex billing concern |
 | Approval status race condition (no version/lock) | High | Open | Concurrent reviews silently overwrite |
 | N+1 query: phase sections in getLessonProgress, getTeacherLessonPreview, getTeacherLessonMonitoringData | High | Open | One DB query per phase inside loop |
