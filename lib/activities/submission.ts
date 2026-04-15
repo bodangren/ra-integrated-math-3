@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { buildPracticeSubmissionEnvelope, practiceModeSchema, practiceSubmissionStatusSchema, type PracticeSubmissionEnvelope } from '@/lib/practice/contract';
+import { buildPracticeSubmissionEnvelope, practiceModeSchema, practiceSubmissionStatusSchema, type PracticeSubmissionEnvelope, type PracticeTimingSummary } from '@/lib/practice/contract';
 
 export type PracticeMode = z.infer<typeof practiceModeSchema>;
 export type PracticeSubmissionStatus = z.infer<typeof practiceSubmissionStatusSchema>;
@@ -16,6 +16,7 @@ export interface SubmitActivityInput {
   analytics?: Record<string, unknown>;
   studentFeedback?: string;
   teacherSummary?: string;
+  timing?: PracticeTimingSummary;
 }
 
 export interface SubmitActivityResultSuccess {
@@ -46,6 +47,7 @@ export async function submitActivity(input: SubmitActivityInput): Promise<Submit
       analytics: input.analytics,
       studentFeedback: input.studentFeedback,
       teacherSummary: input.teacherSummary,
+      timing: input.timing,
     });
 
     const response = await fetch('/api/activities/submit', {

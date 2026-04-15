@@ -71,7 +71,7 @@ export function buildAlgebraicSubmission(input: AlgebraicSubmissionInput) {
   return {
     contractVersion: 'practice.v1' as const,
     activityId,
-    mode,
+    mode: mode === 'practice' ? 'independent_practice' : mode === 'guided' ? 'guided_practice' : mode,
     status: 'submitted' as const,
     attemptNumber: 1,
     submittedAt: new Date().toISOString(),

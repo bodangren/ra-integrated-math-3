@@ -7,7 +7,8 @@ import { PhaseRenderer, type PhaseSection } from './PhaseRenderer';
 import { PhaseCompleteButton } from './PhaseCompleteButton';
 import { LessonSkeleton } from './LessonSkeleton';
 import { LessonCompleteScreen } from './LessonCompleteScreen';
-import { submitActivity, type PracticeMode } from '@/lib/activities/submission';
+import { submitActivity, type PracticeMode, type SubmitActivityInput } from '@/lib/activities/submission';
+import { isPracticeSubmissionEnvelope } from '@/lib/practice/contract';
 import type { PhaseType } from '@/lib/curriculum/phase-types';
 
 export interface LessonPhase {
@@ -89,16 +90,35 @@ export function LessonRenderer({
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [phases, activePhaseNumber]);
 
-  const handleActivitySubmit = useCallback(async (activityId: string) => {
+  const handleActivitySubmit = useCallback(async (activityId: string, payload: unknown) => {
     setCompletedActivities(prev => new Set([...prev, activityId]));
     try {
-      await submitActivity({
-        activityId,
-        mode: mode as PracticeMode,
-        answers: {},
-        attemptNumber: 1,
-        status: 'submitted',
-      });
+      let input: SubmitActivityInput;
+      if (isPracticeSubmissionEnvelope(payload)) {
+        input = {
+          activityId: payload.activityId,
+          mode: payload.mode,
+          answers: payload.answers,
+          attemptNumber: payload.attemptNumber,
+          status: payload.status,
+          parts: payload.parts,
+          artifact: payload.artifact,
+          interactionHistory: payload.interactionHistory,
+          analytics: payload.analytics,
+          studentFeedback: payload.studentFeedback,
+          teacherSummary: payload.teacherSummary,
+          timing: payload.timing,
+        };
+      } else {
+        input = {
+          activityId,
+          mode: mode as PracticeMode,
+          answers: payload && typeof payload === 'object' ? (payload as Record<string, unknown>) : {},
+          attemptNumber: 1,
+          status: 'submitted',
+        };
+      }
+      await submitActivity(input);
     } catch (err) {
       setCompletedActivities(prev => {
         const next = new Set(prev);

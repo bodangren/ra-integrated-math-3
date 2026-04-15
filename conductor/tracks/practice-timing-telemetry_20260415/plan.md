@@ -44,26 +44,26 @@
   - [x] Test a long interaction gap is counted as idle time
 - [x] Task: Conductor - Phase Completion Verification 'Reusable Timing Core and React Instrumentation' (Protocol in workflow.md) [a973651]
 
-## Phase 3: Activity Submission Integration
+## Phase 3: Activity Submission Integration [checkpoint: TBD]
 
-- [ ] Task: Write integration tests for timed practice submission
-  - [ ] Test activity wrapper appends timing to a real `practice.v1` envelope
-  - [ ] Test component-provided timing is not overwritten incorrectly
-  - [ ] Test missing activityId or synthetic submissions are not accepted as real timing evidence
-- [ ] Task: Inject timing through the activity rendering path
-  - [ ] Prefer wrapper-level timing so individual activities do not duplicate logic
-  - [ ] Ensure activityId, mode, status, attemptNumber, submittedAt, and timing are assembled consistently
-  - [ ] Preserve existing `onSubmit` behavior
-- [ ] Task: Wire representative activity families
-  - [ ] Verify comprehension quiz submissions include timing
-  - [ ] Verify fill-in-the-blank submissions include timing
-  - [ ] Verify graphing activity submissions include timing and keep interactionHistory
-  - [ ] Verify StepByStepSolver submissions include timing based on real attempt data
-- [ ] Task: Guard non-student and non-practice contexts
-  - [ ] Ensure teaching/preview harnesses do not create student timing evidence
-  - [ ] Ensure guided mode behavior is explicit: either record timing or document why not
-  - [ ] Ensure timing does not block phase completion if submission timing is absent
-- [ ] Task: Conductor - Phase Completion Verification 'Activity Submission Integration' (Protocol in workflow.md)
+- [x] Task: Write integration tests for timed practice submission
+  - [x] Test activity wrapper appends timing to a real `practice.v1` envelope
+  - [x] Test component-provided timing is not overwritten incorrectly
+  - [x] Test missing activityId or synthetic submissions are not accepted as real timing evidence
+- [x] Task: Inject timing through the activity rendering path
+  - [x] Prefer wrapper-level timing so individual activities do not duplicate logic
+  - [x] Ensure activityId, mode, status, attemptNumber, submittedAt, and timing are assembled consistently
+  - [x] Preserve existing `onSubmit` behavior
+- [x] Task: Wire representative activity families
+  - [x] Verify comprehension quiz submissions include timing
+  - [x] Verify fill-in-the-blank submissions include timing
+  - [x] Verify graphing activity submissions include timing and keep interactionHistory
+  - [x] Verify StepByStepSolver submissions include timing based on real attempt data
+- [x] Task: Guard non-student and non-practice contexts
+  - [x] Ensure teaching/preview harnesses do not create student timing evidence
+  - [x] Ensure guided mode behavior is explicit: either record timing or document why not
+  - [x] Ensure timing does not block phase completion if submission timing is absent
+- [x] Task: Conductor - Phase Completion Verification 'Activity Submission Integration' (Protocol in workflow.md)
 
 ## Phase 4: Persistence and Review Surfaces
 

@@ -49,7 +49,7 @@ vi.mock('@/components/lesson/PhaseRenderer', () => ({
   PhaseRenderer: ({ phaseType, sections, onActivitySubmit, onActivityComplete }: {
     phaseType: string;
     sections: Array<{ id: string; content: { activityId?: string } }>;
-    onActivitySubmit?: (activityId: string) => void;
+    onActivitySubmit?: (activityId: string, payload: unknown) => void;
     onActivityComplete?: (activityId: string) => void;
   }) => (
     <div
@@ -67,7 +67,28 @@ vi.mock('@/components/lesson/PhaseRenderer', () => ({
           onClick={() => {
             const activityId = s.content?.activityId;
             if (activityId) {
-              const result = onActivitySubmit?.(activityId);
+              const payload = {
+                contractVersion: 'practice.v1',
+                activityId,
+                mode: 'independent_practice',
+                status: 'submitted',
+                attemptNumber: 1,
+                submittedAt: '2026-01-01T00:00:00.000Z',
+                answers: { q1: 'A' },
+                parts: [{ partId: 'q1', rawAnswer: 'A', isCorrect: true, score: 1, maxScore: 1 }],
+                timing: {
+                  startedAt: '2026-01-01T00:00:00.000Z',
+                  submittedAt: '2026-01-01T00:01:00.000Z',
+                  wallClockMs: 60000,
+                  activeMs: 60000,
+                  idleMs: 0,
+                  pauseCount: 0,
+                  focusLossCount: 0,
+                  visibilityHiddenCount: 0,
+                  confidence: 'high',
+                },
+              };
+              const result = onActivitySubmit?.(activityId, payload);
               if (result && typeof (result as Promise<unknown>).catch === 'function') {
                 (result as Promise<unknown>).catch(() => {});
               }
@@ -172,6 +193,30 @@ describe('LessonRenderer - Activity Submission Flow', () => {
 
       await waitFor(() => {
         expect(mockSubmitActivity).toHaveBeenCalledOnce();
+      });
+    });
+
+    it('forwards practice.v1 payload including timing to submitActivity', async () => {
+      const phaseWithActivity: LessonRendererProps = {
+        ...defaultProps,
+        phases: [{
+          phaseId: 'p1', phaseNumber: 1, phaseType: 'explore', title: 'Explore',
+          sections: [activitySection('act-s1', 'act-1')], status: 'current', completed: false,
+        }],
+      };
+
+      render(<LessonRenderer {...phaseWithActivity} />);
+
+      fireEvent.click(screen.getByTestId('activity-submit-act-1'));
+
+      await waitFor(() => {
+        expect(mockSubmitActivity).toHaveBeenCalledOnce();
+        const input = mockSubmitActivity.mock.calls[0][0];
+        expect(input.activityId).toBe('act-1');
+        expect(input.mode).toBe('independent_practice');
+        expect(input.answers).toEqual({ q1: 'A' });
+        expect(input.timing).toBeDefined();
+        expect(input.timing?.confidence).toBe('high');
       });
     });
   });

@@ -5,6 +5,7 @@ import { GraphingCanvas, Point, FunctionPlot } from './GraphingCanvas';
 import { InteractiveTableOfValues } from './InteractiveTableOfValues';
 import { HintPanel, HintData } from './HintPanel';
 import { InterceptIdentification, InterceptData } from './InterceptIdentification';
+import type { PracticeSubmissionEnvelope } from '@/lib/practice/contract';
 
 export interface GraphingExplorerProps {
   activityId: string;
@@ -22,37 +23,6 @@ export interface GraphingExplorerProps {
   exploreQuestion?: string;
   explorationPrompts?: string[];
   sliderDefaults?: { a: number; b: number; c: number };
-}
-
-interface PracticeSubmissionEnvelope {
-  contractVersion: 'practice.v1';
-  activityId: string;
-  mode: 'teaching' | 'guided' | 'practice' | 'explore';
-  status: 'draft' | 'submitted' | 'graded' | 'returned';
-  attemptNumber: number;
-  submittedAt: string;
-  answers: Record<string, unknown>;
-  parts: Array<{
-    partId: string;
-    rawAnswer: unknown;
-    normalizedAnswer?: string;
-    isCorrect?: boolean;
-    score?: number;
-    maxScore?: number;
-    misconceptionTags?: string[];
-    hintsUsed?: number;
-    revealStepsSeen?: number;
-    changedCount?: number;
-  }>;
-  artifact?: Record<string, unknown>;
-  interactionHistory?: Array<{
-    type: string;
-    timestamp: number;
-    data?: unknown;
-  }>;
-  analytics?: Record<string, unknown>;
-  studentFeedback?: string;
-  teacherSummary?: string;
 }
 
 const DEFAULT_DOMAIN: [number, number] = [-10, 10];
@@ -257,7 +227,7 @@ export function GraphingExplorer({
     const envelope: PracticeSubmissionEnvelope = {
       contractVersion: 'practice.v1',
       activityId,
-      mode,
+      mode: (mode === 'practice' ? 'independent_practice' : mode === 'guided' ? 'guided_practice' : mode) as PracticeSubmissionEnvelope['mode'],
       status: 'submitted',
       attemptNumber: 1,
       submittedAt: new Date().toISOString(),

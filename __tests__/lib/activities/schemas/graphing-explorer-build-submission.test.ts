@@ -29,7 +29,7 @@ describe('buildGraphingSubmission', () => {
     expect(submission).toMatchObject({
       contractVersion: 'practice.v1',
       activityId: 'test-activity',
-      mode: 'practice',
+      mode: 'independent_practice',
       status: 'submitted',
       attemptNumber: 1,
     });
@@ -121,7 +121,7 @@ describe('buildGraphingSubmission', () => {
     expect(submission).toMatchObject({
       contractVersion: 'practice.v1',
       activityId: 'test-activity',
-      mode: 'practice',
+      mode: 'independent_practice',
       status: 'submitted',
       attemptNumber: 1,
       submittedAt: expect.any(String),

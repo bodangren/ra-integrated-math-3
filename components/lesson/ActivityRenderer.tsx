@@ -1,6 +1,12 @@
 'use client';
 
+import { useCallback } from 'react';
 import { getActivityComponent } from '@/lib/activities/registry';
+import { usePracticeTiming } from '@/components/practice-timing';
+import {
+  practiceSubmissionEnvelopeSchema,
+  type PracticeSubmissionEnvelope,
+} from '@/lib/practice/contract';
 
 export interface ActivityRendererProps {
   componentKey: string;
@@ -15,6 +21,8 @@ export interface ActivityRendererProps {
 /**
  * Delegates to the activity registry by componentKey.
  * Shows a placeholder if the component is not yet registered.
+ * In student contexts (mode !== 'teaching'), injects timing telemetry
+ * into practice.v1 submission envelopes.
  */
 export function ActivityRenderer({
   componentKey,
@@ -23,6 +31,28 @@ export function ActivityRenderer({
   onSubmit,
   onComplete,
 }: ActivityRendererProps) {
+  const isStudentContext = mode !== 'teaching';
+  const { getTiming } = usePracticeTiming();
+
+  const handleSubmit = useCallback(
+    (payload: unknown) => {
+      const parsed = practiceSubmissionEnvelopeSchema.safeParse(payload);
+      if (isStudentContext && parsed.success && !parsed.data.timing) {
+        const timing = getTiming();
+        if (timing) {
+          const timedPayload: PracticeSubmissionEnvelope = {
+            ...parsed.data,
+            timing,
+          };
+          onSubmit?.(timedPayload);
+          return;
+        }
+      }
+      onSubmit?.(payload);
+    },
+    [isStudentContext, getTiming, onSubmit],
+  );
+
   const ActivityComponent = getActivityComponent(componentKey);
 
   if (!ActivityComponent) {
@@ -40,7 +70,7 @@ export function ActivityRenderer({
       <ActivityComponent
         activityId={activityId}
         mode={mode}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
         onComplete={onComplete}
       />
     </div>
