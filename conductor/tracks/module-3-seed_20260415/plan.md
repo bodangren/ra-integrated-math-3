@@ -2,15 +2,15 @@
 
 ## Phase 1: Seed Lesson 3-1
 
-- [ ] Task: Verify lesson 3-1 curriculum source
-  - [ ] Confirm title and phase sequence against `curriculum/modules/module-3-lesson-1`
-  - [ ] Confirm graphing content maps to registered activities
+- [x] Task: Verify lesson 3-1 curriculum source [2e24f59]
+  - [x] Confirm title and phase sequence against `curriculum/modules/module-3-lesson-1`
+  - [x] Confirm graphing content maps to registered activities
 
-- [ ] Task: Create seed function `convex/seed/seed-lesson-3-1.ts`
-  - [ ] Write tests for phase sequence and idempotency
-  - [ ] Implement lesson, phases, sections, and activities
+- [x] Task: Create seed function `convex/seed/seed-lesson-3-1.ts` [2e24f59]
+  - [x] Write tests for phase sequence and idempotency
+  - [x] Implement lesson, phases, sections, and activities
 
-- [ ] Task: Conductor - Phase Completion Verification 'Seed Lesson 3-1' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 3-1' (Protocol in workflow.md) [2e24f59]
 
 ## Phase 2: Seed Lesson 3-2
 
