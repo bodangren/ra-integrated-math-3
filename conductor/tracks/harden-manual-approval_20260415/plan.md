@@ -32,21 +32,21 @@
 
 - [x] Task: Conductor - Phase Completion Verification 'Content Hashing and Stale Approval' (Protocol in workflow.md) [a6bc0a0]
 
-## Phase 3: Harness Data and Approval Gating [checkpoint: b4c7d91]
+## Phase 3: Harness Data and Approval Gating [checkpoint: ab3e604]
 
-- [x] Task: Feed harnesses from real stored data [b4c7d91]
+- [x] Task: Feed harnesses from real stored data [ab3e604]
   - [x] Write component tests for activity harness rendering stored props
   - [x] Write component tests for example harness rendering selected content/modes
   - [x] Write component tests for practice harness using selected practice props
   - [x] Remove hardcoded sample-only behavior where real target data is available
 
-- [x] Task: Enforce manual checklist gating before approval [b4c7d91]
+- [x] Task: Enforce manual checklist gating before approval [ab3e604]
   - [x] Write tests that `approved` is disabled until required harness checks are complete
   - [x] Require teaching/guided/practice review for examples where applicable
   - [x] Require correct/incorrect attempt inspection for practice where feasible
   - [x] Keep `needs_changes` and `rejected` available with required comments
 
-- [x] Task: Conductor - Phase Completion Verification 'Harness Data and Approval Gating' (Protocol in workflow.md) [b4c7d91]
+- [x] Task: Conductor - Phase Completion Verification 'Harness Data and Approval Gating' (Protocol in workflow.md) [ab3e604]
 
 ## Phase 4: Convex Integration Coverage and Auth Boundaries
 
