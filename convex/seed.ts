@@ -162,6 +162,9 @@ export const seedAll = internalAction({
           case "module-8-lesson-1":
             await ctx.runMutation(seedInternal.seedLesson8_1, {});
             break;
+          case "module-8-lesson-2":
+            await ctx.runMutation(seedInternal.seedLesson8_2, {});
+            break;
           default:
             break;
         }
@@ -1067,6 +1070,24 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 11, title: "Worked Example 7", phaseType: "worked_example", sections: [] },
         { phaseNumber: 12, title: "Discourse", phaseType: "discourse", sections: [] },
         { phaseNumber: 13, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 8,
+      title: "Using Statistical Experiments",
+      slug: "module-8-lesson-2",
+      description: "Students compare theoretical and experimental probabilities and determine whether models are consistent with results from simulations.",
+      orderIndex: 2,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Theoretical and Experimental Probability", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Learn: Simulations", phaseType: "learn", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 9, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
   ];
