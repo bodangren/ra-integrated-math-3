@@ -180,6 +180,9 @@ export const seedAll = internalAction({
           case "module-9-lesson-2":
             await ctx.runMutation(seedInternal.seedLesson9_2, {});
             break;
+          case "module-9-lesson-3":
+            await ctx.runMutation(seedInternal.seedLesson9_3, {});
+            break;
           default:
             break;
         }
@@ -1226,6 +1229,26 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 12, title: "Worked Example 7", phaseType: "worked_example", sections: [] },
         { phaseNumber: 13, title: "Discourse", phaseType: "discourse", sections: [] },
         { phaseNumber: 14, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 9,
+      title: "Circular and Periodic Functions",
+      slug: "module-9-lesson-3",
+      description: "Students find values of trigonometric functions given a point on a unit circle or the measure of a special angle, and find values of trigonometric functions that model periodic events.",
+      orderIndex: 3,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Circular Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Learn: Periodic Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 11, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
   ];
