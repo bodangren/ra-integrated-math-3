@@ -222,6 +222,34 @@ export const seedStandards = internalMutation({
         category: "Statistics",
         isActive: true,
       },
+      {
+        code: "HSF-TF.A.1",
+        description: "Extend the domain of the trigonometric functions using the unit circle",
+        studentFriendlyDescription: "I can use the unit circle to extend trigonometric functions to all angles.",
+        category: "Functions",
+        isActive: true,
+      },
+      {
+        code: "HSF-TF.A.2",
+        description: "Explain how the unit circle in the coordinate plane enables the extension of trigonometric functions to all real numbers, and interpret these functions in terms of a periodic phenomenon",
+        studentFriendlyDescription: "I can explain how the unit circle helps find trigonometric values for any angle.",
+        category: "Functions",
+        isActive: true,
+      },
+      {
+        code: "HSF-TF.A.4",
+        description: "Use the unit circle to explain symmetry and periodicity of trigonometric functions",
+        studentFriendlyDescription: "I can use the unit circle to show why trigonometric functions repeat.",
+        category: "Functions",
+        isActive: true,
+      },
+      {
+        code: "HSF-TF.B.5",
+        description: "Choose trigonometric functions to model periodic phenomena with specified amplitude, frequency, and midline",
+        studentFriendlyDescription: "I can use sine and cosine functions to model repeating patterns.",
+        category: "Functions",
+        isActive: true,
+      },
     ];
 
     const results: { code: string; id: string }[] = [];

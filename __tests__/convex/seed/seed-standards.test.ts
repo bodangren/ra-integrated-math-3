@@ -223,4 +223,84 @@ describe('seed-standards', () => {
       expect(result).toBeNull();
     });
   });
+
+  describe('Module 9 competency standards', () => {
+    const module9Standards: SeedCompetencyStandard[] = [
+      {
+        code: 'HSF-TF.A.1',
+        description: 'Extend the domain of the trigonometric functions using the unit circle',
+        studentFriendlyDescription: 'I can use the unit circle to extend trigonometric functions to all angles.',
+        category: 'Functions',
+        isActive: true,
+      },
+      {
+        code: 'HSF-TF.A.2',
+        description: 'Explain how the unit circle in the coordinate plane enables the extension of trigonometric functions to all real numbers, and interpret these functions in terms of a periodic phenomenon',
+        studentFriendlyDescription: 'I can explain how the unit circle helps find trigonometric values for any angle.',
+        category: 'Functions',
+        isActive: true,
+      },
+      {
+        code: 'HSF-TF.A.4',
+        description: 'Use the unit circle to explain symmetry and periodicity of trigonometric functions',
+        studentFriendlyDescription: 'I can use the unit circle to show why trigonometric functions repeat.',
+        category: 'Functions',
+        isActive: true,
+      },
+      {
+        code: 'HSF-TF.B.5',
+        description: 'Choose trigonometric functions to model periodic phenomena with specified amplitude, frequency, and midline',
+        studentFriendlyDescription: 'I can use sine and cosine functions to model repeating patterns.',
+        category: 'Functions',
+        isActive: true,
+      },
+    ];
+
+    it('seeds exactly 4 standards for Module 9', () => {
+      expect(module9Standards).toHaveLength(4);
+    });
+
+    it('all Module 9 standards have valid codes', () => {
+      module9Standards.forEach((standard) => {
+        expect(standard.code).toMatch(/^[A-Z]+-[A-Z]+\.[A-Z]\.[0-9]+[a-z]?$/);
+      });
+    });
+
+    it('all Module 9 standards have non-empty descriptions', () => {
+      module9Standards.forEach((standard) => {
+        expect(standard.description.length).toBeGreaterThan(0);
+      });
+    });
+
+    it('all Module 9 standards have student-friendly descriptions', () => {
+      module9Standards.forEach((standard) => {
+        expect(standard.studentFriendlyDescription).toBeDefined();
+        expect(standard.studentFriendlyDescription!.length).toBeGreaterThan(0);
+      });
+    });
+
+    it('all Module 9 standards are active', () => {
+      module9Standards.forEach((standard) => {
+        expect(standard.isActive).toBe(true);
+      });
+    });
+
+    it('all Module 9 standards belong to Functions category', () => {
+      module9Standards.forEach((standard) => {
+        expect(standard.category).toBe('Functions');
+      });
+    });
+
+    it('all Module 9 standards have unique codes', () => {
+      const codes = module9Standards.map((s) => s.code);
+      const uniqueCodes = new Set(codes);
+      expect(uniqueCodes.size).toBe(codes.length);
+    });
+
+    it('Module 9 standards use HSF-TF prefix for trigonometric functions', () => {
+      module9Standards.forEach((standard) => {
+        expect(standard.code).toMatch(/^HSF-TF\./);
+      });
+    });
+  });
 });

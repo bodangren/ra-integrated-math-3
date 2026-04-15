@@ -16,8 +16,8 @@
 | getLessonProgress fetches ALL user progress | Med-High | Open | `.withIndex("by_user").collect()` returns all rows |
 | No Convex-layer authorization | Med-High | Open | Auth boundary is entirely in Next.js server layer |
 | submitReviewHandler hashes with client-sent componentKind | High | Open | Hash may mismatch queue's resolved kind |
-| Missing CCSS standards for M2/M3/M9 | High | Open | ~30 of ~50+ standards defined; M8 resolved 2026-04-16 |
-| No lesson_standards links for modules 1-5 | High | Open | Only modules 6-8 have lesson-standard links; M9 pending |
+| Missing CCSS standards for M2/M3 | High | Open | ~30 of ~50+ standards defined; M8, M9 resolved |
+| No lesson_standards links for modules 1-5 | High | Open | Only modules 6-9 have lesson-standard links |
 | Module 3/4/5 seed standards lack lesson-standard links | Medium | Open | lesson_standards table needs linking |
 | Seed tests are tautological (inline data, not actual seed files) | Medium | Open | Zero regression protection |
 | No unit tests for error-analysis module (8 exported functions) | High | Open | Non-trivial aggregation logic untested |

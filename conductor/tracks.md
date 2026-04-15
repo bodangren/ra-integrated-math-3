@@ -228,7 +228,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
        - Phase 5: Seed Lesson 8-5 [COMPLETE]
        - Phase 6: Module Integration and Verification [COMPLETE]
 
-- [~] **Track: Module 9 Curriculum Seed**
+- [x] **Track: Module 9 Curriculum Seed**
         *Seed Module 9 trigonometric functions lessons (9-1 through 9-7) into Convex database*
         *Link: [./conductor/tracks/module-9-seed_20260415/](./conductor/tracks/module-9-seed_20260415/)*
         - Phase 1: Seed Lesson 9-1 [COMPLETE]
@@ -238,6 +238,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
          - Phase 5: Seed Lesson 9-5 [COMPLETE]
          - Phase 6: Seed Lesson 9-6 [COMPLETE]
          - Phase 7: Seed Lesson 9-7 [COMPLETE]
+         - Phase 8: Module Integration and Verification [COMPLETE]
 
 - [ ] **Track: Practice Timing Telemetry**
      *Add canonical wall-clock, active-time, idle-time, and timing-confidence evidence to practice.v1 submissions for future SRS scoring*

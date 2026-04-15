@@ -9,7 +9,7 @@
 - **Lint**: Passing.
 - **TypeScript**: 25 pre-existing test-file errors remain (students.test.tsx, dashboard.test.ts). No new TS errors.
 - **Module 1-9 Roadmap**: Complete through Phase 7 (lesson seeds 9-1 through 9-7).
-- **Module 9 Seed**: Phases 1-7 complete (Lessons 9-1 through 9-7). Phase 8 (Module Integration and Verification) still pending.
+- **Module 9 Seed**: All phases 1-8 complete (Lessons 9-1 through 9-7 with standards and lesson-standard links).
 - **Code Review 3** (2026-04-16): Module 9 Phases 5-7 audited. No critical/high findings.
   - Fixed Phase 5 `checkpoint: pending` → `eb337e4` in plan.md.
   - Content accuracy verified against curriculum source for all 3 lessons.
@@ -23,13 +23,12 @@
 
 Track: `conductor/tracks/module-9-seed_20260415/`
 
-Seed Module 9 trigonometric functions lessons (9-1 through 9-7) into Convex database. Lessons 9-1 through 9-7 complete. **Phase 8 (Module Integration and Verification) remains.**
+Seed Module 9 trigonometric functions lessons (9-1 through 9-7) into Convex database. **All phases (1-8) complete.**
 
 ## Planned Upcoming Tracks
 
-1. **Module 9 Phase 8: Module Integration and Verification** — wire lesson_standards, verify all 7 lessons, update conductor status
-2. **Practice Timing Telemetry** — `practice-timing-telemetry_20260415` (post-Module 9 SRS foundation)
-3. **Practice Timing Baselines** — `practice-timing-baselines_20260415` (depends on timing telemetry and stable practice problem-family identifiers)
+1. **Practice Timing Telemetry** — `practice-timing-telemetry_20260415` (Module 9 SRS foundation complete)
+2. **Practice Timing Baselines** — `practice-timing-baselines_20260415` (depends on timing telemetry and stable practice problem-family identifiers)
 
 See `conductor/modules-3-9-roadmap.md` for the module inventory and repeated implementation pattern.
 See `conductor/daily-practice-srs-roadmap.md` for the post-Module-9 daily practice SRS sequence.
@@ -37,7 +36,7 @@ See `conductor/daily-practice-srs-roadmap.md` for the post-Module-9 daily practi
 ## High-Priority Tech Debt (from code review)
 
 1. **Fix submitReviewHandler componentKind derivation** — derive from placement, not client args; prevents permanent stale mismatches.
-2. **Add missing CCSS standards for all modules** — only 21 of ~50+ standards defined; modules 2, 3, 5, 8-9 have gaps.
+2. **Add missing CCSS standards for all modules** — only 25 of ~50+ standards defined; modules 2, 3, 5 have gaps (M9 now has standards).
 3. **Build lesson_standards seeding pipeline for all modules** — modules 6-8 have links; modules 1-5 and 9 need them.
 4. **Add tests for error-analysis module** — 8 untested exported functions with aggregation logic.
 5. **Fix parseAIResponse fragile line-based parsing** — use structured JSON output.

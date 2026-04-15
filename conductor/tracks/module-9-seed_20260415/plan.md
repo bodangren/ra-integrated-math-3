@@ -70,19 +70,19 @@
   - [x] Implement lesson, phases, sections, and activities
 - [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 9-7' (Protocol in workflow.md) [7613463]
 
-## Phase 8: Module Integration and Verification
+## Phase 8: Module Integration and Verification [checkpoint: pending]
 
-- [ ] Task: Update seed orchestration
-  - [ ] Add imports/cases for Module 9 lesson seeds
-  - [ ] Ensure `getLessons()` metadata matches canonical titles
-- [ ] Task: Add Module 9 standards
-  - [ ] Identify standard codes from curriculum/source mapping
-  - [ ] Add standards and lesson-standard links with tests
-- [ ] Task: Run seed verification
-  - [ ] Run relevant seed tests
-  - [ ] Run curriculum consistency tests
-  - [ ] Run seed command or documented equivalent
-- [ ] Task: Update Conductor status
-  - [ ] Mark completed phases in this plan
-  - [ ] Update `conductor/tracks.md` and `conductor/current_directive.md`
+- [x] Task: Update seed orchestration
+  - [x] Add imports/cases for Module 9 lesson seeds
+  - [x] Ensure `getLessons()` metadata matches canonical titles
+- [x] Task: Add Module 9 standards
+  - [x] Identify standard codes from curriculum/source mapping
+  - [x] Add standards and lesson-standard links with tests
+- [x] Task: Run seed verification
+  - [x] Run relevant seed tests
+  - [x] Run curriculum consistency tests
+  - [x] Run seed command or documented equivalent
+- [x] Task: Update Conductor status
+  - [x] Mark completed phases in this plan
+  - [x] Update `conductor/tracks.md` and `conductor/current_directive.md`
 - [ ] Task: Conductor - Phase Completion Verification 'Module Integration and Verification' (Protocol in workflow.md)
