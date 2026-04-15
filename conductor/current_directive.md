@@ -1,15 +1,15 @@
 # Current Directive
 
-> Updated: 2026-04-16 (Module 8 Phase 4: Lesson 8-4 seed complete)
+> Updated: 2026-04-16 (Module 8 Phase 5: Lesson 8-5 seed complete)
 
 ## Status Summary
 
-- **Tests**: 2181 passing, 7 known failures (equivalence validator - radicals/fractions, pre-existing).
+- **Tests**: 2196 passing, 7 known failures (equivalence validator - radicals/fractions, pre-existing).
 - **Build**: Passing; RSC chunk warning remains pre-existing (735 KB).
 - **Lint**: Passing.
 - **TypeScript**: 25 pre-existing test-file errors remain (students.test.tsx, dashboard.test.ts). No new TS errors.
 - **Module 1-7 Roadmap**: Complete.
-- **Module 8 Seed**: Phases 1-4 complete (Lessons 8-1 through 8-4). Phases 5-6 pending.
+- **Module 8 Seed**: Phases 1-5 complete (Lessons 8-1 through 8-5). Phase 6 pending.
 - **Code Review**: Completed 2026-04-16. Fixed 2 issues (HSA-APR.B.2 incorrect description, missing HSF-LE.A.1 and HSA-CED.A.2 standards).
 
 ## Current In-Progress Track
@@ -18,7 +18,7 @@
 
 Track: `conductor/tracks/module-8-seed_20260415/`
 
-Seed Module 8 inferential statistics lessons (8-1 through 8-5) into Convex database. Phase 4 complete.
+Seed Module 8 inferential statistics lessons (8-1 through 8-5) into Convex database. Phase 5 complete.
 
 ## Planned Upcoming Tracks
 

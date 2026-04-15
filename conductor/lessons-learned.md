@@ -36,3 +36,4 @@
 - (2026-04-15, module-6-seed) Build focused lesson_standards seeders per module: query lesson + version + standard by natural keys, then insert idempotently
 - (2026-04-15, module-7-seed) Wire seed files into seed.ts orchestration immediately after creation; orphan seed files are dead code
 - (2026-04-15, module-7-seed) When adding lesson_standards links, verify every referenced standard code exists in seed-standards.ts first — otherwise links silently fail
+- (2026-04-16, module-8-seed) Review previous phase seed.ts integration before starting new phases; missing getLessons() entries cause silent seed skips even when switch cases exist

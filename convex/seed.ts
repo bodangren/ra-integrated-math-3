@@ -171,6 +171,9 @@ export const seedAll = internalAction({
           case "module-8-lesson-4":
             await ctx.runMutation(seedInternal.seedLesson8_4, {});
             break;
+          case "module-8-lesson-5":
+            await ctx.runMutation(seedInternal.seedLesson8_5, {});
+            break;
           default:
             break;
         }
@@ -1098,6 +1101,23 @@ function getLessons(): SeedLesson[] {
     },
     {
       unitNumber: 8,
+      title: "Analyzing Population Data",
+      slug: "module-8-lesson-3",
+      description: "Students describe distributions by finding their mean and standard deviation.",
+      orderIndex: 3,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Describing Distributions", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 8, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 8,
       title: "Normal Distributions",
       slug: "module-8-lesson-4",
       description: "Students classify variables, analyze probability distributions, apply the Empirical Rule, and use z-values for standardization.",
@@ -1118,6 +1138,25 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 13, title: "Worked Example 8", phaseType: "worked_example", sections: [] },
         { phaseNumber: 14, title: "Discourse", phaseType: "discourse", sections: [] },
         { phaseNumber: 15, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 8,
+      title: "Estimating Population Parameters",
+      slug: "module-8-lesson-5",
+      description: "Students use sample data to infer population means and proportions by using confidence intervals and maximum error of the estimate.",
+      orderIndex: 5,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Estimating the Population Mean", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Learn: Estimating the Population Proportion", phaseType: "learn", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 10, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
   ];
