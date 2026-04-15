@@ -48,7 +48,7 @@
 - [x] Task: Create seed function `convex/seed/seed-lesson-8-5.ts`
   - [x] Write tests for phase sequence and idempotency
   - [x] Implement lesson, phases, sections, and activities
-- [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 8-5' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 8-5' (Protocol in workflow.md) [9b2f31a]
 
 ## Phase 6: Module Integration and Verification
 
