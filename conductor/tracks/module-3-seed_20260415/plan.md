@@ -24,17 +24,17 @@
 
 - [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 3-2' (Protocol in workflow.md) [4fb6f43]
 
-## Phase 3: Seed Lesson 3-3
+## Phase 3: Seed Lesson 3-3 [checkpoint: PENDING]
 
-- [ ] Task: Verify lesson 3-3 curriculum source
-  - [ ] Confirm title and phase sequence against `curriculum/modules/module-3-lesson-3`
-  - [ ] Confirm identity-proof content has appropriate text/activity representation
+- [x] Task: Verify lesson 3-3 curriculum source
+  - [x] Confirm title and phase sequence against `curriculum/modules/module-3-lesson-3`
+  - [x] Confirm identity-proof content has appropriate text/activity representation
 
-- [ ] Task: Create seed function `convex/seed/seed-lesson-3-3.ts`
-  - [ ] Write tests for phase sequence and idempotency
-  - [ ] Implement lesson, phases, sections, and activities
+- [x] Task: Create seed function `convex/seed/seed-lesson-3-3.ts`
+  - [x] Write tests for phase sequence and idempotency
+  - [x] Implement lesson, phases, sections, and activities
 
-- [ ] Task: Conductor - Phase Completion Verification 'Seed Lesson 3-3' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 3-3' (Protocol in workflow.md)
 
 ## Phase 4: Seed Lesson 3-4
 
