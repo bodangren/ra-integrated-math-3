@@ -124,6 +124,9 @@ export const seedAll = internalAction({
           case "module-5-lesson-5":
             await ctx.runMutation(seedInternal.seedLesson5_5, {});
             break;
+          case "module-6-lesson-1":
+            await ctx.runMutation(seedInternal.seedLesson6_1, {});
+            break;
           default:
             break;
         }
@@ -687,11 +690,10 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
         { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
         { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
-        { phaseNumber: 7, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
-        { phaseNumber: 8, title: "Learn: Solving Exponential Inequalities", phaseType: "learn", sections: [] },
-        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
-        { phaseNumber: 10, title: "Discourse", phaseType: "discourse", sections: [] },
-        { phaseNumber: 11, title: "Reflection", phaseType: "reflection", sections: [] },
+        { phaseNumber: 7, title: "Learn: Solving Exponential Inequalities", phaseType: "learn", sections: [] },
+        { phaseNumber: 8, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 9, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 10, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
     {
@@ -750,6 +752,29 @@ function getLessons(): SeedLesson[] {
         { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
         { phaseNumber: 6, title: "Discourse", phaseType: "discourse", sections: [] },
         { phaseNumber: 7, title: "Reflection", phaseType: "reflection", sections: [] },
+      ],
+    },
+    {
+      unitNumber: 6,
+      title: "Logarithms and Logarithmic Functions",
+      slug: "module-6-lesson-1",
+      description: "Students write logarithmic and exponential forms, and graph logarithmic functions.",
+      orderIndex: 1,
+      phases: [
+        { phaseNumber: 1, title: "Explore", phaseType: "explore", sections: [] },
+        { phaseNumber: 2, title: "Vocabulary", phaseType: "vocabulary", sections: [] },
+        { phaseNumber: 3, title: "Learn: Logarithmic Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 4, title: "Worked Example 1", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 5, title: "Worked Example 2", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 6, title: "Worked Example 3", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 7, title: "Worked Example 4", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 8, title: "Learn: Graphing Logarithmic Functions", phaseType: "learn", sections: [] },
+        { phaseNumber: 9, title: "Worked Example 5", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 10, title: "Worked Example 6", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 11, title: "Worked Example 7", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 12, title: "Worked Example 8", phaseType: "worked_example", sections: [] },
+        { phaseNumber: 13, title: "Discourse", phaseType: "discourse", sections: [] },
+        { phaseNumber: 14, title: "Reflection", phaseType: "reflection", sections: [] },
       ],
     },
   ];

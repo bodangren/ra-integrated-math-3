@@ -2,13 +2,13 @@
 
 ## Phase 1: Seed Lesson 6-1
 
-- [ ] Task: Verify lesson 6-1 curriculum source
-  - [ ] Confirm title and phase sequence against `curriculum/modules/module-6-lesson-1`
-  - [ ] Confirm inverse exponential/logarithmic content maps to available activities
-- [ ] Task: Create seed function `convex/seed/seed-lesson-6-1.ts`
-  - [ ] Write tests for phase sequence and idempotency
-  - [ ] Implement lesson, phases, sections, and activities
-- [ ] Task: Conductor - Phase Completion Verification 'Seed Lesson 6-1' (Protocol in workflow.md)
+- [x] Task: Verify lesson 6-1 curriculum source
+  - [x] Confirm title and phase sequence against `curriculum/modules/module-6-lesson-1`
+  - [x] Confirm inverse exponential/logarithmic content maps to available activities
+- [x] Task: Create seed function `convex/seed/seed-lesson-6-1.ts`
+  - [x] Write tests for phase sequence and idempotency
+  - [x] Implement lesson, phases, sections, and activities
+- [x] Task: Conductor - Phase Completion Verification 'Seed Lesson 6-1' (Protocol in workflow.md)
 
 ## Phase 2: Seed Lesson 6-2
 

@@ -6,8 +6,6 @@
 ## Architecture & Design
 <!-- Decisions made that future tracks should be aware of -->
 
-- (2026-04-05, setup) Scaffolded from bus-math-v2; architecture.md preserved in conductor/. Convex internal queries/mutations require server-side admin auth — pages fetch through `lib/convex/server.ts` helpers
-
 ## Recurring Gotchas
 <!-- Problems encountered repeatedly; save future tracks from the same pain -->
 
@@ -49,3 +47,4 @@
 - (2026-04-14, teacher-module1) Teacher lesson preview: use try/catch on ctx.db.get with Id cast, then fall back to slug-based index query. Set all phases to 'available' so LessonStepper allows free navigation in teaching mode.
 - (2026-04-15, harden-manual-approval) Review queue componentKind derived from phaseType (worked_example→example, guided_practice/independent_practice/assessment→practice); harness gating via canApprove callback in parent gates decision panel approve button
 - (2026-04-15, module-4-seed) Lesson 4-5 (Operations with Radical Expressions): 14 phases — explore, vocab, learn, 2×worked_example, learn, 3×worked_example, learn, 2×worked_example, discourse, reflection. Product/quotient properties, like radicals, multiply radicals, rationalize denominators (including conjugates).
+- (2026-04-15, module-6-seed) Curriculum consistency tests validate seed implementation phase counts/order against source files. Keep multi-part textbook examples within a single worked_example phase unless the curriculum explicitly splits them.

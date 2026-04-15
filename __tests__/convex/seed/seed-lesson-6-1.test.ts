@@ -1,40 +1,44 @@
 import { describe, it, expect } from 'vitest';
 import type { SeedLesson, SeedPhase } from '@/convex/seed/types';
 
-describe('seed-lesson-5-2', () => {
-  describe('Lesson 5-2: Solving Exponential Equations and Inequalities', () => {
-    const lesson5_2Seed: SeedLesson = {
-      unitNumber: 5,
-      title: 'Solving Exponential Equations and Inequalities',
-      slug: 'module-5-lesson-2',
-      description: 'Students solve exponential equations and inequalities in one variable.',
-      orderIndex: 2,
+describe('seed-lesson-6-1', () => {
+  describe('Lesson 6-1: Logarithms and Logarithmic Functions', () => {
+    const lesson6_1Seed: SeedLesson = {
+      unitNumber: 6,
+      title: 'Logarithms and Logarithmic Functions',
+      slug: 'module-6-lesson-1',
+      description: 'Students write logarithmic and exponential forms, and graph logarithmic functions.',
+      orderIndex: 1,
       phases: [
         { phaseNumber: 1, title: 'Explore', phaseType: 'explore', sections: [] },
         { phaseNumber: 2, title: 'Vocabulary', phaseType: 'vocabulary', sections: [] },
-        { phaseNumber: 3, title: 'Learn: Solving Exponential Equations', phaseType: 'learn', sections: [] },
+        { phaseNumber: 3, title: 'Learn: Logarithmic Functions', phaseType: 'learn', sections: [] },
         { phaseNumber: 4, title: 'Worked Example 1', phaseType: 'worked_example', sections: [] },
         { phaseNumber: 5, title: 'Worked Example 2', phaseType: 'worked_example', sections: [] },
         { phaseNumber: 6, title: 'Worked Example 3', phaseType: 'worked_example', sections: [] },
-        { phaseNumber: 7, title: 'Learn: Solving Exponential Inequalities', phaseType: 'learn', sections: [] },
-        { phaseNumber: 8, title: 'Worked Example 4', phaseType: 'worked_example', sections: [] },
-        { phaseNumber: 9, title: 'Discourse', phaseType: 'discourse', sections: [] },
-        { phaseNumber: 10, title: 'Reflection', phaseType: 'reflection', sections: [] },
+        { phaseNumber: 7, title: 'Worked Example 4', phaseType: 'worked_example', sections: [] },
+        { phaseNumber: 8, title: 'Learn: Graphing Logarithmic Functions', phaseType: 'learn', sections: [] },
+        { phaseNumber: 9, title: 'Worked Example 5', phaseType: 'worked_example', sections: [] },
+        { phaseNumber: 10, title: 'Worked Example 6', phaseType: 'worked_example', sections: [] },
+        { phaseNumber: 11, title: 'Worked Example 7', phaseType: 'worked_example', sections: [] },
+        { phaseNumber: 12, title: 'Worked Example 8', phaseType: 'worked_example', sections: [] },
+        { phaseNumber: 13, title: 'Discourse', phaseType: 'discourse', sections: [] },
+        { phaseNumber: 14, title: 'Reflection', phaseType: 'reflection', sections: [] },
       ],
     };
 
     it('lesson has correct metadata', () => {
-      expect(lesson5_2Seed.unitNumber).toBe(5);
-      expect(lesson5_2Seed.title).toBe('Solving Exponential Equations and Inequalities');
-      expect(lesson5_2Seed.slug).toBe('module-5-lesson-2');
-      expect(lesson5_2Seed.orderIndex).toBe(2);
+      expect(lesson6_1Seed.unitNumber).toBe(6);
+      expect(lesson6_1Seed.title).toBe('Logarithms and Logarithmic Functions');
+      expect(lesson6_1Seed.slug).toBe('module-6-lesson-1');
+      expect(lesson6_1Seed.orderIndex).toBe(1);
     });
 
-    it('has exactly 10 phases', () => {
-      expect(lesson5_2Seed.phases).toHaveLength(10);
+    it('has exactly 14 phases', () => {
+      expect(lesson6_1Seed.phases).toHaveLength(14);
     });
 
-    it('correct phase sequence: explore, vocab, learn, 3×worked_example, learn, worked_example, discourse, reflection', () => {
+    it('correct phase sequence: explore, vocab, learn, 4xworked_example, learn, 4xworked_example, discourse, reflection', () => {
       const expectedSequence: SeedPhase['phaseType'][] = [
         'explore',
         'vocabulary',
@@ -42,60 +46,64 @@ describe('seed-lesson-5-2', () => {
         'worked_example',
         'worked_example',
         'worked_example',
+        'worked_example',
         'learn',
+        'worked_example',
+        'worked_example',
+        'worked_example',
         'worked_example',
         'discourse',
         'reflection',
       ];
 
-      const actualSequence = lesson5_2Seed.phases.map((p) => p.phaseType);
+      const actualSequence = lesson6_1Seed.phases.map((p) => p.phaseType);
       expect(actualSequence).toEqual(expectedSequence);
     });
 
     it('explore phase is phase 1', () => {
-      const explorePhase = lesson5_2Seed.phases.find((p) => p.phaseType === 'explore');
+      const explorePhase = lesson6_1Seed.phases.find((p) => p.phaseType === 'explore');
       expect(explorePhase?.phaseNumber).toBe(1);
     });
 
     it('vocabulary phase is phase 2', () => {
-      const vocabPhase = lesson5_2Seed.phases.find((p) => p.phaseType === 'vocabulary');
+      const vocabPhase = lesson6_1Seed.phases.find((p) => p.phaseType === 'vocabulary');
       expect(vocabPhase?.phaseNumber).toBe(2);
     });
 
     it('first learn phase is phase 3', () => {
-      const learnPhases = lesson5_2Seed.phases.filter((p) => p.phaseType === 'learn');
+      const learnPhases = lesson6_1Seed.phases.filter((p) => p.phaseType === 'learn');
       expect(learnPhases[0]?.phaseNumber).toBe(3);
     });
 
-    it('second learn phase is phase 7', () => {
-      const learnPhases = lesson5_2Seed.phases.filter((p) => p.phaseType === 'learn');
-      expect(learnPhases[1]?.phaseNumber).toBe(7);
+    it('second learn phase is phase 8', () => {
+      const learnPhases = lesson6_1Seed.phases.filter((p) => p.phaseType === 'learn');
+      expect(learnPhases[1]?.phaseNumber).toBe(8);
     });
 
-    it('discourse phase is phase 9', () => {
-      const discoursePhase = lesson5_2Seed.phases.find((p) => p.phaseType === 'discourse');
-      expect(discoursePhase?.phaseNumber).toBe(9);
+    it('discourse phase is phase 13', () => {
+      const discoursePhase = lesson6_1Seed.phases.find((p) => p.phaseType === 'discourse');
+      expect(discoursePhase?.phaseNumber).toBe(13);
     });
 
-    it('reflection phase is phase 10', () => {
-      const reflectionPhase = lesson5_2Seed.phases.find((p) => p.phaseType === 'reflection');
-      expect(reflectionPhase?.phaseNumber).toBe(10);
+    it('reflection phase is phase 14', () => {
+      const reflectionPhase = lesson6_1Seed.phases.find((p) => p.phaseType === 'reflection');
+      expect(reflectionPhase?.phaseNumber).toBe(14);
     });
 
-    it('has exactly 4 worked_example phases', () => {
-      const workedExamples = lesson5_2Seed.phases.filter((p) => p.phaseType === 'worked_example');
-      expect(workedExamples).toHaveLength(4);
+    it('has exactly 8 worked_example phases', () => {
+      const workedExamples = lesson6_1Seed.phases.filter((p) => p.phaseType === 'worked_example');
+      expect(workedExamples).toHaveLength(8);
     });
 
-    it('worked examples are numbered 1-4 in order', () => {
-      const workedExamples = lesson5_2Seed.phases.filter((p) => p.phaseType === 'worked_example');
+    it('worked examples are numbered 1-8 in order', () => {
+      const workedExamples = lesson6_1Seed.phases.filter((p) => p.phaseType === 'worked_example');
       workedExamples.forEach((we, idx) => {
         expect(we.title).toBe(`Worked Example ${idx + 1}`);
       });
     });
   });
 
-  describe('activity records for lesson 5-2', () => {
+  describe('activity records for lesson 6-1', () => {
     const validComponentKeys = [
       'graphing-explorer',
       'step-by-step-solver',
@@ -113,7 +121,7 @@ describe('seed-lesson-5-2', () => {
           componentKey: 'graphing-explorer' as const,
           props: {
             variant: 'explore',
-            equation: 'y = b^x',
+            equation: 'y = log_b(x)',
           },
         },
       };
@@ -130,7 +138,7 @@ describe('seed-lesson-5-2', () => {
           componentKey: 'step-by-step-solver' as const,
           props: {
             problemType: 'polynomial' as const,
-            equation: '4^(5x+1) = 64^7',
+            equation: 'log_4 64 = 3',
             steps: [],
           },
         },

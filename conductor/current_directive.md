@@ -10,7 +10,7 @@
 - **TypeScript**: 25 pre-existing test-file errors remain (students.test.tsx, dashboard.test.ts). No new TS errors.
 - **Module 1-4 Roadmap**: Complete.
 - **Module 5 Seed**: Complete; all 5 lessons wired into seed.ts with exponential functions and geometric series content.
-- **Module 6 Seed**: Next track.
+- **Module 6 Seed**: In progress; Phase 1 (Lesson 6-1) complete.
 
 ## Current In-Progress Track
 

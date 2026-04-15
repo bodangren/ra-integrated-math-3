@@ -119,7 +119,7 @@ export const seedLesson5_2 = internalMutation({
             sectionType: "text" as const,
             content: {
               markdown:
-                "## Example 1 — Solve Exponential Equations Algebraically\n\nSolve each equation.\n\n### Part a: $4^{5x + 1} = 64^7$\n\nRewrite:\n\n- $64 = 4^3$\n\nSo:\n\n$$4^{5x + 1} = (4^3)^7 = 4^{21}$$\n\nThen:\n\n$$5x + 1 = 21$$\n\n$$5x = 20$$\n\n$$x = 4$$",
+                "## Example 1 — Solve Exponential Equations Algebraically\n\nSolve each equation.\n\n### Part a: $4^{5x + 1} = 64^7$\n\nRewrite:\n\n- $64 = 4^3$\n\nSo:\n\n$$4^{5x + 1} = (4^3)^7 = 4^{21}$$\n\nThen:\n\n$$5x + 1 = 21$$\n\n$$5x = 20$$\n\n$$x = 4$$\n\n### Part b: $(1/2)^{4x - 16} = 16^{2x - 5}$\n\nRewrite in base $2$:\n\n- $(1/2) = 2^{-1}$\n- $16 = 2^4$\n\nSo:\n\n$$(2^{-1})^{4x - 16} = (2^4)^{2x - 5}$$\n\n$$2^{-4x + 16} = 2^{8x - 20}$$\n\nThen:\n\n$$-4x + 16 = 8x - 20$$\n\n$$-12x = -36$$\n\n$$x = 3$$",
             },
           },
           {
@@ -154,42 +154,6 @@ export const seedLesson5_2 = internalMutation({
             sectionType: "text" as const,
             content: {
               markdown:
-                "### Part b: $(1/2)^{4x - 16} = 16^{2x - 5}$\n\nRewrite in base $2$:\n\n- $(1/2) = 2^{-1}$\n- $16 = 2^4$\n\nSo:\n\n\n$$(2^{-1})^{4x - 16} = (2^4)^{2x - 5}$$\n\n$$2^{-4x + 16} = 2^{8x - 20}$$\n\n\nThen:\n\n$$-4x + 16 = 8x - 20$$\n\n$$-12x = -36$$\n\n$$x = 3$$",
-            },
-          },
-          {
-            sequenceOrder: 2,
-            sectionType: "activity" as const,
-            content: {
-              componentKey: "step-by-step-solver",
-              props: {
-                problemType: "polynomial",
-                equation: "(1/2)^(4x-16) = 16^(2x-5)",
-                steps: [
-                  { expression: "(1/2) = 2^-1", explanation: "Rewrite (1/2) with base 2" },
-                  { expression: "16 = 2^4", explanation: "Rewrite 16 with base 2" },
-                  { expression: "(2^-1)^(4x-16) = (2^4)^(2x-5)", explanation: "Substitute the rewritten forms" },
-                  { expression: "2^(-4x+16) = 2^(8x-20)", explanation: "Apply power of a power rule" },
-                  { expression: "-4x + 16 = 8x - 20", explanation: "Using property of equality" },
-                  { expression: "-12x = -36", explanation: "Isolate x terms" },
-                  { expression: "x = 3", explanation: "Divide both sides by -12" },
-                ],
-              },
-            },
-          },
-        ],
-      },
-      {
-        phaseNumber: 6,
-        title: "Worked Example 3",
-        phaseType: "worked_example" as const,
-        estimatedMinutes: 12,
-        sections: [
-          {
-            sequenceOrder: 1,
-            sectionType: "text" as const,
-            content: {
-              markdown:
                 "## Example 2 — Solve an Exponential Equation by Graphing\n\nA Super Bowl ad cost can be modeled by:\n\n$$C = 0.058(1.099)^x$$\n\nwhere $C$ is in millions of dollars and $x$ is the Super Bowl number.\n\n\nFind when the cost first surpassed $1 million.\n\n### Part A: Write the model\n\nInitial cost:\n\n$$58{,}000 = 0.058 \\text{ million}$$\n\n\nGrowth rate:\n\n\n$$9.9\\% = 0.099$$\n\nSo:\n\n$$C = 0.058(1.099)^x$$\n\n### Part B: Solve by graphing\n\nSet up the system:\n\n- $y = 1$\n- $y = 0.058(1.099)^x$\n\nThe intersection is at about:\n\n$$x \\approx 30.16$$\n\nSo the cost had not yet surpassed $1 million during Super Bowl $30$.\n\nIt first surpassed $1 million during **Super Bowl 31**.",
             },
           },
@@ -215,8 +179,8 @@ export const seedLesson5_2 = internalMutation({
         ],
       },
       {
-        phaseNumber: 7,
-        title: "Worked Example 4",
+        phaseNumber: 6,
+        title: "Worked Example 3",
         phaseType: "worked_example" as const,
         estimatedMinutes: 12,
         sections: [
@@ -250,7 +214,7 @@ export const seedLesson5_2 = internalMutation({
         ],
       },
       {
-        phaseNumber: 8,
+        phaseNumber: 7,
         title: "Learn: Solving Exponential Inequalities",
         phaseType: "learn" as const,
         estimatedMinutes: 15,
@@ -266,8 +230,8 @@ export const seedLesson5_2 = internalMutation({
         ],
       },
       {
-        phaseNumber: 9,
-        title: "Worked Example 5",
+        phaseNumber: 8,
+        title: "Worked Example 4",
         phaseType: "worked_example" as const,
         estimatedMinutes: 12,
         sections: [
@@ -303,7 +267,7 @@ export const seedLesson5_2 = internalMutation({
         ],
       },
       {
-        phaseNumber: 10,
+        phaseNumber: 9,
         title: "Discourse",
         phaseType: "discourse" as const,
         estimatedMinutes: 15,
@@ -340,7 +304,7 @@ export const seedLesson5_2 = internalMutation({
         ],
       },
       {
-        phaseNumber: 11,
+        phaseNumber: 10,
         title: "Reflection",
         phaseType: "reflection" as const,
         estimatedMinutes: 5,
