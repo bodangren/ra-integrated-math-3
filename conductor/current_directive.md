@@ -14,7 +14,9 @@
 
 ## Current In-Progress Track
 
-No active track. All planned tracks complete.
+- **Track**: Practice Timing Baselines
+- **Phase**: 1 — Baseline and Feature Model
+- **Goal**: Build timing baselines and time-aware SRS evidence features so practice duration can influence system-derived ratings and objective proficiency only after reliable average-time data exists.
 
 ## High-Priority Next Steps
 
