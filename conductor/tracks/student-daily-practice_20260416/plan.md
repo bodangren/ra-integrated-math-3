@@ -6,20 +6,20 @@
 
 ## Phase 1: Daily Practice Page and Session Loading
 
-- [ ] Task: Create `app/student/practice/page.tsx` server component
-  - [ ] Add auth guard using `requireStudentSessionClaims`
-  - [ ] Fetch active session or trigger new session creation via queue engine
-  - [ ] Render client-side practice session wrapper
-  - [ ] Handle redirect when no session available
-- [ ] Task: Create `components/student/PracticeSessionProvider.tsx` client component
-  - [ ] Manage session state (loading, active, complete, empty)
-  - [ ] Subscribe to queue items via `getDailyPracticeQuery`
-  - [ ] Track current card index
-- [ ] Task: Write page-level tests with mocked Convex
-  - [ ] Test auth redirect for unauthenticated users
-  - [ ] Test session loading with active session
-  - [ ] Test empty state when no cards due
-- [ ] Task: Conductor - Phase Completion Verification 'Daily Practice Page and Session Loading' (Protocol in workflow.md)
+- [x] Task: Create `app/student/practice/page.tsx` server component
+  - [x] Add auth guard using `requireStudentSessionClaims`
+  - [x] Fetch active session or trigger new session creation via queue engine
+  - [x] Render client-side practice session wrapper
+  - [x] Handle redirect when no session available
+- [x] Task: Create `components/student/PracticeSessionProvider.tsx` client component
+  - [x] Manage session state (loading, active, complete, empty)
+  - [x] Subscribe to queue items via `getDailyPracticeQuery`
+  - [x] Track current card index
+- [x] Task: Write page-level tests with mocked Convex
+  - [x] Test auth redirect for unauthenticated users
+  - [x] Test session loading with active session
+  - [x] Test empty state when no cards due
+- [x] Task: Conductor - Phase Completion Verification 'Daily Practice Page and Session Loading' (Protocol in workflow.md)
 
 ---
 
