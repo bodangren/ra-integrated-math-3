@@ -74,17 +74,17 @@
 
 ## Phase 4: Adapter Interfaces
 
-- [ ] Task: Write adapter tests
-  - [ ] Test `InMemoryCardStore` implements `CardStore` interface
-  - [ ] Test `InMemoryReviewLogStore` implements `ReviewLogStore` interface
-  - [ ] Test scheduler + processor + in-memory stores work end-to-end
-  - [ ] Test card store `getDueCards` filters correctly
-- [ ] Task: Implement adapter interfaces
-  - [ ] Create `lib/srs/adapters.ts`
-  - [ ] Define `CardStore` and `ReviewLogStore` interfaces
-  - [ ] Implement `InMemoryCardStore` and `InMemoryReviewLogStore`
-  - [ ] Document how Convex adapters should implement these (for Track 5)
-- [ ] Task: Conductor - Phase Completion Verification 'Adapter Interfaces' (Protocol in workflow.md)
+- [x] Task: Write adapter tests [4096689]
+  - [x] Test `InMemoryCardStore` implements `CardStore` interface
+  - [x] Test `InMemoryReviewLogStore` implements `ReviewLogStore` interface
+  - [x] Test scheduler + processor + in-memory stores work end-to-end
+  - [x] Test card store `getDueCards` filters correctly
+- [x] Task: Implement adapter interfaces [4096689]
+  - [x] Create `lib/srs/adapters.ts`
+  - [x] Define `CardStore` and `ReviewLogStore` interfaces
+  - [x] Implement `InMemoryCardStore` and `InMemoryReviewLogStore`
+  - [x] Document how Convex adapters should implement these (for Track 5)
+- [~] Task: Conductor - Phase Completion Verification 'Adapter Interfaces' (Protocol in workflow.md)
 
 ## Phase 5: Verification and Handoff
 
