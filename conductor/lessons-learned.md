@@ -9,7 +9,7 @@
 - (2026-04-16, srs-integration) Always add `by_student_and_problem_family` index for SRS cards; querying by `problemFamilyId` alone causes cross-student card overwrites
 - (2026-04-16, srs-integration) Use `ctx.scheduler.runAfter(0, ...)` for non-blocking SRS processing; keep error boundaries so SRS failures never block submission
 - (2026-04-16, srs-schema) `mapDbCardToContract` must use `card._id` as `cardId`, not `problemFamilyId` — domain IDs are not unique across students
-- (2026-04-16, srs-schema) Adapter-generated IDs (e.g. `reviewId: 'rev_xxx'`) must be stored in a DB column to be recoverable; pass-through args without storage lose the value
+- (2026-04-17, auth-guards) Test request guards by mocking `verifySessionToken` and passing cookie headers directly on Request objects; avoids circular mocks of the module under test
 - (2026-04-16, srs-schema) Convex `v.optional(v.string())` produces `string | undefined`, but contract may use `string | null` — normalize at adapter boundary
 - (2026-04-16, sessions) Server-side day-boundary comparisons must use UTC methods (`getUTCFullYear`/`getUTCMonth`/`getUTCDate`), not local TZ methods
 - (2026-04-16, sessions) Stale active sessions from prior days must be explicitly closed (`completedAt` patch) before creating new sessions; otherwise index queries return wrong records
