@@ -22,7 +22,7 @@ export function Dialog({ open, onOpenChange, title, description, children }: Dia
 
     if (open) {
       dialog.showModal();
-    } else {
+    } else if (dialog.open) {
       dialog.close();
     }
   }, [open]);

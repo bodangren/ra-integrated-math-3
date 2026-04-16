@@ -127,8 +127,8 @@ export type ResetStudentCardsArgs = {
 };
 
 export type ResetStudentCardsResult =
-  | { success: true; cardId: Id<"srs_cards"> | null }
-  | { success: false; error: string; cardId: null };
+  | { success: true; resetCount: number }
+  | { success: false; error: string };
 
 export async function resetStudentCardsHandler(
   ctx: MutationCtx,
@@ -136,67 +136,69 @@ export async function resetStudentCardsHandler(
 ): Promise<ResetStudentCardsResult> {
   const ownsClass = await validateTeacherOwnsClass(ctx, args.userId, args.classId);
   if (!ownsClass) {
-    return { success: false, error: "Unauthorized", cardId: null };
+    return { success: false, error: "Unauthorized" };
   }
 
   const studentInClass = await validateStudentInClass(ctx, args.classId, args.studentId);
   if (!studentInClass) {
-    return { success: false, error: "Student not in class", cardId: null };
+    return { success: false, error: "Student not in class" };
   }
 
-  const card = await ctx.db
+  const cards = await ctx.db
     .query("srs_cards")
     .withIndex("by_student_and_objective", (q) =>
       q.eq("studentId", args.studentId).eq("objectiveId", args.objectiveId)
     )
-    .first();
+    .collect();
 
-  if (!card) {
-    return { success: true, cardId: null };
+  if (cards.length === 0) {
+    return { success: true, resetCount: 0 };
   }
 
   const now = Date.now();
   const nowIso = new Date(now).toISOString();
 
-  await ctx.db.replace(card._id, {
-    studentId: card.studentId,
-    objectiveId: card.objectiveId,
-    problemFamilyId: card.problemFamilyId,
-    stability: 0,
-    difficulty: 0,
-    state: "new",
-    dueDate: nowIso,
-    elapsedDays: 0,
-    scheduledDays: 0,
-    reps: 0,
-    lapses: 0,
-    createdAt: card.createdAt,
-    updatedAt: now,
-  });
-
-  await ctx.db.insert("srs_review_log", {
-    cardId: card._id,
-    studentId: args.studentId,
-    rating: "manual_reset",
-    evidence: { action: "teacher_reset", objectiveId: args.objectiveId },
-    stateBefore: {
-      stability: card.stability,
-      difficulty: card.difficulty,
-      state: card.state,
-      reps: card.reps,
-      lapses: card.lapses,
-    },
-    stateAfter: {
+  for (const card of cards) {
+    await ctx.db.replace(card._id, {
+      studentId: card.studentId,
+      objectiveId: card.objectiveId,
+      problemFamilyId: card.problemFamilyId,
       stability: 0,
       difficulty: 0,
       state: "new",
+      dueDate: nowIso,
+      elapsedDays: 0,
+      scheduledDays: 0,
       reps: 0,
       lapses: 0,
-    },
-    reviewedAt: now,
-  });
+      createdAt: card.createdAt,
+      updatedAt: now,
+    });
 
-  return { success: true, cardId: card._id };
+    await ctx.db.insert("srs_review_log", {
+      cardId: card._id,
+      studentId: args.studentId,
+      rating: "manual_reset",
+      evidence: { action: "teacher_reset", objectiveId: args.objectiveId },
+      stateBefore: {
+        stability: card.stability,
+        difficulty: card.difficulty,
+        state: card.state,
+        reps: card.reps,
+        lapses: card.lapses,
+      },
+      stateAfter: {
+        stability: 0,
+        difficulty: 0,
+        state: "new",
+        reps: 0,
+        lapses: 0,
+      },
+      reviewedAt: now,
+    });
+  }
+
+  return { success: true, resetCount: cards.length };
 }
 
 export const resetStudentCards = internalMutation({

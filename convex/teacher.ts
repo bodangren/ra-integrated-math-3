@@ -1183,6 +1183,7 @@ export const getTeacherSrsDashboardData = internalQuery({
     let totalOverdue = 0;
 
     const studentStreaks: Array<{ studentId: string; displayName: string; streak: number }> = [];
+    const nowIso = new Date(now).toISOString();
 
     for (const enrollment of activeStudents) {
       const cards = await ctx.db
@@ -1198,7 +1199,7 @@ export const getTeacherSrsDashboardData = internalQuery({
         }
       }
 
-      const overdueCards = cards.filter((c) => c.dueDate < new Date().toISOString());
+      const overdueCards = cards.filter((c) => c.dueDate < nowIso);
       const overdueCount = overdueCards.length;
       totalOverdue += overdueCount;
       perStudentOverdue.push({ studentId: enrollment.studentId, overdueCount });

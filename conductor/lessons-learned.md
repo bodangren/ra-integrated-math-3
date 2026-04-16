@@ -26,6 +26,9 @@
 - (2026-04-17, code-review) `setCurrentCardIndex(currentCardIndex + 1)` captures stale closure; always use functional updater `setCurrentCardIndex((prev) => prev + 1)` in callbacks
 - (2026-04-17, code-review) Union-type casts like `x as ObjectivePriority` must be runtime-validated against a set of valid values; DB corruption silently propagates otherwise
 - (2026-04-17, code-review) RSC page null checks: both `fetchInternalQuery` and `fetchInternalMutation` can return null; always guard the destructuring
+- (2026-04-17, code-review) Multi-card queries: a student can have multiple SRS cards per objective (different problemFamilies); always use `.collect()` not `.first()` when resetting or checking cards
+- (2026-04-17, code-review) Native `<dialog>.close()` throws InvalidStateError if already closed; guard with `if (dialog.open)` before calling
+- (2026-04-17, code-review) INTEGRATION.md example code must use actual type fields, not related-but-different type fields; verify examples compile against the real types
 
 ## Patterns That Worked Well
 

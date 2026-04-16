@@ -38,6 +38,7 @@ export function InterventionActions({
   const [selectedObjective, setSelectedObjective] = useState<ObjectiveIntervention | null>(null);
   const [selectedStudent, setSelectedStudent] = useState<StudentIntervention | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [showResetDialog, setShowResetDialog] = useState(false);
   const [showExtraCardsDialog, setShowExtraCardsDialog] = useState(false);
 
@@ -48,9 +49,12 @@ export function InterventionActions({
       objective.currentPriority === 'essential' ? 'triaged' : 'essential';
 
     setIsLoading(true);
+    setError(null);
     try {
       await onUpdatePriority(objective.objectiveId, newPriority);
       setSelectedObjective(null);
+    } catch {
+      setError('Failed to update priority. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -60,10 +64,13 @@ export function InterventionActions({
     if (!onResetCards || !selectedStudent) return;
 
     setIsLoading(true);
+    setError(null);
     try {
       await onResetCards(selectedStudent.studentId, selectedStudent.objectiveId);
       setShowResetDialog(false);
       setSelectedStudent(null);
+    } catch {
+      setError('Failed to reset cards. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -73,10 +80,13 @@ export function InterventionActions({
     if (!onAddExtraCards || !selectedStudent) return;
 
     setIsLoading(true);
+    setError(null);
     try {
       await onAddExtraCards(selectedStudent.studentId, selectedStudent.objectiveId);
       setShowExtraCardsDialog(false);
       setSelectedStudent(null);
+    } catch {
+      setError('Failed to add extra cards. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -85,6 +95,12 @@ export function InterventionActions({
   return (
     <div className="bg-card border border-border rounded-lg p-6 shadow-sm">
       <h2 className="text-xl font-semibold text-foreground mb-4">Intervention Actions</h2>
+
+      {error && (
+        <div className="mb-4 p-3 rounded-lg bg-destructive/10 text-destructive text-sm">
+          {error}
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="space-y-3">

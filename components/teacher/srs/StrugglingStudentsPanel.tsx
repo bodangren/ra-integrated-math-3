@@ -40,6 +40,12 @@ function StudentCard({
         onClick ? 'cursor-pointer hover:bg-muted/30' : ''
       )}
       onClick={() => onClick?.(student.studentId)}
+      onKeyDown={(e) => {
+        if (onClick && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          onClick(student.studentId);
+        }
+      }}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
     >

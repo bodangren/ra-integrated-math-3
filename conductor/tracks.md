@@ -386,14 +386,14 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
 
 ### Wave 5 — Polish (after Wave 4)
 
-- [~] **Track 12: Cross-Course Extraction and Developer Docs**
-      *Boundary audit, interface documentation, integration guide (INTEGRATION.md), adapter verification*
-      *Depends on: All tracks 1-11*
-      *Link: [./conductor/tracks/cross-course-extraction_20260416/](./conductor/tracks/cross-course-extraction_20260416/)*
-       - Phase 1: Boundary Audit [COMPLETE] [checkpoint: d3475cd]
-       - Phase 2: Interface Documentation [COMPLETE] [checkpoint: ad4afe8]
-       - Phase 3: Integration Guide [COMPLETE] [checkpoint: e76b1b3]
-       - Phase 4: Adapter Verification [COMPLETE] [checkpoint: 91aa23b]
+- [x] **Track 12: Cross-Course Extraction and Developer Docs** — **COMPLETED**
+       *Boundary audit, interface documentation, integration guide (INTEGRATION.md), adapter verification*
+       *Depends on: All tracks 1-11*
+       *Link: [./conductor/tracks/cross-course-extraction_20260416/](./conductor/tracks/cross-course-extraction_20260416/)*
+        - Phase 1: Boundary Audit [COMPLETE] [checkpoint: d3475cd]
+        - Phase 2: Interface Documentation [COMPLETE] [checkpoint: ad4afe8]
+        - Phase 3: Integration Guide [COMPLETE] [checkpoint: e76b1b3]
+        - Phase 4: Adapter Verification [COMPLETE] [checkpoint: 91aa23b]
 
 - [x] **Track: Error Analysis Unit Tests**
       *Add unit tests for error-analysis module — 8 untested exported functions with aggregation logic*

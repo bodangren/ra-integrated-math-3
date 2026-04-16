@@ -160,23 +160,23 @@ export const OBJECTIVE_POLICIES: ObjectivePracticePolicy[] = [
   {
     objectiveId: 'obj_quadratic_roots',
     priority: 'essential',
-    newCardsPerDay: 5,
-    maxReviewsPerDay: 20,
-    prioritizeOverdue: true,
+    minProblemFamilies: 2,
+    minCoverageThreshold: 0.6,
+    minRetentionThreshold: 0.7,
   },
   {
     objectiveId: 'obj_linear_systems',
     priority: 'essential',
-    newCardsPerDay: 5,
-    maxReviewsPerDay: 20,
-    prioritizeOverdue: true,
+    minProblemFamilies: 2,
+    minCoverageThreshold: 0.6,
+    minRetentionThreshold: 0.7,
   },
   {
     objectiveId: 'obj_extension_challenge',
     priority: 'extension',
-    newCardsPerDay: 2,
-    maxReviewsPerDay: 10,
-    prioritizeOverdue: false,
+    minProblemFamilies: 1,
+    minCoverageThreshold: 0.4,
+    minRetentionThreshold: 0.5,
   },
 ];
 ```
@@ -246,15 +246,17 @@ import { InMemoryCardStore, InMemoryReviewLogStore } from '@/lib/srs/adapters';
 import type { CardStore, ReviewLogStore } from '@/lib/srs/adapters';
 import type { SrsCardState, SrsReviewLogEntry } from '@/lib/srs/contract';
 
-// Convex-backed CardStore
+// Convex-backed CardStore — ctx is a MutationCtx or QueryCtx passed via constructor
 export class ConvexCardStore implements CardStore {
+  constructor(private ctx: any) {} // Use MutationCtx | QueryCtx from convex/_generated/server
+
   async getCard(id: string): Promise<SrsCardState | null> {
-    const doc = await ctx.db.get(id as Id<'srs_cards'>);
+    const doc = await this.ctx.db.get(id as Id<'srs_cards'>);
     return doc ? mapDbCardToContract(doc) : null;
   }
 
   async getCardsByStudent(studentId: string): Promise<SrsCardState[]> {
-    const cards = await ctx.db
+    const cards = await this.ctx.db
       .query('srs_cards')
       .withIndex('by_student', [studentId])
       .collect();
@@ -268,7 +270,12 @@ export class ConvexCardStore implements CardStore {
   }
 
   async saveCard(card: SrsCardState): Promise<void> {
-    await ctx.db.insert('srs_cards', mapContractToDbCard(card));
+    const existing = await this.getCard(card.cardId);
+    if (existing) {
+      await this.ctx.db.patch(card.cardId as Id<'srs_cards'>, mapContractToDbCard(card));
+    } else {
+      await this.ctx.db.insert('srs_cards', mapContractToDbCard(card));
+    }
   }
 
   async saveCards(cards: SrsCardState[]): Promise<void> {
@@ -282,8 +289,10 @@ export class ConvexCardStore implements CardStore {
 
 // Convex-backed ReviewLogStore
 export class ConvexReviewLogStore implements ReviewLogStore {
+  constructor(private ctx: any) {} // Use MutationCtx from convex/_generated/server
+
   async saveReview(entry: SrsReviewLogEntry): Promise<void> {
-    await ctx.db.insert('srs_review_log', mapReviewLogToDb(entry));
+    await this.ctx.db.insert('srs_review_log', mapReviewLogToDb(entry));
   }
 
   async getReviewsByCard(cardId: string): Promise<SrsReviewLogEntry[]> {
@@ -410,11 +419,12 @@ import type { PracticeSubmissionEnvelope } from '@/lib/practice/contract';
 
 export async function processPracticeSubmission(args: {
   submission: PracticeSubmissionEnvelope;
+  studentId: string;
   cardStore: CardStore;
   reviewLogStore: ReviewLogStore;
   now?: string;
 }): Promise<{ cardId: string; rating: string }> {
-  const { submission, cardStore, reviewLogStore } = args;
+  const { submission, studentId, cardStore, reviewLogStore } = args;
   const now = args.now ?? new Date().toISOString();
 
   // Resolve problem family for this activity
@@ -422,12 +432,12 @@ export async function processPracticeSubmission(args: {
   const objectiveId = resolveObjectiveForProblemFamily(problemFamilyId);
 
   // Find or create the SRS card
-  let card = await cardStore.getCardByStudentAndFamily(submission.studentId, problemFamilyId);
+  let card = await cardStore.getCardByStudentAndFamily(studentId, problemFamilyId);
 
   if (!card) {
     // First-seen: create new card
     card = createCard({
-      studentId: submission.studentId,
+      studentId,
       objectiveId,
       problemFamilyId,
       now,

@@ -449,7 +449,7 @@ describe('resetStudentCardsHandler', () => {
       { userId: teacherId, classId, studentId, objectiveId: 'A-SSE.2' }
     );
 
-    expect(result).toEqual({ success: true, cardId });
+    expect(result).toEqual({ success: true, resetCount: 1 });
     expect(mockReplace).toHaveBeenCalledTimes(1);
     expect(mockReplace).toHaveBeenCalledWith(cardId, expect.objectContaining({
       state: 'new',
@@ -532,7 +532,7 @@ describe('resetStudentCardsHandler', () => {
       { userId: teacherId, classId, studentId, objectiveId: 'A-SSE.2' }
     );
 
-    expect(result).toEqual({ success: false, error: 'Unauthorized', cardId: null });
+    expect(result).toEqual({ success: false, error: 'Unauthorized' });
     expect(mockReplace).not.toHaveBeenCalled();
   });
 
@@ -556,7 +556,7 @@ describe('resetStudentCardsHandler', () => {
       { userId: teacherId, classId, studentId, objectiveId: 'A-SSE.2' }
     );
 
-    expect(result).toEqual({ success: true, cardId: null });
+    expect(result).toEqual({ success: true, resetCount: 0 });
     expect(mockReplace).not.toHaveBeenCalled();
   });
 });
