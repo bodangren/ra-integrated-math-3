@@ -2,16 +2,16 @@
 
 ## Phase 1: Boundary Audit
 
-- [ ] Task: Read all source files in `lib/srs/` and `lib/practice/` and compile a coupling inventory
-  - [ ] Sub-task: Read every file in `lib/srs/` and catalog all string literals, constants, and type references
-  - [ ] Sub-task: Read every file in `lib/practice/` and catalog all string literals, constants, and type references
-  - [ ] Sub-task: Cross-reference catalog against known IM3 identifiers (lesson names, module numbers, component keys)
-- [ ] Task: Fix any course-specific leaks by parameterizing or extracting
-  - [ ] Sub-task: For each flagged reference, refactor to accept the value as a parameter or config entry
-  - [ ] Sub-task: Run `npm run lint` and all existing tests to confirm no regressions
-- [ ] Task: Write audit report documenting findings and fixes
-  - [ ] Sub-task: Create `conductor/tracks/cross-course-extraction_20260416/boundary-audit-report.md`
-  - [ ] Sub-task: Include per-file findings table with columns: file, line, issue, resolution
+- [x] Task: Read all source files in `lib/srs/` and `lib/practice/` and compile a coupling inventory
+  - [x] Sub-task: Read every file in `lib/srs/` and catalog all string literals, constants, and type references
+  - [x] Sub-task: Read every file in `lib/practice/` and catalog all string literals, constants, and type references
+  - [x] Sub-task: Cross-reference catalog against known IM3 identifiers (lesson names, module numbers, component keys)
+- [x] Task: Fix any course-specific leaks by parameterizing or extracting
+  - [x] Sub-task: For each flagged reference, refactor to accept the value as a parameter or config entry
+  - [x] Sub-task: Run `npm run lint` and all existing tests to confirm no regressions
+- [x] Task: Write audit report documenting findings and fixes
+  - [x] Sub-task: Create `conductor/tracks/cross-course-extraction_20260416/boundary-audit-report.md`
+  - [x] Sub-task: Include per-file findings table with columns: file, line, issue, resolution
 - [ ] Task: Conductor - Phase Completion Verification 'Boundary Audit' (Protocol in workflow.md)
 
 ## Phase 2: Interface Documentation

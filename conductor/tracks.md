@@ -386,7 +386,7 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
 
 ### Wave 5 — Polish (after Wave 4)
 
-- [ ] **Track 12: Cross-Course Extraction and Developer Docs**
+- [~] **Track 12: Cross-Course Extraction and Developer Docs**
      *Boundary audit, interface documentation, integration guide (INTEGRATION.md), adapter verification*
      *Depends on: All tracks 1-11*
      *Link: [./conductor/tracks/cross-course-extraction_20260416/](./conductor/tracks/cross-course-extraction_20260416/)*
