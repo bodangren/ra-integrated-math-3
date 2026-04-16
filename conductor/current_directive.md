@@ -1,50 +1,49 @@
 # Current Directive
 
-> Updated: 2026-04-17 (Code review: Tracks 8, 9, 10 — fixes applied, issues logged)
+> Updated: 2026-04-17 (Code review: Track 11 Phases 1-4, CCSS seeding, submitReviewHandler fix)
 
 ## Status Summary
 
-- **Tests**: 2867 total, 6 known failures (equivalence validator — fraction/radical expressions). All others passing.
+- **Tests**: 2920 total, 6 known failures (equivalence validator — fraction/radical expressions). All others passing.
 - **Build**: Passing.
 - **Lint**: Passing.
 - **TypeScript**: No new TS errors.
 - **Module 1-9 Roadmap**: All modules seeded (M1-M9 complete). CCSS standards and lesson_standards links for M1-M5 seeded.
-- **SRS Wave 0-4**: Waves 0-3 complete. Wave 4: Track 9 complete, Track 10 Phases 1-4 complete. Phase 5 next.
+- **SRS Waves**: Waves 0-3 complete. Wave 4: Tracks 9, 10 complete. Track 11 Phases 1-4 complete, Phase 5 (Dashboard UI) next.
+- **BM2 Alignment**: Wave A tracks (Security, CI/CD) pending. Wave B (Practice Test, Gradebook) pending.
 
-## Code Review: Tracks 8, 9, 10 (2026-04-17)
+## Code Review: Track 11 Phases 1-4 (2026-04-17)
+
+### Scope
+
+Reviewed commits `521fb6e..538b186` covering Track 11 Phases 1-4 (Class Health Queries, Weak Objectives and Struggling Students, Misconception Diagnostics, Intervention Mutations), CCSS Standards Seeding M1-M5, and submitReviewHandler componentKind fix.
 
 ### Fixes Applied
 
-1. **HIGH: `advanceCard` stale closure in PracticeSessionProvider** — `setCurrentCardIndex(currentCardIndex + 1)` captured stale `currentCardIndex` from closure. Fixed: use functional updater `setCurrentCardIndex((prev) => prev + 1)`.
-2. **HIGH: Missing null check in practice page** — Both `fetchInternalQuery` and `fetchInternalMutation` can return null; destructuring `null` crashes the RSC. Fixed: null guard with fallback error UI.
-3. **HIGH: Unsafe `activityId as string` in PracticeCardRenderer** — Two unchecked type assertions on `queueItem.props.activityId`. Fixed: runtime guard with early return and console error.
-4. **HIGH: Unsafe `policy as ObjectivePriority` in objectiveProficiency.ts** — Direct cast from `string` to union type with no validation. Fixed: `validatePriority()` with Set lookup and fallback to `'essential'`.
-5. **HIGH: Same unsafe policy cast in queue.ts** — Applied same `VALID_PRIORITIES` guard pattern.
+1. **MEDIUM: `resetStudentCardsHandler` return type inconsistency** — Handler declared `Promise<{ success: boolean; cardId: ... }>` but error branches cast to `{ success: false; error: string; cardId: null }` via `as`. Introduced discriminated union `ResetStudentCardsResult` to make error shapes type-safe. Updated test assertion to match.
+2. **LOW: Fragile test timing in `getClassSrsHealthHandler` test** — Test used `earlierMs = todayMs - 2h` for a "practiced today" assertion. At midnight boundary this could miscount. Fixed: use `yesterdayMs = todayMs - 24h` to clearly represent "not today".
 
-### New Issues Logged (tracked in tech-debt.md)
+### Issues Logged (tracked in tech-debt.md)
 
-- SRS queue: unbounded `.collect()` on srs_cards (Critical)
-- SRS queue: N+1 per-card resolution — practice_items + activities (Critical)
-- objectiveProficiency: N+1 for submissions + baselines (High)
-- objectiveProficiency: fragile submissionId parsing via lastIndexOf("-") (Medium)
-- objectiveProficiency: card retention inflated per-review not per-card (Medium)
-- Sessions: duplicate getActiveSession naming (Medium)
-- PracticeSessionProvider: completion sends no sessionId (High)
-- PracticeCardRenderer: double timing instrumentation (Medium)
-- SRS sessions: by_student_and_status index relies on undefined sorting (High)
+- `by_objectiveId` index on `problem_families.objectiveIds` uses unsafe `as unknown as string[]` cast (High)
+- N+1 queries in teacher SRS queries: per-student card/session/profile loops (Critical — pre-existing)
+- `resetStudentCardsHandler` drops `lastReview` field on reset (Low — intentional but undocumented)
 
-## Current In-Progress Track
+### No Issues Found In
 
-- **Track 10: Objective Proficiency Measurement** — Phase 4 complete. Phase 5 (Verification and Handoff) next.
+- CCSS Standards Seeding M1-M5: clean implementation, properly wired into seed.ts
+- submitReviewHandler componentKind fix: correct `resolveComponentKind` usage from `placement.phaseType`
+- Track 11 Phase 1-3 queries: auth guards, class ownership validation all correct
+- Track 11 test coverage: 47 tests with comprehensive edge cases (empty class, no cards, sorting, limits)
 
 ## High-Priority Next Steps
 
-1. **Track 10 Phase 4: Student and Teacher Views** — `getStudentProficiencySummary` and `getTeacherClassProficiency` Convex queries
-2. **Track 10 Phase 5: Verification and Handoff** — full test suite, docs, and track completion
-3. **Track 11: Teacher SRS Dashboard and Interventions** — class health, weak objectives, struggling students
-4. **SRS queue: batch resolution** — Replace N+1 per-card reads with 2 bulk reads (Critical perf)
-5. **Security & Auth Hardening (BM2 Wave A)** — port fail-closed auth guards, Convex-layer authorization
-6. **PracticeSessionProvider: send sessionId with completion** — Prevents wrong-session completion
+1. **Track 11 Phase 5: Dashboard UI Components** — SrsDashboardPanel, WeakObjectivesPanel, StrugglingStudentsPanel, MisconceptionPanel, InterventionActions, student detail SRS section, dashboard page
+2. **Track 11 Phase 6: Verification and Handoff** — full test suite, docs, track completion
+3. **Track 12: Cross-Course Extraction and Developer Docs** — boundary audit, INTEGRATION.md, adapter verification
+4. **Security & Auth Hardening (BM2 Wave A)** — port fail-closed auth guards, Convex-layer authorization
+5. **SRS queue: batch resolution** — Replace N+1 per-card reads with bulk reads (Critical perf, tracked in tech-debt.md)
+6. **PracticeSessionProvider: send sessionId with completion** — Prevents wrong-session completion (High, tracked in tech-debt.md)
 
 See `conductor/daily-practice-srs-roadmap.md` for the post-Module-9 daily practice SRS sequence.
 See `conductor/tech-debt.md` for full issue registry.

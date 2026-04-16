@@ -532,7 +532,7 @@ describe('resetStudentCardsHandler', () => {
       { userId: teacherId, classId, studentId, objectiveId: 'A-SSE.2' }
     );
 
-    expect(result).toEqual({ success: false, error: 'Unauthorized' });
+    expect(result).toEqual({ success: false, error: 'Unauthorized', cardId: null });
     expect(mockReplace).not.toHaveBeenCalled();
   });
 

@@ -526,7 +526,7 @@ describe('getClassSrsHealthHandler', () => {
     const todayStart = new Date();
     todayStart.setUTCHours(0, 0, 0, 0);
     const todayMs = todayStart.getTime();
-    const earlierMs = todayMs - 2 * 60 * 60 * 1000;
+    const yesterdayMs = todayMs - 24 * 60 * 60 * 1000;
 
     const { db } = makeTeacherSrsMockCtx({
       classes: [{ _id: classId, name: 'Math Class', teacherId: 'teacher-1' as Id<'profiles'> }],
@@ -536,7 +536,7 @@ describe('getClassSrsHealthHandler', () => {
       ],
       cards: [],
       sessions: [
-        { _id: 'session-1' as Id<'srs_sessions'>, studentId: student1Id, startedAt: earlierMs, completedAt: earlierMs + 30 * 60 * 1000, plannedCards: 10, completedCards: 10, config: {} },
+        { _id: 'session-1' as Id<'srs_sessions'>, studentId: student1Id, startedAt: yesterdayMs, completedAt: yesterdayMs + 30 * 60 * 1000, plannedCards: 10, completedCards: 10, config: {} },
         { _id: 'session-2' as Id<'srs_sessions'>, studentId: student2Id, startedAt: todayMs, completedAt: todayMs + 30 * 60 * 1000, plannedCards: 5, completedCards: 5, config: {} },
       ],
     });

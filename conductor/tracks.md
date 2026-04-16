@@ -379,6 +379,7 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
        - Phase 1: Class Health Queries [COMPLETE]
        - Phase 2: Weak Objectives and Struggling Students [COMPLETE]
        - Phase 3: Misconception Diagnostics [COMPLETE]
+       - Phase 4: Intervention Mutations [COMPLETE] [checkpoint: 6bff97a]
 
 
 ### Wave 5 — Polish (after Wave 4)

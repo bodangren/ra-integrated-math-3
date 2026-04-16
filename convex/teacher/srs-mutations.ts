@@ -126,18 +126,22 @@ export type ResetStudentCardsArgs = {
   objectiveId: string;
 };
 
+export type ResetStudentCardsResult =
+  | { success: true; cardId: Id<"srs_cards"> | null }
+  | { success: false; error: string; cardId: null };
+
 export async function resetStudentCardsHandler(
   ctx: MutationCtx,
   args: ResetStudentCardsArgs
-): Promise<{ success: boolean; cardId: Id<"srs_cards"> | null }> {
+): Promise<ResetStudentCardsResult> {
   const ownsClass = await validateTeacherOwnsClass(ctx, args.userId, args.classId);
   if (!ownsClass) {
-    return { success: false, error: "Unauthorized" } as { success: false; error: string; cardId: null };
+    return { success: false, error: "Unauthorized", cardId: null };
   }
 
   const studentInClass = await validateStudentInClass(ctx, args.classId, args.studentId);
   if (!studentInClass) {
-    return { success: false, error: "Student not in class" } as { success: false; error: string; cardId: null };
+    return { success: false, error: "Student not in class", cardId: null };
   }
 
   const card = await ctx.db
