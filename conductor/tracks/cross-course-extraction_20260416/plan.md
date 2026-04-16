@@ -64,7 +64,7 @@
   - [x] Sub-task: Run test to confirm examples pass
 - [x] Task: Conductor - Phase Completion Verification 'Integration Guide' (Protocol in workflow.md)
 
-## Phase 4: Adapter Verification [~]
+## Phase 4: Adapter Verification [COMPLETE] [checkpoint: 91aa23b]
 
 - [x] Task: Implement a non-Convex `CardStore` adapter stub (REST API-backed) [e3d9107]
   - [x] Sub-task: Create `lib/srs/__tests__/rest-adapter-stub.ts` implementing `CardStore` and `ReviewLogStore` interfaces
