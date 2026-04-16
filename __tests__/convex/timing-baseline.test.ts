@@ -1,10 +1,14 @@
 import { describe, it, expect, vi } from 'vitest';
 import type { Id } from '@/convex/_generated/dataModel';
 import {
-  getTimingBaseline,
-  recomputeTimingBaseline,
-  getStaleBaselines,
+  getTimingBaseline as _getTimingBaseline,
+  recomputeTimingBaseline as _recomputeTimingBaseline,
+  getStaleBaselines as _getStaleBaselines,
 } from '@/convex/timing_baseline';
+
+const getTimingBaseline = _getTimingBaseline as any;
+const recomputeTimingBaseline = _recomputeTimingBaseline as any;
+const getStaleBaselines = _getStaleBaselines as any;
 
 function createMockDb(documents: Record<string, Record<string, unknown>[]>) {
   const tables: Record<string, Record<string, unknown>[]> = { ...documents };
@@ -150,7 +154,7 @@ describe('recomputeTimingBaseline', () => {
       activity_submissions: submissions,
       timing_baselines: [],
     });
-    mockDb.query = vi.fn((table: string) => {
+    (mockDb.query as any) = vi.fn((table: string) => {
       if (table === 'activity_submissions') {
         return {
           withIndex: () => ({
@@ -205,7 +209,7 @@ describe('recomputeTimingBaseline', () => {
       activity_submissions: submissions,
       timing_baselines: [existingBaseline],
     });
-    mockDb.query = vi.fn((table: string) => {
+    (mockDb.query as any) = vi.fn((table: string) => {
       if (table === 'activity_submissions') {
         return {
           withIndex: () => ({
@@ -256,7 +260,7 @@ describe('recomputeTimingBaseline', () => {
       activity_submissions: submissions,
       timing_baselines: [],
     });
-    mockDb.query = vi.fn((table: string) => {
+    (mockDb.query as any) = vi.fn((table: string) => {
       if (table === 'activity_submissions') {
         return {
           withIndex: () => ({
@@ -294,7 +298,7 @@ describe('recomputeTimingBaseline', () => {
       activity_submissions: submissions,
       timing_baselines: [],
     });
-    mockDb.query = vi.fn((table: string) => {
+    (mockDb.query as any) = vi.fn((table: string) => {
       if (table === 'activity_submissions') {
         return {
           withIndex: () => ({
@@ -366,7 +370,7 @@ describe('aggregation idempotency', () => {
       activity_submissions: submissions,
       timing_baselines: [],
     });
-    mockDb.query = vi.fn((table: string) => {
+    (mockDb.query as any) = vi.fn((table: string) => {
       if (table === 'activity_submissions') {
         return {
           withIndex: () => ({
