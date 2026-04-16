@@ -314,16 +314,16 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
 
 ### Wave 2 — Persistence (after Wave 1)
 
-- [~] **Track 5: Convex SRS Schema and Review Log**
-      *Add srs_cards, srs_review_log, srs_sessions tables; implement CardStore/ReviewLogStore adapters backed by Convex*
-      *Depends on: Wave 1 (Tracks 1, 2, 4)*
-      *Link: [./conductor/tracks/convex-srs-schema_20260416/](./conductor/tracks/convex-srs-schema_20260416/)*
-      - Phase 1: Convex Schema Definitions [COMPLETE] [checkpoint: 3073154]
-      - Phase 2: CardStore Adapter [COMPLETE] [checkpoint: e0d54c7]
-       - Phase 3: ReviewLogStore Adapter [COMPLETE] [checkpoint: aaa6c10]
-       - Phase 4: Atomic Review Persistence [COMPLETE] [checkpoint: ae766e5]
-       - Phase 5: Session Management [COMPLETE] [checkpoint: ed812e1]
-       - Phase 6: Verification and Handoff [IN PROGRESS]
+- [x] **Track 5: Convex SRS Schema and Review Log** — **COMPLETED**
+       *Add srs_cards, srs_review_log, srs_sessions tables; implement CardStore/ReviewLogStore adapters backed by Convex*
+       *Depends on: Wave 1 (Tracks 1, 2, 4)*
+       *Link: [./conductor/tracks/convex-srs-schema_20260416/](./conductor/tracks/convex-srs-schema_20260416/)*
+       - Phase 1: Convex Schema Definitions [COMPLETE] [checkpoint: 3073154]
+       - Phase 2: CardStore Adapter [COMPLETE] [checkpoint: e0d54c7]
+        - Phase 3: ReviewLogStore Adapter [COMPLETE] [checkpoint: aaa6c10]
+        - Phase 4: Atomic Review Persistence [COMPLETE] [checkpoint: ae766e5]
+        - Phase 5: Session Management [COMPLETE] [checkpoint: ed812e1]
+        - Phase 6: Verification and Handoff [COMPLETE] [checkpoint: a6d3fa0]
 
 ### Wave 3 — Integration (after Wave 2, 2 tracks in parallel)
 
