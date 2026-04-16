@@ -4,9 +4,9 @@
  * Provides `buildDailyQueue` for ordering SRS cards into a daily practice session.
  *
  * Queue ordering rules (per spec.md):
- * 1. Exclude cards for triaged objectives.
- * 2. New cards for essential objectives (up to `newCardsPerDay`).
- * 3. Overdue cards sorted by days overdue descending.
+ * 1. Exclude cards for triaged objectives and cards with no policy.
+ * 2. New cards prioritized by objective priority (up to `newCardsPerDay` total).
+ * 3. Overdue cards sorted by days overdue descending (or due date ascending).
  * 4. Due cards sorted by due date ascending.
  * 5. Cap total at `maxReviewsPerDay`.
  *
@@ -131,26 +131,36 @@ export function buildDailyQueue(
   const dueCards = reviewCards.filter((card) => !isOverdue(card, now));
 
   const sortedOverdue = overdueCards
-    .map((card) => ({
-      card,
-      objectivePriority: policies.get(card.objectiveId)?.priority ?? 'supporting',
-      isOverdue: true as const,
-      daysOverdue: daysOverdue(card, now),
-    }))
+    .map((card) => {
+      const policy = policies.get(card.objectiveId);
+      return {
+        card,
+        objectivePriority: policy?.priority ?? null,
+        isOverdue: true as const,
+        daysOverdue: daysOverdue(card, now),
+      };
+    })
+    .filter((item) => item.objectivePriority !== null)
+    .map((item) => ({ ...item, objectivePriority: item.objectivePriority as ObjectivePriority }))
     .sort((a, b) => {
       if (config.prioritizeOverdue) {
         return b.daysOverdue - a.daysOverdue;
       }
-      return 0;
+      return new Date(a.card.dueDate).getTime() - new Date(b.card.dueDate).getTime();
     });
 
   const sortedDue = dueCards
-    .map((card) => ({
-      card,
-      objectivePriority: policies.get(card.objectiveId)?.priority ?? 'supporting',
-      isOverdue: false as const,
-      daysOverdue: 0,
-    }))
+    .map((card) => {
+      const policy = policies.get(card.objectiveId);
+      return {
+        card,
+        objectivePriority: policy?.priority ?? null,
+        isOverdue: false as const,
+        daysOverdue: 0,
+      };
+    })
+    .filter((item) => item.objectivePriority !== null)
+    .map((item) => ({ ...item, objectivePriority: item.objectivePriority as ObjectivePriority }))
     .sort((a, b) => {
       const aMs = new Date(a.card.dueDate).getTime();
       const bMs = new Date(b.card.dueDate).getTime();

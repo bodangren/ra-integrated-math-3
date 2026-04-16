@@ -6,8 +6,7 @@
 ## Architecture & Design
 
 - (2026-04-05, setup) vinext (Vite-backed Next.js) may have subtle differences from stock Next.js — test builds early
-- (2026-04-12, submission-schema) Zod 4.x `z.record()` requires explicit key type — use `z.record(z.string(), z.unknown())`, not `z.record(z.unknown())`
-- (2026-04-12, graphing-schema) TypeScript array type inference narrows from first elements — use explicit type annotation when pushing different types
+- (2026-04-12, zod4) Zod 4.x `z.record()` requires explicit key type; TS array inference narrows from first elements — use explicit annotations
 
 ## Recurring Gotchas
 
@@ -48,3 +47,5 @@
 - (2026-04-16, ccss-standards-seeding) When adding lesson_standards links, all referenced standards must exist in seed-standards.ts first — seed order matters; seedStandards before lessonStandards in seed.ts
 - (2026-04-16, blueprint-schema) Convex TableDefinition.indexes is private — test table existence via `schema.tables.TableName` and field access via type assertion to avoid internal API reliance
 - (2026-04-16, code-review) New seed mutations must be wired into seed.ts immediately; orphan seed files produce no visible error but silently skip data. Dependencies referenced in committed code must be in package.json before the code lands.
+- (2026-04-16, code-review) Convex validators strip undeclared fields; mock tests bypass validation. Prefer server-side DB lookups over trusting client-supplied derived fields.
+- (2026-04-16, code-review) CCSS standard descriptions must match actual standard text, not cluster headings

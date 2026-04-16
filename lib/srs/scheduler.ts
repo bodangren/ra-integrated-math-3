@@ -55,7 +55,7 @@ export type SchedulerConfig = {
    *
    * Cards will never be scheduled beyond this many days.
    * Useful for curriculum alignment where all cards should
-   *复习 within a defined window.
+   * be reviewed within a defined window.
    */
   maximumInterval: number;
 

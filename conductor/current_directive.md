@@ -1,45 +1,47 @@
 # Current Directive
 
-> Updated: 2026-04-16 (Code Review — Practice Item Blueprint + SRS Core Library)
+> Updated: 2026-04-16 (Code Review — SRS Core Library Phases 3-4, Error Analysis Tests, submitReviewHandler Fix, CCSS Standards Seeding)
 
 ## Status Summary
 
-- **Tests**: 2710 passing, 7 known failures (6 equivalence validator — fraction/radical expressions; 1 flaky StepByStepper hint tracking).
-- **Build**: Passing; RSC chunk 746 KB (pre-existing).
+- **Tests**: 2722 total, 8 known failures (6 equivalence validator — fraction/radical expressions; 2 flaky). All others passing.
+- **Build**: Passing.
 - **Lint**: Passing.
 - **TypeScript**: Pre-existing test-file errors remain. No new TS errors.
-- **Module 1-9 Roadmap**: All modules seeded (M1-M9 complete).
-- **Practice Item Blueprint**: Phases 1-6 complete (types, Convex schema, objective policies, seed data M1-M9, validation, handoff).
-- **SRS Core Library**: Phases 1-4 complete (FSRS scheduler wrapper, review processor, queue primitives, adapter interfaces).
-- **ts-fsrs**: Installed and scheduler updated to v4 API (was a build blocker).
-- **seedObjectivePolicies**: Now wired into seed.ts orchestration.
-- **Code Review**: 2026-04-16 review found 0 critical, 3 high (all fixed), 1 medium (fixed), 2 low issues.
+- **Module 1-9 Roadmap**: All modules seeded (M1-M9 complete). CCSS standards and lesson_standards links for M1-M5 now seeded.
+- **SRS Core Library**: Phases 1-4 complete (FSRS scheduler wrapper, review processor, queue primitives, adapter interfaces). Phase 5 pending.
+- **Error Analysis Unit Tests**: 34 tests passing. Coverage gaps remain (studentIdMap, isCorrect:undefined).
+- **submitReviewHandler**: Fixed — now derives componentKind from server-side phaseVersion lookup instead of trusting client-supplied phaseType.
+- **CCSS Standards**: Fixed 6 inaccurate standard descriptions. All M1-M5 lesson_standards links seeded.
 
 ## Fixes Applied This Review
 
-1. **Installed ts-fsrs** — was missing from package.json despite being imported by scheduler.ts
-2. **Updated scheduler.ts to ts-fsrs v4 API** — parameter names (`request_retention`, `maximum_interval`), Card fields (`stability`, `difficulty`, `lapses`, `scheduled_days`), 3-arg `next()` signature
-3. **Wired seedObjectivePolicies into seed.ts** — seeder existed but was orphaned
-4. **Deduplicated ObjectivePriority type** — seed file now imports from lib
-5. **Fixed scheduler test mock** — updated to ts-fsrs v4 Card shape and API
+1. **Critical: submitReviewHandler was a no-op in production** — `phaseType` was not in Convex validator, so runtime stripped it. Fixed: now looks up `phaseType` server-side from `phase_versions` table via `ctx.db.get(phaseId)`.
+2. **Fixed read-path kind mapping** — `listReviewQueueHandler` inline ternary replaced with `resolveComponentKind()` call.
+3. **Fixed Chinese characters** in `scheduler.ts` comment.
+4. **Fixed error-analysis `buildAIPrompt`** — missing `?? []` on `misconceptionTags` caused `"undefined"` string in AI prompts.
+5. **Fixed error-analysis score/maxScore** — undefined values now render as "N/A" instead of "undefined/undefined".
+6. **Fixed 6 inaccurate CCSS descriptions** — HSA-APR.D.6, HSF-BF.A.1a, HSA-CED.A.3, HSF-LE.A.2, HSF-LE.B.5, HSF-IF.C.7c.
+7. **Fixed inconsistent queue policy handling** — review cards without policies now excluded (matching new card behavior).
+8. **Fixed overdue sorting no-op** — `prioritizeOverdue: false` now sorts by due date ascending instead of returning 0.
+9. **Added 6 new queue tests** — no-policy cards, prioritizeOverdue:false, learning/relearning states.
 
 ## Current In-Progress Track
 
 - **Track**: Reusable SRS Core Library — Phases 1-4 complete, Phase 5 (verification and handoff) pending.
-- **Next**: Phase 5: Verification and Handoff
 
 ## High-Priority Next Steps
 
 1. **SRS Core Library Phase 5: Verification and Handoff** — run full validation, write junior developer handoff notes
-2. **Build lesson_standards seeding pipeline for M1-M5** — only M6-M9 have links
-4. **Fix parseAIResponse fragile line-based parsing** — use structured JSON output
-5. **Refactor seed-lesson-standards.ts duplication** — extract shared seeder function
-6. **Add integration tests for practice-timing** — current hook tests fully mock the accumulator
-7. **Fix canApprove gate completeness** — Activity and Practice harnesses have ungated checklist items
-8. **Fix seed test tautology** — all modules: tests use inline data, not actual seed files
-9. **Wire proficiency views into actual progress surfaces** — ObjectiveProficiencyBadge and TeacherObjectiveDiagnosticCard are built but not yet rendered in any page
+2. **Convex SRS Schema (Wave 2, Track 5)** — add srs_cards, srs_review_log, srs_sessions tables; implement CardStore/ReviewLogStore adapters
+3. **Security & Auth Hardening (Wave A)** — port fail-closed auth guards, Convex-layer authorization
+4. **Error analysis: test studentIdMap code paths** — summarizePartOutcomes and buildDeterministicSummary untested with studentIdMap
+5. **Error analysis: fix buildTeacherErrorView using activityId as studentId** — add studentIdMap param
+6. **Refactor seed-lesson-standards.ts** — 9 identical handlers (~700 lines) should be a factory function
+7. **Fix M3L1/L2 standard alignment** — tagged HSA-REI.B.4 (quadratic) but lessons are about polynomial equations
+8. **Seed isPrimary update-on-re-seed** — current code silently skips when isPrimary changes
+9. **Wire proficiency views into actual progress surfaces** — ObjectiveProficiencyBadge and TeacherObjectiveDiagnosticCard are built but not rendered
 10. **Address collectEligibleTimings N+1** — batch queries for production baseline recomputation
 
-See `conductor/modules-3-9-roadmap.md` for the module inventory.
 See `conductor/daily-practice-srs-roadmap.md` for the post-Module-9 daily practice SRS sequence.
 See `conductor/tech-debt.md` for full issue registry.

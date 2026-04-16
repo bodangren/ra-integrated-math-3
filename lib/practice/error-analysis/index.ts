@@ -317,10 +317,10 @@ Student Answers:
 ${JSON.stringify(rawEvidence.answers, null, 2)}
 
 Part Results:
-${submission.parts.map(p => `- ${p.partId}: ${p.isCorrect ? 'Correct' : 'Incorrect'} (Score: ${p.score}/${p.maxScore})`).join('\n')}
+${submission.parts.map(p => `- ${p.partId}: ${p.isCorrect ? 'Correct' : 'Incorrect'} (Score: ${p.score ?? 'N/A'}/${p.maxScore ?? 'N/A'})`).join('\n')}
 
 Misconception Tags:
-${submission.parts.flatMap(p => p.misconceptionTags).join(', ') || 'None'}
+${submission.parts.flatMap(p => p.misconceptionTags ?? []).join(', ') || 'None'}
 
 Class Average Accuracy: ${(deterministicSummary.averageAccuracy * 100).toFixed(1)}%
 

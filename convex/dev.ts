@@ -73,7 +73,7 @@ export async function listReviewQueueHandler(
   for (const activity of activities) {
     const placement = placementMap.get(activity._id);
     const approvalRecord = placement
-      ? approvalsMap.get(`${placement.phaseType === "worked_example" ? "example" : "practice"}:${activity._id}`)
+      ? approvalsMap.get(`${resolveComponentKind(placement.phaseType)}:${activity._id}`)
       : undefined;
 
     const item = await assembleReviewQueueItem({
@@ -154,9 +154,13 @@ export async function submitReviewHandler(ctx: MutationCtx, args: SubmitReviewAr
   const activity = await ctx.db.get(args.componentId as Id<"activities">);
   if (!activity) throw new Error("Activity not found");
 
-  const derivedComponentKind = args.placement?.phaseType
-    ? resolveComponentKind(args.placement.phaseType)
-    : args.componentKind;
+  let derivedComponentKind: "example" | "activity" | "practice" = args.componentKind;
+  if (args.placement?.phaseId) {
+    const phaseVersion = await ctx.db.get(args.placement.phaseId as Id<"phase_versions">);
+    if (phaseVersion?.phaseType) {
+      derivedComponentKind = resolveComponentKind(phaseVersion.phaseType);
+    }
+  }
 
   const componentContentHash = await computeComponentContentHash({
     componentKind: derivedComponentKind,

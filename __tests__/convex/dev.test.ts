@@ -474,8 +474,16 @@ describe('submitReviewHandler', () => {
       createdAt: 1,
       updatedAt: 1,
     };
+    const phaseVersion = {
+      _id: 'phase1',
+      phaseType: 'guided_practice',
+      phaseNumber: 3,
+      lessonVersionId: 'lv1',
+      createdAt: 1,
+    };
     const mockDb = createMockDb({
       activities: [activity],
+      phase_versions: [phaseVersion],
       component_reviews: [],
       component_approvals: [],
     });
@@ -488,7 +496,6 @@ describe('submitReviewHandler', () => {
         status: 'approved',
         createdBy: 'profile1' as Id<'profiles'>,
         placement: {
-          phaseType: 'guided_practice',
           phaseId: 'phase1',
           sectionId: 'section1',
         },
@@ -517,8 +524,16 @@ describe('submitReviewHandler', () => {
       createdAt: 1,
       updatedAt: 1,
     };
+    const phaseVersion = {
+      _id: 'phase1',
+      phaseType: 'worked_example',
+      phaseNumber: 2,
+      lessonVersionId: 'lv1',
+      createdAt: 1,
+    };
     const mockDb = createMockDb({
       activities: [activity],
+      phase_versions: [phaseVersion],
       component_reviews: [],
       component_approvals: [],
     });
@@ -531,7 +546,6 @@ describe('submitReviewHandler', () => {
         status: 'approved',
         createdBy: 'profile1' as Id<'profiles'>,
         placement: {
-          phaseType: 'worked_example',
           phaseId: 'phase1',
           sectionId: 'section1',
         },

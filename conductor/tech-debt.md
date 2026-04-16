@@ -11,16 +11,18 @@
 | Approval status race condition (no version/lock) | High | Open | Convex serializes mutations (no lost update) but no "approve exact version" check |
 | N+1 query: phase sections in progress/preview/monitoring queries | High | Open | One DB query per phase inside loop |
 | No Convex-layer authorization | Med-High | Open | Auth boundary is entirely in Next.js server layer |
-| No unit tests for error-analysis module (8 exported functions) | High | Open | Non-trivial aggregation logic untested |
+| No unit tests for error-analysis module (8 exported functions) | High | Resolved | 34 tests added; untested paths remain (studentIdMap, isCorrect:undefined) |
 | error-analysis parseAIResponse uses fragile line-based parsing | High | Open | Breaks on markdown, multi-paragraph AI responses |
 | ActivityReviewHarness handleError never reaches ActivityPreview | High | Open | Render errors crash tree silently; canApprove not blocked |
 | submitReviewHandler takes createdBy as arg not from auth | High | Open | Mitigated by route-level derivation |
+| submitReviewHandler was no-op — phaseType not in validator | High | Resolved | Fixed: now derives from server-side phaseVersion lookup |
 | Unbounded take(500) + N+1 hash in listReviewQueue | High | Open | 500 SHA-256 hashes/query |
 | Activities table has no deduplication on re-seed | Medium | Open | Phase insertion is idempotent but activity inserts are not; re-seed creates duplicates |
 | Seed tests are tautological (inline data, not actual seed files) | Medium | Open | Zero regression protection |
 | StepByStepSolver Zod schema vs component interface mismatch | Medium | Open | Schema step shape differs from AlgebraicStep |
 | ActivityRenderer does not forward section content props | Medium | Open | template, blanks etc. lost between PhaseRenderer and activity |
-| Refactor seed-lesson-standards.ts duplication | Medium | Open | Module 6 and 7 seeders are 95% identical |
+| Refactor seed-lesson-standards.ts duplication | Medium | Open | 9 handlers are ~100% identical; extract factory function |
+| CCSS standard descriptions inaccurate (5 standards) | Medium | Resolved | Fixed HSA-APR.D.6, HSF-BF.A.1a, HSA-CED.A.3, HSF-LE.A.2, HSF-LE.B.5, HSF-IF.C.7c |
 | Content hash JSON.stringify treats undefined same as absent | Medium | Open | Potential hash collisions |
 | N+1 phase reads in listReviewQueue (dev.ts) | Medium | Open | Sequential ctx.db.get per phase |
 | No error.tsx boundary for student/teacher routes | Medium | Open | Convex outages produce raw 500 |
@@ -43,3 +45,7 @@
 | mastered proficiency label is dead code | Medium | Open | Union type includes mastered but no code path produces it |
 | Fragile type assertion on submissionData.timing | Medium | Open | collectEligibleTimings casts to local TimingSummary; no compile-time protection |
 | scheduler.test.ts fully mocks ts-fsrs | Medium | Open | Tests verify wrapper logic but don't exercise real FSRS algorithm |
+| error-analysis: studentIdMap code paths untested | High | Open | summarizePartOutcomes and buildDeterministicSummary accept studentIdMap but no test passes it |
+| error-analysis: isCorrect:undefined counted as incorrect | Medium | Open | Undocumented behavior when isCorrect is omitted from parts |
+| error-analysis: buildTeacherErrorView uses activityId as studentId | Medium | Open | Inconsistent with other functions that accept studentIdMap |
+| SRS queue: newCardsPerDay cap is shared across all priorities | Medium | Open | Essential/supporting/extension compete for same quota; update spec comment |

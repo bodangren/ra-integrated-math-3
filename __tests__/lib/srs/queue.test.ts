@@ -195,7 +195,7 @@ describe('buildDailyQueue', () => {
       expect(newCards).toHaveLength(3);
     });
 
-    it('should allow more new cards when essential quota is exhausted but supporting remain', () => {
+    it('should allow new cards from multiple priorities within the combined quota', () => {
       const essentialCards = Array.from({ length: 3 }, () =>
         createCard({ objectiveId: 'obj-essential', state: 'new' })
       );
@@ -312,6 +312,69 @@ describe('buildDailyQueue', () => {
       expect(essentialNewIndex).toBeLessThan(overdueIndex);
       expect(supportingNewIndex).toBeLessThan(overdueIndex);
       expect(overdueIndex).toBeLessThan(dueIndex);
+    });
+  });
+
+  describe('cards with no policy', () => {
+    it('should exclude new cards with no policy', () => {
+      const noPolicyCard = createCard({ objectiveId: 'obj-nopolicy', state: 'new' });
+      const queue = buildDailyQueue([noPolicyCard], policies, defaultConfig, mockNow);
+      expect(queue).toHaveLength(0);
+    });
+
+    it('should exclude review cards with no policy', () => {
+      const noPolicyReview = createCard({
+        objectiveId: 'obj-nopolicy',
+        state: 'review',
+        dueDate: '2026-04-15T12:00:00.000Z',
+      });
+      const queue = buildDailyQueue([noPolicyReview], policies, defaultConfig, mockNow);
+      expect(queue).toHaveLength(0);
+    });
+  });
+
+  describe('prioritizeOverdue: false', () => {
+    it('should sort overdue cards by due date ascending when prioritizeOverdue is false', () => {
+      const laterOverdue = createCard({
+        objectiveId: 'obj-essential',
+        state: 'review',
+        dueDate: '2026-04-14T12:00:00.000Z',
+      });
+      const earlierOverdue = createCard({
+        objectiveId: 'obj-supporting',
+        state: 'review',
+        dueDate: '2026-04-12T12:00:00.000Z',
+      });
+      const config: SrsSessionConfig = { ...defaultConfig, prioritizeOverdue: false };
+      const queue = buildDailyQueue(
+        [laterOverdue, earlierOverdue],
+        policies,
+        config,
+        mockNow
+      );
+      expect(new Date(queue[0].card.dueDate).getTime()).toBeLessThan(
+        new Date(queue[1].card.dueDate).getTime()
+      );
+    });
+  });
+
+  describe('isOverdue edge cases', () => {
+    it('should return false for learning state', () => {
+      const learningCard = createCard({
+        objectiveId: 'obj-1',
+        state: 'learning',
+        dueDate: '2026-04-15T12:00:00.000Z',
+      });
+      expect(isOverdue(learningCard, mockNow)).toBe(false);
+    });
+
+    it('should return true for relearning state when past due', () => {
+      const relearningCard = createCard({
+        objectiveId: 'obj-1',
+        state: 'relearning',
+        dueDate: '2026-04-15T12:00:00.000Z',
+      });
+      expect(isOverdue(relearningCard, mockNow)).toBe(true);
     });
   });
 });
