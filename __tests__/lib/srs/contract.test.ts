@@ -130,6 +130,9 @@ describe('Re-exports from lib/practice/objective-proficiency.ts', () => {
       missingBaselines: [],
       lowConfidenceReasons: [],
       guidance: 'Continue monitoring.',
+      classProficientCount: 0,
+      classAvgRetention: 0.8,
+      classStrugglingStudents: [],
     };
     expect(view.standardCode).toBe('HSA-APR.A.1');
   });

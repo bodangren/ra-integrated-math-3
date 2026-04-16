@@ -36,6 +36,9 @@ const defaultProps: TeacherObjectiveDiagnosticCardProps = {
     missingBaselines: [],
     lowConfidenceReasons: [],
     guidance: 'Student has demonstrated proficiency in this essential objective.',
+    classProficientCount: 1,
+    classAvgRetention: 0.88,
+    classStrugglingStudents: [],
   },
 };
 

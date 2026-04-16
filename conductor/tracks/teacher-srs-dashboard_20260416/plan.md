@@ -35,30 +35,30 @@
 
 ## Phase 2: Weak Objectives and Struggling Students
 
-- [ ] Task: Write `getWeakObjectives` query tests
-  - [ ] Test returns only objectives where <50% of class is proficient
-  - [ ] Test sorts by essential priority first, then proficiency ascending
-  - [ ] Test includes standard code, description, % proficient, avg retention, struggling student count
-  - [ ] Test handles all objectives proficient (empty result)
-  - [ ] Test handles no proficiency data yet
-- [ ] Task: Implement `getWeakObjectives` Convex query
-  - [ ] Call `getTeacherClassProficiency` (Track 10) for per-objective data
-  - [ ] Join with objective metadata for standard codes and descriptions
-  - [ ] Join with `objective_policies` for priority classification
-  - [ ] Filter to <50% proficient
-  - [ ] Sort: essential first, then proficiency ascending
-- [ ] Task: Write `getStrugglingStudents` query tests
-  - [ ] Test returns students ranked by urgency (overdue count, then avg retention)
-  - [ ] Test includes student name, overdue count, avg retention, weakest objective
-  - [ ] Test handles class with no struggling students
-  - [ ] Test limits to top 10 students
-- [ ] Task: Implement `getStrugglingStudents` Convex query
-  - [ ] Query `srs_cards` aggregated by student
-  - [ ] Calculate overdue count and average retention per student
-  - [ ] Identify weakest objective per student
-  - [ ] Sort by overdue descending, then retention ascending
-  - [ ] Join with `profiles` for student names
-- [ ] Task: Conductor - Phase Completion Verification 'Weak Objectives and Struggling Students' (Protocol in workflow.md)
+- [x] Task: Write `getWeakObjectives` query tests
+  - [x] Test returns only objectives where <50% of class is proficient
+  - [x] Test sorts by essential priority first, then proficiency ascending
+  - [x] Test includes standard code, description, % proficient, avg retention, struggling student count
+  - [x] Test handles all objectives proficient (empty result)
+  - [x] Test handles no proficiency data yet
+- [x] Task: Implement `getWeakObjectives` Convex query
+  - [x] Call `getTeacherClassProficiency` (Track 10) for per-objective data
+  - [x] Join with objective metadata for standard codes and descriptions
+  - [x] Join with `objective_policies` for priority classification
+  - [x] Filter to <50% proficient
+  - [x] Sort: essential first, then proficiency ascending
+- [x] Task: Write `getStrugglingStudents` query tests
+  - [x] Test returns students ranked by urgency (overdue count, then avg retention)
+  - [x] Test includes student name, overdue count, avg retention, weakest objective
+  - [x] Test handles class with no struggling students
+  - [x] Test limits to top 10 students
+- [x] Task: Implement `getStrugglingStudents` Convex query
+  - [x] Query `srs_cards` aggregated by student
+  - [x] Calculate overdue count and average retention per student
+  - [x] Identify weakest objective per student
+  - [x] Sort by overdue descending, then retention ascending
+  - [x] Join with `profiles` for student names
+- [x] Task: Conductor - Phase Completion Verification 'Weak Objectives and Struggling Students' (Protocol in workflow.md)
 
 ## Phase 3: Misconception Diagnostics
 

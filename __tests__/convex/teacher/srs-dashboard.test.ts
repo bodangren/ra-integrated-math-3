@@ -1,5 +1,13 @@
 import { describe, it, expect, vi } from 'vitest';
 import type { Id } from '@/convex/_generated/dataModel';
+import {
+  getWeakObjectivesHandler,
+  getStrugglingStudentsHandler,
+} from '@/convex/teacher/srs-queries';
+import type {
+  TeacherProficiencyView,
+  ObjectivePriority,
+} from '@/lib/practice/objective-proficiency';
 
 function makeTeacherSrsMockCtx(overrides: {
   enrollments?: Array<{
@@ -719,5 +727,392 @@ describe('getPracticeStreaksHandler', () => {
 
     expect(result).toHaveLength(1);
     expect(result[0].displayName).toBe('Active Student');
+  });
+});
+
+function makeMockProficiencyView(
+  overrides: Partial<TeacherProficiencyView> &
+    Pick<TeacherProficiencyView, 'objectiveId' | 'classProficientCount'>
+): TeacherProficiencyView {
+  return {
+    standardCode: overrides.objectiveId,
+    standardDescription: '',
+    priority: 'essential' as ObjectivePriority,
+    proficiencyLabel: 'in_progress',
+    retentionStrength: 0.5,
+    practiceCoverage: 0.5,
+    fluencyConfidence: 'medium',
+    evidenceConfidence: 'medium',
+    isProficient: false,
+    problemFamilyDetails: [],
+    missingBaselines: [],
+    lowConfidenceReasons: [],
+    guidance: '',
+    classAvgRetention: 0.5,
+    classStrugglingStudents: [],
+    ...overrides,
+  };
+}
+
+describe('getWeakObjectivesHandler', () => {
+  it('returns empty array when no students enrolled', async () => {
+    const { db } = makeTeacherSrsMockCtx({ enrollments: [] });
+
+    const result = await getWeakObjectivesHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' },
+      async () => []
+    );
+
+    expect(result).toEqual([]);
+  });
+
+  it('returns only objectives where <50% of class is proficient', async () => {
+    const classId = 'class-1' as Id<'classes'>;
+    const student1Id = 'student-1' as Id<'profiles'>;
+    const student2Id = 'student-2' as Id<'profiles'>;
+
+    const { db } = makeTeacherSrsMockCtx({
+      classes: [{ _id: classId, name: 'Math Class', teacherId: 'teacher-1' as Id<'profiles'> }],
+      enrollments: [
+        { _id: 'enr-1' as Id<'class_enrollments'>, classId, studentId: student1Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+        { _id: 'enr-2' as Id<'class_enrollments'>, classId, studentId: student2Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+    });
+
+    const mockProficiency: TeacherProficiencyView[] = [
+      makeMockProficiencyView({
+        objectiveId: 'obj-1',
+        classProficientCount: 0,
+        classAvgRetention: 0.3,
+        classStrugglingStudents: [student1Id, student2Id],
+        priority: 'essential',
+        standardCode: 'S1',
+        standardDescription: 'Objective 1',
+      }),
+      makeMockProficiencyView({
+        objectiveId: 'obj-2',
+        classProficientCount: 2,
+        classAvgRetention: 0.9,
+        classStrugglingStudents: [],
+        priority: 'essential',
+        standardCode: 'S2',
+        standardDescription: 'Objective 2',
+      }),
+    ];
+
+    const result = await getWeakObjectivesHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' },
+      async () => mockProficiency
+    );
+
+    expect(result).toHaveLength(1);
+    expect(result[0].objectiveId).toBe('obj-1');
+    expect(result[0].proficientPercent).toBe(0);
+    expect(result[0].avgRetention).toBe(0.3);
+    expect(result[0].strugglingStudentCount).toBe(2);
+    expect(result[0].standardCode).toBe('S1');
+    expect(result[0].standardDescription).toBe('Objective 1');
+  });
+
+  it('sorts by essential priority first, then proficiency ascending', async () => {
+    const classId = 'class-1' as Id<'classes'>;
+    const student1Id = 'student-1' as Id<'profiles'>;
+    const student2Id = 'student-2' as Id<'profiles'>;
+
+    const { db } = makeTeacherSrsMockCtx({
+      classes: [{ _id: classId, name: 'Math Class', teacherId: 'teacher-1' as Id<'profiles'> }],
+      enrollments: [
+        { _id: 'enr-1' as Id<'class_enrollments'>, classId, studentId: student1Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+        { _id: 'enr-2' as Id<'class_enrollments'>, classId, studentId: student2Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+    });
+
+    const mockProficiency: TeacherProficiencyView[] = [
+      makeMockProficiencyView({
+        objectiveId: 'obj-supporting',
+        classProficientCount: 0,
+        classAvgRetention: 0.3,
+        priority: 'supporting',
+      }),
+      makeMockProficiencyView({
+        objectiveId: 'obj-essential-low',
+        classProficientCount: 0,
+        classAvgRetention: 0.2,
+        priority: 'essential',
+      }),
+      makeMockProficiencyView({
+        objectiveId: 'obj-essential-high',
+        classProficientCount: 0,
+        classAvgRetention: 0.5,
+        priority: 'essential',
+      }),
+      makeMockProficiencyView({
+        objectiveId: 'obj-extension',
+        classProficientCount: 0,
+        classAvgRetention: 0.1,
+        priority: 'extension',
+      }),
+    ];
+
+    const result = await getWeakObjectivesHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' },
+      async () => mockProficiency
+    );
+
+    expect(result).toHaveLength(4);
+    expect(result[0].objectiveId).toBe('obj-essential-low');
+    expect(result[1].objectiveId).toBe('obj-essential-high');
+    expect(result[2].objectiveId).toBe('obj-supporting');
+    expect(result[3].objectiveId).toBe('obj-extension');
+  });
+
+  it('returns empty result when all objectives proficient', async () => {
+    const classId = 'class-1' as Id<'classes'>;
+    const student1Id = 'student-1' as Id<'profiles'>;
+
+    const { db } = makeTeacherSrsMockCtx({
+      classes: [{ _id: classId, name: 'Math Class', teacherId: 'teacher-1' as Id<'profiles'> }],
+      enrollments: [
+        { _id: 'enr-1' as Id<'class_enrollments'>, classId, studentId: student1Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+    });
+
+    const mockProficiency: TeacherProficiencyView[] = [
+      makeMockProficiencyView({
+        objectiveId: 'obj-1',
+        classProficientCount: 1,
+        classAvgRetention: 0.9,
+        priority: 'essential',
+      }),
+    ];
+
+    const result = await getWeakObjectivesHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' },
+      async () => mockProficiency
+    );
+
+    expect(result).toEqual([]);
+  });
+
+  it('returns empty result when no proficiency data yet', async () => {
+    const classId = 'class-1' as Id<'classes'>;
+    const student1Id = 'student-1' as Id<'profiles'>;
+
+    const { db } = makeTeacherSrsMockCtx({
+      classes: [{ _id: classId, name: 'Math Class', teacherId: 'teacher-1' as Id<'profiles'> }],
+      enrollments: [
+        { _id: 'enr-1' as Id<'class_enrollments'>, classId, studentId: student1Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+    });
+
+    const result = await getWeakObjectivesHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' },
+      async () => []
+    );
+
+    expect(result).toEqual([]);
+  });
+});
+
+describe('getStrugglingStudentsHandler', () => {
+  it('returns empty array when no students enrolled', async () => {
+    const { db } = makeTeacherSrsMockCtx({ enrollments: [] });
+
+    const result = await getStrugglingStudentsHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' }
+    );
+
+    expect(result).toEqual([]);
+  });
+
+  it('returns empty array when no students have SRS cards', async () => {
+    const classId = 'class-1' as Id<'classes'>;
+    const student1Id = 'student-1' as Id<'profiles'>;
+
+    const { db } = makeTeacherSrsMockCtx({
+      classes: [{ _id: classId, name: 'Math Class', teacherId: 'teacher-1' as Id<'profiles'> }],
+      enrollments: [
+        { _id: 'enr-1' as Id<'class_enrollments'>, classId, studentId: student1Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+      cards: [],
+    });
+
+    const result = await getStrugglingStudentsHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' }
+    );
+
+    expect(result).toEqual([]);
+  });
+
+  it('returns students ranked by overdue count then avg retention', async () => {
+    const classId = 'class-1' as Id<'classes'>;
+    const student1Id = 'student-1' as Id<'profiles'>;
+    const student2Id = 'student-2' as Id<'profiles'>;
+    const student3Id = 'student-3' as Id<'profiles'>;
+
+    const pastDue = '2020-01-01T00:00:00.000Z';
+    const futureDue = '2030-01-01T00:00:00.000Z';
+
+    const { db } = makeTeacherSrsMockCtx({
+      classes: [{ _id: classId, name: 'Math Class', teacherId: 'teacher-1' as Id<'profiles'> }],
+      enrollments: [
+        { _id: 'enr-1' as Id<'class_enrollments'>, classId, studentId: student1Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+        { _id: 'enr-2' as Id<'class_enrollments'>, classId, studentId: student2Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+        { _id: 'enr-3' as Id<'class_enrollments'>, classId, studentId: student3Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+      profiles: [
+        { _id: student1Id, username: 'student1', displayName: 'Alice', role: 'student', organizationId: 'org-1' as Id<'organizations'> },
+        { _id: student2Id, username: 'student2', displayName: 'Bob', role: 'student', organizationId: 'org-1' as Id<'organizations'> },
+        { _id: student3Id, username: 'student3', displayName: 'Carol', role: 'student', organizationId: 'org-1' as Id<'organizations'> },
+      ],
+      cards: [
+        { _id: 'card-1' as Id<'srs_cards'>, studentId: student1Id, objectiveId: 'obj-a', problemFamilyId: 'pf-1', stability: 10, difficulty: 3, state: 'review', dueDate: pastDue, elapsedDays: 100, scheduledDays: 7, reps: 3, lapses: 0, createdAt: Date.now(), updatedAt: Date.now() },
+        { _id: 'card-2' as Id<'srs_cards'>, studentId: student1Id, objectiveId: 'obj-b', problemFamilyId: 'pf-2', stability: 20, difficulty: 3, state: 'review', dueDate: pastDue, elapsedDays: 100, scheduledDays: 7, reps: 3, lapses: 0, createdAt: Date.now(), updatedAt: Date.now() },
+        { _id: 'card-3' as Id<'srs_cards'>, studentId: student2Id, objectiveId: 'obj-a', problemFamilyId: 'pf-1', stability: 15, difficulty: 3, state: 'review', dueDate: pastDue, elapsedDays: 100, scheduledDays: 7, reps: 3, lapses: 0, createdAt: Date.now(), updatedAt: Date.now() },
+        { _id: 'card-4' as Id<'srs_cards'>, studentId: student2Id, objectiveId: 'obj-b', problemFamilyId: 'pf-2', stability: 25, difficulty: 3, state: 'review', dueDate: futureDue, elapsedDays: 0, scheduledDays: 7, reps: 3, lapses: 0, createdAt: Date.now(), updatedAt: Date.now() },
+        { _id: 'card-5' as Id<'srs_cards'>, studentId: student3Id, objectiveId: 'obj-a', problemFamilyId: 'pf-1', stability: 30, difficulty: 3, state: 'review', dueDate: futureDue, elapsedDays: 0, scheduledDays: 7, reps: 3, lapses: 0, createdAt: Date.now(), updatedAt: Date.now() },
+        { _id: 'card-6' as Id<'srs_cards'>, studentId: student3Id, objectiveId: 'obj-b', problemFamilyId: 'pf-2', stability: 40, difficulty: 3, state: 'review', dueDate: futureDue, elapsedDays: 0, scheduledDays: 7, reps: 3, lapses: 0, createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+    });
+
+    const result = await getStrugglingStudentsHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' }
+    );
+
+    expect(result).toHaveLength(3);
+    expect(result[0].studentId).toBe(student1Id);
+    expect(result[0].overdueCount).toBe(2);
+    expect(result[0].avgRetention).toBe(15);
+    expect(result[0].weakestObjective).toBe('obj-a');
+
+    expect(result[1].studentId).toBe(student2Id);
+    expect(result[1].overdueCount).toBe(1);
+    expect(result[1].avgRetention).toBe(20);
+
+    expect(result[2].studentId).toBe(student3Id);
+    expect(result[2].overdueCount).toBe(0);
+    expect(result[2].avgRetention).toBe(35);
+  });
+
+  it('includes correct student names', async () => {
+    const classId = 'class-1' as Id<'classes'>;
+    const student1Id = 'student-1' as Id<'profiles'>;
+
+    const { db } = makeTeacherSrsMockCtx({
+      classes: [{ _id: classId, name: 'Math Class', teacherId: 'teacher-1' as Id<'profiles'> }],
+      enrollments: [
+        { _id: 'enr-1' as Id<'class_enrollments'>, classId, studentId: student1Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+      profiles: [
+        { _id: student1Id, username: 'student1', displayName: 'Alice Student', role: 'student', organizationId: 'org-1' as Id<'organizations'> },
+      ],
+      cards: [
+        { _id: 'card-1' as Id<'srs_cards'>, studentId: student1Id, objectiveId: 'obj-1', problemFamilyId: 'pf-1', stability: 50, difficulty: 3, state: 'review', dueDate: '2030-01-01T00:00:00.000Z', elapsedDays: 0, scheduledDays: 7, reps: 3, lapses: 0, createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+    });
+
+    const result = await getStrugglingStudentsHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' }
+    );
+
+    expect(result).toHaveLength(1);
+    expect(result[0].displayName).toBe('Alice Student');
+  });
+
+  it('limits to top 10 students by default', async () => {
+    const classId = 'class-1' as Id<'classes'>;
+    const enrollments = [];
+    const profiles = [];
+    const cards = [];
+
+    for (let i = 0; i < 15; i++) {
+      const studentId = `student-${i}` as Id<'profiles'>;
+      enrollments.push({
+        _id: `enr-${i}` as Id<'class_enrollments'>,
+        classId,
+        studentId,
+        status: 'active' as const,
+        enrolledAt: Date.now(),
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      });
+      profiles.push({
+        _id: studentId,
+        username: `student${i}`,
+        displayName: `Student ${i}`,
+        role: 'student' as const,
+        organizationId: 'org-1' as Id<'organizations'>,
+      });
+      cards.push({
+        _id: `card-${i}` as Id<'srs_cards'>,
+        studentId,
+        objectiveId: 'obj-1',
+        problemFamilyId: 'pf-1',
+        stability: 50 - i,
+        difficulty: 3,
+        state: 'review' as const,
+        dueDate: '2020-01-01T00:00:00.000Z',
+        elapsedDays: 100,
+        scheduledDays: 7,
+        reps: 3,
+        lapses: 0,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      });
+    }
+
+    const { db } = makeTeacherSrsMockCtx({
+      classes: [{ _id: classId, name: 'Math Class', teacherId: 'teacher-1' as Id<'profiles'> }],
+      enrollments,
+      profiles,
+      cards,
+    });
+
+    const result = await getStrugglingStudentsHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' }
+    );
+
+    expect(result).toHaveLength(10);
+  });
+
+  it('breaks ties on weakest objective by lowest avg stability then most overdue', async () => {
+    const classId = 'class-1' as Id<'classes'>;
+    const student1Id = 'student-1' as Id<'profiles'>;
+
+    const pastDue = '2020-01-01T00:00:00.000Z';
+    const futureDue = '2030-01-01T00:00:00.000Z';
+
+    const { db } = makeTeacherSrsMockCtx({
+      classes: [{ _id: classId, name: 'Math Class', teacherId: 'teacher-1' as Id<'profiles'> }],
+      enrollments: [
+        { _id: 'enr-1' as Id<'class_enrollments'>, classId, studentId: student1Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+      profiles: [
+        { _id: student1Id, username: 'student1', displayName: 'Alice', role: 'student', organizationId: 'org-1' as Id<'organizations'> },
+      ],
+      cards: [
+        { _id: 'card-1' as Id<'srs_cards'>, studentId: student1Id, objectiveId: 'obj-a', problemFamilyId: 'pf-1', stability: 20, difficulty: 3, state: 'review', dueDate: pastDue, elapsedDays: 100, scheduledDays: 7, reps: 3, lapses: 0, createdAt: Date.now(), updatedAt: Date.now() },
+        { _id: 'card-2' as Id<'srs_cards'>, studentId: student1Id, objectiveId: 'obj-a', problemFamilyId: 'pf-2', stability: 20, difficulty: 3, state: 'review', dueDate: futureDue, elapsedDays: 0, scheduledDays: 7, reps: 3, lapses: 0, createdAt: Date.now(), updatedAt: Date.now() },
+        { _id: 'card-3' as Id<'srs_cards'>, studentId: student1Id, objectiveId: 'obj-b', problemFamilyId: 'pf-3', stability: 10, difficulty: 3, state: 'review', dueDate: pastDue, elapsedDays: 100, scheduledDays: 7, reps: 3, lapses: 0, createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+    });
+
+    const result = await getStrugglingStudentsHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' }
+    );
+
+    expect(result).toHaveLength(1);
+    expect(result[0].weakestObjective).toBe('obj-b');
   });
 });

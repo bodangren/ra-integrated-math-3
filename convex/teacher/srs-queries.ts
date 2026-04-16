@@ -1,6 +1,11 @@
 import { internalQuery, type QueryCtx } from "../_generated/server";
 import { v } from "convex/values";
 import { Id, type Doc } from "../_generated/dataModel";
+import { getTeacherClassProficiencyHandler } from "../objectiveProficiency";
+import type {
+  ObjectivePriority,
+  TeacherProficiencyView,
+} from "../../lib/practice/objective-proficiency";
 
 async function getAuthorizedTeacher(
   ctx: QueryCtx,
@@ -231,5 +236,221 @@ export const getPracticeStreaks = internalQuery({
 
     studentStreaks.sort((a, b) => b.streak - a.streak);
     return studentStreaks.slice(0, limit);
+  },
+});
+
+export type WeakObjectiveView = {
+  objectiveId: string;
+  standardCode: string;
+  standardDescription: string;
+  proficientPercent: number;
+  avgRetention: number;
+  strugglingStudentCount: number;
+  priority: ObjectivePriority;
+};
+
+const PRIORITY_ORDER: Record<ObjectivePriority, number> = {
+  essential: 0,
+  supporting: 1,
+  extension: 2,
+  triaged: 3,
+};
+
+export async function getWeakObjectivesHandler(
+  ctx: QueryCtx,
+  args: { classId: string },
+  proficiencyProvider: (
+    ctx: QueryCtx,
+    args: { classId: string }
+  ) => Promise<TeacherProficiencyView[]> = getTeacherClassProficiencyHandler
+): Promise<WeakObjectiveView[]> {
+  const classDocId = args.classId as Id<"classes">;
+
+  const enrollments = await ctx.db
+    .query("class_enrollments")
+    .withIndex("by_class", (q) => q.eq("classId", classDocId))
+    .collect();
+
+  const activeStudents = enrollments.filter((e) => e.status === "active");
+  const totalStudents = activeStudents.length;
+
+  if (totalStudents === 0) {
+    return [];
+  }
+
+  const proficiencyData = await proficiencyProvider(ctx, args);
+
+  const weakObjectives: WeakObjectiveView[] = [];
+
+  for (const obj of proficiencyData) {
+    const proficientPercent =
+      totalStudents > 0 ? (obj.classProficientCount / totalStudents) * 100 : 0;
+
+    if (proficientPercent < 50) {
+      weakObjectives.push({
+        objectiveId: obj.objectiveId,
+        standardCode: obj.standardCode,
+        standardDescription: obj.standardDescription,
+        proficientPercent,
+        avgRetention: obj.classAvgRetention,
+        strugglingStudentCount: obj.classStrugglingStudents.length,
+        priority: obj.priority,
+      });
+    }
+  }
+
+  weakObjectives.sort((a, b) => {
+    const priorityDiff = PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority];
+    if (priorityDiff !== 0) return priorityDiff;
+    return a.proficientPercent - b.proficientPercent;
+  });
+
+  return weakObjectives;
+}
+
+export const getWeakObjectives = internalQuery({
+  args: {
+    userId: v.id("profiles"),
+    classId: v.id("classes"),
+  },
+  handler: async (ctx, args) => {
+    const teacher = await getAuthorizedTeacher(ctx, args.userId);
+    if (!teacher) {
+      return null;
+    }
+
+    const classDoc = await ctx.db.get(args.classId);
+    if (!classDoc) {
+      return null;
+    }
+
+    if (classDoc.teacherId !== teacher._id) {
+      return null;
+    }
+
+    return getWeakObjectivesHandler(ctx, { classId: args.classId });
+  },
+});
+
+export type StrugglingStudentView = {
+  studentId: string;
+  displayName: string;
+  overdueCount: number;
+  avgRetention: number;
+  weakestObjective: string;
+};
+
+export async function getStrugglingStudentsHandler(
+  ctx: QueryCtx,
+  args: { classId: string; limit?: number }
+): Promise<StrugglingStudentView[]> {
+  const classDocId = args.classId as Id<"classes">;
+
+  const enrollments = await ctx.db
+    .query("class_enrollments")
+    .withIndex("by_class", (q) => q.eq("classId", classDocId))
+    .collect();
+
+  const activeStudents = enrollments.filter((e) => e.status === "active");
+  const limit = args.limit ?? 10;
+  const now = new Date().toISOString();
+
+  const results: StrugglingStudentView[] = [];
+
+  for (const enrollment of activeStudents) {
+    const cards = await ctx.db
+      .query("srs_cards")
+      .withIndex("by_student", (q) => q.eq("studentId", enrollment.studentId))
+      .collect();
+
+    if (cards.length === 0) {
+      continue;
+    }
+
+    const overdueCount = cards.filter((c) => c.dueDate < now).length;
+    const avgRetention =
+      cards.reduce((sum, c) => sum + c.stability, 0) / cards.length;
+
+    const objectiveStats = new Map<
+      string,
+      { totalStability: number; count: number; overdue: number }
+    >();
+
+    for (const card of cards) {
+      const stats = objectiveStats.get(card.objectiveId) ?? {
+        totalStability: 0,
+        count: 0,
+        overdue: 0,
+      };
+      stats.totalStability += card.stability;
+      stats.count++;
+      if (card.dueDate < now) {
+        stats.overdue++;
+      }
+      objectiveStats.set(card.objectiveId, stats);
+    }
+
+    let weakestObjective = "";
+    let weakestAvgStability = Infinity;
+    let weakestOverdue = -1;
+
+    for (const [objectiveId, stats] of objectiveStats) {
+      const avgStability = stats.totalStability / stats.count;
+      if (
+        avgStability < weakestAvgStability ||
+        (avgStability === weakestAvgStability && stats.overdue > weakestOverdue)
+      ) {
+        weakestAvgStability = avgStability;
+        weakestObjective = objectiveId;
+        weakestOverdue = stats.overdue;
+      }
+    }
+
+    const profile = await ctx.db.get("profiles", enrollment.studentId);
+
+    results.push({
+      studentId: enrollment.studentId,
+      displayName: profile?.displayName ?? profile?.username ?? "Unknown",
+      overdueCount,
+      avgRetention,
+      weakestObjective,
+    });
+  }
+
+  results.sort((a, b) => {
+    if (b.overdueCount !== a.overdueCount) {
+      return b.overdueCount - a.overdueCount;
+    }
+    return a.avgRetention - b.avgRetention;
+  });
+
+  return results.slice(0, limit);
+}
+
+export const getStrugglingStudents = internalQuery({
+  args: {
+    userId: v.id("profiles"),
+    classId: v.id("classes"),
+    limit: v.optional(v.number()),
+  },
+  handler: async (ctx, args) => {
+    const teacher = await getAuthorizedTeacher(ctx, args.userId);
+    if (!teacher) {
+      return null;
+    }
+
+    const classDoc = await ctx.db.get(args.classId);
+    if (!classDoc) {
+      return null;
+    }
+
+    if (classDoc.teacherId !== teacher._id) {
+      return null;
+    }
+
+    return getStrugglingStudentsHandler(ctx, {
+      classId: args.classId,
+      limit: args.limit,
+    });
   },
 });
