@@ -56,32 +56,32 @@
 - [x] Task: Run `npm run lint` and fix any issues
 - [x] Task: Conductor - Phase Completion Verification 'Objective Proficiency Query' (Protocol in workflow.md)
 
-## Phase 4: Student and Teacher Views
+## Phase 4: Student and Teacher Views [COMPLETE] [checkpoint: 72934fc]
 
-- [ ] Task: Write Convex query `getStudentProficiencySummary` in `convex/objectiveProficiency.ts`
-  - [ ] Sub-task: Accept `studentId` argument
-  - [ ] Sub-task: Fetch all objectives the student has cards for
-  - [ ] Sub-task: Compute proficiency per objective using the aggregation pipeline
-  - [ ] Sub-task: Call `buildStudentProficiencyView` and return `StudentProficiencyView`
-- [ ] Task: Write Convex query `getTeacherClassProficiency` in `convex/objectiveProficiency.ts`
-  - [ ] Sub-task: Accept `classId` argument
-  - [ ] Sub-task: Fetch all students in the class
-  - [ ] Sub-task: Compute per-objective proficiency across all students
-  - [ ] Sub-task: Aggregate: count proficient per objective, average retention, struggling students list
-  - [ ] Sub-task: Call `buildTeacherProficiencyView` and return `TeacherProficiencyView`
-- [ ] Task: Write view tests
-  - [ ] Sub-task: Test `getStudentProficiencySummary` returns grouped-by-priority view
-  - [ ] Sub-task: Test `getTeacherClassProficiency` returns aggregated class view
-  - [ ] Sub-task: Test teacher view identifies struggling students correctly
-- [ ] Task: Run tests and verify all pass
-- [ ] Task: Run `npm run lint` and fix any issues
-- [ ] Task: Conductor - Phase Completion Verification 'Student and Teacher Views' (Protocol in workflow.md)
+- [x] Task: Write Convex query `getStudentProficiencySummary` in `convex/objectiveProficiency.ts` [72934fc]
+  - [x] Sub-task: Accept `studentId` argument
+  - [x] Sub-task: Fetch all objectives the student has cards for
+  - [x] Sub-task: Compute proficiency per objective using the aggregation pipeline
+  - [x] Sub-task: Call `buildStudentProficiencyView` and return `StudentProficiencyView`
+- [x] Task: Write Convex query `getTeacherClassProficiency` in `convex/objectiveProficiency.ts` [72934fc]
+  - [x] Sub-task: Accept `classId` argument
+  - [x] Sub-task: Fetch all students in the class
+  - [x] Sub-task: Compute per-objective proficiency across all students
+  - [x] Sub-task: Aggregate: count proficient per objective, average retention, struggling students list
+  - [x] Sub-task: Call `buildTeacherProficiencyView` and return `TeacherProficiencyView`
+- [x] Task: Write view tests [72934fc]
+  - [x] Sub-task: Test `getStudentProficiencySummary` returns grouped-by-priority view
+  - [x] Sub-task: Test `getTeacherClassProficiency` returns aggregated class view
+  - [x] Sub-task: Test teacher view identifies struggling students correctly
+- [x] Task: Run tests and verify all pass [72934fc]
+- [x] Task: Run `npm run lint` and fix any issues [72934fc]
+- [x] Task: Conductor - Phase Completion Verification 'Student and Teacher Views' (Protocol in workflow.md) [72934fc]
 
-## Phase 5: Verification and Handoff
+## Phase 5: Verification and Handoff [COMPLETE]
 
-- [ ] Task: Run full test suite and confirm all existing + new tests pass
-- [ ] Task: Run `npm run lint` across entire project
-- [ ] Task: Verify no changes to `objective-proficiency.ts` function signatures
-- [ ] Task: Document the aggregation pipeline in code comments
-- [ ] Task: Update `conductor/tracks.md` with track status
-- [ ] Task: Conductor - Phase Completion Verification 'Verification and Handoff' (Protocol in workflow.md)
+- [x] Task: Run full test suite and confirm all existing + new tests pass
+- [x] Task: Run `npm run lint` across entire project
+- [x] Task: Verify no changes to `objective-proficiency.ts` function signatures
+- [x] Task: Document the aggregation pipeline in code comments
+- [x] Task: Update `conductor/tracks.md` with track status
+- [x] Task: Conductor - Phase Completion Verification 'Verification and Handoff' (Protocol in workflow.md)

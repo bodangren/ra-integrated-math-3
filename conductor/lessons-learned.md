@@ -40,7 +40,6 @@
 
 ## Planning Improvements
 
-- (2026-04-12, algebraic-examples) Pattern-matching equivalence works for Module 1 (88% passing) but has limits; needs unified sign handling
 - (2026-04-13, component-approval) Convex queries: use `.withIndex()` not `.filter()`, and `.take(n)` instead of `.collect()` to bound results
 - (2026-04-14, code-review) Activity wrappers should inject activityId into submission payloads, not pass it to inner components
 - (2026-04-14, code-review) Always guard division by zero in score calculations; NaN propagates silently through analytics

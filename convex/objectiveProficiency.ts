@@ -1,3 +1,25 @@
+/**
+ * Objective Proficiency Queries
+ *
+ * Aggregation pipeline from FSRS card states to objective proficiency views:
+ *
+ * 1. Fetch SRS cards for a student (filtered by objective/problem families if specified)
+ * 2. Fetch review logs and activity submissions to derive per-review timing
+ * 3. Fetch timing baselines for each problem family
+ * 4. Build SrsCardState objects with stability, reps, lapses, and optional reviewDurationMs
+ * 5. Call aggregateCardsToEvidence to compute per-family:
+ *    - retentionStrength: average stabilityToRetention (sigmoid normalized)
+ *    - practiceCoverage: proportion of cards with reps > 0
+ *    - fluencyConfidence: high/medium/low based on timing vs baseline median
+ * 6. Call computeObjectiveProficiency with policy-derived priority to produce the final result
+ * 7. Wrap results in student/teacher views via buildStudentProficiencyView / buildTeacherProficiencyView
+ *
+ * Exported queries:
+ * - getObjectiveProficiency(studentId, objectiveId?): single objective result
+ * - getStudentProficiencySummary(studentId): array of StudentProficiencyView
+ * - getTeacherClassProficiency(classId): array of TeacherProficiencyView
+ */
+
 import { internalQuery, type QueryCtx } from "./_generated/server";
 import { v } from "convex/values";
 import { Id } from "./_generated/dataModel";
