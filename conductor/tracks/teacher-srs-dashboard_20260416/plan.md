@@ -79,37 +79,37 @@
 
 ## Phase 4: Intervention Mutations
 
-- [ ] Task: Write `updateObjectivePriority` mutation tests
-  - [ ] Test changes essential → triaged in `objective_policies`
-  - [ ] Test changes triaged → essential in `objective_policies`
-  - [ ] Test validates teacher owns the class
-  - [ ] Test rejects invalid priority values
-- [ ] Task: Implement `updateObjectivePriority` Convex mutation
-  - [ ] Create `convex/teacher/srs-mutations.ts`
-  - [ ] Validate teacher identity via `ctx.auth.getUserIdentity()`
-  - [ ] Validate teacher owns the class section
-  - [ ] Update `objective_policies` priority field
-- [ ] Task: Write `resetStudentCards` mutation tests
-  - [ ] Test resets card state to new for specified objective and student
-  - [ ] Test clears scheduling data (stability, difficulty, dueDate)
-  - [ ] Test validates teacher owns the student's class
-  - [ ] Test handles card not found (no-op)
-- [ ] Task: Implement `resetStudentCards` Convex mutation
-  - [ ] Find card in `srs_cards` by studentId + objectiveId
-  - [ ] Reset state to "new", clear FSRS scheduling fields
-  - [ ] Keep card identity (preserve _id)
-  - [ ] Log reset action in `srs_review_log`
-- [ ] Task: Write `addExtraCards` mutation tests
-  - [ ] Test creates new card for student on specified objective
-  - [ ] Test sets card state to new
-  - [ ] Test validates teacher owns the student's class
-  - [ ] Test rejects if card already exists for that objective
-- [ ] Task: Implement `addExtraCards` Convex mutation
-  - [ ] Check no existing card for student + objective
-  - [ ] Create new `srs_cards` document with state "new"
-  - [ ] Link to problem family from objective
-  - [ ] Validate teacher authorization
-- [ ] Task: Conductor - Phase Completion Verification 'Intervention Mutations' (Protocol in workflow.md)
+- [x] Task: Write `updateObjectivePriority` mutation tests
+  - [x] Test changes essential → triaged in `objective_policies`
+  - [x] Test changes triaged → essential in `objective_policies`
+  - [x] Test validates teacher owns the class
+  - [x] Test rejects invalid priority values
+- [x] Task: Implement `updateObjectivePriority` Convex mutation
+  - [x] Create `convex/teacher/srs-mutations.ts`
+  - [x] Validate teacher identity via `ctx.auth.getUserIdentity()`
+  - [x] Validate teacher owns the class section
+  - [x] Update `objective_policies` priority field
+- [x] Task: Write `resetStudentCards` mutation tests
+  - [x] Test resets card state to new for specified objective and student
+  - [x] Test clears scheduling data (stability, difficulty, dueDate)
+  - [x] Test validates teacher owns the student's class
+  - [x] Test handles card not found (no-op)
+- [x] Task: Implement `resetStudentCards` Convex mutation
+  - [x] Find card in `srs_cards` by studentId + objectiveId
+  - [x] Reset state to "new", clear FSRS scheduling fields
+  - [x] Keep card identity (preserve _id)
+  - [x] Log reset action in `srs_review_log`
+- [x] Task: Write `addExtraCards` mutation tests
+  - [x] Test creates new card for student on specified objective
+  - [x] Test sets card state to new
+  - [x] Test validates teacher owns the student's class
+  - [x] Test rejects if card already exists for that objective
+- [x] Task: Implement `addExtraCards` Convex mutation
+  - [x] Check no existing card for student + objective
+  - [x] Create new `srs_cards` document with state "new"
+  - [x] Link to problem family from objective
+  - [x] Validate teacher authorization
+- [x] Task: Conductor - Phase Completion Verification 'Intervention Mutations' (Protocol in workflow.md)
 
 ## Phase 5: Dashboard UI Components
 
