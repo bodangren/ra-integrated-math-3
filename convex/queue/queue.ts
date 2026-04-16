@@ -1,0 +1,89 @@
+import { internalQuery, type QueryCtx } from "../_generated/server";
+import { v } from "convex/values";
+import { Id } from "../_generated/dataModel";
+import { buildDailyQueue, type QueueItem } from "../../lib/srs/queue";
+import type { ObjectivePracticePolicy, SrsCardState } from "../../lib/srs/contract";
+
+function mapDbCardToContract(
+  card: {
+    _id: Id<"srs_cards">;
+    studentId: Id<"profiles">;
+    objectiveId: string;
+    problemFamilyId: string;
+    stability: number;
+    difficulty: number;
+    state: "new" | "learning" | "review" | "relearning";
+    dueDate: string;
+    elapsedDays: number;
+    scheduledDays: number;
+    reps: number;
+    lapses: number;
+    lastReview?: string;
+    createdAt: number;
+    updatedAt: number;
+  }
+): SrsCardState {
+  return {
+    cardId: card.problemFamilyId,
+    studentId: card.studentId,
+    objectiveId: card.objectiveId,
+    problemFamilyId: card.problemFamilyId,
+    stability: card.stability,
+    difficulty: card.difficulty,
+    state: card.state,
+    dueDate: card.dueDate,
+    elapsedDays: card.elapsedDays,
+    scheduledDays: card.scheduledDays,
+    reps: card.reps,
+    lapses: card.lapses,
+    lastReview: card.lastReview ?? null,
+    createdAt: new Date(card.createdAt).toISOString(),
+    updatedAt: new Date(card.updatedAt).toISOString(),
+  };
+}
+
+export async function getDailyPracticeQueueHandler(
+  ctx: QueryCtx,
+  args: { studentId: string; asOfDate?: string }
+): Promise<QueueItem[]> {
+  const cards = await ctx.db
+    .query("srs_cards")
+    .withIndex("by_student", (q) =>
+      q.eq("studentId", args.studentId as Id<"profiles">)
+    )
+    .collect();
+
+  const policyRecords = await ctx.db
+    .query("objective_policies")
+    .withIndex("by_courseKey", (q) => q.eq("courseKey", "integrated-math-3"))
+    .collect();
+
+  const policies = new Map<string, ObjectivePracticePolicy>();
+  for (const record of policyRecords) {
+    const standard = await ctx.db.get(record.standardId);
+    if (!standard) continue;
+    policies.set(standard.code, {
+      objectiveId: standard.code,
+      priority: record.policy as ObjectivePracticePolicy["priority"],
+    });
+  }
+
+  const config = {
+    newCardsPerDay: 5,
+    maxReviewsPerDay: 20,
+    prioritizeOverdue: true,
+  };
+
+  const now = args.asOfDate ?? new Date().toISOString();
+  const cardStates = cards.map(mapDbCardToContract);
+
+  return buildDailyQueue(cardStates, policies, config, now);
+}
+
+export const getDailyPracticeQueue = internalQuery({
+  args: {
+    studentId: v.string(),
+    asOfDate: v.optional(v.string()),
+  },
+  handler: getDailyPracticeQueueHandler,
+});
