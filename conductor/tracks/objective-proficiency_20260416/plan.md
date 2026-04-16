@@ -1,6 +1,6 @@
 # Plan: objective-proficiency_20260416
 
-## Phase 1: FSRS Stability Normalization
+## Phase 1: FSRS Stability Normalization [checkpoint: PENDING]
 
 - [x] Task: Write `stabilityToRetention` function in `lib/practice/srs-proficiency.ts` [150eecd]
   - [x] Sub-task: Implement sigmoid normalization `1 - (1 / (1 + stability / scaleFactor))` with configurable `scaleFactor` (default 30)
@@ -17,7 +17,7 @@
   - [x] Sub-task: Test NaN and Infinity inputs
 - [x] Task: Run tests and verify all pass [150eecd]
 - [x] Task: Run `npm run lint` and fix any issues [150eecd]
-- [~] Task: Conductor - Phase Completion Verification 'FSRS Stability Normalization' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'FSRS Stability Normalization' (Protocol in workflow.md)
 
 ## Phase 2: Card-to-Evidence Aggregation
 
