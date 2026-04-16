@@ -14,7 +14,7 @@
   - [x] Sub-task: Include per-file findings table with columns: file, line, issue, resolution
 - [x] Task: Conductor - Phase Completion Verification 'Boundary Audit' (Protocol in workflow.md) [checkpoint: d3475cd]
 
-## Phase 2: Interface Documentation
+## Phase 2: Interface Documentation [checkpoint: ad4afe8]
 
 - [x] Task: Document all public types and functions in `lib/srs/contract.ts`
   - [x] Sub-task: Add JSDoc to every exported type and function
