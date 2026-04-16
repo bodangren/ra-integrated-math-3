@@ -372,10 +372,11 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
            - Phase 5: Dashboard Integration [COMPLETE] [checkpoint: f526aab]
            - Phase 6: Verification and Handoff [COMPLETE] [checkpoint: 33ff6e5]
 
-- [ ] **Track 11: Teacher SRS Dashboard and Interventions**
+- [~] **Track 11: Teacher SRS Dashboard and Interventions**
      *Class health overview, weak objectives panel, struggling students, misconception diagnostics, basic interventions*
      *Depends on: Track 10 (Wave 4)*
      *Link: [./conductor/tracks/teacher-srs-dashboard_20260416/](./conductor/tracks/teacher-srs-dashboard_20260416/)*
+     - Phase 1: Class Health Queries [COMPLETE]
 
 ### Wave 5 — Polish (after Wave 4)
 

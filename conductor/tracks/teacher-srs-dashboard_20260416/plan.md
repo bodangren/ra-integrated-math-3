@@ -2,36 +2,36 @@
 
 ## Phase 1: Class Health Queries
 
-- [ ] Task: Write `getClassSrsHealth` query tests
-  - [ ] Test returns total active students count
-  - [ ] Test returns students who practiced today count
-  - [ ] Test returns average class retention across all objectives
-  - [ ] Test handles empty class (no students, no cards)
-  - [ ] Test handles class with students but no SRS data yet
-- [ ] Task: Implement `getClassSrsHealth` Convex query
-  - [ ] Create `convex/teacher/srs-queries.ts`
-  - [ ] Query `srs_cards` with indexed lookup by class/section
-  - [ ] Aggregate active students, today's practitioners, average retention
-  - [ ] Use `srs_sessions` for practice-today count
-- [ ] Task: Write `getOverdueLoad` query tests
-  - [ ] Test returns total overdue cards across all students
-  - [ ] Test returns per-student overdue breakdown
-  - [ ] Test handles no overdue cards
-  - [ ] Test correctly identifies overdue (dueDate < now)
-- [ ] Task: Implement `getOverdueLoad` Convex query
-  - [ ] Query `srs_cards` filtered by overdue status
-  - [ ] Aggregate count by student
-  - [ ] Return total and per-student breakdown
-- [ ] Task: Write `getPracticeStreaks` query tests
-  - [ ] Test returns students sorted by streak length descending
-  - [ ] Test calculates streak from consecutive days in `srs_sessions`
-  - [ ] Test handles students with no sessions
-  - [ ] Test caps at top 5
-- [ ] Task: Implement `getPracticeStreaks` Convex query
-  - [ ] Query `srs_sessions` grouped by student
-  - [ ] Calculate consecutive-day streaks
-  - [ ] Return top 5 with student names and streak lengths
-- [ ] Task: Conductor - Phase Completion Verification 'Class Health Queries' (Protocol in workflow.md)
+- [x] Task: Write `getClassSrsHealth` query tests
+  - [x] Test returns total active students count
+  - [x] Test returns students who practiced today count
+  - [x] Test returns average class retention across all objectives
+  - [x] Test handles empty class (no students, no cards)
+  - [x] Test handles class with students but no SRS data yet
+- [x] Task: Implement `getClassSrsHealth` Convex query
+  - [x] Create `convex/teacher/srs-queries.ts`
+  - [x] Query `srs_cards` with indexed lookup by class/section
+  - [x] Aggregate active students, today's practitioners, average retention
+  - [x] Use `srs_sessions` for practice-today count
+- [x] Task: Write `getOverdueLoad` query tests
+  - [x] Test returns total overdue cards across all students
+  - [x] Test returns per-student overdue breakdown
+  - [x] Test handles no overdue cards
+  - [x] Test correctly identifies overdue (dueDate < now)
+- [x] Task: Implement `getOverdueLoad` Convex query
+  - [x] Query `srs_cards` filtered by overdue status
+  - [x] Aggregate count by student
+  - [x] Return total and per-student breakdown
+- [x] Task: Write `getPracticeStreaks` query tests
+  - [x] Test returns students sorted by streak length descending
+  - [x] Test calculates streak from consecutive days in `srs_sessions`
+  - [x] Test handles students with no sessions
+  - [x] Test caps at top 5
+- [x] Task: Implement `getPracticeStreaks` Convex query
+  - [x] Query `srs_sessions` grouped by student
+  - [x] Calculate consecutive-day streaks
+  - [x] Return top 5 with student names and streak lengths
+- [x] Task: Conductor - Phase Completion Verification 'Class Health Queries' (Protocol in workflow.md)
 
 ## Phase 2: Weak Objectives and Struggling Students
 
