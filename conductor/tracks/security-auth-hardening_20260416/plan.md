@@ -9,10 +9,10 @@
   - [x] Implement guards in `lib/auth/server.ts` following BM2 pattern (return `SessionClaims | Response`)
   - [x] Verify TypeScript discrimination forces caller handling
 
-- [ ] **Task: Port requireActiveRequestSessionClaims (credential revocation)**
-  - [ ] Write unit tests for credential revocation check (active, deactivated, Convex-down scenarios)
-  - [ ] Implement `requireActiveRequestSessionClaims` calling Convex `internal.auth.getCredentialByUsername`
-  - [ ] Verify fail-closed behavior when Convex is unreachable
+- [x] **Task: Port requireActiveRequestSessionClaims (credential revocation)** [5cbff6f]
+  - [x] Write unit tests for credential revocation check (active, deactivated, Convex-down scenarios)
+  - [x] Implement `requireActiveRequestSessionClaims` calling Convex `internal.auth.getCredentialByUsername`
+  - [x] Verify fail-closed behavior when Convex is unreachable
 
 - [ ] **Task: Audit and update existing API routes**
   - [ ] Identify all routes in `app/api/` that lack fail-closed guards
