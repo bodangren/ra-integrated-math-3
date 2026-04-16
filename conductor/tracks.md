@@ -321,8 +321,8 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
       - Phase 1: Convex Schema Definitions [COMPLETE] [checkpoint: 3073154]
       - Phase 2: CardStore Adapter [COMPLETE] [checkpoint: e0d54c7]
        - Phase 3: ReviewLogStore Adapter [COMPLETE] [checkpoint: aaa6c10]
-       - Phase 4: Atomic Review Persistence [COMPLETE]
-       - Phase 5: Session Management [COMPLETE] [checkpoint: a4f8c2d]
+       - Phase 4: Atomic Review Persistence [COMPLETE] [checkpoint: ae766e5]
+       - Phase 5: Session Management [COMPLETE] [checkpoint: ed812e1]
        - Phase 6: Verification and Handoff [IN PROGRESS]
 
 ### Wave 3 — Integration (after Wave 2, 2 tracks in parallel)
