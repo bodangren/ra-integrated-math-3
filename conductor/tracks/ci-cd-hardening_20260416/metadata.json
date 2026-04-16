@@ -1,11 +1,11 @@
 {
   "track_id": "ci-cd-hardening_20260416",
   "type": "chore",
-  "status": "new",
+  "status": "completed",
   "created_at": "2026-04-16T10:00:00Z",
-  "updated_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-17T06:45:00Z",
   "description": "Port CI/CD pipeline from bus-math-v2: GitHub Actions workflow with lint/test/build gates, Cloudflare Workers deployment, concurrency control",
   "estimated_tasks": 6,
-  "actual_tasks": null,
-  "deviation_notes": ""
+  "actual_tasks": 6,
+  "deviation_notes": "Phase 1 checkpoint included both wrangler config/worker.ts and the GitHub Actions workflow file, so Phase 2 focused on verification tests and local gate validation."
 }
