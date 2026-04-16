@@ -24,16 +24,29 @@ import type {
   SrsReviewLogEntry,
 } from './contract';
 
+/**
+ * Input payload for `processReview`.
+ */
 export type ReviewProcessorInput = {
+  /** The SRS card being reviewed. */
   card: SrsCardState;
+  /** The practice submission that produced the review. */
   submission: PracticeSubmissionEnvelope;
+  /** Optional timing baseline for the problem family; omit if unavailable. */
   baseline?: PracticeTimingBaseline;
+  /** Review timestamp as an ISO string. */
   now: string;
 };
 
+/**
+ * Output of `processReview` containing the updated card and audit log.
+ */
 export type ReviewProcessorResult = {
+  /** Final FSRS rating applied to the card. */
   rating: SrsRatingResult['rating'];
+  /** Card state after the FSRS review has been applied. */
   updatedCard: SrsCardState;
+  /** Immutable audit entry capturing before/after state and evidence. */
   reviewLog: SrsReviewLogEntry;
 };
 

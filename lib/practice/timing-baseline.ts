@@ -9,7 +9,10 @@ import type { PracticeTimingSummary, PracticeTimingConfidence } from './contract
  * course. This keeps the baseline logic course-agnostic and reusable.
  */
 
-/** Minimum number of high/medium-confidence submissions before a baseline is considered reliable. */
+/**
+ * Minimum number of high/medium-confidence submissions before a baseline
+ * is considered reliable.
+ */
 export const TIMING_BASELINE_MIN_SAMPLES = 10;
 
 /**
@@ -28,8 +31,33 @@ export const SPEED_BAND_THRESHOLDS = {
   slow: 2.5,
 } as const;
 
+/**
+ * Speed classification relative to a baseline.
+ *
+ * - **fast**: Student was substantially faster than baseline.
+ * - **expected**: Within the normal range.
+ * - **slow**: Noticeably slower than baseline.
+ * - **very_slow**: Far slower than baseline.
+ */
 export type TimingSpeedBand = 'fast' | 'expected' | 'slow' | 'very_slow';
 
+/**
+ * Baseline timing statistics for a problem family.
+ *
+ * @example
+ * ```ts
+ * const baseline: PracticeTimingBaseline = {
+ *   problemFamilyId: 'pf_qr_01',
+ *   sampleCount: 15,
+ *   medianActiveMs: 45000,
+ *   p25ActiveMs: 32000,
+ *   p75ActiveMs: 58000,
+ *   p90ActiveMs: 82000,
+ *   lastComputedAt: '2026-04-17T00:00:00.000Z',
+ *   minSamplesMet: true,
+ * };
+ * ```
+ */
 export type PracticeTimingBaseline = {
   problemFamilyId: string;
   sampleCount: number;
@@ -41,6 +69,22 @@ export type PracticeTimingBaseline = {
   minSamplesMet: boolean;
 };
 
+/**
+ * Derived timing features for a single review attempt.
+ *
+ * @example
+ * ```ts
+ * const features: PracticeTimingFeatures = {
+ *   hasReliableTiming: true,
+ *   activeMs: 38000,
+ *   baselineMedianActiveMs: 45000,
+ *   timeRatio: 0.84,
+ *   speedBand: 'fast',
+ *   confidence: 'high',
+ *   reasons: ['timing_fast'],
+ * };
+ * ```
+ */
 export type PracticeTimingFeatures = {
   hasReliableTiming: boolean;
   activeMs?: number;
@@ -51,7 +95,21 @@ export type PracticeTimingFeatures = {
   reasons: string[];
 };
 
-/** Input for computing a baseline from a collection of timing summaries. */
+/**
+ * Input for computing a baseline from a collection of timing summaries.
+ *
+ * @example
+ * ```ts
+ * const input: ComputeBaselineInput = {
+ *   problemFamilyId: 'pf_qr_01',
+ *   timings: [
+ *     { activeMs: 42000, confidence: 'high' },
+ *     { activeMs: 48000, confidence: 'medium' },
+ *   ],
+ *   minSamples: 10,
+ * };
+ * ```
+ */
 export type ComputeBaselineInput = {
   problemFamilyId: string;
   /** Only high/medium confidence submissions should be included. */
@@ -62,7 +120,21 @@ export type ComputeBaselineInput = {
   computedAt?: string;
 };
 
-/** Derive a timing baseline from a set of eligible submission timings. */
+/**
+ * Derive a timing baseline from a set of eligible submission timings.
+ *
+ * Filters out low-confidence submissions and computes median / percentile
+ * active times.
+ *
+ * @example
+ * ```ts
+ * const baseline = computeTimingBaseline({
+ *   problemFamilyId: 'pf_01',
+ *   timings: submissionTimings,
+ * });
+ * // baseline.minSamplesMet tells you whether the baseline is reliable
+ * ```
+ */
 export function computeTimingBaseline(input: ComputeBaselineInput): PracticeTimingBaseline {
   const { problemFamilyId, timings, minSamples = TIMING_BASELINE_MIN_SAMPLES, computedAt } =
     input;
@@ -86,7 +158,18 @@ export function computeTimingBaseline(input: ComputeBaselineInput): PracticeTimi
   };
 }
 
-/** Derive timing features for a single review attempt given a baseline. */
+/**
+ * Derive timing features for a single review attempt given a baseline.
+ *
+ * Returns reliability flags, speed band, and human-readable reasons.
+ *
+ * @example
+ * ```ts
+ * const features = deriveTimingFeatures(timingSummary, baseline);
+ * // features.speedBand === 'fast' | 'expected' | 'slow' | 'very_slow'
+ * // features.hasReliableTiming indicates whether timing can adjust the SRS rating
+ * ```
+ */
 export function deriveTimingFeatures(
   timing: PracticeTimingSummary,
   baseline: PracticeTimingBaseline | null | undefined,

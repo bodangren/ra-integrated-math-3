@@ -16,38 +16,38 @@
 
 ## Phase 2: Interface Documentation
 
-- [ ] Task: Document all public types and functions in `lib/srs/contract.ts`
-  - [ ] Sub-task: Add JSDoc to every exported type and function
-  - [ ] Sub-task: Write usage examples for each function
-- [ ] Task: Document all public types and functions in `lib/srs/scheduler.ts`
-  - [ ] Sub-task: Add JSDoc to every exported type and function
-  - [ ] Sub-task: Write usage examples for each function
-- [ ] Task: Document all public types and functions in `lib/srs/review-processor.ts`
-  - [ ] Sub-task: Add JSDoc to every exported type and function
-  - [ ] Sub-task: Write usage examples for each function
-- [ ] Task: Document all public types and functions in `lib/srs/queue.ts`
-  - [ ] Sub-task: Add JSDoc to every exported type and function
-  - [ ] Sub-task: Write usage examples for each function
-- [ ] Task: Document all public types and functions in `lib/srs/adapters.ts`
-  - [ ] Sub-task: Add JSDoc to every exported type and function
-  - [ ] Sub-task: Write usage examples for each function
-- [ ] Task: Document all public types and functions in `lib/practice/srs-rating.ts`
-  - [ ] Sub-task: Add JSDoc to every exported type and function
-  - [ ] Sub-task: Write usage examples for each function
-- [ ] Task: Document all public types and functions in `lib/practice/objective-proficiency.ts`
-  - [ ] Sub-task: Add JSDoc to every exported type and function
-  - [ ] Sub-task: Write usage examples for each function
-- [ ] Task: Document all public types and functions in `lib/practice/timing-baseline.ts`
-  - [ ] Sub-task: Add JSDoc to every exported type and function
-  - [ ] Sub-task: Write usage examples for each function
-- [ ] Task: Document all public types and functions in `lib/practice/timing.ts`
-  - [ ] Sub-task: Add JSDoc to every exported type and function
-  - [ ] Sub-task: Write usage examples for each function
-- [ ] Task: Document all public types and functions in `lib/practice/contract.ts`
-  - [ ] Sub-task: Add JSDoc to every exported type and function
-  - [ ] Sub-task: Write usage examples for each function
-- [ ] Task: Verify all documentation examples compile with `npx tsc --noEmit`
-- [ ] Task: Conductor - Phase Completion Verification 'Interface Documentation' (Protocol in workflow.md)
+- [x] Task: Document all public types and functions in `lib/srs/contract.ts`
+  - [x] Sub-task: Add JSDoc to every exported type and function
+  - [x] Sub-task: Write usage examples for each function
+- [x] Task: Document all public types and functions in `lib/srs/scheduler.ts`
+  - [x] Sub-task: Add JSDoc to every exported type and function
+  - [x] Sub-task: Write usage examples for each function
+- [x] Task: Document all public types and functions in `lib/srs/review-processor.ts`
+  - [x] Sub-task: Add JSDoc to every exported type and function
+  - [x] Sub-task: Write usage examples for each function
+- [x] Task: Document all public types and functions in `lib/srs/queue.ts`
+  - [x] Sub-task: Add JSDoc to every exported type and function
+  - [x] Sub-task: Write usage examples for each function
+- [x] Task: Document all public types and functions in `lib/srs/adapters.ts`
+  - [x] Sub-task: Add JSDoc to every exported type and function
+  - [x] Sub-task: Write usage examples for each function
+- [x] Task: Document all public types and functions in `lib/practice/srs-rating.ts`
+  - [x] Sub-task: Add JSDoc to every exported type and function
+  - [x] Sub-task: Write usage examples for each function
+- [x] Task: Document all public types and functions in `lib/practice/objective-proficiency.ts`
+  - [x] Sub-task: Add JSDoc to every exported type and function
+  - [x] Sub-task: Write usage examples for each function
+- [x] Task: Document all public types and functions in `lib/practice/timing-baseline.ts`
+  - [x] Sub-task: Add JSDoc to every exported type and function
+  - [x] Sub-task: Write usage examples for each function
+- [x] Task: Document all public types and functions in `lib/practice/timing.ts`
+  - [x] Sub-task: Add JSDoc to every exported type and function
+  - [x] Sub-task: Write usage examples for each function
+- [x] Task: Document all public types and functions in `lib/practice/contract.ts`
+  - [x] Sub-task: Add JSDoc to every exported type and function
+  - [x] Sub-task: Write usage examples for each function
+- [x] Task: Verify all documentation examples compile with `npx tsc --noEmit`
+- [x] Task: Conductor - Phase Completion Verification 'Interface Documentation' (Protocol in workflow.md)
 
 ## Phase 3: Integration Guide
 

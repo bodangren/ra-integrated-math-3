@@ -1,7 +1,13 @@
 import { z } from 'zod';
 
+/**
+ * Canonical version identifier for the practice.v1 contract.
+ */
 export const PRACTICE_CONTRACT_VERSION = 'practice.v1' as const;
 
+/**
+ * Valid modes for a practice activity.
+ */
 export const PRACTICE_MODE_VALUES = [
   'worked_example',
   'guided_practice',
@@ -10,6 +16,9 @@ export const PRACTICE_MODE_VALUES = [
   'teaching',
 ] as const;
 
+/**
+ * Valid statuses for a practice submission lifecycle.
+ */
 export const PRACTICE_SUBMISSION_STATUS_VALUES = [
   'draft',
   'submitted',
@@ -17,7 +26,10 @@ export const PRACTICE_SUBMISSION_STATUS_VALUES = [
   'returned',
 ] as const;
 
+/** Zod schema for practice mode. */
 export const practiceModeSchema = z.enum(PRACTICE_MODE_VALUES);
+
+/** Zod schema for practice submission status. */
 export const practiceSubmissionStatusSchema = z.enum(PRACTICE_SUBMISSION_STATUS_VALUES);
 
 const jsonRecordSchema = z.record(z.string(), z.unknown());
@@ -26,6 +38,20 @@ function normalizeSubmittedAt(value: string | Date): string {
   return value instanceof Date ? value.toISOString() : value;
 }
 
+/**
+ * Normalize a practice answer value into a canonical string representation.
+ *
+ * Arrays are sorted and pipe-delimited. Strings are trimmed and lowercased.
+ * Numbers and booleans are stringified. null/undefined become empty strings.
+ *
+ * @example
+ * ```ts
+ * normalizePracticeValue(['b', 'a']); // 'a|b'
+ * normalizePracticeValue('  Hello '); // 'hello'
+ * normalizePracticeValue(42);        // '42'
+ * normalizePracticeValue(null);      // ''
+ * ```
+ */
 export function normalizePracticeValue(value: unknown): string {
   if (Array.isArray(value)) {
     return value.map((entry) => normalizePracticeValue(entry)).sort().join('|');
@@ -46,9 +72,19 @@ export function normalizePracticeValue(value: unknown): string {
   return JSON.stringify(value);
 }
 
+/** Zod schema for timing confidence levels. */
 export const practiceTimingConfidenceSchema = z.enum(['high', 'medium', 'low']);
+
+/**
+ * Confidence level for aggregated timing data.
+ *
+ * - **high**: No significant interruptions or idle periods.
+ * - **medium**: Minor focus losses or short visibility-hidden events.
+ * - **low**: Major interruptions, very short sessions, or long idle periods.
+ */
 export type PracticeTimingConfidence = z.infer<typeof practiceTimingConfidenceSchema>;
 
+/** Zod schema for a practice timing summary. */
 export const practiceTimingSummarySchema = z
   .object({
     startedAt: z.string().min(1),
@@ -68,8 +104,28 @@ export const practiceTimingSummarySchema = z
     path: ['activeMs'],
   });
 
+/**
+ * Aggregated timing summary for a practice attempt or session.
+ *
+ * @example
+ * ```ts
+ * const timing: PracticeTimingSummary = {
+ *   startedAt: '2026-04-17T08:00:00Z',
+ *   submittedAt: '2026-04-17T08:01:30Z',
+ *   wallClockMs: 90000,
+ *   activeMs: 75000,
+ *   idleMs: 15000,
+ *   pauseCount: 0,
+ *   focusLossCount: 1,
+ *   visibilityHiddenCount: 0,
+ *   confidence: 'medium',
+ *   confidenceReasons: ['focus_loss'],
+ * };
+ * ```
+ */
 export type PracticeTimingSummary = z.infer<typeof practiceTimingSummarySchema>;
 
+/** Zod schema for a single practice submission part. */
 export const practiceSubmissionPartSchema = z.object({
   partId: z.string().trim().min(1),
   rawAnswer: z.unknown(),
@@ -87,8 +143,24 @@ export const practiceSubmissionPartSchema = z.object({
   activeMs: z.number().nonnegative().optional(),
 });
 
+/**
+ * Individual part/answer within a practice submission.
+ *
+ * @example
+ * ```ts
+ * const part: PracticeSubmissionPart = {
+ *   partId: 'a1',
+ *   rawAnswer: { x: 3 },
+ *   normalizedAnswer: '{"x":3}',
+ *   isCorrect: true,
+ *   hintsUsed: 0,
+ *   misconceptionTags: [],
+ * };
+ * ```
+ */
 export type PracticeSubmissionPart = z.infer<typeof practiceSubmissionPartSchema>;
 
+/** Zod schema for the canonical practice submission envelope. */
 export const practiceSubmissionEnvelopeSchema = z.object({
   contractVersion: z.literal(PRACTICE_CONTRACT_VERSION),
   activityId: z.string().trim().min(1),
@@ -106,10 +178,47 @@ export const practiceSubmissionEnvelopeSchema = z.object({
   timing: practiceTimingSummarySchema.optional(),
 });
 
+/**
+ * Canonical envelope for a practice.v1 submission.
+ *
+ * This is the shape that should be persisted, sent to SRS adapters,
+ * and passed to grading/analytics pipelines.
+ *
+ * @example
+ * ```ts
+ * const envelope: PracticeSubmissionEnvelope = {
+ *   contractVersion: 'practice.v1',
+ *   activityId: 'act_123',
+ *   mode: 'independent_practice',
+ *   status: 'submitted',
+ *   attemptNumber: 1,
+ *   submittedAt: '2026-04-17T08:01:30Z',
+ *   answers: { a1: { x: 3 } },
+ *   parts: [part],
+ *   timing: timingSummary,
+ * };
+ * ```
+ */
 export type PracticeSubmissionEnvelope = z.infer<typeof practiceSubmissionEnvelopeSchema>;
 
+/**
+ * Alias for the submission envelope when used as a callback payload.
+ */
 export type PracticeSubmissionCallbackPayload = PracticeSubmissionEnvelope;
 
+/**
+ * Narrowing guard that checks whether a value is a practice.v1 envelope.
+ *
+ * Performs a lightweight check on `contractVersion` only. For full
+ * validation, use `practiceSubmissionEnvelopeSchema.parse()`.
+ *
+ * @example
+ * ```ts
+ * if (isPracticeSubmissionEnvelope(value)) {
+ *   // value.contractVersion === 'practice.v1'
+ * }
+ * ```
+ */
 export function isPracticeSubmissionEnvelope(
   value: unknown,
 ): value is PracticeSubmissionEnvelope {
@@ -140,8 +249,25 @@ const practiceSubmissionInputSchema = z.object({
   timing: practiceTimingSummarySchema.optional(),
 });
 
+/**
+ * Loosely-typed input shape for normalizing a practice submission.
+ *
+ * Used when parsing incoming data from forms, APIs, or external sources.
+ */
 export type PracticeSubmissionInput = z.infer<typeof practiceSubmissionInputSchema>;
 
+/**
+ * Build `PracticeSubmissionPart` objects from a plain answers record.
+ *
+ * Automatically normalizes each answer into `normalizedAnswer`.
+ *
+ * @example
+ * ```ts
+ * const parts = buildPracticeSubmissionParts({ a1: 5, a2: 'x' });
+ * // parts[0].normalizedAnswer === '5'
+ * // parts[1].normalizedAnswer === 'x'
+ * ```
+ */
 export function buildPracticeSubmissionParts(
   answers: Record<string, unknown>,
 ): PracticeSubmissionPart[] {
@@ -152,6 +278,19 @@ export function buildPracticeSubmissionParts(
   }));
 }
 
+/**
+ * Build a fully validated `PracticeSubmissionEnvelope` from structured input.
+ *
+ * @example
+ * ```ts
+ * const envelope = buildPracticeSubmissionEnvelope({
+ *   activityId: 'act_123',
+ *   mode: 'independent_practice',
+ *   answers: { a1: 42 },
+ *   timing: timingSummary,
+ * });
+ * ```
+ */
 export function buildPracticeSubmissionEnvelope(input: {
   activityId: string;
   mode: z.infer<typeof practiceModeSchema>;
@@ -185,6 +324,22 @@ export function buildPracticeSubmissionEnvelope(input: {
   });
 }
 
+/**
+ * Normalize loose input into a validated `PracticeSubmissionEnvelope`.
+ *
+ * Useful when ingesting data from untrusted sources (forms, APIs, etc.).
+ * Falls back to provided defaults for missing required fields.
+ *
+ * @throws Error if `activityId` cannot be resolved.
+ *
+ * @example
+ * ```ts
+ * const envelope = normalizePracticeSubmissionInput(rawBody, {
+ *   activityId: 'act_default',
+ *   mode: 'assessment',
+ * });
+ * ```
+ */
 export function normalizePracticeSubmissionInput(
   input: unknown,
   defaults: {

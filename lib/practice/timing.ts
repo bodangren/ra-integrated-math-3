@@ -2,8 +2,17 @@ import type { PracticeTimingSummary, PracticeTimingConfidence } from './contract
 
 export type { PracticeTimingSummary, PracticeTimingConfidence };
 
+/**
+ * Default idle threshold in milliseconds.
+ *
+ * Gaps longer than this between interactions are considered idle time
+ * rather than active thinking time.
+ */
 export const DEFAULT_IDLE_THRESHOLD_MS = 30000;
 
+/**
+ * Event types that the timing accumulator can process.
+ */
 export type TimingEventType =
   | 'start'
   | 'interaction'
@@ -16,28 +25,66 @@ export type TimingEventType =
   | 'idle'
   | 'pagehide';
 
+/**
+ * A single timing event emitted during a practice session.
+ *
+ * @example
+ * ```ts
+ * const event: TimingEvent = { type: 'interaction', timestamp: performance.now() };
+ * accumulator.addEvent(event);
+ * ```
+ */
 export interface TimingEvent {
   type: TimingEventType;
   timestamp: number;
 }
 
+/**
+ * Read-only snapshot of the timing accumulator's current state.
+ *
+ * @example
+ * ```ts
+ * const snapshot = accumulator.getSnapshot();
+ * // snapshot.wallClockMs, snapshot.activeMs, snapshot.confidence
+ * ```
+ */
 export interface TimingAccumulatorSnapshot {
+  /** ISO timestamp when the accumulator was started, or null if not started. */
   startedAt: string | null;
+  /** Total elapsed wall-clock time in milliseconds. */
   wallClockMs: number;
+  /** Total active (non-idle) time in milliseconds. */
   activeMs: number;
+  /** Total idle time in milliseconds. */
   idleMs: number;
+  /** Number of explicit pause events recorded. */
   pauseCount: number;
+  /** Number of window blur events recorded. */
   focusLossCount: number;
+  /** Number of visibility-hidden events recorded. */
   visibilityHiddenCount: number;
+  /** Longest continuous idle period in milliseconds. */
   longestIdleMs: number;
+  /** Overall confidence in the timing data. */
   confidence: PracticeTimingConfidence;
+  /** Human-readable reasons for confidence downgrades. */
   confidenceReasons: string[];
+  /** Whether the session is currently paused. */
   isPaused: boolean;
+  /** Whether the session is currently active (started and not interrupted). */
   isActive: boolean;
+  /** Whether the session was interrupted (e.g., pagehide). */
   isInterrupted: boolean;
 }
 
+/**
+ * Options for constructing a `TimingAccumulator`.
+ */
 export interface TimingAccumulatorOptions {
+  /**
+   * Gap threshold in milliseconds above which time is classified as idle.
+   * @default DEFAULT_IDLE_THRESHOLD_MS (30000)
+   */
   idleThresholdMs?: number;
 }
 
@@ -63,6 +110,22 @@ interface InternalState {
   totalFocusLossMs: number;
 }
 
+/**
+ * Pure accumulator for practice session timing.
+ *
+ * Processes a stream of `TimingEvent` values and produces a canonical
+ * `PracticeTimingSummary` on finalize. All state is kept internally so
+ * the accumulator can be used without React or browser-specific APIs.
+ *
+ * @example
+ * ```ts
+ * const acc = new TimingAccumulator({ idleThresholdMs: 30000 });
+ * acc.start(performance.now());
+ * acc.addEvent({ type: 'interaction', timestamp: performance.now() + 5000 });
+ * const summary = acc.finalize(performance.now() + 10000);
+ * // summary.activeMs ≈ 5000
+ * ```
+ */
 export class TimingAccumulator {
   private state: InternalState;
   private readonly idleThresholdMs: number;
@@ -96,6 +159,11 @@ export class TimingAccumulator {
     };
   }
 
+  /**
+   * Start the accumulator at the given timestamp.
+   *
+   * Must be called before any events are added.
+   */
   start(timestamp: number): void {
     this.state.startedAt = timestamp;
     this.state.lastEventTime = timestamp;
@@ -103,6 +171,12 @@ export class TimingAccumulator {
     this.state.isPaused = false;
   }
 
+  /**
+   * Add a timing event and update internal counters.
+   *
+   * Events are ignored if `start()` has not been called.
+   * Negative deltas (out-of-order timestamps) are safely discarded.
+   */
   addEvent(event: TimingEvent): void {
     if (this.state.startedAt === null) {
       return;
@@ -359,6 +433,11 @@ export class TimingAccumulator {
     }
   }
 
+  /**
+   * Return a read-only snapshot of the accumulator's current state.
+   *
+   * Recalculates confidence before returning.
+   */
   getSnapshot(): TimingAccumulatorSnapshot {
     this.recalculateConfidence();
     return {
@@ -381,10 +460,17 @@ export class TimingAccumulator {
     };
   }
 
+  /**
+   * Return the configured idle threshold in milliseconds.
+   */
   getIdleThresholdMs(): number {
     return this.idleThresholdMs;
   }
 
+  /**
+   * Return whether the session is currently active (started, not interrupted,
+   * and not finalized).
+   */
   isActive(): boolean {
     return (
       this.state.startedAt !== null &&
@@ -393,6 +479,17 @@ export class TimingAccumulator {
     );
   }
 
+  /**
+   * Finalize the accumulator and return a canonical `PracticeTimingSummary`.
+   *
+   * @throws Error if called before `start()`.
+   *
+   * @example
+   * ```ts
+   * const summary = accumulator.finalize(performance.now());
+   * // summary.confidence is 'high' | 'medium' | 'low'
+   * ```
+   */
   finalize(submittedAt: number): PracticeTimingSummary {
     if (this.state.startedAt === null) {
       throw new Error('Cannot finalize before start');
@@ -440,11 +537,22 @@ export class TimingAccumulator {
     };
   }
 
+  /**
+   * Reset the accumulator to its initial empty state.
+   */
   reset(): void {
     this.state = this.createInitialState();
   }
 }
 
+/**
+ * Factory function for creating a `TimingAccumulator`.
+ *
+ * @example
+ * ```ts
+ * const acc = createTimingAccumulator({ idleThresholdMs: 20000 });
+ * ```
+ */
 export function createTimingAccumulator(
   options: TimingAccumulatorOptions = {},
 ): TimingAccumulator {

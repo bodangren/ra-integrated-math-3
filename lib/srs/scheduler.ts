@@ -86,6 +86,11 @@ export const DEFAULT_SCHEDULER_CONFIG: SchedulerConfig = {
  * - Hard (2): Correct but with significant difficulty
  * - Good (3): Correct with moderate effort
  * - Easy (4): Correct with no hesitation
+ *
+ * @example
+ * ```ts
+ * const grade = mapSrsRatingToGrade('Good'); // Rating.Good (3)
+ * ```
  */
 export function mapSrsRatingToGrade(rating: SrsRating): Grade {
   switch (rating) {
@@ -102,6 +107,11 @@ export function mapSrsRatingToGrade(rating: SrsRating): Grade {
 
 /**
  * Map ts-fsrs Grade enum back to our SrsRating.
+ *
+ * @example
+ * ```ts
+ * const rating = mapGradeToSrsRating(Rating.Good); // 'Good'
+ * ```
  */
 export function mapGradeToSrsRating(grade: Grade): SrsRating {
   switch (grade) {
@@ -174,6 +184,18 @@ function mapCardState(state: number): SrsCardState['state'] {
  *
  * New cards start in 'new' state with zero stability and difficulty,
  * ready to receive their first review.
+ *
+ * @example
+ * ```ts
+ * const card = createCard({
+ *   studentId: 'stu_001',
+ *   objectiveId: 'obj_quadratic_roots',
+ *   problemFamilyId: 'pf_qr_01',
+ *   now: new Date().toISOString(),
+ * });
+ * // card.state === 'new'
+ * // card.reps === 0
+ * ```
  */
 export function createCard(params: {
   studentId: string;
@@ -234,6 +256,13 @@ function toFsrsCard(card: SrsCardState): Card {
  * - 'Again' moves card to relearning state, reduces stability, increments lapses
  * - 'Good' and 'Easy' advance card through learning/review states
  * - All ratings increment the reps counter
+ *
+ * @example
+ * ```ts
+ * const updated = reviewCard(card, 'Good', new Date().toISOString());
+ * // updated.reps === card.reps + 1
+ * // updated.dueDate is recomputed by FSRS
+ * ```
  */
 export function reviewCard(
   card: SrsCardState,
@@ -272,6 +301,12 @@ export function reviewCard(
  *
  * Used to determine which cards are due for review in a session.
  * Comparison is done on ISO timestamp strings for serialization safety.
+ *
+ * @example
+ * ```ts
+ * const due = getDueCards(allCards, new Date().toISOString());
+ * // due contains only cards whose dueDate has passed
+ * ```
  */
 export function getDueCards(cards: SrsCardState[], now?: string): SrsCardState[] {
   const currentTime = now ?? new Date().toISOString();
@@ -290,6 +325,12 @@ export function getDueCards(cards: SrsCardState[], now?: string): SrsCardState[]
  * before actually submitting a review.
  *
  * Returns the interval in days that would be scheduled.
+ *
+ * @example
+ * ```ts
+ * const intervalDays = previewInterval(card, 'Easy');
+ * // intervalDays is the number of days until the next review if rated Easy
+ * ```
  */
 export function previewInterval(
   card: SrsCardState,

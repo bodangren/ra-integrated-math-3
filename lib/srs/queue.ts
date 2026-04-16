@@ -20,10 +20,17 @@ import type {
   SrsSessionConfig,
 } from './contract';
 
+/**
+ * A single item in the daily practice queue.
+ */
 export type QueueItem = {
+  /** The SRS card to be reviewed. */
   card: SrsCardState;
+  /** Priority of the objective this card belongs to. */
   objectivePriority: ObjectivePriority;
+  /** Whether the card is past its due date. */
   isOverdue: boolean;
+  /** Number of whole days the card is overdue (0 if not overdue). */
   daysOverdue: number;
 };
 
@@ -36,6 +43,11 @@ const PRIORITY_ORDER: Record<ObjectivePriority, number> = {
 
 /**
  * Determine if a card is overdue (past its due date and in review/relearning state).
+ *
+ * @example
+ * ```ts
+ * const overdue = isOverdue(card, new Date().toISOString());
+ * ```
  */
 export function isOverdue(card: SrsCardState, now: string): boolean {
   if (card.state === 'new' || card.state === 'learning') {
@@ -49,6 +61,12 @@ export function isOverdue(card: SrsCardState, now: string): boolean {
 /**
  * Calculate how many days overdue a card is.
  * Returns 0 for non-overdue cards.
+ *
+ * @example
+ * ```ts
+ * const days = daysOverdue(card, new Date().toISOString());
+ * // days >= 0
+ * ```
  */
 export function daysOverdue(card: SrsCardState, now: string): number {
   if (!isOverdue(card, now)) {
@@ -63,10 +81,28 @@ export function daysOverdue(card: SrsCardState, now: string): number {
 /**
  * Build a daily practice queue from a list of cards.
  *
+ * Ordering rules:
+ * 1. Exclude cards for triaged objectives and cards with no policy.
+ * 2. New cards prioritized by objective priority (up to `newCardsPerDay` total).
+ * 3. Overdue cards sorted by days overdue descending (or due date ascending).
+ * 4. Due cards sorted by due date ascending.
+ * 5. Cap total at `maxReviewsPerDay`.
+ *
  * @param cards - All SRS cards for a student
  * @param policies - Map of objectiveId → ObjectivePracticePolicy
  * @param config - Session configuration (newCardsPerDay, maxReviewsPerDay, prioritizeOverdue)
  * @param now - Current timestamp (ISO string)
+ *
+ * @example
+ * ```ts
+ * const queue = buildDailyQueue(
+ *   allStudentCards,
+ *   new Map([['obj_1', { objectiveId: 'obj_1', priority: 'essential' }]]),
+ *   { newCardsPerDay: 5, maxReviewsPerDay: 20, prioritizeOverdue: true },
+ *   new Date().toISOString()
+ * );
+ * // queue[0] is the first card the student should see today
+ * ```
  */
 export function buildDailyQueue(
   cards: SrsCardState[],

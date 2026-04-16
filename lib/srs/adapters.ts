@@ -31,6 +31,17 @@ import type { SrsCardState, SrsReviewLogEntry } from './contract';
 
 /**
  * Persistence adapter for SRS card state.
+ *
+ * Implementations may be backed by Convex, a REST API, an in-memory map,
+ * or any other storage layer. The interface is intentionally simple to
+ * keep the SRS core library storage-agnostic.
+ *
+ * @example
+ * ```ts
+ * const store: CardStore = new InMemoryCardStore();
+ * await store.saveCard(card);
+ * const retrieved = await store.getCard(card.cardId);
+ * ```
  */
 export interface CardStore {
   /**
@@ -74,6 +85,13 @@ export interface CardStore {
 
 /**
  * Persistence adapter for SRS review log entries.
+ *
+ * @example
+ * ```ts
+ * const store: ReviewLogStore = new InMemoryReviewLogStore();
+ * await store.saveReview(reviewLogEntry);
+ * const history = await store.getReviewsByCard(card.cardId);
+ * ```
  */
 export interface ReviewLogStore {
   /**
@@ -97,6 +115,13 @@ export interface ReviewLogStore {
 
 /**
  * In-memory implementation of `CardStore` for testing and local development.
+ *
+ * @example
+ * ```ts
+ * const store = new InMemoryCardStore();
+ * await store.saveCard(card);
+ * const due = await store.getDueCards('stu_001', new Date().toISOString());
+ * ```
  */
 export class InMemoryCardStore implements CardStore {
   private cards = new Map<string, SrsCardState>();
@@ -146,6 +171,13 @@ export class InMemoryCardStore implements CardStore {
 /**
  * In-memory implementation of `ReviewLogStore` for testing and local
  * development.
+ *
+ * @example
+ * ```ts
+ * const store = new InMemoryReviewLogStore();
+ * await store.saveReview(entry);
+ * const recent = await store.getReviewsByStudent('stu_001', '2026-01-01T00:00:00Z');
+ * ```
  */
 export class InMemoryReviewLogStore implements ReviewLogStore {
   private reviews: SrsReviewLogEntry[] = [];

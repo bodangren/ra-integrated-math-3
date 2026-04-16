@@ -14,10 +14,32 @@
  * The mapping from problem families to objectives is provided by the caller.
  */
 
+/**
+ * Priority level that controls how strictly an objective is evaluated
+ * and whether it appears in daily practice queues.
+ */
 export type ObjectivePriority = 'essential' | 'supporting' | 'extension' | 'triaged';
 
+/**
+ * Confidence level for aggregated evidence or timing features.
+ */
 export type EvidenceConfidence = 'none' | 'low' | 'medium' | 'high';
 
+/**
+ * Evidence for a single problem family within an objective.
+ *
+ * @example
+ * ```ts
+ * const evidence: ProblemFamilyEvidence = {
+ *   problemFamilyId: 'pf_qr_01',
+ *   retentionStrength: 0.85,
+ *   practiceCoverage: 0.75,
+ *   fluencyConfidence: 'medium',
+ *   baselineSampleCount: 8,
+ *   timingReliable: true,
+ * };
+ * ```
+ */
 export type ProblemFamilyEvidence = {
   problemFamilyId: string;
   retentionStrength: number;
@@ -27,6 +49,21 @@ export type ProblemFamilyEvidence = {
   timingReliable: boolean;
 };
 
+/**
+ * Policy that governs how much evidence is required to declare proficiency
+ * in an objective.
+ *
+ * @example
+ * ```ts
+ * const policy: ObjectivePracticePolicy = {
+ *   objectiveId: 'obj_quadratic_roots',
+ *   priority: 'essential',
+ *   minProblemFamilies: 3,
+ *   minCoverageThreshold: 0.7,
+ *   minRetentionThreshold: 0.8,
+ * };
+ * ```
+ */
 export type ObjectivePracticePolicy = {
   objectiveId: string;
   priority: ObjectivePriority;
@@ -35,6 +72,9 @@ export type ObjectivePracticePolicy = {
   minRetentionThreshold?: number;
 };
 
+/**
+ * Input payload for `computeObjectiveProficiency`.
+ */
 export type ObjectiveProficiencyInput = {
   objectiveId: string;
   priority: ObjectivePriority;
@@ -44,6 +84,24 @@ export type ObjectiveProficiencyInput = {
   minRetentionThreshold?: number;
 };
 
+/**
+ * Full proficiency assessment result for a single objective.
+ *
+ * @example
+ * ```ts
+ * const result: ObjectiveProficiencyResult = {
+ *   objectiveId: 'obj_quadratic_roots',
+ *   priority: 'essential',
+ *   retentionStrength: 0.82,
+ *   practiceCoverage: 0.71,
+ *   fluencyConfidence: 'medium',
+ *   evidenceConfidence: 'medium',
+ *   isProficient: false,
+ *   reasons: ['insufficient_problem_families'],
+ *   problemFamilyDetails: [],
+ * };
+ * ```
+ */
 export type ObjectiveProficiencyResult = {
   objectiveId: string;
   priority: ObjectivePriority;
@@ -63,6 +121,22 @@ export type ObjectiveProficiencyResult = {
   }[];
 };
 
+/**
+ * Student-facing view of a single objective's proficiency.
+ *
+ * @example
+ * ```ts
+ * const view: StudentProficiencyView = {
+ *   objectiveId: 'obj_1',
+ *   priority: 'essential',
+ *   proficiencyLabel: 'in_progress',
+ *   retentionStrength: 0.72,
+ *   practiceCoverage: 0.65,
+ *   fluencyConfidence: 'low',
+ *   guidance: 'Keep practicing to strengthen your evidence for this objective.',
+ * };
+ * ```
+ */
 export type StudentProficiencyView = {
   objectiveId: string;
   priority: ObjectivePriority;
@@ -73,6 +147,24 @@ export type StudentProficiencyView = {
   guidance: string;
 };
 
+/**
+ * Teacher-facing view of a single objective's proficiency with class context.
+ *
+ * @example
+ * ```ts
+ * const view: TeacherProficiencyView = {
+ *   objectiveId: 'obj_1',
+ *   standardCode: 'A-REI.4',
+ *   standardDescription: 'Solve quadratic equations',
+ *   priority: 'essential',
+ *   proficiencyLabel: 'proficient',
+ *   // ... additional fields
+ *   classProficientCount: 18,
+ *   classAvgRetention: 0.81,
+ *   classStrugglingStudents: [],
+ * };
+ * ```
+ */
 export type TeacherProficiencyView = {
   objectiveId: string;
   standardCode: string;
@@ -99,6 +191,12 @@ export type TeacherProficiencyView = {
   classStrugglingStudents: string[];
 };
 
+/**
+ * Default thresholds per priority.
+ *
+ * Callers can override individual thresholds via `ObjectivePracticePolicy`,
+ * but these defaults provide a sensible baseline.
+ */
 export const PRIORITY_DEFAULTS: Record<
   ObjectivePriority,
   { minProblemFamilies: number; minCoverageThreshold: number; minRetentionThreshold: number }
@@ -139,6 +237,21 @@ function combineFluencyConfidences(
   return 'medium';
 }
 
+/**
+ * Compute an objective-level proficiency result from per-family evidence.
+ *
+ * Applies priority defaults, checks thresholds, and produces diagnostic reasons.
+ *
+ * @example
+ * ```ts
+ * const result = computeObjectiveProficiency({
+ *   objectiveId: 'obj_1',
+ *   priority: 'essential',
+ *   problemFamilyEvidences: [familyEvidence1, familyEvidence2, familyEvidence3],
+ * });
+ * // result.isProficient is true when all thresholds are met
+ * ```
+ */
 export function computeObjectiveProficiency(input: ObjectiveProficiencyInput): ObjectiveProficiencyResult {
   const {
     objectiveId,
@@ -268,6 +381,16 @@ function deriveTeacherGuidance(result: ObjectiveProficiencyResult): string {
   return 'Continue monitoring — more practice will strengthen the evidence.';
 }
 
+/**
+ * Build a student-facing proficiency view from a raw proficiency result.
+ *
+ * @example
+ * ```ts
+ * const studentView = buildStudentProficiencyView(result);
+ * // studentView.proficiencyLabel is one of: 'not_started' | 'in_progress' | 'proficient'
+ * // studentView.guidance contains a tailored encouragement message
+ * ```
+ */
 export function buildStudentProficiencyView(result: ObjectiveProficiencyResult): StudentProficiencyView {
   let proficiencyLabel: StudentProficiencyView['proficiencyLabel'];
 
@@ -292,6 +415,21 @@ export function buildStudentProficiencyView(result: ObjectiveProficiencyResult):
   };
 }
 
+/**
+ * Build a teacher-facing proficiency view from a raw proficiency result.
+ *
+ * @example
+ * ```ts
+ * const teacherView = buildTeacherProficiencyView(
+ *   result,
+ *   'A-REI.4',
+ *   'Solve quadratic equations',
+ *   18,
+ *   0.81,
+ *   ['stu_005']
+ * );
+ * ```
+ */
 export function buildTeacherProficiencyView(
   result: ObjectiveProficiencyResult,
   standardCode: string,
