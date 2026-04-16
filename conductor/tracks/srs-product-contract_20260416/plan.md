@@ -17,25 +17,25 @@
 
 ## Phase 2: New Type Definitions
 
-- [ ] Task: Write card state type tests
-  - [ ] Test `SrsCardState` accepts valid data for each card state: new, learning, review, relearning
-  - [ ] Test `SrsCardState` rejects missing required fields
-  - [ ] Test serialization round-trips (no Date objects, all ISO strings)
-- [ ] Task: Define `SrsCardState` type
-  - [ ] Add `SrsCardState` with cardId, studentId, objectiveId, problemFamilyId, stability, difficulty, state, dueDate, elapsedDays, scheduledDays, reps, lapses, lastReview, createdAt, updatedAt
-  - [ ] Add `SrsCardId` branded type
-- [ ] Task: Write review log type tests
-  - [ ] Test `SrsReviewLogEntry` captures before/after state
-  - [ ] Test evidence field includes baseRating, timingAdjusted, reasons
-- [ ] Task: Define `SrsReviewLogEntry` type
-  - [ ] Add reviewId, cardId, studentId, rating, submissionId, evidence, stateBefore, stateAfter, reviewedAt
-- [ ] Task: Write session type tests
-  - [ ] Test `SrsSessionConfig` has sensible defaults
-  - [ ] Test `SrsSession` tracks planned vs completed cards
-- [ ] Task: Define `SrsSessionConfig` and `SrsSession` types
-  - [ ] Add `SrsSessionConfig` with newCardsPerDay, maxReviewsPerDay, prioritizeOverdue
-  - [ ] Add `SrsSession` with sessionId, studentId, startedAt, completedAt, plannedCards, completedCards, config
-- [ ] Task: Conductor - Phase Completion Verification 'New Type Definitions' (Protocol in workflow.md)
+- [x] Task: Write card state type tests [8888bb7]
+  - [x] Test `SrsCardState` accepts valid data for each card state: new, learning, review, relearning
+  - [x] Test `SrsCardState` rejects missing required fields (compile-time via TypeScript)
+  - [x] Test serialization round-trips (no Date objects, all ISO strings)
+- [x] Task: Define `SrsCardState` type [8888bb7]
+  - [x] Add `SrsCardState` with cardId, studentId, objectiveId, problemFamilyId, stability, difficulty, state, dueDate, elapsedDays, scheduledDays, reps, lapses, lastReview, createdAt, updatedAt
+  - [x] Add `SrsCardId` branded type
+- [x] Task: Write review log type tests [8888bb7]
+  - [x] Test `SrsReviewLogEntry` captures before/after state
+  - [x] Test evidence field includes baseRating, timingAdjusted, reasons
+- [x] Task: Define `SrsReviewLogEntry` type [8888bb7]
+  - [x] Add reviewId, cardId, studentId, rating, submissionId, evidence, stateBefore, stateAfter, reviewedAt
+- [x] Task: Write session type tests [8888bb7]
+  - [x] Test `SrsSessionConfig` has sensible defaults
+  - [x] Test `SrsSession` tracks planned vs completed cards
+- [x] Task: Define `SrsSessionConfig` and `SrsSession` types [8888bb7]
+  - [x] Add `SrsSessionConfig` with newCardsPerDay, maxReviewsPerDay, prioritizeOverdue
+  - [x] Add `SrsSession` with sessionId, studentId, startedAt, completedAt, plannedCards, completedCards, config
+- [x] Task: Conductor - Phase Completion Verification 'New Type Definitions' (Protocol in workflow.md) [d333936]
 
 ## Phase 3: Instructional Language and Guidelines
 
