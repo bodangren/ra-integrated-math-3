@@ -73,10 +73,10 @@
   - [x] Sub-task: Test scheduler produces a valid session using the REST adapter
   - [x] Sub-task: Test review processor updates cards through the REST adapter
   - [x] Sub-task: Test queue engine builds a practice session end-to-end with the REST adapter
-- [ ] Task: Write type export verification test
-  - [ ] Sub-task: Create `lib/srs/__tests__/export-verification.test.ts`
-  - [ ] Sub-task: Import all types from `lib/srs/contract.ts` and verify they are complete for integration
-  - [ ] Sub-task: Assert no internal-only types appear in public function signatures
+- [x] Task: Write type export verification test [commit: pending]
+  - [x] Sub-task: Create `lib/srs/__tests__/export-verification.test.ts`
+  - [x] Sub-task: Import all types from `lib/srs/contract.ts` and verify they are complete for integration
+  - [x] Sub-task: Assert no internal-only types appear in public function signatures
 - [ ] Task: Run all tests and `npm run lint`
 - [ ] Task: Conductor - Phase Completion Verification 'Adapter Verification' (Protocol in workflow.md)
 
