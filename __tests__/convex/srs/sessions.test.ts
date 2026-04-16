@@ -16,18 +16,36 @@ function makeMockCtx(overrides: {
     studentId: Id<'profiles'>;
     startedAt: number;
   } | null;
+  sessions?: Array<{
+    _id: Id<'srs_sessions'>;
+    studentId: Id<'profiles'>;
+    startedAt: number;
+    completedAt?: number;
+    plannedCards: number;
+    completedCards: number;
+    config: {
+      newCardsPerDay: number;
+      maxReviewsPerDay: number;
+      prioritizeOverdue: boolean;
+    };
+  }>;
 } = {}) {
-  const { insertId = 'session-new-1' as Id<'srs_sessions'>, existingSession } = overrides;
+  const { insertId = 'session-new-1' as Id<'srs_sessions'>, existingSession, sessions } = overrides;
 
   const mockReplace = vi.fn().mockResolvedValue(undefined);
   const mockPatch = vi.fn().mockResolvedValue(undefined);
   const mockInsert = vi.fn().mockResolvedValue(insertId);
   const mockGet = vi.fn().mockResolvedValue(existingSession);
 
+  const mockOrder = vi.fn().mockReturnValue({
+    collect: vi.fn().mockResolvedValue(sessions ?? (existingSession ? [existingSession] : [])),
+  });
+
   const mockQuery = {
     withIndex: vi.fn().mockReturnValue({
       first: vi.fn().mockResolvedValue(existingSession ?? null),
-      collect: vi.fn().mockResolvedValue(existingSession ? [existingSession] : []),
+      collect: vi.fn().mockResolvedValue(sessions ?? (existingSession ? [existingSession] : [])),
+      order: mockOrder,
     }),
   };
 
@@ -128,8 +146,7 @@ describe('completeSessionHandler', () => {
 
 describe('getActiveSessionHandler', () => {
   it('should return null when no active session exists', async () => {
-    const { db, mockQuery } = makeMockCtx({ existingSession: null });
-    mockQuery.withIndex().collect.mockResolvedValue([]);
+    const { db } = makeMockCtx({ existingSession: null });
 
     const result = await getActiveSessionHandler({ db } as unknown as import('@/convex/_generated/server').QueryCtx, { studentId: 'student-1' });
 
@@ -143,8 +160,7 @@ describe('getSessionHistoryHandler', () => {
       { _id: 's1' as Id<'srs_sessions'>, studentId: 'student-1' as Id<'profiles'>, startedAt: 1713264000000, completedAt: 1713350400000, plannedCards: 20, completedCards: 18, config: { newCardsPerDay: 10, maxReviewsPerDay: 100, prioritizeOverdue: true } },
       { _id: 's2' as Id<'srs_sessions'>, studentId: 'student-1' as Id<'profiles'>, startedAt: 1713177600000, completedAt: 1713264000000, plannedCards: 20, completedCards: 20, config: { newCardsPerDay: 10, maxReviewsPerDay: 100, prioritizeOverdue: true } },
     ];
-    const { db, mockQuery } = makeMockCtx();
-    mockQuery.withIndex().collect.mockResolvedValue(sessions);
+    const { db } = makeMockCtx({ sessions });
 
     const result = await getSessionHistoryHandler({ db } as unknown as import('@/convex/_generated/server').QueryCtx, { studentId: 'student-1', limit: 10 });
 

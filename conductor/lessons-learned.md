@@ -9,14 +9,15 @@
 - (2026-04-16, srs-integration) Always add `by_student_and_problem_family` index for SRS cards; querying by `problemFamilyId` alone causes cross-student card overwrites in multi-tenant tables
 - (2026-04-16, srs-integration) Use `ctx.scheduler.runAfter(0, internal.srs.processSubmissionSrs, ...)` for non-blocking SRS processing after submission persistence; keep error boundaries so SRS failures never block the primary submission flow
 - (2026-04-16, srs-schema) When `convex dev` is blocked by non-interactive prompts (e.g., backend upgrade), manually patch `convex/_generated/api.d.ts` with the module imports and `fullApi` entries as a temporary workaround
+- (2026-04-16, code-review) Adapter lookups should use targeted index queries (e.g., `by_student_and_problem_family`) instead of fetching all student cards and filtering in memory — scales poorly as card counts grow
+- (2026-04-16, code-review) Convex optional fields with `undefined` values sort first in ascending index order; use `by_student_and_status` with `.first()` for active session lookups instead of `.collect()` + in-memory filter
 
 ## Recurring Gotchas
 
 - (2026-04-15, code-review) React components calling hooks must follow `use*` naming convention; dual state bugs arise when parent and child both track the same state — extract state to single owner
 - (2026-04-15, code-review) Approval gating must include ALL verification checkboxes in canApprove; mode review alone is insufficient for trustworthiness
 - (2026-04-15, code-review) Content hashing must use the same componentKind derivation on both write and read paths
-- (2026-04-16, code-review) Standard codes referenced in lesson_standards links must exist in seed-standards.ts; missing standards cause silent link failures at seed time with no error visibility
-- (2026-04-16, code-review) Explore phase activities must match lesson domain — copy-pasted graphing-explorer in non-graphing lessons is a silent content error
+- (2026-04-16, code-review) Standard codes referenced in lesson_standards links must exist in seed-standards.ts; missing standards cause silent link failures
 - (2026-04-16, practice-timing) When mixing `performance.now()` and `Date.now()` in React hooks, all internal timing must use one base; serialization is the only safe place to convert
 
 ## Patterns That Worked Well

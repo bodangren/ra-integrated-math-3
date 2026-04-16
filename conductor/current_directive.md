@@ -1,50 +1,51 @@
 # Current Directive
 
-> Updated: 2026-04-16 (Code Review — SRS Core Library Phases 3-4, Error Analysis Tests, submitReviewHandler Fix, CCSS Standards Seeding)
+> Updated: 2026-04-16 (Code Review — Track 8 Phase 1, Track 6 Phases 5-6, Error Analysis Tests)
 
 ## Status Summary
 
-- **Tests**: 2722 total, 8 known failures (6 equivalence validator — fraction/radical expressions; 2 flaky). All others passing.
+- **Tests**: 2766 total, 6 known failures (equivalence validator — fraction/radical expressions). All others passing.
 - **Build**: Passing.
 - **Lint**: Passing.
 - **TypeScript**: Pre-existing test-file errors remain. No new TS errors.
-- **Module 1-9 Roadmap**: All modules seeded (M1-M9 complete). CCSS standards and lesson_standards links for M1-M5 now seeded.
-- **SRS Core Library**: Phases 1-4 complete (FSRS scheduler wrapper, review processor, queue primitives, adapter interfaces). Phase 5 pending.
+- **Module 1-9 Roadmap**: All modules seeded (M1-M9 complete). CCSS standards and lesson_standards links for M1-M5 seeded.
+- **SRS Wave 1-2**: Complete (Tracks 1-5).
+- **SRS Wave 3**: Track 6 (Submission-to-SRS Adapter) complete. Track 8 (Daily Practice Queue) Phase 1 complete.
 - **Error Analysis Unit Tests**: 34 tests passing. Coverage gaps remain (studentIdMap, isCorrect:undefined).
-- **submitReviewHandler**: Fixed — now derives componentKind from server-side phaseVersion lookup instead of trusting client-supplied phaseType.
-- **CCSS Standards**: Fixed 6 inaccurate standard descriptions. All M1-M5 lesson_standards links seeded.
 
 ## Fixes Applied This Review
 
-1. **Critical: submitReviewHandler was a no-op in production** — `phaseType` was not in Convex validator, so runtime stripped it. Fixed: now looks up `phaseType` server-side from `phase_versions` table via `ctx.db.get(phaseId)`.
-2. **Fixed read-path kind mapping** — `listReviewQueueHandler` inline ternary replaced with `resolveComponentKind()` call.
-3. **Fixed Chinese characters** in `scheduler.ts` comment.
-4. **Fixed error-analysis `buildAIPrompt`** — missing `?? []` on `misconceptionTags` caused `"undefined"` string in AI prompts.
-5. **Fixed error-analysis score/maxScore** — undefined values now render as "N/A" instead of "undefined/undefined".
-6. **Fixed 6 inaccurate CCSS descriptions** — HSA-APR.D.6, HSF-BF.A.1a, HSA-CED.A.3, HSF-LE.A.2, HSF-LE.B.5, HSF-IF.C.7c.
-7. **Fixed inconsistent queue policy handling** — review cards without policies now excluded (matching new card behavior).
-8. **Fixed overdue sorting no-op** — `prioritizeOverdue: false` now sorts by due date ascending instead of returning 0.
-9. **Added 6 new queue tests** — no-policy cards, prioritizeOverdue:false, learning/relearning states.
+1. **Performance: adapter card lookup fetches ALL student cards** — `processSubmissionInternal` was calling `getCardsByStudent()` then filtering by `problemFamilyId` in memory. Fixed: added `getCardByStudentAndFamily` targeted index query to `CardStore` interface, `ConvexCardStore`, and in-memory test stores. Now reads exactly 1 document instead of all student cards.
+2. **Performance: getActiveSessionHandler unbounded `.collect()`** — was fetching ALL sessions for a student then filtering for active. Fixed: uses `by_student_and_status` index with `.first()` — reads 1 document instead of all sessions.
+3. **Added `getCardByStudentAndFamily` Convex query** — new indexed query on `srs_cards` using `by_student_and_problem_family` for O(1) card lookups.
+
+## Issues Logged (Not Fixed)
+
+- `mapDbCardToContract` duplicated between `convex/queue/queue.ts` and `convex/srs/cards.ts` — extract to shared utility
+- N+1 standard lookups in `getDailyPracticeQueue` (~50-100 ctx.db.get calls per invocation)
+- `submissionId` required in `saveReview` validator but optional in schema
 
 ## Current In-Progress Track
 
-- **Track**: Convex SRS Schema — Phase 2 (CardStore Adapter) COMPLETE. Created `convex/srs/cards.ts` with saveCard/saveCards mutations and getCard/getCardsByStudent/getCardsByObjective/getDueCards queries. Created `lib/srs/convexCardStore.ts` implementing CardStore interface. Integration tests deferred (convex-test not installed; requires Convex dev).
+- **Track 8: Daily Practice Queue Engine** — Phase 1 (Queue Query) complete. Phase 2 (Queue Item Resolution) next.
 
-## Wave 2 Progress
+## SRS Wave Progress
 
-- **Track 5: Convex SRS Schema** — Phase 1 complete, Phase 2 complete
+- **Wave 0**: Complete (Practice Timing Telemetry + Baselines)
+- **Wave 1**: Complete (Tracks 1, 2, 4)
+- **Wave 2**: Complete (Track 5)
+- **Wave 3**: Track 6 complete. Track 8 Phase 1 complete (Phase 2-5 remaining).
+- **Wave 4**: Not started (Tracks 10, 9, 11)
 
 ## High-Priority Next Steps
 
-1. **Convex SRS Schema (Wave 2, Track 5)** — add srs_cards, srs_review_log, srs_sessions tables; implement CardStore/ReviewLogStore adapters
-3. **Security & Auth Hardening (Wave A)** — port fail-closed auth guards, Convex-layer authorization
+1. **Track 8 Phase 2: Queue Item Resolution** — join srs_cards → practice_items → activities to resolve componentKey and props
+2. **Track 8 Phase 3: Session Lifecycle** — startDailySession, getActiveSession, completeDailySession mutations
+3. **Security & Auth Hardening (BM2 Wave A)** — port fail-closed auth guards, Convex-layer authorization
 4. **Error analysis: test studentIdMap code paths** — summarizePartOutcomes and buildDeterministicSummary untested with studentIdMap
 5. **Error analysis: fix buildTeacherErrorView using activityId as studentId** — add studentIdMap param
 6. **Refactor seed-lesson-standards.ts** — 9 identical handlers (~700 lines) should be a factory function
-7. **Fix M3L1/L2 standard alignment** — tagged HSA-REI.B.4 (quadratic) but lessons are about polynomial equations
-8. **Seed isPrimary update-on-re-seed** — current code silently skips when isPrimary changes
-9. **Wire proficiency views into actual progress surfaces** — ObjectiveProficiencyBadge and TeacherObjectiveDiagnosticCard are built but not rendered
-10. **Address collectEligibleTimings N+1** — batch queries for production baseline recomputation
+7. **Extract shared mapDbCardToContract** — duplicated in convex/queue/queue.ts and convex/srs/cards.ts
 
 See `conductor/daily-practice-srs-roadmap.md` for the post-Module-9 daily practice SRS sequence.
 See `conductor/tech-debt.md` for full issue registry.

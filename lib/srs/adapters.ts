@@ -50,6 +50,12 @@ export interface CardStore {
   getCardsByObjective(objectiveId: string): Promise<SrsCardState[]>;
 
   /**
+   * Retrieve a single card by student and problem family.
+   * Returns null if not found.
+   */
+  getCardByStudentAndFamily(studentId: string, problemFamilyId: string): Promise<SrsCardState | null>;
+
+  /**
    * Retrieve cards due for review for a given student at the given time.
    * Filters cards where dueDate <= now.
    */
@@ -103,6 +109,12 @@ export class InMemoryCardStore implements CardStore {
     return Array.from(this.cards.values()).filter(
       (card) => card.studentId === studentId
     );
+  }
+
+  async getCardByStudentAndFamily(studentId: string, problemFamilyId: string): Promise<SrsCardState | null> {
+    return Array.from(this.cards.values()).find(
+      (card) => card.studentId === studentId && card.problemFamilyId === problemFamilyId
+    ) ?? null;
   }
 
   async getCardsByObjective(objectiveId: string): Promise<SrsCardState[]> {

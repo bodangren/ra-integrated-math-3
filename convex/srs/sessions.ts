@@ -102,15 +102,14 @@ export async function getActiveSessionHandler(
   ctx: QueryCtx,
   args: { studentId: string }
 ) {
-  const sessions = await ctx.db
+  const active = await ctx.db
     .query("srs_sessions")
-    .withIndex("by_student", (q) =>
+    .withIndex("by_student_and_status", (q) =>
       q.eq("studentId", args.studentId as Id<"profiles">)
     )
-    .collect();
+    .first();
 
-  const active = sessions.find((s) => s.completedAt === undefined);
-  if (!active) return null;
+  if (!active || active.completedAt !== undefined) return null;
   return mapDbSessionToContract(active);
 }
 
@@ -130,21 +129,20 @@ export async function getSessionHistoryHandler(
   args: GetSessionHistoryArgs
 ) {
   const limit = args.limit ?? 50;
-  let sessions = await ctx.db
+  const startCursor = args.cursor ? parseInt(args.cursor, 10) : 0;
+
+  const sessions = await ctx.db
     .query("srs_sessions")
     .withIndex("by_student", (q) =>
       q.eq("studentId", args.studentId as Id<"profiles">)
     )
+    .order("desc")
     .collect();
 
-  sessions = sessions
-    .filter((s) => s.completedAt !== undefined)
-    .sort((a, b) => (b.completedAt ?? 0) - (a.completedAt ?? 0));
-
-  const startCursor = args.cursor ? parseInt(args.cursor, 10) : 0;
-  const page = sessions.slice(startCursor, startCursor + limit);
+  const completed = sessions.filter((s) => s.completedAt !== undefined);
+  const page = completed.slice(startCursor, startCursor + limit);
   const nextCursor =
-    startCursor + limit < sessions.length
+    startCursor + limit < completed.length
       ? String(startCursor + limit)
       : null;
 

@@ -8,31 +8,27 @@
 
 | Item | Sev | Status | Notes |
 |------|-----|--------|-------|
-| Approval status race condition (no version/lock) | High | Open | Convex serializes mutations (no lost update) but no "approve exact version" check |
+| Approval status race condition (no version/lock) | High | Open | Convex serializes mutations but no "approve exact version" check |
 | N+1 query: phase sections in progress/preview/monitoring queries | High | Open | One DB query per phase inside loop |
 | No Convex-layer authorization | Med-High | Open | Auth boundary is entirely in Next.js server layer |
 | error-analysis parseAIResponse uses fragile line-based parsing | High | Open | Breaks on markdown, multi-paragraph AI responses |
 | ActivityReviewHarness handleError never reaches ActivityPreview | High | Open | Render errors crash tree silently; canApprove not blocked |
 | submitReviewHandler takes createdBy as arg not from auth | High | Open | Mitigated by route-level derivation |
 | Unbounded take(500) + N+1 hash in listReviewQueue | High | Open | 500 SHA-256 hashes/query |
-| Activities table has no deduplication on re-seed | Medium | Open | Phase insertion is idempotent but activity inserts are not; re-seed creates duplicates |
-| Seed tests are tautological (inline data, not actual seed files) | Medium | Open | Zero regression protection |
-| StepByStepSolver Zod schema vs component interface mismatch | Medium | Open | Schema step shape differs from AlgebraicStep |
-| ActivityRenderer does not forward section content props | Medium | Open | template, blanks etc. lost between PhaseRenderer and activity |
-| Refactor seed-lesson-standards.ts duplication | Medium | Open | 9 handlers are ~100% identical; extract factory function |
-| SRS adapters: generated API missing srs module | Medium | Resolved | Manually added srs/cards, srs/reviews, srs/processReview, srs/sessions to api.d.ts (2026-04-16) |
+| error-analysis: studentIdMap code paths untested | High | Open | summarizePartOutcomes and buildDeterministicSummary accept studentIdMap but no test passes it |
+| SRS CardStore: studentId type mismatch (contract vs schema) | High | Open | SrsCardState uses string, Convex uses Id<"profiles">; type assertions at boundary |
+| Seed tests are tautological; ActivityRenderer loses section content props; seed-lesson-standards.ts has 9 identical handlers | Medium | Open | Zero regression protection; template/blanks lost; factory extraction needed |
+| SRS adapters: generated API missing srs module | Medium | Resolved | Manually added to api.d.ts (2026-04-16) |
+| SRS CardStore: saveCard by problemFamilyId alone | High | Resolved | Added by_student_and_problem_family index |
 | Content hash JSON.stringify treats undefined same as absent | Medium | Open | Potential hash collisions |
 | N+1 phase reads in listReviewQueue (dev.ts) | Medium | Open | Sequential ctx.db.get per phase |
-| No error.tsx boundary for student/teacher routes | Medium | Open | Convex outages produce raw 500 |
-| Guided mode submissions not recorded | Medium | Open | No onSubmit for guided practice |
-| Silent catch blocks in convex/student.ts and convex/teacher.ts | Medium | Open | Swallows all exceptions |
+| Silent catch blocks in convex/student.ts, teacher.ts; no error.tsx boundaries | Medium | Open | Swallows exceptions; Convex outages produce raw 500 |
 | RSC entry chunk 750 KB (pre-existing) | Medium | Open | Code-splitning needed to get under 500 KB |
 | Algebraic test coverage structurally weak | Medium | Open | Tests named "all steps" check only fraction |
 | Convex V validator does not enforce timing refinements | Medium | Open | Negative durations accepted server-side |
 | canApprove gate incomplete in Activity/Practice harnesses | Medium | Open | Checklist items not gated: mode selector, variant inspection |
 | M9 lessons all use graphing-explorer in Explore phases | Medium | Open | unit-circle-trainer listed in contract but never used |
-| Equivalence validator 6/50 tests failing | Low | Open | Pattern-matching limits for fraction/radical expressions |
-| ReviewQueueItem type duplicated between component and lib | Low | Open | Slightly different shapes |
+| Equivalence validator 6/50 tests failing; M9 uses degrees in Learn but radians in example | Low | Open | Pattern-matching limits; unexplained unit switch |
 | confidenceReasons is string[] not union type | Low | Open | Typos silently pass type checking |
 | PracticeTimingEvidence local type omits contract fields | Low | Open | SubmissionReviewPanel.tsx redefines contract type |
 | totalFocusLossMs accumulated but never exposed | Low | Open | Dead code in timing.ts |
@@ -49,3 +45,6 @@
 | SRS queue: newCardsPerDay cap is shared across all priorities | Medium | Open | Essential/supporting/extension compete for same quota; update spec comment |
 | SRS CardStore: studentId type mismatch (contract vs schema) | High | Open | SrsCardState uses string, Convex uses Id<"profiles">; type assertions required at boundary |
 | SRS CardStore: saveCard by problemFamilyId alone | High | Resolved | Added by_student_and_problem_family index; updated saveCard/saveCards/processReview to query by (studentId, problemFamilyId) |
+| SRS: mapDbCardToContract duplicated in queue.ts and cards.ts | Medium | Open | Extract to shared utility |
+| SRS: N+1 standard lookups in getDailyPracticeQueue | Medium | Open | One ctx.db.get per policy record (~50-100/course) |
+| SRS: submissionId required in saveReview validator but optional in schema | Low | Open | Should be `v.optional(v.string())` |

@@ -163,8 +163,8 @@ export class SubmissionSrsAdapter {
 
     const { problemFamilyId, objectiveId } = familyInfo;
 
-    const studentCards = await this.cardStore.getCardsByStudent(studentId);
-    let card = studentCards.find((c) => c.problemFamilyId === problemFamilyId) ?? null;
+    const studentCards = await this.cardStore.getCardByStudentAndFamily(studentId, problemFamilyId);
+    let card = studentCards ?? null;
 
     if (!card) {
       const now = new Date().toISOString();
@@ -326,6 +326,12 @@ class InMemoryTestCardStore implements CardStore {
     return Array.from(this.cards.values()).filter(
       (card) => card.studentId === studentId
     );
+  }
+
+  async getCardByStudentAndFamily(studentId: string, problemFamilyId: string): Promise<SrsCardState | null> {
+    return Array.from(this.cards.values()).find(
+      (card) => card.studentId === studentId && card.problemFamilyId === problemFamilyId
+    ) ?? null;
   }
 
   async getCardsByObjective(objectiveId: string): Promise<SrsCardState[]> {

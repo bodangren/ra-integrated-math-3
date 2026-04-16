@@ -214,6 +214,19 @@ export const getCardsByStudent = internalQuery({
   },
 });
 
+export const getCardByStudentAndFamily = internalQuery({
+  args: { studentId: v.string(), problemFamilyId: v.string() },
+  handler: async (ctx, args) => {
+    const card = await ctx.db
+      .query("srs_cards")
+      .withIndex("by_student_and_problem_family", (q) =>
+        q.eq("studentId", args.studentId as Id<"profiles">).eq("problemFamilyId", args.problemFamilyId)
+      )
+      .first();
+    return card ? mapDbCardToContract(card) : null;
+  },
+});
+
 export const getCardsByObjective = internalQuery({
   args: { objectiveId: v.string() },
   handler: async (ctx, args) => {

@@ -48,7 +48,7 @@ function makeMockCtx(overrides: {
   };
 
   const mockRunMutation = vi.fn().mockResolvedValue(undefined);
-  const mockRunQuery = vi.fn().mockResolvedValue([]);
+  const mockRunQuery = vi.fn().mockResolvedValue(null);
 
   return {
     db: {
@@ -143,7 +143,7 @@ describe('processSubmissionSrsHandler', () => {
       },
     });
 
-    ctx.mockRunQuery.mockResolvedValue([]);
+    ctx.mockRunQuery.mockResolvedValue(null);
 
     const result = await processSubmissionSrsHandler(
       ctx as unknown as MutationCtx,
@@ -228,7 +228,7 @@ describe('processSubmissionSrsHandler', () => {
       },
     });
 
-    ctx.mockRunQuery.mockResolvedValue([]);
+    ctx.mockRunQuery.mockResolvedValue(null);
 
     const result = await processSubmissionSrsHandler(
       ctx as unknown as MutationCtx,

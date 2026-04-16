@@ -22,6 +22,14 @@ export class ConvexCardStore implements CardStore {
     return result;
   }
 
+  async getCardByStudentAndFamily(studentId: string, problemFamilyId: string): Promise<SrsCardState | null> {
+    const result = await this.ctx.runQuery(internal.srs.cards.getCardByStudentAndFamily, {
+      studentId,
+      problemFamilyId,
+    });
+    return result;
+  }
+
   async getCardsByObjective(objectiveId: string): Promise<SrsCardState[]> {
     const result = await this.ctx.runQuery(internal.srs.cards.getCardsByObjective, {
       objectiveId,
