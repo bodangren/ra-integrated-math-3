@@ -68,19 +68,19 @@
   - [x] Sub-task: Run `npm run lint` and typecheck
 - [x] Task: Conductor - Phase Completion Verification 'Atomic Review Persistence' (Protocol in workflow.md)
 
-## Phase 5: Session Management
+## Phase 5: Session Management [checkpoint: a4f8c2d]
 
-- [ ] Task: Implement `convex/srs/sessions.ts` — session mutations
-  - [ ] Sub-task: `createSession` mutation — insert with `startedAt`, `plannedCards`, `config`
-  - [ ] Sub-task: `completeSession` mutation — set `completedAt`, update `completedCards`
-- [ ] Task: Implement session queries
-  - [ ] Sub-task: `getActiveSession` query — `by_student_and_status` where `completedAt === undefined`
-  - [ ] Sub-task: `getSessionHistory` query — `by_student` with pagination
-- [ ] Task: Write session tests
-  - [ ] Sub-task: Test create → get active → complete → verify completed
-  - [ ] Sub-task: Test config defaults are preserved
-  - [ ] Sub-task: Run `npm run lint` and typecheck
-- [ ] Task: Conductor - Phase Completion Verification 'Session Management' (Protocol in workflow.md)
+- [x] Task: Implement `convex/srs/sessions.ts` — session mutations
+  - [x] Sub-task: `createSession` mutation — insert with `startedAt`, `plannedCards`, `config`
+  - [x] Sub-task: `completeSession` mutation — set `completedAt`, update `completedCards`
+- [x] Task: Implement session queries
+  - [x] Sub-task: `getActiveSession` query — `by_student_and_status` where `completedAt === undefined`
+  - [x] Sub-task: `getSessionHistory` query — `by_student` with pagination
+- [x] Task: Write session tests
+  - [x] Sub-task: Test create → get active → complete → verify completed
+  - [x] Sub-task: Test config defaults are preserved
+  - [x] Sub-task: Run `npm run lint` and typecheck
+- [x] Task: Conductor - Phase Completion Verification 'Session Management' (Protocol in workflow.md)
 
 ## Phase 6: Verification and Handoff
 
