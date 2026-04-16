@@ -104,7 +104,7 @@ export async function POST(request: Request) {
     return NextResponse.json(result);
   } catch (error) {
     console.error('Error submitting review:', error);
-    return NextResponse.json({ error: error instanceof Error ? error.message : 'Failed to submit review' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to submit review' }, { status: 500 });
   }
 }
 

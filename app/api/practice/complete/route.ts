@@ -22,7 +22,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Error completing daily practice session:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Failed to complete session' },
+      { error: 'Failed to complete session' },
       { status: 500 },
     );
   }

@@ -164,7 +164,7 @@ describe('POST /api/activities/submit', () => {
     }));
     expect(res.status).toBe(500);
     const body = await res.json();
-    expect(body.error).toContain('Convex error');
+    expect(body.error).toBe('Failed to submit activity');
   });
 
   it('validates that contractVersion is exactly "practice.v1"', async () => {
