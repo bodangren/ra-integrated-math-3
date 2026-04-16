@@ -1124,3 +1124,159 @@ export const getStandardsCoverage = internalQuery({
     };
   },
 });
+
+export const getTeacherSrsDashboardData = internalQuery({
+  args: {
+    userId: v.id("profiles"),
+    classId: v.optional(v.id("classes")),
+  },
+  handler: async (ctx, args) => {
+    const teacher = await getAuthorizedTeacher(ctx, args.userId);
+    if (!teacher) {
+      return null;
+    }
+
+    const classes = await ctx.db
+      .query("classes")
+      .withIndex("by_teacher", (q) => q.eq("teacherId", teacher._id))
+      .collect();
+
+    const activeClasses = classes.filter((c) => !c.archived);
+    const currentClassId = args.classId ?? activeClasses[0]?._id;
+
+    if (!currentClassId) {
+      return {
+        classes: activeClasses.map((c) => ({ id: c._id, name: c.name })),
+        currentClassId: null,
+        classHealth: null,
+        overdueLoad: null,
+        streaks: [],
+        weakObjectives: [],
+        strugglingStudents: [],
+        misconceptions: [],
+      };
+    }
+
+    const currentClass = await ctx.db.get(currentClassId);
+    if (!currentClass || currentClass.teacherId !== teacher._id) {
+      return null;
+    }
+
+    const enrollments = await ctx.db
+      .query("class_enrollments")
+      .withIndex("by_class", (q) => q.eq("classId", currentClassId))
+      .collect();
+
+    const activeStudents = enrollments.filter((e) => e.status === "active");
+    const now = Date.now();
+    const todayStart = new Date(now);
+    todayStart.setUTCHours(0, 0, 0, 0);
+    const todayStartMs = todayStart.getTime();
+    const yesterdayMs = todayStartMs - 24 * 60 * 60 * 1000;
+
+    let totalActiveStudents = 0;
+    let practicedToday = 0;
+    let totalRetention = 0;
+    let cardCount = 0;
+
+    const perStudentOverdue: Array<{ studentId: string; overdueCount: number }> = [];
+    let totalOverdue = 0;
+
+    const studentStreaks: Array<{ studentId: string; displayName: string; streak: number }> = [];
+
+    for (const enrollment of activeStudents) {
+      const cards = await ctx.db
+        .query("srs_cards")
+        .withIndex("by_student", (q) => q.eq("studentId", enrollment.studentId))
+        .collect();
+
+      if (cards.length > 0) {
+        totalActiveStudents++;
+        for (const card of cards) {
+          totalRetention += card.stability;
+          cardCount++;
+        }
+      }
+
+      const overdueCards = cards.filter((c) => c.dueDate < new Date().toISOString());
+      const overdueCount = overdueCards.length;
+      totalOverdue += overdueCount;
+      perStudentOverdue.push({ studentId: enrollment.studentId, overdueCount });
+
+      const profile = await ctx.db.get("profiles", enrollment.studentId);
+      if (!profile) continue;
+
+      const sessions = await ctx.db
+        .query("srs_sessions")
+        .withIndex("by_student", (q) => q.eq("studentId", enrollment.studentId))
+        .collect();
+
+      const completedSessions = sessions.filter((s) => s.completedAt !== undefined);
+      if (completedSessions.length === 0) continue;
+
+      const practicedTodaySession = completedSessions.some(
+        (s) => s.completedAt && s.completedAt >= todayStartMs
+      );
+      if (practicedTodaySession) {
+        practicedToday++;
+      }
+
+      const uniqueDays = Array.from(
+        new Set(
+          completedSessions.map((s) => {
+            const d = new Date(s.completedAt!);
+            return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
+          })
+        )
+      ).sort((a, b) => b - a);
+
+      const mostRecent = uniqueDays[0];
+      let streak = 0;
+
+      if (mostRecent === todayStartMs || mostRecent === yesterdayMs) {
+        streak = 1;
+        let checkDay = mostRecent;
+        for (let i = 1; i < uniqueDays.length; i++) {
+          const expected = checkDay - 24 * 60 * 60 * 1000;
+          if (uniqueDays[i] === expected) {
+            streak++;
+            checkDay = uniqueDays[i];
+          } else if (uniqueDays[i] < expected) {
+            break;
+          }
+        }
+      }
+
+      if (streak > 0) {
+        studentStreaks.push({
+          studentId: enrollment.studentId,
+          displayName: profile.displayName ?? profile.username,
+          streak,
+        });
+      }
+    }
+
+    studentStreaks.sort((a, b) => b.streak - a.streak);
+
+    const avgRetention = cardCount > 0 ? totalRetention / cardCount : 0;
+
+    return {
+      classes: activeClasses.map((c) => ({ id: c._id, name: c.name })),
+      currentClassId,
+      classHealth: {
+        totalActiveStudents,
+        practicedToday,
+        avgRetention,
+        totalCards: cardCount,
+      },
+      overdueLoad: {
+        totalOverdue,
+        perStudent: perStudentOverdue,
+      },
+      streaks: studentStreaks.slice(0, 5),
+      weakObjectives: [],
+      strugglingStudents: [],
+      misconceptions: [],
+    };
+  },
+});
