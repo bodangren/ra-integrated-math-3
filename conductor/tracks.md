@@ -273,6 +273,77 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
       - Phase 3: Add lesson_standards Links for M1-M5 [COMPLETE]
       - Phase 4: Wire Seeders into seed.ts Orchestration [COMPLETE]
 
+## Daily Practice SRS Roadmap
+
+Post-Module-9 tracks for daily practice, spaced repetition, objective proficiency, and reusable course-agnostic infrastructure. See `conductor/daily-practice-srs-roadmap.md` for the full roadmap with wave diagrams.
+
+Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 (parallel) → Wave 4 (sequential) → Wave 5.**
+
+### Wave 0 — Completed
+
+- [x] **Track 3: Practice Timing Telemetry** — **COMPLETED**
+     *Link: [./conductor/tracks/practice-timing-telemetry_20260415/](./conductor/tracks/practice-timing-telemetry_20260415/)*
+
+- [x] **Track 7: Practice Timing Baselines** — **COMPLETED**
+     *Link: [./conductor/tracks/practice-timing-baselines_20260415/](./conductor/tracks/practice-timing-baselines_20260415/)*
+
+### Wave 1 — Foundations (start immediately, 3 tracks in parallel)
+
+- [ ] **Track 1: Daily Practice SRS Product Contract**
+     *Consolidate existing types into canonical lib/srs/contract.ts; define card state, review log, session types; version as srs.contract.v1*
+     *Link: [./conductor/tracks/srs-product-contract_20260416/](./conductor/tracks/srs-product-contract_20260416/)*
+
+- [ ] **Track 2: Reusable SRS Core Library**
+     *FSRS scheduler wrapper, review processor bridging srs-rating.ts to card state, queue primitives, adapter interfaces*
+     *Link: [./conductor/tracks/srs-core-library_20260416/](./conductor/tracks/srs-core-library_20260416/)*
+
+- [ ] **Track 4: Practice Item and Objective Blueprint Model**
+     *Map practice activities to problem families and objectives; assign objective policies; seed data for all 9 modules*
+     *Link: [./conductor/tracks/practice-item-blueprint_20260416/](./conductor/tracks/practice-item-blueprint_20260416/)*
+
+### Wave 2 — Persistence (after Wave 1)
+
+- [ ] **Track 5: Convex SRS Schema and Review Log**
+     *Add srs_cards, srs_review_log, srs_sessions tables; implement CardStore/ReviewLogStore adapters backed by Convex*
+     *Depends on: Wave 1 (Tracks 1, 2, 4)*
+     *Link: [./conductor/tracks/convex-srs-schema_20260416/](./conductor/tracks/convex-srs-schema_20260416/)*
+
+### Wave 3 — Integration (after Wave 2, 2 tracks in parallel)
+
+- [ ] **Track 6: Submission-to-SRS Rating Adapter**
+     *Wire practice.v1 submissions through srs-rating.ts to FSRS card state updates; handle first-seen items; integrate timing baselines*
+     *Depends on: Wave 2 (Track 5)*
+     *Link: [./conductor/tracks/submission-srs-adapter_20260416/](./conductor/tracks/submission-srs-adapter_20260416/)*
+
+- [ ] **Track 8: Daily Practice Queue Engine**
+     *Query SRS cards from Convex; apply queue ordering with session limits; resolve items to activities; manage session lifecycle*
+     *Depends on: Wave 2 (Track 5)*
+     *Link: [./conductor/tracks/daily-practice-queue_20260416/](./conductor/tracks/daily-practice-queue_20260416/)*
+
+### Wave 4 — User-Facing (after Wave 3, sequential order: 10 → 9 → 11)
+
+- [ ] **Track 10: Objective Proficiency Measurement**
+     *Upgrade objective-proficiency.ts to use FSRS stability from card states; build aggregation pipeline; student/teacher proficiency queries*
+     *Depends on: Wave 2 (Track 5)*
+     *Link: [./conductor/tracks/objective-proficiency_20260416/](./conductor/tracks/objective-proficiency_20260416/)*
+
+- [ ] **Track 9: Student Daily Practice Experience**
+     *Student daily practice page, session flow, card rendering with activity components, submission with timing, completion states*
+     *Depends on: Tracks 6, 8 (Wave 3)*
+     *Link: [./conductor/tracks/student-daily-practice_20260416/](./conductor/tracks/student-daily-practice_20260416/)*
+
+- [ ] **Track 11: Teacher SRS Dashboard and Interventions**
+     *Class health overview, weak objectives panel, struggling students, misconception diagnostics, basic interventions*
+     *Depends on: Track 10 (Wave 4)*
+     *Link: [./conductor/tracks/teacher-srs-dashboard_20260416/](./conductor/tracks/teacher-srs-dashboard_20260416/)*
+
+### Wave 5 — Polish (after Wave 4)
+
+- [ ] **Track 12: Cross-Course Extraction and Developer Docs**
+     *Boundary audit, interface documentation, integration guide (INTEGRATION.md), adapter verification*
+     *Depends on: All tracks 1-11*
+     *Link: [./conductor/tracks/cross-course-extraction_20260416/](./conductor/tracks/cross-course-extraction_20260416/)*
+
 ## Archived Tracks
 
 - [x] **Track: Scaffold App Pages & Layouts**

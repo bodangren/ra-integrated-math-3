@@ -1,0 +1,11 @@
+{
+  "track_id": "objective-proficiency_20260416",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-16T10:00:00Z",
+  "description": "Upgrade objective proficiency to use real FSRS stability from SRS card states instead of manual retention estimates. Build the aggregation pipeline from card states to objective-level proficiency for student and teacher reporting.",
+  "estimated_tasks": 18,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}

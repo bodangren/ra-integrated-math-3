@@ -1,0 +1,11 @@
+{
+  "track_id": "student-daily-practice_20260416",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-16T10:00:00Z",
+  "description": "Build the student-facing daily practice experience — daily practice page, session flow, card rendering, submission handling, completion states, and progress language using the queue engine and activity system.",
+  "estimated_tasks": 24,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}

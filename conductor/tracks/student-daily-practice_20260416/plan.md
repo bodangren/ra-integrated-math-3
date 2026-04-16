@@ -1,0 +1,112 @@
+# Plan: Student Daily Practice
+
+**Track ID:** `student-daily-practice_20260416`
+
+---
+
+## Phase 1: Daily Practice Page and Session Loading
+
+- [ ] Task: Create `app/student/practice/page.tsx` server component
+  - [ ] Add auth guard using `requireStudentSessionClaims`
+  - [ ] Fetch active session or trigger new session creation via queue engine
+  - [ ] Render client-side practice session wrapper
+  - [ ] Handle redirect when no session available
+- [ ] Task: Create `components/student/PracticeSessionProvider.tsx` client component
+  - [ ] Manage session state (loading, active, complete, empty)
+  - [ ] Subscribe to queue items via `getDailyPracticeQuery`
+  - [ ] Track current card index
+- [ ] Task: Write page-level tests with mocked Convex
+  - [ ] Test auth redirect for unauthenticated users
+  - [ ] Test session loading with active session
+  - [ ] Test empty state when no cards due
+- [ ] Task: Conductor - Phase Completion Verification 'Daily Practice Page and Session Loading' (Protocol in workflow.md)
+
+---
+
+## Phase 2: Card Rendering and Activity Integration
+
+- [ ] Task: Create `components/student/PracticeCardRenderer.tsx`
+  - [ ] Accept queue item and render via activity registry (`lib/activities/registry.ts`)
+  - [ ] Pass `ActivityComponentProps` (`activity`, `onSubmit`, `onComplete`)
+  - [ ] Wire `usePracticeTiming` hook for timing instrumentation
+  - [ ] Show card progress indicator (X of Y)
+- [ ] Task: Create `components/student/CardProgressBar.tsx`
+  - [ ] Display current card index and total count
+  - [ ] Accessible progress bar with `aria-valuenow`, `aria-valuemin`, `aria-valuemax`
+  - [ ] Responsive layout
+- [ ] Task: Write component tests
+  - [ ] Test card renders correct activity component from registry
+  - [ ] Test progress bar displays correct count
+  - [ ] Test timing accumulator starts on mount
+- [ ] Task: Conductor - Phase Completion Verification 'Card Rendering and Activity Integration' (Protocol in workflow.md)
+
+---
+
+## Phase 3: Submission and SRS Update Flow
+
+- [ ] Task: Implement `onSubmit` handler in `PracticeCardRenderer`
+  - [ ] Build `PracticeSubmissionEnvelope` with timing data from `TimingAccumulator`
+  - [ ] Submit to `activity_submissions` via Convex mutation
+  - [ ] Trigger SRS adapter (Track 6) to update card state
+  - [ ] Show brief feedback state (correct/incorrect) before advancing
+- [ ] Task: Create `components/student/SubmissionFeedback.tsx`
+  - [ ] Show correct/incorrect indicator (2-second display)
+  - [ ] Use `STUDENT_DAILY_PRACTICE_COPY` language (no speed rankings, no punitive language)
+  - [ ] Auto-advance to next card after feedback
+- [ ] Task: Write flow tests
+  - [ ] Test envelope construction includes timing data
+  - [ ] Test SRS adapter is called with correct parameters
+  - [ ] Test feedback displays then advances
+  - [ ] Test final card triggers completion instead of advance
+- [ ] Task: Conductor - Phase Completion Verification 'Submission and SRS Update Flow' (Protocol in workflow.md)
+
+---
+
+## Phase 4: Progress and Completion States
+
+- [ ] Task: Create `components/student/CompletionScreen.tsx`
+  - [ ] Show cards completed count
+  - [ ] Use `STUDENT_DAILY_PRACTICE_COPY` language ("All done for today! Come back tomorrow.")
+  - [ ] Include link back to student dashboard
+  - [ ] Responsive, accessible layout
+- [ ] Task: Create `components/student/EmptyPracticeState.tsx`
+  - [ ] Show "No practice due today. Come back tomorrow!"
+  - [ ] Include link back to student dashboard
+  - [ ] Use encouraging tone per Track 1 copy guidelines
+- [ ] Task: Update `PracticeSessionProvider` to handle completion and empty transitions
+  - [ ] Transition to completion state after last card
+  - [ ] Transition to empty state when queue returns zero items
+- [ ] Task: Write state tests
+  - [ ] Test completion screen renders after all cards answered
+  - [ ] Test empty state renders when no cards due
+  - [ ] Test copy text matches `STUDENT_DAILY_PRACTICE_COPY`
+- [ ] Task: Conductor - Phase Completion Verification 'Progress and Completion States' (Protocol in workflow.md)
+
+---
+
+## Phase 5: Dashboard Integration
+
+- [ ] Task: Create `components/student/DailyPracticeCard.tsx` dashboard widget
+  - [ ] Show items due today count
+  - [ ] Show current streak
+  - [ ] Show last practiced date
+  - [ ] Link to `/student/practice`
+- [ ] Task: Add `DailyPracticeCard` to student dashboard page (`app/student/dashboard/page.tsx`)
+  - [ ] Fetch due count via Convex query
+  - [ ] Place in dashboard layout alongside existing progress cards
+- [ ] Task: Write dashboard integration tests
+  - [ ] Test widget renders due count correctly
+  - [ ] Test widget links to practice page
+  - [ ] Test widget handles zero items due
+- [ ] Task: Conductor - Phase Completion Verification 'Dashboard Integration' (Protocol in workflow.md)
+
+---
+
+## Phase 6: Verification and Handoff
+
+- [ ] Task: Run full test suite and verify all tests pass
+- [ ] Task: Run `npm run lint` and fix any issues
+- [ ] Task: Verify accessibility (keyboard navigation, screen reader labels)
+- [ ] Task: Verify responsive layout on mobile viewport
+- [ ] Task: Update `conductor/tracks.md` with completion status
+- [ ] Task: Conductor - Phase Completion Verification 'Verification and Handoff' (Protocol in workflow.md)

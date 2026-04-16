@@ -1,0 +1,11 @@
+{
+  "track_id": "convex-srs-schema_20260416",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-16T10:00:00Z",
+  "description": "Add Convex tables for SRS cards, review logs, and practice sessions. Implement CardStore and ReviewLogStore adapters backed by Convex. Wire the SRS scheduling engine to persistent storage.",
+  "estimated_tasks": 20,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}

@@ -1,0 +1,11 @@
+{
+  "track_id": "teacher-srs-dashboard_20260416",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-16T10:00:00Z",
+  "description": "Build the teacher-facing SRS dashboard showing class health metrics, overdue review load, weak essential objectives, misconception diagnostics, and intervention tools for managing student spaced repetition.",
+  "estimated_tasks": 22,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}

@@ -15,22 +15,78 @@ practice.v1 submission evidence
 
 Students should answer math problems. They should not self-select FSRS ratings.
 
-## Sequencing
+## Completed Tracks
 
-These tracks begin after Module 9 curriculum seed completion unless explicitly reprioritized.
+These tracks are done and provide the foundation for the remaining work.
 
-1. **Daily Practice SRS Product Contract** - Define instructional language, objective policy, triage handling, and measurement semantics.
-2. **Reusable SRS Core Library** - Build course-agnostic scheduler, rating, queue, and proficiency primitives behind replaceable adapters.
-3. **Practice Timing Telemetry** - `conductor/tracks/practice-timing-telemetry_20260415/`
-4. **Practice Item and Objective Blueprint Model** - Map stable practice problem families to objectives and policy metadata.
-5. **Convex SRS Schema and Review Log** - Persist cards, reviews, sessions, due dates, and immutable evidence.
-6. **Submission-to-SRS Rating Adapter** - Convert `practice.v1` correctness/process evidence into system-derived ratings.
-7. **Practice Timing Baselines** - `conductor/tracks/practice-timing-baselines_20260415/`
-8. **Daily Practice Queue Engine** - Queue required new period practice first, then overdue and due reviews.
-9. **Student Daily Practice Experience** - Add the student flow for new practice, due review, completion, and progress language.
-10. **Objective Proficiency Measurement** - Combine retention, coverage, fluency, confidence, and priority into student/teacher progress.
-11. **Teacher SRS Dashboard and Interventions** - Add class health, overdue load, weak essential objectives, and misconception diagnostics.
-12. **Cross-Course Extraction and Developer Docs** - Document reusable interfaces for future courses.
+- [x] **Track 3: Practice Timing Telemetry** — `conductor/tracks/practice-timing-telemetry_20260415/`
+- [x] **Track 7: Practice Timing Baselines** — `conductor/tracks/practice-timing-baselines_20260415/`
+
+## Implementation Order
+
+Tracks are organized into **waves**. Within each wave, tracks can be developed in parallel. A wave cannot start until all tracks in the preceding wave are complete.
+
+```
+Wave 0 (DONE)        Wave 1                Wave 2                Wave 3               Wave 4               Wave 5
+┌──────────────┐    ┌──────────────────┐  ┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐ ┌─────────────────┐
+│ Timing       │    │ Track 1: SRS     │  │ Track 5: Convex  │ │ Track 6:          │ │ Track 9: Student │ │ Track 12:       │
+│ Telemetry    │───>│ Product Contract │──>│ SRS Schema &     │─>│ Submission-to-SRS │─>│ Daily Practice   │─>│ Cross-Course    │
+│ Timing       │    │                  │  │ Review Log       │ │ Rating Adapter    │ │ Experience       │ │ Extraction &    │
+│ Baselines    │    │ Track 2: SRS     │  │                  │ │                  │ │                  │ │ Developer Docs  │
+│              │    │ Core Library      │  │                  │ │ Track 8: Daily    │ │ Track 10:        │ │                 │
+│              │    │                  │  │                  │ │ Practice Queue    │ │ Objective        │ │                 │
+│              │    │ Track 4: Practice │  │                  │ │ Engine            │ │ Proficiency      │ │                 │
+│              │    │ Item Blueprint   │  │                  │ │                  │ │                  │ │                 │
+│              │    │                  │  │                  │ │                  │ │ Track 11:        │ │                 │
+│              │    │                  │  │                  │ │                  │ │ Teacher SRS      │ │                 │
+│              │    │                  │  │                  │ │                  │ │ Dashboard        │ │                 │
+└──────────────┘    └──────────────────┘  └──────────────────┘ └──────────────────┘ └──────────────────┘ └─────────────────┘
+```
+
+### Wave 1 — Foundations (start immediately, can parallelize)
+
+| Track | Directory | Summary |
+|-------|-----------|---------|
+| **Track 1: SRS Product Contract** | `srs-product-contract_20260416` | Consolidate existing types into `lib/srs/contract.ts`; define card state, review log, session types; version as `srs.contract.v1` |
+| **Track 2: SRS Core Library** | `srs-core-library_20260416` | FSRS scheduler wrapper (`ts-fsrs`), review processor bridging `srs-rating.ts` to card state, queue primitives, adapter interfaces |
+| **Track 4: Practice Item Blueprint** | `practice-item-blueprint_20260416` | Map practice activities to problem families and objectives; assign objective policies; seed data for all 9 modules |
+
+**Why these three in parallel:** Track 1 and Track 2 are pure TypeScript with no new deps (except `ts-fsrs` for Track 2). Track 4 is a data model + seed track that only needs existing Convex. None depend on each other.
+
+### Wave 2 — Persistence (after Wave 1)
+
+| Track | Directory | Summary |
+|-------|-----------|---------|
+| **Track 5: Convex SRS Schema** | `convex-srs-schema_20260416` | Add `srs_cards`, `srs_review_log`, `srs_sessions` tables; implement `CardStore`/`ReviewLogStore` adapters backed by Convex |
+
+**Depends on:** Track 1 (types), Track 2 (adapter interfaces, scheduler), Track 4 (problem family model for foreign keys).
+
+### Wave 3 — Integration (after Wave 2)
+
+| Track | Directory | Summary |
+|-------|-----------|---------|
+| **Track 6: Submission-to-SRS Adapter** | `submission-srs-adapter_20260416` | Wire practice.v1 submissions through `srs-rating.ts` → FSRS card state updates; handle first-seen items; integrate timing baselines |
+| **Track 8: Daily Practice Queue** | `daily-practice-queue_20260416` | Query SRS cards from Convex; apply queue ordering with session limits; resolve items to activities; manage session lifecycle |
+
+**Depends on:** Tracks 1, 2, 4, 5. **These two can run in parallel** since Track 6 writes cards and Track 8 reads them.
+
+### Wave 4 — User-Facing (after Wave 3)
+
+| Track | Directory | Summary |
+|-------|-----------|---------|
+| **Track 9: Student Daily Practice** | `student-daily-practice_20260416` | Student daily practice page at `/student/practice`, session flow, card rendering with activity components, submission with timing, completion states |
+| **Track 10: Objective Proficiency** | `objective-proficiency_20260416` | Upgrade `objective-proficiency.ts` to use FSRS stability from card states; build aggregation pipeline; student/teacher proficiency queries |
+| **Track 11: Teacher SRS Dashboard** | `teacher-srs-dashboard_20260416` | Class health overview, weak objectives panel, struggling students, misconception diagnostics, basic interventions |
+
+**Depends on:** Track 9 needs Tracks 6 and 8. Track 10 needs Track 5 (can start early if card schema is stable). Track 11 needs Track 10. **Start Track 10 first, then Track 9, then Track 11.**
+
+### Wave 5 — Polish (after Wave 4)
+
+| Track | Directory | Summary |
+|-------|-----------|---------|
+| **Track 12: Cross-Course Extraction** | `cross-course-extraction_20260416` | Boundary audit, interface documentation, integration guide (`INTEGRATION.md`), adapter verification |
+
+**Depends on:** All tracks 1-11 complete.
 
 ## Timing Design Notes
 

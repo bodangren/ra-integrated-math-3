@@ -1,0 +1,11 @@
+{
+  "track_id": "daily-practice-queue_20260416",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-16T10:00:00Z",
+  "description": "Build the daily practice queue engine that queries SRS cards from Convex, applies queue ordering and session limits, and serves the ordered set of practice items for a student's daily session.",
+  "estimated_tasks": 18,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}

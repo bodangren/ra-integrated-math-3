@@ -1,0 +1,11 @@
+{
+  "track_id": "cross-course-extraction_20260416",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-16T10:00:00Z",
+  "description": "Document all reusable SRS interfaces, verify course-agnostic boundaries, and produce developer docs that enable future courses to integrate the daily practice SRS system without modifying core modules.",
+  "estimated_tasks": 14,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}
