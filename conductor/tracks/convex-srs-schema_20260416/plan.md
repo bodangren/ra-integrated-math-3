@@ -17,7 +17,7 @@
   - [x] Sub-task: Run `npm run lint` and typecheck
 - [x] Task: Conductor - Phase Completion Verification 'Convex Schema Definitions' (Protocol in workflow.md)
 
-## Phase 2: CardStore Adapter
+## Phase 2: CardStore Adapter [checkpoint: e0d54c7]
 
 - [x] Task: Implement `convex/srs/cards.ts` — Convex mutations for `saveCard` and `saveCards`
   - [x] Sub-task: `saveCard` mutation — upsert single card by `studentId + problemFamilyId` composite key
@@ -35,24 +35,24 @@
   - [ ] Sub-task: Test `getDueCards` returns only cards with `dueDate <= asOfDate`
   - [ ] Sub-task: Test `saveCards` batch upsert
   - [x] Sub-task: Run `npm run lint` and typecheck (lint passes; typecheck has pre-existing errors)
-- [ ] Task: Conductor - Phase Completion Verification 'CardStore Adapter' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'CardStore Adapter' (Protocol in workflow.md)
 
-## Phase 3: ReviewLogStore Adapter
+## Phase 3: ReviewLogStore Adapter [checkpoint: aaa6c10]
 
-- [ ] Task: Implement `convex/srs/reviews.ts` — Convex mutation for `saveReview`
-  - [ ] Sub-task: `saveReview` mutation — insert-only, no update path
-- [ ] Task: Implement Convex queries for review log reads
-  - [ ] Sub-task: `getReviewsByCard` query — index `by_card`
-  - [ ] Sub-task: `getReviewsByStudent` query — index `by_student`
-- [ ] Task: Implement `ConvexReviewLogStore` class in `lib/srs/convexReviewLogStore.ts`
-  - [ ] Sub-task: Implement `ReviewLogStore` interface
-  - [ ] Sub-task: Map between `SrsReviewLogEntry` and Convex document shape
-- [ ] Task: Write integration tests for ReviewLogStore
-  - [ ] Sub-task: Test `saveReview` appends entry and `getReviewsByCard` retrieves it
-  - [ ] Sub-task: Test immutability — no update/delete mutations exist
-  - [ ] Sub-task: Test `getReviewsByStudent` returns entries in chronological order
-  - [ ] Sub-task: Run `npm run lint` and typecheck
-- [ ] Task: Conductor - Phase Completion Verification 'ReviewLogStore Adapter' (Protocol in workflow.md)
+- [x] Task: Implement `convex/srs/reviews.ts` — Convex mutation for `saveReview`
+  - [x] Sub-task: `saveReview` mutation — insert-only, no update path
+- [x] Task: Implement Convex queries for review log reads
+  - [x] Sub-task: `getReviewsByCard` query — index `by_card`
+  - [x] Sub-task: `getReviewsByStudent` query — index `by_student`
+- [x] Task: Implement `ConvexReviewLogStore` class in `lib/srs/convexReviewLogStore.ts`
+  - [x] Sub-task: Implement `ReviewLogStore` interface
+  - [x] Sub-task: Map between `SrsReviewLogEntry` and Convex document shape
+- [x] Task: Write unit tests for ConvexReviewLogStore
+  - [x] Sub-task: Test `saveReview` forwards correct args to internal mutation
+  - [x] Test `getReviewsByCard` forwards correct args and returns query result
+  - [x] Sub-task: Test `getReviewsByStudent` with and without `since` filter
+  - [x] Sub-task: Run `npm run lint` and typecheck
+- [x] Task: Conductor - Phase Completion Verification 'ReviewLogStore Adapter' (Protocol in workflow.md)
 
 ## Phase 4: Atomic Review Persistence
 
