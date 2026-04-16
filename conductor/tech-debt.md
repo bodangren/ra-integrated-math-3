@@ -46,3 +46,4 @@
 | mastered proficiency label is dead code | Medium | Open | Union type includes mastered but no code path produces it |
 | Fragile type assertion on submissionData.timing | Medium | Open | collectEligibleTimings casts to local TimingSummary; no compile-time protection |
 | Duplicate LABEL/FLUENCY_CLASSES in badge + diagnostic card | Low | Open | Should be shared constants |
+| problem_families/practice_items/objective_policies schema added | Low | Open | 2026-04-16 Phase 2; Phase 3-6 (seeding) pending |

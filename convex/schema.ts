@@ -326,4 +326,35 @@ export default defineSchema({
   })
     .index("by_problem_family", ["problemFamilyId"])
     .index("by_last_computed", ["lastComputedAt"]),
+
+  problem_families: defineTable({
+    problemFamilyId: v.string(),
+    componentKey: v.string(),
+    displayName: v.string(),
+    description: v.string(),
+    objectiveIds: v.array(v.string()),
+    difficulty: v.string(),
+    metadata: v.optional(v.any()),
+  })
+    .index("by_problemFamilyId", ["problemFamilyId"])
+    .index("by_componentKey", ["componentKey"])
+    .index("by_objectiveId", ["objectiveIds"]),
+
+  practice_items: defineTable({
+    practiceItemId: v.string(),
+    activityId: v.id("activities"),
+    problemFamilyId: v.string(),
+    variantLabel: v.string(),
+  })
+    .index("by_activityId", ["activityId"])
+    .index("by_problemFamilyId", ["problemFamilyId"]),
+
+  objective_policies: defineTable({
+    standardId: v.id("competency_standards"),
+    policy: v.string(),
+    courseKey: v.string(),
+    priority: v.number(),
+  })
+    .index("by_standardId", ["standardId"])
+    .index("by_courseKey", ["courseKey"]),
 });
