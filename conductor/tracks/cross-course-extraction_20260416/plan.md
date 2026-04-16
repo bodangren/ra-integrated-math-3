@@ -77,7 +77,7 @@
   - [x] Sub-task: Create `lib/srs/__tests__/export-verification.test.ts`
   - [x] Sub-task: Import all types from `lib/srs/contract.ts` and verify they are complete for integration
   - [x] Sub-task: Assert no internal-only types appear in public function signatures
-- [x] Task: Run all tests and `npm run lint` [commit: pending]
+- [x] Task: Run all tests and `npm run lint` [0e5eb3a]
 - [ ] Task: Conductor - Phase Completion Verification 'Adapter Verification' (Protocol in workflow.md)
 
 ## Phase 5: Verification and Handoff
