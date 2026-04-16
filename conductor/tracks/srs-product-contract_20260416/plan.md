@@ -39,20 +39,20 @@
 
 ## Phase 3: Instructional Language and Guidelines
 
-- [ ] Task: Define instructional language constants
-  - [ ] Add `STUDENT_DAILY_PRACTICE_COPY` constants for session-level messaging
-  - [ ] Add `TEACHER_DAILY_PRACTICE_COPY` constants for dashboard messaging
-  - [ ] Extend existing `deriveStudentGuidance`/`deriveTeacherGuidance` or reference them
-  - [ ] Ensure no punitive or speed-shaming language in any constant
-- [ ] Task: Write instructional language tests
-  - [ ] Test student copy contains no speed references or rankings
-  - [ ] Test teacher copy uses diagnostic language only
-  - [ ] Test all copy strings are non-empty
-- [ ] Task: Add module-level documentation
-  - [ ] Add JSDoc to `lib/srs/contract.ts` with triage handling rules
-  - [ ] Document the `srs.contract.v1` versioning strategy
-  - [ ] Document how downstream tracks should import from this module
-- [ ] Task: Conductor - Phase Completion Verification 'Instructional Language and Guidelines' (Protocol in workflow.md)
+- [x] Task: Define instructional language constants [8888bb7]
+  - [x] Add `STUDENT_DAILY_PRACTICE_COPY` constants for session-level messaging
+  - [x] Add `TEACHER_DAILY_PRACTICE_COPY` constants for dashboard messaging
+  - [x] Extend existing `deriveStudentGuidance`/`deriveTeacherGuidance` or reference them
+  - [x] Ensure no punitive or speed-shaming language in any constant
+- [x] Task: Write instructional language tests [8888bb7]
+  - [x] Test student copy contains no speed references or rankings
+  - [x] Test teacher copy uses diagnostic language only
+  - [x] Test all copy strings are non-empty
+- [x] Task: Add module-level documentation [8888bb7]
+  - [x] Add JSDoc to `lib/srs/contract.ts` with triage handling rules
+  - [x] Document the `srs.contract.v1` versioning strategy
+  - [x] Document how downstream tracks should import from this module
+- [x] Task: Conductor - Phase Completion Verification 'Instructional Language and Guidelines' (Protocol in workflow.md) [6352313]
 
 ## Phase 4: Verification and Handoff
 
