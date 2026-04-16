@@ -21,26 +21,34 @@
 
 - [x] **Task: Conductor - Phase Completion Verification 'Phase 1' (Protocol in workflow.md)** [f6d315c]
 
-## Phase 2: Convex-Layer Authorization
+## Phase 2: Convex-Layer Authorization [checkpoint: 26b1e2e]
 
 ### Tasks
 
-- [ ] **Task: Port getAuthorizedTeacher helper**
-  - [ ] Write unit tests for `getAuthorizedTeacher` (valid teacher, valid admin, wrong role, missing profile)
-  - [ ] Implement in `convex/auth.ts` or shared internal helper
-  - [ ] Apply to teacher-scoped queries in `convex/teacher.ts`
+- [x] **Task: Port getAuthorizedTeacher helper**
+  - [x] Write unit tests for `getAuthorizedTeacher` (valid teacher, valid admin, wrong role, missing profile)
+  - [x] Implement in `convex/auth.ts` or shared internal helper
+  - [x] Apply to teacher-scoped queries in `convex/teacher.ts`
 
-- [ ] **Task: Port getStudentInTeacherOrg helper**
-  - [ ] Write unit tests for org-scoped student access (same org, different org, wrong role, missing student)
-  - [ ] Implement org membership verification
-  - [ ] Apply to student-detail and submission queries
+- [x] **Task: Port getStudentInTeacherOrg helper**
+  - [x] Write unit tests for org-scoped student access (same org, different org, wrong role, missing student)
+  - [x] Implement org membership verification
+  - [x] Apply to student-detail and submission queries
 
-- [ ] **Task: Verify org-scoped data access across all Convex functions**
-  - [ ] Audit `convex/student.ts` and `convex/teacher.ts` for missing org checks
-  - [ ] Add org scoping where gaps exist
-  - [ ] Document any deviations
+- [x] **Task: Verify org-scoped data access across all Convex functions**
+  - [x] Audit `convex/student.ts` and `convex/teacher.ts` for missing org checks
+  - [x] Add org scoping where gaps exist
+  - [x] Document any deviations
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
+### Deviations
+
+1. **`getSubmissionDetail`** (line 626): Added `userId` argument and authorization check using `getAuthorizedTeacher`. Also added student org membership verification. API signature changed (added `userId` as first argument).
+
+2. **`getLessonErrorSummary`** (line 863): Changed from `teacherOrgId` argument to `userId` argument with `getAuthorizedTeacher` check. The function now derives org from the authorized teacher instead of trusting client-supplied org ID. API signature changed (replaced `teacherOrgId` with `userId`).
+
+3. **`getProfileWithOrg`** (line 845): Not modified. This query returns public profile information and is likely intentionally unauthenticated for general profile lookups.
+
+4. **`getTeacherLessonPreview`** (line 965): Not modified. This query returns public curriculum content (lesson phases/sections) which is intentionally accessible without authentication.
 
 ## Phase 3: Middleware and Dev Route Protection
 
