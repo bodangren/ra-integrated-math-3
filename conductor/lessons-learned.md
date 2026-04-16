@@ -49,3 +49,6 @@
 - (2026-04-16, code-review) New seed mutations must be wired into seed.ts immediately; orphan seed files produce no visible error but silently skip data. Dependencies referenced in committed code must be in package.json before the code lands.
 - (2026-04-16, code-review) Convex validators strip undeclared fields; mock tests bypass validation. Prefer server-side DB lookups over trusting client-supplied derived fields.
 - (2026-04-16, code-review) CCSS standard descriptions must match actual standard text, not cluster headings
+- (2026-04-16, srs-schema) SrsCardState contract uses `studentId: string` but Convex schema uses `Id<"profiles">`; type assertions needed at adapter boundary; runtime Convex IDs must be valid profile IDs
+- (2026-04-16, srs-schema) ConvexCardStore adapter cannot use QueryCtx for writes (no runMutation); separate MutationCtx needed for save operations
+- (2026-04-16, srs-schema) saveCard uses by_problem_family index alone; spec says "studentId+problemFamilyId composite key" but no such index exists; may cause cross-student card collisions

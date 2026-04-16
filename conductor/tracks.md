@@ -319,6 +319,7 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
      *Depends on: Wave 1 (Tracks 1, 2, 4)*
      *Link: [./conductor/tracks/convex-srs-schema_20260416/](./conductor/tracks/convex-srs-schema_20260416/)*
      - Phase 1: Convex Schema Definitions [COMPLETE] [checkpoint: 3073154]
+     - Phase 2: CardStore Adapter [COMPLETE] [checkpoint: e0d54c7]
 
 ### Wave 3 — Integration (after Wave 2, 2 tracks in parallel)
 

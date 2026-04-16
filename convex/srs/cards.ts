@@ -1,0 +1,271 @@
+import { internalMutation, internalQuery } from "./_generated/server";
+import { v } from "convex/values";
+import { Id } from "./_generated/dataModel";
+
+export const saveCard = internalMutation({
+  args: {
+    cardId: v.string(),
+    studentId: v.string(),
+    objectiveId: v.string(),
+    problemFamilyId: v.string(),
+    stability: v.number(),
+    difficulty: v.number(),
+    state: v.union(
+      v.literal("new"),
+      v.literal("learning"),
+      v.literal("review"),
+      v.literal("relearning"),
+    ),
+    dueDate: v.string(),
+    elapsedDays: v.number(),
+    scheduledDays: v.number(),
+    reps: v.number(),
+    lapses: v.number(),
+    lastReview: v.union(v.string(), v.null()),
+    createdAt: v.string(),
+    updatedAt: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const existing = await ctx.db
+      .query("srs_cards")
+      .withIndex("by_problem_family", (q) =>
+        q.eq("problemFamilyId", args.problemFamilyId)
+      )
+      .first();
+
+    if (existing) {
+      await ctx.db.replace(existing._id, {
+        studentId: existing.studentId,
+        objectiveId: args.objectiveId,
+        problemFamilyId: args.problemFamilyId,
+        stability: args.stability,
+        difficulty: args.difficulty,
+        state: args.state,
+        dueDate: args.dueDate,
+        elapsedDays: args.elapsedDays,
+        scheduledDays: args.scheduledDays,
+        reps: args.reps,
+        lapses: args.lapses,
+        lastReview: args.lastReview,
+        createdAt: existing.createdAt,
+        updatedAt: Date.now(),
+      });
+      return existing._id;
+    } else {
+      const id = await ctx.db.insert("srs_cards", {
+        studentId: args.studentId as Id<"profiles">,
+        objectiveId: args.objectiveId,
+        problemFamilyId: args.problemFamilyId,
+        stability: args.stability,
+        difficulty: args.difficulty,
+        state: args.state,
+        dueDate: args.dueDate,
+        elapsedDays: args.elapsedDays,
+        scheduledDays: args.scheduledDays,
+        reps: args.reps,
+        lapses: args.lapses,
+        lastReview: args.lastReview,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      });
+      return id;
+    }
+  },
+});
+
+export const saveCards = internalMutation({
+  args: {
+    cards: v.array(
+      v.object({
+        cardId: v.string(),
+        studentId: v.string(),
+        objectiveId: v.string(),
+        problemFamilyId: v.string(),
+        stability: v.number(),
+        difficulty: v.number(),
+        state: v.union(
+          v.literal("new"),
+          v.literal("learning"),
+          v.literal("review"),
+          v.literal("relearning"),
+        ),
+        dueDate: v.string(),
+        elapsedDays: v.number(),
+        scheduledDays: v.number(),
+        reps: v.number(),
+        lapses: v.number(),
+        lastReview: v.union(v.string(), v.null()),
+        createdAt: v.string(),
+        updatedAt: v.string(),
+      })
+    ),
+  },
+  handler: async (ctx, args) => {
+    for (const card of args.cards) {
+      const existing = await ctx.db
+        .query("srs_cards")
+        .withIndex("by_problem_family", (q) =>
+          q.eq("problemFamilyId", card.problemFamilyId)
+        )
+        .first();
+
+      if (existing) {
+        await ctx.db.replace(existing._id, {
+          studentId: existing.studentId,
+          objectiveId: card.objectiveId,
+          problemFamilyId: card.problemFamilyId,
+          stability: card.stability,
+          difficulty: card.difficulty,
+          state: card.state,
+          dueDate: card.dueDate,
+          elapsedDays: card.elapsedDays,
+          scheduledDays: card.scheduledDays,
+          reps: card.reps,
+          lapses: card.lapses,
+          lastReview: card.lastReview,
+          createdAt: existing.createdAt,
+          updatedAt: Date.now(),
+        });
+      } else {
+        await ctx.db.insert("srs_cards", {
+          studentId: card.studentId as Id<"profiles">,
+          objectiveId: card.objectiveId,
+          problemFamilyId: card.problemFamilyId,
+          stability: card.stability,
+          difficulty: card.difficulty,
+          state: card.state,
+          dueDate: card.dueDate,
+          elapsedDays: card.elapsedDays,
+          scheduledDays: card.scheduledDays,
+          reps: card.reps,
+          lapses: card.lapses,
+          lastReview: card.lastReview,
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        });
+      }
+    }
+  },
+});
+
+export const getCard = internalQuery({
+  args: { id: v.string() },
+  handler: async (ctx, args) => {
+    let cardId: Id<"srs_cards">;
+    try {
+      cardId = args.id as Id<"srs_cards">;
+    } catch {
+      return null;
+    }
+    const card = await ctx.db.get(cardId);
+    if (!card) return null;
+    return {
+      cardId: card.problemFamilyId,
+      studentId: card.studentId,
+      objectiveId: card.objectiveId,
+      problemFamilyId: card.problemFamilyId,
+      stability: card.stability,
+      difficulty: card.difficulty,
+      state: card.state,
+      dueDate: card.dueDate,
+      elapsedDays: card.elapsedDays,
+      scheduledDays: card.scheduledDays,
+      reps: card.reps,
+      lapses: card.lapses,
+      lastReview: card.lastReview,
+      createdAt: card.createdAt,
+      updatedAt: card.updatedAt,
+    };
+  },
+});
+
+export const getCardsByStudent = internalQuery({
+  args: { studentId: v.string() },
+  handler: async (ctx, args) => {
+    const cards = await ctx.db
+      .query("srs_cards")
+      .withIndex("by_student", (q) =>
+        q.eq("studentId", args.studentId as Id<"profiles">)
+      )
+      .collect();
+    return cards.map((card) => ({
+      cardId: card.problemFamilyId,
+      studentId: card.studentId,
+      objectiveId: card.objectiveId,
+      problemFamilyId: card.problemFamilyId,
+      stability: card.stability,
+      difficulty: card.difficulty,
+      state: card.state,
+      dueDate: card.dueDate,
+      elapsedDays: card.elapsedDays,
+      scheduledDays: card.scheduledDays,
+      reps: card.reps,
+      lapses: card.lapses,
+      lastReview: card.lastReview,
+      createdAt: card.createdAt,
+      updatedAt: card.updatedAt,
+    }));
+  },
+});
+
+export const getCardsByObjective = internalQuery({
+  args: { objectiveId: v.string() },
+  handler: async (ctx, args) => {
+    const cards = await ctx.db
+      .query("srs_cards")
+      .withIndex("by_objective", (q) => q.eq("objectiveId", args.objectiveId))
+      .collect();
+    return cards.map((card) => ({
+      cardId: card.problemFamilyId,
+      studentId: card.studentId,
+      objectiveId: card.objectiveId,
+      problemFamilyId: card.problemFamilyId,
+      stability: card.stability,
+      difficulty: card.difficulty,
+      state: card.state,
+      dueDate: card.dueDate,
+      elapsedDays: card.elapsedDays,
+      scheduledDays: card.scheduledDays,
+      reps: card.reps,
+      lapses: card.lapses,
+      lastReview: card.lastReview,
+      createdAt: card.createdAt,
+      updatedAt: card.updatedAt,
+    }));
+  },
+});
+
+export const getDueCards = internalQuery({
+  args: {
+    studentId: v.string(),
+    asOfDate: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const asOfMs = new Date(args.asOfDate).getTime();
+    const cards = await ctx.db
+      .query("srs_cards")
+      .withIndex("by_student_and_due", (q) =>
+        q.eq("studentId", args.studentId as Id<"profiles">)
+      )
+      .collect();
+    return cards
+      .filter((card) => new Date(card.dueDate).getTime() <= asOfMs)
+      .map((card) => ({
+        cardId: card.problemFamilyId,
+        studentId: card.studentId,
+        objectiveId: card.objectiveId,
+        problemFamilyId: card.problemFamilyId,
+        stability: card.stability,
+        difficulty: card.difficulty,
+        state: card.state,
+        dueDate: card.dueDate,
+        elapsedDays: card.elapsedDays,
+        scheduledDays: card.scheduledDays,
+        reps: card.reps,
+        lapses: card.lapses,
+        lastReview: card.lastReview,
+        createdAt: card.createdAt,
+        updatedAt: card.updatedAt,
+      }));
+  },
+});

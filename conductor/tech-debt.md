@@ -49,3 +49,5 @@
 | error-analysis: isCorrect:undefined counted as incorrect | Medium | Open | Undocumented behavior when isCorrect is omitted from parts |
 | error-analysis: buildTeacherErrorView uses activityId as studentId | Medium | Open | Inconsistent with other functions that accept studentIdMap |
 | SRS queue: newCardsPerDay cap is shared across all priorities | Medium | Open | Essential/supporting/extension compete for same quota; update spec comment |
+| SRS CardStore: studentId type mismatch (contract vs schema) | High | Open | SrsCardState uses string, Convex uses Id<"profiles">; type assertions required at boundary |
+| SRS CardStore: saveCard by problemFamilyId alone | High | Open | Spec says studentId+problemFamilyId composite key but no such index; may cause cross-student collisions |

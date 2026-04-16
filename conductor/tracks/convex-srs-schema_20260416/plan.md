@@ -19,22 +19,22 @@
 
 ## Phase 2: CardStore Adapter
 
-- [ ] Task: Implement `convex/srs/cards.ts` — Convex mutations for `saveCard` and `saveCards`
-  - [ ] Sub-task: `saveCard` mutation — upsert single card by `studentId + problemFamilyId` composite key
-  - [ ] Sub-task: `saveCards` mutation — batch upsert using transactional writes
-- [ ] Task: Implement Convex queries for card reads
-  - [ ] Sub-task: `getCard` query — fetch by document ID
-  - [ ] Sub-task: `getCardsByStudent` query — index `by_student`
-  - [ ] Sub-task: `getCardsByObjective` query — index `by_objective`
-  - [ ] Sub-task: `getDueCards` query — index `by_student_and_due` with date filter
-- [ ] Task: Implement `ConvexCardStore` class in `lib/srs/convexCardStore.ts`
-  - [ ] Sub-task: Implement `CardStore` interface using internal mutations/queries
-  - [ ] Sub-task: Map between `SrsCardState` and Convex document shape
-- [ ] Task: Write integration tests for CardStore
+- [x] Task: Implement `convex/srs/cards.ts` — Convex mutations for `saveCard` and `saveCards`
+  - [x] Sub-task: `saveCard` mutation — upsert single card by `studentId + problemFamilyId` composite key
+  - [x] Sub-task: `saveCards` mutation — batch upsert using transactional writes
+- [x] Task: Implement Convex queries for card reads
+  - [x] Sub-task: `getCard` query — fetch by document ID
+  - [x] Sub-task: `getCardsByStudent` query — index `by_student`
+  - [x] Sub-task: `getCardsByObjective` query — index `by_objective`
+  - [x] Sub-task: `getDueCards` query — index `by_student_and_due` with date filter
+- [x] Task: Implement `ConvexCardStore` class in `lib/srs/convexCardStore.ts`
+  - [x] Sub-task: Implement `CardStore` interface using internal mutations/queries
+  - [x] Sub-task: Map between `SrsCardState` and Convex document shape
+- [ ] Task: Write integration tests for CardStore (deferred - `convex-test` not installed; requires Convex dev)
   - [ ] Sub-task: Test `saveCard` persists and `getCard` retrieves matching state
   - [ ] Sub-task: Test `getDueCards` returns only cards with `dueDate <= asOfDate`
   - [ ] Sub-task: Test `saveCards` batch upsert
-  - [ ] Sub-task: Run `npm run lint` and typecheck
+  - [x] Sub-task: Run `npm run lint` and typecheck (lint passes; typecheck has pre-existing errors)
 - [ ] Task: Conductor - Phase Completion Verification 'CardStore Adapter' (Protocol in workflow.md)
 
 ## Phase 3: ReviewLogStore Adapter

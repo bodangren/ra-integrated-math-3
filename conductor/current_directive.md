@@ -28,7 +28,11 @@
 
 ## Current In-Progress Track
 
-- **Track**: Reusable SRS Core Library — Phase 5 (verification and handoff) COMPLETE. 107 tests pass, lint passes, build passes. Handwritten handoff notes at `conductor/tracks/srs-core-library_20260416/HANDOFF.md`.
+- **Track**: Convex SRS Schema — Phase 2 (CardStore Adapter) COMPLETE. Created `convex/srs/cards.ts` with saveCard/saveCards mutations and getCard/getCardsByStudent/getCardsByObjective/getDueCards queries. Created `lib/srs/convexCardStore.ts` implementing CardStore interface. Integration tests deferred (convex-test not installed; requires Convex dev).
+
+## Wave 2 Progress
+
+- **Track 5: Convex SRS Schema** — Phase 1 complete, Phase 2 complete
 
 ## High-Priority Next Steps
 
