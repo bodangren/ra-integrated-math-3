@@ -1,12 +1,12 @@
-import type { SrsReviewLogEntry } from "./contract";
+import type { SrsReviewLogEntry, SrsRating } from "./contract";
 import type { ReviewLogStore } from "./adapters";
 import { internal } from "@/convex/_generated/api";
-import { type MutationCtx, type QueryCtx } from "@/convex/_generated/server";
+import { type MutationCtx } from "@/convex/_generated/server";
 
 export class ConvexReviewLogStore implements ReviewLogStore {
-  private ctx: MutationCtx | QueryCtx;
+  private ctx: MutationCtx;
 
-  constructor(ctx: MutationCtx | QueryCtx) {
+  constructor(ctx: MutationCtx) {
     this.ctx = ctx;
   }
 
@@ -28,7 +28,7 @@ export class ConvexReviewLogStore implements ReviewLogStore {
     const result = await this.ctx.runQuery(internal.srs.reviews.getReviewsByCard, {
       cardId,
     });
-    return result;
+    return result.map((r) => ({ ...r, rating: r.rating as SrsRating }));
   }
 
   async getReviewsByStudent(
@@ -42,12 +42,12 @@ export class ConvexReviewLogStore implements ReviewLogStore {
         since,
       }
     );
-    return result;
+    return result.map((r) => ({ ...r, rating: r.rating as SrsRating }));
   }
 }
 
 export function createConvexReviewLogStore(
-  ctx: MutationCtx | QueryCtx
+  ctx: MutationCtx
 ): ConvexReviewLogStore {
   return new ConvexReviewLogStore(ctx);
 }

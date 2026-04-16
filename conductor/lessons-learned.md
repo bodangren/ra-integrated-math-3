@@ -5,8 +5,9 @@
 
 ## Architecture & Design
 
-- (2026-04-05, setup) vinext (Vite-backed Next.js) may have subtle differences from stock Next.js — test builds early
 - (2026-04-12, zod4) Zod 4.x `z.record()` requires explicit key type; TS array inference narrows from first elements — use explicit annotations
+- (2026-04-16, srs-schema) Convex DB stores timestamps as `number` (ms epoch) but `SrsCardState` contract uses ISO strings — convert at adapter boundary; failing to do so causes validator/runtime mismatches
+- (2026-04-16, srs-schema) When `convex dev` is blocked by non-interactive prompts (e.g., backend upgrade), manually patch `convex/_generated/api.d.ts` with the module imports and `fullApi` entries as a temporary workaround
 
 ## Recurring Gotchas
 

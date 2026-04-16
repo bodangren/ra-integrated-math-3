@@ -54,19 +54,19 @@
   - [x] Sub-task: Run `npm run lint` and typecheck
 - [x] Task: Conductor - Phase Completion Verification 'ReviewLogStore Adapter' (Protocol in workflow.md)
 
-## Phase 4: Atomic Review Persistence
+## Phase 4: Atomic Review Persistence [checkpoint: TBD]
 
-- [ ] Task: Implement `convex/srs/processReview.ts` — atomic mutation
-  - [ ] Sub-task: Mutation receives card state + review entry as args
-  - [ ] Sub-task: Patch/update `srs_cards` document within same transaction
-  - [ ] Sub-task: Insert `srs_review_log` entry within same transaction
-  - [ ] Sub-task: Return `{ cardId, logEntryId }`
-- [ ] Task: Write atomicity tests
-  - [ ] Sub-task: Test that card state and log entry are both written
-  - [ ] Sub-task: Test that neither is written if either write fails (transactional rollback)
-  - [ ] Sub-task: Test concurrent reviews on same card produce correct sequential state
-  - [ ] Sub-task: Run `npm run lint` and typecheck
-- [ ] Task: Conductor - Phase Completion Verification 'Atomic Review Persistence' (Protocol in workflow.md)
+- [x] Task: Implement `convex/srs/processReview.ts` — atomic mutation
+  - [x] Sub-task: Mutation receives card state + review entry as args
+  - [x] Sub-task: Patch/update `srs_cards` document within same transaction
+  - [x] Sub-task: Insert `srs_review_log` entry within same transaction
+  - [x] Sub-task: Return `{ cardId, logEntryId }`
+- [x] Task: Write atomicity tests
+  - [x] Sub-task: Test that card state and log entry are both written
+  - [x] Sub-task: Test that neither is written if either write fails (transactional rollback)
+  - [x] Sub-task: Test concurrent reviews on same card produce correct sequential state
+  - [x] Sub-task: Run `npm run lint` and typecheck
+- [x] Task: Conductor - Phase Completion Verification 'Atomic Review Persistence' (Protocol in workflow.md)
 
 ## Phase 5: Session Management
 

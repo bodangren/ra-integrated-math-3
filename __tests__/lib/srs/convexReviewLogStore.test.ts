@@ -13,7 +13,7 @@ interface MockCtx {
 const mockCtx = {
   runMutation: mockRunMutation,
   runQuery: mockRunQuery,
-} as unknown as MockCtx;
+} as unknown as MockCtx & import('@/convex/_generated/server').MutationCtx;
 
 function makeReviewLog(overrides: Partial<SrsReviewLogEntry> = {}): SrsReviewLogEntry {
   return {

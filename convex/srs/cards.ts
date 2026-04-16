@@ -2,6 +2,44 @@ import { internalMutation, internalQuery } from "../_generated/server";
 import { v } from "convex/values";
 import { Id } from "../_generated/dataModel";
 
+function mapDbCardToContract(
+  card: {
+    _id: Id<"srs_cards">;
+    studentId: Id<"profiles">;
+    objectiveId: string;
+    problemFamilyId: string;
+    stability: number;
+    difficulty: number;
+    state: "new" | "learning" | "review" | "relearning";
+    dueDate: string;
+    elapsedDays: number;
+    scheduledDays: number;
+    reps: number;
+    lapses: number;
+    lastReview?: string;
+    createdAt: number;
+    updatedAt: number;
+  }
+) {
+  return {
+    cardId: card.problemFamilyId,
+    studentId: card.studentId,
+    objectiveId: card.objectiveId,
+    problemFamilyId: card.problemFamilyId,
+    stability: card.stability,
+    difficulty: card.difficulty,
+    state: card.state,
+    dueDate: card.dueDate,
+    elapsedDays: card.elapsedDays,
+    scheduledDays: card.scheduledDays,
+    reps: card.reps,
+    lapses: card.lapses,
+    lastReview: card.lastReview ?? null,
+    createdAt: new Date(card.createdAt).toISOString(),
+    updatedAt: new Date(card.updatedAt).toISOString(),
+  };
+}
+
 export const saveCard = internalMutation({
   args: {
     cardId: v.string(),
@@ -21,7 +59,7 @@ export const saveCard = internalMutation({
     scheduledDays: v.number(),
     reps: v.number(),
     lapses: v.number(),
-    lastReview: v.optional(v.string()),
+    lastReview: v.optional(v.union(v.string(), v.null())),
     createdAt: v.string(),
     updatedAt: v.string(),
   },
@@ -65,8 +103,8 @@ export const saveCard = internalMutation({
         reps: args.reps,
         lapses: args.lapses,
         lastReview: args.lastReview ?? undefined,
-        createdAt: Date.now(),
-        updatedAt: Date.now(),
+        createdAt: new Date(args.createdAt).getTime(),
+        updatedAt: new Date(args.updatedAt).getTime(),
       });
       return id;
     }
@@ -94,7 +132,7 @@ export const saveCards = internalMutation({
         scheduledDays: v.number(),
         reps: v.number(),
         lapses: v.number(),
-        lastReview: v.optional(v.string()),
+        lastReview: v.optional(v.union(v.string(), v.null())),
         createdAt: v.string(),
         updatedAt: v.string(),
       })
@@ -140,8 +178,8 @@ export const saveCards = internalMutation({
           reps: card.reps,
           lapses: card.lapses,
           lastReview: card.lastReview ?? undefined,
-          createdAt: Date.now(),
-          updatedAt: Date.now(),
+          createdAt: new Date(card.createdAt).getTime(),
+          updatedAt: new Date(card.updatedAt).getTime(),
         });
       }
     }
@@ -159,23 +197,7 @@ export const getCard = internalQuery({
     }
     const card = await ctx.db.get(cardId);
     if (!card) return null;
-    return {
-      cardId: card.problemFamilyId,
-      studentId: card.studentId,
-      objectiveId: card.objectiveId,
-      problemFamilyId: card.problemFamilyId,
-      stability: card.stability,
-      difficulty: card.difficulty,
-      state: card.state,
-      dueDate: card.dueDate,
-      elapsedDays: card.elapsedDays,
-      scheduledDays: card.scheduledDays,
-      reps: card.reps,
-      lapses: card.lapses,
-      lastReview: card.lastReview ?? null,
-      createdAt: card.createdAt,
-      updatedAt: card.updatedAt,
-    };
+    return mapDbCardToContract(card);
   },
 });
 
@@ -188,23 +210,7 @@ export const getCardsByStudent = internalQuery({
         q.eq("studentId", args.studentId as Id<"profiles">)
       )
       .collect();
-    return cards.map((card) => ({
-      cardId: card.problemFamilyId,
-      studentId: card.studentId,
-      objectiveId: card.objectiveId,
-      problemFamilyId: card.problemFamilyId,
-      stability: card.stability,
-      difficulty: card.difficulty,
-      state: card.state,
-      dueDate: card.dueDate,
-      elapsedDays: card.elapsedDays,
-      scheduledDays: card.scheduledDays,
-      reps: card.reps,
-      lapses: card.lapses,
-      lastReview: card.lastReview ?? null,
-      createdAt: card.createdAt,
-      updatedAt: card.updatedAt,
-    }));
+    return cards.map(mapDbCardToContract);
   },
 });
 
@@ -215,23 +221,7 @@ export const getCardsByObjective = internalQuery({
       .query("srs_cards")
       .withIndex("by_objective", (q) => q.eq("objectiveId", args.objectiveId))
       .collect();
-    return cards.map((card) => ({
-      cardId: card.problemFamilyId,
-      studentId: card.studentId,
-      objectiveId: card.objectiveId,
-      problemFamilyId: card.problemFamilyId,
-      stability: card.stability,
-      difficulty: card.difficulty,
-      state: card.state,
-      dueDate: card.dueDate,
-      elapsedDays: card.elapsedDays,
-      scheduledDays: card.scheduledDays,
-      reps: card.reps,
-      lapses: card.lapses,
-      lastReview: card.lastReview ?? null,
-      createdAt: card.createdAt,
-      updatedAt: card.updatedAt,
-    }));
+    return cards.map(mapDbCardToContract);
   },
 });
 
@@ -250,22 +240,6 @@ export const getDueCards = internalQuery({
       .collect();
     return cards
       .filter((card) => new Date(card.dueDate).getTime() <= asOfMs)
-      .map((card) => ({
-        cardId: card.problemFamilyId,
-        studentId: card.studentId,
-        objectiveId: card.objectiveId,
-        problemFamilyId: card.problemFamilyId,
-        stability: card.stability,
-        difficulty: card.difficulty,
-        state: card.state,
-        dueDate: card.dueDate,
-        elapsedDays: card.elapsedDays,
-        scheduledDays: card.scheduledDays,
-        reps: card.reps,
-        lapses: card.lapses,
-        lastReview: card.lastReview ?? null,
-        createdAt: card.createdAt,
-        updatedAt: card.updatedAt,
-      }));
+      .map(mapDbCardToContract);
   },
 });

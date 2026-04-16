@@ -320,7 +320,8 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
       *Link: [./conductor/tracks/convex-srs-schema_20260416/](./conductor/tracks/convex-srs-schema_20260416/)*
       - Phase 1: Convex Schema Definitions [COMPLETE] [checkpoint: 3073154]
       - Phase 2: CardStore Adapter [COMPLETE] [checkpoint: e0d54c7]
-      - Phase 3: ReviewLogStore Adapter [COMPLETE]
+       - Phase 3: ReviewLogStore Adapter [COMPLETE] [checkpoint: aaa6c10]
+       - Phase 4: Atomic Review Persistence [COMPLETE]
 
 ### Wave 3 — Integration (after Wave 2, 2 tracks in parallel)
 

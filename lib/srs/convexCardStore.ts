@@ -1,12 +1,12 @@
 import type { SrsCardState } from "./contract";
 import type { CardStore } from "./adapters";
 import { internal } from "@/convex/_generated/api";
-import { type MutationCtx, type QueryCtx } from "@/convex/_generated/server";
+import { type MutationCtx } from "@/convex/_generated/server";
 
 export class ConvexCardStore implements CardStore {
-  private ctx: MutationCtx | QueryCtx;
+  private ctx: MutationCtx;
 
-  constructor(ctx: MutationCtx | QueryCtx) {
+  constructor(ctx: MutationCtx) {
     this.ctx = ctx;
   }
 
@@ -81,7 +81,7 @@ export class ConvexCardStore implements CardStore {
 }
 
 export function createConvexCardStore(
-  ctx: MutationCtx | QueryCtx
+  ctx: MutationCtx
 ): ConvexCardStore {
   return new ConvexCardStore(ctx);
 }
