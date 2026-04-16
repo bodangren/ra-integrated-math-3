@@ -59,9 +59,9 @@
   - [x] Implement matcher for `/dev/component-approval/:path*` with JWT extraction and admin role check
   - [x] Verify non-matching routes pass through unchanged
 
-- [ ] **Task: Verify no stack trace leaks in production**
-  - [ ] Audit all API route error handlers for stack trace exposure
-  - [ ] Ensure production error responses are generic
-  - [ ] Update any routes that leak sensitive info
+- [x] **Task: Verify no stack trace leaks in production** [a04c98b]
+  - [x] Audit all API route error handlers for stack trace exposure
+  - [x] Ensure production error responses are generic
+  - [x] Update any routes that leak sensitive info
 
 - [ ] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)**
