@@ -21,10 +21,23 @@ export default async function StudentPracticePage() {
     { studentId: claims.sub },
   );
 
-  const activeSessionData: SessionData = sessionData ?? await fetchInternalMutation(
+  const activeSessionData: SessionData | null = sessionData ?? await fetchInternalMutation(
     internal.queue.sessions.startDailySession,
     { studentId: claims.sub },
   );
+
+  if (!activeSessionData) {
+    return (
+      <div className="max-w-3xl mx-auto py-8 px-4 text-center">
+        <h1 className="text-2xl font-display font-bold text-foreground">
+          Daily Practice
+        </h1>
+        <p className="mt-4 text-muted-foreground">
+          Unable to start a practice session. Please try again later.
+        </p>
+      </div>
+    );
+  }
 
   const { session, queue } = activeSessionData;
 

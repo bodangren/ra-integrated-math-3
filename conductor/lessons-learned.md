@@ -23,6 +23,9 @@
 - (2026-04-15, code-review) Content hashing must use the same componentKind derivation on both write and read paths
 - (2026-04-16, code-review) Standard codes referenced in lesson_standards links must exist in seed-standards.ts; missing standards cause silent link failures
 - (2026-04-16, practice-timing) When mixing `performance.now()` and `Date.now()`, all internal timing must use one base; serialization is the only safe place to convert
+- (2026-04-17, code-review) `setCurrentCardIndex(currentCardIndex + 1)` captures stale closure; always use functional updater `setCurrentCardIndex((prev) => prev + 1)` in callbacks
+- (2026-04-17, code-review) Union-type casts like `x as ObjectivePriority` must be runtime-validated against a set of valid values; DB corruption silently propagates otherwise
+- (2026-04-17, code-review) RSC page null checks: both `fetchInternalQuery` and `fetchInternalMutation` can return null; always guard the destructuring
 
 ## Patterns That Worked Well
 
@@ -33,7 +36,7 @@
 - (2026-04-16, srs-rating-adapter) Two-step rating: compute base rating from correctness first, then apply timing as conservative modifier
 - (2026-04-16, srs-product-contract) Single canonical contract module (`lib/srs/contract.ts`) with re-exports; downstream imports from one surface
 - (2026-04-16, daily-practice-queue) Keep pure `buildDailyQueue` separate from Convex data fetching for testability
-- (2026-04-16, dashboard) Reuse queue resolution for dashboard due count to guarantee consistency with practice page; compute streaks with UTC day-start boundaries
+- (2026-04-16, dashboard) Reuse queue resolution for dashboard due count to guarantee consistency with practice page
 
 ## Planning Improvements
 
@@ -43,7 +46,5 @@
 - (2026-04-14, code-review) Always guard division by zero in score calculations; NaN propagates silently through analytics
 - (2026-04-16, code-review) New seed mutations must be wired into seed.ts immediately; orphan files silently skip data
 - (2026-04-16, code-review) Convex validators strip undeclared fields; mock tests bypass validation. Prefer server-side DB lookups.
-- (2026-04-16, srs-schema) SrsCardState contract uses `string` but Convex schema uses `Id<"profiles">`; type assertions needed at adapter boundary
-- (2026-04-16, srs-schema) New Convex subdirectories must import `_generated` from parent `convex/_generated`, not local `./_generated`
-- (2026-04-16, code-review) When adding proficiency labels to union types, ensure every label has a production code path; dead members are misleading
 - (2026-04-16, test-design) Test mocks that conflate internal IDs with domain IDs mask real bugs; always use distinct values for `_id` vs `problemFamilyId`
+- (2026-04-17, code-review) Review N+1 patterns at design time: if a loop body makes a DB query, note it in the plan as a known trade-off

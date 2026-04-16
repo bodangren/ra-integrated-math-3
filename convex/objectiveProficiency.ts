@@ -6,6 +6,12 @@ import {
   computeObjectiveProficiency,
   type ObjectivePriority,
 } from "../lib/practice/objective-proficiency";
+
+const VALID_PRIORITIES = new Set<string>(['essential', 'supporting', 'extension', 'triaged']);
+
+function validatePriority(value: string): ObjectivePriority {
+  return VALID_PRIORITIES.has(value) ? (value as ObjectivePriority) : 'essential';
+}
 import type {
   SrsCardState as ProficiencyCardState,
   TimingBaselines,
@@ -150,7 +156,7 @@ export async function getObjectiveProficiencyHandler(
         .withIndex("by_standardId", (q) => q.eq("standardId", standard._id))
         .first();
       if (policy) {
-        priority = policy.policy as ObjectivePriority;
+        priority = validatePriority(policy.policy);
       }
     }
   }

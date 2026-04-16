@@ -57,16 +57,18 @@ export function PracticeSessionProvider({
   }, []);
 
   const advanceCard = useCallback(() => {
-    const nextIndex = currentCardIndex + 1;
     setCompletedCount((c) => c + 1);
-    if (nextIndex >= queue.length) {
-      void handleCompleteSession();
-    }
-    setCurrentCardIndex(nextIndex);
+    setCurrentCardIndex((prev) => {
+      const nextIndex = prev + 1;
+      if (nextIndex >= queue.length) {
+        void handleCompleteSession();
+      }
+      return nextIndex;
+    });
     setFeedback(null);
     setIsSubmitting(false);
     hasSubmittedRef.current = false;
-  }, [currentCardIndex, queue.length, handleCompleteSession]);
+  }, [queue.length, handleCompleteSession]);
 
   const handleSubmit = useCallback(
     async (envelope: PracticeSubmissionEnvelope) => {

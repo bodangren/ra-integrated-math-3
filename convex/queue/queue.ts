@@ -4,6 +4,8 @@ import { Id } from "../_generated/dataModel";
 import { buildDailyQueue, type QueueItem } from "../../lib/srs/queue";
 import type { ObjectivePracticePolicy, SrsCardState } from "../../lib/srs/contract";
 
+const VALID_PRIORITIES = new Set<string>(['essential', 'supporting', 'extension', 'triaged']);
+
 export type ResolvedQueueItem = QueueItem & {
   componentKey: string;
   props: Record<string, unknown>;
@@ -100,7 +102,9 @@ export async function resolveDailyPracticeQueue(
     if (!standard) continue;
     policies.set(standard.code, {
       objectiveId: standard.code,
-      priority: record.policy as ObjectivePracticePolicy["priority"],
+      priority: VALID_PRIORITIES.has(record.policy)
+        ? (record.policy as ObjectivePracticePolicy["priority"])
+        : 'essential',
     });
   }
 

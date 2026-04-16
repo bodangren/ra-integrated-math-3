@@ -29,15 +29,20 @@ export function PracticeCardRenderer({
 
   const handleSubmit = useCallback(
     (payload: unknown) => {
+      const activityId = queueItem.props.activityId;
+      if (typeof activityId !== 'string' || !activityId) {
+        console.error('PracticeCardRenderer: missing or invalid activityId in queue item props');
+        return;
+      }
       const envelope = buildPracticeSubmissionEnvelope({
-        activityId: queueItem.props.activityId as string,
+        activityId,
         mode: 'independent_practice',
         answers: payload as Record<string, unknown>,
         timing: getTiming() ?? undefined,
       });
       onSubmit(envelope);
     },
-    [queueItem.props, getTiming, onSubmit],
+    [queueItem.props.activityId, getTiming, onSubmit],
   );
 
   return (
@@ -46,7 +51,7 @@ export function PracticeCardRenderer({
       <div className="rounded-xl border border-border bg-card p-6">
         <ActivityRenderer
           componentKey={queueItem.componentKey}
-          activityId={queueItem.props.activityId as string}
+          activityId={typeof queueItem.props.activityId === 'string' ? queueItem.props.activityId : ''}
           mode="practice"
           onSubmit={handleSubmit}
           onComplete={onComplete}
