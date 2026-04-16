@@ -84,21 +84,21 @@
 
 ---
 
-## Phase 5: Dashboard Integration
+## Phase 5: Dashboard Integration [checkpoint: f526aab]
 
-- [~] Task: Create `components/student/DailyPracticeCard.tsx` dashboard widget
-  - [ ] Show items due today count
-  - [ ] Show current streak
-  - [ ] Show last practiced date
-  - [ ] Link to `/student/practice`
-- [ ] Task: Add `DailyPracticeCard` to student dashboard page (`app/student/dashboard/page.tsx`)
-  - [ ] Fetch due count via Convex query
-  - [ ] Place in dashboard layout alongside existing progress cards
-- [ ] Task: Write dashboard integration tests
-  - [ ] Test widget renders due count correctly
-  - [ ] Test widget links to practice page
-  - [ ] Test widget handles zero items due
-- [ ] Task: Conductor - Phase Completion Verification 'Dashboard Integration' (Protocol in workflow.md)
+- [x] Task: Create `components/student/DailyPracticeCard.tsx` dashboard widget [f526aab]
+  - [x] Show items due today count
+  - [x] Show current streak
+  - [x] Show last practiced date
+  - [x] Link to `/student/practice`
+- [x] Task: Add `DailyPracticeCard` to student dashboard page (`app/student/dashboard/page.tsx`) [f526aab]
+  - [x] Fetch due count via Convex query
+  - [x] Place in dashboard layout alongside existing progress cards
+- [x] Task: Write dashboard integration tests [f526aab]
+  - [x] Test widget renders due count correctly
+  - [x] Test widget links to practice page
+  - [x] Test widget handles zero items due
+- [x] Task: Conductor - Phase Completion Verification 'Dashboard Integration' (Protocol in workflow.md) [f526aab]
 
 ---
 
