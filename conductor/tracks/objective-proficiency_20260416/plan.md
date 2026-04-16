@@ -1,6 +1,6 @@
 # Plan: objective-proficiency_20260416
 
-## Phase 1: FSRS Stability Normalization [checkpoint: PENDING]
+## Phase 1: FSRS Stability Normalization [checkpoint: 2f6fe7b]
 
 - [x] Task: Write `stabilityToRetention` function in `lib/practice/srs-proficiency.ts` [150eecd]
   - [x] Sub-task: Implement sigmoid normalization `1 - (1 / (1 + stability / scaleFactor))` with configurable `scaleFactor` (default 30)
