@@ -24,9 +24,9 @@
   - [x] Implement pipeline steps: checkout → Node setup → npm ci → lint → test → build → deploy
   - [x] Add failure notification step
 
-- [~] **Task: Verify pipeline end-to-end**
-  - [ ] Write workflow validation tests
-  - [ ] Confirm lint/test/build gates pass locally
-  - [ ] Verify deploy step configuration matches spec
+- [x] **Task: Verify pipeline end-to-end** [64f2a3d]
+  - [x] Write workflow validation tests
+  - [x] Confirm lint/test/build gates pass locally
+  - [x] Verify deploy step configuration matches spec
 
-- [ ] **Task: Conductor - Phase Completion Verification 'Phase 2' (Protocol in workflow.md)**
+- [x] **Task: Conductor - Phase Completion Verification 'Phase 2' (Protocol in workflow.md)**
