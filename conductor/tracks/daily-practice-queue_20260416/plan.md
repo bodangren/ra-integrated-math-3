@@ -1,19 +1,18 @@
 # Plan: Daily Practice Queue Engine
 
-## Phase 1: Queue Query Implementation
+## Phase 1: Queue Query Implementation [checkpoint: 69b013c]
 
-- [ ] Task: Write failing integration tests for `getDailyPracticeQueue` Convex query
-  - [ ] Test: returns ordered queue items for a student with cards
-  - [ ] Test: returns empty queue for student with no cards
-  - [ ] Test: joins card data with problem family and objective policy
-  - [ ] Test: calls `buildDailyQueue` with correct arguments
-- [ ] Task: Implement `getDailyPracticeQueue` Convex query in `convex/queue/`
-  - [ ] Fetch student's SRS cards via indexed read on `srs_cards` by `studentId`
-  - [ ] Join with `problem_families` to get metadata
-  - [ ] Join with objective policies from `SrsSessionConfig`
-  - [ ] Call `buildDailyQueue` from `lib/srs/queue.ts` with cards, policies, config, and current timestamp
-  - [ ] Return ordered queue items
-- [ ] Task: Conductor - Phase Completion Verification 'Queue Query Implementation' (Protocol in workflow.md)
+- [x] Task: Write failing integration tests for `getDailyPracticeQueue` Convex query [69b013c]
+  - [x] Test: returns ordered queue items for a student with cards
+  - [x] Test: returns empty queue for student with no cards
+  - [x] Test: joins card data with problem family and objective policy
+  - [x] Test: calls `buildDailyQueue` with correct arguments
+- [x] Task: Implement `getDailyPracticeQueue` Convex query in `convex/queue/` [69b013c]
+  - [x] Fetch student's SRS cards via indexed read on `srs_cards` by `studentId`
+  - [x] Join with objective policies from `objective_policies`
+  - [x] Call `buildDailyQueue` from `lib/srs/queue.ts` with cards, policies, config, and current timestamp
+  - [x] Return ordered queue items
+- [x] Task: Conductor - Phase Completion Verification 'Queue Query Implementation' (Protocol in workflow.md) [69b013c]
 
 ## Phase 2: Queue Item Resolution
 
