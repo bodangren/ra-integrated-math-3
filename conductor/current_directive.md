@@ -27,19 +27,19 @@
 
 ## Current In-Progress Track
 
-- **Track 8: Daily Practice Queue Engine** — Phase 2 (Queue Item Resolution) complete. Phase 3 (Session Lifecycle) next.
+- **Track 9: Student Daily Practice Experience** — Wave 4, awaiting Track 8 completion
 
 ## SRS Wave Progress
 
 - **Wave 0**: Complete (Practice Timing Telemetry + Baselines)
 - **Wave 1**: Complete (Tracks 1, 2, 4)
 - **Wave 2**: Complete (Track 5)
-- **Wave 3**: Track 6 complete. Track 8 Phase 1-2 complete (Phase 3-5 remaining).
-- **Wave 4**: Not started (Tracks 10, 9, 11)
+- **Wave 3**: Track 6 complete. Track 8 Phase 1-5 complete.
+- **Wave 4**: Track 9 next (after Track 8)
 
 ## High-Priority Next Steps
 
-1. **Track 8 Phase 3: Session Lifecycle** — startDailySession, getActiveSession, completeDailySession mutations
+1. **Track 9: Student Daily Practice Experience** — student daily practice page, session flow, card rendering, submission with timing
 2. **Security & Auth Hardening (BM2 Wave A)** — port fail-closed auth guards, Convex-layer authorization
 3. **Error analysis: test studentIdMap code paths** — summarizePartOutcomes and buildDeterministicSummary untested with studentIdMap
 4. **Error analysis: fix buildTeacherErrorView using activityId as studentId** — add studentIdMap param
