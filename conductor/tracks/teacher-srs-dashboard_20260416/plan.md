@@ -58,7 +58,7 @@
   - [x] Identify weakest objective per student
   - [x] Sort by overdue descending, then retention ascending
   - [x] Join with `profiles` for student names
-- [x] Task: Conductor - Phase Completion Verification 'Weak Objectives and Struggling Students' (Protocol in workflow.md)
+- [x] Task: Conductor - Phase Completion Verification 'Weak Objectives and Struggling Students' (Protocol in workflow.md) [checkpoint: d36e8fa]
 
 ## Phase 3: Misconception Diagnostics
 
