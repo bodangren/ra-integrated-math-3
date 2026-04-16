@@ -77,7 +77,7 @@
   - [x] Accept `sinceDays` parameter (default 7)
 - [x] Task: Conductor - Phase Completion Verification 'Misconception Diagnostics' (Protocol in workflow.md) [checkpoint: 7f8d2a1]
 
-## Phase 4: Intervention Mutations
+## Phase 4: Intervention Mutations [checkpoint: 6bff97a]
 
 - [x] Task: Write `updateObjectivePriority` mutation tests
   - [x] Test changes essential → triaged in `objective_policies`
