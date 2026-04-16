@@ -14,10 +14,10 @@
   - [x] Implement `requireActiveRequestSessionClaims` calling Convex `internal.auth.getCredentialByUsername`
   - [x] Verify fail-closed behavior when Convex is unreachable
 
-- [ ] **Task: Audit and update existing API routes**
-  - [ ] Identify all routes in `app/api/` that lack fail-closed guards
-  - [ ] Update each route to use appropriate guard function
-  - [ ] Add Zod `safeParse` validation where missing
+- [x] **Task: Audit and update existing API routes** [e5d0b51]
+  - [x] Identify all routes in `app/api/` that lack fail-closed guards
+  - [x] Update each route to use appropriate guard function
+  - [x] Add Zod `safeParse` validation where missing
 
 - [ ] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
 
