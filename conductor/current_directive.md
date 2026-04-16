@@ -28,12 +28,11 @@
 
 ## Current In-Progress Track
 
-- **Track**: Reusable SRS Core Library — Phases 1-4 complete, Phase 5 (verification and handoff) pending.
+- **Track**: Reusable SRS Core Library — Phase 5 (verification and handoff) COMPLETE. 107 tests pass, lint passes, build passes. Handwritten handoff notes at `conductor/tracks/srs-core-library_20260416/HANDOFF.md`.
 
 ## High-Priority Next Steps
 
-1. **SRS Core Library Phase 5: Verification and Handoff** — run full validation, write junior developer handoff notes
-2. **Convex SRS Schema (Wave 2, Track 5)** — add srs_cards, srs_review_log, srs_sessions tables; implement CardStore/ReviewLogStore adapters
+1. **Convex SRS Schema (Wave 2, Track 5)** — add srs_cards, srs_review_log, srs_sessions tables; implement CardStore/ReviewLogStore adapters
 3. **Security & Auth Hardening (Wave A)** — port fail-closed auth guards, Convex-layer authorization
 4. **Error analysis: test studentIdMap code paths** — summarizePartOutcomes and buildDeterministicSummary untested with studentIdMap
 5. **Error analysis: fix buildTeacherErrorView using activityId as studentId** — add studentIdMap param
