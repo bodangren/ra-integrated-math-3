@@ -2,29 +2,29 @@
 
 ## Phase 1: Type Definitions and Zod Schemas
 
-- [ ] Task: Define ProblemFamily type and Zod schema
-  - [ ] Create `lib/practice/problem-family.ts` with `ProblemFamily` type
-  - [ ] Create `problemFamilySchema` Zod schema with all fields validated
-  - [ ] Export `Difficulty` union type (`"introductory" | "standard" | "challenging"`)
-  - [ ] Add JSDoc documentation on each field
-- [ ] Task: Define PracticeItem type and Zod schema
-  - [ ] Create `lib/practice/practice-item.ts` with `PracticeItem` type
-  - [ ] Create `practiceItemSchema` Zod schema
-  - [ ] Validate `variantLabel` as non-empty string
-- [ ] Task: Define ObjectivePolicy type and Zod schema
-  - [ ] Create `lib/practice/objective-policy.ts` with `ObjectivePolicy` type
-  - [ ] Create `objectivePolicySchema` Zod schema
-  - [ ] Import and reuse `ObjectivePracticePolicy` from `objective-proficiency.ts`
-- [ ] Task: Write validation unit tests
-  - [ ] Create `lib/practice/__tests__/problem-family.test.ts`
-  - [ ] Create `lib/practice/__tests__/practice-item.test.ts`
-  - [ ] Create `lib/practice/__tests__/objective-policy.test.ts`
-  - [ ] Test valid data passes, invalid data rejects for each schema
-  - [ ] Test edge cases: empty objectiveIds, invalid difficulty, missing required fields
-- [ ] Task: Run lint and typecheck
-  - [ ] `npm run lint` passes
-  - [ ] `npm run typecheck` passes
-- [ ] Task: Conductor - Phase Completion Verification 'Type Definitions and Zod Schemas' (Protocol in workflow.md)
+- [x] Task: Define ProblemFamily type and Zod schema
+  - [x] Create `lib/practice/problem-family.ts` with `ProblemFamily` type
+  - [x] Create `problemFamilySchema` Zod schema with all fields validated
+  - [x] Export `Difficulty` union type (`"introductory" | "standard" | "challenging"`)
+  - [x] Add JSDoc documentation on each field
+- [x] Task: Define PracticeItem type and Zod schema
+  - [x] Create `lib/practice/practice-item.ts` with `PracticeItem` type
+  - [x] Create `practiceItemSchema` Zod schema
+  - [x] Validate `variantLabel` as non-empty string
+- [x] Task: Define ObjectivePolicy type and Zod schema
+  - [x] Create `lib/practice/objective-policy.ts` with `ObjectivePolicy` type
+  - [x] Create `objectivePolicySchema` Zod schema
+  - [x] Import and reuse `ObjectivePracticePolicy` from `objective-proficiency.ts`
+- [x] Task: Write validation unit tests
+  - [x] Create `lib/practice/__tests__/problem-family.test.ts`
+  - [x] Create `lib/practice/__tests__/practice-item.test.ts`
+  - [x] Create `lib/practice/__tests__/objective-policy.test.ts`
+  - [x] Test valid data passes, invalid data rejects for each schema
+  - [x] Test edge cases: empty objectiveIds, invalid difficulty, missing required fields
+- [x] Task: Run lint and typecheck
+  - [x] `npm run lint` passes
+  - [x] `npm run typecheck` passes (no new errors; pre-existing errors unchanged)
+- [x] Task: Conductor - Phase Completion Verification 'Type Definitions and Zod Schemas' (Protocol in workflow.md)
 
 ## Phase 2: Convex Schema Extension
 

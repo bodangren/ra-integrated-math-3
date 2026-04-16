@@ -1,11 +1,11 @@
 {
   "track_id": "practice-item-blueprint_20260416",
   "type": "feature",
-  "status": "new",
+  "status": "in_progress",
   "created_at": "2026-04-16T10:00:00Z",
-  "updated_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-16T10:53:00Z",
   "description": "Define and seed the practice item and objective blueprint model — mapping stable practice problem families to objectives, objective policies, and metadata needed for SRS card creation and queue prioritization.",
   "estimated_tasks": 20,
-  "actual_tasks": null,
-  "deviation_notes": ""
+  "actual_tasks": 6,
+  "deviation_notes": "Phase 1 complete. ObjectivePolicy uses ObjectivePriority (string union) for the policy field, matching the Convex schema and table design."
 }
