@@ -1,11 +1,11 @@
 {
   "track_id": "security-auth-hardening_20260416",
   "type": "chore",
-  "status": "in_progress",
+  "status": "completed",
   "created_at": "2026-04-16T10:00:00Z",
-  "updated_at": "2026-04-17T05:30:00Z",
+  "updated_at": "2026-04-17T06:15:00Z",
   "description": "Port security hardening from bus-math-v2: fail-closed auth guards for API routes, Convex-layer authorization, credential revocation, middleware role checks",
   "estimated_tasks": 10,
-  "actual_tasks": 5,
-  "deviation_notes": "Phase 1 complete (4 tasks). On track with original estimate."
+  "actual_tasks": 10,
+  "deviation_notes": "Phase 2: changed getSubmissionDetail and getLessonErrorSummary signatures to accept userId and derive org server-side instead of trusting client input."
 }

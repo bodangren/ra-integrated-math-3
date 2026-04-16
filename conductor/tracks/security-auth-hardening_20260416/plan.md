@@ -50,7 +50,7 @@
 
 4. **`getTeacherLessonPreview`** (line 965): Not modified. This query returns public curriculum content (lesson phases/sections) which is intentionally accessible without authentication.
 
-## Phase 3: Middleware and Dev Route Protection
+## Phase 3: Middleware and Dev Route Protection [checkpoint: fc179b7]
 
 ### Tasks
 
@@ -64,4 +64,4 @@
   - [x] Ensure production error responses are generic
   - [x] Update any routes that leak sensitive info
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)**
+- [x] **Task: Conductor - Phase Completion Verification 'Phase 3' (Protocol in workflow.md)** [fc179b7]
