@@ -55,22 +55,22 @@
 
 ## Phase 3: Queue Primitives
 
-- [ ] Task: Write queue tests
-  - [ ] Test new cards for essential objectives appear before supporting
-  - [ ] Test overdue cards sorted by days overdue descending
-  - [ ] Test due cards sorted by due date ascending
-  - [ ] Test triaged objectives excluded from queue entirely
-  - [ ] Test `newCardsPerDay` cap respected
-  - [ ] Test `maxReviewsPerDay` cap respected
-  - [ ] Test empty input returns empty queue
-  - [ ] Test mix of new, overdue, and due cards produces correct ordering
-- [ ] Task: Implement queue builder
-  - [ ] Create `lib/srs/queue.ts`
-  - [ ] Implement `buildDailyQueue` with multi-pass sorting
-  - [ ] Implement `isOverdue` and `daysOverdue` helpers
-  - [ ] Use `SrsSessionConfig` for queue parameters
-  - [ ] Keep pure — accept all data as parameters, no side effects
-- [ ] Task: Conductor - Phase Completion Verification 'Queue Primitives' (Protocol in workflow.md)
+- [x] Task: Write queue tests
+  - [x] Test new cards for essential objectives appear before supporting
+  - [x] Test overdue cards sorted by days overdue descending
+  - [x] Test due cards sorted by due date ascending
+  - [x] Test triaged objectives excluded from queue entirely
+  - [x] Test `newCardsPerDay` cap respected
+  - [x] Test `maxReviewsPerDay` cap respected
+  - [x] Test empty input returns empty queue
+  - [x] Test mix of new, overdue, and due cards produces correct ordering
+- [x] Task: Implement queue builder
+  - [x] Create `lib/srs/queue.ts`
+  - [x] Implement `buildDailyQueue` with multi-pass sorting
+  - [x] Implement `isOverdue` and `daysOverdue` helpers
+  - [x] Use `SrsSessionConfig` for queue parameters
+  - [x] Keep pure — accept all data as parameters, no side effects
+- [x] Task: Conductor - Phase Completion Verification 'Queue Primitives' (Protocol in workflow.md)
 
 ## Phase 4: Adapter Interfaces
 
