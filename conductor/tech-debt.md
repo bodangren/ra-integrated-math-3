@@ -17,10 +17,6 @@
 | Unbounded take(500) + N+1 hash in listReviewQueue | High | Open | 500 SHA-256 hashes/query |
 | error-analysis: studentIdMap code paths untested | High | Open | summarizePartOutcomes and buildDeterministicSummary accept studentIdMap but no test passes it |
 | SRS CardStore: studentId type mismatch (contract vs schema) | High | Open | SrsCardState uses string, Convex uses Id<"profiles">; type assertions at boundary |
-| mapDbCardToContract returns problemFamilyId as cardId | Critical | Resolved | Fixed 2026-04-16: use card._id; updated test mock to validate distinct values |
-| reviewId silently discarded in saveReview | Critical | Resolved | Fixed 2026-04-16: added reviewId to srs_review_log schema; stored and returned by queries |
-| Stale active sessions create zombie sessions | High | Resolved | Fixed 2026-04-16: close stale session with completedAt before creating new one |
-| isSameDay uses local timezone instead of UTC | High | Resolved | Fixed 2026-04-16: use getUTCFullYear/getUTCMonth/getUTCDate |
 | Seed tests are tautological; ActivityRenderer loses section content props | Medium | Open | Zero regression protection; template/blanks lost; factory extraction needed |
 | Content hash JSON.stringify treats undefined same as absent | Medium | Open | Potential hash collisions |
 | N+1 phase reads in listReviewQueue (dev.ts) | Medium | Open | Sequential ctx.db.get per phase |

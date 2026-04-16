@@ -33,6 +33,7 @@
 - (2026-04-16, srs-rating-adapter) Two-step rating: compute base rating from correctness first, then apply timing as conservative modifier
 - (2026-04-16, srs-product-contract) Single canonical contract module (`lib/srs/contract.ts`) with re-exports; downstream imports from one surface
 - (2026-04-16, daily-practice-queue) Keep pure `buildDailyQueue` separate from Convex data fetching for testability
+- (2026-04-16, dashboard) Reuse queue resolution for dashboard due count to guarantee consistency with practice page; compute streaks with UTC day-start boundaries
 
 ## Planning Improvements
 
