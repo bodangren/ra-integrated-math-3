@@ -86,7 +86,7 @@
 
 ## Phase 5: Dashboard Integration
 
-- [ ] Task: Create `components/student/DailyPracticeCard.tsx` dashboard widget
+- [~] Task: Create `components/student/DailyPracticeCard.tsx` dashboard widget
   - [ ] Show items due today count
   - [ ] Show current streak
   - [ ] Show last practiced date

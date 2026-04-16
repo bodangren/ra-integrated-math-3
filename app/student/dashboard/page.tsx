@@ -6,6 +6,7 @@ import {
   type StudentDashboardUnit,
 } from '@/lib/student/dashboard';
 import { ModuleCompleteScreen } from '@/components/lesson/ModuleCompleteScreen';
+import { DailyPracticeCard } from '@/components/student/DailyPracticeCard';
 
 interface PageProps {
   searchParams: Promise<{ complete?: string }>;
@@ -23,6 +24,11 @@ export default async function StudentDashboardPage({ searchParams }: PageProps) 
   );
 
   const vm = buildStudentDashboardViewModel(rawUnits ?? []);
+
+  const practiceStats = await fetchInternalQuery(
+    internal.srs.dashboard.getPracticeStats,
+    { studentId: claims.sub },
+  );
 
   if (showModuleComplete && vm.summary.completedLessons === vm.summary.totalLessons) {
     return (
@@ -60,6 +66,13 @@ export default async function StudentDashboardPage({ searchParams }: PageProps) 
           </div>
         ))}
       </div>
+
+      {/* Daily Practice */}
+      <DailyPracticeCard
+        dueCount={practiceStats?.dueCount ?? 0}
+        streak={practiceStats?.streak ?? 0}
+        lastPracticedAt={practiceStats?.lastPracticedAt ?? null}
+      />
 
       {/* Continue banner */}
       {vm.continueUrl && (
