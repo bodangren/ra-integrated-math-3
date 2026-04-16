@@ -48,3 +48,4 @@
 - (2026-04-16, code-review) Convex validators strip undeclared fields; mock tests bypass validation. Prefer server-side DB lookups.
 - (2026-04-16, test-design) Test mocks that conflate internal IDs with domain IDs mask real bugs; always use distinct values for `_id` vs `problemFamilyId`
 - (2026-04-17, code-review) Review N+1 patterns at design time: if a loop body makes a DB query, note it in the plan as a known trade-off
+- (2026-04-17, test-design) Convex query mocks must filter by the actual query args (studentId, objectiveId) — returning unfiltered data causes incorrect proficiency calculations in multi-student scenarios

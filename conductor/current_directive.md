@@ -9,7 +9,7 @@
 - **Lint**: Passing.
 - **TypeScript**: No new TS errors.
 - **Module 1-9 Roadmap**: All modules seeded (M1-M9 complete). CCSS standards and lesson_standards links for M1-M5 seeded.
-- **SRS Wave 0-4**: Waves 0-3 complete. Wave 4: Track 9 complete, Track 10 Phases 1-3 complete. Phase 4 next.
+- **SRS Wave 0-4**: Waves 0-3 complete. Wave 4: Track 9 complete, Track 10 Phases 1-4 complete. Phase 5 next.
 
 ## Code Review: Tracks 8, 9, 10 (2026-04-17)
 
@@ -35,7 +35,7 @@
 
 ## Current In-Progress Track
 
-- **Track 10: Objective Proficiency Measurement** — Phase 3 complete. Phase 4 (Student and Teacher Views) next.
+- **Track 10: Objective Proficiency Measurement** — Phase 4 complete. Phase 5 (Verification and Handoff) next.
 
 ## High-Priority Next Steps
 

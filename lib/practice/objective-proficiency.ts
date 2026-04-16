@@ -94,6 +94,9 @@ export type TeacherProficiencyView = {
   missingBaselines: string[];
   lowConfidenceReasons: string[];
   guidance: string;
+  classProficientCount: number;
+  classAvgRetention: number;
+  classStrugglingStudents: string[];
 };
 
 export const PRIORITY_DEFAULTS: Record<
@@ -292,7 +295,10 @@ export function buildStudentProficiencyView(result: ObjectiveProficiencyResult):
 export function buildTeacherProficiencyView(
   result: ObjectiveProficiencyResult,
   standardCode: string,
-  standardDescription: string
+  standardDescription: string,
+  classProficientCount?: number,
+  classAvgRetention?: number,
+  classStrugglingStudents?: string[]
 ): TeacherProficiencyView {
   const studentView = buildStudentProficiencyView(result);
 
@@ -326,5 +332,8 @@ export function buildTeacherProficiencyView(
     missingBaselines,
     lowConfidenceReasons,
     guidance: deriveTeacherGuidance(result),
+    classProficientCount: classProficientCount ?? 0,
+    classAvgRetention: classAvgRetention ?? 0,
+    classStrugglingStudents: classStrugglingStudents ?? [],
   };
 }
