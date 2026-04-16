@@ -44,3 +44,4 @@
 - (2026-04-16, component-kind-fix) When write-path and read-path both compute a derived value (e.g., componentKind from phaseType), derive on both sides — client args on write-path can be stale and cause permanent hash mismatches
 - (2026-04-16, code-review) When adding proficiency labels to union types, ensure every label has a production code path; dead union members are misleading
 - (2026-04-16, timing-baselines) Double filtering (Convex layer + pure layer) is harmless but signals unclear responsibility boundaries; prefer single filtering point with documented contract
+- (2026-04-16, ccss-standards-seeding) When adding lesson_standards links, all referenced standards must exist in seed-standards.ts first — seed order matters; seedStandards before lessonStandards in seed.ts

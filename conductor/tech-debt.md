@@ -12,8 +12,8 @@
 | Approval status race condition (no version/lock) | High | Open | Convex serializes mutations (no lost update) but no "approve exact version" check |
 | N+1 query: phase sections in progress/preview/monitoring queries | High | Open | One DB query per phase inside loop |
 | No Convex-layer authorization | Med-High | Open | Auth boundary is entirely in Next.js server layer |
-| Missing CCSS standards for M2/M3 | High | Open | ~30 of ~50+ standards defined; M8, M9 resolved |
-| No lesson_standards links for modules 1-5 | High | Open | Only modules 6-9 have lesson-standard links |
+| Missing CCSS standards for M2/M3 | High | Resolved | Fixed 2026-04-16; added 10 standards for M1-M5 (HSF-IF.C.7a/c, HSA-APR.C.4, etc.) |
+| No lesson_standards links for modules 1-5 | High | Resolved | Fixed 2026-04-16; added lesson_standards for M1-M5 via seedModule[1-5]LessonStandards mutations |
 | No unit tests for error-analysis module (8 exported functions) | High | Open | Non-trivial aggregation logic untested |
 | error-analysis parseAIResponse uses fragile line-based parsing | High | Open | Breaks on markdown, multi-paragraph AI responses |
 | ActivityReviewHarness handleError never reaches ActivityPreview | High | Open | Render errors crash tree silently; canApprove not blocked |

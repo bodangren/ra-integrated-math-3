@@ -209,6 +209,101 @@ export const seedAll = internalAction({
     }
 
     try {
+      const lessonStandardResults1 = await ctx.runMutation(seedInternal.seedModule1LessonStandards, {});
+      for (const result of lessonStandardResults1) {
+        results.lessonStandards.push({
+          lessonSlug: result.lessonSlug,
+          standardCode: result.standardCode,
+          success: result.success,
+          error: result.error,
+        });
+      }
+    } catch (error) {
+      results.lessonStandards.push({
+        lessonSlug: "module-1",
+        standardCode: "ALL",
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown error",
+      });
+    }
+
+    try {
+      const lessonStandardResults2 = await ctx.runMutation(seedInternal.seedModule2LessonStandards, {});
+      for (const result of lessonStandardResults2) {
+        results.lessonStandards.push({
+          lessonSlug: result.lessonSlug,
+          standardCode: result.standardCode,
+          success: result.success,
+          error: result.error,
+        });
+      }
+    } catch (error) {
+      results.lessonStandards.push({
+        lessonSlug: "module-2",
+        standardCode: "ALL",
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown error",
+      });
+    }
+
+    try {
+      const lessonStandardResults3 = await ctx.runMutation(seedInternal.seedModule3LessonStandards, {});
+      for (const result of lessonStandardResults3) {
+        results.lessonStandards.push({
+          lessonSlug: result.lessonSlug,
+          standardCode: result.standardCode,
+          success: result.success,
+          error: result.error,
+        });
+      }
+    } catch (error) {
+      results.lessonStandards.push({
+        lessonSlug: "module-3",
+        standardCode: "ALL",
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown error",
+      });
+    }
+
+    try {
+      const lessonStandardResults4 = await ctx.runMutation(seedInternal.seedModule4LessonStandards, {});
+      for (const result of lessonStandardResults4) {
+        results.lessonStandards.push({
+          lessonSlug: result.lessonSlug,
+          standardCode: result.standardCode,
+          success: result.success,
+          error: result.error,
+        });
+      }
+    } catch (error) {
+      results.lessonStandards.push({
+        lessonSlug: "module-4",
+        standardCode: "ALL",
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown error",
+      });
+    }
+
+    try {
+      const lessonStandardResults5 = await ctx.runMutation(seedInternal.seedModule5LessonStandards, {});
+      for (const result of lessonStandardResults5) {
+        results.lessonStandards.push({
+          lessonSlug: result.lessonSlug,
+          standardCode: result.standardCode,
+          success: result.success,
+          error: result.error,
+        });
+      }
+    } catch (error) {
+      results.lessonStandards.push({
+        lessonSlug: "module-5",
+        standardCode: "ALL",
+        success: false,
+        error: error instanceof Error ? error.message : "Unknown error",
+      });
+    }
+
+    try {
       const lessonStandardResults = await ctx.runMutation(seedInternal.seedModule6LessonStandards, {});
       for (const result of lessonStandardResults) {
         results.lessonStandards.push({
