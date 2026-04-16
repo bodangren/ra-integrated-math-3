@@ -8,12 +8,9 @@
 
 | Item | Sev | Status | Notes |
 |------|-----|--------|-------|
-| submitReviewHandler hashes with client-sent componentKind | High | Resolved | Fixed 2026-04-16; write-path now derives componentKind from placement.phaseType using resolveComponentKind |
 | Approval status race condition (no version/lock) | High | Open | Convex serializes mutations (no lost update) but no "approve exact version" check |
 | N+1 query: phase sections in progress/preview/monitoring queries | High | Open | One DB query per phase inside loop |
 | No Convex-layer authorization | Med-High | Open | Auth boundary is entirely in Next.js server layer |
-| Missing CCSS standards for M2/M3 | High | Resolved | Fixed 2026-04-16; added 10 standards for M1-M5 (HSF-IF.C.7a/c, HSA-APR.C.4, etc.) |
-| No lesson_standards links for modules 1-5 | High | Resolved | Fixed 2026-04-16; added lesson_standards for M1-M5 via seedModule[1-5]LessonStandards mutations |
 | No unit tests for error-analysis module (8 exported functions) | High | Open | Non-trivial aggregation logic untested |
 | error-analysis parseAIResponse uses fragile line-based parsing | High | Open | Breaks on markdown, multi-paragraph AI responses |
 | ActivityReviewHarness handleError never reaches ActivityPreview | High | Open | Render errors crash tree silently; canApprove not blocked |
@@ -45,9 +42,4 @@
 | getStaleBaselines doesn't use by_last_computed index | Medium | Open | take(1000) + in-memory filter; won't scale past 1000 families |
 | mastered proficiency label is dead code | Medium | Open | Union type includes mastered but no code path produces it |
 | Fragile type assertion on submissionData.timing | Medium | Open | collectEligibleTimings casts to local TimingSummary; no compile-time protection |
-| Duplicate LABEL/FLUENCY_CLASSES in badge + diagnostic card | Low | Open | Should be shared constants |
-| problem_families/practice_items/objective_policies schema added | Low | Resolved | 2026-04-16 Phase 2-3 complete; Phase 4-6 (seed data) pending |
-| ts-fsrs not in package.json | High | Resolved | Installed 2026-04-16 code review; was pending approval since Phase 1 |
-| seedObjectivePolicies not wired into seed.ts | High | Resolved | Fixed 2026-04-16; added to seedAll orchestration after lesson standards |
-| Duplicate ObjectivePriority type in seed data | Medium | Resolved | Fixed 2026-04-16; seed file now imports from lib/practice/objective-proficiency |
 | scheduler.test.ts fully mocks ts-fsrs | Medium | Open | Tests verify wrapper logic but don't exercise real FSRS algorithm |
