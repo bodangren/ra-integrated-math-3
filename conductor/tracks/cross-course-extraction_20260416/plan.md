@@ -64,11 +64,11 @@
   - [x] Sub-task: Run test to confirm examples pass
 - [x] Task: Conductor - Phase Completion Verification 'Integration Guide' (Protocol in workflow.md)
 
-## Phase 4: Adapter Verification
+## Phase 4: Adapter Verification [~]
 
-- [ ] Task: Implement a non-Convex `CardStore` adapter stub (REST API-backed)
-  - [ ] Sub-task: Create `lib/srs/__tests__/rest-adapter-stub.ts` implementing `CardStore` and `ReviewLogStore` interfaces
-  - [ ] Sub-task: Adapter should use in-memory maps to simulate REST round-trips
+- [x] Task: Implement a non-Convex `CardStore` adapter stub (REST API-backed) [commit: pending]
+  - [x] Sub-task: Create `lib/srs/__tests__/rest-adapter-stub.ts` implementing `CardStore` and `ReviewLogStore` interfaces
+  - [x] Sub-task: Adapter should use in-memory maps to simulate REST round-trips
 - [ ] Task: Write tests proving the REST adapter works with the scheduler and review processor
   - [ ] Sub-task: Test scheduler produces a valid session using the REST adapter
   - [ ] Sub-task: Test review processor updates cards through the REST adapter
