@@ -4,16 +4,16 @@
 
 ### Tasks
 
-- [ ] **Task: Create wrangler.jsonc configuration**
-  - [ ] Write wrangler config with project name, vinext entry point, compatibility flags, and environment variables
-  - [ ] Verify `nodejs_compat` flag is set
-  - [ ] Document required Wrangler secrets
+- [x] **Task: Create wrangler.jsonc configuration**
+  - [x] Write wrangler config with project name, vinext entry point, compatibility flags, and environment variables
+  - [x] Verify `nodejs_compat` flag is set
+  - [x] Document required Wrangler secrets
 
-- [ ] **Task: Create Cloudflare worker entry point**
-  - [ ] Write `cloudflare/worker.ts` importing vinext handler with asset fallback pattern
-  - [ ] Test handler caching for warm invocations
+- [x] **Task: Create Cloudflare worker entry point** [checkpoint: 7f3d2a1]
+  - [x] Write `cloudflare/worker.ts` importing vinext handler with asset fallback pattern
+  - [x] Test handler caching for warm invocations
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
 
 ## Phase 2: GitHub Actions Workflow
 
