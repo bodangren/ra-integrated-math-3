@@ -352,6 +352,50 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
       - Phase 3: Summary Assembly and View Builder Tests [COMPLETE]
       - Phase 4: Verification [COMPLETE]
 
+## BM2 Alignment Tracks
+
+Tracks ported from `bus-math-v2` per the BM2 Alignment Report. Ordered by recommended implementation wave.
+
+### Wave A — Quick Wins (start now)
+
+- [ ] **Track: Security & Auth Hardening**
+     *Port fail-closed auth guards, Convex-layer authorization, credential revocation, middleware role checks from bus-math-v2*
+     *Link: [./conductor/tracks/security-auth-hardening_20260416/](./conductor/tracks/security-auth-hardening_20260416/)*
+
+- [ ] **Track: Cloudflare CI/CD Hardening**
+     *Port GitHub Actions pipeline with lint/test/build gates, Cloudflare Workers deployment, concurrency control*
+     *Link: [./conductor/tracks/ci-cd-hardening_20260416/](./conductor/tracks/ci-cd-hardening_20260416/)*
+
+### Wave B — High-Value Classroom Features (after SRS Wave 1)
+
+- [ ] **Track: Practice Test Engine**
+     *Port 6-phase test runner, question banks for M1-M9, score persistence, post-answer feedback, test selection UI*
+     *Link: [./conductor/tracks/practice-test-engine_20260416/](./conductor/tracks/practice-test-engine_20260416/)*
+
+- [ ] **Track: Teacher Gradebook & Competency Heatmaps**
+     *Port course overview grid, unit gradebook, competency heatmaps with CCSS standards, submission detail modal, reporting drill-down IA*
+     *Link: [./conductor/tracks/teacher-gradebook-heatmaps_20260416/](./conductor/tracks/teacher-gradebook-heatmaps_20260416/)*
+
+### Wave C — Student Engagement (after SRS Wave 3)
+
+- [ ] **Track: Student Study Hub — Flashcards & SRS Review**
+     *Port BaseReviewSession, FlashcardPlayer, ReviewSession with FSRS scheduling, IM3 glossary, term mastery tracking*
+     *Link: [./conductor/tracks/study-hub-flashcards_20260416/](./conductor/tracks/study-hub-flashcards_20260416/)*
+
+- [ ] **Track: Student Study Hub — Matching & Speed Round Games**
+     *Port click-based matching game and timed speed round game, reusing IM3 glossary*
+     *Link: [./conductor/tracks/study-hub-games_20260416/](./conductor/tracks/study-hub-games_20260416/)*
+
+### Wave D — Differentiators (after core features stable)
+
+- [ ] **Track: AI Tutoring — Lesson Chatbot**
+     *Port floating one-shot Q&A widget, OpenRouter integration, rate limiting, lesson context assembly*
+     *Link: [./conductor/tracks/ai-chatbot_20260416/](./conductor/tracks/ai-chatbot_20260416/)*
+
+- [ ] **Track: Workbook System & Artifact Pipeline**
+     *Port build-time manifest generation, client/server workbook resolution, download routes with auth, UI integration*
+     *Link: [./conductor/tracks/workbook-system_20260416/](./conductor/tracks/workbook-system_20260416/)*
+
 ## Archived Tracks
 
 - [x] **Track: Scaffold App Pages & Layouts**

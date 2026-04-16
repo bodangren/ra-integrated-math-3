@@ -1,0 +1,11 @@
+{
+  "track_id": "ci-cd-hardening_20260416",
+  "type": "chore",
+  "status": "new",
+  "created_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-16T10:00:00Z",
+  "description": "Port CI/CD pipeline from bus-math-v2: GitHub Actions workflow with lint/test/build gates, Cloudflare Workers deployment, concurrency control",
+  "estimated_tasks": 6,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}

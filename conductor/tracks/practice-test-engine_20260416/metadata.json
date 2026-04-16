@@ -1,0 +1,11 @@
+{
+  "track_id": "practice-test-engine_20260416",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-16T10:00:00Z",
+  "description": "Port practice test engine from bus-math-v2: 6-phase test runner, question banks, score persistence, post-answer feedback, adapted for Modules 1-9",
+  "estimated_tasks": 11,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}

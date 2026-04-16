@@ -1,0 +1,11 @@
+{
+  "track_id": "ai-chatbot_20260416",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-16T10:00:00Z",
+  "description": "Port lesson chatbot from bus-math-v2: floating one-shot Q&A widget, OpenRouter integration, rate limiting, lesson context assembly, graceful degradation when AI unavailable",
+  "estimated_tasks": 9,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}

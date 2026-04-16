@@ -1,0 +1,11 @@
+{
+  "track_id": "study-hub-flashcards_20260416",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-16T10:00:00Z",
+  "updated_at": "2026-04-16T10:00:00Z",
+  "description": "Port flashcard and SRS review study modes from bus-math-v2: BaseReviewSession, FlashcardPlayer, ReviewSession, glossary model, FSRS scheduling, term mastery tracking",
+  "estimated_tasks": 10,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}
