@@ -116,7 +116,7 @@ describe('SpeedRoundGame', () => {
     fireEvent.click(wrongButton!);
 
     await waitFor(() => {
-      expect(screen.getByText(/✗|Wrong!|wrong|x/i)).toBeInTheDocument();
+      expect(screen.getByText('✗')).toBeInTheDocument();
     });
   });
 
