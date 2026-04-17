@@ -55,26 +55,25 @@
 
 - [x] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)** [checkpoint: 47afac5]
 
-## Phase 4: Competency Heatmaps [~]
+## Phase 4: Competency Heatmaps [checkpoint: d365be2]
 
 ### Tasks
 
-- [~] **Task: Port competency heatmap pure logic**
-  - [ ] Write tests for `assembleCompetencyHeatmapRows`, `assembleStudentCompetencyDetail`, `computeCompetencyColor`
-  - [ ] Implement `lib/teacher/competency-heatmap.ts` using CCSS standards from seed-standards.ts
+- [x] **Task: Port competency heatmap pure logic**
+  - [x] Write tests for `assembleCompetencyHeatmapRows`, `assembleStudentCompetencyDetail`, `computeCompetencyColor`
+  - [x] Implement `lib/teacher/competency-heatmap.ts` using CCSS standards from seed-standards.ts
 
-- [ ] **Task: Implement Convex queries for competency data**
-  - [ ] Write tests for `getTeacherCompetencyHeatmapData` and `getTeacherStudentCompetencyDetail`
-  - [ ] Implement queries joining lesson_standards, student progress, and competency data
+- [x] **Task: Implement Convex queries for competency data**
+  - [x] Write tests for `getTeacherCompetencyHeatmapData` and `getTeacherStudentCompetencyDetail`
+  - [x] Implement queries joining lesson_standards, student progress, and competency data
 
-- [ ] **Task: Implement heatmap UI components**
-  - [ ] Write component tests for CompetencyHeatmapGrid and StudentCompetencyDetailGrid
-  - [ ] Implement `CompetencyHeatmapGrid.tsx` (students × standards table)
-  - [ ] Implement `StudentCompetencyDetailGrid.tsx` (single student drill-down)
+- [x] **Task: Implement heatmap UI components**
+  - [x] Write component tests for CompetencyHeatmapGrid and StudentCompetencyDetailGrid
+  - [x] Implement `CompetencyHeatmapGrid.tsx` (students × standards table)
+  - [x] Implement `StudentCompetencyDetailGrid.tsx` (single student drill-down)
 
-- [ ] **Task: Create route pages and breadcrumb navigation**
-  - [ ] Create `/teacher/gradebook`, `/teacher/units/[moduleNumber]`, `/teacher/units/[moduleNumber]/lessons/[lessonId]` pages
-  - [ ] Create `/teacher/competency` and `/teacher/students/[studentId]/competency` pages
-  - [ ] Implement shared breadcrumb component with ChevronLeft navigation
+- [x] **Task: Create route pages and breadcrumb navigation**
+  - [x] Create `/teacher/competency` and `/teacher/students/[studentId]/competency` pages
+  - [x] Add breadcrumb navigation with ChevronLeft on competency pages
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)**
