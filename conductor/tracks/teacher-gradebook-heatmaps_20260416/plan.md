@@ -53,7 +53,7 @@
   - [x] Write component tests for modal open/close, evidence display, mode filter tabs
   - [x] Implement `SubmissionDetailModal.tsx` with phase-by-phase evidence cards, practice evidence rendering, misconception tags
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)** [checkpoint: 47afac5]
 
 ## Phase 4: Competency Heatmaps
 
