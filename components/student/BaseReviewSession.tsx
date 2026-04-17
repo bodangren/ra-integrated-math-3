@@ -29,7 +29,6 @@ const RATING_DELTAS = {
 type Rating = keyof typeof RATING_DELTAS;
 
 export function BaseReviewSession({
-  activityType: _activityType,
   terms,
   renderHeader,
   noTermsTitle,
@@ -50,25 +49,27 @@ export function BaseReviewSession({
   const handleRate = useCallback(
     (rating: Rating) => {
       const { isCorrect } = RATING_DELTAS[rating];
-      setItemsSeen((s) => s + 1);
-      if (isCorrect) {
-        setItemsCorrect((c) => c + 1);
-      } else {
-        setItemsIncorrect((i) => i + 1);
-      }
+
+      const newSeen = itemsSeen + 1;
+      const newCorrect = itemsCorrect + (isCorrect ? 1 : 0);
+      const newIncorrect = itemsIncorrect + (isCorrect ? 0 : 1);
+
+      setItemsSeen(newSeen);
+      setItemsCorrect(newCorrect);
+      setItemsIncorrect(newIncorrect);
 
       const nextIndex = currentIndex + 1;
       if (nextIndex >= terms.length) {
         const durationSeconds = Math.round((Date.now() - startTime) / 1000);
         onComplete({
-          itemsSeen: itemsSeen + 1,
-          itemsCorrect: itemsCorrect + (isCorrect ? 1 : 0),
-          itemsIncorrect: itemsIncorrect + (isCorrect ? 0 : 1),
+          itemsSeen: newSeen,
+          itemsCorrect: newCorrect,
+          itemsIncorrect: newIncorrect,
           durationSeconds,
         });
         setState('complete');
       } else {
-        setCurrentIndex(nextIndex);
+        setCurrentIndex((prev) => prev + 1);
         setState('prompt');
       }
     },

@@ -110,6 +110,7 @@ export function MatchingGame({ terms, onComplete }: MatchingGameProps) {
         setWrongIds(new Set([selectedCard.id, card.id]));
         setWrongAttempts((prev) => prev + 1);
         setSelectedId(null);
+        if (wrongTimerRef.current) clearTimeout(wrongTimerRef.current);
         wrongTimerRef.current = setTimeout(() => {
           setWrongIds(new Set());
         }, 800);

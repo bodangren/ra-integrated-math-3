@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { requireTeacherSessionClaims } from '@/lib/auth/server';
 import { fetchInternalQuery, internal } from '@/lib/convex/server';
+import type { Id } from '@/convex/_generated/dataModel';
 
 interface StandardCoverage {
   standardId: string;
@@ -32,11 +33,11 @@ interface StandardsCoverageResult {
 }
 
 export default async function TeacherUnitsPage() {
-  await requireTeacherSessionClaims('/auth/login');
+  const claims = await requireTeacherSessionClaims('/auth/login');
 
   const coverage: StandardsCoverageResult = await fetchInternalQuery(
     internal.teacher.getStandardsCoverage,
-    { unitNumber: 1 },
+    { unitNumber: 1, userId: claims.sub as Id<'profiles'> },
   );
 
   return (

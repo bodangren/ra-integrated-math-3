@@ -17,6 +17,12 @@
 | Approval status race condition (no version/lock) | High | Open | No "approve exact version" check |
 | N+1 query: phase sections in progress/preview/monitoring queries | High | Open | One DB query per phase inside loop |
 | No Convex-layer authorization | Med-High | Resolved | Added in Security & Auth Hardening track: convex/auth.ts helpers, org scoping |
+| getTeacherLessonPreview: no auth guard on lesson content | Critical | Resolved | Fixed: added userId arg + getAuthorizedTeacher check (2026-04-17) |
+| getStandardsCoverage: no auth guard on standards data | Critical | Resolved | Fixed: added userId arg + getAuthorizedTeacher check (2026-04-17) |
+| FlashcardsPage: "All Modules" only loads Module 1 terms | Critical | Resolved | Fixed: restructured to RSC+client, passes GLOSSARY (2026-04-17) |
+| Flashcard session results never persisted | Critical | Resolved | Fixed: added fetchInternalMutation call matching pattern (2026-04-17) |
+| BaseReviewSession: stale closure in onComplete callback | High | Resolved | Fixed: compute final counts as local vars + functional updater (2026-04-17) |
+| MatchingGame: wrong-answer timer not cleared before reuse | Medium | Resolved | Fixed: clearTimeout before setTimeout (2026-04-17) |
 | error-analysis parseAIResponse uses fragile line-based parsing | High | Open | Breaks on markdown, multi-paragraph AI responses |
 | ActivityReviewHarness handleError never reaches ActivityPreview | High | Open | Render errors crash tree silently; canApprove not blocked |
 | SRS CardStore: studentId type mismatch (contract vs schema) | High | Open | SrsCardState uses string, Convex uses Id<"profiles"> |
@@ -24,8 +30,6 @@
 | problem_families: by_objectiveId index uses unsafe string[] cast | High | Open | Convex array-field index semantics undocumented |
 | SRS review_log: misconceptionTags not stored in evidence | High | Open | getMisconceptionSummary returns empty without this |
 | FSRS stability used as avgRetention — semantic mismatch | Medium | Open | Stability = days until 90% retrievability, not percentage |
-| timing.ts: addEvent doesn't guard after pagehide | Medium | Open | Events after pagehide corrupt wallClockMs |
-| timing.ts: longestIdleMs underreported for blur/hidden events | Medium | Open | Uses idleDelta instead of full gap |
 | mapGradeToSrsRating/mapCardState silently map unknown values | Medium | Open | Should exhaust switch or throw instead of silent default |
 | Silent catch blocks in convex/student.ts, teacher.ts | Medium | Open | Swallows exceptions; Convex outages produce raw 500 |
 | RSC entry chunk 750 KB (pre-existing) | Medium | Open | Code-splitting needed to get under 500 KB |
@@ -34,18 +38,13 @@
 | SRS: completeDailySessionHandler loads all review logs | Medium | Open | .collect() fetches entire history |
 | SRS queue: hardcoded courseKey + duplicate config constant | Medium | Open | Extract shared constant; parameterize courseKey |
 | PracticeSessionProvider: submission failure silently swallowed | Medium | Open | No user-visible error, no retry |
-| PracticeCardRenderer: double timing instrumentation | Medium | Open | One hook's timing discarded |
-| error-analysis: isCorrect:undefined counted as incorrect | Medium | Open | Undocumented behavior |
-| error-analysis: buildTeacherErrorView uses activityId as studentId | Medium | Open | Inconsistent with other functions |
 | Equivalence validator 6/50 tests failing | Low | Open | Pattern-matching limits on fraction/radical parsing |
-| Content hash JSON.stringify treats undefined same as absent | Low | Open | Potential hash collisions |
-| mastered proficiency label is dead code | Low | Open | Union type includes but no code path produces it |
-| Dev review queue POST: no input length limits on comment/componentId | High | Open | comment is z.string().optional() with no .max(); componentId z.string().min(1) with no .max() |
 | internal.student.skipPhase accessed via `as any` cast | Medium | Open | Suppresses type safety; may indicate stale generated API types |
 | Cloudflare worker deploys to production on every push | Medium | Open | No staging step, no canary, no approval gate |
-| teacher.ts: `as never` cast on userId index query | Medium | Open | Masks potential generated schema type mismatch |
 | study.ts: 4 public queries had no auth (now internalQuery) | Critical | Resolved | Converted query→internalQuery; no client code called api.study.* directly |
 | PracticeTestEngine closing: missing Back to Modules button | Low | Open | Spec defines backToModulesButton but component doesn't render it; parent has back nav |
 | StepByStepper-guided test: flaky hint tracking | Low | Open | Passes in isolation but fails intermittently in full suite; likely timing/timer issue |
-| PracticeTestEngine: lessonsTested includes all selected, not just tested | Low | Open | Sends all selectedLessonIds even if some had 0 questions drawn |
-| New test files (study.test.ts, gradebook-queries.test.ts): 25 `any` lint errors | Medium | Open | @typescript-eslint/no-explicit-any violations in test mocks |
+| New test files (study.test.ts, gradebook-queries.test.ts, timing-baseline.test.ts): 35 `any` lint errors | Medium | Open | @typescript-eslint/no-explicit-any violations in test mocks |
+| N+1 queries in getTeacherDashboardData and getTeacherSrsDashboardData | High | Open | 30 sequential DB round-trips per student in loops; should batch with single query |
+| Unbounded .collect() on lesson_versions, competency_standards, lesson_standards in teacher.ts | High | Open | Multiple handlers fetch entire tables; will grow expensive over time |
+| SubmissionDetailModal: array index used as React key for evidence list | Low | Open | Should use stable ID (e.g., evidence.activityId) |

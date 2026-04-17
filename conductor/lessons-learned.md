@@ -15,12 +15,12 @@
 ## Recurring Gotchas
 
 - (2026-04-16, code-review) When comparing correctness, use `=== true` not `!== false` — `undefined` values must not be treated as correct
-- (2026-04-16, code-review) `setTimeout` in React hooks must store timer ID in ref and clear in `useEffect` cleanup to prevent stale callbacks on unmount
+- (2026-04-17, code-review) Timer refs reused for wrong-answer flash: clear previous timer with `clearTimeout(wrongTimerRef.current)` before setting new one; otherwise first timer fires and clears state prematurely
+- (2026-04-17, code-review) `internalQuery` handlers that accept resource IDs must also require `userId` and call `getAuthorizedTeacher`; missing auth = any-user-reads-any-data (fixed: getTeacherLessonPreview, getStandardsCoverage)
 - (2026-04-15, code-review) React components calling hooks must follow `use*` naming convention; dual state bugs arise when parent and child both track the same state
 - (2026-04-15, code-review) Content hashing must use the same componentKind derivation on both write and read paths
 - (2026-04-16, practice-timing) When mixing `performance.now()` and `Date.now()`, all internal timing must use one base; serialization is the only safe place to convert
-- (2026-04-17, code-review) `setCurrentCardIndex(currentCardIndex + 1)` captures stale closure; always use functional updater `setCurrentCardIndex((prev) => prev + 1)` in callbacks
-- (2026-04-17, study-hub) BaseReviewSession: use functional updater `setItemsSeen(s => s + 1)` in rate callback to avoid stale closure when accumulating counts
+- (2026-04-17, code-review) `setCurrentIndex(currentIndex + 1)` captures stale closure; always use functional updater `setCurrentIndex((prev) => prev + 1)` in callbacks. Same for `onComplete` — compute final values as local variables before calling, not from closure
 - (2026-04-17, code-review) Union-type casts like `x as ObjectivePriority` must be runtime-validated against a set of valid values; DB corruption silently propagates otherwise
 - (2026-04-17, code-review) RSC page null checks: both `fetchInternalQuery` and `fetchInternalMutation` can return null; always guard the destructuring
 - (2026-04-17, code-review) Multi-card queries: a student can have multiple SRS cards per objective (different problemFamilies); always use `.collect()` not `.first()` when resetting or checking cards
@@ -39,6 +39,7 @@
 - (2026-04-16, srs-product-contract) Single canonical contract module (`lib/srs/contract.ts`) with re-exports; downstream imports from one surface
 - (2026-04-16, dashboard) Reuse queue resolution for dashboard due count to guarantee consistency with practice page
 - (2026-04-17, study-hub) BaseReviewSession: shared state machine component with render prop header pattern — enables FlashcardPlayer and ReviewSession wrappers without code duplication
+- (2026-04-17, study-hub) Session persistence pattern: RSC parent gets auth claims + passes `studentId` + `GLOSSARY` to client component; client component calls `fetchInternalMutation(internal.study.recordStudySession)` on complete
 
 ## Planning Improvements
 

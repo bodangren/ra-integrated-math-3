@@ -1164,8 +1164,13 @@ export const getLessonErrorSummary = internalQuery({
 });
 
 export const getTeacherLessonPreview = internalQuery({
-  args: { lessonIdentifier: v.string() },
+  args: { lessonIdentifier: v.string(), userId: v.id("profiles") },
   handler: async (ctx, args) => {
+    const teacher = await getAuthorizedTeacher(ctx, args.userId);
+    if (!teacher) {
+      return null;
+    }
+
     let lesson = null;
     try {
       lesson = await ctx.db.get(args.lessonIdentifier as Id<"lessons">);
@@ -1245,8 +1250,13 @@ const DEFAULT_PHASE_LABELS: Record<string, string> = {
 };
 
 export const getStandardsCoverage = internalQuery({
-  args: { unitNumber: v.optional(v.number()) },
+  args: { unitNumber: v.optional(v.number()), userId: v.id("profiles") },
   handler: async (ctx, args) => {
+    const teacher = await getAuthorizedTeacher(ctx, args.userId);
+    if (!teacher) {
+      return null;
+    }
+
     const allStandards = await ctx.db.query("competency_standards").collect();
     const activeStandards = allStandards.filter(s => s.isActive);
 

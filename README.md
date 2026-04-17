@@ -14,6 +14,9 @@ This project doubles as a **course template**: Next.js App Router + Convex backe
 - **Teacher Dashboard**: Organization-scoped student roster with progress and analytics
 - **Gradebook**: Unit-level grid with per-student, per-lesson progress and competency tracking
 - **Competency Standards**: Activities linked to math standards with mastery tracking
+- **Study Hub**: Flashcards, SRS review sessions, matching game, and speed round game using a 708-term IM3 glossary
+- **Daily Practice SRS**: FSRS-powered spaced repetition with due card queue, timing baselines, and objective proficiency measurement
+- **Practice Tests**: Module-level practice tests with question banks, score persistence, and post-answer feedback
 - **Custom Auth**: JWT-based username/password authentication with role-based access (student/teacher/admin)
 - **Multi-Tenant**: Organization-scoped data isolation
 
@@ -113,7 +116,7 @@ integrated-math-3/
 ├── components/       # React components
 │   ├── auth/         # AuthProvider (React context)
 │   ├── ui/           # shadcn/ui components
-│   ├── student/      # Student-facing components (PracticeTestEngine, etc.)
+│   ├── student/      # Student-facing components (PracticeTestEngine, StudyHub, MatchingGame, etc.)
 │   ├── teacher/      # Teacher-facing components
 │   ├── lesson/       # Lesson rendering (PhaseRenderer, LessonStepper, etc.)
 │   ├── activities/   # Activity components (graphing, algebraic, quiz, blanks, roc, discriminant)
@@ -128,6 +131,7 @@ integrated-math-3/
 │   ├── practice-tests/ # Practice test types, question banks, module configs
 │   ├── srs/          # SRS contract, FSRS scheduler, queue, adapters
 │   ├── teacher/      # Gradebook and course overview pure logic
+│   ├── study/        # Glossary, SRS utilities, types
 │   └── curriculum/   # Phase types, lesson helpers
 ├── hooks/            # Custom React hooks
 ├── types/            # Shared TypeScript types

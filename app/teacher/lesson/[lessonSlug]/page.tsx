@@ -4,6 +4,7 @@ import { fetchInternalQuery, internal } from '@/lib/convex/server';
 import { LessonRenderer, type LessonPhase } from '@/components/lesson/LessonRenderer';
 import { getPhaseDisplayInfo, type PhaseType } from '@/lib/curriculum/phase-types';
 import type { PhaseSection } from '@/components/lesson/PhaseRenderer';
+import type { Id } from '@/convex/_generated/dataModel';
 
 interface PhaseProgressWithSections {
   phaseNumber: number;
@@ -28,11 +29,11 @@ interface PageProps {
 
 export default async function TeacherLessonPreviewPage({ params }: PageProps) {
   const { lessonSlug } = await params;
-  await requireTeacherSessionClaims('/auth/login');
+  const claims = await requireTeacherSessionClaims('/auth/login');
 
   const result: LessonProgressResult | null = await fetchInternalQuery(
     internal.teacher.getTeacherLessonPreview,
-    { lessonIdentifier: lessonSlug },
+    { lessonIdentifier: lessonSlug, userId: claims.sub as Id<'profiles'> },
   );
 
   if (!result) {
