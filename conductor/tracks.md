@@ -491,9 +491,10 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 ### Wave 0 — Readiness
 
-- [ ] **Track: Monorepo Readiness Gate**
-     *Lock migration prerequisites, ownership, rollback protocol, and tooling decision.*
-     *Link: [./conductor/tracks/monorepo-readiness_20260417/](./conductor/tracks/monorepo-readiness_20260417/)*
+- [~] **Track: Monorepo Readiness Gate**
+      *Lock migration prerequisites, ownership, rollback protocol, and tooling decision.*
+      *Link: [./conductor/tracks/monorepo-readiness_20260417/](./conductor/tracks/monorepo-readiness_20260417/)*
+      - Phase 1: Audit and Triage [COMPLETE]
 
 ### Wave 1 — Host Monorepo Shell
 
