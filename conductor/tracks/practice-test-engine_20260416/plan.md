@@ -41,7 +41,7 @@
 
 - [x] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
 
-## Phase 3: Test Engine UI
+## Phase 3: Test Engine UI [checkpoint: fd61fbf]
 
 ### Tasks
 
