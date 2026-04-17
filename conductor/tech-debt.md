@@ -8,8 +8,8 @@
 
 | Item | Sev | Status | Notes |
 |------|-----|--------|-------|
-| SRS queue: unbounded .collect() on srs_cards via by_student | Critical | Open | Fetches ALL cards; should use by_student_and_due or .take(N) |
-| SRS queue: N+1 per-card resolution (practice_items + activities) | Critical | Open | 2 sequential DB calls per queue item; batch into 2 bulk reads |
+| SRS queue: unbounded .collect() on srs_cards via by_student | Critical | Resolved | Fixed: added .take(100) bound in convex/queue/queue.ts (2026-04-17) |
+| SRS queue: N+1 per-card resolution (practice_items + activities) | Critical | Resolved | Fixed: replaced sequential resolveQueueItem with batched Promise.all lookups (2026-04-17) |
 | Misconception summary query: N+1 card resolution depth | Critical | Open | 30 students x 100 reviews = 3k+ sequential reads; will timeout |
 | Teacher SRS dashboard: 3 panels return always-empty arrays | High | Open | Individual queries exist but combined dashboard stubs them out |
 | SRS sessions: by_student_and_status index relies on undefined sorting | High | Open | No explicit filter for completedAt=undefined; fragile implicit ordering |
