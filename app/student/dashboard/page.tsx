@@ -74,6 +74,29 @@ export default async function StudentDashboardPage({ searchParams }: PageProps) 
         lastPracticedAt={practiceStats?.lastPracticedAt ?? null}
       />
 
+      {/* Study Hub */}
+      <Link
+        href="/student/study"
+        className="rounded-xl border border-border bg-card p-6 hover:border-primary/40 transition-colors group block"
+      >
+        <div className="flex items-start justify-between">
+          <div className="space-y-1">
+            <h2 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+              Study Hub
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Review flashcards and vocabulary with spaced repetition.
+            </p>
+          </div>
+          <span className="text-2xl">📚</span>
+        </div>
+        <div className="mt-4">
+          <span className="inline-flex items-center gap-2 rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+            Open Study Hub →
+          </span>
+        </div>
+      </Link>
+
       {/* Continue banner */}
       {vm.continueUrl && (
         <div className="rounded-xl border border-primary/30 bg-primary/5 p-6 space-y-3">

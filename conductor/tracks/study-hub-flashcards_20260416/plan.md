@@ -36,24 +36,24 @@
 
 - [x] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)** [checkpoint: 858be16]
 
-## Phase 3: UI Components and Routes
+## Phase 3: UI Components and Routes [COMPLETE]
 
 ### Tasks
 
-- [ ] **Task: Implement BaseReviewSession component**
-  - [ ] Write component tests for state machine: prompt → flip → rate → advance → complete
-  - [ ] Implement `BaseReviewSession.tsx` with configurable header, empty state, and completion screen
-  - [ ] Wire to Convex hooks (useDueTerms, useProcessReview, useRecordSession)
+- [x] **Task: Implement BaseReviewSession component**
+  - [x] Write component tests for state machine: prompt → flip → rate → advance → complete
+  - [x] Implement `BaseReviewSession.tsx` with configurable header, empty state, and completion screen
+  - [x] Wire to Convex hooks (useDueTerms, useProcessReview, useRecordSession)
 
-- [ ] **Task: Implement FlashcardPlayer and ReviewSession wrappers**
-  - [ ] Write smoke tests for each wrapper
-  - [ ] Implement `FlashcardPlayer.tsx` (activityType="flashcards", "Term X of Y" header)
-  - [ ] Implement `ReviewSession.tsx` (activityType="srs_review", due-today header)
+- [x] **Task: Implement FlashcardPlayer and ReviewSession wrappers**
+  - [x] Write smoke tests for each wrapper
+  - [x] Implement `FlashcardPlayer.tsx` (activityType="flashcards", "Term X of Y" header)
+  - [x] Implement `ReviewSession.tsx` (activityType="srs_review", due-today header)
 
-- [ ] **Task: Create study hub routes**
-  - [ ] Create `app/student/study/page.tsx` (hub home with navigation cards)
-  - [ ] Create `app/student/study/flashcards/page.tsx` (FlashcardPlayer, auth guard)
-  - [ ] Create `app/student/study/review/page.tsx` (ReviewSession, auth guard)
-  - [ ] Add study hub link to student dashboard
+- [x] **Task: Create study hub routes**
+  - [x] Create `app/student/study/page.tsx` (hub home with navigation cards)
+  - [x] Create `app/student/study/flashcards/page.tsx` (FlashcardPlayer, auth guard)
+  - [x] Create `app/student/study/review/page.tsx` (ReviewSession, auth guard)
+  - [x] Add study hub link to student dashboard
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)** [checkpoint: 47afac5]
