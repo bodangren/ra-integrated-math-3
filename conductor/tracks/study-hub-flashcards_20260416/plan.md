@@ -20,21 +20,21 @@
 
 - [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)** [checkpoint: c47f8a1]
 
-## Phase 2: Convex Tables and Mutations [~]
+## Phase 2: Convex Tables and Mutations [COMPLETE]
 
 ### Tasks
 
-- [~] **Task: Add Convex tables for term mastery and due reviews**
-  - [ ] Add `term_mastery` table with indexes (by_user, by_user_and_term)
-  - [ ] Add `due_reviews` table with indexes (by_user, by_user_and_term, by_user_and_due)
-  - [ ] Add `study_preferences` table with index (by_user)
-  - [ ] Write schema migration tests
+- [x] **Task: Add Convex tables for term mastery and due reviews**
+  - [x] Add `term_mastery` table with indexes (by_user, by_user_and_term)
+  - [x] Add `due_reviews` table with indexes (by_user, by_user_and_term, by_user_and_due)
+  - [x] Add `study_preferences` table with index (by_user)
+  - [x] Write schema migration tests
 
-- [ ] **Task: Implement Convex study mutations and queries**
-  - [ ] Write tests for `processReview`, `recordSession`, `getDueTerms` mutations/queries
-  - [ ] Implement in `convex/study.ts`: processReview (upsert term_mastery + due_reviews), recordSession, getDueTerms, getTermMasteryByUnit, getRecentSessions
+- [x] **Task: Implement Convex study mutations and queries**
+  - [x] Write tests for `processReview`, `recordSession`, `getDueTerms` mutations/queries
+  - [x] Implement in `convex/study.ts`: processReview (upsert term_mastery + due_reviews), recordSession, getDueTerms, getTermMasteryByUnit, getRecentSessions
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)** [checkpoint: 858be16]
 
 ## Phase 3: UI Components and Routes
 
