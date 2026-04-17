@@ -4,25 +4,25 @@
 
 ### Tasks
 
-- [ ] **Task: Create practice test types**
-  - [ ] Write unit tests for type contracts in `lib/practice-tests/__tests__/types.test.ts`
-  - [ ] Define `PracticeTestQuestion`, `PracticeTestModuleConfig`, `PracticeTestPhaseContent`, `PracticeTestMessaging` in `lib/practice-tests/types.ts`
+- [x] **Task: Create practice test types**
+  - [x] Write unit tests for type contracts in `lib/practice-tests/__tests__/types.test.ts`
+  - [x] Define `PracticeTestQuestion`, `PracticeTestModuleConfig`, `PracticeTestPhaseContent`, `PracticeTestMessaging` in `lib/practice-tests/types.ts`
 
-- [ ] **Task: Create question bank helpers**
-  - [ ] Write unit tests for `filterQuestionsByLessonIds`, `drawRandomQuestions`, `shuffleAnswers` in `lib/practice-tests/__tests__/question-banks.test.ts`
-  - [ ] Implement helper functions in `lib/practice-tests/question-banks.ts`
+- [x] **Task: Create question bank helpers**
+  - [x] Write unit tests for `filterQuestionsByLessonIds`, `drawRandomQuestions`, `shuffleAnswers` in `lib/practice-tests/__tests__/question-banks.test.ts`
+  - [x] Implement helper functions in `lib/practice-tests/question-banks.ts`
 
-- [ ] **Task: Author Module 1 question bank (seed content)**
-  - [ ] Create `lib/practice-tests/modules/module-1.ts` with 3+ questions per lesson (8 lessons)
-  - [ ] Wire into `getModuleConfig(1)` lookup
-  - [ ] Write tests verifying question bank structure
+- [x] **Task: Author Module 1 question bank (seed content)**
+  - [x] Create `lib/practice-tests/modules/module-1.ts` with 3+ questions per lesson (8 lessons)
+  - [x] Wire into `getModuleConfig(1)` lookup
+  - [x] Write tests verifying question bank structure
 
-- [ ] **Task: Author remaining module question banks (M2-M9)**
-  - [ ] Create module files M2-M9 with 3+ questions per lesson
-  - [ ] Wire all into `getModuleConfig` lookup
-  - [ ] Verify all 9 modules return valid configs
+- [x] **Task: Author remaining module question banks (M2-M9)**
+  - [x] Create module files M2-M9 with 3+ questions per lesson
+  - [x] Wire all into `getModuleConfig` lookup
+  - [x] Verify all 9 modules return valid configs
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
 
 ## Phase 2: Convex Schema and Persistence
 

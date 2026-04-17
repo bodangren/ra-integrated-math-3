@@ -420,9 +420,10 @@ Tracks ported from `bus-math-v2` per the BM2 Alignment Report. Ordered by recomm
 
 ### Wave B — High-Value Classroom Features (after SRS Wave 1)
 
-- [ ] **Track: Practice Test Engine**
+- [~] **Track: Practice Test Engine**
      *Port 6-phase test runner, question banks for M1-M9, score persistence, post-answer feedback, test selection UI*
      *Link: [./conductor/tracks/practice-test-engine_20260416/](./conductor/tracks/practice-test-engine_20260416/)*
+     - Phase 1: Data Structures and Question Banks [COMPLETE]
 
 - [ ] **Track: Teacher Gradebook & Competency Heatmaps**
      *Port course overview grid, unit gradebook, competency heatmaps with CCSS standards, submission detail modal, reporting drill-down IA*
