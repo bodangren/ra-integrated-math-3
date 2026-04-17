@@ -4,20 +4,20 @@
 
 ### Tasks
 
-- [ ] **Task: Port gradebook pure logic**
-  - [ ] Write unit tests for `assembleGradebookRows`, `computeCellColor`, `computeLessonStatus`, `buildGradebookCell` in `lib/teacher/__tests__/gradebook.test.ts`
-  - [ ] Implement `lib/teacher/gradebook.ts` adapted for IM3 module/lesson schema (moduleNumber instead of unitNumber)
+- [x] **Task: Port gradebook pure logic**
+  - [x] Write unit tests for `assembleGradebookRows`, `computeCellColor`, `computeLessonStatus`, `buildGradebookCell` in `__tests__/lib/teacher/gradebook.test.ts`
+  - [x] Implement `lib/teacher/gradebook.ts` adapted for IM3 module/lesson schema (moduleNumber instead of unitNumber)
 
-- [ ] **Task: Port course overview pure logic**
-  - [ ] Write unit tests for `assembleCourseOverviewRows` in `lib/teacher/__tests__/course-overview.test.ts`
-  - [ ] Implement `lib/teacher/course-overview.ts` with per-module average mastery aggregation
+- [x] **Task: Port course overview pure logic**
+  - [x] Write unit tests for `assembleCourseOverviewRows` in `__tests__/lib/teacher/course-overview.test.ts`
+  - [x] Implement `lib/teacher/course-overview.ts` with per-module average mastery aggregation
 
-- [ ] **Task: Port color system and accessibility helpers**
-  - [ ] Write tests for `computeCellColor`, `cellBgClass`, `cellColorLabel` covering all 4 color states + edge cases
-  - [ ] Implement shared color computation in `lib/teacher/cell-colors.ts`
-  - [ ] Verify WCAG AA contrast for all color combinations
+- [x] **Task: Port color system and accessibility helpers**
+  - [x] Write tests for `computeCellColor`, `cellBgClass`, `cellColorLabel` covering all 4 color states + edge cases
+  - [x] Color helpers implemented in `lib/teacher/gradebook.ts` (cellBgClass, cellColorLabel)
+  - [x] Verify WCAG AA contrast for all color combinations
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)** [checkpoint: 074cee1]
 
 ## Phase 2: Convex Queries for Reporting
 
