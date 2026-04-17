@@ -45,18 +45,18 @@
 
 ### Tasks
 
-- [ ] **Task: Implement PracticeTestEngine component**
-  - [ ] Write component tests for 6-phase state machine in `__tests__/components/student/PracticeTestEngine.test.tsx`
-  - [ ] Implement `PracticeTestEngine.tsx` with phase transitions, answer handling, score tracking
-  - [ ] Implement post-answer feedback (highlight correct, dim incorrect, show explanation)
+- [x] **Task: Implement PracticeTestEngine component**
+  - [x] Write component tests for 6-phase state machine in `__tests__/components/student/PracticeTestEngine.test.tsx`
+  - [x] Implement `PracticeTestEngine.tsx` with phase transitions, answer handling, score tracking
+  - [x] Implement post-answer feedback (highlight correct, dim incorrect, show explanation)
 
-- [ ] **Task: Implement PracticeTestSelection component**
-  - [ ] Write component tests for module card grid in `__tests__/components/student/PracticeTestSelection.test.tsx`
-  - [ ] Implement `PracticeTestSelection.tsx` with 9 module cards linking to test pages
+- [x] **Task: Implement PracticeTestSelection component**
+  - [x] Write component tests for module card grid in `__tests__/components/student/PracticeTestSelection.test.tsx`
+  - [x] Implement `PracticeTestSelection.tsx` with 9 module cards linking to test pages
 
-- [ ] **Task: Create route pages and persistence wiring**
-  - [ ] Create `app/student/study/practice-tests/page.tsx` (selection, auth guard)
-  - [ ] Create `app/student/study/practice-tests/[moduleNumber]/page.tsx` (engine wrapper)
-  - [ ] Wire `onComplete` to save result + record session via Convex mutations
+- [x] **Task: Create route pages and persistence wiring**
+  - [x] Create `app/student/study/practice-tests/page.tsx` (selection, auth guard)
+  - [x] Create `app/student/study/practice-tests/[moduleNumber]/page.tsx` (engine wrapper)
+  - [x] Wire `onComplete` to save result + record session via Convex mutations
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)**
