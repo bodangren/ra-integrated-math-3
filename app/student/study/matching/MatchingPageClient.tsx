@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { MatchingGame } from '@/components/student/MatchingGame';
 import type { GlossaryTerm } from '@/lib/study/types';
 import { getGlossaryTermsByModule } from '@/lib/study/glossary';
@@ -19,18 +20,34 @@ export function MatchingPageClient({
   moduleNumbers,
   studentId,
 }: MatchingPageClientProps) {
+  const searchParams = useSearchParams();
   const [selectedModule, setSelectedModule] = useState<number | null>(null);
   const [sessionTerms, setSessionTerms] = useState<GlossaryTerm[]>([]);
   const [showGame, setShowGame] = useState(false);
 
-  const handleModuleSelect = (moduleNumber: number | null) => {
-    setSelectedModule(moduleNumber);
-    if (moduleNumber === null) {
-      setSessionTerms(allTerms);
-    } else {
-      setSessionTerms(getGlossaryTermsByModule(moduleNumber));
+  const handleModuleSelect = useCallback(
+    (moduleNumber: number | null) => {
+      setSelectedModule(moduleNumber);
+      if (moduleNumber === null) {
+        setSessionTerms(allTerms);
+      } else {
+        setSessionTerms(getGlossaryTermsByModule(moduleNumber));
+      }
+    },
+    [allTerms]
+  );
+
+  useEffect(() => {
+    const moduleParam = searchParams.get('module');
+    if (moduleParam) {
+      const moduleNumber = parseInt(moduleParam, 10);
+      if (!isNaN(moduleNumber) && moduleNumbers.includes(moduleNumber)) {
+        handleModuleSelect(moduleNumber);
+        return;
+      }
     }
-  };
+    handleModuleSelect(null);
+  }, [searchParams, moduleNumbers, handleModuleSelect]);
 
   const handleStartGame = () => {
     setShowGame(true);
