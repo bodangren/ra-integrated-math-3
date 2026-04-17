@@ -1,0 +1,11 @@
+{
+  "track_id": "srs-queue-performance_20260417",
+  "type": "fix",
+  "status": "in_progress",
+  "created_at": "2026-04-17T00:00:00Z",
+  "updated_at": "2026-04-17T00:00:00Z",
+  "description": "Fix critical N+1 query patterns in SRS daily practice queue: batch policy resolution, bulk practice item and activity lookups, and bound unbounded card collection",
+  "estimated_tasks": 6,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}
