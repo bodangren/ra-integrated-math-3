@@ -37,6 +37,28 @@ export default async function StudyHubPage() {
         </Link>
 
         <Link
+          href="/student/study/matching"
+          className="rounded-xl border border-border bg-card p-6 hover:border-primary/40 transition-colors group"
+        >
+          <div className="flex items-start justify-between">
+            <div className="space-y-2">
+              <h2 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                Matching Game
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Test your knowledge by matching terms with their definitions in a fun click-based memory game.
+              </p>
+            </div>
+            <div className="text-3xl">🧩</div>
+          </div>
+          <div className="mt-4">
+            <span className="inline-flex items-center gap-2 rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+              Start Matching →
+            </span>
+          </div>
+        </Link>
+
+        <Link
           href="/student/study/review"
           className="rounded-xl border border-border bg-card p-6 hover:border-primary/40 transition-colors group"
         >
