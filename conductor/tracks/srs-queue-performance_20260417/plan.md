@@ -15,20 +15,20 @@
   - [x] Add `.take(100)` bound to the `srs_cards` query
   - [x] Preserve exact ordering and null-skipping behavior
 
-- [~] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)** [cd42e66]
 
-## Phase 2: Verification and Handoff
+## Phase 2: Verification and Handoff [checkpoint: PENDING]
 
 ### Tasks
 
-- [ ] **Task: Run full verification suite**
-  - [ ] Run `CI=true npm run test`
-  - [ ] Run `npm run lint`
-  - [ ] Run `npm run build`
-  - [ ] Verify no regressions in queue-related tests
+- [~] **Task: Run full verification suite**
+  - [x] Run `CI=true npm run test`
+  - [x] Run `npm run lint`
+  - [x] Run `npm run build`
+  - [x] Verify no regressions in queue-related tests
 
-- [ ] **Task: Update tech-debt registry**
-  - [ ] Mark resolved SRS queue N+1 items in `tech-debt.md`
-  - [ ] Add any discovered issues
+- [x] **Task: Update tech-debt registry**
+  - [x] Mark resolved SRS queue N+1 items in `tech-debt.md`
+  - [x] Add any discovered issues
 
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
