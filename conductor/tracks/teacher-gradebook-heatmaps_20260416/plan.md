@@ -55,11 +55,11 @@
 
 - [x] **Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)** [checkpoint: 47afac5]
 
-## Phase 4: Competency Heatmaps
+## Phase 4: Competency Heatmaps [~]
 
 ### Tasks
 
-- [ ] **Task: Port competency heatmap pure logic**
+- [~] **Task: Port competency heatmap pure logic**
   - [ ] Write tests for `assembleCompetencyHeatmapRows`, `assembleStudentCompetencyDetail`, `computeCompetencyColor`
   - [ ] Implement `lib/teacher/competency-heatmap.ts` using CCSS standards from seed-standards.ts
 
