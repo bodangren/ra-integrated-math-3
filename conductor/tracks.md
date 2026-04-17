@@ -404,11 +404,11 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
       - Phase 3: Summary Assembly and View Builder Tests [COMPLETE]
       - Phase 4: Verification [COMPLETE]
 
-- [~] **Track: SRS Queue Performance Fixes**
-      *Fix critical N+1 query patterns in SRS daily practice queue: batch policy resolution, bulk practice item and activity lookups, and bound unbounded card collection*
-      *Link: [./conductor/tracks/srs-queue-performance_20260417/](./conductor/tracks/srs-queue-performance_20260417/)*
-      - Phase 1: Batch Queue Resolution and Bound Card Queries [IN PROGRESS]
-      - Phase 2: Verification and Handoff [PENDING]
+- [x] **Track: SRS Queue Performance Fixes** — **COMPLETED**
+       *Fix critical N+1 query patterns in SRS daily practice queue: batch policy resolution, bulk practice item and activity lookups, and bound unbounded card collection*
+       *Link: [./conductor/tracks/srs-queue-performance_20260417/](./conductor/tracks/srs-queue-performance_20260417/)*
+       - Phase 1: Batch Queue Resolution and Bound Card Queries [COMPLETE]
+       - Phase 2: Verification and Handoff [COMPLETE]
 
 ## BM2 Alignment Tracks
 
