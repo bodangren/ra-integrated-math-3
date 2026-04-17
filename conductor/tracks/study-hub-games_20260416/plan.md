@@ -28,7 +28,7 @@
   - [x] Create `app/student/study/speed-round/page.tsx` with auth guard
   - [x] Add speed round card to study hub home page
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)** [ba144e0]
 
 ## Phase 3: Study Hub Polish
 
