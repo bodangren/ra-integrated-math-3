@@ -22,4 +22,4 @@
   - [x] Replace "lookup active by student" with `ctx.db.get(args.sessionId)` + verify `studentId` match and `completedAt === undefined`
   - [x] Update `__tests__/convex/queue/sessions.test.ts` to test exact-session completion and mismatch errors
 
-- [~] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
