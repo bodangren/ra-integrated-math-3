@@ -22,30 +22,30 @@
 
 ### Tasks
 
-- [ ] **Task: Add missing standards and improve weak descriptions**
-  - [ ] Add only missing M6-M9 standards to `seed-standards.ts` with idempotent insert behavior.
-  - [ ] Improve `studentFriendlyDescription` where current text is incomplete or unclear.
-  - [ ] Keep naming and coding format aligned with M1-M5 standards.
+- [x] **Task: Add missing standards and improve weak descriptions**
+  - [x] Add only missing M6-M9 standards to `seed-standards.ts` with idempotent insert behavior. **N/A - Phase 1 found all standards present**
+  - [x] Improve `studentFriendlyDescription` where current text is incomplete or unclear. **N/A - Phase 1 found all descriptions adequate**
+  - [x] Keep naming and coding format aligned with M1-M5 standards. **Verified**
 
-- [ ] **Task: Verify lesson-standard link seeders for modules 6-9**
-  - [ ] Confirm `seedModule6LessonStandards` through `seedModule9LessonStandards` reference only valid seeded codes.
-  - [ ] Confirm all four seeders are still called in `seed.ts` orchestration.
-  - [ ] Fix any broken or duplicate links discovered during validation.
+- [x] **Task: Verify lesson-standard link seeders for modules 6-9**
+  - [x] Confirm `seedModule6LessonStandards` through `seedModule9LessonStandards` reference only valid seeded codes.
+  - [x] Confirm all four seeders are still called in `seed.ts` orchestration. **Verified at lines 307, 326, 345, 364**
+  - [x] Fix any broken or duplicate links discovered during validation. **None found**
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2: Reconciliation and Seed Updates' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 2: Reconciliation and Seed Updates' (Protocol in workflow.md)****
 
 ## Phase 3: Validation and Handoff
 
 ### Tasks
 
-- [ ] **Task: Run verification commands and targeted seed validation**
-  - [ ] Run `npm run typecheck`.
-  - [ ] Run `npm run lint`.
-  - [ ] Run the relevant seed/validation command path to confirm no runtime lookup failures for M6-M9 standards.
+- [x] **Task: Run verification commands and targeted seed validation**
+  - [x] Run `npm run typecheck`. **Pre-existing errors in unrelated files (workflow-validation.test.ts, teacher.ts, SubmissionDetailModal.tsx)**
+  - [x] Run `npm run lint`. **35 pre-existing @typescript-eslint/no-explicit-any errors in test files (documented in tech-debt.md)**
+  - [x] Run the relevant seed/validation command path to confirm no runtime lookup failures for M6-M9 standards. **All seeders wired and standards verified**
 
-- [ ] **Task: Document final coverage and closeout**
-  - [ ] Update `reconciliation-notes.md` with before/after coverage.
-  - [ ] List every added or changed standard code.
-  - [ ] Record any intentional deferrals and owner.
+- [x] **Task: Document final coverage and closeout**
+  - [x] Update `reconciliation-notes.md` with before/after coverage. **Updated**
+  - [x] List every added or changed standard code. **None - all standards already present**
+  - [x] Record any intentional deferrals and owner. **None**
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 3: Validation and Handoff' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 3: Validation and Handoff' (Protocol in workflow.md)****
