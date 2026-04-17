@@ -4,21 +4,21 @@
 
 ### Tasks
 
-- [ ] **Task: Create IM3 glossary data**
-  - [ ] Define `GlossaryTerm` type in `lib/study/types.ts`
-  - [ ] Author `lib/study/glossary.ts` with Algebra/Trig vocabulary covering all 9 modules (target: 60-80 terms)
-  - [ ] Write tests for `getGlossaryTermsByModule`, `getAllGlossaryModules`, `getGlossaryTermBySlug`
+- [x] **Task: Create IM3 glossary data**
+  - [x] Define `GlossaryTerm` type in `lib/study/types.ts`
+  - [x] Author `lib/study/glossary.ts` with Algebra/Trig vocabulary covering all 9 modules (target: 60-80 terms)
+  - [x] Write tests for `getGlossaryTermsByModule`, `getAllGlossaryModules`, `getGlossaryTermBySlug`
 
-- [ ] **Task: Port FSRS scheduling utilities**
-  - [ ] Write unit tests for `scheduleNewTerm`, `processReview`, `getDueTerms`, `proficiencyBand`, `updateMastery` in `lib/study/__tests__/srs.test.ts`
-  - [ ] Implement `lib/study/srs.ts` wrapping `ts-fsrs` library
-  - [ ] Verify FSRS interval calculations produce reasonable spacing
+- [x] **Task: Port FSRS scheduling utilities**
+  - [x] Write unit tests for `scheduleNewTerm`, `processReview`, `getDueTerms`, `proficiencyBand`, `updateMastery` in `lib/study/__tests__/srs.test.ts`
+  - [x] Implement `lib/study/srs.ts` wrapping `ts-fsrs` library
+  - [x] Verify FSRS interval calculations produce reasonable spacing
 
-- [ ] **Task: Port study utilities**
-  - [ ] Write test for `shuffleArray` (Fisher-Yates)
-  - [ ] Implement `lib/study/utils.ts`
+- [x] **Task: Port study utilities**
+  - [x] Write test for `shuffleArray` (Fisher-Yates)
+  - [x] Implement `lib/study/utils.ts`
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)** [checkpoint: c47f8a1]
 
 ## Phase 2: Convex Tables and Mutations
 
