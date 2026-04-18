@@ -15,13 +15,9 @@
 
 ## Recurring Gotchas
 
-- (2026-04-16, code-review) When comparing correctness, use `=== true` not `!== false` — `undefined` values must not be treated as correct
 - (2026-04-17, code-review) Timer refs reused for wrong-answer flash: clear previous timer with `clearTimeout(wrongTimerRef.current)` before setting new one; otherwise first timer fires and clears state prematurely
-- (2026-04-15, code-review) React components calling hooks must follow `use*` naming convention; dual state bugs arise when parent and child both track the same state
 - (2026-04-17, session-completion) Always send explicit `sessionId` in completion API calls; looking up "active session by student" at completion time creates race conditions
-- (2026-04-17, code-review) `setCurrentIndex(currentIndex + 1)` captures stale closure; always use functional updater. Compute final values as local variables before calling `onComplete`
 - (2026-04-17, code-review) Union-type casts like `x as ObjectivePriority` must be runtime-validated; DB corruption silently propagates otherwise
-- (2026-04-17, code-review) RSC page null checks: both `fetchInternalQuery` and `fetchInternalMutation` can return null; always guard destructuring
 - (2026-04-18, code-review) When wiring dashboard aggregators to handler functions, the handlers may throw; use `.catch(() => [])` to prevent partial failures from breaking the whole dashboard
 - (2026-04-18, security) `timingSafeEquals` must never return early on length mismatch — always iterate max length to avoid timing side-channels
 - (2026-04-18, security) `byte % alphabet.length` introduces modulo bias; use rejection sampling when 256 is not divisible by alphabet length
