@@ -557,8 +557,10 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
       - Phase 2: Reconcile and Integrate [COMPLETE]
 
 - [ ] **Track: Extract Graphing Core Package**
-      *Extract graphing math/parser primitives while preserving course-specific configs locally.*
-      *Link: [./conductor/tracks/extract-graphing-core_20260417/](./conductor/tracks/extract-graphing-core_20260417/)*
+       *Extract graphing math/parser primitives while preserving course-specific configs locally.*
+       *Link: [./conductor/tracks/extract-graphing-core_20260417/](./conductor/tracks/extract-graphing-core_20260417/)*
+       - Phase 1: Extract Utility Primitives [COMPLETE]
+       - Phase 2: Reconcile Deltas [COMPLETE]
 
 ### Critical Blocker — App Import Migration
 
