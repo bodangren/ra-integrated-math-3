@@ -42,5 +42,6 @@
 | Cloudflare worker deploys to production on every push | Medium | Open | No staging step, no canary, no approval gate |
 | New test files: 35 `any` lint errors | Medium | Open | @typescript-eslint/no-explicit-any violations in test mocks |
 | Session day-boundary tests: 3 failures in sessions.test.ts | Medium | Open | isSameDay edge cases with active session resume; pre-existing |
+| practice-core package: ESLint config missing, lint script broken | Medium | Open | ESLint not installed in package devDependencies; lint script fails; tests/typecheck pass |
 | SubmissionDetailModal: array index used as React key | Low | Open | Should use stable ID (e.g., evidence.activityId) |
 | StepByStepper-guided test: flaky hint tracking | Low | Open | Passes in isolation but fails intermittently in full suite |

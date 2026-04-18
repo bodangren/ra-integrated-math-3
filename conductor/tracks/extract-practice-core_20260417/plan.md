@@ -22,17 +22,17 @@
 
 ### Tasks
 
-- [ ] **Task: Diff BM2 common practice files**
-  - [ ] Run per-file `diff -u` for shared files.
-  - [ ] Classify each delta as required behavior, hardening, domain-specific, or docs-only.
-  - [ ] Record decisions in `reconciliation-notes.md`.
+- [x] **Task: Diff BM2 common practice files**
+  - [x] Run per-file `diff -u` for shared files.
+  - [x] Classify each delta as required behavior, hardening, domain-specific, or docs-only.
+  - [x] Record decisions in `reconciliation-notes.md`.
 
-- [ ] **Task: Merge required non-domain deltas**
-  - [ ] Apply required behavior fixes to package code.
-  - [ ] Do not import BM2 domain-specific practice engines.
-  - [ ] Update tests to cover merged behavior.
+- [x] **Task: Merge required non-domain deltas**
+  - [x] Apply required behavior fixes to package code.
+  - [x] Do not import BM2 domain-specific practice engines.
+  - [x] Update tests to cover merged behavior. (No BM2 deltas needed - package is superset)
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2: Reconcile BM2 Deltas' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 2: Reconcile BM2 Deltas' (Protocol in workflow.md)**
 
 ## Phase 3: IM3 Import Migration and Verification
 
