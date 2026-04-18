@@ -1,0 +1,11 @@
+{
+  "trackId": "student-study-hub-games_20260419",
+  "title": "Student Study Hub — Matching & Speed Round Games",
+  "status": "in_progress",
+  "created": "2026-04-19",
+  "dependsOn": ["study-hub-flashcards_20260416"],
+  "phaseNumber": 2,
+  "actual_tasks": 11,
+  "deviation_notes": "Fixed dangling track reference (original referenced non-existent study-hub-games_20260416). Migrated shuffleArray imports in MatchingGame.tsx and SpeedRoundGame.tsx from local @/lib/study/utils to @math-platform/study-hub-core package. Both game components and tests already existed.",
+  "link": "./conductor/tracks/student-study-hub-games_20260419/"
+}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import type { GlossaryTerm } from '@/lib/study/types';
-import { shuffleArray } from '@/lib/study/utils';
+import { shuffleArray } from '@math-platform/study-hub-core';
 
 type CardType = 'term' | 'definition';
 
