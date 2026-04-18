@@ -5,8 +5,7 @@ import { GraphingCanvas, Point, FunctionPlot } from './GraphingCanvas';
 import { InteractiveTableOfValues } from './InteractiveTableOfValues';
 import { HintPanel, HintData } from './HintPanel';
 import { InterceptIdentification, InterceptData } from './InterceptIdentification';
-import { parseLinear } from '@/lib/activities/graphing/linear-parser';
-import { parseQuadratic } from '@/lib/activities/graphing/quadratic-parser';
+import { parseLinear, parseQuadratic } from '@math-platform/graphing-core';
 import type { PracticeSubmissionEnvelope } from '@/lib/practice/contract';
 
 export interface GraphingExplorerProps {

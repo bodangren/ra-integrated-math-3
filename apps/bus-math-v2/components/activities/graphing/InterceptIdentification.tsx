@@ -2,8 +2,7 @@
 
 import React, { useState, useCallback, useRef } from 'react';
 import { evaluateFunction, transformDataToCanvas } from '@/lib/activities/graphing/canvas-utils';
-import { parseQuadratic } from '@/lib/activities/graphing/quadratic-parser';
-import { parseLinear } from '@/lib/activities/graphing/linear-parser';
+import { parseQuadratic, parseLinear } from '@math-platform/graphing-core';
 
 export interface InterceptData {
   type: 'intercept' | 'no_intercepts';

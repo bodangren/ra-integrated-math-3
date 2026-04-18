@@ -1,5 +1,4 @@
-import { parseQuadratic } from './quadratic-parser';
-import { parseLinear } from './linear-parser';
+import { parseQuadratic, parseLinear } from '@math-platform/graphing-core';
 
 export interface Point {
   x: number;

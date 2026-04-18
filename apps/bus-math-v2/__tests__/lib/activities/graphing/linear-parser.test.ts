@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { parseLinear } from '@/lib/activities/graphing/linear-parser';
+import { parseLinear } from '@math-platform/graphing-core';
 
 describe('parseLinear', () => {
   describe('standard linear expressions', () => {

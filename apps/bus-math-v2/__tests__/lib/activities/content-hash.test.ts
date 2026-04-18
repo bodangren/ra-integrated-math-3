@@ -3,7 +3,7 @@ import {
   computeComponentContentHash,
   resolveComponentKind,
   type HashableComponent,
-} from '@/lib/activities/content-hash';
+} from '@math-platform/component-approval';
 
 describe('computeComponentContentHash', () => {
   it('returns same hash for identical inputs', async () => {

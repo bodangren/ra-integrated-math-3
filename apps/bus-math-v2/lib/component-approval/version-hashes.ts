@@ -1,4 +1,4 @@
-import { computeComponentContentHash } from '@/lib/activities/content-hash';
+import { computeComponentContentHash } from '@math-platform/component-approval';
 
 export interface ComponentPlacement {
   unitNumber?: number;
