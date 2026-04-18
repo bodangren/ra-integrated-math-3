@@ -26,6 +26,8 @@
 - (2026-04-19, review-10) When shared functions accept completion status, never use a sentinel value like 'not_started' as a backdoor to bypass status logic — create a dedicated function (e.g. computeMasteryColor) instead
 - (2026-04-19, review-11) When sanitizing LLM prompt inputs, apply sanitization to ALL user-controllable fields including arrays (e.g. learningObjectives.map(sanitize)) — missing one field bypasss the entire defense
 - (2026-04-19, auth-design) Authorization checks must verify specific resource ownership, not just general enrollment; use join tables (e.g. class_lessons) to establish ownership chains when resources are curriculum-global
+- (2026-04-19, review-12) When adding auth tables (class_lessons), ensure seeding or fallback exists — empty auth tables block all access silently
+- (2026-04-19, review-12) Input sanitization must preserve domain notation — stripping `*` and `_` breaks math questions like "x**2" or "x_1 + x_2"
 ## Patterns That Worked Well
 
 - (2026-04-05, setup) Existing `lib/` modules are pure functions with clear types — excellent for testing

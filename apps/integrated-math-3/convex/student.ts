@@ -417,6 +417,7 @@ export const isStudentEnrolledInClassForLesson = internalQuery({
       return false;
     }
 
+    let anyClassLessonExists = false;
     for (const enrollment of activeEnrollments) {
       const classLesson = await ctx.db
         .query("class_lessons")
@@ -428,6 +429,20 @@ export const isStudentEnrolledInClassForLesson = internalQuery({
       if (classLesson) {
         return true;
       }
+
+      const totalForClass = await ctx.db
+        .query("class_lessons")
+        .withIndex("by_class_and_lesson", (q) =>
+          q.eq("classId", enrollment.classId)
+        )
+        .first();
+      if (totalForClass) {
+        anyClassLessonExists = true;
+      }
+    }
+
+    if (!anyClassLessonExists) {
+      return true;
     }
 
     return false;

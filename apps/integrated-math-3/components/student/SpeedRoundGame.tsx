@@ -52,6 +52,7 @@ export function SpeedRoundGame({ terms, onComplete }: SpeedRoundGameProps) {
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [lives, setLives] = useState(INITIAL_LIVES);
   const [streak, setStreak] = useState(0);
+  const [bestStreak, setBestStreak] = useState(0);
   const [itemsSeen, setItemsSeen] = useState(0);
   const [itemsCorrect, setItemsCorrect] = useState(0);
   const [itemsIncorrect, setItemsIncorrect] = useState(0);
@@ -120,7 +121,11 @@ export function SpeedRoundGame({ terms, onComplete }: SpeedRoundGameProps) {
 
       if (isCorrect) {
         setItemsCorrect((prev) => prev + 1);
-        setStreak((prev) => prev + 1);
+        setStreak((prev) => {
+          const next = prev + 1;
+          setBestStreak((bs) => Math.max(bs, next));
+          return next;
+        });
         setFeedback('correct');
       } else {
         setItemsIncorrect((prev) => prev + 1);
@@ -173,7 +178,7 @@ export function SpeedRoundGame({ terms, onComplete }: SpeedRoundGameProps) {
             You saw {itemsSeen} questions in {durationSeconds}s
           </p>
           <p className="text-sm text-muted-foreground">
-            Best streak: <span className="font-semibold text-foreground">{streak}</span>
+            Best streak: <span className="font-semibold text-foreground">{bestStreak}</span>
           </p>
         </div>
       </div>

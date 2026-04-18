@@ -113,6 +113,39 @@ describe('POST /api/student/lesson-chatbot', () => {
     expect(body.error).toBe('Not enrolled in a class that has access to this lesson');
   });
 
+  it('allows access when enrolled in active class with no class_lesson assignments', async () => {
+    mockGetRequestSessionClaims.mockResolvedValue({
+      sub: 'p1',
+      username: 'student1',
+      role: 'student',
+    });
+    mockFetchInternalQuery.mockResolvedValueOnce({
+      id: 'p1',
+      organizationId: 'org1',
+      username: 'student1',
+      role: 'student',
+    });
+    mockFetchInternalQuery.mockResolvedValueOnce(true);
+    mockFetchInternalMutation.mockResolvedValue({ allowed: true });
+    mockFetchInternalQuery.mockResolvedValueOnce({
+      lessonTitle: 'Lesson 1',
+      unitTitle: 'Unit 1',
+      learningObjectives: ['Objective 1'],
+      phases: [{
+        phaseNumber: 1,
+        title: 'Phase 1',
+        sections: [{
+          sectionType: 'text',
+          content: { markdown: 'Some content' },
+        }],
+      }],
+    });
+    mockResolveOpenRouterProviderFromEnv.mockReturnValue(vi.fn().mockResolvedValue('AI response'));
+    const { POST } = await import('@/app/api/student/lesson-chatbot/route');
+    const res = await POST(makeRequest({ lessonId: 'lesson-1', phaseNumber: 1, question: 'What is x?' }));
+    expect(res.status).toBe(200);
+  });
+
   it('proceeds to rate limit check when student is enrolled in class that owns the lesson', async () => {
     mockGetRequestSessionClaims.mockResolvedValue({
       sub: 'p1',
@@ -183,7 +216,7 @@ describe('POST /api/student/lesson-chatbot', () => {
     });
     mockFetchInternalQuery.mockResolvedValueOnce(true);
     const { POST } = await import('@/app/api/student/lesson-chatbot/route');
-    const res = await POST(makeRequest({ lessonId: 'lesson-1', phaseNumber: 1, question: '###' }));
+    const res = await POST(makeRequest({ lessonId: 'lesson-1', phaseNumber: 1, question: '~~' }));
     expect(res.status).toBe(400);
     const body = await res.json();
     expect(body.error).toBe('Question must be between 1 and 1000 characters');
