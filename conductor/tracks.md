@@ -551,8 +551,9 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
       - Phase 3: Verification and Handoff [COMPLETE]
 
 - [ ] **Track: Extract Component Approval Package**
-     *Extract review queue/hash/harness approval primitives to shared package.*
-     *Link: [./conductor/tracks/extract-component-approval_20260417/](./conductor/tracks/extract-component-approval_20260417/)*
+      *Extract review queue/hash/harness approval primitives to shared package.*
+      *Link: [./conductor/tracks/extract-component-approval_20260417/](./conductor/tracks/extract-component-approval_20260417/)*
+      - Phase 1: Extract Core Primitives [COMPLETE]
 
 - [ ] **Track: Extract Graphing Core Package**
      *Extract graphing math/parser primitives while preserving course-specific configs locally.*
