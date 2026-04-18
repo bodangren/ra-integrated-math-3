@@ -6,17 +6,17 @@
 
 ### Tasks
 
-- [ ] **Task: Create `packages/study-hub-core`**
-  - [ ] Scaffold package and export surface.
-  - [ ] Define shared interfaces for session/mode components.
-  - [ ] Add base tests.
+- [x] **Task: Create `packages/study-hub-core`**
+  - [x] Scaffold package and export surface.
+  - [x] Define shared interfaces for session/mode components.
+  - [x] Add base tests.
 
-- [ ] **Task: Port common study components/helpers**
-  - [ ] Extract BaseReviewSession and mode primitives.
-  - [ ] Strip app-specific data/persistence coupling.
-  - [ ] Add tests for transitions and callbacks.
+- [x] **Task: Port common study components/helpers**
+  - [x] Extract BaseReviewSession and mode primitives.
+  - [x] Strip app-specific data/persistence coupling.
+  - [x] Add tests for transitions and callbacks.
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1: Extract Shared Study Primitives' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1: Extract Shared Study Primitives' (Protocol in workflow.md)**
 
 ## Phase 2: Adopt in Both Apps
 

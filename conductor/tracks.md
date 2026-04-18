@@ -625,9 +625,10 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
       - Phase 1: Package Extraction [COMPLETE]
       - Phase 2: App Adoption [COMPLETE] - reconciled package API to match IM3 format; updated BM2 component to use new shuffleAnswers signature
 
-- [ ] **Track: Extract Study Hub Core Package**
-     *Extract flashcard/review/game core primitives while keeping glossary data local.*
-     *Link: [./conductor/tracks/extract-study-hub-core_20260417/](./conductor/tracks/extract-study-hub-core_20260417/)*
+- [x] **Track: Extract Study Hub Core Package**
+      *Extract flashcard/review/game core primitives while keeping glossary data local.*
+      *Link: [./conductor/tracks/extract-study-hub-core_20260417/](./conductor/tracks/extract-study-hub-core_20260417/)*
+      - Phase 1: Extract Shared Study Primitives [COMPLETE]
 
 - [ ] **Track: Extract Teacher Reporting Core Package**
      *Extract pure gradebook/reporting logic while keeping Convex queries app-local.*
