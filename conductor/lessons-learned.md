@@ -18,7 +18,6 @@
 - (2026-04-16, code-review) When comparing correctness, use `=== true` not `!== false` — `undefined` values must not be treated as correct
 - (2026-04-17, code-review) Timer refs reused for wrong-answer flash: clear previous timer with `clearTimeout(wrongTimerRef.current)` before setting new one; otherwise first timer fires and clears state prematurely
 - (2026-04-15, code-review) React components calling hooks must follow `use*` naming convention; dual state bugs arise when parent and child both track the same state
-- (2026-04-15, code-review) Content hashing must use the same componentKind derivation on both write and read paths
 - (2026-04-17, session-completion) Always send explicit `sessionId` in completion API calls; looking up "active session by student" at completion time creates race conditions
 - (2026-04-17, code-review) `setCurrentIndex(currentIndex + 1)` captures stale closure; always use functional updater. Compute final values as local variables before calling `onComplete`
 - (2026-04-17, code-review) Union-type casts like `x as ObjectivePriority` must be runtime-validated; DB corruption silently propagates otherwise
@@ -29,7 +28,6 @@
 - (2026-04-18, security) Password `.trim()` silently modifies user input; reject passwords with leading/trailing spaces explicitly
 - (2026-04-18, security) Vercel production deployments must check `VERCEL_ENV === 'production'` explicitly; don't rely solely on `NODE_ENV`
 - (2026-04-18, packages) After extracting a package, delete the app-local copy immediately — duplicated code diverges silently and doubles maintenance
-
 ## Patterns That Worked Well
 
 - (2026-04-05, setup) Existing `lib/` modules are pure functions with clear types — excellent for testing
@@ -38,7 +36,6 @@
 - (2026-04-16, practice-timing) Pure accumulator pattern: isolate timing in browser-free module, inject timestamps from React hook
 - (2026-04-16, srs-rating-adapter) Two-step rating: compute base rating from correctness first, then apply timing as conservative modifier
 - (2026-04-16, srs-product-contract) Single canonical contract module (`lib/srs/contract.ts`) with re-exports; downstream imports from one surface
-- (2026-04-17, study-hub) BaseReviewSession: shared state machine component with render prop header pattern
 - (2026-04-18, dashboard-wiring) Promise.all over independent handler calls with individual .catch() — graceful degradation per panel
 
 ## Planning Improvements
@@ -48,7 +45,6 @@
 - (2026-04-17, srs-queue-performance) Replace N+1 sequential DB lookups with Promise.all over deduplicated IDs; Convex automatically batches parallel independent reads
 - (2026-04-17, test-design) Vitest only discovers tests in `__tests__/**/*.test.ts`; place test files there even when stub implementations live in `lib/**/__tests__/`
 - (2026-04-17, test-design) Convex query mocks must filter by the actual query args — returning unfiltered data causes incorrect calculations in multi-student scenarios
-- (2026-04-18, code-review) After a monorepo directory move, grep for all hardcoded `conductor/`, `curriculum/`, and `convex/` path references in both source and test code; the vinext build does not run tsc
 - (2026-04-18, monorepo-package) Packages under `packages/` need root tsconfig.json; CI/CD paths-ignore after monorepo move must audit `apps/**` blocks
 - (2026-04-18, srs-engine) Define types locally in shared packages if dependencies don't export them; ESLint must be scaffolded; migrate local imports to package with updated vitest mocks
-- (2026-04-18, core-convex) Generated-API-safe adapters: accept refs as `any` parameters in package wrappers; app passes typed `api/internal` from generated paths; this avoids `packages/*` importing `apps/*/convex/_generated/*`
+
