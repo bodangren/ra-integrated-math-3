@@ -48,7 +48,7 @@ Primary objective is to address the high-severity chatbot enrollment authorizati
 - [x] **Critical: IM3 chatbot content sanitization before AI prompt** — **COMPLETED (2026-04-19)**
 - [x] **Review #11: learningObjectives sanitization bypass** — **FIXED (2026-04-19)**
 - [x] **Review #11: AbortSignal listener leak + already-aborted** — **FIXED (2026-04-19)**
-- [ ] **High: IM3 chatbot enrollment gap** — check lesson-class membership, not just any enrollment
+- [x] **High: IM3 chatbot enrollment gap** — check lesson-class membership, not just any enrollment
 - [ ] BM2 type health sweep (~296 TS errors) — defer unless blocking
 
 ## Code Review Summary (2026-04-19 — Review #11)
