@@ -6,17 +6,17 @@
 
 ### Tasks
 
-- [ ] **Task: Create `packages/graphing-core` scaffold**
-  - [ ] Create package config, exports, and tests.
-  - [ ] Add parser and coordinate utility exports.
-  - [ ] Set up baseline parser tests.
+- [x] **Task: Create `packages/graphing-core` scaffold**
+  - [x] Create package config, exports, and tests.
+  - [x] Add parser and coordinate utility exports.
+  - [x] Set up baseline parser tests.
 
-- [ ] **Task: Port IM3 graphing utility modules**
-  - [ ] Move linear parser, quadratic parser, and canvas utility logic.
-  - [ ] Preserve utility signatures and semantics.
-  - [ ] Add regression tests for key parsing/canvas cases.
+- [x] **Task: Port IM3 graphing utility modules**
+  - [x] Move linear parser, quadratic parser, and canvas utility logic.
+  - [x] Preserve utility signatures and semantics.
+  - [x] Add regression tests for key parsing/canvas cases.
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1: Extract Utility Primitives' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1: Extract Utility Primitives' (Protocol in workflow.md)**
 
 ## Phase 2: Reconcile Deltas
 
