@@ -1,4 +1,4 @@
-import type { SrsSession, SrsSessionConfig } from "./contract";
+import type { SrsSession, SrsSessionConfig } from "@math-platform/srs-engine";
 import { internal } from "@/convex/_generated/api";
 import { type MutationCtx } from "@/convex/_generated/server";
 

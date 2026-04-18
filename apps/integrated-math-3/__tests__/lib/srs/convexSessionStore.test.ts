@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { SrsSession, SrsSessionConfig } from '@/lib/srs/contract';
+import type { SrsSession, SrsSessionConfig } from '@math-platform/srs-engine';
 import { ConvexSessionStore } from '@/lib/srs/convexSessionStore';
 
 const mockRunMutation = vi.fn();

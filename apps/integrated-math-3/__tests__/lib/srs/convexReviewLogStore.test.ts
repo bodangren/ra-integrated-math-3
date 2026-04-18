@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { SrsReviewLogEntry } from '@/lib/srs/contract';
+import type { SrsReviewLogEntry } from '@math-platform/srs-engine';
 import { ConvexReviewLogStore } from '@/lib/srs/convexReviewLogStore';
 
 const mockRunMutation = vi.fn();

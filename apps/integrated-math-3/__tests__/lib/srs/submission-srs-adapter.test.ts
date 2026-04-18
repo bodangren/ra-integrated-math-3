@@ -4,9 +4,9 @@ import type {
   SubmissionSrsResultSuccess,
   SubmissionSrsResultSkipped,
   SubmissionSrsResultError,
-} from '@/lib/srs/submission-srs-adapter';
-import { InMemorySubmissionSrsAdapter } from '@/lib/srs/submission-srs-adapter';
-import type { PracticeSubmissionEnvelope } from '@/lib/srs/contract';
+} from '@math-platform/srs-engine';
+import { InMemorySubmissionSrsAdapter } from '@math-platform/srs-engine';
+import type { PracticeSubmissionEnvelope } from '@math-platform/srs-engine';
 
 const mockNow = '2026-04-16T12:00:00.000Z';
 

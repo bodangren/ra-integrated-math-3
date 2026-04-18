@@ -4,8 +4,8 @@ import type {
   SrsSessionConfig,
   ObjectivePracticePolicy,
   ObjectivePriority,
-} from '@/lib/srs/contract';
-import { buildDailyQueue, isOverdue, daysOverdue } from '@/lib/srs/queue';
+} from '@math-platform/srs-engine';
+import { buildDailyQueue, isOverdue, daysOverdue } from '@math-platform/srs-engine';
 
 const mockNow = '2026-04-16T12:00:00.000Z';
 

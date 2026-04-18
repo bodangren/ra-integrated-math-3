@@ -1,13 +1,13 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import type { SrsCardState, SrsReviewLogEntry } from '@/lib/srs/contract';
+import type { SrsCardState, SrsReviewLogEntry } from '@math-platform/srs-engine';
 import {
   InMemoryCardStore,
   InMemoryReviewLogStore,
   type CardStore,
   type ReviewLogStore,
-} from '@/lib/srs/adapters';
-import { createCard } from '@/lib/srs/scheduler';
-import { processReview } from '@/lib/srs/review-processor';
+} from '@math-platform/srs-engine';
+import { createCard } from '@math-platform/srs-engine';
+import { processReview } from '@math-platform/srs-engine';
 
 const mockNow = '2026-04-16T12:00:00.000Z';
 

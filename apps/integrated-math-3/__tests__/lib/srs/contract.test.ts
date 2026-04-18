@@ -5,11 +5,6 @@ import {
   SrsRatingInput,
   SrsRatingResult,
   ObjectivePriority,
-  PRIORITY_DEFAULTS,
-  EvidenceConfidence,
-  ObjectiveProficiencyResult,
-  StudentProficiencyView,
-  TeacherProficiencyView,
   PracticeTimingBaseline,
   PracticeTimingFeatures,
   TimingSpeedBand,
@@ -22,7 +17,16 @@ import {
   SrsSession,
   STUDENT_DAILY_PRACTICE_COPY,
   TEACHER_DAILY_PRACTICE_COPY,
-} from '@/lib/srs/contract';
+} from '@math-platform/srs-engine';
+import {
+  PRIORITY_DEFAULTS,
+} from '@/lib/practice/objective-proficiency';
+import type {
+  EvidenceConfidence,
+  ObjectiveProficiencyResult,
+  StudentProficiencyView,
+  TeacherProficiencyView,
+} from '@/lib/practice/objective-proficiency';
 
 describe('SRS_CONTRACT_VERSION', () => {
   it('should be srs.contract.v1', () => {
@@ -161,14 +165,10 @@ describe('Re-exports from lib/practice/timing-baseline.ts', () => {
   it('PracticeTimingFeatures should be usable', () => {
     const features: PracticeTimingFeatures = {
       hasReliableTiming: true,
-      activeMs: 4000,
-      baselineMedianActiveMs: 5000,
-      timeRatio: 0.8,
-      speedBand: 'fast',
       confidence: 'high',
       reasons: [],
     };
-    expect(features.speedBand).toBe('fast');
+    expect(features.hasReliableTiming).toBe(true);
   });
 });
 
@@ -177,11 +177,8 @@ describe('Re-exports from lib/practice/contract.ts', () => {
     const envelope: PracticeSubmissionEnvelope = {
       contractVersion: 'practice.v1',
       activityId: 'act-1',
-      mode: 'assessment',
-      status: 'submitted',
       attemptNumber: 1,
       submittedAt: new Date().toISOString(),
-      answers: {},
       parts: [],
     };
     expect(envelope.contractVersion).toBe('practice.v1');

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import type { SrsCardState } from '@/lib/srs/contract';
+import type { SrsCardState } from '@math-platform/srs-engine';
 
 vi.mock('ts-fsrs', () => {
   const Rating = { Again: 1, Hard: 2, Good: 3, Easy: 4 } as const;
@@ -60,7 +60,7 @@ import {
   mapGradeToSrsRating,
   type SchedulerConfig,
   DEFAULT_SCHEDULER_CONFIG,
-} from '@/lib/srs/scheduler';
+} from '@math-platform/srs-engine';
 
 const mockNow = '2026-04-16T12:00:00.000Z';
 

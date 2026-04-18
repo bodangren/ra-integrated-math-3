@@ -5,8 +5,8 @@
  * Promises to mimic async network round-trips.
  */
 
-import type { CardStore, ReviewLogStore } from '@/lib/srs/adapters';
-import type { SrsCardState, SrsReviewLogEntry } from '@/lib/srs/contract';
+import type { CardStore, ReviewLogStore } from '@math-platform/srs-engine';
+import type { SrsCardState, SrsReviewLogEntry } from '@math-platform/srs-engine';
 
 export class RestAdapterStub implements CardStore, ReviewLogStore {
   private cards = new Map<string, SrsCardState>();

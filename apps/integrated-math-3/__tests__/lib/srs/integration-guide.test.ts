@@ -5,14 +5,14 @@ import {
   InMemoryReviewLogStore,
   type CardStore,
   type ReviewLogStore,
-} from '@/lib/srs/adapters';
+} from '@math-platform/srs-engine';
 import {
   createCard,
   reviewCard,
   mapSrsRatingToGrade,
-} from '@/lib/srs/scheduler';
-import { buildDailyQueue, isOverdue, daysOverdue, type QueueItem } from '@/lib/srs/queue';
-import { processReview } from '@/lib/srs/review-processor';
+} from '@math-platform/srs-engine';
+import { buildDailyQueue, isOverdue, daysOverdue, type QueueItem } from '@math-platform/srs-engine';
+import { processReview } from '@math-platform/srs-engine';
 import {
   computeBaseRating,
   applyTimingToRating,
@@ -22,7 +22,7 @@ import type {
   SrsCardState,
   SrsSessionConfig,
   ObjectivePracticePolicy,
-} from '@/lib/srs/contract';
+} from '@math-platform/srs-engine';
 
 vi.mock('ts-fsrs', () => {
   const Rating = { Again: 1, Hard: 2, Good: 3, Easy: 4 } as const;

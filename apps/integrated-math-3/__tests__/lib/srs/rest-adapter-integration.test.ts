@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import type { SrsCardState } from '@/lib/srs/contract';
+import type { SrsCardState } from '@math-platform/srs-engine';
 import { RestAdapterStub } from '@/lib/srs/__tests__/rest-adapter-stub';
-import { processReview } from '@/lib/srs/review-processor';
-import { buildDailyQueue } from '@/lib/srs/queue';
+import { processReview } from '@math-platform/srs-engine';
+import { buildDailyQueue } from '@math-platform/srs-engine';
 import { buildPracticeSubmissionEnvelope } from '@math-platform/practice-core/contract';
 
 vi.mock('ts-fsrs', () => {
@@ -42,7 +42,7 @@ vi.mock('ts-fsrs', () => {
   return { Rating, fsrs, generatorParameters };
 });
 
-import { createCard, reviewCard, getDueCards } from '@/lib/srs/scheduler';
+import { createCard, reviewCard, getDueCards } from '@math-platform/srs-engine';
 
 describe('REST Adapter Integration', () => {
   let adapter: RestAdapterStub;

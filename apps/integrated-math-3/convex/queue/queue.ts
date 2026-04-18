@@ -1,8 +1,8 @@
 import { internalQuery, type QueryCtx } from "../_generated/server";
 import { v } from "convex/values";
 import { Id } from "../_generated/dataModel";
-import { buildDailyQueue, type QueueItem } from "../../lib/srs/queue";
-import type { ObjectivePracticePolicy, SrsCardState } from "../../lib/srs/contract";
+import { buildDailyQueue, type QueueItem } from "@math-platform/srs-engine";
+import type { ObjectivePracticePolicy, SrsCardState } from "@math-platform/srs-engine";
 
 const VALID_PRIORITIES = new Set<string>(['essential', 'supporting', 'extension', 'triaged']);
 

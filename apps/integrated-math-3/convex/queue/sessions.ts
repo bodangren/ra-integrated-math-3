@@ -2,7 +2,7 @@ import { internalMutation, internalQuery, type MutationCtx, type QueryCtx } from
 import { v } from "convex/values";
 import { Id } from "../_generated/dataModel";
 import { resolveDailyPracticeQueue, type ResolvedQueueItem } from "./queue";
-import type { SrsSession, SrsSessionConfig } from "../../lib/srs/contract";
+import type { SrsSession, SrsSessionConfig } from "@math-platform/srs-engine";
 
 function mapDbSessionToContract(session: {
   _id: Id<"srs_sessions">;

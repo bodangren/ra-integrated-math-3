@@ -10,7 +10,7 @@
 |------|-----|--------|-------|
 | App lib/auth/ copies have divergent bugs vs core-auth package | Critical | Resolved | Migrated lib/auth/ to @math-platform/core-auth - deleted buggy duplicates, rewired imports (2026-04-18) |
 | App lib/practice/ has 8 full duplicate files not importing from practice-core | Critical | Resolved | Migrated lib/practice/ - deleted contract.ts, timing.ts, timing-baseline.ts, srs-rating.ts, practice-item.ts, problem-family.ts, submission.schema.ts, error-analysis; rewired all imports to @math-platform/practice-core (2026-04-18) |
-| App lib/srs/ has 6 duplicate files not importing from srs-engine | Critical | Open | contract.ts, scheduler.ts, adapters.ts, review-processor.ts, submission-srs-adapter.ts, queue.ts all duplicated |
+| App lib/srs/ has 6 duplicate files not importing from srs-engine | Critical | Resolved | Migrated lib/srs/ - deleted contract.ts, scheduler.ts, adapters.ts, review-processor.ts, submission-srs-adapter.ts, queue.ts; kept convexCardStore, convexReviewLogStore, convexSessionStore as app-local; rewired all imports to @math-platform/srs-engine (2026-04-18) |
 | 15+ Convex/seed files still import from old lib/practice/ paths | High | Resolved | All convex/seed/* and convex/* files now import from @math-platform/practice-core (2026-04-18) |
 | SRS engine: type drift partially resolved | High | Resolved | SrsRating, SrsRatingInput, SrsRatingResult, PracticeTimingBaseline now re-exported from practice-core; remaining local types (PracticeSubmissionPart, TimingSpeedBand, PracticeSubmissionEnvelope) still differ |
 | Misconception summary query: N+1 card resolution depth | Critical | Open | 30 students x 100 reviews = 3k+ sequential reads; will timeout |

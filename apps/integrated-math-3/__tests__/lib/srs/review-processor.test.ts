@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import type { SrsCardState, PracticeSubmissionEnvelope } from '@/lib/srs/contract';
+import type { SrsCardState, PracticeSubmissionEnvelope } from '@math-platform/srs-engine';
 
 vi.mock('@math-platform/srs-engine/scheduler', () => ({
   reviewCard: vi.fn((card, rating, now) => ({
@@ -15,7 +15,7 @@ vi.mock('@math-platform/srs-engine/scheduler', () => ({
   })),
 }));
 
-import { processReview } from '@/lib/srs/review-processor';
+import { processReview } from '@math-platform/srs-engine';
 import { reviewCard } from '@math-platform/srs-engine/scheduler';
 
 const mockNow = '2026-04-16T12:00:00.000Z';

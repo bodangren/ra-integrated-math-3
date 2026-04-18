@@ -1,5 +1,4 @@
-import type { SrsReviewLogEntry, SrsRating } from "./contract";
-import type { ReviewLogStore } from "./adapters";
+import type { SrsReviewLogEntry, SrsRating, ReviewLogStore } from "@math-platform/srs-engine";
 import { internal } from "@/convex/_generated/api";
 import { type MutationCtx } from "@/convex/_generated/server";
 

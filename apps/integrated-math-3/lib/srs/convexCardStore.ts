@@ -1,5 +1,4 @@
-import type { SrsCardState } from "./contract";
-import type { CardStore } from "./adapters";
+import type { SrsCardState, CardStore } from "@math-platform/srs-engine";
 import { internal } from "@/convex/_generated/api";
 import { type MutationCtx } from "@/convex/_generated/server";
 

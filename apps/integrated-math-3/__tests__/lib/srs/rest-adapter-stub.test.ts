@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import type { SrsCardState, SrsReviewLogEntry } from '@/lib/srs/contract';
+import type { SrsCardState, SrsReviewLogEntry } from '@math-platform/srs-engine';
 import { RestAdapterStub } from '@/lib/srs/__tests__/rest-adapter-stub';
 
 describe('RestAdapterStub', () => {

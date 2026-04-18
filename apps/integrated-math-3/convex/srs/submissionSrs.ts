@@ -1,7 +1,7 @@
 import { internalMutation } from "../_generated/server";
 import { v } from "convex/values";
 import { Id } from "../_generated/dataModel";
-import { SubmissionSrsAdapter } from "../../lib/srs/submission-srs-adapter";
+import { SubmissionSrsAdapter } from "@math-platform/srs-engine";
 import { ConvexCardStore } from "../../lib/srs/convexCardStore";
 import { ConvexReviewLogStore } from "../../lib/srs/convexReviewLogStore";
 import type { PracticeTimingBaseline } from "@math-platform/practice-core";
@@ -91,7 +91,7 @@ export async function processSubmissionSrsHandler(
     });
 
     const result = await adapter.processSubmission({
-      submission: args.submission as import("../../lib/srs/contract").PracticeSubmissionEnvelope,
+      submission: args.submission as import("@math-platform/srs-engine").PracticeSubmissionEnvelope,
       studentId: args.studentId,
       activityId: args.activityId,
     });

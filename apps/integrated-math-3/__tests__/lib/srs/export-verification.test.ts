@@ -14,10 +14,6 @@ import {
   type SrsRatingResult,
   type ObjectivePriority,
   type ObjectivePracticePolicy,
-  type EvidenceConfidence,
-  type ObjectiveProficiencyResult,
-  type StudentProficiencyView,
-  type TeacherProficiencyView,
   type PracticeTimingBaseline,
   type PracticeTimingFeatures,
   type TimingSpeedBand,
@@ -29,7 +25,13 @@ import {
   type SrsReviewLogEntry,
   type SrsSessionConfig,
   type SrsSession,
-} from '@/lib/srs/contract';
+} from '@math-platform/srs-engine';
+import type {
+  EvidenceConfidence,
+  ObjectiveProficiencyResult,
+  StudentProficiencyView,
+  TeacherProficiencyView,
+} from '@/lib/practice/objective-proficiency';
 
 // ============================================
 // 2. Import public interfaces from other SRS modules
@@ -37,17 +39,17 @@ import {
 import type {
   CardStore,
   ReviewLogStore,
-} from '@/lib/srs/adapters';
+} from '@math-platform/srs-engine';
 import type {
   SchedulerConfig,
-} from '@/lib/srs/scheduler';
+} from '@math-platform/srs-engine';
 import type {
   ReviewProcessorInput,
   ReviewProcessorResult,
-} from '@/lib/srs/review-processor';
+} from '@math-platform/srs-engine';
 import type {
   QueueItem,
-} from '@/lib/srs/queue';
+} from '@math-platform/srs-engine';
 
 describe('SRS type export verification', () => {
   it('should export the expected value constants', () => {

@@ -49,19 +49,19 @@
 
 ### Tasks
 
-- [ ] **Task: Audit lib/srs/ vs @math-platform/srs-engine**
-  - [ ] List all files in `apps/integrated-math-3/lib/srs/`
-  - [ ] Compare with `packages/srs-engine/src/`
-  - [ ] Identify 6 duplicate files mentioned in tech-debt
-  - [ ] Identify import usages
+- [x] **Task: Audit lib/srs/ vs @math-platform/srs-engine**
+  - [x] List all files in `apps/integrated-math-3/lib/srs/`
+  - [x] Compare with `packages/srs-engine/src/`
+  - [x] Identify 6 duplicate files mentioned in tech-debt
+  - [x] Identify import usages
 
-- [ ] **Task: Delete duplicate srs files and rewire imports**
-  - [ ] Delete files that exist in `@math-platform/srs-engine`
-  - [ ] Keep app-local persistence adapters (convexCardStore, convexSessionStore, convexReviewLogStore)
-  - [ ] Rewire all imports
+- [x] **Task: Delete duplicate srs files and rewire imports**
+  - [x] Delete files that exist in `@math-platform/srs-engine`
+  - [x] Keep app-local persistence adapters (convexCardStore, convexSessionStore, convexReviewLogStore)
+  - [x] Rewire all imports
 
-- [ ] **Task: Verify lib/srs/ migration**
-  - [ ] Run `npx tsc --noEmit`
+- [x] **Task: Verify lib/srs/ migration**
+  - [x] Run `npx tsc --noEmit`
 
 ## Phase 4: Audit and Migrate lib/convex/
 

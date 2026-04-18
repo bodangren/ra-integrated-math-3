@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { getDailyPracticeQueueHandler } from '@/convex/queue/queue';
 import type { Id } from '@/convex/_generated/dataModel';
-import type { SrsCardState } from '@/lib/srs/contract';
+import type { SrsCardState } from '@math-platform/srs-engine';
 
 function makeMockCtx(overrides: {
   cards?: SrsCardState[];
