@@ -556,8 +556,20 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
       - Phase 1: Extract Core Primitives [COMPLETE]
 
 - [ ] **Track: Extract Graphing Core Package**
-     *Extract graphing math/parser primitives while preserving course-specific configs locally.*
-     *Link: [./conductor/tracks/extract-graphing-core_20260417/](./conductor/tracks/extract-graphing-core_20260417/)*
+      *Extract graphing math/parser primitives while preserving course-specific configs locally.*
+      *Link: [./conductor/tracks/extract-graphing-core_20260417/](./conductor/tracks/extract-graphing-core_20260417/)*
+
+### Critical Blocker — App Import Migration
+
+- [ ] **Track: App Import Migration** — **Phase 1 Complete**
+       *Delete duplicate code in lib/auth/, lib/srs/, lib/practice/, lib/convex/ and rewire all imports to @math-platform/* packages.*
+       *Link: [./conductor/tracks/app-import-migration_20260418/](./conductor/tracks/app-import-migration_20260418/)*
+       - Phase 1: lib/auth/ Migration [COMPLETE]
+       - Phase 2: lib/practice/ Migration [Pending]
+       - Phase 3: lib/srs/ Migration [Pending]
+       - Phase 4: lib/convex/ Migration [Pending]
+       - Phase 5: package.json Dependency Fix [Pending]
+       - Phase 6: Final Verification [Pending]
 
 ### Wave 4 — Bring BM2 Into the Monorepo
 
