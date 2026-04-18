@@ -5,7 +5,7 @@
     "dev:stack": "node scripts/dev-stack.mjs",
     "build": "vinext build",
     "start": "vinext start",
-    "lint": "vinext lint",
+    "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --noEmit",
     "curriculum:audit": "tsx scripts/curriculum-audit.ts",
     "curriculum:generate": "tsx scripts/generate-curriculum-remediation-artifacts.ts",

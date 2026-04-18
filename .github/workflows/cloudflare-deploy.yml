@@ -45,7 +45,7 @@ jobs:
           CI: true
 
       - name: Run typecheck
-        run: npx tsc --noEmit --prefix apps/integrated-math-3
+        run: cd apps/integrated-math-3 && npx tsc --noEmit
         env:
           CI: true
 
@@ -59,7 +59,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --config apps/integrated-math-3/wrangler.jsonc
+          command: deploy --config wrangler.jsonc
           env: production
           workingDirectory: apps/integrated-math-3
 

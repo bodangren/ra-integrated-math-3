@@ -36,7 +36,6 @@
 - (2026-04-16, practice-timing) Pure accumulator pattern: isolate timing in browser-free module, inject timestamps from React hook
 - (2026-04-16, srs-rating-adapter) Two-step rating: compute base rating from correctness first, then apply timing as conservative modifier
 - (2026-04-16, srs-product-contract) Single canonical contract module (`lib/srs/contract.ts`) with re-exports; downstream imports from one surface
-- (2026-04-16, dashboard) Reuse queue resolution for dashboard due count to guarantee consistency with practice page
 - (2026-04-17, study-hub) BaseReviewSession: shared state machine component with render prop header pattern — enables FlashcardPlayer and ReviewSession wrappers without code duplication
 - (2026-04-17, study-hub) Session persistence pattern: RSC parent gets auth claims + passes `studentId` + `GLOSSARY` to client component; client component calls `fetchInternalMutation(internal.study.recordStudySession)` on complete
 

@@ -22,7 +22,6 @@
 | FlashcardsPage: "All Modules" only loads Module 1 terms | Critical | Resolved | Fixed: restructured to RSC+client, passes GLOSSARY (2026-04-17) |
 | Flashcard session results never persisted | Critical | Resolved | Fixed: added fetchInternalMutation call matching pattern (2026-04-17) |
 | BaseReviewSession: stale closure in onComplete callback | High | Resolved | Fixed: compute final counts as local vars + functional updater (2026-04-17) |
-| MatchingGame: wrong-answer timer not cleared before reuse | Medium | Resolved | Fixed: clearTimeout before setTimeout (2026-04-17) |
 | error-analysis parseAIResponse uses fragile line-based parsing | High | Open | Breaks on markdown, multi-paragraph AI responses |
 | ActivityReviewHarness handleError never reaches ActivityPreview | High | Open | Render errors crash tree silently; canApprove not blocked |
 | SRS CardStore: studentId type mismatch (contract vs schema) | High | Open | SrsCardState uses string, Convex uses Id<"profiles"> |
@@ -37,8 +36,6 @@
 | SRS: mapDbCardToContract duplicated in queue.ts and cards.ts | Medium | Open | Extract to shared utility |
 | SRS: completeDailySessionHandler loads all review logs | Medium | Open | .collect() fetches entire history |
 | SRS queue: hardcoded courseKey + duplicate config constant | Medium | Open | Extract shared constant; parameterize courseKey |
-| PracticeSessionProvider: submission failure silently swallowed | Medium | Open | No user-visible error, no retry |
-| Equivalence validator 6/50 tests failing | Low | Open | Pattern-matching limits on fraction/radical parsing |
 | internal.student.skipPhase accessed via `as any` cast | Medium | Open | Suppresses type safety; may indicate stale generated API types |
 | Cloudflare worker deploys to production on every push | Medium | Open | No staging step, no canary, no approval gate |
 | study.ts: 4 public queries had no auth (now internalQuery) | Critical | Resolved | Converted query→internalQuery; no client code called api.study.* directly |

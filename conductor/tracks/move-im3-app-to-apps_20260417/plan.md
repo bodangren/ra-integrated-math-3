@@ -22,15 +22,15 @@
 
 ### Tasks
 
-- [ ] **Task: Update CI workflow path assumptions**
-  - [ ] Update workflow commands to execute in `apps/integrated-math-3`.
-  - [ ] Update any artifact path references in CI.
-  - [ ] Validate workflow YAML syntax.
+- [x] **Task: Update CI workflow path assumptions**
+  - [x] Update workflow commands to execute in `apps/integrated-math-3`.
+  - [x] Update any artifact path references in CI.
+  - [x] Validate workflow YAML syntax.
 
-- [ ] **Task: Update Convex and deployment scripts**
-  - [ ] Update Convex dev/build helper scripts for app path.
-  - [ ] Update deployment config if it references old root paths.
-  - [ ] Document required working directory for each operational command.
+- [x] **Task: Update Convex and deployment scripts**
+  - [x] Update Convex dev/build helper scripts for app path.
+  - [x] Update deployment config if it references old root paths.
+  - [x] Document required working directory for each operational command.
 
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2: CI and Tooling Path Fixes' (Protocol in workflow.md)**
 

@@ -19,10 +19,10 @@ type VinextHandler = (
 let cachedHandlerPromise: Promise<VinextHandler> | null = null;
 
 async function loadVinextHandler(): Promise<VinextHandler> {
-  cachedHandlerPromise ??= import('../../../dist/server/index.js').then((module) => {
+  cachedHandlerPromise ??= import('../../dist/server/index.js').then((module) => {
     if (typeof module.default !== 'function') {
       throw new TypeError(
-        'Expected dist/server/index.js to export the built Vinext request handler.',
+        'Expected apps/integrated-math-3/dist/server/index.js to export the built Vinext request handler.',
       );
     }
 
