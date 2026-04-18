@@ -6,17 +6,17 @@
 
 ### Tasks
 
-- [ ] **Task: Create `packages/ai-tutoring`**
-  - [ ] Scaffold package and export API.
-  - [ ] Port provider/retry/lesson-context/chatbot primitives from BM2.
-  - [ ] Add package tests for provider, retry, and context assembly behavior.
+- [x] **Task: Create `packages/ai-tutoring`**
+  - [x] Scaffold package and export API.
+  - [x] Port provider/retry/lesson-context/chatbot primitives from BM2.
+  - [x] Add package tests for provider, retry, and context assembly behavior.
 
-- [ ] **Task: Define app-local integration contract**
-  - [ ] Specify env var expectations and error behavior.
-  - [ ] Specify route-level auth/rate-limit hooks each app must supply.
-  - [ ] Document required adapter interfaces.
+- [x] **Task: Define app-local integration contract**
+  - [x] Specify env var expectations and error behavior.
+  - [x] Specify route-level auth/rate-limit hooks each app must supply.
+  - [x] Document required adapter interfaces.
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1: Package Extraction from BM2' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1: Package Extraction from BM2' (Protocol in workflow.md)**
 
 ## Phase 2: BM2 Adoption
 
