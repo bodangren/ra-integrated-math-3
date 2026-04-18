@@ -2,12 +2,12 @@ import { describe, it, expect } from 'vitest';
 import {
   SRS_CONTRACT_VERSION,
   srsRatingSchema,
-  srsCardStateSchema,
   srsReviewLogSchema,
   srsSessionSchema,
   dailyQueueSchema,
   srsReviewResultSchema,
   type SrsRating,
+  type SrsCardState,
 } from '@/lib/srs/contract';
 
 describe('SRS Contract', () => {
@@ -30,38 +30,6 @@ describe('SRS Contract', () => {
       expect(srsRatingSchema.safeParse('Excellent').success).toBe(false);
       expect(srsRatingSchema.safeParse(42).success).toBe(false);
       expect(srsRatingSchema.safeParse(null).success).toBe(false);
-    });
-  });
-
-  describe('srsCardStateSchema', () => {
-    const validCard = {
-      problemFamilyId: 'accounting-equation',
-      studentId: 'student-123',
-      card: { state: 'new' },
-      due: Date.now(),
-      lastReview: Date.now(),
-      reviewCount: 0,
-      createdAt: Date.now(),
-    };
-
-    it('validates correct card state', () => {
-      expect(srsCardStateSchema.safeParse(validCard).success).toBe(true);
-    });
-
-    it('rejects missing fields', () => {
-      expect(srsCardStateSchema.safeParse({}).success).toBe(false);
-    });
-
-    it('rejects empty problemFamilyId', () => {
-      expect(
-        srsCardStateSchema.safeParse({ ...validCard, problemFamilyId: '' }).success,
-      ).toBe(false);
-    });
-
-    it('rejects negative reviewCount', () => {
-      expect(
-        srsCardStateSchema.safeParse({ ...validCard, reviewCount: -1 }).success,
-      ).toBe(false);
     });
   });
 
@@ -151,18 +119,51 @@ describe('SRS Contract', () => {
         dailyQueueSchema.safeParse({ ...validQueue, sessionSize: -1 }).success,
       ).toBe(false);
     });
+
+    it('validates cards with new SrsCardState shape', () => {
+      const now = new Date().toISOString();
+      const card: SrsCardState = {
+        cardId: 'card_abc123',
+        studentId: 'student-123',
+        objectiveId: 'obj-1',
+        problemFamilyId: 'accounting-equation',
+        stability: 1.0,
+        difficulty: 2.5,
+        state: 'new',
+        dueDate: now,
+        elapsedDays: 0,
+        scheduledDays: 1,
+        reps: 0,
+        lapses: 0,
+        lastReview: null,
+        createdAt: now,
+        updatedAt: now,
+      };
+      expect(
+        dailyQueueSchema.safeParse({ ...validQueue, cards: [card] }).success,
+      ).toBe(true);
+    });
   });
 
   describe('srsReviewResultSchema', () => {
+    const now = new Date().toISOString();
     const validResult = {
       card: {
-        problemFamilyId: 'accounting-equation',
+        cardId: 'card_abc123',
         studentId: 'student-123',
-        card: { state: 'new' },
-        due: Date.now(),
-        lastReview: Date.now(),
-        reviewCount: 1,
-        createdAt: Date.now(),
+        objectiveId: 'obj-1',
+        problemFamilyId: 'accounting-equation',
+        stability: 1.0,
+        difficulty: 2.5,
+        state: 'review' as const,
+        dueDate: now,
+        elapsedDays: 0,
+        scheduledDays: 1,
+        reps: 1,
+        lapses: 0,
+        lastReview: now,
+        createdAt: now,
+        updatedAt: now,
       },
       reviewLog: {
         problemFamilyId: 'accounting-equation',

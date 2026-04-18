@@ -587,13 +587,23 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 - [ ] **Track: BM2 Consume Core Packages**
        *Replace duplicated BM2 core imports with shared practice/srs/auth/convex packages.*
        *Link: [./conductor/tracks/bm2-consume-core-packages_20260417/](./conductor/tracks/bm2-consume-core-packages_20260417/)*
-       - Phase 1: Practice and SRS Adoption [IN PROGRESS] - practice imports migrated; SRS blocked by contract incompatibility
+       - Phase 1: Practice and SRS Adoption [IN PROGRESS] - practice imports migrated; SRS blocked by contract incompatibility; SRS contract migration track created to unblock
        - Phase 2: Auth and Convex Adoption [COMPLETE] - middleware migrated; server.ts remains local
        - Phase 3: Cleanup and Verification [COMPLETE] - verification done; pruning blocked by Phase 1 SRS blocker
 
 - [ ] **Track: BM2 Consume Runtime Packages**
-     *Adopt shared runtime/approval/graphing package APIs where boundaries are clean.*
-     *Link: [./conductor/tracks/bm2-consume-runtime-packages_20260417/](./conductor/tracks/bm2-consume-runtime-packages_20260417/)*
+      *Adopt shared runtime/approval/graphing package APIs where boundaries are clean.*
+      *Link: [./conductor/tracks/bm2-consume-runtime-packages_20260417/](./conductor/tracks/bm2-consume-runtime-packages_20260417/)*
+
+### Wave 4.5 — SRS Contract Migration (Prerequisite for bm2-consume-core-packages completion)
+
+- [ ] **Track: BM2 SRS Contract Migration**
+       *Migrate BM2 legacy SRS contract (card: Record, numeric timestamps) to FSRS-aligned contract in @math-platform/srs-engine.*
+       *Link: [./conductor/tracks/bm2-srs-contract-migration_20260418/](./conductor/tracks/bm2-srs-contract-migration_20260418/)*
+       - Phase 1: Contract Rewrite [IN PROGRESS]
+         - Contract types migrated to srs-engine package types
+         - Build passes (verified)
+         - Tests need Phase 2 update (Convex schema migration)
 
 ### Wave 5 — Feature Packages and IM3 Pending Tracks
 

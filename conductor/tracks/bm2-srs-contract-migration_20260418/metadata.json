@@ -1,0 +1,11 @@
+{
+  "track_id": "bm2-srs-contract-migration_20260418",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-18T00:00:00Z",
+  "updated_at": "2026-04-18T00:00:00Z",
+  "description": "Migrate BM2 legacy SRS contract (card: Record, numeric timestamps) to FSRS-aligned contract in @math-platform/srs-engine (flat typed fields, ISO timestamps).",
+  "estimated_tasks": 14,
+  "actual_tasks": null,
+  "deviation_notes": "Blocked bm2-consume-core-packages Phase 1 SRS migration. This track is a prerequisite for completing that adoption."
+}

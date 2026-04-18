@@ -2,8 +2,9 @@ import type { PracticeSubmissionEnvelope, PracticeTimingSummary } from '../pract
 import type { PracticeTimingBaseline } from '../practice/timing-baseline';
 import { deriveTimingFeatures } from '../practice/timing-baseline';
 import { mapPracticeToSrsRating } from '../practice/srs-rating';
-import { createNewCard, reviewCard } from './scheduler';
-import type { SrsCardState, SrsReviewLog, SrsReviewResult } from './contract';
+import { createCard, reviewCard } from './scheduler';
+import type { SrsCardState } from '@math-platform/srs-engine';
+import type { SrsReviewLog, SrsReviewResult } from './contract';
 
 export function processPracticeSubmission(
   envelope: PracticeSubmissionEnvelope,
@@ -31,21 +32,50 @@ export function processPracticeSubmission(
     throw new Error('studentId is required when no existing card state is provided');
   }
   const effectiveStudentId = studentId ?? cardState!.studentId;
-  const effectiveCard = cardState ?? createNewCard(envelope.activityId, effectiveStudentId);
-  const reviewedCard = reviewCard(effectiveCard, ratingResult.rating);
 
-  const now = Date.now();
-  const scheduledAt = now;
-  const reviewedAt = now;
-  const elapsedDays = Math.floor((reviewedAt - effectiveCard.lastReview) / (24 * 60 * 60 * 1000));
-  const scheduledDays = Math.floor((reviewedCard.due - reviewedAt) / (24 * 60 * 60 * 1000));
+  if (!cardState) {
+    const now = new Date().toISOString();
+    const newCard = createCard({
+      studentId: effectiveStudentId,
+      objectiveId: envelope.activityId,
+      problemFamilyId: envelope.activityId,
+      now,
+    });
+    const reviewedCard = reviewCard(newCard, ratingResult.rating, now);
+
+    const reviewLog: SrsReviewLog = {
+      problemFamilyId: reviewedCard.problemFamilyId,
+      studentId: reviewedCard.studentId,
+      rating: ratingResult.rating,
+      scheduledAt: Date.now(),
+      reviewedAt: Date.now(),
+      elapsedDays: 0,
+      scheduledDays: reviewedCard.scheduledDays,
+      reviewDurationMs: effectiveTiming?.wallClockMs,
+      timingConfidence: timingFeatures.confidence,
+    };
+
+    return {
+      card: reviewedCard,
+      reviewLog,
+      rating: ratingResult.rating,
+    };
+  }
+
+  const now = new Date().toISOString();
+  const reviewedCard = reviewCard(cardState, ratingResult.rating, now);
+
+  const lastReviewDate = cardState.lastReview ? new Date(cardState.lastReview) : new Date(cardState.createdAt);
+  const reviewedAtMs = Date.now();
+  const elapsedDays = Math.floor((reviewedAtMs - lastReviewDate.getTime()) / (24 * 60 * 60 * 1000));
+  const scheduledDays = Math.floor((new Date(reviewedCard.dueDate).getTime() - reviewedAtMs) / (24 * 60 * 60 * 1000));
 
   const reviewLog: SrsReviewLog = {
     problemFamilyId: reviewedCard.problemFamilyId,
     studentId: reviewedCard.studentId,
     rating: ratingResult.rating,
-    scheduledAt,
-    reviewedAt,
+    scheduledAt: Date.now(),
+    reviewedAt: Date.now(),
     elapsedDays,
     scheduledDays,
     reviewDurationMs: effectiveTiming?.wallClockMs,

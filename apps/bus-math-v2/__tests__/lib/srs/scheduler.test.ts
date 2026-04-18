@@ -1,15 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import {
   createNewCard,
-  reviewCard,
+  reviewCardLegacy,
   getCardsDue,
-  serializeCard,
-  deserializeCard,
 } from '../../../lib/srs/scheduler';
-import { createEmptyCard } from 'ts-fsrs';
 
 describe('lib/srs/scheduler', () => {
-  describe('createNewCard', () => {
+  describe('createNewCard (backward compatibility wrapper)', () => {
     it('returns card with due set to approximately now', () => {
       const before = Date.now();
       const card = createNewCard('transaction-effects', 'student-1');
@@ -38,11 +35,11 @@ describe('lib/srs/scheduler', () => {
     });
   });
 
-  describe('reviewCard', () => {
+  describe('reviewCard (backward compatibility wrapper)', () => {
     it('Again rating sets due to very soon (within a day)', () => {
       const card = createNewCard('transaction-effects', 'student-1');
       const before = Date.now();
-      const reviewed = reviewCard(card, 'Again');
+      const reviewed = reviewCardLegacy(card, 'Again');
       const dayMs = 24 * 60 * 60 * 1000;
       expect(reviewed.due).toBeGreaterThan(before);
       expect(reviewed.due).toBeLessThan(before + dayMs);
@@ -51,41 +48,41 @@ describe('lib/srs/scheduler', () => {
     it('Easy rating sets due further out than Good', () => {
       const card1 = createNewCard('cvp-analysis', 'student-1');
       const card2 = createNewCard('cvp-analysis', 'student-2');
-      const goodResult = reviewCard(card1, 'Good');
-      const easyResult = reviewCard(card2, 'Easy');
+      const goodResult = reviewCardLegacy(card1, 'Good');
+      const easyResult = reviewCardLegacy(card2, 'Easy');
       expect(easyResult.due).toBeGreaterThan(goodResult.due);
     });
 
     it('Good rating increments stability', () => {
       const card = createNewCard('journal-entry', 'student-1');
       const originalStability = card.card.stability as number;
-      const reviewed = reviewCard(card, 'Good');
+      const reviewed = reviewCardLegacy(card, 'Good');
       const newStability = reviewed.card.stability as number;
       expect(newStability).toBeGreaterThan(originalStability);
     });
 
     it('Hard rating provides slight interval increase', () => {
       const card = createNewCard('posting-balances', 'student-1');
-      const reviewed = reviewCard(card, 'Hard');
+      const reviewed = reviewCardLegacy(card, 'Hard');
       expect(reviewed.reviewCount).toBe(1);
       expect(reviewed.due).toBeGreaterThan(card.due);
     });
 
     it('increments reviewCount', () => {
       const card = createNewCard('normal-balance', 'student-1');
-      const reviewed = reviewCard(card, 'Good');
+      const reviewed = reviewCardLegacy(card, 'Good');
       expect(reviewed.reviewCount).toBe(1);
     });
 
     it('updates lastReview timestamp', () => {
       const card = createNewCard('statement-construction', 'student-1');
       const before = Date.now();
-      const reviewed = reviewCard(card, 'Good');
+      const reviewed = reviewCardLegacy(card, 'Good');
       expect(reviewed.lastReview).toBeGreaterThanOrEqual(before);
     });
   });
 
-  describe('getCardsDue', () => {
+  describe('getCardsDue (backward compatibility wrapper)', () => {
     it('returns only cards where due date has passed', () => {
       const now = Date.now();
       const pastCard = createNewCard('transaction-effects', 'student-1');
@@ -135,35 +132,6 @@ describe('lib/srs/scheduler', () => {
 
       const due = getCardsDue(cards, now);
       expect(due).toHaveLength(5);
-    });
-  });
-
-  describe('serialization roundtrip', () => {
-    it('serializeCard then deserializeCard produces equivalent card', () => {
-      const original = createEmptyCard(new Date());
-      const serialized = serializeCard(original);
-      const deserialized = deserializeCard(serialized);
-
-      expect(deserialized.due.getTime()).toBe(original.due.getTime());
-      expect(deserialized.stability).toBe(original.stability);
-      expect(deserialized.difficulty).toBe(original.difficulty);
-      expect(deserialized.elapsed_days).toBe(original.elapsed_days);
-      expect(deserialized.scheduled_days).toBe(original.scheduled_days);
-      expect(deserialized.reps).toBe(original.reps);
-      expect(deserialized.lapses).toBe(original.lapses);
-      expect(deserialized.learning_steps).toBe(original.learning_steps);
-      expect(deserialized.state).toBe(original.state);
-    });
-
-    it('roundtrip works for a reviewed card', () => {
-      const card = createNewCard('transaction-effects', 'student-1');
-      const reviewed = reviewCard(card, 'Good');
-
-      const deserialized = deserializeCard(reviewed.card);
-
-      const reviewedDueMs = new Date(reviewed.card.due as string).getTime();
-      expect(deserialized.due.getTime()).toBe(reviewedDueMs);
-      expect(deserialized.reps).toBe(reviewed.card.reps);
     });
   });
 });

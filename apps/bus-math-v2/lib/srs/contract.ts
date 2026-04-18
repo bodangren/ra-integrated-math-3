@@ -1,20 +1,17 @@
-import { z } from 'zod';
+export { SRS_CONTRACT_VERSION } from '@math-platform/srs-engine';
 
-export const SRS_CONTRACT_VERSION = 'srs.contract.v1' as const;
+export type {
+  SrsCardId,
+  SrsCardState,
+  SrsReviewLogEntry,
+  SrsRating,
+} from '@math-platform/srs-engine';
+
+import { z } from 'zod';
+import type { SrsRating } from '@math-platform/srs-engine';
 
 export const srsRatingSchema = z.enum(['Again', 'Hard', 'Good', 'Easy']);
-export type SrsRating = z.infer<typeof srsRatingSchema>;
-
-export const srsCardStateSchema = z.object({
-  problemFamilyId: z.string().min(1),
-  studentId: z.string().min(1),
-  card: z.record(z.string(), z.unknown()),
-  due: z.number(),
-  lastReview: z.number(),
-  reviewCount: z.number().int().nonnegative(),
-  createdAt: z.number(),
-});
-export type SrsCardState = z.infer<typeof srsCardStateSchema>;
+export type LocalSrsRating = z.infer<typeof srsRatingSchema>;
 
 export const srsReviewLogSchema = z.object({
   problemFamilyId: z.string().min(1),
@@ -45,14 +42,30 @@ export const srsSessionSchema = z.object({
 export type SrsSession = z.infer<typeof srsSessionSchema>;
 
 export const dailyQueueSchema = z.object({
-  cards: z.array(srsCardStateSchema),
+  cards: z.array(z.object({
+    cardId: z.string(),
+    studentId: z.string(),
+    objectiveId: z.string(),
+    problemFamilyId: z.string(),
+    stability: z.number(),
+    difficulty: z.number(),
+    state: z.enum(['new', 'learning', 'review', 'relearning']),
+    dueDate: z.string(),
+    elapsedDays: z.number(),
+    scheduledDays: z.number(),
+    reps: z.number(),
+    lapses: z.number(),
+    lastReview: z.string().nullable(),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+  })),
   sessionSize: z.number().int().positive(),
   generatedAt: z.number(),
 });
 export type DailyQueue = z.infer<typeof dailyQueueSchema>;
 
 export const srsReviewResultSchema = z.object({
-  card: srsCardStateSchema,
+  card: dailyQueueSchema.shape.cards.element,
   reviewLog: srsReviewLogSchema,
   rating: srsRatingSchema,
 });

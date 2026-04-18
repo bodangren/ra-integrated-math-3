@@ -1,16 +1,18 @@
-import type { SrsCardState, DailyQueue } from './contract';
+import type { SrsCardState } from '@math-platform/srs-engine';
+import type { DailyQueue } from './contract';
 
 export interface QueueOptions {
   sessionSize?: number;
-  now?: number;
+  now?: string;
 }
 
 export function buildDailyQueue(cards: SrsCardState[], options: QueueOptions = {}): DailyQueue {
-  const { sessionSize = 10, now = Date.now() } = options;
+  const { sessionSize = 10, now = new Date().toISOString() } = options;
+  const nowMs = new Date(now).getTime();
 
   const dueCards = cards
-    .filter((c) => c.due <= now)
-    .sort((a, b) => a.due - b.due)
+    .filter((c) => new Date(c.dueDate).getTime() <= nowMs)
+    .sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime())
     .slice(0, sessionSize);
 
   return {
@@ -20,19 +22,20 @@ export function buildDailyQueue(cards: SrsCardState[], options: QueueOptions = {
   };
 }
 
-export function getQueueSummary(cards: SrsCardState[], now?: number): {
+export function getQueueSummary(cards: SrsCardState[], now?: string): {
   totalDue: number;
   totalCards: number;
   averageOverdue: number;
 } {
-  const cutoff = now ?? Date.now();
-  const dueCards = cards.filter((c) => c.due <= cutoff);
+  const currentTime = now ?? new Date().toISOString();
+  const nowMs = new Date(currentTime).getTime();
+  const dueCards = cards.filter((c) => new Date(c.dueDate).getTime() <= nowMs);
 
   if (dueCards.length === 0) {
     return { totalDue: 0, totalCards: cards.length, averageOverdue: 0 };
   }
 
-  const overdueMs = dueCards.map((c) => cutoff - c.due);
+  const overdueMs = dueCards.map((c) => nowMs - new Date(c.dueDate).getTime());
   const averageOverdue = overdueMs.reduce((a, b) => a + b, 0) / overdueMs.length;
 
   return {
