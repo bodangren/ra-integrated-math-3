@@ -9,7 +9,8 @@ This repo uses npm workspaces. The IM3 app lives in `apps/integrated-math-3/` an
 ```
 ra-integrated-math-3/          # Monorepo root
 ├── apps/
-│   └── integrated-math-3/     # The IM3 application
+│   ├── integrated-math-3/     # The IM3 application
+│   └── bus-math-v2/           # Business Math v2 (reference and migration source)
 ├── packages/
 │   ├── _template/              # Package scaffold template
 │   ├── activity-runtime/       # Phase types, activity modes, completion tracking

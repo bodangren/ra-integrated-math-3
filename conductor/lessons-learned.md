@@ -23,16 +23,13 @@
 - (2026-04-18, security) `byte % alphabet.length` introduces modulo bias; use rejection sampling when 256 is not divisible by alphabet length
 - (2026-04-18, security) Password `.trim()` silently modifies user input; reject passwords with leading/trailing spaces explicitly
 - (2026-04-18, security) Vercel production deployments must check `VERCEL_ENV === 'production'` explicitly; don't rely solely on `NODE_ENV`
-- (2026-04-18, packages) After extracting a package, delete the app-local copy immediately — duplicated code diverges silently and doubles maintenance
 ## Patterns That Worked Well
 
 - (2026-04-05, setup) Existing `lib/` modules are pure functions with clear types — excellent for testing
 - (2026-04-06, scaffold-pages) Mock `@/lib/convex/server` at top of page tests — keeps tests fast and isolated
 - (2026-04-15, harden-manual-approval) Harness gating: expose canApprove via callback, track in parent, gate approve button
-- (2026-04-16, practice-timing) Pure accumulator pattern: isolate timing in browser-free module, inject timestamps from React hook
 - (2026-04-16, srs-rating-adapter) Two-step rating: compute base rating from correctness first, then apply timing as conservative modifier
 - (2026-04-16, srs-product-contract) Single canonical contract module (`lib/srs/contract.ts`) with re-exports; downstream imports from one surface
-- (2026-04-18, dashboard-wiring) Promise.all over independent handler calls with individual .catch() — graceful degradation per panel
 
 ## Planning Improvements
 
@@ -48,4 +45,6 @@
 - (2026-04-18, graphing-core) When reconciling BM2 vs extracted package, different coordinate systems (data vs canvas) are valid deltas — don't force merge; document the boundary clearly
 - (2026-04-18, bm2-migration) BM2 governance tests (conductor/, docs/, README.md checks) don't apply in monorepo context; exclude these files from copy and skip/remove those tests
 - (2026-04-18, bm2-consume) When migrating imports to packages, vitest mocks must be updated to match new import paths; mocks on `@/@lib/X` won't apply when X is imported from `@math-platform/X`
+- (2026-04-18, review-4) .gitignore patterns like `convex/_generated/` only match at repo root; use `**/convex/_generated/` to cover nested app directories in monorepos
+- (2026-04-18, review-4) Dynamic `expect(() => import(...)).not.toThrow()` doesn't catch async module errors — use `await import()` inside the test body and assert on exports
 
