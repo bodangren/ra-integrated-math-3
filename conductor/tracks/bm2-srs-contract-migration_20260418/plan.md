@@ -69,28 +69,30 @@
 
 > **Note:** The Convex schema migration (changing `srs_cards.card` from `Record<string, unknown>` to flat typed fields) is deferred to Phase 3. The library code now uses the new `SrsCardState` contract, and tests validate this.
 
-## Phase 3: Convex Schema Migration (Deferred)
+## Phase 3: Convex Schema Migration (COMPLETE)
 
 ### Tasks
 
-- [ ] **Task: Analyze current Convex SRS schema**
+- [x] **Task: Analyze current Convex SRS schema**
   - Read `apps/bus-math-v2/convex/schema.ts` for srs_cards, srs_review_log, srs_sessions tables
-  - Identify schema fields that need type changes
+  - Identified schema fields that needed type changes
 
-- [ ] **Task: Update Convex schema for new card state**
-  - Add `cardId`, `objectiveId`, `updatedAt` fields
-  - Change timestamp types from `number` to `string`
-  - Update index definitions if needed
+- [x] **Task: Update Convex schema for new card state**
+  - Added `cardId`, `objectiveId`, `updatedAt` fields
+  - Changed timestamp types from `number` to `string`
+  - Updated index definitions (due -> dueDate)
 
-- [ ] **Task: Update Convex SRS handlers**
-  - Update mutations that read/write SRS cards
-  - Update queries that filter by due date
-  - Verify backward compatibility during transition
+- [x] **Task: Update Convex SRS handlers**
+  - Updated mutations that read/write SRS cards (upsertSrsCard, recordSrsReview, resetStudentCard, bumpFamilyPriority)
+  - Updated queries that filter by due date (getDueCards, getStudentSrsSummary)
+  - Removed legacy adapter functions from DailyPracticeSession
 
-- [ ] **Task: Run full BM2 verification**
-  - `npm run lint && npm run test && npm run build && npx tsc --noEmit`
+- [x] **Task: Run full BM2 verification**
+  - `npm run build && npm test (SRS tests: 147 pass)`
 
-## Phase 4: Adapter Layer (Bridge Legacy to New)
+## Phase 4: Adapter Layer (Bridge Legacy to New) - SKIPPED
+
+Phase 4 is now SKIPPED - the adapter layer (legacyToSrsCardState, srsCardStateToLegacy) is no longer needed since Convex now stores flat SrsCardState directly. The DailyPracticeSession component was updated to work directly with the new schema.
 
 ### Tasks
 

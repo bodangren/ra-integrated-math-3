@@ -607,7 +607,12 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
          - queue.test.ts, review-processor.test.ts updated to SrsCardState format
          - scheduler.test.ts boundary condition fixed
          - SRS tests now pass
-       - Phase 3: Convex Schema Migration [DEFERRED]
+       - Phase 3: Convex Schema Migration [COMPLETE] (2026-04-18)
+          - srs_cards table migrated to flat SrsCardState fields
+          - Handler and component updates complete
+          - SRS tests: 147 pass
+        - Phase 4: Adapter Layer [SKIPPED]
+          - Adapters no longer needed since Convex stores flat SrsCardState
 
 ### Wave 5 — Feature Packages and IM3 Pending Tracks
 
