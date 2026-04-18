@@ -66,6 +66,32 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Profile not found' }, { status: 404 });
   }
 
+  let body: ChatbotRequest;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  }
+
+  const { lessonId, phaseNumber, question } = body;
+
+  if (!lessonId || typeof lessonId !== 'string' || lessonId.trim().length === 0) {
+    return NextResponse.json({ error: 'Missing or invalid lessonId' }, { status: 400 });
+  }
+
+  if (!phaseNumber || typeof phaseNumber !== 'number' || phaseNumber < 1 || phaseNumber > 50) {
+    return NextResponse.json({ error: 'Missing or invalid phaseNumber' }, { status: 400 });
+  }
+
+  if (!question || typeof question !== 'string') {
+    return NextResponse.json({ error: 'Missing or invalid question' }, { status: 400 });
+  }
+
+  const sanitizedQuestion = sanitizeInput(question);
+  if (sanitizedQuestion.length === 0 || sanitizedQuestion.length > 1000) {
+    return NextResponse.json({ error: 'Question must be between 1 and 1000 characters' }, { status: 400 });
+  }
+
   try {
     const rateLimitResult = await fetchInternalMutation(
       rateLimitsInternal.checkAndIncrementRateLimit,
@@ -84,32 +110,6 @@ export async function POST(request: NextRequest) {
       { error: 'Service temporarily unavailable. Please try again later.' },
       { status: 503 }
     );
-  }
-
-  let body: ChatbotRequest;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
-  }
-
-  const { lessonId, phaseNumber, question } = body;
-
-  if (!lessonId || typeof lessonId !== 'string' || lessonId.trim().length === 0) {
-    return NextResponse.json({ error: 'Missing or invalid lessonId' }, { status: 400 });
-  }
-
-  if (!phaseNumber || typeof phaseNumber !== 'number' || phaseNumber < 1) {
-    return NextResponse.json({ error: 'Missing or invalid phaseNumber' }, { status: 400 });
-  }
-
-  if (!question || typeof question !== 'string') {
-    return NextResponse.json({ error: 'Missing or invalid question' }, { status: 400 });
-  }
-
-  const sanitizedQuestion = sanitizeInput(question);
-  if (sanitizedQuestion.length === 0 || sanitizedQuestion.length > 1000) {
-    return NextResponse.json({ error: 'Question must be between 1 and 1000 characters' }, { status: 400 });
   }
 
   try {

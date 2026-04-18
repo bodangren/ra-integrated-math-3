@@ -32,7 +32,7 @@
 | practice-core dual schema files | Medium | Open | submission.schema.ts + contract.ts parallel surfaces; consolidate |
 | BM2 lib/auth ~250 lines duplicated from core-auth | High | Open | Diverges silently; needs package adoption |
 | BM2 lib/practice ~1305 lines duplicated from practice-core | High | Open | 73 local vs 12 package imports; engine/ subtree is BM2-specific |
-| teacher-reporting-core course-overview passes 'not_started' sentinel | Medium | Open | Semantically misleading; fragile if computeCellColor logic changes |
+| teacher-reporting-core course-overview passes 'not_started' sentinel | Medium | Resolved | Replaced with computeMasteryColor — review #10 |
 | teacher-reporting-core .js import extension inconsistency | Low | Open | Uses .js extensions while other packages don't |
 | study-hub-core BaseReviewSession untested in-package | Low | Open | Tested from IM3 imports but not in package's own test suite |
 | IM3 lib/study local copy not wired to study-hub-core types | Medium | Open | GlossaryTerm is wider than StudyTerm; structural compatibility works but not explicitly adopted |
@@ -41,3 +41,10 @@
 | IM3 chatbot: no tests for route.ts, rateLimits.ts, LessonChatbot.tsx | High | Open | Three new files with zero test coverage |
 | IM3 chatbot: prompt injection risk in buildPrompt | Medium | Open | User question interpolated directly; added triple-quote delimiters but no system-level guard |
 | IM3 Convex types stale: rateLimits + student.getLessonForChatbot | Medium | Open | Generated api.d.ts missing new handlers; must run npx convex dev to regenerate |
+| IM3 chatbot: no lesson enrollment auth + lesson content prompt injection | Critical | Open | Any student can query any lesson; teacher markdown injected raw into AI prompt |
+| CI: package test/lint continue-on-error swallows failures | High | Open | Broken packages can merge without detection |
+| CI: BM2 redundant || true + continue-on-error | Low | Open | Both layers suppress failures; remove one |
+| workbook-pipeline: capstone filename hardcoded to BM2 domain | Medium | Open | "investor_ready_workbook" is business-math-specific; parameterize |
+| workbook-pipeline: workbooks.client.ts double-cast bypasses types | Medium | Open | `as unknown as WorkbookManifest` — use zod validation |
+| teacher-reporting: versionByLessonId picks first version silently | Medium | Open | No guarantee first version is the active one |
+| IM3 chatbot: provider re-created on every request + no AbortSignal | Medium | Open | resolveOpenRouterProviderFromEnv should be memoized; no client disconnect handling |

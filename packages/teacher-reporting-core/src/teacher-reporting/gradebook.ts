@@ -34,13 +34,20 @@ export function computeCellColor(
   completionStatus: LessonCompletionStatus,
   masteryLevel: number | null,
 ): CellColor {
-  if (completionStatus === 'not_started' && masteryLevel === null) return 'gray';
+  if (completionStatus === 'not_started') return 'gray';
   if (completionStatus === 'completed' || (masteryLevel !== null && masteryLevel >= 80)) {
     return 'green';
   }
   if (completionStatus === 'in_progress' || (masteryLevel !== null && masteryLevel >= 50)) {
     return 'yellow';
   }
+  return 'red';
+}
+
+export function computeMasteryColor(masteryLevel: number | null): CellColor {
+  if (masteryLevel === null) return 'gray';
+  if (masteryLevel >= 80) return 'green';
+  if (masteryLevel >= 50) return 'yellow';
   return 'red';
 }
 

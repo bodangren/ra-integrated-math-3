@@ -1,4 +1,4 @@
-import { computeCellColor, type CellColor } from './gradebook.js';
+import { computeMasteryColor, type CellColor } from './gradebook.js';
 
 export type { CellColor };
 
@@ -73,7 +73,7 @@ export function assembleCourseOverviewRows(
       }
 
       const avg = Math.round(values.reduce((s, v) => s + v, 0) / values.length);
-      return { unitNumber, avgMastery: avg, color: computeCellColor('not_started', avg) };
+      return { unitNumber, avgMastery: avg, color: computeMasteryColor(avg) };
     });
 
     return {

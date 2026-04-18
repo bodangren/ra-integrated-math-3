@@ -2,7 +2,7 @@
  * Shared AI provider adapters for both teacher and student features.
  */
 
-import { withRetry } from './retry';
+import { withRetry, EmptyResponseError } from './retry';
 
 const OPENROUTER_API_BASE = 'https://openrouter.ai/api/v1';
 
@@ -50,7 +50,7 @@ export function createOpenRouterProvider(options: OpenRouterProviderOptions) {
         const data = await response.json() as any;
         const content = data.choices?.[0]?.message?.content;
         if (typeof content !== 'string' || content.trim().length === 0) {
-          throw new Error('Empty response from AI provider [EMPTY_RESPONSE]');
+          throw new EmptyResponseError();
         }
         return content.trim();
       } finally {
@@ -58,6 +58,17 @@ export function createOpenRouterProvider(options: OpenRouterProviderOptions) {
       }
     });
   };
+}
+
+export { EmptyResponseError } from './retry';
+
+export function isOpenRouterError(error: unknown): error is Error & { status?: number } {
+  return error instanceof Error && error.message.startsWith('OpenRouter API error:');
+}
+
+export function getErrorStatus(error: Error): number | null {
+  const match = error.message.match(/error:\s*(\d{3})/);
+  return match ? parseInt(match[1], 10) : null;
 }
 
 export function resolveOpenRouterProviderFromEnv(): ((prompt: string) => Promise<string>) | null {

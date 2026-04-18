@@ -6,6 +6,13 @@
  * Non-retryable errors (4xx, aborts) are thrown immediately.
  */
 
+export class EmptyResponseError extends Error {
+  constructor() {
+    super('Empty response from AI provider');
+    this.name = 'EmptyResponseError';
+  }
+}
+
 export interface RetryOptions {
   /** Maximum number of retry attempts. Default: 2 */
   maxRetries?: number;
@@ -28,6 +35,9 @@ export function isRetryableStatus(status: number): boolean {
 }
 
 function isRetryableError(error: unknown): boolean {
+  if (error instanceof EmptyResponseError) {
+    return true;
+  }
   if (error instanceof DOMException && error.name === 'AbortError') {
     return false;
   }

@@ -23,7 +23,8 @@ ra-integrated-math-3/          # Monorepo root
 │   ├── practice-test-engine/   # Shared test types and question utilities
 │   ├── srs-engine/             # FSRS scheduler, review processor, queue, adapters
 │   ├── study-hub-core/         # Flashcard/review session primitives, shuffle utilities
-│   └── teacher-reporting-core/ # Gradebook, course overview, competency heatmap, CSV export
+│   ├── teacher-reporting-core/ # Gradebook, course overview, competency heatmap, CSV export
+│   └── workbook-pipeline/      # Workbook filename, manifest, and path utilities
 ├── conductor/                  # Spec-driven development docs
 └── README.md
 ```

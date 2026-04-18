@@ -62,9 +62,14 @@ describe('computeCellColor', () => {
     expect(computeCellColor('completed', 100)).toBe('green');
   });
 
-  it('returns green when mastery level >= 80', () => {
+  it('returns green when mastery level >= 80 with progress', () => {
     expect(computeCellColor('in_progress', 80)).toBe('green');
-    expect(computeCellColor('not_started', 95)).toBe('green');
+  });
+
+  it('returns gray for not_started regardless of mastery', () => {
+    expect(computeCellColor('not_started', 95)).toBe('gray');
+    expect(computeCellColor('not_started', 50)).toBe('gray');
+    expect(computeCellColor('not_started', 49)).toBe('gray');
   });
 
   it('returns yellow when in_progress', () => {
@@ -72,12 +77,8 @@ describe('computeCellColor', () => {
   });
 
   it('returns yellow when mastery level 50-79', () => {
-    expect(computeCellColor('not_started', 50)).toBe('yellow');
-    expect(computeCellColor('not_started', 79)).toBe('yellow');
-  });
-
-  it('returns red when not_started with mastery < 50', () => {
-    expect(computeCellColor('not_started', 49)).toBe('red');
+    expect(computeCellColor('in_progress', 50)).toBe('yellow');
+    expect(computeCellColor('in_progress', 79)).toBe('yellow');
   });
 });
 

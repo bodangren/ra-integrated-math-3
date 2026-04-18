@@ -653,7 +653,7 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 ### Wave 6 — Monorepo Hardening
 
-- [ ] **Track: Monorepo CI and Deploy Hardening**
+- [x] **Track: Monorepo CI and Deploy Hardening** — **COMPLETED**
       *Finalize root CI matrix, boundary checks, and per-app deploy path correctness.*
       *Link: [./conductor/tracks/monorepo-ci-deploy-hardening_20260417/](./conductor/tracks/monorepo-ci-deploy-hardening_20260417/)*
       - Phase 1: CI Pipeline Matrix [COMPLETE]

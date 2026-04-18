@@ -7,6 +7,7 @@ export {
   type GradebookRow,
   computeLessonStatus,
   computeCellColor,
+  computeMasteryColor,
   buildGradebookCell,
   sortRowsByName,
   cellBgClass,

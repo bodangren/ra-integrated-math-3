@@ -8,6 +8,9 @@ export interface GradebookCsvOptions {
 function escapeCsvValue(value: string | number | null): string {
   if (value === null) return '';
   const str = String(value);
+  if (/^[=+\-@\t\r]/.test(str)) {
+    return `"'${str.replace(/"/g, '""')}"`;
+  }
   if (str.includes(',') || str.includes('"') || str.includes('\n')) {
     return `"${str.replace(/"/g, '""')}"`;
   }

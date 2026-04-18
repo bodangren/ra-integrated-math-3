@@ -1,18 +1,19 @@
 # Current Directive
 
-> Updated: 2026-04-19 (Code review #9 — audit of AI tutoring extraction, adoption, and teacher-reporting wiring)
+> Updated: 2026-04-19 (Code review #10 — audit of AI tutoring adoption, teacher-reporting wiring, workbook pipeline, CI hardening)
 
 ## Mission
 
-Primary objective is to execute the monorepo migration roadmap in Conductor order, with strict package/app boundaries and no BM2 business-domain leakage.
+Primary objective is to complete Wave 6 (CI/CD hardening and docs cleanup) and address critical security issues found in review #10. BM2 type health sweep remains deferred.
 
 ## Priority Order (Execute In This Order)
 
-1. **Waves 0-5 complete** — readiness gate, tooling shell, move apps, boundary guards, all packages extracted, app import migration done, BM2 fully consuming core + runtime packages, AI tutoring extracted and adopted in IM3 + BM2
-2. **BM2 SRS contract migration complete** — Convex schema migrated to flat SrsCardState
-3. **Next: Extract Workbook Pipeline Package and Adopt in IM3** — last Wave 5 track
-4. **Then: Wave 6** — monorepo CI/CD hardening and docs cleanup
-5. **BM2 type health sweep** — ~296 pre-existing errors; defer unless blocking migration gates
+1. **Waves 0-5 complete** — all packages extracted, BM2 consuming packages, AI tutoring + workbook adopted
+2. **Wave 6: Monorepo CI and Deploy Hardening** — Phase 3 complete; mark track as done
+3. **Wave 6: Monorepo Docs and Cleanup** — finalize integration docs, remove shims
+4. **Critical: IM3 chatbot authorization** — add lesson enrollment check to prevent students accessing any lesson
+5. **Critical: IM3 chatbot prompt injection** — sanitize teacher-authored content before injecting into AI prompt
+6. **BM2 type health sweep** — ~296 pre-existing errors; defer unless blocking migration gates
 
 ## Non-Negotiable Rules
 
@@ -34,7 +35,7 @@ Primary objective is to execute the monorepo migration roadmap in Conductor orde
 
 ## Immediate Next Actions Checklist
 
-- [x] Waves 0-4 complete (all packages extracted, IM3+BM2 imports migrated)
+- [x] Waves 0-5 complete (all packages extracted, IM3+BM2 imports migrated)
 - [x] BM2 SRS contract migration — **COMPLETED (2026-04-18)**
 - [x] BM2 consume-core-packages — **COMPLETED (2026-04-18)**
 - [x] BM2 consume-runtime-packages — **COMPLETED (2026-04-18)**
@@ -43,12 +44,15 @@ Primary objective is to execute the monorepo migration roadmap in Conductor orde
 - [x] Extract teacher-reporting-core — **COMPLETED (2026-04-19)**
 - [x] Extract AI Tutoring Package and Adopt in IM3 — **COMPLETED (2026-04-19)**
 - [x] Extract Workbook Pipeline Package and Adopt in IM3 — **COMPLETED (2026-04-19)**
-- [ ] Wave 6: CI/CD hardening, docs cleanup
+- [x] Wave 6 CI/CD hardening — **Phases 1-3 COMPLETE**
+- [ ] Wave 6: Monorepo docs and cleanup
+- [ ] **Critical: IM3 chatbot lesson enrollment auth check**
+- [ ] **Critical: IM3 chatbot content sanitization before AI prompt**
 - [ ] BM2 type health sweep (~296 TS errors) — defer unless blocking
 
-## Code Review Summary (2026-04-19 — Review #9)
+## Code Review Summary (2026-04-19 — Review #10)
 
-Audit of 6 phases since review #8: AI tutoring package extraction (Phase 1), BM2 adoption (Phase 2), IM3 chatbot implementation, teacher-reporting adoption, workbook manifest update, plan/docs reconciliation.
+Audit of 6 phases: AI tutoring extraction (BM2 Phase 1), BM2 adoption (Phase 2), IM3 chatbot implementation, teacher-reporting adoption, workbook pipeline extraction, CI deploy hardening.
 
 ### Verification Results
 
@@ -57,43 +61,26 @@ Audit of 6 phases since review #8: AI tutoring package extraction (Phase 1), BM2
 | Build (IM3) | PASS |
 | Tests (IM3) | 3249/3255 pass (6 aspirational .todo) |
 | Tests (ai-tutoring) | 31/31 pass |
+| Tests (workbook-pipeline) | 38/38 pass |
 | Tests (teacher-reporting-core) | 65/65 pass |
-| Typecheck (IM3) | CLEAN |
-| Typecheck (all new packages) | CLEAN |
+| Typecheck (IM3 + all new packages) | CLEAN |
 | Lint (IM3) | CLEAN |
 
-### Critical Issues Fixed
+### Critical Issues Found (Tracked in tech-debt.md)
+
+| Issue | Status |
+|-------|--------|
+| IM3 chatbot: no lesson enrollment authorization check | Open — tracked |
+| IM3 chatbot: lesson content prompt injection via teacher markdown | Open — tracked |
+
+### Issues Fixed in This Review
 
 | Issue | Severity | Fix |
 |-------|----------|-----|
-| Rate limiting completely broken — `fetchInternalMutation` admin auth has no user identity; `ctx.auth.getUserIdentity()` always returns null | Critical | Mutations now accept `userId`/`adminProfileId` args; API route resolves profile first |
-| `isRetryableError` default `return true` masks programming errors as transient | Critical | Default now `return false`; explicit network pattern allowlist |
-| `cleanupStaleRateLimits` unbounded `.collect()` could OOM | Medium (was unbounded) | Changed to `.filter().take(100)` |
-
-### High Issues Fixed
-
-| Issue | Severity | Fix |
-|-------|----------|-----|
-| HTTP headers reference "Business Math v2" instead of "Integrated Math 3" | High | Updated `HTTP-Referer` and `X-Title` |
-| CSV export: masteryLevel values and status labels not passed through `escapeCsvValue` | High | All cell values now consistently escaped |
-| `isUnitTest: orderIndex === 11` hardcoded in shared package | High | `RawLesson.isUnitTest` now caller-controlled; defaults to false |
-
-### Medium Issues Fixed
-
-| Issue | Severity | Fix |
-|-------|----------|-----|
-| Misleading `(400)` in empty-response error message | Medium | Changed to `[EMPTY_RESPONSE]` sentinel |
-| `getLessonForChatbot` fragile learningObjectives parsing | Medium | Uses array directly instead of split(index[0]) |
-| Prompt injection delimiters missing in buildPrompt | Medium | Added triple-quote delimiters around student question |
-
-### Issues Tracked But Not Fixed (in tech-debt.md)
-
-| Issue | Severity | Notes |
-|-------|----------|-------|
-| ai-tutoring: resolveOpenRouterProviderFromEnv untested | Medium | Exported public API with zero test coverage |
-| ai-tutoring: `as any` cast in providers.ts | Medium | Need typed OpenRouterResponse interface |
-| IM3 chatbot: no tests for route.ts, rateLimits.ts, LessonChatbot.tsx | High | Three new files with zero test coverage |
-| IM3 chatbot: prompt injection risk beyond delimiters | Medium | No system-level content guard |
-| IM3 Convex types stale: rateLimits + student.getLessonForChatbot | Medium | Must run `npx convex dev` to regenerate api.d.ts |
-| teacher-reporting: Tailwind CSS coupling in cellBgClass | High | Shared package returns Tailwind classes; prevents non-Tailwind consumers |
-| teacher-reporting: course-overview passes 'not_started' sentinel | Medium | Works but semantically misleading |
+| CSV injection: formula prefixes not sanitized in gradebook export | High | Added `=`, `+`, `-`, `@`, `\t` prefix sanitization |
+| computeCellColor returns green for not-started lessons with high mastery | High | not_started now always returns gray; added computeMasteryColor for mastery-only contexts |
+| Rate limit consumed before request body validation | High | Moved body parsing + validation before rate limit check |
+| Empty AI responses never retried | High | EmptyResponseError now retryable via withRetry |
+| CI: `tsc --noEmit --prefix` is not a valid tsc flag | High | Changed to `cd apps/bus-math-v2 && npx tsc --noEmit` |
+| CI: IM3 npm ci --prefix won't resolve workspace packages | Medium | Changed to root `npm ci` with `--prefix` for scripts |
+| phaseNumber unbounded (no upper limit) | Low | Added `phaseNumber > 50` guard |

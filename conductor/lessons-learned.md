@@ -20,6 +20,9 @@
 - (2026-04-19, review-9) When Convex mutations are called via `fetchInternalMutation` (admin auth), `ctx.auth.getUserIdentity()` returns null — always pass userId as an explicit argument
 - (2026-04-19, review-9) Retry wrappers must default to non-retryable; only retry on explicit known patterns (HTTP 429/5xx, network errors). Default `return true` silently masks programming errors
 - (2026-04-19, review-9) Shared packages must not couple to CSS frameworks — Tailwind class strings in gradebook.ts prevent non-Tailwind consumers from using the package
+- (2026-04-19, review-10) Always validate + parse request body BEFORE consuming rate limits — otherwise malformed requests burn the student's quota
+- (2026-04-19, review-10) Empty AI responses are transient — always retry them (EmptyResponseError); CSV exports must sanitize formula prefixes (`=`, `+`, `-`, `@`) to prevent injection (CWE-1236)
+- (2026-04-19, review-10) When shared functions accept completion status, never use a sentinel value like 'not_started' as a backdoor to bypass status logic — create a dedicated function (e.g. computeMasteryColor) instead
 ## Patterns That Worked Well
 
 - (2026-04-05, setup) Existing `lib/` modules are pure functions with clear types — excellent for testing
