@@ -22,15 +22,15 @@
 
 ### Tasks
 
-- [ ] **Task: Diff BM2 graphing utility equivalents**
-  - [ ] Classify deltas into required behavior vs domain config.
-  - [ ] Merge required utility behavior.
-  - [ ] Exclude BM2 exploration config data from package.
+- [x] **Task: Diff BM2 graphing utility equivalents**
+  - [x] Classify deltas into required behavior vs domain config.
+  - [x] Merge required utility behavior.
+  - [x] Exclude BM2 exploration config data from package.
 
-- [ ] **Task: Document retained app-local graphing config**
-  - [ ] List config files that stay in each app.
-  - [ ] Document package integration boundary for configs.
-  - [ ] Add notes for BM2 runtime adoption track.
+- [x] **Task: Document retained app-local graphing config**
+  - [x] List config files that stay in each app.
+  - [x] Document package integration boundary for configs.
+  - [x] Add notes for BM2 runtime adoption track.
 
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2: Reconcile Deltas' (Protocol in workflow.md)**
 
