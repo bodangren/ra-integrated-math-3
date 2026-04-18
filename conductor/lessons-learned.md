@@ -46,3 +46,4 @@
 - (2026-04-18, code-review) After a monorepo directory move, grep for all hardcoded `conductor/`, `curriculum/`, and `convex/` path references in both source and test code; the vinext build does not run tsc
 - (2026-04-18, code-review) CI/CD paths-ignore after a monorepo move must be audited — `apps/**` blocks deployment for all app code changes
 - (2026-04-18, monorepo-package) Packages under `packages/` that extend `../../tsconfig.json` require a root tsconfig.json; create a minimal composite tsconfig.json at monorepo root before packages can typecheck
+- (2026-04-18, srs-engine) When creating shared packages, define types locally if practice-core doesn't export them yet — don't let package dependencies block extraction; track as tech debt

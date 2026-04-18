@@ -27,6 +27,7 @@
 | Monorepo move: lesson-title-consistency test referenced stale conductor/ paths | High | Resolved | Fixed: split into monorepoRoot/appRoot; corrected archive/ paths for module-1/2 seed tracks (2026-04-18) |
 | Root AGENTS.md references stale integrated-math-3/ path | Medium | Open | App moved to apps/integrated-math-3/; path reference is outdated |
 | Root components.json points to wrong globals.css path | Medium | Open | shadcn config resolves app/globals.css at repo root, not apps/integrated-math-3/app/globals.css |
+| SRS engine: objective-proficiency types not in practice-core | Medium | Open | SRS contract defines ObjectivePriority/ObjectivePracticePolicy locally; practice-core should export these for proper layering |
 | FSRS stability used as avgRetention — semantic mismatch | Medium | Open | Stability = days until 90% retrievability, not percentage |
 | mapGradeToSrsRating/mapCardState silently map unknown values | Medium | Open | Should exhaust switch or throw instead of silent default |
 | Silent catch blocks in convex/student.ts, teacher.ts | Medium | Open | Swallows exceptions; Convex outages produce raw 500 |
