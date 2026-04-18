@@ -19,13 +19,13 @@ describe('modes', () => {
       });
     });
 
-    it('respects activity-level config override for teacher', () => {
+    it('ignores activity-level override for teacher (role takes precedence)', () => {
       const mode = resolveActivityMode({
         role: 'teacher',
         phaseType: 'worked_example',
         activityModeOverride: 'practice',
       });
-      expect(mode).toBe('practice');
+      expect(mode).toBe('teaching');
     });
   });
 
@@ -91,13 +91,13 @@ describe('modes', () => {
       expect(mode).toBe('practice');
     });
 
-    it('overrides resolved mode for teacher', () => {
+    it('ignores override for teacher (role takes precedence)', () => {
       const mode = resolveActivityMode({
         role: 'teacher',
         phaseType: 'worked_example',
         activityModeOverride: 'guided',
       });
-      expect(mode).toBe('guided');
+      expect(mode).toBe('teaching');
     });
 
     it('ignores null/undefined override', () => {
@@ -123,13 +123,13 @@ describe('modes', () => {
       expect(mode).toBe('teaching');
     });
 
-    it('respects activity-level config override for admin', () => {
+    it('ignores activity-level override for admin (role takes precedence)', () => {
       const mode = resolveActivityMode({
         role: 'admin',
         phaseType: 'worked_example',
         activityModeOverride: 'practice',
       });
-      expect(mode).toBe('practice');
+      expect(mode).toBe('teaching');
     });
   });
 

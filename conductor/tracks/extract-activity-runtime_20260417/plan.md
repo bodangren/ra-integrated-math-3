@@ -6,17 +6,17 @@
 
 ### Tasks
 
-- [ ] **Task: Scaffold `packages/activity-runtime`**
-  - [ ] Create package config/exports/tests.
-  - [ ] Define public type exports for runtime contracts.
-  - [ ] Create baseline runtime smoke tests.
+- [x] **Task: Scaffold `packages/activity-runtime`**
+  - [x] Create package config/exports/tests.
+  - [x] Define public type exports for runtime contracts.
+  - [x] Create baseline runtime smoke tests.
 
-- [ ] **Task: Extract IM3 runtime modules**
-  - [ ] Port phase model, mode contracts, activity registry interfaces, and renderer primitives.
-  - [ ] Preserve API signatures for IM3 call sites.
-  - [ ] Add tests for exported runtime behavior.
+- [x] **Task: Extract IM3 runtime modules**
+  - [x] Port phase model, mode contracts, activity registry interfaces, and renderer primitives.
+  - [x] Preserve API signatures for IM3 call sites.
+  - [x] Add tests for exported runtime behavior.
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1: Package Extraction' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1: Package Extraction' (Protocol in workflow.md)**
 
 ## Phase 2: IM3 Migration
 
