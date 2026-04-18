@@ -6,17 +6,17 @@
 
 ### Tasks
 
-- [ ] **Task: Create root workspace files**
-  - [ ] Add approved workspace file(s) at root (e.g., `pnpm-workspace.yaml` or npm workspaces).
-  - [ ] Add root `package.json` script entries for `lint`, `test`, `build`, and `typecheck`.
-  - [ ] Validate file syntax and command resolution.
+- [x] **Task: Create root workspace files**
+  - [x] Add approved workspace file(s) at root (e.g., `pnpm-workspace.yaml` or npm workspaces).
+  - [x] Add root `package.json` script entries for `lint`, `test`, `build`, and `typecheck`.
+  - [x] Validate file syntax and command resolution.
 
-- [ ] **Task: Create task runner pipeline config**
-  - [ ] Add task-runner config (e.g., `turbo.json`) if approved in readiness track.
-  - [ ] Define dependency order for `build`, `test`, `lint`, and `typecheck`.
-  - [ ] Dry-run root commands and record output.
+- [x] **Task: Create task runner pipeline config**
+  - [x] Add task-runner config (e.g., `turbo.json`) if approved in readiness track. **DEFERRED: npm workspaces approved, turbo not approved. Fan-out via `npm run --workspace=<pkg>` CLI flags documented in migration index.**
+  - [x] Define dependency order for `build`, `test`, `lint`, and `typecheck`. **Documented via npm workspaces CLI patterns in migration index.**
+  - [x] Dry-run root commands and record output.
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1: Root Workspace Setup' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1: Root Workspace Setup' (Protocol in workflow.md)** [checkpoint: local]
 
 ## Phase 2: Package Template and Guard Scripts
 

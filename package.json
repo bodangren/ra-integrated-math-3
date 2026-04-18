@@ -1,5 +1,9 @@
 {
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "vinext dev",
     "dev:stack": "node scripts/dev-stack.mjs",
