@@ -45,7 +45,7 @@ Primary objective is to complete Wave 6 (CI/CD hardening and docs cleanup) and a
 - [x] Extract AI Tutoring Package and Adopt in IM3 — **COMPLETED (2026-04-19)**
 - [x] Extract Workbook Pipeline Package and Adopt in IM3 — **COMPLETED (2026-04-19)**
 - [x] Wave 6 CI/CD hardening — **Phases 1-3 COMPLETE**
-- [ ] Wave 6: Monorepo docs and cleanup
+- [x] Wave 6: Monorepo docs and cleanup — **COMPLETED (2026-04-19)**
 - [x] **Critical: IM3 chatbot lesson enrollment auth check** — **COMPLETED (2026-04-19)**
 - [x] **Critical: IM3 chatbot content sanitization before AI prompt** — **COMPLETED (2026-04-19)**
 - [ ] BM2 type health sweep (~296 TS errors) — defer unless blocking
