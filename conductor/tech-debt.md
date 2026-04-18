@@ -42,7 +42,7 @@
 | Cloudflare worker deploys to production on every push | Medium | Open | No staging step, no canary, no approval gate |
 | New test files: 35 `any` lint errors | Medium | Open | @typescript-eslint/no-explicit-any violations in test mocks |
 | Session day-boundary tests: 3 failures in sessions.test.ts | Medium | Open | isSameDay edge cases with active session resume; pre-existing |
-| practice-core + srs-engine: ESLint config/dependencies missing | Medium | Open | eslint.config.mjs created but eslint/typescript-eslint not in devDependencies; lint scripts fail; tests/typecheck pass |
+| practice-core + srs-engine + core-auth + core-convex: ESLint config/dependencies missing | Medium | Open | eslint.config.mjs created but eslint/typescript-eslint not in devDependencies; lint scripts fail; tests/typecheck pass |
 | srs-engine: InMemoryTest stores duplicate adapter classes | Medium | Open | InMemoryTestCardStore/InMemoryTestReviewLogStore in submission-srs-adapter.ts re-implement InMemoryCardStore/InMemoryReviewLogStore; reuse existing classes |
 | srs-engine: InMemorySubmissionSrsAdapter uses unsafe `as unknown as` casts | Medium | Open | getResolver/getBaselineResolver/getCardStore/getReviewLogStore cast private fields through unknown |
 | SubmissionDetailModal: array index used as React key | Low | Open | Should use stable ID (e.g., evidence.activityId) |

@@ -17,6 +17,9 @@
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit"
   },
+  "dependencies": {
+    "convex": "^1.32.0"
+  },
   "devDependencies": {
     "typescript": "^5",
     "vitest": "^4.0.16"

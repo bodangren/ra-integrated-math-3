@@ -1,52 +1,28 @@
-import { ConvexHttpClient } from "convex/browser";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { api, internal } from "@/convex/_generated/api";
+import {
+  fetchInternalQuery as fetchInternalQueryBase,
+  fetchInternalMutation as fetchInternalMutationBase,
+} from "@math-platform/core-convex";
 import { resolveConvexAdminAuth } from "@/lib/convex/admin";
 import { getConvexUrl } from "@/lib/convex/config";
 
-let convexClient: ConvexHttpClient | null = null;
-let internalConvexClient: ConvexHttpClient | null = null;
-
-interface ConvexHttpClientWithAdminAuth extends ConvexHttpClient {
-  setAdminAuth: (token: string, actingAsIdentity?: string) => void;
-}
-
-function getConvexClient(): ConvexHttpClient {
-  if (!convexClient) {
-    convexClient = new ConvexHttpClient(getConvexUrl());
-  }
-  return convexClient;
-}
-
-async function getInternalConvexClient(): Promise<ConvexHttpClient> {
-  if (!internalConvexClient) {
-    internalConvexClient = new ConvexHttpClient(getConvexUrl());
-  }
-
-  const adminAuth = await resolveConvexAdminAuth();
-  (internalConvexClient as ConvexHttpClientWithAdminAuth).setAdminAuth(adminAuth.token);
-  return internalConvexClient;
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function fetchQuery(ref: any, args: Record<string, unknown>): Promise<any> {
-  return getConvexClient().query(ref, args);
+  const { fetchPublicQuery } = await import("@math-platform/core-convex");
+  return fetchPublicQuery(ref, args);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function fetchMutation(ref: any, args: Record<string, unknown>): Promise<any> {
-  return getConvexClient().mutation(ref, args);
+  const { fetchPublicMutation } = await import("@math-platform/core-convex");
+  return fetchPublicMutation(ref, args);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function fetchInternalQuery(ref: any, args: Record<string, unknown>): Promise<any> {
-  const client = await getInternalConvexClient();
-  return client.query(ref, args);
+  return fetchInternalQueryBase(ref, args, { env: process.env });
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function fetchInternalMutation(ref: any, args: Record<string, unknown>): Promise<any> {
-  const client = await getInternalConvexClient();
-  return client.mutation(ref, args);
+  return fetchInternalMutationBase(ref, args, { env: process.env });
 }
 
 interface SupabaseUserLike {
@@ -90,4 +66,4 @@ export async function resolveConvexProfileIdFromSupabaseUser(
   return profile?.id ?? null;
 }
 
-export { api, internal };
+export { api, internal, resolveConvexAdminAuth, getConvexUrl };

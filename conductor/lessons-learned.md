@@ -46,3 +46,4 @@
 - (2026-04-18, code-review) After a monorepo directory move, grep for all hardcoded `conductor/`, `curriculum/`, and `convex/` path references in both source and test code; the vinext build does not run tsc
 - (2026-04-18, monorepo-package) Packages under `packages/` need root tsconfig.json; CI/CD paths-ignore after monorepo move must audit `apps/**` blocks
 - (2026-04-18, srs-engine) Define types locally in shared packages if dependencies don't export them; ESLint must be scaffolded; migrate local imports to package with updated vitest mocks
+- (2026-04-18, core-convex) Generated-API-safe adapters: accept refs as `any` parameters in package wrappers; app passes typed `api/internal` from generated paths; this avoids `packages/*` importing `apps/*/convex/_generated/*`
