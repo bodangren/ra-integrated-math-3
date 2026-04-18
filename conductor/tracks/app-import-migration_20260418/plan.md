@@ -83,29 +83,29 @@
 
 ### Tasks
 
-- [ ] **Task: Add @math-platform/* dependencies to package.json**
-  - [ ] Audit all `@math-platform/*` imports in `apps/integrated-math-3/`
-  - [ ] Add missing dependencies to `apps/integrated-math-3/package.json`
-  - [ ] Verify with `npm ls` that all packages are properly linked
+- [x] **Task: Add @math-platform/* dependencies to package.json**
+  - [x] Audit all `@math-platform/*` imports in `apps/integrated-math-3/`
+  - [x] Add missing dependencies to `apps/integrated-math-3/package.json`
+  - [x] Verify with `npm ls` that all packages are properly linked
 
-- [ ] **Task: Verify dependency graph**
-  - [ ] Run `npm ls @math-platform/practice-core` and other packages
-  - [ ] Ensure no missing peer dependencies
+- [x] **Task: Verify dependency graph**
+  - [x] Run `npm ls @math-platform/practice-core` and other packages
+  - [x] Ensure no missing peer dependencies
 
 ## Phase 6: Final Verification
 
 ### Tasks
 
-- [ ] **Task: Run full verification suite**
-  - [ ] `npm run build`
-  - [ ] `npx tsc --noEmit`
-  - [ ] `npm run lint -- --max-warnings 0`
-  - [ ] `vitest run`
+- [x] **Task: Run full verification suite**
+  - [x] `npm run build` - PASS
+  - [x] `npx tsc --noEmit` - PASS
+  - [x] `npm run lint -- --max-warnings 0` - PASS
+  - [x] `vitest run` - 3287/3311 pass (24 pre-existing failures: 6 equivalence + 18 Convex mock infra; unchanged from baseline)
 
-- [ ] **Task: Update tech-debt.md**
-  - [ ] Mark resolved items as resolved
-  - [ ] Document any new tech debt discovered
+- [x] **Task: Update tech-debt.md**
+  - [x] Mark resolved items as resolved
+  - [x] Document any new tech debt discovered
 
-- [ ] **Task: Finalize and handoff**
-  - [ ] Commit with model name in commit message
-  - [ ] Push phase checkpoint
+- [x] **Task: Finalize and handoff**
+  - [x] Commit with model name in commit message
+  - [x] Push phase checkpoint

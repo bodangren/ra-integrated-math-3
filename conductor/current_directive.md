@@ -66,7 +66,7 @@ Supporting references:
 - [x] Complete `extract-core-auth-convex_20260417` — **COMPLETED (2026-04-18)**
 - [x] **Wave 3 Start** — `extract-activity-runtime_20260417` — **COMPLETED (2026-04-18)**
 - [x] `extract-component-approval_20260417` Phase 1 — **COMPLETED (2026-04-18)**
-- [ ] **CRITICAL: App import migration** — delete duplicates in lib/auth/, lib/srs/, lib/practice/, lib/convex/ and rewire to packages
+- [x] **CRITICAL: App import migration** — delete duplicates in lib/auth/, lib/srs/, lib/practice/, lib/convex/ and rewire to packages
 - [ ] Complete `extract-component-approval_20260417` Phase 2+
 - [ ] Then `extract-graphing-core_20260417`
 

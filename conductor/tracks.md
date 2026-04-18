@@ -561,15 +561,15 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 ### Critical Blocker — App Import Migration
 
-- [ ] **Track: App Import Migration** — **Phase 3 Complete**
+- [x] **Track: App Import Migration** — **COMPLETED**
        *Delete duplicate code in lib/auth/, lib/srs/, lib/practice/, lib/convex/ and rewire all imports to @math-platform/* packages.*
        *Link: [./conductor/tracks/app-import-migration_20260418/](./conductor/tracks/app-import-migration_20260418/)*
        - Phase 1: lib/auth/ Migration [COMPLETE]
        - Phase 2: lib/practice/ Migration [COMPLETE]
        - Phase 3: lib/srs/ Migration [COMPLETE]
-       - Phase 4: lib/convex/ Migration [Pending]
-       - Phase 5: package.json Dependency Fix [Pending]
-       - Phase 6: Final Verification [Pending]
+       - Phase 4: lib/convex/ Migration [COMPLETE]
+       - Phase 5: package.json Dependency Fix [COMPLETE]
+       - Phase 6: Final Verification [COMPLETE]
 
 ### Wave 4 — Bring BM2 Into the Monorepo
 

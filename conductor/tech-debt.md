@@ -21,7 +21,7 @@
 | SRS CardStore: studentId type mismatch (contract vs schema) | High | Open | SrsCardState uses string, Convex uses Id<"profiles">; unsafe casts at boundary |
 | Teacher SRS queries: N+1 per-student unbounded .collect() loops | High | Open | Multiple handlers iterate students + collect |
 | Equivalence checker: 6 test failures for advanced patterns | High | Open | Pattern-matching can't handle perfect squares, GCF factoring; needs symbolic math lib |
-| App lib/convex/admin.ts + config.ts duplicate core-convex | Medium | Open | Should import from @math-platform/core-convex instead |
+| App lib/convex/admin.ts + config.ts duplicate core-convex | Medium | Resolved | Migrated lib/convex/ - deleted admin.ts and config.ts, rewired server.ts to @math-platform/core-convex (2026-04-18) |
 | SRS: card + review log saved non-atomically via SubmissionSrsAdapter | Medium | Open | If second mutation fails, card state updated without audit trail |
 | SRS: submissionSrs accepts v.any() with unsafe cast | Medium | Open | No Zod validation on submission envelope in Convex mutation |
 | RSC entry chunk 750 KB | Medium | Open | Code-splitting needed to get under 500 KB |
@@ -29,7 +29,7 @@
 | practice-core has only 1 test file in-package | Medium | Open | contract.ts, srs-rating.ts, timing-baseline.ts, error-analysis all untested at package level |
 | Dual Zod schemas: contract.ts vs submission.schema.ts drift | Medium | Open | submission.schema.ts is strictly looser (no int/nonneg constraints); consumers ambiguous |
 | component-approval: review-queue.ts near-duplicate in app | High | Open | lib/activities/review-queue.ts re-implements package logic with Convex Doc<> types instead of thin re-export |
-| apps/integrated-math-3/package.json missing @math-platform/* deps | High | Open | 77+ imports from @math-platform/* but none declared in dependencies; works only via workspace symlinks |
+| apps/integrated-math-3/package.json missing @math-platform/* deps | High | Resolved | Added @math-platform/* deps to app package.json - all 6 packages declared with * version (2026-04-18) |
 | ESLint config missing in 3 packages | Medium | Resolved | eslint.config.mjs added to activity-runtime, component-approval, srs-engine (2026-04-18) |
 | pnpm-workspace.yaml conflicts with npm workspaces | High | Resolved | Deleted dead pnpm config; npm is canonical (2026-04-18) |
 | SubmissionDetailModal: array index used as React key | Low | Open | Should use stable ID (e.g., evidence.activityId) |
