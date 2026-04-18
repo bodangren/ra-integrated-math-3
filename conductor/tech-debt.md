@@ -34,7 +34,7 @@
 | IM3 lib/study local copy not wired to study-hub-core types | Medium | Open | GlossaryTerm is wider than StudyTerm; structural compatibility works but not explicitly adopted |
 | ai-tutoring: resolveOpenRouterProviderFromEnv untested | Medium | Open | Exported public API with zero test coverage |
 | ai-tutoring: as any cast in providers.ts response parsing | Medium | Open | Need typed interface for OpenRouterResponse |
-| IM3 chatbot: no tests for LessonChatbot.tsx | High | Open | Route.ts and rateLimits.ts now tested |
+| IM3 chatbot: no tests for LessonChatbot.tsx | High | Resolved | 12 tests added for all chatbot states |
 | IM3 Convex types stale: rateLimits + student.getLessonForChatbot | Medium | Open | Generated api.d.ts missing new handlers; must run npx convex dev to regenerate |
 | CI: package test/lint continue-on-error swallows failures | High | Open | Broken packages can merge without detection |
 | CI: BM2 redundant || true + continue-on-error | Low | Open | Both layers suppress failures; remove one |
