@@ -12,12 +12,8 @@ import type { WorkbookManifest } from '@math-platform/workbook-pipeline';
 
 const manifest = workbookManifest as unknown as WorkbookManifest;
 
-function workbookFileName(unitNumber: number, lessonNumber: number, type: 'student' | 'teacher'): string {
-  return buildWorkbookFilename(unitNumber, lessonNumber, type);
-}
-
 export function getWorkbookPath(unitNumber: number, lessonNumber: number, type: 'student' | 'teacher'): string {
-  return `/workbooks/${workbookFileName(unitNumber, lessonNumber, type)}`;
+  return `/workbooks/${buildWorkbookFilename(unitNumber, lessonNumber, type)}`;
 }
 
 export function hasStudentWorkbook(unitNumber: number, lessonNumber: number): boolean {

@@ -644,9 +644,12 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
       - Phase 2: BM2 Adoption [COMPLETE]
       - Phase 3: IM3 Adoption [COMPLETE] — chatbot route, component, rate limits, Convex schema
 
-- [ ] **Track: Extract Workbook Pipeline Package and Adopt in IM3**
-     *Extract BM2 workbook pipeline primitives and complete IM3 workbook via package imports.*
-     *Link: [./conductor/tracks/extract-workbook-pipeline-and-adopt-im3_20260417/](./conductor/tracks/extract-workbook-pipeline-and-adopt-im3_20260417/)*
+- [x] **Track: Extract Workbook Pipeline Package and Adopt in IM3** — **COMPLETED**
+      *Extract BM2 workbook pipeline primitives and complete IM3 workbook via package imports.*
+      *Link: [./conductor/tracks/extract-workbook-pipeline-and-adopt-im3_20260417/](./conductor/tracks/extract-workbook-pipeline-and-adopt-im3_20260417/)*
+      - Phase 1: Extract BM2 Workbook Pipeline Primitives [COMPLETE]
+      - Phase 2: BM2 Adoption [COMPLETE]
+      - Phase 3: IM3 Adoption and Completion [COMPLETE]
 
 ### Wave 6 — Monorepo Hardening
 

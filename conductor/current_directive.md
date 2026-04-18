@@ -42,7 +42,7 @@ Primary objective is to execute the monorepo migration roadmap in Conductor orde
 - [x] Extract study-hub-core — **COMPLETED (2026-04-19)**
 - [x] Extract teacher-reporting-core — **COMPLETED (2026-04-19)**
 - [x] Extract AI Tutoring Package and Adopt in IM3 — **COMPLETED (2026-04-19)**
-- [ ] Extract Workbook Pipeline Package and Adopt in IM3
+- [x] Extract Workbook Pipeline Package and Adopt in IM3 — **COMPLETED (2026-04-19)**
 - [ ] Wave 6: CI/CD hardening, docs cleanup
 - [ ] BM2 type health sweep (~296 TS errors) — defer unless blocking
 
