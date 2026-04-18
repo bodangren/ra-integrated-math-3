@@ -689,6 +689,16 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
   *Add package-level unit tests to practice-core for contract.ts, srs-rating.ts, and timing-baseline.ts*
   *Link: [./conductor/tracks/practice-core-testing_20260419/](./conductor/tracks/practice-core-testing_20260419/)*
 
+## Teacher Assignment UI (2026-04-19)
+
+- [x] **Track: Teacher Lesson Assignment UI** — **COMPLETED**
+  *Build UI for teachers to assign lessons to their classes, populating class_lessons table*
+  *Link: [./conductor/tracks/teacher-lesson-assignment-ui_20260419/](./conductor/tracks/teacher-lesson-assignment-ui_20260419/)*
+  - Phase 1: Convex Queries [COMPLETE]
+  - Phase 2: Convex Mutations [COMPLETE]
+  - Phase 3: Teacher UI [COMPLETE]
+  - Phase 4: Verification [COMPLETE]
+
 ## Archived Tracks
 
 - [x] **Track: Scaffold App Pages & Layouts**

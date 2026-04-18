@@ -14,6 +14,7 @@ const navItems = [
   { href: '/teacher/gradebook', label: 'Gradebook' },
   { href: '/teacher/students', label: 'Students' },
   { href: '/teacher/units', label: 'Units' },
+  { href: '/teacher/lessons', label: 'Lessons' },
   { href: '/teacher/settings', label: 'Settings' },
 ];
 
