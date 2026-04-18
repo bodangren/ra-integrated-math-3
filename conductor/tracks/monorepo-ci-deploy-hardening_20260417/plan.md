@@ -22,17 +22,17 @@
 
 ### Tasks
 
-- [ ] **Task: Update app deploy workflows**
-  - [ ] Set working directories to `apps/integrated-math-3` and `apps/bus-math-v2`.
-  - [ ] Validate app-specific deploy command paths.
-  - [ ] Document environment variable scope per app.
+- [x] **Task: Update app deploy workflows**
+  - [x] Set working directories to `apps/integrated-math-3` and `apps/bus-math-v2`.
+  - [x] Validate app-specific deploy command paths.
+  - [x] Document environment variable scope per app.
 
-- [ ] **Task: Document Convex operational commands**
-  - [ ] List app-specific Convex dev/generate/deploy commands.
-  - [ ] Add preflight checks for wrong working directory.
-  - [ ] Publish quick-reference ops section.
+- [x] **Task: Document Convex operational commands**
+  - [x] List app-specific Convex dev/generate/deploy commands.
+  - [x] Add preflight checks for wrong working directory.
+  - [x] Publish quick-reference ops section.
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2: Deploy and Convex Paths' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 2: Deploy and Convex Paths' (Protocol in workflow.md)**
 
 ## Phase 3: Reliability Validation
 
