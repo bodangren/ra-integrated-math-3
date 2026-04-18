@@ -36,9 +36,9 @@ describe('lib/srs/teacher-analytics', () => {
       ];
 
       const cards = [
-        { studentId: 's1', problemFamilyId: 'f1', due: startOfDay - 1000, lastReview: now - 2000, reviewCount: 1, createdAt: now - 3000 },
-        { studentId: 's1', problemFamilyId: 'f2', due: startOfDay - 500, lastReview: 0, reviewCount: 0, createdAt: now - 3000 },
-        { studentId: 's2', problemFamilyId: 'f1', due: now + 10000, lastReview: now - 1000, reviewCount: 2, createdAt: now - 3000 },
+        { studentId: 's1', problemFamilyId: 'f1', dueDate: new Date(startOfDay - 1000).toISOString(), lastReview: new Date(now - 2000).toISOString(), reps: 1, createdAt: new Date(now - 3000).toISOString() },
+        { studentId: 's1', problemFamilyId: 'f2', dueDate: new Date(startOfDay - 500).toISOString(), lastReview: null, reps: 0, createdAt: new Date(now - 3000).toISOString() },
+        { studentId: 's2', problemFamilyId: 'f1', dueDate: new Date(now + 10000).toISOString(), lastReview: new Date(now - 1000).toISOString(), reps: 2, createdAt: new Date(now - 3000).toISOString() },
       ];
 
       const result = computeClassHealth(students, cards, now, startOfDay, endOfDay);
@@ -58,8 +58,8 @@ describe('lib/srs/teacher-analytics', () => {
 
       const students = [{ _id: 's1', username: 'alice' }];
       const cards = [
-        { studentId: 's1', problemFamilyId: 'f1', due: now + 1000, lastReview: 0, reviewCount: 0, createdAt: now - 1000 },
-        { studentId: 's1', problemFamilyId: 'f2', due: now + 90000000, lastReview: 0, reviewCount: 0, createdAt: now - 1000 },
+        { studentId: 's1', problemFamilyId: 'f1', dueDate: new Date(now + 1000).toISOString(), lastReview: null, reps: 0, createdAt: new Date(now - 1000).toISOString() },
+        { studentId: 's1', problemFamilyId: 'f2', dueDate: new Date(now + 90000000).toISOString(), lastReview: null, reps: 0, createdAt: new Date(now - 1000).toISOString() },
       ];
 
       const result = computeClassHealth(students, cards, now, startOfDay, endOfDay);
@@ -126,10 +126,10 @@ describe('lib/srs/teacher-analytics', () => {
       ];
 
       const cards = [
-        { studentId: 's1', problemFamilyId: 'f1', due: now - 1000, lastReview: now - 2000, reviewCount: 1, createdAt: now - 3000 },
-        { studentId: 's1', problemFamilyId: 'f2', due: now - 500, lastReview: now - 1000, reviewCount: 1, createdAt: now - 3000 },
-        { studentId: 's2', problemFamilyId: 'f1', due: now + 10000, lastReview: 0, reviewCount: 0, createdAt: now - 3000 },
-        { studentId: 's3', problemFamilyId: 'f1', due: now - 2000, lastReview: now - 3000, reviewCount: 2, createdAt: now - 4000 },
+        { studentId: 's1', problemFamilyId: 'f1', dueDate: new Date(now - 1000).toISOString(), lastReview: new Date(now - 2000).toISOString(), reps: 1, createdAt: new Date(now - 3000).toISOString() },
+        { studentId: 's1', problemFamilyId: 'f2', dueDate: new Date(now - 500).toISOString(), lastReview: new Date(now - 1000).toISOString(), reps: 1, createdAt: new Date(now - 3000).toISOString() },
+        { studentId: 's2', problemFamilyId: 'f1', dueDate: new Date(now + 10000).toISOString(), lastReview: null, reps: 0, createdAt: new Date(now - 3000).toISOString() },
+        { studentId: 's3', problemFamilyId: 'f1', dueDate: new Date(now - 2000).toISOString(), lastReview: new Date(now - 3000).toISOString(), reps: 2, createdAt: new Date(now - 4000).toISOString() },
       ];
 
       const reviews = [
@@ -177,8 +177,8 @@ describe('lib/srs/teacher-analytics', () => {
       ];
 
       const cards = [
-        { studentId: 's1', problemFamilyId: 'f1', due: now - 1000, lastReview: 0, reviewCount: 0, createdAt: now - 2000 },
-        { studentId: 's2', problemFamilyId: 'f1', due: now - 1000, lastReview: 0, reviewCount: 0, createdAt: now - 2000 },
+        { studentId: 's1', problemFamilyId: 'f1', dueDate: new Date(now - 1000).toISOString(), lastReview: null, reps: 0, createdAt: new Date(now - 2000).toISOString() },
+        { studentId: 's2', problemFamilyId: 'f1', dueDate: new Date(now - 1000).toISOString(), lastReview: null, reps: 0, createdAt: new Date(now - 2000).toISOString() },
       ];
 
       const reviews = [
@@ -202,10 +202,10 @@ describe('lib/srs/teacher-analytics', () => {
       const cards = students.map((s, i) => ({
         studentId: s._id,
         problemFamilyId: 'f1',
-        due: now - i * 1000,
-        lastReview: 0,
-        reviewCount: 0,
-        createdAt: now - 2000,
+        dueDate: new Date(now - i * 1000).toISOString(),
+        lastReview: null,
+        reps: 0,
+        createdAt: new Date(now - 2000).toISOString(),
       }));
 
       const result = computeStrugglingStudents(students, cards, [], now);

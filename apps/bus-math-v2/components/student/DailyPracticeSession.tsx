@@ -10,19 +10,25 @@ import { practiceFamilyRegistry } from '@/lib/practice/engine/family-registry';
 import { buildPracticeSubmissionEnvelope } from '@/lib/practice/contract';
 import { processPracticeSubmission } from '@/lib/srs/review-processor';
 import { dailyPracticeInputRegistry } from '@/lib/srs/answer-inputs/registry';
-import { legacyToSrsCardState, srsCardStateToLegacy } from '@/lib/srs/scheduler';
 import type { SrsCardState } from '@/lib/srs/contract';
 import type { PracticeSubmissionEnvelope } from '@/lib/practice/contract';
 
-interface LegacySrsCard {
-  _id: string;
+interface FlatSrsCard {
+  cardId: string;
   studentId: string;
+  objectiveId: string;
   problemFamilyId: string;
-  card: Record<string, unknown>;
-  due: number;
-  lastReview: number;
-  reviewCount: number;
-  createdAt: number;
+  stability: number;
+  difficulty: number;
+  state: 'new' | 'learning' | 'review' | 'relearning';
+  dueDate: string;
+  elapsedDays: number;
+  scheduledDays: number;
+  reps: number;
+  lapses: number;
+  lastReview: string | null;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface DailyPracticeSessionProps {
@@ -32,7 +38,7 @@ interface DailyPracticeSessionProps {
 export function DailyPracticeSession({ studentId }: DailyPracticeSessionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [completed, setCompleted] = useState(false);
-  const [sessionCards, setSessionCards] = useState<LegacySrsCard[]>([]);
+  const [sessionCards, setSessionCards] = useState<FlatSrsCard[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showNext, setShowNext] = useState(false);
   const submittedRef = useRef(false);
@@ -44,7 +50,7 @@ export function DailyPracticeSession({ studentId }: DailyPracticeSessionProps) {
 
   useEffect(() => {
     if (dueCards && dueCards.length > 0 && sessionCards.length === 0) {
-      setSessionCards((dueCards as unknown as LegacySrsCard[]).slice(0, 10));
+      setSessionCards((dueCards as FlatSrsCard[]).slice(0, 10));
     }
     if (dueCards && dueCards.length === 0) {
       setCompleted(true);
@@ -118,9 +124,7 @@ export function DailyPracticeSession({ studentId }: DailyPracticeSessionProps) {
       confidenceReasons: envelope.timing.confidenceReasons,
     } : undefined;
 
-    const cardState = legacyToSrsCardState(currentCard);
-    const result = processPracticeSubmission(envelope, cardState, timing, undefined, studentId);
-    const legacyResult = srsCardStateToLegacy(result.card);
+    const result = processPracticeSubmission(envelope, currentCard as SrsCardState, timing, undefined, studentId);
 
     try {
       await recordReview({
@@ -133,10 +137,7 @@ export function DailyPracticeSession({ studentId }: DailyPracticeSessionProps) {
         scheduledDays: result.reviewLog.scheduledDays,
         reviewDurationMs: result.reviewLog.reviewDurationMs,
         timingConfidence: result.reviewLog.timingConfidence,
-        card: legacyResult.card,
-        due: legacyResult.due,
-        lastReview: legacyResult.lastReview,
-        reviewCount: legacyResult.reviewCount,
+        card: result.card as unknown as Parameters<typeof recordReview>[0]['card'],
       });
       setShowNext(true);
     } catch {
@@ -159,7 +160,7 @@ export function DailyPracticeSession({ studentId }: DailyPracticeSessionProps) {
     }, 0);
   };
 
-  const seed = currentCard.reviewCount + 1;
+  const seed = currentCard.reps + 1;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const problemDef = (family as any).generate(seed, undefined);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

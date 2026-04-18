@@ -3,10 +3,10 @@
 export interface SrsCardData {
   studentId: string;
   problemFamilyId: string;
-  due: number;
-  lastReview: number;
-  reviewCount: number;
-  createdAt: number;
+  dueDate: string;
+  lastReview: string | null;
+  reps: number;
+  createdAt: string;
 }
 
 export interface SrsReviewLogEntry {
@@ -78,13 +78,14 @@ export function computeClassHealth(
 
   for (const card of cards) {
     totalCards++;
-    if (card.reviewCount > 0) {
+    if (card.reps > 0) {
       reviewedCards++;
     }
-    if (card.due < startOfDay) {
+    const cardDueMs = new Date(card.dueDate).getTime();
+    if (cardDueMs < startOfDay) {
       overdueCardCount++;
     }
-    if (card.due >= startOfDay && card.due <= endOfDay) {
+    if (cardDueMs >= startOfDay && cardDueMs <= endOfDay) {
       cardsDueToday++;
     }
   }
@@ -177,7 +178,8 @@ export function computeStrugglingStudents(
     const student = studentMap.get(card.studentId);
     if (student) {
       student.totalCards++;
-      if (card.due <= now) {
+      const cardDueMs = new Date(card.dueDate).getTime();
+      if (cardDueMs <= now) {
         student.overdueCards++;
       }
     }

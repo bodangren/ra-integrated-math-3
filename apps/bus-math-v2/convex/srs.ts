@@ -7,8 +7,8 @@ import {
   computeStrugglingStudents,
   formatFamilyDisplayName,
 } from '../lib/srs/teacher-analytics';
-import { createNewCard } from '../lib/srs/scheduler';
-import { srsCardValidator, srsRatingValidator } from './srs-validators';
+import { srsCardStateValidator, srsRatingValidator } from './srs-validators';
+import { createCard } from '@math-platform/srs-engine';
 
 async function verifyStudentIdentity(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,21 +29,11 @@ async function verifyStudentIdentity(
 export const upsertSrsCard = mutation({
   args: {
     studentId: v.id('profiles'),
+    objectiveId: v.string(),
     problemFamilyId: v.string(),
-    card: srsCardValidator,
-    due: v.number(),
-    lastReview: v.number(),
-    reviewCount: v.number(),
+    card: srsCardStateValidator,
   },
   handler: async (ctx, args) => {
-    // NOTE: This mutation has a TOCTOU (Time-of-Check-Time-of-Use) race window.
-    // Convex does not support transactions that atomically check existence and insert/update.
-    // Between the `existing` check and the patch/insert, concurrent requests could:
-    //   1. Both find no existing card → both insert → duplicate cards for same student+family
-    //   2. Both find existing card → both patch → second write wins (harmless)
-    // Low practical risk: duplicate inserts are unlikely given student practice flow,
-    // and the duplicate would have identical content. Mitigation: unique index on
-    // by_student_family would catch this at the DB level if Convex supported it.
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) throw new Error('Unauthenticated');
 
@@ -58,22 +48,38 @@ export const upsertSrsCard = mutation({
 
     if (existing) {
       await ctx.db.patch(existing._id, {
-        card: args.card,
-        due: args.due,
-        lastReview: args.lastReview,
-        reviewCount: args.reviewCount,
+        cardId: args.card.cardId,
+        objectiveId: args.card.objectiveId,
+        problemFamilyId: args.card.problemFamilyId,
+        stability: args.card.stability,
+        difficulty: args.card.difficulty,
+        state: args.card.state,
+        dueDate: args.card.dueDate,
+        elapsedDays: args.card.elapsedDays,
+        scheduledDays: args.card.scheduledDays,
+        reps: args.card.reps,
+        lapses: args.card.lapses,
+        lastReview: args.card.lastReview,
+        updatedAt: args.card.updatedAt,
       });
       return existing._id;
     } else {
-      const now = Date.now();
       return await ctx.db.insert('srs_cards', {
+        cardId: args.card.cardId,
         studentId: args.studentId,
-        problemFamilyId: args.problemFamilyId,
-        card: args.card,
-        due: args.due,
-        lastReview: args.lastReview,
-        reviewCount: args.reviewCount,
-        createdAt: now,
+        objectiveId: args.card.objectiveId,
+        problemFamilyId: args.card.problemFamilyId,
+        stability: args.card.stability,
+        difficulty: args.card.difficulty,
+        state: args.card.state,
+        dueDate: args.card.dueDate,
+        elapsedDays: args.card.elapsedDays,
+        scheduledDays: args.card.scheduledDays,
+        reps: args.card.reps,
+        lapses: args.card.lapses,
+        lastReview: args.card.lastReview,
+        createdAt: args.card.createdAt,
+        updatedAt: args.card.updatedAt,
       });
     }
   },
@@ -90,25 +96,9 @@ export const recordSrsReview = mutation({
     scheduledDays: v.number(),
     reviewDurationMs: v.optional(v.number()),
     timingConfidence: v.optional(v.string()),
-    card: srsCardValidator,
-    due: v.number(),
-    lastReview: v.number(),
-    reviewCount: v.number(),
+    card: srsCardStateValidator,
   },
   handler: async (ctx, args) => {
-    // NOTE: This mutation trusts client-computed card state (FSRS scheduling).
-    // The client computes the new card state via family.grade() and family.toEnvelope(),
-    // then submits it to this mutation. The server validates the shape via srsCardValidator
-    // but does NOT re-compute the FSRS algorithm server-side.
-    //
-    // TOCTOU race: The review log insert and card patch/insert are not atomic.
-    // Concurrent reviews could result in lost updates if timing is unlucky.
-    // Low practical risk: students typically practice once per session.
-    //
-    // Architectural note: Moving FSRS computation server-side would eliminate this trust
-    // issue but requires significant refactoring. ts-fsrs is a pure TypeScript library
-    // and could run in Convex, but the practice family grading engine runs client-side
-    // for immediate feedback. Acceptable tradeoff for classroom use.
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) throw new Error('Unauthenticated');
 
@@ -135,20 +125,37 @@ export const recordSrsReview = mutation({
 
     if (existing) {
       await ctx.db.patch(existing._id, {
-        card: args.card,
-        due: args.due,
-        lastReview: args.lastReview,
-        reviewCount: args.reviewCount,
+        cardId: args.card.cardId,
+        objectiveId: args.card.objectiveId,
+        problemFamilyId: args.card.problemFamilyId,
+        stability: args.card.stability,
+        difficulty: args.card.difficulty,
+        state: args.card.state,
+        dueDate: args.card.dueDate,
+        elapsedDays: args.card.elapsedDays,
+        scheduledDays: args.card.scheduledDays,
+        reps: args.card.reps,
+        lapses: args.card.lapses,
+        lastReview: args.card.lastReview,
+        updatedAt: args.card.updatedAt,
       });
     } else {
       await ctx.db.insert('srs_cards', {
+        cardId: args.card.cardId,
         studentId: args.studentId,
-        problemFamilyId: args.problemFamilyId,
-        card: args.card,
-        due: args.due,
-        lastReview: args.lastReview,
-        reviewCount: args.reviewCount,
-        createdAt: Date.now(),
+        objectiveId: args.card.objectiveId,
+        problemFamilyId: args.card.problemFamilyId,
+        stability: args.card.stability,
+        difficulty: args.card.difficulty,
+        state: args.card.state,
+        dueDate: args.card.dueDate,
+        elapsedDays: args.card.elapsedDays,
+        scheduledDays: args.card.scheduledDays,
+        reps: args.card.reps,
+        lapses: args.card.lapses,
+        lastReview: args.card.lastReview,
+        createdAt: args.card.createdAt,
+        updatedAt: args.card.updatedAt,
       });
     }
   },
@@ -157,7 +164,7 @@ export const recordSrsReview = mutation({
 export const getDueCards = query({
   args: {
     studentId: v.id('profiles'),
-    now: v.optional(v.number()),
+    now: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
@@ -165,16 +172,16 @@ export const getDueCards = query({
 
     await verifyStudentIdentity(ctx, identity, args.studentId);
 
-    const cutoff = args.now ?? Date.now();
+    const cutoff = args.now ?? new Date().toISOString();
     const cards: Doc<'srs_cards'>[] = [];
 
     for await (const card of ctx.db.query('srs_cards').withIndex('by_student', (q) => q.eq('studentId', args.studentId))) {
-      if (card.due <= cutoff) {
+      if (card.dueDate <= cutoff) {
         cards.push(card);
       }
     }
 
-    return cards.sort((a, b) => a.due - b.due);
+    return cards.sort((a, b) => a.dueDate.localeCompare(b.dueDate));
   },
 });
 
@@ -188,18 +195,18 @@ export const getStudentSrsSummary = query({
 
     await verifyStudentIdentity(ctx, identity, args.studentId);
 
-    const now = Date.now();
+    const now = new Date().toISOString();
     let totalCards = 0;
     let dueCount = 0;
     const byFamily: Record<string, { total: number; due: number }> = {};
 
     for await (const card of ctx.db.query('srs_cards').withIndex('by_student', (q) => q.eq('studentId', args.studentId))) {
       totalCards++;
-      if (card.due <= now) dueCount++;
+      if (card.dueDate <= now) dueCount++;
       const family = card.problemFamilyId;
       if (!byFamily[family]) byFamily[family] = { total: 0, due: 0 };
       byFamily[family].total++;
-      if (card.due <= now) byFamily[family].due++;
+      if (card.dueDate <= now) byFamily[family].due++;
     }
 
     return { totalCards, dueCount, byFamily };
@@ -421,13 +428,11 @@ export const resetStudentCard = mutation({
     const teacher = await getAuthorizedTeacher(ctx, profile._id);
     if (!teacher) throw new Error('Unauthorized');
 
-    // Verify student is in a class taught by this teacher
     const enrollments = await ctx.db
       .query('class_enrollments')
       .withIndex('by_student', (q) => q.eq('studentId', args.studentId))
       .collect();
 
-    // Need to check synchronously since find with async doesn't work well
     let isAuthorizedStudent = false;
     let classId: Id<'classes'> | null = null;
     for (const enrollment of enrollments) {
@@ -449,24 +454,47 @@ export const resetStudentCard = mutation({
       )
       .unique();
 
-    const newCardState = createNewCard(args.problemFamilyId, args.studentId);
+    const now = new Date().toISOString();
+    const newCard = createCard({
+      studentId: args.studentId,
+      objectiveId: args.problemFamilyId,
+      problemFamilyId: args.problemFamilyId,
+      now,
+    });
 
     if (existing) {
       await ctx.db.patch(existing._id, {
-        card: newCardState.card as typeof srsCardValidator['type'],
-        due: newCardState.due,
-        lastReview: newCardState.lastReview,
-        reviewCount: newCardState.reviewCount,
+        cardId: newCard.cardId,
+        objectiveId: newCard.objectiveId,
+        problemFamilyId: newCard.problemFamilyId,
+        stability: newCard.stability,
+        difficulty: newCard.difficulty,
+        state: newCard.state,
+        dueDate: newCard.dueDate,
+        elapsedDays: newCard.elapsedDays,
+        scheduledDays: newCard.scheduledDays,
+        reps: newCard.reps,
+        lapses: newCard.lapses,
+        lastReview: newCard.lastReview,
+        updatedAt: newCard.updatedAt,
       });
     } else {
       await ctx.db.insert('srs_cards', {
+        cardId: newCard.cardId,
         studentId: args.studentId,
-        problemFamilyId: args.problemFamilyId,
-        card: newCardState.card as typeof srsCardValidator['type'],
-        due: newCardState.due,
-        lastReview: newCardState.lastReview,
-        reviewCount: newCardState.reviewCount,
-        createdAt: Date.now(),
+        objectiveId: newCard.objectiveId,
+        problemFamilyId: newCard.problemFamilyId,
+        stability: newCard.stability,
+        difficulty: newCard.difficulty,
+        state: newCard.state,
+        dueDate: newCard.dueDate,
+        elapsedDays: newCard.elapsedDays,
+        scheduledDays: newCard.scheduledDays,
+        reps: newCard.reps,
+        lapses: newCard.lapses,
+        lastReview: newCard.lastReview,
+        createdAt: newCard.createdAt,
+        updatedAt: newCard.updatedAt,
       });
     }
 
@@ -516,7 +544,7 @@ export const bumpFamilyPriority = mutation({
       .filter((e) => e.status === 'active')
       .map((e) => e.studentId);
 
-    const now = Date.now();
+    const now = new Date().toISOString();
     let affectedCount = 0;
 
     for (const studentId of activeStudentIds) {
@@ -528,7 +556,7 @@ export const bumpFamilyPriority = mutation({
         .unique();
 
       if (card) {
-        await ctx.db.patch(card._id, { due: now });
+        await ctx.db.patch(card._id, { dueDate: now, updatedAt: now });
         affectedCount++;
       }
     }
@@ -538,7 +566,7 @@ export const bumpFamilyPriority = mutation({
       classId: args.classId,
       problemFamilyId: args.problemFamilyId,
       interventionType: 'bump_priority',
-      createdAt: now,
+      createdAt: Date.now(),
     });
 
     return { success: true, affectedCount };

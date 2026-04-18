@@ -11,7 +11,7 @@ import {
   submissionStatusValidator,
   issueCategoryValidator,
 } from "./component_approval_validators";
-import { srsCardValidator, srsRatingValidator } from "./srs-validators";
+import { srsCardStateValidator, srsRatingValidator } from "./srs-validators";
 
 const fsrsStateValidator = v.record(v.string(), v.any());
 
@@ -481,16 +481,29 @@ export default defineSchema({
     .index("by_ip", ["ipHash"]),
 
   srs_cards: defineTable({
+    cardId: v.string(),
     studentId: v.id("profiles"),
+    objectiveId: v.string(),
     problemFamilyId: v.string(),
-    card: srsCardValidator,
-    due: v.number(),
-    lastReview: v.number(),
-    reviewCount: v.number(),
-    createdAt: v.number(),
+    stability: v.number(),
+    difficulty: v.number(),
+    state: v.union(
+      v.literal("new"),
+      v.literal("learning"),
+      v.literal("review"),
+      v.literal("relearning")
+    ),
+    dueDate: v.string(),
+    elapsedDays: v.number(),
+    scheduledDays: v.number(),
+    reps: v.number(),
+    lapses: v.number(),
+    lastReview: v.union(v.string(), v.null()),
+    createdAt: v.string(),
+    updatedAt: v.string(),
   })
     .index("by_student", ["studentId"])
-    .index("by_student_due", ["studentId", "due"])
+    .index("by_student_due", ["studentId", "dueDate"])
     .index("by_student_family", ["studentId", "problemFamilyId"]),
 
   srs_review_log: defineTable({
