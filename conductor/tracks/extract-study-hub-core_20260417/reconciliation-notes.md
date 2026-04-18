@@ -20,10 +20,11 @@
   - `lib/study/types.ts` (GlossaryTerm, ScheduledTerm, ReviewResult - domain-specific)
   - `lib/study/glossary.ts` (curriculum data)
   - `lib/study/srs.ts` (SRS scheduling)
-  - `components/student/FlashcardPlayer.tsx` (wraps BaseReviewSession with flashcard header)
-  - `components/student/ReviewSession.tsx` (wraps BaseReviewSession with SRS header)
+  - `components/student/FlashcardPlayer.tsx` (imports BaseReviewSession from @math-platform/study-hub-core)
+  - `components/student/ReviewSession.tsx` (imports BaseReviewSession from @math-platform/study-hub-core)
   - `components/student/MatchingGame.tsx` (game-specific UI)
   - `components/student/SpeedRoundGame.tsx` (game-specific UI)
+  - `components/student/BaseReviewSession.tsx` (DELETED - replaced by package import)
 - BM2:
   - All glossary and persistence (hooks-based architecture)
   - All study components
@@ -41,12 +42,19 @@
   - app-specific hooks (BM2)
   - game-specific components (MatchingGame, SpeedRoundGame)
 
-## Verification Results
+## Phase 2: IM3 Adoption (2026-04-19)
+### Changes Made
+- Added `@math-platform/study-hub-core` to IM3 package.json dependencies
+- Updated FlashcardPlayer.tsx to import BaseReviewSession from package
+- Updated ReviewSession.tsx to import BaseReviewSession from package
+- Updated base-review-session.test.tsx to import from package
+- Deleted local `components/student/BaseReviewSession.tsx`
+- Removed unused `activityType` prop (was accepted but never used)
+
+### Verification Results
 - commands run:
-  - `npm run test` in packages/study-hub-core: 6/6 pass
-  - `npm run typecheck` in packages/study-hub-core: pass
-  - `npm run lint` in packages/study-hub-core: pass
-  - `npx tsc --noEmit` in apps/integrated-math-3: pass
+  - `npm run test` in apps/integrated-math-3: 3249/3249 pass (6 todo)
   - `npm run lint` in apps/integrated-math-3: pass
+  - `npm run typecheck` in apps/integrated-math-3: pass
   - `npm run build` in apps/integrated-math-3: pass
 - outcome: PASS

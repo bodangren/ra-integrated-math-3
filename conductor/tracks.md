@@ -629,6 +629,7 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
       *Extract flashcard/review/game core primitives while keeping glossary data local.*
       *Link: [./conductor/tracks/extract-study-hub-core_20260417/](./conductor/tracks/extract-study-hub-core_20260417/)*
       - Phase 1: Extract Shared Study Primitives [COMPLETE]
+      - Phase 2: Adopt in IM3 [COMPLETE] - BaseReviewSession imports migrated to package; FlashcardPlayer/ReviewSession updated
 
 - [ ] **Track: Extract Teacher Reporting Core Package**
       *Extract pure gradebook/reporting logic while keeping Convex queries app-local.*

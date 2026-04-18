@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { BaseReviewSession } from '@/components/student/BaseReviewSession';
+import { BaseReviewSession } from '@math-platform/study-hub-core';
 import type { GlossaryTerm } from '@/lib/study/types';
 
 const TEST_TERM: GlossaryTerm = {
@@ -30,7 +30,6 @@ describe('BaseReviewSession', () => {
   const mockOnComplete = vi.fn();
   const mockRenderHeader = vi.fn(() => <div>Test Header</div>);
   const defaultProps = {
-    activityType: 'flashcards' as const,
     terms: mockTerms,
     renderHeader: mockRenderHeader,
     noTermsTitle: 'No Terms',

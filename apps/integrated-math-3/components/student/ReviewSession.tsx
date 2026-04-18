@@ -1,6 +1,6 @@
 'use client';
 
-import { BaseReviewSession } from './BaseReviewSession';
+import { BaseReviewSession } from '@math-platform/study-hub-core';
 import type { GlossaryTerm } from '@/lib/study/types';
 
 interface ReviewSessionProps {
@@ -33,7 +33,6 @@ export function ReviewSession({ terms, onComplete }: ReviewSessionProps) {
 
   return (
     <BaseReviewSession
-      activityType="srs_review"
       terms={terms}
       renderHeader={renderHeader}
       noTermsTitle="All Caught Up!"

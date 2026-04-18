@@ -1,6 +1,6 @@
 'use client';
 
-import { BaseReviewSession } from './BaseReviewSession';
+import { BaseReviewSession } from '@math-platform/study-hub-core';
 import type { GlossaryTerm } from '@/lib/study/types';
 
 interface FlashcardPlayerProps {
@@ -30,7 +30,6 @@ export function FlashcardPlayer({ terms, onComplete }: FlashcardPlayerProps) {
 
   return (
     <BaseReviewSession
-      activityType="flashcards"
       terms={terms}
       renderHeader={renderHeader}
       noTermsTitle="No Flashcards"
