@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { parseQuadratic } from '@/lib/activities/graphing/quadratic-parser';
+import { parseQuadratic } from '@math-platform/graphing-core/quadratic-parser';
 
 export interface HintData {
   type: 'axis_of_symmetry' | 'vertex' | 'direction';

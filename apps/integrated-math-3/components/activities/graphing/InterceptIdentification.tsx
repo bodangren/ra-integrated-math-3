@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState, useCallback, useRef } from 'react';
-import { evaluateFunction, transformDataToCanvas } from '@/lib/activities/graphing/canvas-utils';
-import { parseQuadratic } from '@/lib/activities/graphing/quadratic-parser';
-import { parseLinear } from '@/lib/activities/graphing/linear-parser';
+import { evaluateFunction, transformDataToCanvas } from '@math-platform/graphing-core/canvas-utils';
+import { parseQuadratic } from '@math-platform/graphing-core/quadratic-parser';
+import { parseLinear } from '@math-platform/graphing-core/linear-parser';
 
 export interface InterceptData {
   type: 'intercept' | 'no_intercepts';

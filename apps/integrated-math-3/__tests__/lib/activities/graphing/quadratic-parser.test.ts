@@ -1,4 +1,4 @@
-import { parseQuadratic } from '@/lib/activities/graphing/quadratic-parser';
+import { parseQuadratic } from '@math-platform/graphing-core/quadratic-parser';
 
 describe('parseQuadratic', () => {
   describe('standard quadratic expressions', () => {

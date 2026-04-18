@@ -38,14 +38,14 @@
 
 ### Tasks
 
-- [ ] **Task: Migrate IM3 utility imports**
-  - [ ] Replace IM3 graphing utility imports with package imports.
-  - [ ] Keep graphing components in app path.
-  - [ ] Fix compile issues due to module moves.
+- [x] **Task: Migrate IM3 utility imports**
+  - [x] Replace IM3 graphing utility imports with package imports.
+  - [x] Keep graphing components in app path.
+  - [x] Fix compile issues due to module moves.
 
-- [ ] **Task: Run graphing verification**
-  - [ ] Run graphing utility and component tests.
-  - [ ] Run IM3 lint/test/build/typecheck.
-  - [ ] Publish final reconciliation summary.
+- [x] **Task: Run graphing verification**
+  - [x] Run graphing utility and component tests.
+  - [x] Run IM3 lint/test/build/typecheck.
+  - [x] Publish final reconciliation summary.
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 3: IM3 Migration and Verification' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 3: IM3 Migration and Verification' (Protocol in workflow.md)**

@@ -1,4 +1,4 @@
-import { evaluateFunction } from '@/lib/activities/graphing/canvas-utils';
+import { evaluateFunction } from '@math-platform/graphing-core/canvas-utils';
 
 describe('evaluateFunction', () => {
   describe('quadratic functions', () => {

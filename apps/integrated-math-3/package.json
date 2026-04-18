@@ -24,6 +24,7 @@
     "@math-platform/component-approval": "*",
     "@math-platform/core-auth": "*",
     "@math-platform/core-convex": "*",
+    "@math-platform/graphing-core": "*",
     "@math-platform/practice-core": "*",
     "@math-platform/srs-engine": "*",
     "@radix-ui/react-avatar": "^1.1.11",

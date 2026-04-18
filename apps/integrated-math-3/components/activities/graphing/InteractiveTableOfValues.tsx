@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { evaluateFunction } from '@/lib/activities/graphing/canvas-utils';
+import { evaluateFunction } from '@math-platform/graphing-core/canvas-utils';
 
 export interface InteractiveTableOfValuesProps {
   xValues: number[];
