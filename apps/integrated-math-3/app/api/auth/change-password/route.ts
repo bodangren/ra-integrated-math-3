@@ -1,10 +1,8 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
-import { PASSWORD_HASH_ITERATIONS } from '@/lib/auth/constants';
-import { validatePasswordForRole } from '@/lib/auth/password-policy';
+import { PASSWORD_HASH_ITERATIONS, validatePasswordForRole, generatePasswordSalt, hashPassword, verifyPassword } from '@math-platform/core-auth';
 import { requireActiveRequestSessionClaims } from '@/lib/auth/server';
-import { generatePasswordSalt, hashPassword, verifyPassword } from '@/lib/auth/session';
 import { fetchInternalMutation, fetchInternalQuery, internal } from '@/lib/convex/server';
 
 const changePasswordBodySchema = z.object({

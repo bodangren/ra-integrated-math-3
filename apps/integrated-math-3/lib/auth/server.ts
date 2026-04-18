@@ -2,8 +2,9 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
 
-import { SESSION_COOKIE_NAME, getAuthJwtSecret } from '@/lib/auth/constants';
-import { SessionClaims, verifySessionToken } from '@/lib/auth/session';
+import { SESSION_COOKIE_NAME, getAuthJwtSecret } from '@math-platform/core-auth';
+import type { SessionClaims } from '@math-platform/core-auth';
+import { verifySessionToken } from '@math-platform/core-auth';
 import { fetchInternalQuery, internal } from '@/lib/convex/server';
 
 /**

@@ -6,8 +6,9 @@ import {
   SESSION_COOKIE_NAME,
   SESSION_TTL_SECONDS,
   getAuthJwtSecret,
-} from '@/lib/auth/constants';
-import { signSessionToken, verifyPassword } from '@/lib/auth/session';
+  signSessionToken,
+  verifyPassword,
+} from '@math-platform/core-auth';
 import { fetchInternalQuery, internal } from '@/lib/convex/server';
 
 interface LoginBody {

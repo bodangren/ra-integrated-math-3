@@ -1,8 +1,7 @@
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
-import { SESSION_COOKIE_NAME, getAuthJwtSecret } from '@/lib/auth/constants';
-import { verifySessionToken } from '@/lib/auth/session';
+import { SESSION_COOKIE_NAME, getAuthJwtSecret, verifySessionToken } from '@math-platform/core-auth';
 import { fetchInternalQuery, internal } from '@/lib/convex/server';
 
 export async function GET() {

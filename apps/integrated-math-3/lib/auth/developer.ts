@@ -1,8 +1,9 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-import { SESSION_COOKIE_NAME, getAuthJwtSecret } from '@/lib/auth/constants';
-import { SessionClaims, verifySessionToken } from '@/lib/auth/session';
+import { SESSION_COOKIE_NAME, getAuthJwtSecret } from '@math-platform/core-auth';
+import type { SessionClaims } from '@math-platform/core-auth';
+import { verifySessionToken } from '@math-platform/core-auth';
 
 async function getServerSessionClaims(): Promise<SessionClaims | null> {
   const cookieStore = await cookies();
