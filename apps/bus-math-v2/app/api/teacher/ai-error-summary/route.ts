@@ -3,9 +3,9 @@ import { z } from 'zod';
 
 import { getRequestSessionClaims } from '@/lib/auth/server';
 import { fetchInternalQuery, internal } from '@/lib/convex/server';
-import { generateAISummary, buildDeterministicSummary } from '@/lib/practice/error-analysis';
-import type { PracticeSubmissionEnvelope } from '@/lib/practice/contract';
-import { isPracticeSubmissionEnvelope } from '@/lib/practice/contract';
+import { generateAISummary, buildDeterministicSummary } from '@math-platform/practice-core/error-analysis';
+import type { PracticeSubmissionEnvelope } from '@math-platform/practice-core/contract';
+import { isPracticeSubmissionEnvelope } from '@math-platform/practice-core/contract';
 import { resolveAIProviderFromEnv } from '@/lib/practice/error-analysis/providers';
 
 const querySchema = z.object({

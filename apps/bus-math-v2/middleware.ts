@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { verifySessionToken } from '@/lib/auth/session';
-import { SESSION_COOKIE_NAME, getAuthJwtSecret } from '@/lib/auth/constants';
+import { verifySessionToken } from '@math-platform/core-auth/session';
+import { SESSION_COOKIE_NAME, getAuthJwtSecret } from '@math-platform/core-auth/constants';
 
 const DEV_COMPONENT_REVIEW_PATTERN = /^\/dev\/component-review/;
 

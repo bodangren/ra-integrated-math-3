@@ -26,7 +26,7 @@ import {
   buildPracticeSubmissionEnvelope,
   buildPracticeSubmissionParts,
   type PracticeSubmissionCallbackPayload
-} from '@/lib/practice/contract'
+} from '@math-platform/practice-core/contract'
 
 interface JournalEntryRow {
   account: string

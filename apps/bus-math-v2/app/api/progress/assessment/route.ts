@@ -5,7 +5,7 @@ import { requireActiveStudentRequestClaims } from '@/lib/auth/server';
 import { submissionDataSchema } from '@/lib/db/schema/activity-submissions';
 import { selectActivitySchema } from '@/lib/db/schema/validators';
 import { fetchInternalQuery, fetchInternalMutation, internal } from '@/lib/convex/server';
-import { normalizePracticeSubmissionInput } from '@/lib/practice/contract';
+import { normalizePracticeSubmissionInput } from '@math-platform/practice-core/contract';
 
 function buildBadRequest(details: Record<string, unknown> | string) {
   return NextResponse.json(

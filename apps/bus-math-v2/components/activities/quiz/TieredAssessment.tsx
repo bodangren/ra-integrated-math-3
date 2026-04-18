@@ -15,7 +15,7 @@ import {
   buildPracticeSubmissionParts,
   normalizePracticeValue,
   type PracticeSubmissionCallbackPayload,
-} from '@/lib/practice/contract';
+} from '@math-platform/practice-core/contract';
 
 export type TieredAssessmentActivity = Omit<Activity, 'componentKey' | 'props'> & {
   componentKey: 'tiered-assessment';

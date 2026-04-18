@@ -14,7 +14,7 @@ import {
   buildPracticeSubmissionParts,
   normalizePracticeValue,
   type PracticeSubmissionCallbackPayload,
-} from '@/lib/practice/contract';
+} from '@math-platform/practice-core/contract';
 
 export type FillInTheBlankActivity = Omit<Activity, 'componentKey' | 'props'> & {
   componentKey: 'fill-in-the-blank';

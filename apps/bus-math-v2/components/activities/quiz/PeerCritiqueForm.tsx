@@ -14,7 +14,7 @@ import {
   buildPracticeSubmissionEnvelope,
   normalizePracticeValue,
   type PracticeSubmissionCallbackPayload,
-} from '@/lib/practice/contract'
+} from '@math-platform/practice-core/contract'
 
 const DEFAULT_CATEGORIES: PeerCritiqueActivityProps['categories'] = [
   {

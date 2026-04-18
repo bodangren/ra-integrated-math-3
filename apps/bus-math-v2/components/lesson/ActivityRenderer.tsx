@@ -12,7 +12,7 @@ import { usePhaseCompletion } from '@/hooks/usePhaseCompletion';
 import {
   isPracticeSubmissionEnvelope,
   type PracticeSubmissionCallbackPayload,
-} from '@/lib/practice/contract';
+} from '@math-platform/practice-core/contract';
 import type { CompletePhaseResponse } from '@/types/api';
 
 interface ActivityRendererProps {
