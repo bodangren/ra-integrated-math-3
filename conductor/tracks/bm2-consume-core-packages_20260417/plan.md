@@ -29,10 +29,10 @@
   - [x] Validate session revocation and role guard behavior.
   - [x] Run auth route tests.
 
-- [ ] **Task: Migrate BM2 Convex wrapper imports**
-  - [ ] Replace shared convex wrapper imports with `@math-platform/core-convex`.
-  - [ ] Keep Supabase compatibility helpers app-local.
-  - [ ] Run API route and wrapper tests.
+- [x] **Task: Migrate BM2 Convex wrapper imports**
+  - [x] Replace shared convex wrapper imports with `@math-platform/core-convex`.
+  - [x] Keep Supabase compatibility helpers app-local.
+  - [x] Run API route and wrapper tests.
 
 - [ ] **Task: Conductor - User Manual Verification 'Phase 2: Auth and Convex Adoption' (Protocol in workflow.md)**
 
