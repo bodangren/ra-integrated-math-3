@@ -46,4 +46,5 @@
 - (2026-04-18, review-5) When extracting packages, always export intermediate types used by normalization functions
 - (2026-04-18, review-5) Parallel schema files drift silently; prefer a single source of truth
 - (2026-04-18, srs-contract) When migrating to new contract format, update test fixtures to match new types; legacy backward-compat wrappers still return old format but new contract uses flat types with ISO dates
+- (2026-04-18, bm2-consume-runtime) When deleting local duplicate files, check if other local files import from them; update those imports to the package before deleting the source (e.g., BM2's canvas-utils.ts imported from deleted local parsers)
 
