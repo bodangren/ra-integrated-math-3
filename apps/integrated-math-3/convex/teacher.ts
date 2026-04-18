@@ -1015,7 +1015,7 @@ export async function getSubmissionDetailHandler(
   let studentErrorSummary = null;
   if (practiceEnvelopes.length > 0) {
     const { buildDeterministicSummary } = await import(
-      "../lib/practice/error-analysis"
+      "@math-platform/practice-core"
     );
 
     const studentIdMap = new Map<string, string>();
@@ -1165,7 +1165,7 @@ export const getLessonErrorSummary = internalQuery({
     if (envelopes.length === 0) return null;
 
     const { buildDeterministicSummary } = await import(
-      "../lib/practice/error-analysis"
+      "@math-platform/practice-core"
     );
 
     return buildDeterministicSummary(

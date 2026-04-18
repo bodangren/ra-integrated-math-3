@@ -1,4 +1,4 @@
-import type { ProblemFamilyInput } from '../../../lib/practice/problem-family';
+import type { ProblemFamilyInput } from '@math-platform/practice-core';
 
 export const MODULE6_PROBLEM_FAMILIES: ProblemFamilyInput[] = [
   // Logarithmic and Exponential Form (HSF-BF.B.5, HSF-LE.A.4)

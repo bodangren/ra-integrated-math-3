@@ -1,4 +1,4 @@
-import type { ProblemFamilyInput } from '../../../lib/practice/problem-family';
+import type { ProblemFamilyInput } from '@math-platform/practice-core';
 
 export const MODULE1_PROBLEM_FAMILIES: ProblemFamilyInput[] = [
   // Graphing Quadratic Functions (HSA-SSE.B.3, HSA-REI.B.4)

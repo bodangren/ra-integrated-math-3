@@ -1,6 +1,6 @@
 import { internalMutation } from "../_generated/server";
 import type { Id } from "../_generated/dataModel";
-import { practiceItemSchema } from "../../lib/practice/practice-item";
+import { practiceItemSchema } from "@math-platform/practice-core";
 import {
   MODULE1_PROBLEM_FAMILIES,
 } from "./problem-families/module-1";

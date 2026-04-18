@@ -4,7 +4,7 @@ import { Id } from "../_generated/dataModel";
 import { SubmissionSrsAdapter } from "../../lib/srs/submission-srs-adapter";
 import { ConvexCardStore } from "../../lib/srs/convexCardStore";
 import { ConvexReviewLogStore } from "../../lib/srs/convexReviewLogStore";
-import type { PracticeTimingBaseline } from "../../lib/practice/timing-baseline";
+import type { PracticeTimingBaseline } from "@math-platform/practice-core";
 import type { MutationCtx } from "../_generated/server";
 
 async function lookupProblemFamily(

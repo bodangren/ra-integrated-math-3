@@ -1,4 +1,4 @@
-import type { ProblemFamilyInput } from '../../../lib/practice/problem-family';
+import type { ProblemFamilyInput } from '@math-platform/practice-core';
 
 export const MODULE8_PROBLEM_FAMILIES: ProblemFamilyInput[] = [
   // Sampling and Study Design (HSS-IC.A.1, HSS-IC.B.3)

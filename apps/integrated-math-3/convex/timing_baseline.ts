@@ -1,6 +1,6 @@
 import { internalMutation, internalQuery, type MutationCtx, type QueryCtx } from "./_generated/server";
 import { v } from "convex/values";
-import { computeTimingBaseline, type PracticeTimingBaseline } from "../lib/practice/timing-baseline";
+import { computeTimingBaseline, type PracticeTimingBaseline } from "@math-platform/practice-core";
 import type { Doc, Id } from "./_generated/dataModel";
 
 const MAX_SUBMISSIONS_PER_BATCH = 500;

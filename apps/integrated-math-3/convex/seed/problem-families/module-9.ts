@@ -1,4 +1,4 @@
-import type { ProblemFamilyInput } from '../../../lib/practice/problem-family';
+import type { ProblemFamilyInput } from '@math-platform/practice-core';
 
 export const MODULE9_PROBLEM_FAMILIES: ProblemFamilyInput[] = [
   // Unit Circle and Special Angles (HSF-TF.A.1, HSF-TF.A.2)

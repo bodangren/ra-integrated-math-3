@@ -1,4 +1,4 @@
-import type { ProblemFamilyInput } from '../../../lib/practice/problem-family';
+import type { ProblemFamilyInput } from '@math-platform/practice-core';
 
 export const MODULE7_PROBLEM_FAMILIES: ProblemFamilyInput[] = [
   // Simplify Rational Expressions (HSA-APR.D.6)

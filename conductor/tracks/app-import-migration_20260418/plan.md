@@ -27,21 +27,23 @@
 
 ### Tasks
 
-- [ ] **Task: Audit lib/practice/ vs @math-platform/practice-core**
-  - [ ] List all files in `apps/integrated-math-3/lib/practice/`
-  - [ ] Compare with `packages/practice-core/src/`
-  - [ ] Identify 8 duplicate files mentioned in tech-debt
-  - [ ] Identify import usages in codebase
+- [x] **Task: Audit lib/practice/ vs @math-platform/practice-core**
+  - [x] List all files in `apps/integrated-math-3/lib/practice/`
+  - [x] Compare with `packages/practice-core/src/`
+  - [x] Identify 8 duplicate files mentioned in tech-debt
+  - [x] Identify import usages in codebase
 
-- [ ] **Task: Delete duplicate practice files and rewire imports**
-  - [ ] Delete files that exist in `@math-platform/practice-core`
-  - [ ] Keep app-local business-domain files (lib/practice/engine, etc.)
-  - [ ] Rewire all imports to `@math-platform/practice-core`
-  - [ ] Rewire 15+ Convex seed files importing from `lib/practice/`
+- [x] **Task: Delete duplicate practice files and rewire imports**
+  - [x] Delete files that exist in `@math-platform/practice-core`
+  - [x] Keep app-local business-domain files (objective-proficiency, srs-proficiency, objective-policy)
+  - [x] Rewire all imports to `@math-platform/practice-core`
+  - [x] Rewire 15+ Convex seed files importing from `lib/practice/`
 
-- [ ] **Task: Verify lib/practice/ migration**
-  - [ ] Run `npx tsc --noEmit`
-  - [ ] Verify Convex seed files use correct imports
+- [x] **Task: Verify lib/practice/ migration**
+  - [x] Run `npx tsc --noEmit` - PASS
+  - [x] Verify Convex seed files use correct imports
+  - [x] Run `npm run build` - PASS
+  - [x] Run `npm run lint -- --max-warnings 0` - PASS
 
 ## Phase 3: Audit and Migrate lib/srs/
 

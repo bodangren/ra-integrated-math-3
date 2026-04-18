@@ -14,8 +14,8 @@ import {
 import {
   MODULE5_PROBLEM_FAMILIES,
 } from "../../../convex/seed/problem-families/module-5";
-import { problemFamilySchema } from "../../../lib/practice/problem-family";
-import { practiceItemSchema } from "../../../lib/practice/practice-item";
+import { problemFamilySchema } from "@math-platform/practice-core";
+import { practiceItemSchema } from "@math-platform/practice-core";
 
 const ALL_PROBLEM_FAMILIES = [
   ...MODULE1_PROBLEM_FAMILIES,

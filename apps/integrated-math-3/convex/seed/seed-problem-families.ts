@@ -1,5 +1,5 @@
 import { internalMutation } from "../_generated/server";
-import { problemFamilySchema } from "../../lib/practice/problem-family";
+import { problemFamilySchema } from "@math-platform/practice-core";
 import { MODULE1_PROBLEM_FAMILIES } from "./problem-families/module-1";
 import { MODULE2_PROBLEM_FAMILIES } from "./problem-families/module-2";
 import { MODULE3_PROBLEM_FAMILIES } from "./problem-families/module-3";

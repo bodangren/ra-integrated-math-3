@@ -4,7 +4,7 @@
  * Functions for converting FSRS card state into objective proficiency evidence.
  */
 
-import type { PracticeTimingBaseline } from './timing-baseline';
+import type { PracticeTimingBaseline } from '@math-platform/practice-core';
 import type { EvidenceConfidence, ProblemFamilyEvidence } from './objective-proficiency';
 
 export const STABILITY_SCALE_FACTOR = 30;
