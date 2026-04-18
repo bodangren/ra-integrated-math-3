@@ -507,9 +507,12 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
      - Phase 2: Package Template and Guard Scripts [COMPLETE]
      - Phase 3: Baseline Validation [COMPLETE]
 
-- [ ] **Track: Move IM3 App to apps/integrated-math-3**
-     *Relocate IM3 app paths and update local scripts/config while preserving runtime behavior.*
-     *Link: [./conductor/tracks/move-im3-app-to-apps_20260417/](./conductor/tracks/move-im3-app-to-apps_20260417/)*
+- [ ] **Track: Move IM3 App to apps/integrated-math-3** [~Phase 1 Complete]
+      *Relocate IM3 app paths and update local scripts/config while preserving runtime behavior.*
+      *Link: [./conductor/tracks/move-im3-app-to-apps_20260417/](./conductor/tracks/move-im3-app-to-apps_20260417/)*
+      - Phase 1: Mechanical Move [COMPLETE]
+      - Phase 2: CI and Tooling Path Fixes [PENDING]
+      - Phase 3: Post-Move Validation [PENDING]
 
 - [ ] **Track: Monorepo Boundary Guardrails**
      *Add automated checks preventing shared packages from depending on app-owned paths.*

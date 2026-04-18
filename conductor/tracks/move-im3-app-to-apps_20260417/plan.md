@@ -6,17 +6,17 @@
 
 ### Tasks
 
-- [ ] **Task: Move IM3 source folders into app path**
-  - [ ] Move `app`, `components`, `convex`, `lib`, `curriculum`, `public`, `scripts`, and `__tests__` into `apps/integrated-math-3`.
-  - [ ] Preserve relative structure exactly.
-  - [ ] Record before/after tree snapshot for review.
+- [x] **Task: Move IM3 source folders into app path** - COMPLETED (fc83018)
+  - [x] Move `app`, `components`, `convex`, `lib`, `curriculum`, `public`, `scripts`, and `__tests__` into `apps/integrated-math-3`.
+  - [x] Preserve relative structure exactly.
+  - [x] Record before/after tree snapshot for review.
 
-- [ ] **Task: Update local config paths**
-  - [ ] Update `tsconfig` includes/excludes and path aliases.
-  - [ ] Update framework and test config file roots.
-  - [ ] Update package scripts to run from app path.
+- [x] **Task: Update local config paths** - COMPLETED (fc83018)
+  - [x] Update `tsconfig` includes/excludes and path aliases.
+  - [x] Update framework and test config file roots.
+  - [x] Update package scripts to run from app path.
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 1: Mechanical Move' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 1: Mechanical Move' (Protocol in workflow.md)** - COMPLETED
 
 ## Phase 2: CI and Tooling Path Fixes
 

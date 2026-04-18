@@ -56,7 +56,8 @@ Supporting references:
 - [x] Execute `monorepo-readiness_20260417`. **COMPLETED (2026-04-18)**
 - [x] Confirm package-manager/workspace decision. **APPROVED: npm workspaces**
 - [x] Complete `monorepo-tooling-shell_20260417`. **COMPLETED (2026-04-18)**
-- [ ] Begin `move-im3-app-to-apps_20260417` — relocate IM3 app paths under `apps/integrated-math-3`
+- [x] Begin `move-im3-app-to-apps_20260417` — Phase 1 COMPLETE (fc83018)
+- [ ] Continue `move-im3-app-to-apps_20260417` — Phase 2: CI and Tooling Path Fixes
 
 ## Current Context Snapshot
 
