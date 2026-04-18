@@ -543,9 +543,12 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 ### Wave 3 — Runtime and Approval Packages
 
-- [ ] **Track: Extract Activity Runtime Package**
-     *Extract lesson/phase/runtime contracts while keeping activity implementations app-local.*
-     *Link: [./conductor/tracks/extract-activity-runtime_20260417/](./conductor/tracks/extract-activity-runtime_20260417/)*
+- [x] **Track: Extract Activity Runtime Package** — **COMPLETED**
+      *Extract lesson/phase/runtime contracts while keeping activity implementations app-local.*
+      *Link: [./conductor/tracks/extract-activity-runtime_20260417/](./conductor/tracks/extract-activity-runtime_20260417/)*
+      - Phase 1: Package Extraction [COMPLETE]
+      - Phase 2: IM3 Migration [COMPLETE]
+      - Phase 3: Verification and Handoff [COMPLETE]
 
 - [ ] **Track: Extract Component Approval Package**
      *Extract review queue/hash/harness approval primitives to shared package.*

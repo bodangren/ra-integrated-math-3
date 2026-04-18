@@ -61,8 +61,8 @@ Supporting references:
 - [x] Complete `extract-practice-core_20260417` — **COMPLETED (2026-04-18)**
 - [x] Complete `extract-srs-engine_20260417` — **COMPLETED (2026-04-18)**
 - [x] Complete `extract-core-auth-convex_20260417` — **COMPLETED (2026-04-18)**
-- [ ] **Next: Start Wave 3** — `extract-activity-runtime_20260417` first
-- [ ] Then `extract-component-approval_20260417`
+- [x] **Next: Start Wave 3** — `extract-activity-runtime_20260417` first — **COMPLETED (2026-04-18)**
+- [ ] **Next: Execute `extract-component-approval_20260417`**
 - [ ] Then `extract-graphing-core_20260417`
 
 ## Code Review Summary (2026-04-18)

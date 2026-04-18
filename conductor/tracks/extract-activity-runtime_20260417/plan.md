@@ -38,14 +38,14 @@
 
 ### Tasks
 
-- [ ] **Task: Execute lesson runtime verification**
-  - [ ] Run lesson renderer/navigation/component tests.
-  - [ ] Run IM3 lint/test/build/typecheck.
-  - [ ] Capture known gaps and next-track prerequisites.
+- [x] **Task: Execute lesson runtime verification**
+  - [x] Run lesson renderer/navigation/component tests.
+  - [x] Run IM3 lint/test/build/typecheck.
+  - [x] Capture known gaps and next-track prerequisites.
 
-- [ ] **Task: Publish extraction notes**
-  - [ ] Summarize moved modules and preserved local modules.
-  - [ ] Link package public API docs.
-  - [ ] Confirm readiness for component-approval extraction.
+- [x] **Task: Publish extraction notes**
+  - [x] Summarize moved modules and preserved local modules.
+  - [x] Link package public API docs.
+  - [x] Confirm readiness for component-approval extraction.
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 3: Verification and Handoff' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 3: Verification and Handoff' (Protocol in workflow.md)**
