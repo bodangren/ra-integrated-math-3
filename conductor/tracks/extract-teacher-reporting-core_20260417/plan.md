@@ -18,21 +18,26 @@
 
 - [x] **Task: Conductor - User Manual Verification 'Phase 1: Pure Logic Extraction' (Protocol in workflow.md)****
 
-## Phase 2: UI Primitive Extraction
+## Phase 2: Package Adoption in IM3 and BM2
 
 ### Tasks
 
-- [ ] **Task: Extract reusable reporting UI primitives**
-  - [ ] Port reusable table/grid primitives that are domain-neutral.
-  - [ ] Parameterize labels/columns where needed.
-  - [ ] Add component tests for generic rendering behavior.
+- [x] **Task: Adopt package in IM3 (full adoption)**
+  - [x] Update all imports from `@/lib/teacher/*` to `@math-platform/teacher-reporting-core`
+  - [x] Delete local gradebook.ts, course-overview.ts, competency-heatmap.ts
+  - [x] Convert gradebook-export.ts to re-export shim (keeps downloadGradebookCsv local)
+  - [x] Run typecheck/build/tests — all pass
 
-- [ ] **Task: Keep app-specific query/render layers local**
-  - [ ] Retain query calls and route-specific wiring in each app.
-  - [ ] Introduce adapter layers for package inputs.
-  - [ ] Document boundaries in notes.
+- [x] **Task: Adopt package in BM2 (partial adoption)**
+  - [x] Update imports for course-overview and competency-heatmap to use package
+  - [x] Keep lib/teacher/gradebook.ts local — BM2-specific wider GradebookCell interface
+  - [x] Run build — PASS
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2: UI Primitive Extraction' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 2: Package Adoption' (Protocol in workflow.md)**
+
+### Note
+Phase 2 in the original plan was labeled "UI Primitive Extraction" but the actual work was package adoption.
+Phase 2 (UI Primitive Extraction) remains open for future work.
 
 ## Phase 3: Adoption and Verification
 
