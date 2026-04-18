@@ -1,6 +1,6 @@
 # Current Directive
 
-> Updated: 2026-04-18 (Code review — 6 phases audited, critical fixes applied)
+> Updated: 2026-04-18 (Code review — extract-practice-core and extract-srs-engine audited)
 
 ## Mission
 
@@ -59,19 +59,29 @@ Supporting references:
 - [x] Complete `move-im3-app-to-apps_20260417`. **COMPLETED (2026-04-18)**
 - [x] Complete `monorepo-boundary-guards_20260417`. **COMPLETED (2026-04-18)**
 - [ ] Fix remaining monorepo-move path issues: root `AGENTS.md` (stale `integrated-math-3/` ref), root `components.json` (wrong `app/globals.css`)
+- [ ] Complete `extract-practice-core_20260417` Phase 3: IM3 import migration
+- [ ] Complete `extract-srs-engine_20260417` Phase 2: Reconcile BM2 deltas + Phase 3: IM3 migration
 
 ## Code Review Summary (2026-04-18)
 
-Audited past 6 work phases covering: monorepo move Phases 1-3, tooling shell, readiness gate, CCSS M6-M9 seeding, SRS queue perf + session fix.
+Audited extract-practice-core (Phases 1-2) and extract-srs-engine (Phase 1).
 
-### Fixes Applied
+### Verification Results
 
-| Fix | Severity | Files Changed |
-|-----|----------|---------------|
-| Curriculum audit `conductor/` path broken after monorepo move | Critical | `lib/curriculum/audit.ts` — added `resolveConductorDir()` |
-| Lesson-title-consistency test broken `conductor/` paths | High | `__tests__/curriculum/lesson-title-consistency.test.ts` — split monorepoRoot/appRoot, fixed archive/ paths |
-| CI/CD `paths-ignore: apps/**` blocks all deployments | Critical | `.github/workflows/cloudflare-deploy.yml` — removed `apps/**` and `packages/**` |
-| Teacher SRS dashboard 3 panels always empty | High | `convex/teacher.ts` — wired `getWeakObjectivesHandler`, `getStrugglingStudentsHandler`, `getMisconceptionSummaryHandler` |
+| Package | Tests | Typecheck | Lint | Build |
+|---------|-------|-----------|------|-------|
+| practice-core | ✅ 10/10 | ✅ Clean | ⚠️ Missing config | N/A (typecheck only) |
+| srs-engine | ✅ 18/18 | ✅ Clean | ⚠️ Missing config | N/A (typecheck only) |
+| Main app (IM3) | ✅ 3356/3362 (6 pre-existing) | ✅ Clean | ✅ Pass | ✅ Pass |
+
+### New Issues Found
+
+| Issue | Severity | Notes |
+|-------|----------|-------|
+| srs-engine contract.ts duplicates types from practice-core | Medium | By design for package isolation, but creates drift risk |
+| srs-engine InMemoryTest stores duplicate InMemoryCardStore/ReviewLogStore | Medium | `submission-srs-adapter.ts` re-implements adapter classes |
+| Both packages missing ESLint devDependencies | Medium | eslint.config.mjs created but packages need `npm install` |
+| practice-core exports duplicate `*Alt` type aliases | Low | `PracticeTimingSummaryAlt`, `PracticeSubmissionPartAlt` — unclear purpose |
 
 ### Known Issues Deferred (not blocking migration)
 
@@ -80,3 +90,4 @@ Audited past 6 work phases covering: monorepo move Phases 1-3, tooling shell, re
 - FSRS stability semantic mismatch (`avgRetention` label)
 - Misconception tags not persisted in review evidence
 - Teacher SRS N+1 queries with unbounded `.collect()` in per-student loops
+- srs-engine submission-srs-adapter.ts reimplements processReview (divergence risk)

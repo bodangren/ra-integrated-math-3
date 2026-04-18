@@ -89,6 +89,6 @@
 
 | Command | Outcome |
 |---------|---------|
-| `cd packages/practice-core && npm run test` | Pending |
-| `cd packages/practice-core && npm run lint` | Pending |
-| `cd packages/practice-core && npm run typecheck` | Pending |
+| `cd packages/practice-core && npm run test` | ✅ 10/10 passed |
+| `cd packages/practice-core && npm run typecheck` | ✅ Clean |
+| `cd packages/practice-core && npm run lint` | ⚠️ ESLint config missing (tech-debt) |

@@ -10,7 +10,9 @@ This repo uses npm workspaces. The IM3 app lives in `apps/integrated-math-3/` an
 ra-integrated-math-3/          # Monorepo root
 ├── apps/
 │   └── integrated-math-3/     # The IM3 application
-├── packages/                   # Shared packages (future)
+├── packages/
+│   ├── practice-core/         # Practice contract, timing, rating, error analysis
+│   └── srs-engine/            # FSRS scheduler, review processor, queue, adapters
 ├── conductor/                  # Spec-driven development docs
 └── README.md
 ```
