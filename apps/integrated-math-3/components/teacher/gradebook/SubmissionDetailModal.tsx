@@ -187,7 +187,7 @@ export function SubmissionDetailModal({ open, onOpenChange, data }: SubmissionDe
                               </div>
                             )}
 
-                            {evidence.kind === 'spreadsheet' && evidence.spreadsheetData && (
+                            {evidence.kind === 'spreadsheet' && !!evidence.spreadsheetData && (
                               <div className="pl-4 border-l-2 border-border">
                                 <p className="text-sm text-muted-foreground">
                                   Spreadsheet submission data available

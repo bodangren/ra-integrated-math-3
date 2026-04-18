@@ -58,7 +58,7 @@ Supporting references:
 - [x] Complete `monorepo-tooling-shell_20260417`. **COMPLETED (2026-04-18)**
 - [x] Begin `move-im3-app-to-apps_20260417` — Phase 1 COMPLETE (fc83018)
 - [x] Complete `move-im3-app-to-apps_20260417` — Phase 2: CI and Tooling Path Fixes
-- [ ] Continue `move-im3-app-to-apps_20260417` — Phase 3: Post-Move Validation
+- [x] Complete `move-im3-app-to-apps_20260417` — Phase 3: Post-Move Validation (typecheck+build pass; 9 pre-existing test failures documented in tech-debt)
 
 ## Current Context Snapshot
 

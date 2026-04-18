@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
-const WORKFLOW_PATH = resolve(process.cwd(), '.github/workflows/cloudflare-deploy.yml');
+const WORKFLOW_PATH = resolve(process.cwd(), '../../.github/workflows/cloudflare-deploy.yml');
 
 describe('Cloudflare Deploy Workflow', () => {
   let workflowContent: string;
@@ -18,8 +18,8 @@ describe('Cloudflare Deploy Workflow', () => {
     });
 
     it('should trigger on push to main', () => {
-      expect(workflowContent).toMatch(/on:\s*push:/s);
-      expect(workflowContent).toMatch(/branches:\s*- main/s);
+      expect(workflowContent).toMatch(/on:\s*push:/);
+      expect(workflowContent).toMatch(/branches:\s*- main/);
     });
 
     it('should support manual workflow_dispatch', () => {
@@ -27,7 +27,7 @@ describe('Cloudflare Deploy Workflow', () => {
     });
 
     it('should ignore markdown, conductor, and gitignore paths', () => {
-      expect(workflowContent).toMatch(/paths-ignore:/s);
+      expect(workflowContent).toMatch(/paths-ignore:/);
       expect(workflowContent).toMatch(/-\s*'\*\*\.md'/);
       expect(workflowContent).toMatch(/-\s*'conductor\/\*\*'/);
       expect(workflowContent).toMatch(/-\s*'\.gitignore'/);
@@ -40,12 +40,12 @@ describe('Cloudflare Deploy Workflow', () => {
     });
 
     it('should define a concurrency group', () => {
-      expect(workflowContent).toMatch(/concurrency:/s);
-      expect(workflowContent).toMatch(/group:\s*cloudflare-deploy/s);
+      expect(workflowContent).toMatch(/concurrency:/);
+      expect(workflowContent).toMatch(/group:\s*cloudflare-deploy/);
     });
 
     it('should not cancel in-progress deployments', () => {
-      expect(workflowContent).toMatch(/cancel-in-progress:\s*false/s);
+      expect(workflowContent).toMatch(/cancel-in-progress:\s*false/);
     });
   });
 
@@ -55,30 +55,30 @@ describe('Cloudflare Deploy Workflow', () => {
     });
 
     it('should checkout code', () => {
-      expect(workflowContent).toMatch(/uses:\s*actions\/checkout@v4/s);
+      expect(workflowContent).toMatch(/uses:\s*actions\/checkout@v4/);
     });
 
     it('should setup Node.js 20', () => {
-      expect(workflowContent).toMatch(/uses:\s*actions\/setup-node@v4/s);
-      expect(workflowContent).toMatch(/node-version:\s*'20'/s);
-      expect(workflowContent).toMatch(/cache:\s*'npm'/s);
+      expect(workflowContent).toMatch(/uses:\s*actions\/setup-node@v4/);
+      expect(workflowContent).toMatch(/node-version:\s*'20'/);
+      expect(workflowContent).toMatch(/cache:\s*'npm'/);
     });
 
     it('should install dependencies with npm ci', () => {
-      expect(workflowContent).toMatch(/run:\s*npm ci/s);
+      expect(workflowContent).toMatch(/run:\s*\|\s*npm ci/);
     });
 
     it('should run lint with CI=true', () => {
-      expect(workflowContent).toMatch(/run:\s*npm run lint/s);
-      expect(workflowContent).toMatch(/CI:\s*true/s);
+      expect(workflowContent).toMatch(/run:\s*npm run lint/);
+      expect(workflowContent).toMatch(/CI:\s*true/);
     });
 
     it('should run tests with CI=true', () => {
-      expect(workflowContent).toMatch(/run:\s*npm test/s);
+      expect(workflowContent).toMatch(/run:\s*npm test/);
     });
 
     it('should run build with CI=true', () => {
-      expect(workflowContent).toMatch(/run:\s*npm run build/s);
+      expect(workflowContent).toMatch(/run:\s*npm run build/);
     });
   });
 
@@ -88,7 +88,7 @@ describe('Cloudflare Deploy Workflow', () => {
     });
 
     it('should use cloudflare/wrangler-action@v3', () => {
-      expect(workflowContent).toMatch(/uses:\s*cloudflare\/wrangler-action@v3/s);
+      expect(workflowContent).toMatch(/uses:\s*cloudflare\/wrangler-action@v3/);
     });
 
     it('should reference required GitHub secrets', () => {
@@ -101,7 +101,7 @@ describe('Cloudflare Deploy Workflow', () => {
     });
 
     it('should target production environment', () => {
-      expect(workflowContent).toMatch(/env:\s*production/s);
+      expect(workflowContent).toMatch(/env:\s*production/);
     });
   });
 
@@ -111,7 +111,7 @@ describe('Cloudflare Deploy Workflow', () => {
     });
 
     it('should have a failure notification step', () => {
-      expect(workflowContent).toMatch(/if:\s*failure\(\)/s);
+      expect(workflowContent).toMatch(/if:\s*failure\(\)/);
       expect(workflowContent).toContain('::error::Cloudflare deployment failed');
     });
   });
