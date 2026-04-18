@@ -32,7 +32,7 @@
   - [x] Document package integration boundary for configs.
   - [x] Add notes for BM2 runtime adoption track.
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2: Reconcile Deltas' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 2: Reconcile Deltas' (Protocol in workflow.md)** [checkpoint: 834d202]
 
 ## Phase 3: IM3 Migration and Verification
 
