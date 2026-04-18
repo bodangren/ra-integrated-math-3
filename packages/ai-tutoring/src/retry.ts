@@ -42,6 +42,10 @@ function isRetryableError(error: unknown): boolean {
     if (altMatch) {
       return isRetryableStatus(parseInt(altMatch[1], 10));
     }
+    const directStatusMatch = message.match(/^(\d{3})(?:\s|$)/);
+    if (directStatusMatch) {
+      return isRetryableStatus(parseInt(directStatusMatch[1], 10));
+    }
     const networkPatterns = ['fetch failed', 'ECONNRESET', 'ECONNREFUSED', 'ETIMEDOUT', 'ENOTFOUND', 'network'];
     if (networkPatterns.some(p => message.includes(p))) {
       return true;
