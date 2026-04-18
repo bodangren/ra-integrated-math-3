@@ -67,7 +67,7 @@ Supporting references:
 - [x] **Wave 3 Start** — `extract-activity-runtime_20260417` — **COMPLETED (2026-04-18)**
 - [x] `extract-component-approval_20260417` Phase 1 — **COMPLETED (2026-04-18)**
 - [x] **CRITICAL: App import migration** — delete duplicates in lib/auth/, lib/srs/, lib/practice/, lib/convex/ and rewire to packages
-- [ ] Complete `extract-component-approval_20260417` Phase 2+
+- [x] Complete `extract-component-approval_20260417` Phase 2+
 - [ ] Then `extract-graphing-core_20260417`
 
 ## Code Review Summary (2026-04-18 — 6-Phase Audit #2)

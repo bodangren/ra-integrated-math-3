@@ -22,17 +22,17 @@
 
 ### Tasks
 
-- [ ] **Task: Reconcile BM2 hardening deltas**
-  - [ ] Diff BM2 approval helper deltas.
-  - [ ] Merge generic hardening improvements only.
-  - [ ] Keep app-specific route code local.
+- [x] **Task: Reconcile BM2 hardening deltas**
+  - [x] Diff BM2 approval helper deltas.
+  - [x] Merge generic hardening improvements only.
+  - [x] Keep app-specific route code local.
 
-- [ ] **Task: Migrate IM3 imports**
-  - [ ] Replace IM3 approval primitive imports with package imports.
-  - [ ] Keep API routes and page wiring in app.
-  - [ ] Resolve compile/test breakages from import changes.
+- [x] **Task: Migrate IM3 imports**
+  - [x] Replace IM3 approval primitive imports with package imports.
+  - [x] Keep API routes and page wiring in app.
+  - [x] Resolve compile/test breakages from import changes.
 
-- [ ] **Task: Conductor - User Manual Verification 'Phase 2: Reconcile and Integrate' (Protocol in workflow.md)**
+- [x] **Task: Conductor - User Manual Verification 'Phase 2: Reconcile and Integrate' (Protocol in workflow.md)****
 
 ## Phase 3: Verification
 

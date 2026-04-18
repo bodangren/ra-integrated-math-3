@@ -39,6 +39,19 @@
   - `npm test` (package): 25 tests passed
   - `npm run typecheck` (package): clean
   - `npm run typecheck` (IM3): clean
-  - `npm run test` (IM3): 3356/3362 pass (6 pre-existing equivalence failures)
+  - `npm run test` (IM3): 3305/3311 pass (6 pre-existing equivalence failures)
   - `npm run build` (IM3): success
+  - `npm run lint` (IM3): clean
 - outcome: PASS
+
+## Phase 2 Changes (2026-04-18)
+
+### Fixes Applied
+1. **Duplicate ComponentKind type removed**: `lib/activities/review-queue.ts` had local `ComponentKind = "activity" | "example" | "practice"` definition that duplicated the package's export. Changed to import from `@math-platform/component-approval`.
+2. **Unsafe type assertion fixed**: Added `Array.isArray` guard for `activity.props.steps` extraction in `assembleReviewQueueItem`.
+
+### BM2 Delta Analysis (Phase 2)
+- BM2 `component-ids.ts`: BM2-specific registry dependencies, not generic → kept BM2-local
+- BM2 `version-hashes.ts`: wrappers around `computeComponentContentHash`, but `getAllActivityComponents` hardcodes BM2 activity IDs → kept BM2-local
+- BM2 `content-hash.ts`: identical to package content-hash, no hardening delta
+- Conclusion: No generic hardening improvements to merge from BM2

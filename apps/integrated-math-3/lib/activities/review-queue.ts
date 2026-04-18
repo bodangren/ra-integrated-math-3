@@ -1,7 +1,8 @@
 import type { Doc } from "@/convex/_generated/dataModel";
-import { computeComponentContentHash } from "@math-platform/component-approval";
-
-export type ComponentKind = "activity" | "example" | "practice";
+import {
+  computeComponentContentHash,
+  type ComponentKind,
+} from "@math-platform/component-approval";
 
 export interface ActivityPlacement {
   phaseType: string;
@@ -158,6 +159,8 @@ export async function assembleReviewQueueItem({
     isStale,
     approval,
     storedProps: activity.props ?? undefined,
-    steps: (activity.props as { steps?: Array<{ expression: string; explanation: string }> })?.steps ?? undefined,
+    steps: Array.isArray((activity.props as Record<string, unknown> | null)?.steps)
+      ? ((activity.props as Record<string, unknown>)?.steps as Array<{ expression: string; explanation: string }>)
+      : undefined,
   };
 }
