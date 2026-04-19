@@ -56,14 +56,12 @@ jobs:
 
       - name: Run package tests
         run: npm run test --workspace=packages/${{ matrix.package }}
-        continue-on-error: true
 
       - name: Run package typecheck
         run: npm run typecheck --workspace=packages/${{ matrix.package }}
 
       - name: Run package lint
         run: npm run lint --workspace=packages/${{ matrix.package }}
-        continue-on-error: true
 
   # Phase 2: Boundary guard checks (runs after packages)
   boundary-check:
