@@ -22,7 +22,7 @@ import {
   getWeakObjectivesHandler,
   getStrugglingStudentsHandler,
   getMisconceptionSummaryHandler,
-} from "./teacher/srs-queries";
+} from "./teacher/srs_queries";
 
 interface TeacherProgressSnapshot {
   completedPhases: number;

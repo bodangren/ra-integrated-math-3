@@ -1,5 +1,5 @@
 import { internalMutation } from "../_generated/server";
-import { OBJECTIVE_POLICIES } from "./objective-policies";
+import { OBJECTIVE_POLICIES } from "./objective_policies";
 import { objectivePolicySchema } from "../../lib/practice/objective-policy";
 
 export const seedObjectivePolicies = internalMutation({

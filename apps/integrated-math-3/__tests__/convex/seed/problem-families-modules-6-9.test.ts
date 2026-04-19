@@ -1,10 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import { problemFamilySchema } from '@math-platform/practice-core/problem-family';
-import { MODULE6_PROBLEM_FAMILIES } from '@/convex/seed/problem-families/module-6';
-import { MODULE7_PROBLEM_FAMILIES } from '@/convex/seed/problem-families/module-7';
-import { MODULE8_PROBLEM_FAMILIES } from '@/convex/seed/problem-families/module-8';
-import { MODULE9_PROBLEM_FAMILIES } from '@/convex/seed/problem-families/module-9';
-import { OBJECTIVE_POLICIES } from '@/convex/seed/objective-policies';
+import { MODULE6_PROBLEM_FAMILIES } from '@/convex/seed/problem_families/module_6';
+import { MODULE7_PROBLEM_FAMILIES } from '@/convex/seed/problem_families/module_7';
+import { MODULE8_PROBLEM_FAMILIES } from '@/convex/seed/problem_families/module_8';
+import { MODULE9_PROBLEM_FAMILIES } from '@/convex/seed/problem_families/module_9';
+import { OBJECTIVE_POLICIES } from '@/convex/seed/objective_policies';
 
 const ALL_MODULE_PROBLEM_FAMILIES = [
   ...MODULE6_PROBLEM_FAMILIES,

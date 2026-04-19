@@ -4,7 +4,7 @@ import {
   getWeakObjectivesHandler,
   getStrugglingStudentsHandler,
   getMisconceptionSummaryHandler,
-} from '@/convex/teacher/srs-queries';
+} from '@/convex/teacher/srs_queries';
 import type {
   TeacherProficiencyView,
   ObjectivePriority,

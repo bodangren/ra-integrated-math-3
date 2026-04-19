@@ -5,7 +5,7 @@ import {
   resetStudentCardsHandler,
   addExtraCardsHandler,
   VALID_PRIORITIES,
-} from '@/convex/teacher/srs-mutations';
+} from '@/convex/teacher/srs_mutations';
 import type { MutationCtx } from '@/convex/_generated/server';
 
 function makeMutationMockCtx(overrides: {

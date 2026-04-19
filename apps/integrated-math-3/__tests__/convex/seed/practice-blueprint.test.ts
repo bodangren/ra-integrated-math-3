@@ -1,19 +1,19 @@
 import { describe, it, expect } from "vitest";
 import {
   MODULE1_PROBLEM_FAMILIES,
-} from "../../../convex/seed/problem-families/module-1";
+} from "../../../convex/seed/problem_families/module_1";
 import {
   MODULE2_PROBLEM_FAMILIES,
-} from "../../../convex/seed/problem-families/module-2";
+} from "../../../convex/seed/problem_families/module_2";
 import {
   MODULE3_PROBLEM_FAMILIES,
-} from "../../../convex/seed/problem-families/module-3";
+} from "../../../convex/seed/problem_families/module_3";
 import {
   MODULE4_PROBLEM_FAMILIES,
-} from "../../../convex/seed/problem-families/module-4";
+} from "../../../convex/seed/problem_families/module_4";
 import {
   MODULE5_PROBLEM_FAMILIES,
-} from "../../../convex/seed/problem-families/module-5";
+} from "../../../convex/seed/problem_families/module_5";
 import { problemFamilySchema } from "@math-platform/practice-core";
 import { practiceItemSchema } from "@math-platform/practice-core";
 

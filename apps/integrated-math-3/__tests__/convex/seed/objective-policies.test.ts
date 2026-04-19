@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { OBJECTIVE_POLICIES } from '@/convex/seed/objective-policies';
+import { OBJECTIVE_POLICIES } from '@/convex/seed/objective_policies';
 import { objectivePolicySchema } from '@/lib/practice/objective-policy';
 
 const ALL_STANDARD_CODES = [
