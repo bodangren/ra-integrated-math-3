@@ -275,12 +275,3 @@ describe('SpreadsheetEvaluator', () => {
   });
 });
 
-describe('Formula Sanitization', () => {
-  // These tests would be for the server-side validation
-  // We'll create a separate test file for API routes
-
-  it('should be tested in API route tests', () => {
-    // Placeholder to remind that formula sanitization is tested separately
-    expect(true).toBe(true);
-  });
-});

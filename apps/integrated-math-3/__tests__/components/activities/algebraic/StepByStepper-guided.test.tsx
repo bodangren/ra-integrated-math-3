@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { StepByStepper } from '@/components/activities/algebraic/StepByStepper';
 import 'katex/dist/katex.min.css';
@@ -120,29 +120,30 @@ describe('StepByStepper - Guided Mode', () => {
 
   describe('hint usage tracking', () => {
     it('records hint usage count in component state', async () => {
+      // Mock Math.random so options sort comparator always returns 0 (stable order):
+      // insertion order is [correct, distractor0, distractor1], so buttons[1] and [2] are incorrect
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+
       render(<StepByStepper {...defaultProps} />);
 
       const options = screen.getAllByRole('button');
-      
-      const incorrectButtons = options.filter(btn => {
-        const text = btn.textContent || '';
-        return (text.includes('x + 5') || text.includes('2x + 3')) && !text.includes('x^2');
+      expect(options.length).toBe(3);
+
+      // buttons[0] = correct (x^2 + 5x + 6), buttons[1] and [2] are distractors
+      fireEvent.click(options[1]);
+      await waitFor(() => {
+        expect(screen.getByText(/Remember.*ax/)).toBeInTheDocument();
       });
-      
-      if (incorrectButtons.length >= 2) {
-        fireEvent.click(incorrectButtons[0]);
-        await waitFor(() => {
-          expect(screen.getByText(/Remember.*ax/)).toBeInTheDocument();
-        });
 
-        fireEvent.click(incorrectButtons[1]);
-        await waitFor(() => {
-          expect(screen.getByText(/Remember.*ax/)).toBeInTheDocument();
-        });
-      }
+      const updatedOptions = screen.getAllByRole('button');
+      fireEvent.click(updatedOptions[2]);
+      await waitFor(() => {
+        expect(screen.getByText(/Remember.*ax/)).toBeInTheDocument();
+      });
 
-      const hintCount = screen.queryByText(/hints used: \d+/i);
-      expect(hintCount).toBeInTheDocument();
+      expect(screen.getByText(/Hints used: 2/i)).toBeInTheDocument();
+
+      vi.restoreAllMocks();
     });
   });
 

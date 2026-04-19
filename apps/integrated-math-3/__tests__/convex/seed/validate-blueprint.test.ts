@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { runBlueprintValidation } from '@/convex/seed/validate-blueprint';
+import { runBlueprintValidation } from '@/convex/seed/validate_blueprint';
 
 describe('validate-blueprint', () => {
   it('passes when all references are valid', () => {

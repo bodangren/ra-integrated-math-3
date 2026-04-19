@@ -45,6 +45,5 @@ describe('types/database exports', () => {
       | 'student_progress'
     >();
 
-    expect(true).toBe(true);
   });
 });
