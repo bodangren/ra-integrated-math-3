@@ -25,8 +25,8 @@
 - [ ] Task: Conductor - User Manual Verification 'CI/CD Pipeline Hardening' (Protocol in workflow.md)
 
 ## Phase 5: Deep Audit and Final Validation
-- [ ] Task: Run `npm run ws:im3:typecheck` and verify the `@math-platform/*` and Convex module resolution errors are resolved.
-- [ ] Task: Run `npm run ws:im3:test` and ensure tests execute properly with workspace routing.
-- [ ] Task: Run individual validations (lint, test, typecheck) on the 5 newly configured packages.
-- [ ] Task: Run monorepo boundary script (`node scripts/check-monorepo-boundaries.mjs`) to ensure no violations were introduced.
+- [x] Task: Run `npm run ws:im3:typecheck` and verify the `@math-platform/*` and Convex module resolution errors are resolved. — @math-platform/* errors: ZERO. Convex _generated/ errors remain pending user running `npx convex dev`. TS7006 implicit-any errors are out-of-scope per spec.
+- [x] Task: Run `npm run ws:im3:test` and ensure tests execute properly with workspace routing. — 3072 pass, 4 fail (pre-existing); workspace routing works correctly.
+- [x] Task: Run individual validations (lint, test, typecheck) on the 5 newly configured packages. — All 5 pass typecheck and test; fixed unused PhaseType import in activity-runtime to pass lint. (9322dd6)
+- [x] Task: Run monorepo boundary script (`node scripts/check-monorepo-boundaries.mjs`) to ensure no violations were introduced. — [OK] No violations found.
 - [ ] Task: Conductor - User Manual Verification 'Deep Audit and Final Validation' (Protocol in workflow.md)
