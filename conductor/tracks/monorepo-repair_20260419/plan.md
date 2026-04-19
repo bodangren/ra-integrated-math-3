@@ -20,7 +20,7 @@
 - [ ] Task: Conductor - User Manual Verification 'Build Scripts and Test Configuration' (Protocol in workflow.md)
 
 ## Phase 4: CI/CD Pipeline Hardening
-- [ ] Task: Update the CI workflow file (e.g., `.github/workflows/ci.yml`) to remove `continue-on-error: true` from the package testing matrix.
+- [x] Task: Update the CI workflow file (e.g., `.github/workflows/ci.yml`) to remove `continue-on-error: true` from the package testing matrix. (3530da8)
 - [ ] Task: Modify the BM2 CI step to rely on root `npm ci` and workspace commands instead of `npm ci --prefix apps/bus-math-v2`.
 - [ ] Task: Conductor - User Manual Verification 'CI/CD Pipeline Hardening' (Protocol in workflow.md)
 
