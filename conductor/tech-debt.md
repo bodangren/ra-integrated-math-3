@@ -8,9 +8,9 @@
 
 | Item | Sev | Status | Notes |
 |------|-----|--------|-------|
-| Misconception tags not persisted in review evidence | High | Open | getMisconceptionSummary always returns empty |
+| Misconception tags not persisted in review evidence | High | Resolved | submission-srs-adapter now persists tags in review evidence |
 | SRS sessions: by_student_and_status index relies on undefined sorting | High | Open | No explicit filter for completedAt=undefined |
-| Approval status race condition (no version/lock) | High | Open | No "approve exact version" check |
+| Approval status race condition (no version/lock) | High | Open | Content hash mismatch check added (review-15); still not fully atomic but materially safer |
 | N+1 query: phase sections in progress/preview/monitoring queries | High | Open | One DB query per phase inside loop |
 | Deactivated users can access BM2 API routes | High | Open | 7 endpoints use JWT-only verification; need requireActive*SessionClaims |
 | BM2 chatbot prompt injection defense still weak | Medium | Open | sanitizeInput only strips markdown chars; no system prompt guard or LLM-based filter |

@@ -1,6 +1,6 @@
 # Current Directive
 
-> Updated: 2026-04-23 (Code review #14 — audit of tech-debt triage, re-export stubs, teacher UI, seed demo, chatbot tests, security)
+> Updated: 2026-04-23 (Code review #15 — audit of SRS misconception tags, atomic saves, content hash check, type alignment, date filter)
 
 ## Mission
 
@@ -39,39 +39,48 @@ Monorepo migration complete (Waves 0-6). All major feature tracks done. Current 
 - [x] Review #12 fixes (chatbot enrollment fallback + game streak bug + math sanitization)
 - [x] Review #13 fixes (prompt injection via triple-quote delimiters + teacher UI revalidatePath)
 - [x] Review #14 fixes (seed all units, functional class selector, info leakage, error handling, rate limiting)
+- [x] Review #15 fixes (SrsRating type alignment in tests)
+- [x] SRS misconception tag persistence + atomic saves + content hash guard
 - [ ] BM2 deactivated-user access — swap getRequestSessionClaims for requireActive*SessionClaims on 7 endpoints
 - [ ] BM2 rate limiting gaps — add rate limiting to 5 unprotected endpoints
 - [ ] BM2 chatbot prompt injection — add system prompt guard beyond sanitizeInput
 - [ ] RSC entry chunk code-splitting (750 KB → < 500 KB)
 - [ ] Convex generated types regeneration (eliminate `as any` casts)
+- [ ] Monorepo tech-debt triage Phase 2: SRS & Practice Correctness
+- [ ] Monorepo tech-debt triage Phase 3: N+1 Query Performance
 
-## Code Review Summary (2026-04-23 — Review #14)
+## Code Review Summary (2026-04-23 — Review #15)
 
-Audit of 6 work phases since Review #13: BM2 tech-debt triage (Phase 1), re-export stubs completion, seed class lessons for demo, teacher lesson assignment UI, LessonChatbot.tsx tests, monorepo tech-debt triage track setup.
+Audit of 3 commits since Review #14 (6 work phases): SRS misconception tag persistence, atomic card+review saves, content hash mismatch guard, CardStore type alignment tests, completedAt filter performance comments, teacher misconception query optimization.
 
 ### Verification Results
 
 | Check | Result |
 |-------|--------|
-| Build (IM3) | PENDING |
-| Tests (IM3) | PENDING |
-| Typecheck (IM3) | PENDING |
-| Lint (IM3) | PENDING |
+| Typecheck (IM3) | ✅ Pass (after fix) |
+| Lint (IM3) | ✅ Pass (0 warnings) |
+| Tests (IM3) | ✅ 3296 passed, 6 todo |
+| Build (IM3) | ✅ Pass |
 
 ### Issues Fixed in This Review
 
 | Issue | Severity | Fix |
 |-------|----------|-----|
-| Demo seed only assigns Unit 1 lessons | Critical | Removed unitNumber=1 filter; now assigns all 52 lessons |
-| Teacher class selector non-functional (data corruption risk) | Critical | Added ClassSelector client component with URL search param routing |
-| Info leakage: 5 BM2 API routes return error.message in responses | Critical | Replaced with generic messages; errors logged server-side only |
-| Assessment scoring error leaks internal algorithm details | Critical | Replaced with generic "Unable to score submission" |
-| BM2 chatbot: no error handling on AI provider call | High | Added try/catch with 502 response |
-| BM2 session route: no error handling | High | Wrapped entire handler in try/catch |
-| BM2 chatbot: fragile rate limiting (optional chaining) | Medium | Explicit check for rate limit function existence; warn on missing |
-| BM2 chatbot: phaseNumber accepts floats | Medium | Added Number.isInteger() check |
-| Convex component_approvals: role requirement leaked in error | Low | Changed to generic "Unauthorized" |
-| BM2 convex/auth.ts: duplicate PASSWORD_ALPHABET without documentation | Low | Added comment noting derivation from core-auth |
+| SrsRating case mismatch in convexCardStore.test.ts | Medium | Fixed 4 instances of `'good'` → `'Good'` to match SrsRating enum |
+
+### Code Review Notes
+
+**SRS Misconception Tags** — `submission-srs-adapter.ts` now collects `misconceptionTags` from submission parts and persists them in review evidence. Tags are deduplicated via `Set`. Schema extended in `srs-engine/src/srs/contract.ts`. Well-implemented with proper `undefined` omission when no tags present.
+
+**Atomic Card+Review Save** — `ConvexCardStore.saveCardAndReview()` calls `processReviewHandler` directly instead of separate `runMutation` calls, ensuring card and review log are written in a single Convex transaction. The duck-type check in `submission-srs-adapter.ts` (`'saveCardAndReview' in this.cardStore`) is pragmatic; a future cleanup could formalize the interface.
+
+**Content Hash Mismatch Guard** — `submitReviewHandler` in `dev.ts` now checks `existingApproval.contentHash !== componentContentHash` before allowing status updates. Prevents approving a component that has changed since the last review. Addresses the tech debt item "Approval status race condition" (partially — still not fully atomic, but materially safer).
+
+**Handler Extraction** — `saveCardHandler`, `getCardHandler`, `getCardsByStudentHandler`, `getCardByStudentAndFamilyHandler` extracted from `cards.ts` anonymous functions to named exports for testability. `getCardsByObjective` and `getDueCards` were not extracted (minor inconsistency).
+
+**Teacher Misconception Date Filter** — `getMisconceptionSummaryHandler` moved date filtering from JS `.filter()` to Convex `.filter((q) => q.gte(q.field("reviewedAt"), sinceMs))`. Reduces data transfer from DB. Semantically correct — uses `reviewedAt` which has an index (`by_reviewed_at`).
+
+**Performance Comments** — Added explicit filter comments to `srs_sessions` and `queue/sessions.ts` for `completedAt=undefined` queries, documenting why the filter is necessary despite the index.
 
 ### Issues Found (Deferred)
 
@@ -83,3 +92,5 @@ Audit of 6 work phases since Review #13: BM2 tech-debt triage (Phase 1), re-expo
 | BM2 login has no input length limits | Medium | Multi-MB payloads risk |
 | 21 `v.any()` fields in IM3 Convex schema | Medium | Incrementally add Zod schemas |
 | BM2 ~30 files still import via re-export stubs | Low | Deferred migration to direct package imports |
+| `saveCardHandler` uses `Date.now()` for updatedAt instead of args value | Low | Works correctly in current call sites but inconsistent with processReviewHandler pattern |
+| `getCardsByObjective`/`getDueCards` not extracted to named handlers | Low | Inconsistent with other extracted handlers in cards.ts |
