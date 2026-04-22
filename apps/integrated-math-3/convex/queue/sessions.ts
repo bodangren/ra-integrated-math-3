@@ -45,6 +45,8 @@ export async function startDailySessionHandler(
     .withIndex("by_student_and_status", (q) =>
       q.eq("studentId", args.studentId as Id<"profiles">)
     )
+    // Explicit filter avoids relying on undefined sort order in the index.
+    // Sessions per student are bounded (~1/day), so filter cost is negligible.
     .filter((q) => q.eq(q.field("completedAt"), undefined))
     .first();
 
@@ -106,6 +108,8 @@ export async function getActiveSessionHandler(
     .withIndex("by_student_and_status", (q) =>
       q.eq("studentId", args.studentId as Id<"profiles">)
     )
+    // Explicit filter avoids relying on undefined sort order in the index.
+    // Sessions per student are bounded (~1/day), so filter cost is negligible.
     .filter((q) => q.eq(q.field("completedAt"), undefined))
     .first();
 

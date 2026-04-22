@@ -22,8 +22,8 @@ function mapDbCardToContract(
   }
 ) {
   return {
-    cardId: card._id,
-    studentId: card.studentId,
+    cardId: card._id as string,
+    studentId: card.studentId as string,
     objectiveId: card.objectiveId,
     problemFamilyId: card.problemFamilyId,
     stability: card.stability,
