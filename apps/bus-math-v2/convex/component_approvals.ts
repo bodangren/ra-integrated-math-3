@@ -17,7 +17,7 @@ import { computeComponentVersionHash } from "../lib/component-approval/version-h
 async function requireAdmin(ctx: QueryCtx | MutationCtx): Promise<void> {
   const identity = await ctx.auth.getUserIdentity();
   if (!identity) {
-    throw new Error("Unauthorized: admin role required");
+    throw new Error("Unauthorized");
   }
   const profile = await ctx.db
     .query("profiles")
@@ -25,7 +25,7 @@ async function requireAdmin(ctx: QueryCtx | MutationCtx): Promise<void> {
     .withIndex("by_username", (q: any) => q.eq("username", identity.email!))
     .unique();
   if (!profile || profile.role !== "admin") {
-    throw new Error("Unauthorized: admin role required");
+    throw new Error("Unauthorized");
   }
 }
 

@@ -52,16 +52,21 @@ export async function POST(request: NextRequest) {
 
   try {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const rateLimitResult = await (fetchInternalMutation as any)(
-      (internal as any).rateLimits?.checkAndIncrementRateLimit,
-      {},
-    ) as { allowed: boolean } | undefined;
+    const rateLimitFn = (internal as any).rateLimits?.checkAndIncrementRateLimit;
+    if (!rateLimitFn) {
+      console.warn('[lesson-chatbot] Rate limit function not found in Convex API; skipping rate limit check');
+    } else {
+      const rateLimitResult = await (fetchInternalMutation as any)(
+        rateLimitFn,
+        {},
+      ) as { allowed: boolean };
 
-    if (rateLimitResult && !rateLimitResult.allowed) {
-      return NextResponse.json(
-        { error: 'Too many requests. Please wait a moment before trying again.' },
-        { status: 429 }
-      );
+      if (!rateLimitResult.allowed) {
+        return NextResponse.json(
+          { error: 'Too many requests. Please wait a moment before trying again.' },
+          { status: 429 }
+        );
+      }
     }
   } catch (error) {
     console.error('[lesson-chatbot] Rate limit check failed:', error);
@@ -84,7 +89,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Missing or invalid lessonId' }, { status: 400 });
   }
 
-  if (!phaseNumber || typeof phaseNumber !== 'number' || phaseNumber < 1) {
+  if (!phaseNumber || typeof phaseNumber !== 'number' || phaseNumber < 1 || !Number.isInteger(phaseNumber)) {
     return NextResponse.json({ error: 'Missing or invalid phaseNumber' }, { status: 400 });
   }
 
@@ -126,7 +131,15 @@ export async function POST(request: NextRequest) {
   }
 
   const prompt = buildPrompt(context, sanitizedQuestion);
-  const aiResponse = await provider(prompt);
 
-  return NextResponse.json({ response: aiResponse });
+  try {
+    const aiResponse = await provider(prompt);
+    return NextResponse.json({ response: aiResponse });
+  } catch (error) {
+    console.error('[lesson-chatbot] AI provider error:', error);
+    return NextResponse.json(
+      { error: 'Unable to get a response. Please try again later.' },
+      { status: 502 },
+    );
+  }
 }

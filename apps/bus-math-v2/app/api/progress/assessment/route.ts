@@ -63,8 +63,8 @@ export async function POST(request: Request) {
     try {
       score = calculateScore(activity, submission.answers);
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Unable to score submission';
-      return NextResponse.json({ error: message }, { status: 422 });
+      console.error('[assessment] Scoring error:', error);
+      return NextResponse.json({ error: 'Unable to score submission' }, { status: 422 });
     }
 
     const userId = claimsOrResponse.sub;
@@ -86,11 +86,9 @@ export async function POST(request: Request) {
       feedback: score.feedback,
     });
   } catch (error) {
+    console.error('[assessment] Unexpected error:', error);
     return NextResponse.json(
-      {
-        error:
-          error instanceof Error ? error.message : 'Unexpected error while scoring assessment',
-      },
+      { error: 'Internal server error' },
       { status: 500 },
     );
   }

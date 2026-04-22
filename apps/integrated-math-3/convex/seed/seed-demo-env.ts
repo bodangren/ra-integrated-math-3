@@ -241,10 +241,7 @@ export const seedDemoEnv = internalMutation({
       }
     }
 
-    const lessons = await ctx.db
-      .query('lessons')
-      .withIndex('by_unit_and_order', (q) => q.eq('unitNumber', 1))
-      .collect();
+    const lessons = await ctx.db.query('lessons').collect();
 
     for (const lesson of lessons) {
       const existingClassLesson = await ctx.db

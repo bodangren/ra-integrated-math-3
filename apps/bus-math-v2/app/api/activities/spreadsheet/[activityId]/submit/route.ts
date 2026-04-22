@@ -129,9 +129,7 @@ export async function GET(
   } catch (error) {
     console.error('Spreadsheet replay retrieval error:', error);
     return NextResponse.json(
-      {
-        error: error instanceof Error ? error.message : 'Failed to load spreadsheet replay',
-      },
+      { error: 'Failed to load spreadsheet replay' },
       { status: 500 }
     );
   }
@@ -174,9 +172,7 @@ export async function POST(
       payload = parsed.data;
     } catch (parseError) {
       return NextResponse.json(
-        {
-          error: parseError instanceof Error ? parseError.message : 'Unable to parse request body',
-        },
+        { error: 'Unable to parse request body' },
         { status: 400 }
       );
     }
@@ -296,9 +292,7 @@ export async function POST(
   } catch (error) {
     console.error('Spreadsheet submission error:', error);
     return NextResponse.json(
-      {
-        error: error instanceof Error ? error.message : 'Unexpected error during submission',
-      },
+      { error: 'Unexpected error during submission' },
       { status: 500 }
     );
   }

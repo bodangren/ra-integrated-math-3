@@ -67,7 +67,7 @@ export async function GET(request: Request) {
   } catch (error) {
     console.error('[submission-detail] Unexpected error:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Unexpected error' },
+      { error: 'Internal server error' },
       { status: 500 },
     );
   }

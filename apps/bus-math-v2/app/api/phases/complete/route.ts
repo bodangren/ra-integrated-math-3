@@ -183,10 +183,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Unexpected error in /api/phases/complete:', error);
     return NextResponse.json(
-      {
-        error: 'Internal server error',
-        message: error instanceof Error ? error.message : 'Unknown error',
-      },
+      { error: 'Internal server error' },
       { status: 500 }
     );
   }

@@ -1,6 +1,7 @@
 import { requireTeacherSessionClaims } from '@/lib/auth/server';
 import { fetchInternalQuery, internal } from '@/lib/convex/server';
 import { TeacherNavigation } from '@/components/teacher/TeacherNavigation';
+import { ClassSelector } from './ClassSelector';
 import type { Id } from '@/convex/_generated/dataModel';
 
 interface ClassWithLessons {
@@ -25,8 +26,13 @@ interface PageData {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Convex generated types stale; proper fix requires npx convex dev
 const lessonAssignmentInternal = internal as any;
 
-export default async function TeacherLessonsPage() {
+interface PageProps {
+  searchParams: Promise<{ classId?: string }>;
+}
+
+export default async function TeacherLessonsPage({ searchParams }: PageProps) {
   const claims = await requireTeacherSessionClaims('/auth/login');
+  const params = await searchParams;
 
   const data: PageData = await fetchInternalQuery(
     lessonAssignmentInternal.teacher.lessonAssignment.getTeacherClassesWithLessons,
@@ -50,7 +56,11 @@ export default async function TeacherLessonsPage() {
     .map(Number)
     .sort((a, b) => a - b);
 
-  const selectedClassId = data.classes[0]?.classId ?? null;
+  const paramClassId = params.classId;
+  const defaultClassId = data.classes[0]?.classId ?? null;
+  const selectedClassId = (paramClassId && data.classes.some((c) => c.classId === paramClassId))
+    ? paramClassId
+    : defaultClassId;
   const selectedClass = data.classes.find((c) => c.classId === selectedClassId);
   const assignedLessonIds = new Set(selectedClass?.assignedLessonIds ?? []);
 
@@ -76,25 +86,10 @@ export default async function TeacherLessonsPage() {
             </div>
           ) : (
             <>
-              <div className="space-y-2">
-                <label
-                  htmlFor="class-select"
-                  className="text-sm font-medium text-foreground"
-                >
-                  Select Class
-                </label>
-                <select
-                  id="class-select"
-                  className="w-full max-w-xs rounded-md border border-border px-3 py-2 text-sm bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                  defaultValue={selectedClassId ?? ''}
-                >
-                  {data.classes.map((cls) => (
-                    <option key={cls.classId} value={cls.classId}>
-                      {cls.className}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <ClassSelector
+                classes={data.classes}
+                selectedClassId={selectedClassId}
+              />
 
               <div className="space-y-6">
                 {sortedUnits.map((unitNumber) => (
