@@ -29,9 +29,8 @@
 
 ## Patterns That Worked Well
 
-- (2026-04-05, setup) Existing `lib/` modules are pure functions with clear types — excellent for testing
-- (2026-04-06, scaffold-pages) Mock `@/lib/convex/server` at top of page tests — keeps tests fast and isolated
 - (2026-04-15, harden-manual-approval) Harness gating: expose canApprove via callback, track in parent, gate approve button
+- (2026-04-23, tech-debt-triage) Re-export shims let you delete duplicated app-local code without rewiring dozens of imports — keep app-specific files (server.ts, engine/) local, shim the rest to the package
 - (2026-04-16, srs-rating-adapter) Two-step rating: compute base rating from correctness first, then apply timing as conservative modifier
 - (2026-04-16, srs-product-contract) Single canonical contract module with re-exports; downstream imports from one surface
 
