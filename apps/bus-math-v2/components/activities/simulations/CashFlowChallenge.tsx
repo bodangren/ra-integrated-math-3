@@ -28,14 +28,13 @@ import {
   ChevronDown,
   ChevronUp
 } from 'lucide-react'
-import type { Activity } from '@/lib/db/schema/validators'
 import type { CashFlowChallengeActivityProps } from '@/types/activities'
 
 import { buildPracticeSubmissionEnvelope, buildPracticeSubmissionParts, type PracticeSubmissionCallbackPayload } from '@/lib/practice/contract'
 
-export type CashFlowChallengeActivity = Omit<Activity, 'componentKey' | 'props'> & {
-  componentKey: 'cash-flow-challenge'
-  props: CashFlowChallengeActivityProps
+export type CashFlowChallengeActivity = CashFlowChallengeActivityProps & {
+  id?: string
+  componentKey?: 'cash-flow-challenge'
 }
 
 interface CashFlow {
