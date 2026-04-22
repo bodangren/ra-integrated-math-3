@@ -41,11 +41,18 @@ function makeMockCtx(overrides: {
     collect: vi.fn().mockResolvedValue(sessions ?? (existingSession ? [existingSession] : [])),
   });
 
+  const mockFilter = vi.fn().mockReturnValue({
+    first: vi.fn().mockResolvedValue(existingSession ?? null),
+    collect: vi.fn().mockResolvedValue(sessions ?? (existingSession ? [existingSession] : [])),
+    order: mockOrder,
+  });
+
   const mockQuery = {
     withIndex: vi.fn().mockReturnValue({
       first: vi.fn().mockResolvedValue(existingSession ?? null),
       collect: vi.fn().mockResolvedValue(sessions ?? (existingSession ? [existingSession] : [])),
       order: mockOrder,
+      filter: mockFilter,
     }),
   };
 
@@ -150,6 +157,63 @@ describe('getActiveSessionHandler', () => {
 
     const result = await getActiveSessionHandler({ db } as unknown as import('@/convex/_generated/server').QueryCtx, { studentId: 'student-1' });
 
+    expect(result).toBeNull();
+  });
+
+  it('should apply explicit completedAt=undefined filter to avoid relying on index sort order', async () => {
+    const activeSession = {
+      _id: 'session-active' as Id<'srs_sessions'>,
+      studentId: 'student-1' as Id<'profiles'>,
+      startedAt: Date.now(),
+      plannedCards: 5,
+      completedCards: 0,
+      config: { newCardsPerDay: 5, maxReviewsPerDay: 20, prioritizeOverdue: true },
+    };
+    const { db, mockQuery } = makeMockCtx({ existingSession: activeSession });
+
+    await getActiveSessionHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { studentId: 'student-1' }
+    );
+
+    const withIndexResult = mockQuery.withIndex('by_student_and_status');
+    expect(withIndexResult.filter).toHaveBeenCalled();
+  });
+
+  it('should not return a completed session even if it sorts first in the index', async () => {
+    // Simulate the scenario where a completed session sorts before active sessions
+    // in the by_student_and_status index. The explicit filter should exclude it.
+    const completedSession = {
+      _id: 'session-completed' as Id<'srs_sessions'>,
+      studentId: 'student-1' as Id<'profiles'>,
+      startedAt: Date.now() - 86400000,
+      completedAt: Date.now(),
+      plannedCards: 5,
+      completedCards: 5,
+      config: { newCardsPerDay: 5, maxReviewsPerDay: 20, prioritizeOverdue: true },
+    };
+
+    const mockFilter = vi.fn().mockReturnValue({
+      first: vi.fn().mockResolvedValue(null),
+    });
+
+    const mockQueryObj = {
+      withIndex: vi.fn().mockReturnValue({
+        first: vi.fn().mockResolvedValue(completedSession),
+        filter: mockFilter,
+      }),
+    };
+
+    const db = {
+      query: vi.fn().mockReturnValue(mockQueryObj),
+    };
+
+    const result = await getActiveSessionHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { studentId: 'student-1' }
+    );
+
+    expect(mockFilter).toHaveBeenCalled();
     expect(result).toBeNull();
   });
 });

@@ -107,9 +107,10 @@ export async function getActiveSessionHandler(
     .withIndex("by_student_and_status", (q) =>
       q.eq("studentId", args.studentId as Id<"profiles">)
     )
+    .filter((q) => q.eq(q.field("completedAt"), undefined))
     .first();
 
-  if (!active || active.completedAt !== undefined) return null;
+  if (!active) return null;
   return mapDbSessionToContract(active);
 }
 

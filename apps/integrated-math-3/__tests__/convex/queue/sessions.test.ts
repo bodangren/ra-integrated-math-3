@@ -62,12 +62,18 @@ function makeMockCtx(overrides: {
     return Promise.resolve(null);
   });
 
+  const srsSessionsFilterMock = vi.fn().mockReturnValue({
+    first: vi.fn().mockResolvedValue(existingSession ?? null),
+  });
+  const srsSessionsWithIndexMock = vi.fn().mockReturnValue({
+    first: vi.fn().mockResolvedValue(existingSession ?? null),
+    filter: srsSessionsFilterMock,
+  });
+
   const mockQuery = vi.fn().mockImplementation((tableName: string) => {
     if (tableName === 'srs_sessions') {
       return {
-        withIndex: vi.fn().mockReturnValue({
-          first: vi.fn().mockResolvedValue(existingSession ?? null),
-        }),
+        withIndex: srsSessionsWithIndexMock,
       };
     }
     if (tableName === 'srs_review_log') {
@@ -94,6 +100,8 @@ function makeMockCtx(overrides: {
     },
     mockInsert,
     mockPatch,
+    srsSessionsFilterMock,
+    srsSessionsWithIndexMock,
   };
 }
 
@@ -165,6 +173,27 @@ describe('startDailySessionHandler', () => {
     expect(result.queue).toEqual(queue);
   });
 
+  it('applies explicit completedAt=undefined filter when looking for active session', async () => {
+    const now = Date.now();
+    const existingSession = {
+      _id: 'session-existing' as Id<'srs_sessions'>,
+      studentId: 'student-1' as Id<'profiles'>,
+      startedAt: now - 3600000,
+      plannedCards: 5,
+      completedCards: 2,
+      config: { newCardsPerDay: 5, maxReviewsPerDay: 20, prioritizeOverdue: true },
+    };
+    const { db, srsSessionsFilterMock } = makeMockCtx({ existingSession });
+    vi.mocked(resolveDailyPracticeQueue).mockResolvedValue([]);
+
+    await startDailySessionHandler(
+      { db } as unknown as import('@/convex/_generated/server').MutationCtx,
+      { studentId: 'student-1', asOfDate: new Date(now).toISOString() }
+    );
+
+    expect(srsSessionsFilterMock).toHaveBeenCalled();
+  });
+
   it('enforces daily session limit - cannot start second session on same day', async () => {
     const now = Date.now();
     const existingSession = {
@@ -226,6 +255,27 @@ describe('getActiveSessionHandler', () => {
     );
 
     expect(result).toBeNull();
+  });
+
+  it('applies explicit completedAt=undefined filter when looking for active session', async () => {
+    const now = Date.now();
+    const existingSession = {
+      _id: 'session-active' as Id<'srs_sessions'>,
+      studentId: 'student-1' as Id<'profiles'>,
+      startedAt: now - 3600000,
+      plannedCards: 3,
+      completedCards: 1,
+      config: { newCardsPerDay: 5, maxReviewsPerDay: 20, prioritizeOverdue: true },
+    };
+    const { db, srsSessionsFilterMock } = makeMockCtx({ existingSession });
+    vi.mocked(resolveDailyPracticeQueue).mockResolvedValue([]);
+
+    await getActiveSessionHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { studentId: 'student-1', asOfDate: new Date(now).toISOString() }
+    );
+
+    expect(srsSessionsFilterMock).toHaveBeenCalled();
   });
 
   it('returns null when active session is from a different day', async () => {

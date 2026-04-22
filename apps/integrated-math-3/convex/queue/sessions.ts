@@ -45,11 +45,12 @@ export async function startDailySessionHandler(
     .withIndex("by_student_and_status", (q) =>
       q.eq("studentId", args.studentId as Id<"profiles">)
     )
+    .filter((q) => q.eq(q.field("completedAt"), undefined))
     .first();
 
   const now = args.asOfDate ? new Date(args.asOfDate).getTime() : Date.now();
 
-  if (active && active.completedAt === undefined && isSameDay(active.startedAt, now)) {
+  if (active && isSameDay(active.startedAt, now)) {
     const queue = await resolveDailyPracticeQueue(ctx, {
       studentId: args.studentId,
       asOfDate: args.asOfDate,
@@ -58,7 +59,7 @@ export async function startDailySessionHandler(
   }
 
   // Close any stale active session from a prior day
-  if (active && active.completedAt === undefined) {
+  if (active) {
     await ctx.db.patch(active._id, { completedAt: now });
   }
 
@@ -105,9 +106,10 @@ export async function getActiveSessionHandler(
     .withIndex("by_student_and_status", (q) =>
       q.eq("studentId", args.studentId as Id<"profiles">)
     )
+    .filter((q) => q.eq(q.field("completedAt"), undefined))
     .first();
 
-  if (!active || active.completedAt !== undefined) {
+  if (!active) {
     return null;
   }
 

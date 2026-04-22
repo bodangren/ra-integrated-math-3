@@ -44,9 +44,9 @@
 
 - [x] Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
-## Phase 2: SRS & Practice Correctness
+## Phase 2: SRS & Practice Correctness [~]
 
-- [ ] Task: Investigate SRS session index undefined sorting
+- [~] Task: Investigate SRS session index undefined sorting
     - [ ] Write test: by_student_and_status returns only sessions matching status
     - [ ] Investigate: confirm undefined field sorting behavior in Convex
     - [ ] Fix: add explicit completedAt filter or restructure index
