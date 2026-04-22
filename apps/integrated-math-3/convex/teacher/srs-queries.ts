@@ -523,13 +523,12 @@ export async function getMisconceptionSummaryHandler(
       ctx.db
         .query("srs_review_log")
         .withIndex("by_student", (q) => q.eq("studentId", enrollment.studentId))
+        .filter((q) => q.gte(q.field("reviewedAt"), sinceMs))
         .collect()
     )
   );
 
-  const allRecentReviews = reviewArrays
-    .flat()
-    .filter((review) => review.reviewedAt >= sinceMs);
+  const allRecentReviews = reviewArrays.flat();
 
   const cardIds = [...new Set(allRecentReviews.map((r) => r.cardId))];
   const cards = await Promise.all(

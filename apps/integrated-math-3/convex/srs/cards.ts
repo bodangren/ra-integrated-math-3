@@ -1,4 +1,4 @@
-import { internalMutation, internalQuery } from "../_generated/server";
+import { internalMutation, internalQuery, type MutationCtx, type QueryCtx } from "../_generated/server";
 import { v } from "convex/values";
 import { Id } from "../_generated/dataModel";
 
@@ -40,6 +40,74 @@ function mapDbCardToContract(
   };
 }
 
+export type SaveCardArgs = {
+  cardId: string;
+  studentId: string;
+  objectiveId: string;
+  problemFamilyId: string;
+  stability: number;
+  difficulty: number;
+  state: "new" | "learning" | "review" | "relearning";
+  dueDate: string;
+  elapsedDays: number;
+  scheduledDays: number;
+  reps: number;
+  lapses: number;
+  lastReview?: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export async function saveCardHandler(
+  ctx: MutationCtx,
+  args: SaveCardArgs
+): Promise<Id<"srs_cards">> {
+  const existing = await ctx.db
+    .query("srs_cards")
+    .withIndex("by_student_and_problem_family", (q) =>
+      q.eq("studentId", args.studentId as Id<"profiles">).eq("problemFamilyId", args.problemFamilyId)
+    )
+    .first();
+
+  if (existing) {
+    await ctx.db.replace(existing._id, {
+      studentId: existing.studentId,
+      objectiveId: args.objectiveId,
+      problemFamilyId: args.problemFamilyId,
+      stability: args.stability,
+      difficulty: args.difficulty,
+      state: args.state,
+      dueDate: args.dueDate,
+      elapsedDays: args.elapsedDays,
+      scheduledDays: args.scheduledDays,
+      reps: args.reps,
+      lapses: args.lapses,
+      lastReview: args.lastReview ?? undefined,
+      createdAt: existing.createdAt,
+      updatedAt: Date.now(),
+    });
+    return existing._id;
+  } else {
+    const id = await ctx.db.insert("srs_cards", {
+      studentId: args.studentId as Id<"profiles">,
+      objectiveId: args.objectiveId,
+      problemFamilyId: args.problemFamilyId,
+      stability: args.stability,
+      difficulty: args.difficulty,
+      state: args.state,
+      dueDate: args.dueDate,
+      elapsedDays: args.elapsedDays,
+      scheduledDays: args.scheduledDays,
+      reps: args.reps,
+      lapses: args.lapses,
+      lastReview: args.lastReview ?? undefined,
+      createdAt: new Date(args.createdAt).getTime(),
+      updatedAt: new Date(args.updatedAt).getTime(),
+    });
+    return id;
+  }
+}
+
 export const saveCard = internalMutation({
   args: {
     cardId: v.string(),
@@ -63,52 +131,7 @@ export const saveCard = internalMutation({
     createdAt: v.string(),
     updatedAt: v.string(),
   },
-  handler: async (ctx, args) => {
-    const existing = await ctx.db
-      .query("srs_cards")
-      .withIndex("by_student_and_problem_family", (q) =>
-        q.eq("studentId", args.studentId as Id<"profiles">).eq("problemFamilyId", args.problemFamilyId)
-      )
-      .first();
-
-    if (existing) {
-      await ctx.db.replace(existing._id, {
-        studentId: existing.studentId,
-        objectiveId: args.objectiveId,
-        problemFamilyId: args.problemFamilyId,
-        stability: args.stability,
-        difficulty: args.difficulty,
-        state: args.state,
-        dueDate: args.dueDate,
-        elapsedDays: args.elapsedDays,
-        scheduledDays: args.scheduledDays,
-        reps: args.reps,
-        lapses: args.lapses,
-        lastReview: args.lastReview ?? undefined,
-        createdAt: existing.createdAt,
-        updatedAt: Date.now(),
-      });
-      return existing._id;
-    } else {
-      const id = await ctx.db.insert("srs_cards", {
-        studentId: args.studentId as Id<"profiles">,
-        objectiveId: args.objectiveId,
-        problemFamilyId: args.problemFamilyId,
-        stability: args.stability,
-        difficulty: args.difficulty,
-        state: args.state,
-        dueDate: args.dueDate,
-        elapsedDays: args.elapsedDays,
-        scheduledDays: args.scheduledDays,
-        reps: args.reps,
-        lapses: args.lapses,
-        lastReview: args.lastReview ?? undefined,
-        createdAt: new Date(args.createdAt).getTime(),
-        updatedAt: new Date(args.updatedAt).getTime(),
-      });
-      return id;
-    }
-  },
+  handler: saveCardHandler,
 });
 
 export const saveCards = internalMutation({
@@ -186,45 +209,60 @@ export const saveCards = internalMutation({
   },
 });
 
+export async function getCardHandler(
+  ctx: QueryCtx,
+  args: { id: string }
+) {
+  let cardId: Id<"srs_cards">;
+  try {
+    cardId = args.id as Id<"srs_cards">;
+  } catch {
+    return null;
+  }
+  const card = await ctx.db.get(cardId);
+  if (!card) return null;
+  return mapDbCardToContract(card);
+}
+
 export const getCard = internalQuery({
   args: { id: v.string() },
-  handler: async (ctx, args) => {
-    let cardId: Id<"srs_cards">;
-    try {
-      cardId = args.id as Id<"srs_cards">;
-    } catch {
-      return null;
-    }
-    const card = await ctx.db.get(cardId);
-    if (!card) return null;
-    return mapDbCardToContract(card);
-  },
+  handler: getCardHandler,
 });
+
+export async function getCardsByStudentHandler(
+  ctx: QueryCtx,
+  args: { studentId: string }
+) {
+  const cards = await ctx.db
+    .query("srs_cards")
+    .withIndex("by_student", (q) =>
+      q.eq("studentId", args.studentId as Id<"profiles">)
+    )
+    .collect();
+  return cards.map(mapDbCardToContract);
+}
 
 export const getCardsByStudent = internalQuery({
   args: { studentId: v.string() },
-  handler: async (ctx, args) => {
-    const cards = await ctx.db
-      .query("srs_cards")
-      .withIndex("by_student", (q) =>
-        q.eq("studentId", args.studentId as Id<"profiles">)
-      )
-      .collect();
-    return cards.map(mapDbCardToContract);
-  },
+  handler: getCardsByStudentHandler,
 });
+
+export async function getCardByStudentAndFamilyHandler(
+  ctx: QueryCtx,
+  args: { studentId: string; problemFamilyId: string }
+) {
+  const card = await ctx.db
+    .query("srs_cards")
+    .withIndex("by_student_and_problem_family", (q) =>
+      q.eq("studentId", args.studentId as Id<"profiles">).eq("problemFamilyId", args.problemFamilyId)
+    )
+    .first();
+  return card ? mapDbCardToContract(card) : null;
+}
 
 export const getCardByStudentAndFamily = internalQuery({
   args: { studentId: v.string(), problemFamilyId: v.string() },
-  handler: async (ctx, args) => {
-    const card = await ctx.db
-      .query("srs_cards")
-      .withIndex("by_student_and_problem_family", (q) =>
-        q.eq("studentId", args.studentId as Id<"profiles">).eq("problemFamilyId", args.problemFamilyId)
-      )
-      .first();
-    return card ? mapDbCardToContract(card) : null;
-  },
+  handler: getCardByStudentAndFamilyHandler,
 });
 
 export const getCardsByObjective = internalQuery({

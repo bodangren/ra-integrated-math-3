@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
 import {
-  saveCard,
-  getCard,
-  getCardsByStudent,
-  getCardByStudentAndFamily,
+  saveCardHandler,
+  getCardHandler,
+  getCardsByStudentHandler,
+  getCardByStudentAndFamilyHandler,
 } from '@/convex/srs/cards';
 import type { Id } from '@/convex/_generated/dataModel';
 import type { SrsCardState } from '@math-platform/srs-engine';
@@ -98,7 +98,7 @@ describe('mapDbCardToContract studentId type alignment', () => {
     };
     const { db } = makeMockCtx({ existingCard });
 
-    const result = await getCard({ db } as unknown as import('@/convex/_generated/server').QueryCtx, { id: 'card-1' });
+    const result = await getCardHandler({ db } as unknown as import('@/convex/_generated/server').QueryCtx, { id: 'card-1' });
 
     expect(result).not.toBeNull();
     expect(typeof result!.studentId).toBe('string');
@@ -126,7 +126,7 @@ describe('mapDbCardToContract studentId type alignment', () => {
     };
     const { db } = makeMockCtx({ existingCard });
 
-    const result = await getCard({ db } as unknown as import('@/convex/_generated/server').QueryCtx, { id: cardId });
+    const result = await getCardHandler({ db } as unknown as import('@/convex/_generated/server').QueryCtx, { id: cardId });
 
     expect(result).not.toBeNull();
     expect(typeof result!.cardId).toBe('string');
@@ -155,7 +155,7 @@ describe('mapDbCardToContract studentId type alignment', () => {
 
     const { db, mockInsert } = makeMockCtx({ insertId: 'card-1' as Id<'srs_cards'> });
 
-    await saveCard(
+    await saveCardHandler(
       { db } as unknown as import('@/convex/_generated/server').MutationCtx,
       card
     );
@@ -204,7 +204,7 @@ describe('mapDbCardToContract studentId type alignment', () => {
     ];
     const { db } = makeMockCtx({ cards });
 
-    const result = await getCardsByStudent(
+    const result = await getCardsByStudentHandler(
       { db } as unknown as import('@/convex/_generated/server').QueryCtx,
       { studentId: convexStudentId }
     );
@@ -236,7 +236,7 @@ describe('mapDbCardToContract studentId type alignment', () => {
     };
     const { db } = makeMockCtx({ existingCard });
 
-    const result = await getCardByStudentAndFamily(
+    const result = await getCardByStudentAndFamilyHandler(
       { db } as unknown as import('@/convex/_generated/server').QueryCtx,
       { studentId: convexStudentId, problemFamilyId: 'pf-1' }
     );

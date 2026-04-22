@@ -383,6 +383,46 @@ describe('submitReviewHandler', () => {
     expect(approval.reviewId).toBe(result.reviewId);
   });
 
+  it('throws when existing approval contentHash does not match current component', async () => {
+    const existingApproval = {
+      _id: 'ca1',
+      componentKind: 'practice',
+      componentId: 'act1',
+      componentKey: 'quiz',
+      status: 'unreviewed',
+      contentHash: 'stale-hash-abc',
+      createdAt: 1,
+      updatedAt: 1,
+    };
+    const activity = {
+      _id: 'act1',
+      componentKey: 'comprehension-quiz',
+      displayName: 'Quiz',
+      props: { question: 'updated question' },
+      gradingConfig: undefined,
+      approval: undefined,
+      createdAt: 1,
+      updatedAt: 1,
+    };
+    const mockDb = createMockDb({
+      activities: [activity],
+      component_reviews: [],
+      component_approvals: [existingApproval],
+    });
+
+    await expect(
+      submitReviewHandler(
+        { db: mockDb } as unknown as Parameters<typeof submitReviewHandler>[0],
+        {
+          componentKind: 'practice',
+          componentId: 'act1',
+          status: 'approved',
+          createdBy: 'profile1' as Id<'profiles'>,
+        },
+      ),
+    ).rejects.toThrow('Content hash mismatch');
+  });
+
   it('throws when activity is not found', async () => {
     const mockDb = createMockDb({
       activities: [],

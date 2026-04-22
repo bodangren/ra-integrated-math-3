@@ -20,6 +20,10 @@ export {
   normalizePracticeSubmissionInput,
 } from './practice/contract';
 
+/**
+ * @deprecated Import from `./contract` instead. These re-exports are preserved
+ * for backward compatibility and will be removed in a future version.
+ */
 export {
   PracticeTimingConfidenceSchema,
   PracticeTimingSummarySchema,

@@ -1,6 +1,7 @@
-import type { SrsCardState, CardStore } from "@math-platform/srs-engine";
+import type { SrsCardState, CardStore, SrsReviewLogEntry } from "@math-platform/srs-engine";
 import { internal } from "../../convex/_generated/api";
 import { type MutationCtx } from "../../convex/_generated/server";
+import { processReviewHandler } from "../../convex/srs/processReview";
 
 export class ConvexCardStore implements CardStore {
   private ctx: MutationCtx;
@@ -83,6 +84,28 @@ export class ConvexCardStore implements CardStore {
         createdAt: card.createdAt,
         updatedAt: card.updatedAt,
       })),
+    });
+  }
+
+  /**
+   * Atomically save both the updated card and the review log entry in a single
+   * Convex transaction. This avoids the non-atomic pattern of separate
+   * `runMutation` calls for card and review log.
+   */
+  async saveCardAndReview(card: SrsCardState, reviewLog: SrsReviewLogEntry): Promise<void> {
+    await processReviewHandler(this.ctx, {
+      cardState: card,
+      reviewEntry: {
+        reviewId: reviewLog.reviewId,
+        cardId: reviewLog.cardId,
+        studentId: reviewLog.studentId,
+        rating: reviewLog.rating,
+        submissionId: reviewLog.submissionId,
+        evidence: reviewLog.evidence,
+        stateBefore: reviewLog.stateBefore,
+        stateAfter: reviewLog.stateAfter,
+        reviewedAt: reviewLog.reviewedAt,
+      },
     });
   }
 }

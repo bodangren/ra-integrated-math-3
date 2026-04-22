@@ -47,12 +47,16 @@ function makeMockCtx(overrides: {
     }),
   };
 
+  const mockInsert = vi.fn().mockResolvedValue('card-doc-1' as Id<'srs_cards'>);
+  const mockReplace = vi.fn().mockResolvedValue(undefined);
   const mockRunMutation = vi.fn().mockResolvedValue(undefined);
   const mockRunQuery = vi.fn().mockResolvedValue(null);
 
   return {
     db: {
       query: vi.fn().mockReturnValue(mockQuery),
+      insert: mockInsert,
+      replace: mockReplace,
     },
     runMutation: mockRunMutation,
     runQuery: mockRunQuery,
@@ -159,7 +163,8 @@ describe('processSubmissionSrsHandler', () => {
     expect(result.cardId).toMatch(/^card_/);
     expect(result.reviewId).toMatch(/^rev_/);
 
-    expect(ctx.mockRunMutation).toHaveBeenCalledTimes(3);
+    // saveCard uses runMutation (1 call); saveCardAndReview uses direct DB access (0 calls)
+    expect(ctx.mockRunMutation).toHaveBeenCalledTimes(1);
   });
 
   it('catches adapter errors and returns error result without throwing', async () => {
@@ -198,6 +203,44 @@ describe('processSubmissionSrsHandler', () => {
     if ('error' in result) {
       expect(result.error).toContain('store failure');
     }
+  });
+
+  it('uses atomic saveCardAndReview to avoid separate runMutation calls', async () => {
+    const ctx = makeMockCtx({
+      practiceItem: {
+        _id: 'pi-1' as Id<'practice_items'>,
+        activityId: 'act-1' as Id<'activities'>,
+        problemFamilyId: 'pf-1',
+        practiceItemId: 'pi-1',
+        variantLabel: 'A',
+      },
+      problemFamily: {
+        _id: 'pf-doc-1' as Id<'problem_families'>,
+        problemFamilyId: 'pf-1',
+        componentKey: 'step-by-step-solver',
+        displayName: 'Test Family',
+        description: 'Test description',
+        objectiveIds: ['obj-1'],
+        difficulty: 'standard',
+      },
+    });
+
+    ctx.mockRunQuery.mockResolvedValue(null);
+
+    const result = await processSubmissionSrsHandler(
+      ctx as unknown as MutationCtx,
+      {
+        studentId: 'student-1',
+        activityId: 'act-1',
+        submission: makeSubmissionEnvelope(),
+      }
+    );
+
+    expect(result.ok).toBe(true);
+    // Direct DB inserts via processReviewHandler should have been called
+    expect(ctx.db.insert).toHaveBeenCalled();
+    // Only the initial saveCard should use runMutation; review save is atomic
+    expect(ctx.mockRunMutation).toHaveBeenCalledTimes(1);
   });
 
   it('looks up timing baseline when available', async () => {

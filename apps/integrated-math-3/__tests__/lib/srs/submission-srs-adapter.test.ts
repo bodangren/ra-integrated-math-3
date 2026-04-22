@@ -302,6 +302,55 @@ describe('SubmissionSrsAdapter', () => {
       expect(result.reviewLog.evidence.baseRating).toBe('Good');
       expect(result.reviewLog.evidence.timingAdjusted).toBe(true);
     });
+
+    it('persists misconceptionTags in review log evidence when present', async () => {
+      adapter.getResolver().register('activity-misconception', {
+        problemFamilyId: 'pf-misconception',
+        objectiveId: 'obj-1',
+      });
+
+      const input: SubmissionSrsInput = {
+        submission: makeSubmission({
+          activityId: 'activity-misconception',
+          parts: [
+            { partId: 'part1', rawAnswer: 'wrong', isCorrect: false, misconceptionTags: ['sign-error'] },
+            { partId: 'part2', rawAnswer: 'wrong2', isCorrect: false, misconceptionTags: ['sign-error', 'distribution-error'] },
+          ],
+        }),
+        studentId: 'student-1',
+        activityId: 'activity-misconception',
+      };
+
+      const result = await adapter.processSubmission(input);
+
+      expect(result.ok).toBe(true);
+      if (result.skipped || !('reviewLog' in result)) return;
+      expect(result.reviewLog.evidence.misconceptionTags).toContain('sign-error');
+      expect(result.reviewLog.evidence.misconceptionTags).toContain('distribution-error');
+      expect(result.reviewLog.evidence.misconceptionTags).toHaveLength(2);
+    });
+
+    it('omits misconceptionTags from evidence when none are present', async () => {
+      adapter.getResolver().register('activity-clean', {
+        problemFamilyId: 'pf-clean',
+        objectiveId: 'obj-1',
+      });
+
+      const input: SubmissionSrsInput = {
+        submission: makeSubmission({
+          activityId: 'activity-clean',
+          parts: [{ partId: 'part1', rawAnswer: 'answer', isCorrect: true }],
+        }),
+        studentId: 'student-1',
+        activityId: 'activity-clean',
+      };
+
+      const result = await adapter.processSubmission(input);
+
+      expect(result.ok).toBe(true);
+      if (result.skipped || !('reviewLog' in result)) return;
+      expect(result.reviewLog.evidence.misconceptionTags).toBeUndefined();
+    });
   });
 });
 

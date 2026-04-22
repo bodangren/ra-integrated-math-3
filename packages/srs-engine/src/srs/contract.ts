@@ -136,6 +136,7 @@ export type SrsReviewLogEntry = {
     baseRating: SrsRating;
     timingAdjusted: boolean;
     reasons: string[];
+    misconceptionTags?: string[];
   };
   stateBefore: Pick<
     SrsCardState,

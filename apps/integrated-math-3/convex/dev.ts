@@ -203,6 +203,9 @@ export async function submitReviewHandler(ctx: MutationCtx, args: SubmitReviewAr
       .withIndex("by_component", (q) => q.eq("componentKind", derivedComponentKind).eq("componentId", args.componentId))
       .unique();
     if (existingApproval) {
+      if (existingApproval.contentHash && existingApproval.contentHash !== componentContentHash) {
+        throw new Error("Content hash mismatch: the component has changed since the last review. Please refresh and review the current version.");
+      }
       await ctx.db.patch(existingApproval._id, {
         ...approvalSummary,
         updatedAt: now,

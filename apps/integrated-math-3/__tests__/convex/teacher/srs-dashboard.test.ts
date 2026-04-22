@@ -212,6 +212,26 @@ function makeTeacherSrsMockCtx(overrides: {
           fn(mockQ);
         }
         return {
+          filter: vi.fn().mockImplementation((filterFn: (q: { gte: (accessor: unknown, value: unknown) => unknown; field: (name: string) => unknown }) => unknown) => {
+            let capturedSinceMs: number | null = null;
+            const filterQ = {
+              gte: (_accessor: unknown, value: unknown) => {
+                capturedSinceMs = value as number;
+                return filterQ;
+              },
+              field: () => filterQ,
+            };
+            filterFn(filterQ);
+            return {
+              collect: vi.fn().mockResolvedValue(
+                reviews.filter((r) => {
+                  if (capturedStudentId && r.studentId !== capturedStudentId) return false;
+                  if (capturedSinceMs !== null && r.reviewedAt < capturedSinceMs) return false;
+                  return true;
+                })
+              ),
+            };
+          }),
           collect: vi.fn().mockResolvedValue(
             reviews.filter((r) => !capturedStudentId || r.studentId === capturedStudentId)
           ),
@@ -1222,6 +1242,42 @@ describe('getMisconceptionSummaryHandler', () => {
     expect(result).toHaveLength(1);
     expect(result[0].tag).toBe('sign-error');
     expect(result[0].count).toBe(1);
+  });
+
+  it('applies query-level date filter to exclude old reviews', async () => {
+    const classId = 'class-1' as Id<'classes'>;
+    const student1Id = 'student-1' as Id<'profiles'>;
+    const card1Id = 'card-1' as Id<'srs_cards'>;
+
+    const now = Date.now();
+    const fiveDaysAgo = now - 5 * 24 * 60 * 60 * 1000;
+    const twentyDaysAgo = now - 20 * 24 * 60 * 60 * 1000;
+
+    const { db, mockQuery } = makeTeacherSrsMockCtx({
+      classes: [{ _id: classId, name: 'Math Class', teacherId: 'teacher-1' as Id<'profiles'> }],
+      enrollments: [
+        { _id: 'enr-1' as Id<'class_enrollments'>, classId, studentId: student1Id, status: 'active', enrolledAt: Date.now(), createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+      cards: [
+        { _id: card1Id, studentId: student1Id, objectiveId: 'obj-1', problemFamilyId: 'pf-1', stability: 30, difficulty: 3, state: 'review', dueDate: '2030-01-01T00:00:00.000Z', elapsedDays: 0, scheduledDays: 7, reps: 1, lapses: 0, createdAt: Date.now(), updatedAt: Date.now() },
+      ],
+      reviews: [
+        { _id: 'rev-1' as Id<'srs_review_log'>, cardId: card1Id, studentId: student1Id, rating: 'again', reviewedAt: fiveDaysAgo, evidence: { misconceptionTags: ['recent-error'] } },
+        { _id: 'rev-2' as Id<'srs_review_log'>, cardId: card1Id, studentId: student1Id, rating: 'again', reviewedAt: twentyDaysAgo, evidence: { misconceptionTags: ['old-error'] } },
+      ],
+    });
+
+    const result = await getMisconceptionSummaryHandler(
+      { db } as unknown as import('@/convex/_generated/server').QueryCtx,
+      { classId: 'class-1' }
+    );
+
+    expect(result).toHaveLength(1);
+    expect(result[0].tag).toBe('recent-error');
+    expect(result[0].count).toBe(1);
+
+    const reviewQueryCall = mockQuery.mock.calls.find((c) => c[0] === 'srs_review_log');
+    expect(reviewQueryCall).toBeDefined();
   });
 
   it('returns tags with frequency count and affected objectives', async () => {

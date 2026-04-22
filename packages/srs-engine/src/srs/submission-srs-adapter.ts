@@ -45,6 +45,7 @@ export type SubmissionSrsResultSuccess = {
       baseRating: SrsRating;
       timingAdjusted: boolean;
       reasons: string[];
+      misconceptionTags?: string[];
     };
     stateBefore: {
       stability: number;
@@ -183,6 +184,10 @@ export class SubmissionSrsAdapter {
       ? ratingResult.reasons
       : ['timing_missing', ...ratingResult.reasons];
 
+    const misconceptionTags = Array.from(
+      new Set(submission.parts.flatMap((p) => p.misconceptionTags ?? []))
+    );
+
     const now = new Date().toISOString();
     const updatedCard = reviewCard(card, ratingResult.rating, now);
 
@@ -212,14 +217,20 @@ export class SubmissionSrsAdapter {
         baseRating: ratingResult.baseRating,
         timingAdjusted: ratingResult.timingAdjusted,
         reasons: evidenceReasons,
+        misconceptionTags: misconceptionTags.length > 0 ? misconceptionTags : undefined,
       },
       stateBefore,
       stateAfter,
       reviewedAt: now,
     };
 
-    await this.cardStore.saveCard(updatedCard);
-    await this.reviewLogStore.saveReview(reviewLog);
+    // Use atomic save if the cardStore supports it (e.g., Convex direct handler)
+    if ('saveCardAndReview' in this.cardStore && typeof (this.cardStore as unknown as Record<string, unknown>).saveCardAndReview === 'function') {
+      await (this.cardStore as unknown as { saveCardAndReview(card: SrsCardState, reviewLog: SrsReviewLogEntry): Promise<void> }).saveCardAndReview(updatedCard, reviewLog);
+    } else {
+      await this.cardStore.saveCard(updatedCard);
+      await this.reviewLogStore.saveReview(reviewLog);
+    }
 
     return {
       ok: true,
