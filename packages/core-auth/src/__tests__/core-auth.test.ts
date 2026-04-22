@@ -135,6 +135,17 @@ describe('password hashing', () => {
     const isValid = await verifyPassword(wrongPassword, { salt, iterations, passwordHash: hash });
     expect(isValid).toBe(false);
   });
+
+  it('rejects tampered hashes with different length', async () => {
+    const password = 'testPassword123';
+    const salt = generatePasswordSalt();
+    const iterations = 1000;
+
+    const hash = await hashPassword(password, salt, iterations);
+    const tamperedHash = hash.slice(0, -4);
+    const isValid = await verifyPassword(password, { salt, iterations, passwordHash: tamperedHash });
+    expect(isValid).toBe(false);
+  });
 });
 
 describe('random password generation', () => {
