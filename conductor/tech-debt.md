@@ -43,3 +43,8 @@
 | teacher-reporting: versionByLessonId picks first version silently | Medium | Open | No guarantee first version is the active one |
 | class_lessons table empty — chatbot falls back to open enrollment | High | Resolved | Seeded in seed-demo-env.ts — all Module 1 lessons assigned to demo class |
 | Misconception summary fetches ALL reviews before date filter | Medium | Open | Filters by sinceMs in-memory; should use range query when index supports it |
+| Prompt injection via triple-quote delimiters in chatbot | High | Resolved | sanitizeInput now escapes `"""` sequences |
+| Teacher lessons page: missing revalidatePath after mutation | High | Resolved | Added revalidatePath('/teacher/lessons') + error handling |
+| Type safety bypassed with `internal as any` in 3 files | Medium | Open | Generated api.d.ts stale; run npx convex dev to regenerate |
+| Teacher lessons page: class selector dropdown non-functional | Medium | Open | Server component with no onChange; needs client component or URL routing |
+| Demo seed only assigns Unit 1 lessons | Low | Open | seed-demo-env.ts queries unitNumber=1 only; blocks Units 2-9 chatbot access |

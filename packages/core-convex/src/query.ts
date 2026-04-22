@@ -72,7 +72,7 @@ export async function fetchInternalQuery<Query extends FunctionReference<'query'
   options: CreateInternalClientOptions = {},
 ): Promise<FunctionReturnType<Query>> {
   const client = await getInternalConvexClient(options);
-  return client.query(ref, args);
+  return client.query(ref as FunctionReference<'query'>, args) as Promise<FunctionReturnType<Query>>;
 }
 
 export async function fetchInternalMutation<Mutation extends FunctionReference<'mutation', 'public' | 'internal'>>(
@@ -81,5 +81,5 @@ export async function fetchInternalMutation<Mutation extends FunctionReference<'
   options: CreateInternalClientOptions = {},
 ): Promise<FunctionReturnType<Mutation>> {
   const client = await getInternalConvexClient(options);
-  return client.mutation(ref, args);
+  return client.mutation(ref as FunctionReference<'mutation'>, args) as Promise<FunctionReturnType<Mutation>>;
 }

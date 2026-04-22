@@ -169,6 +169,7 @@ function LessonAssignmentToggle({ classId, lessonId, isAssigned }: LessonAssignm
 async function assignLessonToClassAction(formData: FormData) {
   'use server';
   const { fetchInternalMutation } = await import('@/lib/convex/server');
+  const { revalidatePath } = await import('next/cache');
   const classId = formData.get('classId') as string;
   const lessonId = formData.get('lessonId') as string;
   const isAssigned = formData.get('isAssigned') === 'true';
@@ -178,9 +179,15 @@ async function assignLessonToClassAction(formData: FormData) {
     ? lessonAssignmentInternal.teacher.lessonAssignment.unassignLessonFromClass
     : lessonAssignmentInternal.teacher.lessonAssignment.assignLessonToClass;
 
-  await fetchInternalMutation(mutation, {
-    userId: claims.sub as Id<'profiles'>,
-    classId: classId as Id<'classes'>,
-    lessonId: lessonId as Id<'lessons'>,
-  });
+  try {
+    await fetchInternalMutation(mutation, {
+      userId: claims.sub as Id<'profiles'>,
+      classId: classId as Id<'classes'>,
+      lessonId: lessonId as Id<'lessons'>,
+    });
+    revalidatePath('/teacher/lessons');
+  } catch (error) {
+    console.error('[lesson-assignment] Failed to update assignment:', error);
+    throw new Error(isAssigned ? 'Failed to unassign lesson' : 'Failed to assign lesson');
+  }
 }

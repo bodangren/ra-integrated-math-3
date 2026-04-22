@@ -1,6 +1,6 @@
 # Current Directive
 
-> Updated: 2026-04-19 (Code review #12 — audit of chatbot enrollment fallback, game bugs, math notation sanitization)
+> Updated: 2026-04-22 (Code review #13 — audit of chatbot security, teacher UI, practice core, study hub games, curriculum seeding)
 
 ## Mission
 
@@ -36,21 +36,22 @@ Monorepo migration complete (Waves 0-6). All major feature tracks done. Current 
 - [x] Waves 0-6 complete (all packages extracted, IM3+BM2 imports migrated, CI/CD hardened)
 - [x] Review #11 fixes (learningObjectives sanitization + abort listener leak)
 - [x] Review #12 fixes (chatbot enrollment fallback + game streak bug + math sanitization)
+- [x] Review #13 fixes (prompt injection via triple-quote delimiters + teacher UI revalidatePath)
 - [ ] Teacher assignment UI for class_lessons (needed for proper lesson-level access control)
 - [ ] RSC entry chunk code-splitting (750 KB → < 500 KB)
 - [ ] BM2 type health sweep (~296 TS errors) — defer unless blocking
 - [ ] LessonChatbot.tsx test coverage (route.ts and rateLimits.ts now tested)
 
-## Code Review Summary (2026-04-19 — Review #12)
+## Code Review Summary (2026-04-22 — Review #13)
 
-Audit of 6 work phases since Review #11: IM3 chatbot security fixes, chatbot provider memoization, misconception N+1 fix, practice-core testing, study hub games, learningObjectives sanitization.
+Audit of 6 work phases since Review #12: chatbot security fixes, provider memoization, misconception N+1 fix, practice-core testing, study hub games, teacher lesson assignment UI.
 
 ### Verification Results
 
 | Check | Result |
 |-------|--------|
 | Build (IM3) | PASS |
-| Tests (IM3) | 3258/3264 pass (6 aspirational .todo) |
+| Tests (IM3) | 3279/3286 pass (6 aspirational .todo, 1 flaky in full suite) |
 | Typecheck (IM3) | CLEAN |
 | Lint (IM3) | CLEAN |
 
@@ -58,38 +59,14 @@ Audit of 6 work phases since Review #11: IM3 chatbot security fixes, chatbot pro
 
 | Issue | Severity | Fix |
 |-------|----------|-----|
-| class_lessons table empty — chatbot 403 for ALL students | Critical | Added fallback: if no class_lesson entries exist, allow active enrollment |
-| SpeedRoundGame shows last streak instead of best streak | High | Added bestStreak state tracking like BM2 version |
-| sanitizeInput strips `*` and `_` breaking math notation | High | Only strip backticks and tildes; preserve math chars |
+| Prompt injection via triple-quote delimiters in chatbot | High | Escaped `"""` sequences in sanitizeInput |
+| Teacher lessons page missing revalidatePath + error handling | High | Added revalidatePath('/teacher/lessons') and try/catch |
+| Type mismatch in fetchInternalQuery/fetchInternalMutation | Medium | Added type casts to FunctionReference<'query'/'mutation'> |
 
 ### Issues Found (Deferred)
 
 | Issue | Severity | Notes |
 |-------|----------|-------|
-| Misconception summary fetches ALL reviews before date filter | Medium | Filters by sinceMs in-memory; should use range query when index supports it |
-| No tests for LessonChatbot.tsx | High | Route.ts tested; UI component still uncovered |
-| class_lessons needs seeding or teacher UI | High | Fallback works but proper lesson assignment needed for production |
-
-### Code Review Summary (2026-04-19 — Review #11)
-
-Post-phase audit of 6 phases: IM3 chatbot security fixes, chatbot provider memoization, monorepo docs cleanup, CI deploy hardening, review #10 residual fixes, AI tutoring adoption.
-
-| Check | Result |
-|-------|--------|
-| Build (IM3) | PASS |
-| Tests (IM3) | 3256/3262 pass (6 aspirational .todo) |
-| Typecheck (IM3) | CLEAN |
-
-Issues fixed: learningObjectives sanitization bypass (High), AbortSignal listener leak (Medium).
-
-### Code Review Summary (2026-04-19 — Review #10)
-
-Audit of 6 phases: AI tutoring extraction, BM2 adoption, IM3 chatbot implementation, teacher-reporting adoption, workbook pipeline extraction, CI deploy hardening.
-
-| Check | Result |
-|-------|--------|
-| Build (IM3) | PASS |
-| Tests (IM3) | 3249/3255 pass (6 aspirational .todo) |
-| Typecheck (IM3 + all new packages) | CLEAN |
-
-Issues fixed: CSV injection (High), gradebook color logic (High), rate-limit ordering (High), empty AI retry (High), CI tsc flag (High), phaseNumber bound (Low).
+| Teacher lessons class selector dropdown non-functional | Medium | Server component; needs client component or URL routing |
+| Demo seed only assigns Unit 1 lessons | Low | Blocks Units 2-9 chatbot access for demo class |
+| `internal as any` casts in 3 files | Medium | Generated types stale; run npx convex dev |
