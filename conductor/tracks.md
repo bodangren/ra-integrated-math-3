@@ -705,6 +705,18 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
   - Phase 1: Seed Mutation and Demo Wiring [COMPLETE]
   - Phase 2: Verification [COMPLETE]
 
+- [ ] **Track: Monorepo Tech Debt Triage & Resolution**
+     *Investigate and resolve all 45 open tech debt items to solidify monorepo migration — triage, fix, or close each item*
+     *Link: [./conductor/tracks/monorepo-tech-debt-triage_20260422/](./conductor/tracks/monorepo-tech-debt-triage_20260422/)*
+     - Phase 1: BM2 TypeScript & Runtime Correctness [ ]
+     - Phase 2: SRS & Practice Correctness [ ]
+     - Phase 3: N+1 Query Performance [ ]
+     - Phase 4: CI/CD & Deployment Hardening [ ]
+     - Phase 5: Package Quality & Consistency [ ]
+     - Phase 6: AI Tutoring & Workbook Quality [ ]
+     - Phase 7: UI & Minor Items [ ]
+     - Phase 8: Tech Debt Registry Cleanup & Final Verification [ ]
+
 ## Archived Tracks
 
 - [x] **Track: Scaffold App Pages & Layouts**

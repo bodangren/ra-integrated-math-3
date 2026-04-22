@@ -1,16 +1,16 @@
 #!/bin/zsh
 
 # Configuration variables
-OPENCODE_WORK_MODEL="minimax-cn-coding-plan/MiniMax-M2.7"
-KIMI_WORK_MODEL="kimi-for-coding/k2p5"
+OPENCODE_WORK_MODEL="volcengine-coding/kimi-k2.6"
+KIMI_WORK_MODEL="volcengine-coding/kimi-k2.6"
 REVIEW_MODEL_A="xiaomi/mimo-v2-pro"
-REVIEW_MODEL_B="zai-coding-plan/glm-5.1"
+REVIEW_MODEL_B="volcengine-coding/glm-5.1"
 WORKING_DIR="/Users/daniel.bodanske/Desktop/ra-integrated-math-3"
 OPENCODE_PATH="/Users/daniel.bodanske/.nvm/versions/node/v20.14.0/bin/opencode"
 PROMPT_FILE="$WORKING_DIR/conductor/autonomous-prompt.md"
 WORK_SLEEP_TIME=600
 REVIEW_SLEEP_TIME=120
-WORK_SESSIONS=4
+WORK_SESSIONS=2
 SESSION_TIMEOUT=3600  # 60 minutes in seconds
 
 WORK_PROMPT="/conductor @AGENTS.md Use the conductor skill to complete one entire phase of the current or next track. Always sync with remote and deal with conflicts intelligently. If workspace has some documentation updates or previous edits, simply commit those before starting work. Work autonomously without any guidance from the user until the phase is complete. Make sure to run tests, npm run build (fixing any blockers, whether your code or not), then commit with note and push."
