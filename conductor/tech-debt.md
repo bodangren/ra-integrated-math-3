@@ -27,8 +27,8 @@
 | ai-tutoring: resolveOpenRouterProviderFromEnv untested | Medium | Open | Exported public API with zero test coverage |
 | ai-tutoring: as any cast in providers.ts response parsing | Medium | Open | Need typed interface for OpenRouterResponse |
 | IM3 Convex types stale: rateLimits + student.getLessonForChatbot | Medium | Open | Generated api.d.ts missing new handlers; must run npx convex dev to regenerate |
-| CI: BM2 double-silencing in CI | Medium | Resolved | Removed || true from 4 BM2 steps; job-level continue-on-error preserved for known issues |
-| RSC entry chunk 750 KB | Medium | Partial | Server-side RSC entry reduced from 1,469 KB to 655 KB via manualChunks; client-side still 1.2 MB (vinext limitation) |
+| CI: BM2 double-silencing in CI | Medium | Resolved | Removed || true from 4 BM2 steps; job-level continue-on-error preserved |
+| RSC entry chunk 750 KB | Medium | Partial | Activity lazy-loading done (6 chunks); page chunk 785 KB, vendor-charts 830 KB; further splitting needed |
 | Cloudflare worker deploys to production on every push | Medium | Open | No staging step, no canary, no approval gate |
 | workbook-pipeline: capstone filename hardcoded to BM2 domain | Medium | Open | "investor_ready_workbook" is business-math-specific; parameterize |
 | workbook-pipeline: workbooks.client.ts double-cast bypasses types | Medium | Open | `as unknown as WorkbookManifest` — use zod validation |
@@ -42,3 +42,5 @@
 | SRS reviews.ts untested | Medium | Open | saveReview, getReviewsByCard, getReviewsByStudent — no tests |
 | isStudentEnrolledInClassForLesson N+1 | Medium | Open | 2 sequential queries per enrollment in loop; batch with Promise.all |
 | 40+ seed lesson tests vacuous | Low | Open | Test hardcoded data against itself; convert to data-driven validator |
+| N+1: lesson_versions per-lesson in public.ts | Medium | Open | getCurriculum + getUnitSummaries query per lesson; fetch once, build map |
+| internal Convex fns rely on action wrapper for auth | Medium | Open | activities.ts, study.ts, srs/cards.ts, student.ts have no defense-in-depth |

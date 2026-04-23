@@ -1,21 +1,20 @@
 # Current Directive
 
-> Updated: 2026-04-23 (Code review #18 — objectiveIds query fix, SRS correctness audit, test coverage assessment)
+> Updated: 2026-04-24 (Code review #19 — post-Phase-4 audit, bundle-splitting verification, dead code cleanup)
 
 ## Mission
 
-Monorepo migration complete (Waves 0-6). All major feature tracks done. Current focus: security hardening, tech debt reduction, and preparing for next feature development cycle.
+Monorepo migration complete (Waves 0-6). All major feature tracks done. Current focus: tech debt reduction (Phases 5-8 remaining), package quality, and preparing for next feature development cycle.
 
 ## Priority Order (Execute In This Order)
 
-1. **BM2 rate limiting gaps** — 5 endpoints lack rate limiting; phases/complete, assessment, activities, error-summary, ai-error-summary
-2. **BM2 chatbot prompt injection** — sanitizeInput is insufficient; add system prompt guard or LLM-based filter
-3. **SRS dashboard.ts + reviews.ts test coverage** — streak calculation and review persistence have zero tests
-4. **Convex generated types stale** — 5 production `as any` casts; run `npx convex dev` to regenerate (also resolves array index type workaround)
-5. **RSC bundle optimization** — 750 KB entry chunk needs code-splitting (target < 500 KB)
-6. **CI: Remove BM2 double-silencing** — Job-level `continue-on-error: true` AND step-level `|| true` on 4 steps; only one layer needed
-7. **isStudentEnrolledInClassForLesson N+1** — 2 sequential queries per enrollment in loop; batch with Promise.all
-8. **Monorepo tech-debt triage Phase 4–8** — CI/CD, package quality, AI tutoring, UI, cleanup
+1. **Monorepo tech-debt triage Phase 5** — Package Quality & Consistency: add vitest.config to 5 packages, fix teacher-reporting-core .js extensions, wire lib/study to study-hub-core
+2. **BM2 rate limiting gaps** — 5 endpoints lack rate limiting; phases/complete, assessment, activities, error-summary, ai-error-summary
+3. **N+1 queries in public.ts** — lesson_versions queried per lesson in getCurriculum and getUnitSummaries; fetch once and build map
+4. **SRS dashboard.ts + reviews.ts test coverage** — streak calculation and review persistence have zero tests
+5. **Convex generated types stale** — 5 production `as any` casts; run `npx convex dev` to regenerate
+6. **RSC bundle optimization** — page chunk 785 KB; vendor-charts 830 KB; needs further code-splitting (target page < 500 KB)
+7. **Monorepo tech-debt triage Phase 6–8** — AI tutoring quality, UI fixes, tech-debt cleanup
 
 ## Non-Negotiable Rules
 
@@ -37,22 +36,15 @@ Monorepo migration complete (Waves 0-6). All major feature tracks done. Current 
 ## Immediate Next Actions Checklist
 
 - [x] Waves 0-6 complete (all packages extracted, IM3+BM2 imports migrated, CI/CD hardened)
-- [x] Review #11 fixes (learningObjectives sanitization + abort listener leak)
-- [x] Review #12 fixes (chatbot enrollment fallback + game streak bug + math sanitization)
-- [x] Review #13 fixes (prompt injection via triple-quote delimiters + teacher UI revalidatePath)
-- [x] Review #14 fixes (seed all units, functional class selector, info leakage, error handling, rate limiting)
-- [x] Review #15 fixes (SrsRating type alignment in tests)
-- [x] Review #16 fixes (lesson-title-consistency.test.ts vacuous pass, tech-debt reconciliation)
-- [x] Review #17 fixes (SRS extraction dangling imports, BM2 auth instanceof Response pattern, studentId type casts)
-- [x] SRS misconception tag persistence + atomic saves + content hash guard
-- [x] BM2 TypeScript errors resolved (0 errors, down from 296)
-- [x] BM2 deactivated-user access — swap getRequestSessionClaims for requireActive*SessionClaims on 7 endpoints (route swaps done; auth tests still pending)
-- [x] SRS correctness audit — objectiveIds array query fix, session filtering verified, atomic saves confirmed
-- [x] N+1 queries: phase sections + teacher SRS per-student (batched via Promise.all)
-- [ ] RSC entry chunk code-splitting (750 KB → < 500 KB)
-- [ ] Convex generated types regeneration (eliminate `as any` casts)
-- [ ] CI: Remove BM2 double-silencing (choose one: continue-on-error OR || true, not both)
-- [ ] Monorepo tech-debt triage Phases 2–8
+- [x] Review #11-18 fixes (all security, auth, SRS, N+1, objectiveIds fixes)
+- [x] CI: Remove BM2 double-silencing (removed `|| true`; `continue-on-error` preserved)
+- [x] Lazy-load activity components + Suspense boundaries (registry.ts, ActivityRenderer.tsx)
+- [x] Bundle-size CI audit step added to workflow
+- [ ] Monorepo tech-debt triage Phase 5 (Package Quality)
+- [ ] N+1 queries: public.ts lesson_versions per-lesson fetch
+- [ ] Convex generated types regeneration
+- [ ] RSC bundle: page chunk 785 KB → < 500 KB
+- [ ] Monorepo tech-debt triage Phase 6-8
 
 ## Code Review Summary (2026-04-23 — Review #16)
 
@@ -140,3 +132,37 @@ Full code audit covering the last 6 work phases (BM2 deactivated-user access, te
 | SRS reviews.ts untested | Medium | saveReview, getReviewsByCard, getReviewsByStudent — no tests |
 | isStudentEnrolledInClassForLesson N+1 | Medium | 2 sequential queries per enrollment in loop; batch with Promise.all |
 | 40+ seed lesson tests vacuous | Low | Test hardcoded data against itself; convert to data-driven validator |
+
+### Code Review Summary (2026-04-24 — Review #19)
+
+Post-Phase-4 audit covering tech debt triage Phases 1-4 (BM2 TS fix, SRS correctness, N+1 perf, CI/CD hardening) plus lazy-loading, Suspense boundaries, and bundle-size CI.
+
+### Verification Results
+
+| Check | Result |
+|-------|--------|
+| Typecheck (IM3) | Pass (0 errors) |
+| Lint (IM3) | Pass (0 warnings) |
+| Tests (IM3) | 3226 passed, 6 todo (266 test files) |
+| Build (IM3) | Pass (6.54s) |
+
+### Issues Fixed in This Review (Review #19)
+
+| Issue | Severity | Fix |
+|-------|----------|-----|
+| `readFileSync` unused import in bundle-size-audit.mjs | LOW | Removed unused import |
+| Dead ternary branch in bundle-size-audit.mjs findFiles | LOW | Simplified to direct string ops |
+| Orphaned check-bundle-size.mjs (not referenced anywhere) | LOW | Deleted file |
+| registry.ts: rate-of-change-calculator registered twice (placeholder + real) | LOW | Removed from PLACEHOLDER_KEYS; renamed constant |
+
+### Issues Found (Deferred)
+
+| Issue | Severity | Notes |
+|-------|----------|-------|
+| N+1: lesson_versions per-lesson in public.ts getCurriculum | Medium | Fetch all versions upfront, build map |
+| N+1: class_lessons per-enrollment in student.ts isStudentEnrolledInClassForLesson | Medium | 2 sequential queries per loop iteration |
+| N+1: saveCards loop in srs/cards.ts | Medium | Query+write per card; batch queries |
+| Auth: internal Convex functions rely on action wrapper for auth | Medium | Architectural pattern; defense-in-depth missing |
+| error.message returned from seed.ts internal mutations | Low | 13 locations; internal-only risk |
+| Page chunk 785 KB, vendor-charts 830 KB | Medium | Further code-splitting needed |
+| CI: inconsistent --prefix vs --workspace vs cd && patterns | Low | Cosmetic; works but confusing |

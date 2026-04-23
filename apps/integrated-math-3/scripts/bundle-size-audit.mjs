@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync } from 'fs';
+import { readdirSync, statSync } from 'fs';
 import { resolve, join } from 'path';
 
 const DIST_DIR = resolve(process.cwd(), 'dist');
@@ -10,9 +10,8 @@ const THRESHOLDS = {
 };
 
 function findFiles(pattern) {
-  const [dir, glob] = pattern.split('/*.js').length > 1 
-    ? [pattern.replace('/*.js', ''), '*.js']
-    : [pattern.substring(0, pattern.lastIndexOf('/')), pattern.substring(pattern.lastIndexOf('/') + 1)];
+  const dir = pattern.substring(0, pattern.lastIndexOf('/'));
+  const glob = pattern.substring(pattern.lastIndexOf('/') + 1);
   
   const fullDir = join(DIST_DIR, dir);
   try {

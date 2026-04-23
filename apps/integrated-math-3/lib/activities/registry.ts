@@ -15,16 +15,14 @@ const registry = new Map<string, ActivityComponent>();
 // Placeholder components for Module 1 activities (lazy-loaded implementations to be added)
 const PlaceholderComponent: ActivityComponent = () => null;
 
-// Register Module 1 activity keys with placeholder components
-// These will be replaced with actual implementations in future tracks
-const MODULE_1_KEYS = [
-  'fill-in-the-blank',
+// Register placeholder components for keys awaiting implementation.
+// Keys with real lazy-loaded implementations are registered below.
+const PLACEHOLDER_KEYS = [
   'equation-solver',
   'drag-drop-categorization',
-  'rate-of-change-calculator',
 ] as const;
 
-MODULE_1_KEYS.forEach(key => {
+PLACEHOLDER_KEYS.forEach(key => {
   registerActivity(key, PlaceholderComponent);
 });
 
