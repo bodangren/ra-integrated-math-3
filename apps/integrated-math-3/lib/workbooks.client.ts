@@ -7,10 +7,10 @@ import {
   lessonHasWorkbooks as lessonHasWorkbooksBase,
   hasCapstoneStudentWorkbook as hasCapstoneStudentWorkbookBase,
   hasCapstoneTeacherWorkbook as hasCapstoneTeacherWorkbookBase,
+  validateWorkbookManifest,
 } from '@math-platform/workbook-pipeline';
-import type { WorkbookManifest } from '@math-platform/workbook-pipeline';
 
-const manifest = workbookManifest as unknown as WorkbookManifest;
+const manifest = validateWorkbookManifest(workbookManifest);
 
 export function getWorkbookPath(unitNumber: number, lessonNumber: number, type: 'student' | 'teacher'): string {
   return `/workbooks/${buildWorkbookFilename(unitNumber, lessonNumber, type)}`;

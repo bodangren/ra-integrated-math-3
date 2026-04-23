@@ -49,3 +49,45 @@ export function buildUnitLessonKey(
 ): string {
   return `${unitNumber}-${lessonNumber}`;
 }
+
+export function validateWorkbookManifest(value: unknown): WorkbookManifest {
+  if (typeof value !== 'object' || value === null) {
+    throw new TypeError('WorkbookManifest must be an object');
+  }
+  const obj = value as Record<string, unknown>;
+
+  if (typeof obj.version !== 'number') {
+    throw new TypeError('WorkbookManifest.version must be a number');
+  }
+  if (typeof obj.generatedAt !== 'string') {
+    throw new TypeError('WorkbookManifest.generatedAt must be a string');
+  }
+  if (!Array.isArray(obj.files) || !obj.files.every((f) => typeof f === 'string')) {
+    throw new TypeError('WorkbookManifest.files must be an array of strings');
+  }
+  if (typeof obj.byUnitAndLesson !== 'object' || obj.byUnitAndLesson === null) {
+    throw new TypeError('WorkbookManifest.byUnitAndLesson must be an object');
+  }
+  for (const [key, entry] of Object.entries(obj.byUnitAndLesson)) {
+    if (
+      typeof entry !== 'object' ||
+      entry === null ||
+      typeof (entry as Record<string, unknown>).student !== 'boolean' ||
+      typeof (entry as Record<string, unknown>).teacher !== 'boolean'
+    ) {
+      throw new TypeError(
+        `WorkbookManifest.byUnitAndLesson["${key}"] must have boolean student and teacher properties`
+      );
+    }
+  }
+  if (
+    typeof obj.byCapstone !== 'object' ||
+    obj.byCapstone === null ||
+    typeof (obj.byCapstone as Record<string, unknown>).student !== 'boolean' ||
+    typeof (obj.byCapstone as Record<string, unknown>).teacher !== 'boolean'
+  ) {
+    throw new TypeError('WorkbookManifest.byCapstone must have boolean student and teacher properties');
+  }
+
+  return obj as unknown as WorkbookManifest;
+}

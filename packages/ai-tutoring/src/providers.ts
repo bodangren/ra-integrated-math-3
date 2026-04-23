@@ -58,8 +58,15 @@ export function createOpenRouterProvider(options: OpenRouterProviderOptions) {
           throw new Error(`OpenRouter API error: ${response.status} ${response.statusText}`);
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const data = await response.json() as any;
+        interface OpenRouterResponse {
+          choices?: Array<{
+            message?: {
+              content?: string;
+            };
+          }>;
+        }
+
+        const data = (await response.json()) as OpenRouterResponse;
         const content = data.choices?.[0]?.message?.content;
         if (typeof content !== 'string' || content.trim().length === 0) {
           throw new EmptyResponseError();
@@ -84,6 +91,10 @@ export function getErrorStatus(error: Error): number | null {
 }
 
 let cachedProvider: ((prompt: string, abortSignal?: AbortSignal) => Promise<string>) | null = null;
+
+export function clearProviderCache(): void {
+  cachedProvider = null;
+}
 
 export function resolveOpenRouterProviderFromEnv(): ((prompt: string, abortSignal?: AbortSignal) => Promise<string>) | null {
   const apiKey = process.env.OPENROUTER_API_KEY;

@@ -26,13 +26,19 @@ export function buildWorkbookPublicPath(
   return `/workbooks/${buildWorkbookFilename(unitNumber, lessonNumber, type)}`;
 }
 
-export function buildCapstoneFilename(type: WorkbookType): string {
+export function buildCapstoneFilename(
+  type: WorkbookType,
+  baseName = 'investor_ready_workbook'
+): string {
   if (type === 'teacher') {
-    return 'capstone_investor_ready_workbook_teacher.xlsx';
+    return `capstone_${baseName}_teacher.xlsx`;
   }
-  return 'capstone_investor_ready_workbook.xlsx';
+  return `capstone_${baseName}.xlsx`;
 }
 
-export function buildCapstonePublicPath(type: WorkbookType): string {
-  return `/workbooks/${buildCapstoneFilename(type)}`;
+export function buildCapstonePublicPath(
+  type: WorkbookType,
+  baseName = 'investor_ready_workbook'
+): string {
+  return `/workbooks/${buildCapstoneFilename(type, baseName)}`;
 }

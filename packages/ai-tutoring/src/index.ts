@@ -8,6 +8,7 @@ export {
 export {
   createOpenRouterProvider,
   resolveOpenRouterProviderFromEnv,
+  clearProviderCache,
   isOpenRouterError,
   getErrorStatus,
   type OpenRouterProviderOptions,

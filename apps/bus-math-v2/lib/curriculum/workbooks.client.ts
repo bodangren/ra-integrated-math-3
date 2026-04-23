@@ -7,10 +7,10 @@ import {
   lessonHasWorkbooks as lessonHasWorkbooksBase,
   hasCapstoneStudentWorkbook as hasCapstoneStudentWorkbookBase,
   hasCapstoneTeacherWorkbook as hasCapstoneTeacherWorkbookBase,
+  validateWorkbookManifest,
 } from '@math-platform/workbook-pipeline';
-import type { WorkbookManifest } from '@math-platform/workbook-pipeline';
 
-const manifest = workbookManifest as unknown as WorkbookManifest;
+const manifest = validateWorkbookManifest(workbookManifest);
 
 function workbookFileName(unitNumber: number, lessonNumber: number, type: 'student' | 'teacher'): string {
   return buildWorkbookFilename(unitNumber, lessonNumber, type);
@@ -41,5 +41,5 @@ export function hasCapstoneTeacherWorkbook(): boolean {
 }
 
 export function getCapstoneWorkbookPath(type: 'student' | 'teacher'): string {
-  return `/workbooks/${buildCapstoneFilename(type)}`;
+  return `/workbooks/${buildCapstoneFilename(type, 'investor_ready_workbook')}`;
 }

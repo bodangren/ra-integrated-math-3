@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { createOpenRouterProvider } from '../providers';
+import { createOpenRouterProvider, resolveOpenRouterProviderFromEnv, clearProviderCache } from '../providers';
 
 const mockFetch = vi.fn();
 
@@ -197,5 +197,89 @@ describe('createOpenRouterProvider', () => {
     setTimeout(() => abortController.abort(), 10);
 
     await expect(provider('test', abortController.signal)).rejects.toThrow();
+  });
+});
+
+describe('resolveOpenRouterProviderFromEnv', () => {
+  const originalEnv = process.env;
+
+  beforeEach(() => {
+    clearProviderCache();
+    process.env = { ...originalEnv };
+    delete process.env.OPENROUTER_API_KEY;
+    delete process.env.OPENROUTER_MODEL;
+    delete process.env.OPENROUTER_API_BASE;
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+    clearProviderCache();
+  });
+
+  it('returns null when OPENROUTER_API_KEY is missing', () => {
+    expect(resolveOpenRouterProviderFromEnv()).toBeNull();
+  });
+
+  it('returns null when OPENROUTER_API_KEY is empty string', () => {
+    process.env.OPENROUTER_API_KEY = '   ';
+    expect(resolveOpenRouterProviderFromEnv()).toBeNull();
+  });
+
+  it('returns a provider function when OPENROUTER_API_KEY is set', () => {
+    process.env.OPENROUTER_API_KEY = 'sk-test';
+    const provider = resolveOpenRouterProviderFromEnv();
+    expect(typeof provider).toBe('function');
+  });
+
+  it('caches the provider across multiple calls', () => {
+    process.env.OPENROUTER_API_KEY = 'sk-test';
+    const first = resolveOpenRouterProviderFromEnv();
+    const second = resolveOpenRouterProviderFromEnv();
+    expect(first).toBe(second);
+  });
+
+  it('uses custom model from OPENROUTER_MODEL', async () => {
+    process.env.OPENROUTER_API_KEY = 'sk-test';
+    process.env.OPENROUTER_MODEL = 'openrouter/premium';
+
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        choices: [{ message: { content: 'OK' } }],
+      }),
+    });
+
+    const provider = resolveOpenRouterProviderFromEnv()!;
+    await provider('test');
+
+    expect(mockFetch).toHaveBeenCalledWith(
+      'https://openrouter.ai/api/v1/chat/completions',
+      expect.objectContaining({
+        body: JSON.stringify({
+          model: 'openrouter/premium',
+          messages: [{ role: 'user', content: 'test' }],
+        }),
+      })
+    );
+  });
+
+  it('uses custom base URL from OPENROUTER_API_BASE', async () => {
+    process.env.OPENROUTER_API_KEY = 'sk-test';
+    process.env.OPENROUTER_API_BASE = 'https://custom.openrouter.ai/api/v1';
+
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        choices: [{ message: { content: 'OK' } }],
+      }),
+    });
+
+    const provider = resolveOpenRouterProviderFromEnv()!;
+    await provider('test');
+
+    expect(mockFetch).toHaveBeenCalledWith(
+      'https://custom.openrouter.ai/api/v1/chat/completions',
+      expect.any(Object)
+    );
   });
 });

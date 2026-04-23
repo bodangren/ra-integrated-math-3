@@ -5,6 +5,7 @@ export {
   isCapstoneFilename,
   parseCapstoneType,
   buildUnitLessonKey,
+  validateWorkbookManifest,
 } from './workbook-pipeline/manifest.js';
 
 export {

@@ -59,22 +59,38 @@ describe('path utilities', () => {
   });
 
   describe('buildCapstoneFilename', () => {
-    it('builds student capstone filename', () => {
+    it('builds student capstone filename with default base name', () => {
       expect(buildCapstoneFilename('student')).toBe('capstone_investor_ready_workbook.xlsx');
     });
 
-    it('builds teacher capstone filename', () => {
+    it('builds teacher capstone filename with default base name', () => {
       expect(buildCapstoneFilename('teacher')).toBe('capstone_investor_ready_workbook_teacher.xlsx');
+    });
+
+    it('builds student capstone filename with custom base name', () => {
+      expect(buildCapstoneFilename('student', 'math_capstone')).toBe('capstone_math_capstone.xlsx');
+    });
+
+    it('builds teacher capstone filename with custom base name', () => {
+      expect(buildCapstoneFilename('teacher', 'math_capstone')).toBe('capstone_math_capstone_teacher.xlsx');
     });
   });
 
   describe('buildCapstonePublicPath', () => {
-    it('builds correct public path for student capstone', () => {
+    it('builds correct public path for student capstone with default base', () => {
       expect(buildCapstonePublicPath('student')).toBe('/workbooks/capstone_investor_ready_workbook.xlsx');
     });
 
-    it('builds correct public path for teacher capstone', () => {
+    it('builds correct public path for teacher capstone with default base', () => {
       expect(buildCapstonePublicPath('teacher')).toBe('/workbooks/capstone_investor_ready_workbook_teacher.xlsx');
+    });
+
+    it('builds correct public path for student capstone with custom base', () => {
+      expect(buildCapstonePublicPath('student', 'math_capstone')).toBe('/workbooks/capstone_math_capstone.xlsx');
+    });
+
+    it('builds correct public path for teacher capstone with custom base', () => {
+      expect(buildCapstonePublicPath('teacher', 'math_capstone')).toBe('/workbooks/capstone_math_capstone_teacher.xlsx');
     });
   });
 });

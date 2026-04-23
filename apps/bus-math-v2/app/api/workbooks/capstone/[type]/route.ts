@@ -1,4 +1,5 @@
 import { requireActiveRequestSessionClaims } from '@/lib/auth/server';
+import { buildCapstoneFilename } from '@math-platform/workbook-pipeline';
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
 import * as fs from 'fs';
@@ -25,9 +26,7 @@ export async function GET(
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
 
-  const fileName = type === 'teacher'
-    ? 'capstone_investor_ready_workbook_teacher.xlsx'
-    : 'capstone_investor_ready_workbook.xlsx';
+  const fileName = buildCapstoneFilename(type, 'investor_ready_workbook');
   
   const workbooksDir = path.join(process.cwd(), 'public', 'workbooks');
   const publicPath = path.join(workbooksDir, fileName);
