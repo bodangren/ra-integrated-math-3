@@ -35,3 +35,4 @@
 - (2026-04-19, monorepo-ci) CI matrices with pre-existing failures: use `continue-on-error: true` + `|| true` fallback; document known failures
 - (2026-04-23, review-14) Always wrap API route handlers in try/catch — unhandled errors may leak stack traces or hang connections
 - (2026-04-23, review-14) Seed data must cover all modules, not just first — otherwise features silently break for unseeded content
+- (2026-04-23, tech-debt-triage) Many tech debt items are already resolved — always investigate before assuming fix needed; content hash mechanism prevents approval race conditions
