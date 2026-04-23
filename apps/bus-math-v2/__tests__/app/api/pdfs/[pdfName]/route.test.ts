@@ -1,12 +1,12 @@
 // @ts-nocheck
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const mockGetRequestSessionClaims = vi.fn();
+const mockRequireActiveRequestSessionClaims = vi.fn();
 const mockFsExistsSync = vi.fn();
 const mockFsReadFileSync = vi.fn();
 
 vi.mock('@/lib/auth/server', () => ({
-  getRequestSessionClaims: mockGetRequestSessionClaims,
+  requireActiveRequestSessionClaims: mockRequireActiveRequestSessionClaims,
 }));
 
 vi.mock('fs', () => ({
@@ -25,7 +25,7 @@ function makeRequest(pdfName: string) {
 describe('GET /api/pdfs/[pdfName]', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    mockGetRequestSessionClaims.mockResolvedValue({
+    mockRequireActiveRequestSessionClaims.mockResolvedValue({
       sub: 'student-1',
       username: 'student',
       role: 'student',
@@ -36,7 +36,9 @@ describe('GET /api/pdfs/[pdfName]', () => {
   });
 
   it('returns 401 when unauthenticated', async () => {
-    mockGetRequestSessionClaims.mockResolvedValue(null);
+    mockRequireActiveRequestSessionClaims.mockResolvedValue(
+      new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 })
+    );
 
     const response = await GET(makeRequest('test.pdf'), { params: Promise.resolve({ pdfName: 'test.pdf' }) });
     const json = await response.json();

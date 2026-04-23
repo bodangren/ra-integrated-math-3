@@ -2,10 +2,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { NextRequest } from 'next/server';
 
-const mockGetRequestSessionClaims = vi.fn();
+const mockRequireActiveRequestSessionClaims = vi.fn();
 
 vi.mock('@/lib/auth/server', () => ({
-  getRequestSessionClaims: mockGetRequestSessionClaims,
+  requireActiveRequestSessionClaims: mockRequireActiveRequestSessionClaims,
 }));
 
 const mockExistsSync = vi.fn();
@@ -40,7 +40,9 @@ describe('GET /api/workbooks/capstone/[type]', () => {
   });
 
   it('returns 401 when unauthenticated', async () => {
-    mockGetRequestSessionClaims.mockResolvedValue(null);
+    mockRequireActiveRequestSessionClaims.mockResolvedValue(
+      new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 })
+    );
 
     const response = await GET(
       buildRequest('http://localhost/api/workbooks/capstone/student'),
@@ -51,7 +53,7 @@ describe('GET /api/workbooks/capstone/[type]', () => {
   });
 
   it('returns 403 when student tries to access teacher workbook', async () => {
-    mockGetRequestSessionClaims.mockResolvedValue({
+    mockRequireActiveRequestSessionClaims.mockResolvedValue({
       sub: 'profile_123',
       username: 'student',
       role: 'student',
@@ -68,7 +70,7 @@ describe('GET /api/workbooks/capstone/[type]', () => {
   });
 
   it('returns 200 with student workbook when student accesses student type', async () => {
-    mockGetRequestSessionClaims.mockResolvedValue({
+    mockRequireActiveRequestSessionClaims.mockResolvedValue({
       sub: 'profile_123',
       username: 'student',
       role: 'student',
@@ -94,7 +96,7 @@ describe('GET /api/workbooks/capstone/[type]', () => {
   });
 
   it('returns 200 with teacher workbook when teacher accesses teacher type', async () => {
-    mockGetRequestSessionClaims.mockResolvedValue({
+    mockRequireActiveRequestSessionClaims.mockResolvedValue({
       sub: 'profile_456',
       username: 'teacher',
       role: 'teacher',
@@ -120,7 +122,7 @@ describe('GET /api/workbooks/capstone/[type]', () => {
   });
 
   it('returns 404 when student file not found', async () => {
-    mockGetRequestSessionClaims.mockResolvedValue({
+    mockRequireActiveRequestSessionClaims.mockResolvedValue({
       sub: 'profile_123',
       username: 'student',
       role: 'student',
@@ -139,7 +141,7 @@ describe('GET /api/workbooks/capstone/[type]', () => {
   });
 
   it('returns 404 when teacher file not found', async () => {
-    mockGetRequestSessionClaims.mockResolvedValue({
+    mockRequireActiveRequestSessionClaims.mockResolvedValue({
       sub: 'profile_456',
       username: 'teacher',
       role: 'teacher',
@@ -158,7 +160,7 @@ describe('GET /api/workbooks/capstone/[type]', () => {
   });
 
   it('returns 400 for invalid type parameter', async () => {
-    mockGetRequestSessionClaims.mockResolvedValue({
+    mockRequireActiveRequestSessionClaims.mockResolvedValue({
       sub: 'profile_123',
       username: 'student',
       role: 'student',

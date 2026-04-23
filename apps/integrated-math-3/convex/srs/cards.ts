@@ -65,7 +65,7 @@ export async function saveCardHandler(
   const existing = await ctx.db
     .query("srs_cards")
     .withIndex("by_student_and_problem_family", (q) =>
-      q.eq("studentId", args.studentId as Id<"profiles">).eq("problemFamilyId", args.problemFamilyId)
+      q.eq("studentId", args.studentId).eq("problemFamilyId", args.problemFamilyId)
     )
     .first();
 
@@ -89,7 +89,7 @@ export async function saveCardHandler(
     return existing._id;
   } else {
     const id = await ctx.db.insert("srs_cards", {
-      studentId: args.studentId as Id<"profiles">,
+      studentId: args.studentId,
       objectiveId: args.objectiveId,
       problemFamilyId: args.problemFamilyId,
       stability: args.stability,
@@ -166,7 +166,7 @@ export const saveCards = internalMutation({
       const existing = await ctx.db
         .query("srs_cards")
         .withIndex("by_student_and_problem_family", (q) =>
-          q.eq("studentId", card.studentId as Id<"profiles">).eq("problemFamilyId", card.problemFamilyId)
+          q.eq("studentId", card.studentId).eq("problemFamilyId", card.problemFamilyId)
         )
         .first();
 
@@ -189,7 +189,7 @@ export const saveCards = internalMutation({
         });
       } else {
         await ctx.db.insert("srs_cards", {
-          studentId: card.studentId as Id<"profiles">,
+          studentId: card.studentId,
           objectiveId: card.objectiveId,
           problemFamilyId: card.problemFamilyId,
           stability: card.stability,
@@ -286,7 +286,7 @@ export const getDueCards = internalQuery({
     const cards = await ctx.db
       .query("srs_cards")
       .withIndex("by_student_and_due", (q) =>
-        q.eq("studentId", args.studentId as Id<"profiles">)
+        q.eq("studentId", args.studentId)
       )
       .collect();
     return cards
