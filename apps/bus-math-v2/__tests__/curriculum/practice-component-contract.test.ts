@@ -10,6 +10,7 @@ const contractDocPath = path.resolve(
   'conductor/curriculum/practice-component-contract.md',
 );
 
+// TODO(monorepo): skipped — contract doc path resolves relative to BM2 cwd; needs monorepo-aware path
 describe.skip('practice component contract foundation', () => {
   it('declares the canonical practice.v1 contract in the curriculum docs', () => {
     const doc = fs.readFileSync(contractDocPath, 'utf8');

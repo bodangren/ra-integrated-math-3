@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
+// TODO(monorepo): skipped — conductor paths resolve relative to BM2 cwd; needs monorepo-aware path
 describe.skip('Conductor track hygiene', () => {
   it('does not keep the same track id in both active and archived directories', () => {
     const tracksDir = path.resolve(process.cwd(), 'conductor/tracks');

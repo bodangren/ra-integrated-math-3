@@ -29,6 +29,7 @@ function listFiles(dir: string, matcher: RegExp): string[] {
   return result.sort();
 }
 
+// TODO(monorepo): skipped — vitest.config.ts path resolves relative to BM2 cwd; needs monorepo-aware path
 describe.skip('test runner discovery configuration', () => {
   it('keeps Vitest discovery focused on __tests__ directory', () => {
     const vitestConfig = fs.readFileSync(path.join(ROOT, 'vitest.config.ts'), 'utf8');

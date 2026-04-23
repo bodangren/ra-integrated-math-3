@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 
+// TODO(monorepo): skipped — reads BM2 package.json but dev:stack is a root script; needs path update for monorepo
 describe.skip('Dev Stack Script', () => {
   it('defines a combined app and Convex dev command', () => {
     const pkgPath = path.resolve(process.cwd(), 'package.json');

@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
 
+// TODO(monorepo): skipped — curriculum templates path resolves relative to BM2 cwd; needs monorepo-aware path
 describe.skip('Curriculum Infrastructure', () => {
   it('should have the templates directory', () => {
     const templatesPath = path.resolve(process.cwd(), 'docs/curriculum/templates');

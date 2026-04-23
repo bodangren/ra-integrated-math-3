@@ -1092,15 +1092,12 @@ export const getLessonErrorSummary = internalQuery({
 
     const studentIds = [...new Set(completions.map((c) => c.studentId))];
 
-    const orgStudentIds: string[] = [];
-    await Promise.all(
+    const orgStudentIds = (await Promise.all(
       studentIds.map(async (sid) => {
         const profile = await ctx.db.get(sid as Id<"profiles">);
-        if (profile && profile.organizationId === teacher.organizationId) {
-          orgStudentIds.push(sid);
-        }
+        return profile?.organizationId === teacher.organizationId ? sid : null;
       }),
-    );
+    )).filter((x): x is string => x !== null);
 
     if (orgStudentIds.length === 0) return null;
 
@@ -1108,16 +1105,10 @@ export const getLessonErrorSummary = internalQuery({
       orgStudentIds.includes(c.studentId),
     );
     const activityIds = [...new Set(orgCompletions.map((c) => c.activityId))];
-
-    const submissionRows = await ctx.db
-      .query("activity_submissions")
-      .withIndex("by_activity", (q) =>
-        q.eq("activityId", activityIds[0] as Id<"activities">),
-      )
-      .collect();
+    if (activityIds.length === 0) return null;
 
     const allSubmissions = await Promise.all(
-      activityIds.slice(1).map((activityId) =>
+      activityIds.map((activityId) =>
         ctx.db
           .query("activity_submissions")
           .withIndex("by_activity", (q) => q.eq("activityId", activityId))
@@ -1125,7 +1116,7 @@ export const getLessonErrorSummary = internalQuery({
       ),
     );
 
-    const flatSubmissions = [...submissionRows, ...allSubmissions.flat()];
+    const flatSubmissions = allSubmissions.flat();
 
     const studentSubmissions = flatSubmissions.filter((row) =>
       orgStudentIds.includes(row.userId),

@@ -11,6 +11,7 @@ function read(relativePath: string) {
   return fs.readFileSync(path.resolve(process.cwd(), relativePath), 'utf8');
 }
 
+// TODO(monorepo): skipped — file paths resolve relative to BM2 cwd; needs monorepo-aware path resolution
 describe.skip('curriculum runtime foundation', () => {
   it('quarantines stale Supabase and Drizzle debug surfaces from the active app shell', () => {
     expect(fileExists('app/api/test-db/route.ts')).toBe(false);

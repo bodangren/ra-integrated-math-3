@@ -18,6 +18,7 @@ function readComponentKeysFromDocs(): string[] {
     .filter((key): key is string => Boolean(key));
 }
 
+// TODO(monorepo): skipped — docs/components.yaml path and registry imports need monorepo adjustment
 describe.skip('docs/components.yaml activity keys', () => {
   it('keeps the documented canonical keys resolvable by the runtime registry', () => {
     const documentedKeys = new Set(readComponentKeysFromDocs());

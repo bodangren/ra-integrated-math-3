@@ -1,21 +1,25 @@
 # Current Directive
 
-> Updated: 2026-04-24 (Code review #20 — audit of past 6 phases, BM2 workbook/PDF auth fix, cards.ts redundant cast cleanup)
+> Updated: 2026-04-24 (Code review #21 — audit of tech-debt triage Phases 1-6, fixes for deploy config, teacher.ts crash, governance tests)
 
 ## Mission
 
-Monorepo migration complete (Waves 0-6). All major feature tracks done. Current focus: tech debt reduction (Phases 5-8 remaining), package quality, and preparing for next feature development cycle.
+Monorepo migration complete (Waves 0-6). All major feature tracks done. Current focus: tech debt reduction (Phase 7 in-progress, Phase 8 pending), then new feature development.
 
 ## Priority Order (Execute In This Order)
 
-1. **Monorepo tech-debt triage Phase 5** — Package Quality & Consistency: add vitest.config to 5 packages, fix teacher-reporting-core .js extensions, wire lib/study to study-hub-core
-2. **BM2 rate limiting gaps** — 5 endpoints lack rate limiting; phases/complete, assessment, activities, error-summary, ai-error-summary
-3. **N+1 queries in public.ts** — lesson_versions queried per lesson in getCurriculum and getUnitSummaries; fetch once and build map
+1. **Monorepo tech-debt triage Phase 7** — UI & Minor Items: SubmissionDetailModal React key, StepByStepper flaky test, versionByLessonId first-version, Convex types regeneration
+2. **Monorepo tech-debt triage Phase 8** — Tech Debt Registry Cleanup & Final Verification: prune tech-debt.md, full monorepo health check
+3. **getTeacherClassProficiencyHandler N+1** — S*O*3 queries (~1800 for 30S/20O); pre-fetch problem_families, baselines, submissions outside loops
 4. **SRS dashboard.ts + reviews.ts test coverage** — streak calculation and review persistence have zero tests
-5. **Convex generated types stale** — 5 production `as any` casts; run `npx convex dev` to regenerate
-6. **RSC bundle optimization** — page chunk 785 KB; vendor-charts 830 KB; needs further code-splitting (target page < 500 KB)
-7. **SRS engine studentId type alignment** — Package defines `studentId: string` but Convex uses `Id<"profiles">`; 7 bridging casts in convexCardStore.ts
-8. **Monorepo tech-debt triage Phase 6–8** — AI tutoring quality, UI fixes, tech-debt cleanup
+5. **BM2 rate limiting track** — 5 endpoints lack rate limiting (track created, pending)
+6. **N+1 queries in public.ts** — lesson_versions queried per lesson in getCurriculum and getUnitSummaries
+7. **Convex generated types stale** — 5 production `as any` casts; run `npx convex dev` to regenerate
+8. **RSC bundle optimization** — page chunk 785 KB; vendor-charts 830 KB; needs further code-splitting
+9. **SRS engine studentId type alignment** — Package defines `studentId: string` but Convex uses `Id<"profiles">`; 7 bridging casts
+10. **Equivalence checker negative leading coefficients** — factoredPattern4 regex can't match `(-2x+3)(x+1)`
+11. **Convex schema strict validation track** — 21 v.any() fields + 5 as any casts (track created, pending)
+12. **BM2 governance test re-enablement** — 9 skipped suites need monorepo-aware path fixes
 
 ## Non-Negotiable Rules
 
@@ -41,12 +45,18 @@ Monorepo migration complete (Waves 0-6). All major feature tracks done. Current 
 - [x] CI: Remove BM2 double-silencing (removed `|| true`; `continue-on-error` preserved)
 - [x] Lazy-load activity components + Suspense boundaries (registry.ts, ActivityRenderer.tsx)
 - [x] Bundle-size CI audit step added to workflow
-- [ ] Monorepo tech-debt triage Phase 5 (Package Quality)
+- [x] Tech-debt triage Phases 1-6 complete (BM2 TS, SRS correctness, N+1, CI/CD, packages, AI tutoring)
+- [x] Cloudflare deploy: fix partial npm install to root-level npm ci
+- [x] teacher.ts: fix concurrent array mutation and empty activityIds crash
+- [x] BM2 governance tests: add TODO(monorepo) comments to 9 skipped suites
+- [ ] Monorepo tech-debt triage Phase 7 (UI & Minor Items)
+- [ ] Monorepo tech-debt triage Phase 8 (Final Verification)
+- [ ] getTeacherClassProficiencyHandler N+1 (S*O*3 queries)
 - [ ] N+1 queries: public.ts lesson_versions per-lesson fetch
 - [ ] SRS engine studentId type alignment (string → branded type)
 - [ ] Convex generated types regeneration
 - [ ] RSC bundle: page chunk 785 KB → < 500 KB
-- [ ] Monorepo tech-debt triage Phase 6-8
+- [ ] BM2 9 governance tests re-enablement
 
 ## Code Review Summary (2026-04-23 — Review #16)
 
@@ -169,34 +179,41 @@ Post-Phase-4 audit covering tech debt triage Phases 1-4 (BM2 TS fix, SRS correct
 | Page chunk 785 KB, vendor-charts 830 KB | Medium | Further code-splitting needed |
 | CI: inconsistent --prefix vs --workspace vs cd && patterns | Low | Cosmetic; works but confusing |
 
-### Code Review Summary (2026-04-24 — Review #20)
+### Code Review Summary (2026-04-24 — Review #21)
 
-Full audit of past 6 work phases: security hardening pre-work, SRS type alignment, deactivated-user access, SRS extraction imports, BM2 auth patterns, and plan tracking.
+Comprehensive audit of tech-debt triage Phases 1-6 (BM2 TS fix, SRS correctness, N+1 perf, CI/CD hardening, package quality, AI tutoring quality). Also reviewed 3 newly-created pending tracks.
 
 ### Verification Results
 
 | Check | Result |
 |-------|--------|
 | Typecheck (IM3) | Pass (0 errors) |
-| Typecheck (BM2) | Pass (0 errors in app code; pre-existing readonly-array test errors unrelated) |
+| Typecheck (BM2) | Pass (app code; pre-existing test-file readonly errors) |
 | Lint (IM3) | Pass (0 warnings) |
-| Tests (IM3) | 3226 passed, 6 todo (266 test files) |
-| Tests (BM2 workbook/pdf) | 19 passed (3 test files) |
-| Build (IM3) | Pass (6.53s; page 785 KB, vendor-charts 830 KB) |
+| Lint (BM2) | Pass (0 warnings) |
+| Tests (IM3) | 3230 passed, 2 todo (266 test files) |
+| Tests (BM2) | 2293 passed, 35 skipped (339 test files) |
+| Tests (packages) | All 11 packages pass (495 tests total) |
+| Build (IM3) | Pass (24.29s) |
+| Build (BM2) | Pass (10.29s) |
 
-### Issues Fixed in This Review (Review #20)
+### Issues Fixed in This Review (Review #21)
 
 | Issue | Severity | Fix |
 |-------|----------|-----|
-| 3 BM2 routes (workbooks/capstone, workbooks/[unit]/[lesson], pdfs/[pdfName]) still use `getRequestSessionClaims` — deactivated users can access | CRITICAL | Swapped to `requireActiveRequestSessionClaims` with `instanceof Response` check pattern |
-| 3 BM2 route test files mock `getRequestSessionClaims` instead of `requireActiveRequestSessionClaims` | HIGH | Updated all 3 test files to mock `requireActiveRequestSessionClaims` and return `new Response(...)` for unauthenticated tests |
-| 5 redundant `as Id<"profiles">` casts in cards.ts (args/fields already typed) | MEDIUM | Removed all 5 redundant casts from saveCardHandler, saveCards, and getDueCards |
-| Stale describe block references old path `lib/practice/objective-proficiency.ts` | LOW | Updated to `@math-platform/srs-engine` in contract.test.ts |
+| teacher.ts getLessonErrorSummary: activityIds[0] undefined crash when activityIds empty | HIGH | Added early return guard; flattened to single Promise.all over all activityIds |
+| teacher.ts getLessonErrorSummary: concurrent mutation of shared array in Promise.all | MEDIUM | Replaced with filter/map pattern returning null for non-matching |
+| cloudflare-deploy.yml: `npm ci --prefix` misses workspace deps | MEDIUM | Changed to root-level `npm ci` |
+| 9 BM2 governance test suites skipped without explanation | MEDIUM | Added `TODO(monorepo)` comments documenting why each is skipped |
 
 ### Issues Found (Deferred)
 
 | Issue | Severity | Notes |
 |-------|----------|-------|
-| BM2 activities/complete/route.ts proxies `errorPayload.details` from internal API | Low | Could expose internal info; sanitize upstream response |
-| SRS engine `studentId: string` vs Convex `Id<"profiles">` type mismatch | Medium | 7 bridging casts in convexCardStore.ts; package types need branded string |
-| JSDoc `@example` blocks silently dropped during SRS extraction | Low | 6 symbols lost documentation; restore in package version |
+| getTeacherClassProficiencyHandler: S*O*3 queries (~1800 for 30S/20O) | High | Pre-fetch problem_families, baselines, submissions outside loops |
+| getDueCards: fetches all cards then filters by date in-memory | Medium | by_student_and_due index has dueDate but no range query |
+| Session history: fetches all then paginates client-side | Medium | Use Convex cursor pagination |
+| equivalence.ts: factoredPattern4 can't match negative leading coefficients | Medium | (\d*\.?\d*) groups miss `-` prefix |
+| SRS dashboard.ts streak calc: zero test coverage | High | Non-trivial logic needs tests |
+| Rate limiting track modifies BM2 (violates AGENTS.md scope) | Medium | Needs scope decision |
+| BM2 governance tests: all need monorepo-aware path fixes | Medium | TODO comments added; actual fixes deferred

@@ -8,6 +8,7 @@ const auditPath = path.resolve(
   'conductor/archive/practice_component_legacy_backfill_20260319/audit.md',
 );
 
+// TODO(monorepo): skipped — conductor archive path resolves relative to BM2 cwd; needs monorepo-aware path
 describe.skip('practice component legacy backfill audit', () => {
   it('records the current Unit 1 practice-family mapping', () => {
     const audit = fs.readFileSync(auditPath, 'utf8');
