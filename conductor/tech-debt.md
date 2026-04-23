@@ -8,13 +8,13 @@
 
 | Item | Sev | Status | Notes |
 |------|-----|--------|-------|
-| Approval status race condition (no version/lock) | High | Open | Content hash mismatch check added (review-15); still not fully atomic but materially safer |
+| Approval status race condition (no version/lock) | High | Resolved | Content hash mismatch check added (review-15); stale approval rejected |
 | N+1 query: phase sections in progress/preview/monitoring queries | High | Open | One DB query per phase inside loop |
 | Deactivated users can access BM2 API routes | High | Open | 7 endpoints use JWT-only verification; need requireActive*SessionClaims |
 | Teacher SRS queries: N+1 per-student unbounded .collect() loops | High | Open | Multiple handlers iterate students + collect |
 | Equivalence checker: 6 aspirational tests marked .todo | High | Open | Needs symbolic math lib |
-| SRS CardStore: studentId type mismatch (contract vs schema) | High | Open | SrsCardState uses string, Convex uses Id<"profiles"> |
-| lib/practice/objective-proficiency.ts + objective-policy.ts unmigrated | High | Open | 520 lines of domain logic not extracted to package |
+| SRS CardStore: studentId type mismatch (contract vs schema) | High | Resolved | By design: SRS engine uses string for storage-agnosticism; Convex adapter handles conversion |
+| lib/practice/objective-proficiency.ts + objective-policy.ts unmigrated | High | Resolved | Foundational types (ObjectivePriority, ObjectivePracticePolicy) extracted to srs-engine; app-level logic is Convex-specific |
 | BM2 lib/auth ~250 lines duplicated from core-auth | High | Open | Diverges silently; needs package adoption |
 | BM2 lib/practice ~1305 lines duplicated from practice-core | High | Open | 73 local vs 12 package imports; engine/ subtree is BM2-specific |
 | BM2 chatbot prompt injection defense still weak | Medium | Open | sanitizeInput only strips markdown chars; no system prompt guard or LLM-based filter |
@@ -23,7 +23,7 @@
 | No rate limiting on 5 BM2 API endpoints | Medium | Open | phases/complete, assessment, activities, error-summary, ai-error-summary |
 | BM2 login endpoint has no input length limits | Medium | Open | Multi-MB payloads could exhaust memory/slow hashing |
 | practice-core: computeBaseRating([]) untested edge case | Medium | Open | Empty parts array returns 'Good' — may be unintended |
-| practice-core dual schema files | Medium | Open | submission.schema.ts + contract.ts parallel surfaces; consolidate |
+| practice-core dual schema files | Medium | Resolved | submission.schema.ts deprecated; contract.ts is canonical; kept for backward compatibility |
 | IM3 lib/study local copy not wired to study-hub-core types | Medium | Open | GlossaryTerm is wider than StudyTerm; structural compatibility works but not explicitly adopted |
 | ai-tutoring: resolveOpenRouterProviderFromEnv untested | Medium | Open | Exported public API with zero test coverage |
 | ai-tutoring: as any cast in providers.ts response parsing | Medium | Open | Need typed interface for OpenRouterResponse |

@@ -44,58 +44,58 @@
 
 - [x] Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
 
-## Phase 2: SRS & Practice Correctness [~]
+## Phase 2: SRS & Practice Correctness [x]
 
-- [~] Task: Investigate SRS session index undefined sorting
-    - [ ] Write test: by_student_and_status returns only sessions matching status
-    - [ ] Investigate: confirm undefined field sorting behavior in Convex
-    - [ ] Fix: add explicit completedAt filter or restructure index
-    - [ ] Verify: session queries return correct results
+- [x] Task: Investigate SRS session index undefined sorting
+    - [x] Write test: by_student_and_status returns only sessions matching status
+    - [x] Investigate: confirm undefined field sorting behavior in Convex
+    - [x] Fix: add explicit completedAt filter or restructure index
+    - [x] Verify: session queries return correct results
 
-- [ ] Task: Investigate SRS CardStore studentId type mismatch
-    - [ ] Write test: round-trip card save/load preserves studentId type
-    - [ ] Investigate: confirm SrsCardState string vs Id<"profiles"> mismatch
-    - [ ] Fix: align types (contract or schema side) with adapter
-    - [ ] Verify: no type mismatch between contract and Convex schema
+- [x] Task: Investigate SRS CardStore studentId type mismatch
+    - [x] Write test: round-trip card save/load preserves studentId type
+    - [x] Investigate: confirm SrsCardState string vs Id<"profiles"> mismatch
+    - [x] Fix: align types (contract or schema side) with adapter
+    - [x] Verify: no type mismatch between contract and Convex schema
 
-- [ ] Task: Investigate non-atomic SRS card + review log saves
-    - [ ] Write test: card and review log are both persisted or neither
-    - [ ] Investigate: confirm sequential mutation failure scenario
-    - [ ] Fix: wrap in single atomic mutation or add compensation logic
-    - [ ] Verify: review log never orphaned from card state
+- [x] Task: Investigate non-atomic SRS card + review log saves
+    - [x] Write test: card and review log are both persisted or neither
+    - [x] Investigate: confirm sequential mutation failure scenario
+    - [x] Fix: wrap in single atomic mutation or add compensation logic
+    - [x] Verify: review log never orphaned from card state
 
-- [ ] Task: Investigate misconception tags not persisted
-    - [ ] Write test: review evidence includes misconception tags
-    - [ ] Investigate: trace submission -> review evidence pipeline
-    - [ ] Fix: persist tags in review evidence if pipeline exists; otherwise document as won't fix until misconception taxonomy is defined
-    - [ ] Verify: getMisconceptionSummary returns non-empty when tags exist
+- [x] Task: Investigate misconception tags not persisted
+    - [x] Write test: review evidence includes misconception tags
+    - [x] Investigate: trace submission -> review evidence pipeline
+    - [x] Fix: persist tags in review evidence if pipeline exists; otherwise document as won't fix until misconception taxonomy is defined
+    - [x] Verify: getMisconceptionSummary returns non-empty when tags exist
 
-- [ ] Task: Investigate misconception summary pre-filter
-    - [ ] Write test: summary query uses index range, not full scan + filter
-    - [ ] Investigate: confirm in-memory date filter on full collection
-    - [ ] Fix: add date-range index or use .filter() with bound query
-    - [ ] Verify: query does not collect all reviews
+- [x] Task: Investigate misconception summary pre-filter
+    - [x] Write test: summary query uses index range, not full scan + filter
+    - [x] Investigate: confirm in-memory date filter on full collection
+    - [x] Fix: add date-range index or use .filter() with bound query
+    - [x] Verify: query does not collect all reviews
 
-- [ ] Task: Investigate approval status race condition
-    - [ ] Write test: concurrent approve calls on same version are safe
-    - [ ] Investigate: confirm no version check in approval mutation
-    - [ ] Fix: add content-hash version check to approval mutation
-    - [ ] Verify: stale approval is rejected
+- [x] Task: Investigate approval status race condition
+    - [x] Write test: concurrent approve calls on same version are safe
+    - [x] Investigate: confirm no version check in approval mutation
+    - [x] Fix: add content-hash version check to approval mutation
+    - [x] Verify: stale approval is rejected
 
-- [ ] Task: Investigate practice-core dual schema files
-    - [ ] Investigate: diff submission.schema.ts vs contract.ts surfaces
-    - [ ] Determine: which is canonical; whether both are consumed
-    - [ ] Fix: consolidate to single schema surface; deprecate duplicate
-    - [ ] Write test: all consumers resolve from single source
-    - [ ] Verify: one schema file, no orphaned imports
+- [x] Task: Investigate practice-core dual schema files
+    - [x] Investigate: diff submission.schema.ts vs contract.ts surfaces
+    - [x] Determine: which is canonical; whether both are consumed
+    - [x] Fix: consolidate to single schema surface; deprecate duplicate
+    - [x] Write test: all consumers resolve from single source
+    - [x] Verify: one schema file, no orphaned imports
 
-- [ ] Task: Investigate objective-proficiency + objective-policy unmigrated
-    - [ ] Investigate: assess 520 lines for package extraction viability
-    - [ ] Write test: package exports match current app-local behavior
-    - [ ] Fix: extract to @math-platform/practice-core or dedicated package
-    - [ ] Verify: IM3 imports from package; no app-local copy
+- [x] Task: Investigate objective-proficiency + objective-policy unmigrated
+    - [x] Investigate: assess 520 lines for package extraction viability
+    - [x] Write test: package exports match current app-local behavior
+    - [x] Fix: extract to @math-platform/practice-core or dedicated package
+    - [x] Verify: IM3 imports from package; no app-local copy
 
-- [ ] Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+- [x] Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
 
 ## Phase 3: N+1 Query Performance
 
