@@ -165,30 +165,30 @@
 
 - [x] Conductor - User Manual Verification 'Phase 5' (Protocol in workflow.md) [checkpoint: cbae9ca]
 
-## Phase 6: AI Tutoring & Workbook Quality
+## Phase 6: AI Tutoring & Workbook Quality [x] [checkpoint: a6b2a11]
 
-- [ ] Task: Add tests for resolveOpenRouterProviderFromEnv
-    - [ ] Write test: provider created with valid env vars
-    - [ ] Write test: error thrown with missing env vars
-    - [ ] Implement: ensure all branches covered
-    - [ ] Verify: >80% coverage on exported function
+- [x] Task: Add tests for resolveOpenRouterProviderFromEnv
+    - [x] Write test: provider created with valid env vars
+    - [x] Write test: error thrown with missing env vars
+    - [x] Implement: ensure all branches covered
+    - [x] Verify: >80% coverage on exported function
 
-- [ ] Task: Fix ai-tutoring as any cast in providers.ts
-    - [ ] Write test: OpenRouterResponse typed interface validates responses
-    - [ ] Fix: replace `as any` with typed interface using zod validation
-    - [ ] Verify: no `as any` in providers.ts
+- [x] Task: Fix ai-tutoring as any cast in providers.ts
+    - [x] Write test: OpenRouterResponse typed interface validates responses
+    - [x] Fix: replace `as any` with typed interface using zod validation
+    - [x] Verify: no `as any` in providers.ts
 
-- [ ] Task: Parameterize workbook capstone filename
-    - [ ] Write test: capstone filename is configurable per-course
-    - [ ] Fix: parameterize "investor_ready_workbook" to accept course-specific name
-    - [ ] Verify: IM3 can use non-BM2 capstone name
+- [x] Task: Parameterize workbook capstone filename
+    - [x] Write test: capstone filename is configurable per-course
+    - [x] Fix: parameterize "investor_ready_workbook" to accept course-specific name
+    - [x] Verify: IM3 can use non-BM2 capstone name
 
-- [ ] Task: Fix workbook-pipeline double-cast
-    - [ ] Write test: WorkbookManifest validated via zod schema
-    - [ ] Fix: replace `as unknown as WorkbookManifest` with zod parse
-    - [ ] Verify: type-safe manifest parsing
+- [x] Task: Fix workbook-pipeline double-cast
+    - [x] Write test: WorkbookManifest validated via zod schema
+    - [x] Fix: replace `as unknown as WorkbookManifest` with zod parse
+    - [x] Verify: type-safe manifest parsing
 
-- [ ] Conductor - User Manual Verification 'Phase 6' (Protocol in workflow.md)
+- [x] Conductor - User Manual Verification 'Phase 6' (Protocol in workflow.md)
 
 ## Phase 7: UI & Minor Items
 

@@ -24,14 +24,14 @@
 | BM2 login endpoint has no input length limits | Medium | Open | Multi-MB payloads could exhaust memory/slow hashing |
 | practice-core: computeBaseRating([]) untested edge case | Medium | Open | Empty parts array returns 'Good' — may be unintended |
 | IM3 lib/study local copy not wired to study-hub-core types | Medium | Resolved | GlossaryTerm now extends StudyTerm from @math-platform/study-hub-core |
-| ai-tutoring: resolveOpenRouterProviderFromEnv untested | Medium | Open | Exported public API with zero test coverage |
-| ai-tutoring: as any cast in providers.ts response parsing | Medium | Open | Need typed interface for OpenRouterResponse |
+| ai-tutoring: resolveOpenRouterProviderFromEnv untested | Medium | Resolved | 6 tests added covering env parsing, caching, custom model/base URL |
+| ai-tutoring: as any cast in providers.ts response parsing | Medium | Resolved | Typed OpenRouterResponse interface; no explicit any remaining |
 | IM3 Convex types stale: rateLimits + student.getLessonForChatbot | Medium | Open | Generated api.d.ts missing new handlers; must run npx convex dev to regenerate |
 | CI: BM2 double-silencing in CI | Medium | Resolved | Removed || true from 4 BM2 steps; job-level continue-on-error preserved |
 | RSC entry chunk 750 KB | Medium | Partial | Activity lazy-loading done (6 chunks); page chunk 785 KB, vendor-charts 830 KB; further splitting needed |
 | Cloudflare worker deploys to production on every push | Medium | Open | No staging step, no canary, no approval gate |
-| workbook-pipeline: capstone filename hardcoded to BM2 domain | Medium | Open | "investor_ready_workbook" is business-math-specific; parameterize |
-| workbook-pipeline: workbooks.client.ts double-cast bypasses types | Medium | Open | `as unknown as WorkbookManifest` — use zod validation |
+| workbook-pipeline: capstone filename hardcoded to BM2 domain | Medium | Resolved | buildCapstoneFilename now accepts optional baseName param; defaults preserved |
+| workbook-pipeline: workbooks.client.ts double-cast bypasses types | Medium | Resolved | validateWorkbookManifest runtime validator replaces double-cast |
 | teacher-reporting: versionByLessonId picks first version silently | Medium | Open | No guarantee first version is the active one |
 | BM2 ~30 files still import via re-export stubs | Low | Open | Works via stubs; migration to direct @math-platform/* imports deferred |
 | BM2 duplicate PASSWORD_ALPHABET in convex/auth.ts | Low | Open | Can't import from core-auth; added comment noting derivation |
