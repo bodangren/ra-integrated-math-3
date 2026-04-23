@@ -124,13 +124,12 @@ jobs:
           CI: true
 
   # Phase 4: BM2 app gates
-  # NOTE: BM2 has pre-existing governance test failures (tracked in tech-debt.md)
-  # Job-level continue-on-error ensures CI passes while preserving test/typecheck signal
+  # BM2 TypeScript errors and governance test failures resolved (review-18).
+  # All BM2 gates now block CI on failure.
   bm2:
     name: BM2 App Gates
     runs-on: ubuntu-latest
     needs: [packages, boundary-check]
-    continue-on-error: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -170,6 +169,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [im3, bm2]
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    environment: production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

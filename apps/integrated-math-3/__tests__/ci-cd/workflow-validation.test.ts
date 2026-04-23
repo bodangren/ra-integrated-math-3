@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
 const WORKFLOW_PATH = resolve(process.cwd(), '../../.github/workflows/cloudflare-deploy.yml');
+const CI_WORKFLOW_PATH = resolve(process.cwd(), '../../.github/workflows/ci.yml');
 
 describe('Cloudflare Deploy Workflow', () => {
   let workflowContent: string;
@@ -113,6 +114,45 @@ describe('Cloudflare Deploy Workflow', () => {
     it('should have a failure notification step', () => {
       expect(workflowContent).toMatch(/if:\s*failure\(\)/);
       expect(workflowContent).toContain('::error::Cloudflare deployment failed');
+    });
+  });
+});
+
+describe('Monorepo CI Matrix Workflow', () => {
+  let ciContent: string;
+
+  it('should exist at the expected path', () => {
+    ciContent = readFileSync(CI_WORKFLOW_PATH, 'utf-8');
+    expect(ciContent).toBeTruthy();
+  });
+
+  describe('error handling', () => {
+    beforeEach(() => {
+      ciContent = readFileSync(CI_WORKFLOW_PATH, 'utf-8');
+    });
+
+    it('should not use continue-on-error on the BM2 job', () => {
+      expect(ciContent).not.toMatch(/bm2:\s*\n[\s\S]*?continue-on-error:\s*true/);
+    });
+
+    it('should not use || true fallback on BM2 steps', () => {
+      const bm2Section = ciContent.split('bm2:')[1] ?? '';
+      expect(bm2Section).not.toContain('|| true');
+    });
+
+    it('should not use continue-on-error on package test/lint steps', () => {
+      const packagesSection = ciContent.split('packages:')[1]?.split('boundary-check:')[0] ?? '';
+      expect(packagesSection).not.toContain('continue-on-error');
+    });
+  });
+
+  describe('deployment gate', () => {
+    beforeEach(() => {
+      ciContent = readFileSync(CI_WORKFLOW_PATH, 'utf-8');
+    });
+
+    it('should require production environment for deploy', () => {
+      expect(ciContent).toMatch(/deploy:\s*\n[\s\S]*?environment:\s*production/);
     });
   });
 });

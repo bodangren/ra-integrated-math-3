@@ -1,13 +1,6 @@
 name: Cloudflare Deploy
 
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '**.md'
-      - 'conductor/**'
-      - '.gitignore'
   workflow_dispatch:
 
 concurrency:
@@ -15,9 +8,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  deploy-production:
+    name: Deploy to Production
     runs-on: ubuntu-latest
-
+    environment: production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -69,4 +63,4 @@ jobs:
       - name: Notify on failure
         if: failure()
         run: |
-          echo "::error::Cloudflare deployment failed. Check the logs above."
+          echo "::error::Cloudflare production deployment failed. Check the logs above."
