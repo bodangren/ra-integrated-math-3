@@ -42,3 +42,5 @@
 - (2026-04-23, review-14) Seed data must cover all modules, not just first — otherwise features silently break for unseeded content
 - (2026-04-23, tech-debt-triage) Many tech debt items are already resolved — always investigate before assuming fix needed; content hash mechanism prevents approval race conditions
 - (2026-04-23, bm2-type-sweep) When `fetchInternalQuery` gains generic type params, all app call sites passing `string` for `Id<"profiles">` break. Batch-fix: cast once at variable assignment, not per-call
+- (2026-04-24, ci-cd-hardening) Removing `|| true` from CI steps while keeping job-level `continue-on-error: true` preserves failure visibility without breaking CI for known issues
+- (2026-04-24, bundle-splitting) Vinext manualChunks with function syntax handles external modules; use `id.includes()` checks instead of module name arrays to avoid EXTERNAL_MODULES errors

@@ -124,9 +124,8 @@ jobs:
           CI: true
 
   # Phase 4: BM2 app gates
-  # NOTE: BM2 has pre-existing issues (27 governance test failures, ~296 TS errors, no linter configured)
-  # These are tracked in tech-debt.md and deferred per current_directive.md
-  # All BM2 steps use continue-on-error to ensure CI passes while preserving test/typecheck signal
+  # NOTE: BM2 has pre-existing governance test failures (tracked in tech-debt.md)
+  # Job-level continue-on-error ensures CI passes while preserving test/typecheck signal
   bm2:
     name: BM2 App Gates
     runs-on: ubuntu-latest
@@ -146,22 +145,22 @@ jobs:
         run: npm ci
 
       - name: Run BM2 lint
-        run: npm run lint --workspace=apps/bus-math-v2 || true
+        run: npm run lint --workspace=apps/bus-math-v2
         env:
           CI: true
 
       - name: Run BM2 tests
-        run: npm run test --workspace=apps/bus-math-v2 || true
+        run: npm run test --workspace=apps/bus-math-v2
         env:
           CI: true
 
       - name: Run BM2 build
-        run: npm run build --workspace=apps/bus-math-v2 || true
+        run: npm run build --workspace=apps/bus-math-v2
         env:
           CI: true
 
       - name: Run BM2 typecheck
-        run: cd apps/bus-math-v2 && npx tsc --noEmit || true
+        run: cd apps/bus-math-v2 && npx tsc --noEmit
         env:
           CI: true
 

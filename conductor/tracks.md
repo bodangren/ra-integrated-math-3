@@ -716,7 +716,7 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
       - Phase 1: BM2 TypeScript & Runtime Correctness [x] [checkpoint: e0d36db]
      - Phase 2: SRS & Practice Correctness [x]
      - Phase 3: N+1 Query Performance [x]
-     - Phase 4: CI/CD & Deployment Hardening [ ]
+     - Phase 4: CI/CD & Deployment Hardening [x]
      - Phase 5: Package Quality & Consistency [ ]
      - Phase 6: AI Tutoring & Workbook Quality [ ]
      - Phase 7: UI & Minor Items [ ]

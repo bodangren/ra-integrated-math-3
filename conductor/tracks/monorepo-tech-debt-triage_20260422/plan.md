@@ -113,31 +113,31 @@
 
 - [x] Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
 
-## Phase 4: CI/CD & Deployment Hardening [~]
+## Phase 4: CI/CD & Deployment Hardening [x]
 
-- [ ] Task: Investigate CI continue-on-error swallowing failures
-    - [ ] Write test: CI workflow YAML has no continue-on-error on test/lint steps
-    - [ ] Investigate: identify all continue-on-error: true in package CI jobs
-    - [ ] Fix: remove continue-on-error; add proper failure handling
-    - [ ] Verify: failing package tests block CI merge
+- [x] Task: Investigate CI continue-on-error swallowing failures
+    - [x] Write test: CI workflow YAML has no continue-on-error on test/lint steps
+    - [x] Investigate: identify all continue-on-error: true in package CI jobs
+    - [x] Fix: remove continue-on-error; add proper failure handling
+    - [x] Verify: failing package tests block CI merge
 
-- [ ] Task: Investigate BM2 redundant || true + continue-on-error
-    - [ ] Investigate: identify dual suppression in BM2 CI steps
-    - [ ] Fix: remove one layer (prefer continue-on-error removal per above)
-    - [ ] Verify: single error handling strategy per step
+- [x] Task: Investigate BM2 redundant || true + continue-on-error
+    - [x] Investigate: identify dual suppression in BM2 CI steps
+    - [x] Fix: remove one layer (prefer continue-on-error removal per above)
+    - [x] Verify: single error handling strategy per step
 
-- [ ] Task: Investigate production deploy without staging gate
-    - [ ] Investigate: current Cloudflare deploy workflow
-    - [ ] Fix: add staging deploy step or approval gate before production
-    - [ ] Verify: production deploy requires explicit trigger
+- [x] Task: Investigate production deploy without staging gate
+    - [x] Investigate: current Cloudflare deploy workflow
+    - [x] Fix: add staging deploy step or approval gate before production
+    - [x] Verify: production deploy requires explicit trigger
 
-- [ ] Task: Investigate RSC entry chunk size
-    - [ ] Write test: entry chunk size is below threshold (measure in CI)
-    - [ ] Investigate: identify large contributors to 750 KB chunk
-    - [ ] Fix: code-split large dependencies; lazy-load non-critical modules
-    - [ ] Verify: entry chunk < 500 KB
+- [x] Task: Investigate RSC entry chunk size
+    - [x] Write test: entry chunk size is below threshold (measure in CI)
+    - [x] Investigate: identify large contributors to 750 KB chunk
+    - [x] Fix: code-split large dependencies; lazy-load non-critical modules
+    - [x] Verify: entry chunk < 500 KB
 
-- [ ] Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
+- [x] Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
 
 ## Phase 5: Package Quality & Consistency
 
