@@ -66,7 +66,7 @@ describe('Re-exports from lib/practice/srs-rating.ts', () => {
   });
 });
 
-describe('Re-exports from lib/practice/objective-proficiency.ts', () => {
+describe('Re-exports from @math-platform/srs-engine', () => {
   it('ObjectivePriority should include all values', () => {
     const priorities: ObjectivePriority[] = ['essential', 'supporting', 'extension', 'triaged'];
     expect(priorities).toContain('essential');
