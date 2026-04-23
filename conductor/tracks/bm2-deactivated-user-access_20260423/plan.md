@@ -1,6 +1,6 @@
 # Implementation Plan
 
-## Phase 1: Swap Auth Helpers and Update Tests
+## Phase 1: Swap Auth Helpers and Update Tests [checkpoint: 8210db8]
 
 ### Task 1: Add active-auth tests for `lib/auth/server`
 - [x] Write tests for `requireActiveRequestSessionClaims` returning 401 when credential is missing/deactivated
