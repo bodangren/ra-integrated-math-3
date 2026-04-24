@@ -17,7 +17,7 @@
 | lib/practice/objective-proficiency.ts + objective-policy.ts unmigrated | High | Resolved | Extracted to packages/srs-engine/src/srs/; all imports rewired to @math-platform/srs-engine |
 | BM2 lib/auth ~250 lines duplicated from core-auth | High | Resolved | Re-export shims replace constants/session/password/demo-provisioning; server.ts + ip-hash.ts stay local |
 | BM2 lib/practice ~1305 lines duplicated from practice-core | High | Resolved | Re-export shims replace contract/timing/timing-baseline/srs-rating/error-analysis; engine/ stays local |
-| getTeacherClassProficiencyHandler massive N+1 | High | Open | S students * O objectives * 3 queries each (~1800 for 30S/20O); pre-fetch data outside loops |
+| getTeacherClassProficiencyHandler massive N+1 | High | Resolved | Pre-fetched all data outside S×O loop; reduced ~1800 queries to O(1) pre-fetches + local Map lookups |
 | SRS dashboard.ts streak calc untested | High | Open | Non-trivial logic with zero test coverage |
 | BM2 chatbot prompt injection defense still weak | Medium | Open | sanitizeInput only strips markdown chars; no system prompt guard or LLM-based filter |
 | 5 production `as any` casts on Convex `internal` (IM3) | Medium | Open | Stale generated types; run npx convex dev to regenerate |

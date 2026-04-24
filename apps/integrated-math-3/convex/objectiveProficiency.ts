@@ -41,6 +41,48 @@ function validatePriority(value: string): ObjectivePriority {
   return VALID_PRIORITIES.has(value) ? (value as ObjectivePriority) : 'essential';
 }
 
+type ProblemFamilyDoc = {
+  _id: Id<"problem_families">;
+  problemFamilyId: string;
+  objectiveIds: string[];
+  displayName: string;
+  description: string;
+  componentKey: string;
+  difficulty: string;
+  metadata?: unknown;
+};
+
+type CompetencyStandardDoc = {
+  _id: Id<"competency_standards">;
+  code: string;
+  description: string;
+  isActive: boolean;
+};
+
+type ObjectivePolicyDoc = {
+  _id: Id<"objective_policies">;
+  standardId: Id<"competency_standards">;
+  policy: string;
+  courseKey: string;
+  priority: number;
+};
+
+type ActivitySubmissionDoc = {
+  _id: Id<"activity_submissions">;
+  userId: Id<"profiles">;
+  activityId: Id<"activities">;
+  submissionData: unknown;
+  submittedAt: number;
+};
+
+type PreFetchedData = {
+  familiesByObjective: Map<string, ProblemFamilyDoc[]>;
+  baselines: TimingBaselines;
+  submissionsByStudent: Map<string, ActivitySubmissionDoc[]>;
+  standardsByObjective: Map<string, CompetencyStandardDoc>;
+  policiesByStandardId: Map<string, ObjectivePolicyDoc>;
+};
+
 
 
 async function fetchTimingBaselines(
@@ -128,6 +170,128 @@ async function fetchSubmissionTimings(
     }
   });
   return submissionTimings;
+}
+
+function deriveSubmissionTimingsFromPreFetched(
+  studentId: Id<"profiles">,
+  relevantReviews: Array<{
+    submissionId?: string;
+    cardId: Id<"srs_cards">;
+  }>,
+  preFetched: PreFetchedData
+): Map<string, number> {
+  const submissions = preFetched.submissionsByStudent.get(studentId) ?? [];
+  const submissionMap = new Map<string, ActivitySubmissionDoc>();
+  for (const sub of submissions) {
+    submissionMap.set(`${sub.activityId}-${sub._id}`, sub);
+  }
+
+  const uniqueActivityIds = new Set<string>();
+  for (const review of relevantReviews) {
+    if (review.submissionId) {
+      const lastDash = review.submissionId.lastIndexOf("-");
+      if (lastDash > 0) {
+        uniqueActivityIds.add(review.submissionId.slice(0, lastDash));
+      }
+    }
+  }
+
+  const submissionTimings = new Map<string, number>();
+  for (const activityId of uniqueActivityIds) {
+    for (const sub of submissions) {
+      if (String(sub.activityId) === activityId) {
+        const submissionData = sub.submissionData as
+          | { attemptNumber?: number; timing?: { activeMs?: number } }
+          | undefined;
+        const attemptNumber = submissionData?.attemptNumber ?? 1;
+        const sid = `${activityId}-${attemptNumber}`;
+        const activeMs = submissionData?.timing?.activeMs;
+        if (activeMs !== undefined) {
+          submissionTimings.set(sid, activeMs);
+        }
+      }
+    }
+  }
+  return submissionTimings;
+}
+
+async function preFetchTeacherClassData(
+  ctx: QueryCtx,
+  studentIds: Id<"profiles">[],
+  allStudentCards: Map<string, Array<{ objectiveId: string; problemFamilyId: string }>>
+): Promise<PreFetchedData> {
+  const allObjectiveIds = new Set<string>();
+  for (const cards of allStudentCards.values()) {
+    for (const card of cards) {
+      if (card.objectiveId) {
+        allObjectiveIds.add(card.objectiveId);
+      }
+    }
+  }
+  const objectiveIdArray = Array.from(allObjectiveIds);
+
+  const [allFamilies, allStandards, allPolicies] = await Promise.all([
+    ctx.db.query("problem_families").collect(),
+    Promise.all(
+      objectiveIdArray.map(objectiveId =>
+        ctx.db
+          .query("competency_standards")
+          .withIndex("by_code", (q) => q.eq("code", objectiveId))
+          .first()
+      )
+    ),
+    ctx.db.query("objective_policies").collect(),
+  ]);
+
+  const familiesByObjective = new Map<string, ProblemFamilyDoc[]>();
+  for (const family of allFamilies) {
+    for (const objId of family.objectiveIds) {
+      const existing = familiesByObjective.get(objId) ?? [];
+      existing.push(family);
+      familiesByObjective.set(objId, existing);
+    }
+  }
+
+  const allFamilyIds = new Set<string>();
+  for (const family of allFamilies) {
+    allFamilyIds.add(family.problemFamilyId);
+  }
+  const baselines = await fetchTimingBaselines(ctx, allFamilyIds);
+
+  const submissionsByStudent = new Map<string, ActivitySubmissionDoc[]>();
+  const studentSubmissionResults = await Promise.all(
+    studentIds.map(async (studentId) => {
+      const subs = await ctx.db
+        .query("activity_submissions")
+        .withIndex("by_user", (q) => q.eq("userId", studentId))
+        .collect();
+      return { studentId, subs };
+    })
+  );
+  for (const { studentId, subs } of studentSubmissionResults) {
+    submissionsByStudent.set(studentId, subs);
+  }
+
+  const standardsByObjective = new Map<string, CompetencyStandardDoc>();
+  objectiveIdArray.forEach((objectiveId, i) => {
+    const standard = allStandards[i];
+    if (standard) {
+      standardsByObjective.set(objectiveId, standard);
+    }
+  });
+
+  const policiesByStandardId = new Map<string, ObjectivePolicyDoc>();
+  for (const policy of allPolicies) {
+    policiesByStandardId.set(String(policy.standardId), policy);
+  }
+
+  return {
+    familiesByObjective,
+    baselines,
+    submissionsByStudent,
+    standardsByObjective,
+    policiesByStandardId,
+  };
 }
 
 export async function getObjectiveProficiencyHandler(
@@ -337,9 +501,77 @@ async function computeProficiencyForObjective(
     stateBefore: unknown;
     stateAfter: unknown;
     reviewedAt: number;
-  }>
+  }>,
+  preFetched?: PreFetchedData
 ) {
-  const families = await ctx.db
+  let families: ProblemFamilyDoc[];
+  let baselines: TimingBaselines;
+  let submissionTimings: Map<string, number>;
+  let priority: ObjectivePriority;
+
+  if (preFetched) {
+    families = preFetched.familiesByObjective.get(objectiveId) ?? [];
+    const familyIds = new Set(families.map((f) => f.problemFamilyId));
+    const filteredCards = allCards.filter((c) => familyIds.has(c.problemFamilyId));
+    const cardDocIds = new Set(filteredCards.map((c) => c._id));
+    const relevantReviews = allReviews.filter((r) => cardDocIds.has(r.cardId));
+
+    baselines = preFetched.baselines;
+    submissionTimings = deriveSubmissionTimingsFromPreFetched(studentId, relevantReviews, preFetched);
+
+    let p: ObjectivePriority = "essential";
+    const standard = preFetched.standardsByObjective.get(objectiveId);
+    if (standard) {
+      const policy = preFetched.policiesByStandardId.get(String(standard._id));
+      if (policy) {
+        p = validatePriority(policy.policy);
+      }
+    }
+    priority = p;
+
+    const familyIdSet = new Set(families.map((f) => f.problemFamilyId));
+    const filtered = allCards.filter((c) => familyIdSet.has(c.problemFamilyId));
+    const cardDocIdSet = new Set(filtered.map((c) => c._id));
+    const relevant = allReviews.filter((r) => cardDocIdSet.has(r.cardId));
+
+    const cardStates: ProficiencyCardState[] = [];
+    for (const card of filtered) {
+      const cardReviews = relevant.filter((r) => r.cardId === card._id);
+      if (cardReviews.length === 0) {
+        cardStates.push({
+          stability: card.stability,
+          difficulty: card.difficulty,
+          reps: card.reps,
+          lapses: card.lapses,
+          problemFamilyId: card.problemFamilyId,
+        });
+      } else {
+        for (const review of cardReviews) {
+          const reviewDurationMs = review.submissionId
+            ? submissionTimings.get(review.submissionId)
+            : undefined;
+          cardStates.push({
+            stability: card.stability,
+            difficulty: card.difficulty,
+            reps: card.reps,
+            lapses: card.lapses,
+            problemFamilyId: card.problemFamilyId,
+            lastReviewMs: review.reviewedAt,
+            reviewDurationMs,
+          });
+        }
+      }
+    }
+
+    const evidence = aggregateCardsToEvidence(cardStates, baselines);
+    return computeObjectiveProficiency({
+      objectiveId,
+      priority,
+      problemFamilyEvidences: evidence,
+    });
+  }
+
+  families = await ctx.db
     .query("problem_families")
       .withIndex("by_objectiveId", (q) =>
         // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Convex multi-entry array index expects element, not array
@@ -352,8 +584,8 @@ async function computeProficiencyForObjective(
   const cardDocIds = new Set(filteredCards.map((c) => c._id));
   const relevantReviews = allReviews.filter((r) => cardDocIds.has(r.cardId));
 
-  const submissionTimings = await fetchSubmissionTimings(ctx, studentId, relevantReviews);
-  const baselines = await fetchTimingBaselines(ctx, familyIds);
+  submissionTimings = await fetchSubmissionTimings(ctx, studentId, relevantReviews);
+  baselines = await fetchTimingBaselines(ctx, familyIds);
 
   const cardStates: ProficiencyCardState[] = [];
   for (const card of filteredCards) {
@@ -384,7 +616,7 @@ async function computeProficiencyForObjective(
     }
   }
 
-  let priority: ObjectivePriority = "essential";
+  priority = "essential";
   const standard = await ctx.db
     .query("competency_standards")
     .withIndex("by_code", (q) => q.eq("code", objectiveId))
@@ -559,6 +791,8 @@ export async function getTeacherClassProficiencyHandler(
     }
   });
 
+  const preFetched = await preFetchTeacherClassData(ctx, studentIds, allStudentCards);
+
   const teacherViews: TeacherProficiencyView[] = [];
 
   for (const objectiveId of allObjectiveIds) {
@@ -576,7 +810,8 @@ export async function getTeacherClassProficiencyHandler(
           studentId,
           objectiveId,
           cards,
-          reviews
+          reviews,
+          preFetched
         );
         return { studentId, result };
       })

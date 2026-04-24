@@ -730,6 +730,10 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
       *Add per-user rate limiting to 5 unprotected BM2 API endpoints: phases/complete, assessment, activities, error-summary, ai-error-summary*
       *Link: [./conductor/tracks/rate_limiting_api_endpoints_20260424/](./conductor/tracks/rate_limiting_api_endpoints_20260424/)*
 
+- [~] **Track: Fix getTeacherClassProficiencyHandler N+1 Queries**
+      *Pre-fetch problem_families, timing_baselines, activity_submissions, competency_standards, objective_policies outside S×O loop to reduce ~1800 queries to O(1) pre-fetches*
+      *Link: [./conductor/tracks/teacher-class-proficiency-n1_20260424/](./conductor/tracks/teacher-class-proficiency-n1_20260424/)*
+
 - [ ] **Track: Lesson Version Query Optimization**
       *Fix N+1 query patterns in public.ts getCurriculum/getUnitSummaries and isStudentEnrolledInClassForLesson via batched parallel queries*
       *Link: [./conductor/tracks/lesson_version_query_optimization_20260424/](./conductor/tracks/lesson_version_query_optimization_20260424/)*

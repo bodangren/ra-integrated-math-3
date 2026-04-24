@@ -96,6 +96,7 @@ function makeMockCtx(overrides: {
   };
 
 const problemFamilyQueryMock = {
+      collect: vi.fn().mockResolvedValue(problemFamilies),
       withIndex: vi.fn().mockImplementation(
         (indexName: string, fn: (q: { eq: (field: string, value: unknown) => unknown }) => void) => {
           let capturedObjectiveId: string | null = null;
@@ -132,22 +133,33 @@ const problemFamilyQueryMock = {
   };
 
   const submissionQueryMock = {
+    collect: vi.fn().mockResolvedValue(submissions),
     withIndex: vi.fn().mockImplementation(
       (_indexName: string, fn: (q: { eq: (field: string, value: string) => unknown }) => void) => {
         let capturedActivityId: string | null = null;
+        let capturedUserId: string | null = null;
         const mockQ = {
           eq: vi.fn().mockImplementation((field: string, value: string) => {
             if (field === 'activityId') {
               capturedActivityId = value;
+            } else if (field === 'userId') {
+              capturedUserId = value;
             }
             return mockQ;
           }),
         };
         fn(mockQ);
         return {
-          collect: vi.fn().mockResolvedValue(
-            submissions.filter((s) => s.activityId === capturedActivityId)
-          ),
+          collect: vi.fn().mockImplementation(() => {
+            let filtered = submissions;
+            if (capturedUserId) {
+              filtered = filtered.filter((s) => String(s.userId) === capturedUserId);
+            }
+            if (capturedActivityId) {
+              filtered = filtered.filter((s) => String(s.activityId) === capturedActivityId);
+            }
+            return Promise.resolve(filtered);
+          }),
         };
       }
     ),
@@ -188,6 +200,7 @@ const problemFamilyQueryMock = {
 
   let lastStandardId: string | null = null;
   const policyQueryMock = {
+    collect: vi.fn().mockResolvedValue(policies),
     withIndex: vi.fn().mockImplementation(
       (_indexName: string, fn: (q: { eq: (field: string, value: string) => unknown }) => void) => {
         const mockQ = {
@@ -1222,28 +1235,40 @@ describe('getTeacherClassProficiencyHandler', () => {
     })();
 
     const problemFamilyQueryMock = {
+      collect: vi.fn().mockResolvedValue(problemFamilies),
       withIndex: vi.fn().mockReturnValue({
         collect: vi.fn().mockResolvedValue(problemFamilies),
       }),
     };
 
     const submissionQueryMock = {
+      collect: vi.fn().mockResolvedValue(submissions),
       withIndex: vi.fn().mockImplementation(
         (_indexName: string, fn: (q: { eq: (field: string, value: string) => unknown }) => void) => {
           let capturedActivityId: string | null = null;
+          let capturedUserId: string | null = null;
           const mockQ = {
             eq: vi.fn().mockImplementation((field: string, value: string) => {
               if (field === 'activityId') {
                 capturedActivityId = value;
+              } else if (field === 'userId') {
+                capturedUserId = value;
               }
               return mockQ;
             }),
           };
           fn(mockQ);
           return {
-            collect: vi.fn().mockResolvedValue(
-              submissions.filter((s) => s.activityId === capturedActivityId)
-            ),
+            collect: vi.fn().mockImplementation(() => {
+              let filtered = submissions;
+              if (capturedUserId) {
+                filtered = filtered.filter((s) => String(s.userId) === capturedUserId);
+              }
+              if (capturedActivityId) {
+                filtered = filtered.filter((s) => String(s.activityId) === capturedActivityId);
+              }
+              return Promise.resolve(filtered);
+            }),
           };
         }
       ),
@@ -1283,6 +1308,7 @@ describe('getTeacherClassProficiencyHandler', () => {
 
     let lastStandardId: string | null = null;
     const policyQueryMock = {
+      collect: vi.fn().mockResolvedValue(policies),
       withIndex: vi.fn().mockImplementation(
         (_indexName: string, fn: (q: { eq: (field: string, value: string) => unknown }) => void) => {
           const mockQ = {
