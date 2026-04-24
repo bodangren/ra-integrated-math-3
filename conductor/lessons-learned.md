@@ -51,3 +51,4 @@
 - (2026-04-24, code-review-21) When fixing N+1 queries, verify ALL related functions — not just the hot path. teacher.ts getLessonErrorSummary was fixed but isStudentEnrolledInClassForLesson and getTeacherClassProficiencyHandler still have N+1 patterns
 - (2026-04-24, code-review-21) cloudflare-deploy.yml `npm ci --prefix` does not resolve workspace deps in a monorepo; always use root-level `npm ci`
 - (2026-04-24, code-review-21) `describe.skip` without a TODO comment creates invisible test debt; always annotate with reason and tracking reference
+- (2026-04-24, phase-7) When mocking internal from `@/lib/convex/server`, vi.mock path must match import path; lesson-chatbot route imports from `@/convex/_generated/api` not `@/lib/convex/server`

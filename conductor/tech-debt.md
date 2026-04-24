@@ -27,7 +27,7 @@
 | IM3 Convex types stale: rateLimits + student.getLessonForChatbot | Medium | Open | Generated api.d.ts missing new handlers; must run npx convex dev to regenerate |
 | RSC entry chunk 750 KB | Medium | Partial | Activity lazy-loading done (6 chunks); page chunk 785 KB, vendor-charts 830 KB; further splitting needed |
 | Cloudflare deploy uses partial npm install | Medium | Resolved | Changed to root-level `npm ci`; workspace deps now resolved |
-| teacher-reporting: versionByLessonId picks first version silently | Medium | Open | No guarantee first version is the active one |
+| teacher-reporting: versionByLessonId picks first version silently | Medium | Resolved | Selects published > review > draft > archived; status field added to RawLessonVersion |
 | SRS reviews.ts untested | Medium | Open | saveReview, getReviewsByCard, getReviewsByStudent — no tests |
 | isStudentEnrolledInClassForLesson N+1 | Medium | Open | 2 sequential queries per enrollment in loop; batch with Promise.all |
 | N+1: lesson_versions per-lesson in public.ts | Medium | Open | getCurriculum + getUnitSummaries query per lesson; fetch once, build map |
@@ -38,6 +38,6 @@
 | BM2 9 governance test suites permanently skipped | Medium | Open | TODO(monorepo) comments added; all need monorepo-aware path fixes |
 | 40+ seed lesson tests vacuous | Low | Open | Test hardcoded data against itself; convert to data-driven validator |
 | StepByStepper-guided hint tracking test flaky in full suite | Low | Open | Passes in isolation; timing/ordering issue in full run |
-| SubmissionDetailModal: array index used as React key | Low | Open | Should use stable ID |
+| SubmissionDetailModal: array index used as React key | Low | Resolved | Use `${evidence.componentKey}-${evidence.submittedAt}` as stable key |
 | BM2 activities/complete/route.ts proxies errorPayload.details | Low | Open | Internal API details exposed to client; sanitize upstream response |
 | practice-core: computeBaseRating([]) untested edge case | Low | Open | Empty parts array returns 'Good' — may be unintended |
