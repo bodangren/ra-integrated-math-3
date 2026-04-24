@@ -275,7 +275,7 @@ describe('SubmissionDetailModal', () => {
           },
         ],
       });
-      const { container } = render(
+      render(
         <SubmissionDetailModal
           open={true}
           onOpenChange={vi.fn()}

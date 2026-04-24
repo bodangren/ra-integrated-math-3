@@ -13,6 +13,8 @@ vi.mock('@/lib/auth/server', () => ({
 vi.mock('@/lib/convex/server', () => ({
   fetchInternalQuery: mockFetchInternalQuery,
   fetchInternalMutation: mockFetchInternalMutation,
+}));
+vi.mock('@/convex/_generated/api', () => ({
   internal: {
     activities: {
       getProfileByUsername: 'activities:getProfileByUsername',

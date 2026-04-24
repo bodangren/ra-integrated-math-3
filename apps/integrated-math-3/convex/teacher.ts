@@ -1102,7 +1102,7 @@ export const getLessonErrorSummary = internalQuery({
         const profile = await ctx.db.get(sid as Id<"profiles">);
         return profile?.organizationId === teacher.organizationId ? sid : null;
       }),
-    )).filter((x): x is string => x !== null);
+    )).filter((x): x is Id<"profiles"> => x !== null);
 
     if (orgStudentIds.length === 0) return null;
 
