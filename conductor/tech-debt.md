@@ -34,7 +34,7 @@
 | internal Convex fns rely on action wrapper for auth | Medium | Open | activities.ts, study.ts, srs/cards.ts, student.ts have no defense-in-depth |
 | getDueCards fetches all cards then filters by date in-memory | Medium | Open | by_student_and_due index has dueDate but no range query used |
 | Session history pagination fetches all then slices client-side | Medium | Open | Use Convex cursor pagination instead |
-| equivalence.ts factoredPattern4 can't match negative leading coeff | Medium | Open | (\d*\.?\d*) groups miss `-` prefix; needs ([+-]?\d*\.?\d*) |
+| equivalence.ts factoredPattern4 can't match negative leading coeff | Medium | Resolved | Fixed: groups now use ([+-]?\d*\.?\d*); parseCoeff helper handles ±1 edge case |
 | BM2 9 governance test suites permanently skipped | Medium | Open | TODO(monorepo) comments added; all need monorepo-aware path fixes |
 | 40+ seed lesson tests vacuous | Low | Open | Test hardcoded data against itself; convert to data-driven validator |
 | StepByStepper-guided hint tracking test flaky in full suite | Low | Open | Passes in isolation; timing/ordering issue in full run |

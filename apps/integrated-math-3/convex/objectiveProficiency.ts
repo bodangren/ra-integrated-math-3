@@ -529,14 +529,9 @@ async function computeProficiencyForObjective(
     }
     priority = p;
 
-    const familyIdSet = new Set(families.map((f) => f.problemFamilyId));
-    const filtered = allCards.filter((c) => familyIdSet.has(c.problemFamilyId));
-    const cardDocIdSet = new Set(filtered.map((c) => c._id));
-    const relevant = allReviews.filter((r) => cardDocIdSet.has(r.cardId));
-
     const cardStates: ProficiencyCardState[] = [];
-    for (const card of filtered) {
-      const cardReviews = relevant.filter((r) => r.cardId === card._id);
+    for (const card of filteredCards) {
+      const cardReviews = relevantReviews.filter((r) => r.cardId === card._id);
       if (cardReviews.length === 0) {
         cardStates.push({
           stability: card.stability,

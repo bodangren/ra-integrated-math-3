@@ -54,7 +54,7 @@ describe('Cloudflare Deploy Workflow', () => {
     });
 
     it('should install dependencies with npm ci', () => {
-      expect(workflowContent).toMatch(/run:\s*\|\s*npm ci/);
+      expect(workflowContent).toMatch(/run:\s*(\|\s*)?npm ci/);
     });
 
     it('should run lint with CI=true', () => {

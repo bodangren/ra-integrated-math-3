@@ -187,12 +187,17 @@ function expandPolynomial(expr: string): string {
   }
 
   // Pattern: (ax + b)(cx + d)
-  const factoredPattern4 = /\((\d*\.?\d*)x\+?([+-]?\d*\.?\d*)\)\((\d*\.?\d*)x\+?([+-]?\d*\.?\d*)\)/;
+  const factoredPattern4 = /\(([+-]?\d*\.?\d*)x\+?([+-]?\d*\.?\d*)\)\(([+-]?\d*\.?\d*)x\+?([+-]?\d*\.?\d*)\)/;
   const match4 = expr.match(factoredPattern4);
   if (match4) {
-    const a = parseFloat(match4[1]) || 1;
+    const parseCoeff = (s: string, fallback: number) => {
+      if (s === '' || s === '+') return fallback;
+      if (s === '-') return -fallback;
+      return parseFloat(s) || fallback;
+    };
+    const a = parseCoeff(match4[1], 1);
     const b = parseFloat(match4[2]) || 0;
-    const c = parseFloat(match4[3]) || 1;
+    const c = parseCoeff(match4[3], 1);
     const d = parseFloat(match4[4]) || 0;
     const ac = a * c;
     const adbc = a * d + b * c;
