@@ -27,7 +27,6 @@
 ## Patterns That Worked Well
 
 - (2026-04-05, setup) Existing `lib/` modules are pure functions with clear types — excellent for testing
-- (2026-04-15, harden-manual-approval) Harness gating: expose canApprove via callback, track in parent, gate approve button
 - (2026-04-16, srs-product-contract) Single canonical contract module with re-exports; downstream imports from one surface
 - (2026-04-23, review-14) URL search params + client component selector pattern works well for server-rendered pages needing client interactivity
 
@@ -47,3 +46,4 @@
 - (2026-04-24, code-review-21) cloudflare-deploy.yml `npm ci --prefix` does not resolve workspace deps in a monorepo; always use root-level `npm ci`
 - (2026-04-24, code-review-21) `describe.skip` without a TODO comment creates invisible test debt; always annotate with reason and tracking reference
 - (2026-04-24, teacher-n1-fix) When refactoring N+1 queries in nested loops, pre-fetch all shared data into Maps before the outer loop; pass pre-fetched data as optional parameter to preserve backward compatibility for single-student callers
+- (2026-04-25, lesson-version-n1) `buildLatestPublishedLessonVersionMap` already exists in published-curriculum.ts for batch lookups — use it instead of per-lesson `resolveLatestPublishedLessonVersion` + sequential DB queries; for enrollment checks, use a secondary index (`by_lesson`) to fetch all matching rows in one query then filter in-memory with a Set

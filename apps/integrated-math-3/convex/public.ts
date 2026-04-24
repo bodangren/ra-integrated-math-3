@@ -1,6 +1,6 @@
 import { query } from "./_generated/server";
 import { coerceNullableString, getOrCreateMapEntry } from "./dashboardHelpers";
-import { resolveLatestPublishedLessonVersion } from "../lib/progress/published-curriculum";
+import { buildLatestPublishedLessonVersionMap } from "../lib/progress/published-curriculum";
 
 interface PublicUnitSummary {
   unitNumber: number;
@@ -85,23 +85,20 @@ export const getUnitSummaries = query({
   handler: async (ctx) => {
     const allLessons = await ctx.db.query("lessons").collect();
 
-    // Sort by unitNumber ascending, orderIndex ascending
     allLessons.sort((a, b) => {
       if (a.unitNumber !== b.unitNumber) return a.unitNumber - b.unitNumber;
       return a.orderIndex - b.orderIndex;
     });
 
+    const allVersions = await ctx.db.query("lesson_versions").collect();
+    const lessonIds = allLessons.map((l) => l._id);
+    const versionMap = buildLatestPublishedLessonVersionMap(allVersions, lessonIds);
+
     const units = new Map<number, PublicUnitSummary>();
 
     for (const lesson of allLessons) {
       if (!units.has(lesson.unitNumber)) {
-        // Fetch latest version
-        const versions = await ctx.db
-          .query("lesson_versions")
-          .withIndex("by_lesson", (q) => q.eq("lessonId", lesson._id))
-          .collect();
-
-        const latestVersion = resolveLatestPublishedLessonVersion(versions);
+        const latestVersion = versionMap.get(lesson._id) ?? null;
 
         const rawTitle =
           lesson.metadata?.unitContent?.introduction?.unitTitle ??
@@ -132,21 +129,20 @@ export const getCurriculum = query({
   args: {},
   handler: async (ctx) => {
     const lessonRows = await ctx.db.query("lessons").collect();
-    
+
     lessonRows.sort((a, b) => {
       if (a.unitNumber !== b.unitNumber) return a.unitNumber - b.unitNumber;
       return a.orderIndex - b.orderIndex;
     });
 
+    const allVersions = await ctx.db.query("lesson_versions").collect();
+    const lessonIds = lessonRows.map((l) => l._id);
+    const versionMap = buildLatestPublishedLessonVersionMap(allVersions, lessonIds);
+
     const units = new Map<number, PublicCurriculumUnit>();
 
     for (const lesson of lessonRows) {
-      const versions = await ctx.db
-        .query("lesson_versions")
-        .withIndex("by_lesson", (q) => q.eq("lessonId", lesson._id))
-        .collect();
-
-      const latestVersion = resolveLatestPublishedLessonVersion(versions);
+      const latestVersion = versionMap.get(lesson._id) ?? null;
 
       const effectiveTitle = latestVersion?.title ?? lesson.title;
       const effectiveDescription = coerceNullableString(
@@ -166,9 +162,9 @@ export const getCurriculum = query({
           effectiveDescription ??
           "Explore core accounting and Excel skills through real classroom projects.";
 
-        const objectives = 
-          lesson.metadata?.unitContent?.objectives?.content ?? 
-          lesson.learningObjectives ?? 
+        const objectives =
+          lesson.metadata?.unitContent?.objectives?.content ??
+          lesson.learningObjectives ??
           [];
 
         return {

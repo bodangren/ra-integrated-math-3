@@ -52,7 +52,7 @@ Monorepo migration complete (Waves 0-6). All major feature tracks done. Current 
 - [ ] Monorepo tech-debt triage Phase 7 (UI & Minor Items)
 - [ ] Monorepo tech-debt triage Phase 8 (Final Verification)
 - [ ] getTeacherClassProficiencyHandler N+1 (S*O*3 queries)
-- [ ] N+1 queries: public.ts lesson_versions per-lesson fetch
+- [x] N+1 queries: public.ts lesson_versions per-lesson fetch
 - [ ] SRS engine studentId type alignment (string → branded type)
 - [ ] Convex generated types regeneration
 - [ ] RSC bundle: page chunk 785 KB → < 500 KB

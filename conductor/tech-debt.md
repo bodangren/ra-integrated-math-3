@@ -29,8 +29,8 @@
 | Cloudflare deploy uses partial npm install | Medium | Resolved | Changed to root-level `npm ci`; workspace deps now resolved |
 | teacher-reporting: versionByLessonId picks first version silently | Medium | Resolved | Selects published > review > draft > archived; status field added to RawLessonVersion |
 | SRS reviews.ts untested | Medium | Open | saveReview, getReviewsByCard, getReviewsByStudent — no tests |
-| isStudentEnrolledInClassForLesson N+1 | Medium | Open | 2 sequential queries per enrollment in loop; batch with Promise.all |
-| N+1: lesson_versions per-lesson in public.ts | Medium | Open | getCurriculum + getUnitSummaries query per lesson; fetch once, build map |
+| isStudentEnrolledInClassForLesson N+1 | Medium | Resolved | Replaced with by_lesson index + Set membership check; Promise.all for fallback |
+| N+1: lesson_versions per-lesson in public.ts | Medium | Resolved | getCurriculum + getUnitSummaries now use buildLatestPublishedLessonVersionMap for single batch query |
 | internal Convex fns rely on action wrapper for auth | Medium | Open | activities.ts, study.ts, srs/cards.ts, student.ts have no defense-in-depth |
 | getDueCards fetches all cards then filters by date in-memory | Medium | Open | by_student_and_due index has dueDate but no range query used |
 | Session history pagination fetches all then slices client-side | Medium | Open | Use Convex cursor pagination instead |

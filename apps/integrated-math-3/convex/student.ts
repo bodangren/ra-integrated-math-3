@@ -427,31 +427,31 @@ export const isStudentEnrolledInClassForLesson = internalQuery({
       return false;
     }
 
-    let anyClassLessonExists = false;
-    for (const enrollment of activeEnrollments) {
-      const classLesson = await ctx.db
-        .query("class_lessons")
-        .withIndex("by_class_and_lesson", (q) =>
-          q.eq("classId", enrollment.classId).eq("lessonId", args.lessonId)
-        )
-        .first();
+    const activeClassIds = new Set(activeEnrollments.map((e) => e.classId));
 
-      if (classLesson) {
-        return true;
-      }
+    const classLessonsForLesson = await ctx.db
+      .query("class_lessons")
+      .withIndex("by_lesson", (q) => q.eq("lessonId", args.lessonId))
+      .collect();
 
-      const totalForClass = await ctx.db
-        .query("class_lessons")
-        .withIndex("by_class_and_lesson", (q) =>
-          q.eq("classId", enrollment.classId)
-        )
-        .first();
-      if (totalForClass) {
-        anyClassLessonExists = true;
-      }
+    const enrolledClassHasLesson = classLessonsForLesson.some(
+      (cl) => activeClassIds.has(cl.classId),
+    );
+    if (enrolledClassHasLesson) {
+      return true;
     }
 
-    if (!anyClassLessonExists) {
+    const anyClassLessonChecks = await Promise.all(
+      [...activeClassIds].map((classId) =>
+        ctx.db
+          .query("class_lessons")
+          .withIndex("by_class_and_lesson", (q) => q.eq("classId", classId))
+          .first(),
+      ),
+    );
+
+    const anyClassHasLessons = anyClassLessonChecks.some((result) => result !== null);
+    if (!anyClassHasLessons) {
       return false;
     }
 
