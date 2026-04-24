@@ -710,7 +710,7 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
   - Phase 1: Seed Mutation and Demo Wiring [COMPLETE]
   - Phase 2: Verification [COMPLETE]
 
- - [ ] **Track: Monorepo Tech Debt Triage & Resolution**
+ - [x] **Track: Monorepo Tech Debt Triage & Resolution** — **COMPLETED**
       *Investigate and resolve all 45 open tech debt items to solidify monorepo migration — triage, fix, or close each item*
       *Link: [./conductor/tracks/monorepo-tech-debt-triage_20260422/](./conductor/tracks/monorepo-tech-debt-triage_20260422/)*
        - Phase 1: BM2 TypeScript & Runtime Correctness [x] [checkpoint: e0d36db]
@@ -720,7 +720,7 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
        - Phase 5: Package Quality & Consistency [x] [checkpoint: cbae9ca]
        - Phase 6: AI Tutoring & Workbook Quality [x] [checkpoint: a6b2a11]
         - Phase 7: UI & Minor Items [x]
-       - Phase 8: Tech Debt Registry Cleanup & Final Verification [ ]
+       - Phase 8: Tech Debt Registry Cleanup & Final Verification [x]
 
 - [ ] **Track: Convex Schema Strict Validation**
       *Replace 21 v.any() fields in IM3 Convex schema with typed validators and eliminate 5 production as any casts on Convex internal*
