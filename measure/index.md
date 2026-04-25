@@ -28,6 +28,7 @@ Each app owns its own product vision, guidelines, and design system. The root-le
 | App | Path |
 |-----|------|
 | **Monorepo (shared)** | `./product.md` |
+| **Integrated Math 1** | `../apps/integrated-math-1/product.md` |
 | **Integrated Math 2** | `../apps/integrated-math-2/product.md` |
 | **Integrated Math 3** | `../apps/integrated-math-3/product.md` |
 | **Bus Math v2** | `../apps/bus-math-v2/product.md` |
@@ -38,6 +39,7 @@ Each app owns its own product vision, guidelines, and design system. The root-le
 | App | Path |
 |-----|------|
 | **Monorepo (shared)** | `./product-guidelines.md` |
+| **Integrated Math 1** | `../apps/integrated-math-1/product-guidelines.md` |
 | **Integrated Math 2** | `../apps/integrated-math-2/product-guidelines.md` |
 | **Integrated Math 3** | `../apps/integrated-math-3/product-guidelines.md` |
 | **Bus Math v2** | `../apps/bus-math-v2/product-guidelines.md` |
@@ -47,6 +49,7 @@ Each app owns its own product vision, guidelines, and design system. The root-le
 
 | App | Path |
 |-----|------|
+| **Integrated Math 1** | `../apps/integrated-math-1/DESIGN.md` |
 | **Integrated Math 2** | `../apps/integrated-math-2/DESIGN.md` |
 | **Integrated Math 3** | `../apps/integrated-math-3/DESIGN.md` |
 | **Bus Math v2** | `../apps/bus-math-v2/DESIGN.md` |

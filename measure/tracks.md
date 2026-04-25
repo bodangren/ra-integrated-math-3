@@ -771,6 +771,52 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 ## Integrated Math 2
 
-- [ ] **Track: Scaffold Integrated Math 2 Application**
+- [x] **Track: Scaffold Integrated Math 2 Application** — **COMPLETED**
      *Create minimal runnable shell for apps/integrated-math-2/ — config, Convex schema, design system (IM3 orange), auth, layout, landing page, seed data (13 units, ~67 lessons)*
-     *Link: [./tracks/scaffold-im2_20260425/](./tracks/scaffold-im2_20260425/)*
+     *Link: [./archive/scaffold-im2_20260425/](./archive/scaffold-im2_20260425/)*
+
+## Integrated Math 1
+
+- [ ] **Track: Scaffold Integrated Math 1 Application**
+     *Create minimal runnable shell for apps/integrated-math-1/ — config, Convex schema, design system (IM2 orange), auth, layout, landing page, seed data (14 modules, ~99 lessons)*
+     *Link: [./tracks/scaffold-im1_20260425/](./tracks/scaffold-im1_20260425/)*
+
+## Multi-App Curriculum Program (IM1, IM2, PreCalc)
+
+Parallel tracks delivering complete curriculum for all three new apps. Tracks 1 and 2-4 can run in parallel; Tracks 5-8 are sequential dependencies.
+
+- [ ] **Track: Activity Component Extraction**
+     *Extract generic activity components from IM3 to shared package for IM2 and PreCalculus adoption*
+     *Link: [./tracks/extract-activity-components_20260425/](./tracks/extract-activity-components_20260425/)*
+
+- [ ] **Track: Curriculum Content Authoring — IM1**
+     *Author complete curriculum content for Integrated Math 1: 14 modules, ~99 lessons*
+     *Link: [./tracks/curriculum-authoring-im1_20260425/](./tracks/curriculum-authoring-im1_20260425/)*
+
+- [ ] **Track: Curriculum Content Authoring — IM2**
+     *Author complete curriculum content for Integrated Math 2: 13 units, ~67 lessons*
+     *Link: [./tracks/curriculum-authoring-im2_20260425/](./tracks/curriculum-authoring-im2_20260425/)*
+
+- [ ] **Track: Curriculum Content Authoring — PreCalc**
+     *Author complete curriculum content for AP Precalculus: 4 units, ~54 lessons*
+     *Link: [./tracks/curriculum-authoring-precalc_20260425/](./tracks/curriculum-authoring-precalc_20260425/)*
+
+- [ ] **Track: Standards & Objective Seeding — All Apps**
+     *Seed competency standards, lesson-standards mappings, and objective policies for IM1, IM2, and PreCalculus*
+     *Depends on: Tracks 2, 3, 4*
+     *Link: [./tracks/standards-seeding-multi-app_20260425/](./tracks/standards-seeding-multi-app_20260425/)*
+
+- [ ] **Track: Lesson Seeding — All Apps**
+     *Seed all curriculum lessons into Convex database for IM1, IM2, and PreCalculus*
+     *Depends on: Tracks 2, 3, 4, 5*
+     *Link: [./tracks/lesson-seeding-multi-app_20260425/](./tracks/lesson-seeding-multi-app_20260425/)*
+
+- [ ] **Track: Problem Families & Practice Items — All Apps**
+     *Define problem families and practice item blueprints for IM1, IM2, and PreCalculus*
+     *Depends on: Track 6*
+     *Link: [./tracks/problem-families-multi-app_20260425/](./tracks/problem-families-multi-app_20260425/)*
+
+- [ ] **Track: Demo Environment & Verification — All Apps**
+     *Seed demo environments and run end-to-end verification for IM1, IM2, and PreCalculus*
+     *Depends on: Tracks 6, 7*
+     *Link: [./tracks/demo-verification-multi-app_20260425/](./tracks/demo-verification-multi-app_20260425/)*
