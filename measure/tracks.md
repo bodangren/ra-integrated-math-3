@@ -777,9 +777,9 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 ## Integrated Math 1
 
-- [ ] **Track: Scaffold Integrated Math 1 Application**
+- [x] **Track: Scaffold Integrated Math 1 Application** — **COMPLETED**
      *Create minimal runnable shell for apps/integrated-math-1/ — config, Convex schema, design system (IM2 orange), auth, layout, landing page, seed data (14 modules, ~99 lessons)*
-     *Link: [./tracks/scaffold-im1_20260425/](./tracks/scaffold-im1_20260425/)*
+     *Link: [./archive/scaffold-im1_20260425/](./archive/scaffold-im1_20260425/)*
 
 ## Multi-App Curriculum Program (IM1, IM2, PreCalc)
 
