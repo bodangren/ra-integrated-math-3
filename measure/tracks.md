@@ -767,7 +767,7 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 - [x] **Track: Scaffold AP Precalculus Application** — **COMPLETED**
      *Create minimal runnable shell for apps/pre-calculus/ — config, Convex schema, design system, auth, layout, landing page, seed data*
-     *Link: [./tracks/scaffold-pre-calculus_20260425/](./tracks/scaffold-pre-calculus_20260425/)*
+     *Link: [./archive/scaffold-pre-calculus_20260425/](./archive/scaffold-pre-calculus_20260425/)*
 
 ## Integrated Math 2
 
