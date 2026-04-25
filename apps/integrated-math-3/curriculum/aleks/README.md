@@ -14,11 +14,11 @@ Current local sources used for this planning layer:
 | `curriculum/module-*-class-period-plan.md` | Canonical period-by-period plans for all 9 modules. |
 | `curriculum/modules/module-*-lesson-*` | Lesson source files with worked examples and objective alignment. |
 | `curriculum/ALEKS-practice-problems.htm` | Local ALEKS syllabus export used to derive visible module, lesson, and topic text. |
-| `conductor/course-objectives.md` | Objective codes and proficiency definitions used by the period plans. |
-| `conductor/practice-component-contract.md` | Local `practice.v1` contract that problem families must satisfy when implemented. |
-| `conductor/tracks/algebraic-examples_20260406/` | Existing Module 1 component planning for step-by-step algebraic problem types. |
-| `conductor/tracks/graphing-components_20260406/` | Existing Module 1 component planning for graphing problem variants. |
-| `/home/daniel-bo/Desktop/bus-math-v2/conductor/curriculum/practice-component-contract.md` | Reference-only pattern for treating ALEKS-style items as reusable families rather than one-off components. |
+| `measure/course-objectives.md` | Objective codes and proficiency definitions used by the period plans. |
+| `measure/practice-component-contract.md` | Local `practice.v1` contract that problem families must satisfy when implemented. |
+| `measure/tracks/algebraic-examples_20260406/` | Existing Module 1 component planning for step-by-step algebraic problem types. |
+| `measure/tracks/graphing-components_20260406/` | Existing Module 1 component planning for graphing problem variants. |
+| `/home/daniel-bo/Desktop/bus-math-v2/measure/practice-component-contract.md` | Reference-only pattern for treating ALEKS-style items as reusable families rather than one-off components. |
 
 The actionable ALEKS precedent in local files is the family-based modeling approach from `bus-math-v2`, not a requirement to create one component per ALEKS row.
 

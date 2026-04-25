@@ -1,0 +1,32 @@
+# Implementation Plan: Cloudflare CI/CD Hardening
+
+## Phase 1: Cloudflare Worker Configuration
+
+### Tasks
+
+- [x] **Task: Create wrangler.jsonc configuration**
+  - [x] Write wrangler config with project name, vinext entry point, compatibility flags, and environment variables
+  - [x] Verify `nodejs_compat` flag is set
+  - [x] Document required Wrangler secrets
+
+- [x] **Task: Create Cloudflare worker entry point** [checkpoint: 7f3d2a1]
+  - [x] Write `cloudflare/worker.ts` importing vinext handler with asset fallback pattern
+  - [x] Test handler caching for warm invocations
+
+- [x] **Task: Measure - User Manual Verification 'Phase 1' (Protocol in workflow.md)**
+
+## Phase 2: GitHub Actions Workflow [COMPLETE] [checkpoint: 4e2a3ce]
+
+### Tasks
+
+- [x] **Task: Create CI/CD workflow** (completed during Phase 1 as `.github/workflows/cloudflare-deploy.yml`)
+  - [x] Write `.github/workflows/deploy.yml` with push trigger, path ignores, concurrency group
+  - [x] Implement pipeline steps: checkout → Node setup → npm ci → lint → test → build → deploy
+  - [x] Add failure notification step
+
+- [x] **Task: Verify pipeline end-to-end** [64f2a3d]
+  - [x] Write workflow validation tests
+  - [x] Confirm lint/test/build gates pass locally
+  - [x] Verify deploy step configuration matches spec
+
+- [x] **Task: Measure - Phase Completion Verification 'Phase 2' (Protocol in workflow.md)**

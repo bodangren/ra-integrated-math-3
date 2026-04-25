@@ -7,7 +7,7 @@ import { submissionDataSchema } from '@/lib/db/schema/activity-submissions';
 
 const contractDocPath = path.resolve(
   process.cwd(),
-  'conductor/curriculum/practice-component-contract.md',
+  'measure/practice-component-contract.md',
 );
 
 // TODO(monorepo): skipped — contract doc path resolves relative to BM2 cwd; needs monorepo-aware path

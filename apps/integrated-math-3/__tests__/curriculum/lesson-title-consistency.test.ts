@@ -3,7 +3,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const appRoot = process.cwd();
-const monorepoRoot = existsSync(join(appRoot, '..', '..', 'conductor', 'tracks.md'))
+const monorepoRoot = existsSync(join(appRoot, '..', '..', 'measure', 'tracks.md'))
   ? join(appRoot, '..', '..')
   : appRoot;
 
@@ -142,16 +142,16 @@ describe('curriculum lesson title consistency', () => {
     }
   });
 
-  it('keeps curriculum-bearing Conductor track titles aligned to lesson source headings', () => {
-    const conductorFiles = [
-      'conductor/tracks.md',
-      'conductor/archive/module-1-seed_20260406/plan.md',
-      'conductor/archive/module-1-seed_20260406/spec.md',
-      'conductor/archive/module-2-seed_20260415/plan.md',
-      'conductor/archive/module-2-seed_20260415/spec.md',
+  it('keeps curriculum-bearing Measure track titles aligned to lesson source headings', () => {
+    const measureFiles = [
+      'measure/tracks.md',
+      'measure/archive/module-1-seed_20260406/plan.md',
+      'measure/archive/module-1-seed_20260406/spec.md',
+      'measure/archive/module-2-seed_20260415/plan.md',
+      'measure/archive/module-2-seed_20260415/spec.md',
     ];
 
-    for (const relativePath of conductorFiles) {
+    for (const relativePath of measureFiles) {
       const lines = read(relativePath).split(/\r?\n/);
 
       lines.forEach((line, index) => {
@@ -170,8 +170,8 @@ describe('curriculum lesson title consistency', () => {
 
   it('keeps seed-track phase counts aligned to lesson source headings', () => {
     const seedSpecFiles = [
-      'conductor/archive/module-1-seed_20260406/spec.md',
-      'conductor/archive/module-2-seed_20260415/spec.md',
+      'measure/archive/module-1-seed_20260406/spec.md',
+      'measure/archive/module-2-seed_20260415/spec.md',
     ];
 
     for (const relativePath of seedSpecFiles) {

@@ -1,0 +1,11 @@
+{
+  "track_id": "extract-activity-components_20260425",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-04-25T00:00:00Z",
+  "updated_at": "2026-04-25T00:00:00Z",
+  "description": "Extract generic activity components from IM3 to shared package for IM2 and PreCalculus adoption",
+  "estimated_tasks": 18,
+  "actual_tasks": null,
+  "deviation_notes": ""
+}

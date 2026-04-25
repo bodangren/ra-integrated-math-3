@@ -1,0 +1,107 @@
+# Practice Timing Baselines - Implementation Plan
+
+## Phase 1: Baseline and Feature Model [checkpoint: 72e0c83]
+
+- [x] Task: Define timing baseline semantics [a56eff8]
+  - [x] Confirm the stable identifier for a problem family or practice item
+  - [x] Define minimum sample count before baselines affect scoring
+  - [x] Define conservative speed bands and thresholds
+  - [x] Document why median/percentiles are preferred over mean
+- [x] Task: Write baseline unit tests [188b24d]
+  - [x] Test median and percentile calculation
+  - [x] Test outlier resistance
+  - [x] Test low-confidence submissions are excluded
+  - [x] Test below-minimum sample count returns inactive baseline
+- [x] Task: Implement reusable baseline calculations [188b24d]
+  - [x] Add a course-agnostic baseline module
+  - [x] Keep Convex and React dependencies out of pure calculations
+  - [x] Return serializable baseline objects
+- [x] Task: Document baseline feature contract [43d5d06]
+  - [x] Add developer docs explaining `timeRatio`, `speedBand`, and timing confidence
+  - [x] Include examples for narrow/easy and broad/hard objectives
+  - [x] Note that timing features are diagnostic inputs, not standalone grades
+- [x] Task: Measure - Phase Completion Verification 'Baseline and Feature Model' (Protocol in workflow.md) [72e0c83]
+
+## Phase 2: Baseline Persistence and Aggregation
+
+- [x] Task: Design Convex persistence for timing baselines [72e0c83]
+  - [x] Decide whether baselines belong in a dedicated table or problem-family metadata
+  - [x] Add indexes for problem family and last computed time
+  - [x] Ensure schema remains compatible with future courses
+- [x] Task: Write Convex tests for baseline aggregation [72e0c83]
+  - [x] Seed submissions with mixed confidence levels
+  - [x] Verify only valid timing evidence contributes
+  - [x] Verify aggregation is idempotent
+  - [x] Verify stale baseline recomputation updates the expected row
+- [x] Task: Implement baseline aggregation [72e0c83]
+  - [x] Query eligible practice reviews/submissions by problem family
+  - [x] Compute robust timing statistics
+  - [x] Store sample count, median, percentiles, and computation timestamp
+- [x] Task: Add operational safeguards [72e0c83]
+  - [x] Batch work to avoid Convex transaction limits
+  - [x] Avoid unbounded scans in hot student or teacher queries
+  - [x] Document any remaining performance shortcuts as tech debt
+- [x] Task: Measure - Phase Completion Verification 'Baseline Persistence and Aggregation' (Protocol in workflow.md)
+
+## Phase 3: Time-Aware SRS Rating Adapter [COMPLETE] [checkpoint: c74f8b9]
+
+- [x] Task: Write rating adapter tests for timing influence
+  - [x] Correct plus fast plus clean evidence may become `Easy`
+  - [x] Correct plus slow/high-confidence evidence becomes or remains `Hard`
+  - [x] Incorrect plus fast evidence remains `Again`
+  - [x] Missing, low-confidence, or below-baseline timing does not modify rating
+- [x] Task: Implement timing feature derivation
+  - [x] Join submission timing with the matching problem-family baseline
+  - [x] Compute `timeRatio` and `speedBand`
+  - [x] Return reasons for every timing-based adjustment
+- [x] Task: Integrate timing with the deterministic rating mapper
+  - [x] Ensure correctness, score, hints, reveal steps, and misconceptions remain primary
+  - [x] Apply timing only as a conservative modifier
+  - [x] Keep student self-assessment out of the rating path
+- [x] Task: Add audit output
+  - [x] Store or expose why timing affected the rating
+  - [x] Include baseline sample count in debug/review output
+  - [x] Ensure teachers can inspect "slow because timing was reliable" versus "timing ignored"
+- [x] Task: Measure - Phase Completion Verification 'Time-Aware SRS Rating Adapter' (Protocol in workflow.md)
+
+## Phase 4: Objective Proficiency and Fluency Signals [COMPLETE]
+
+- [x] Task: Write objective proficiency tests with timing features
+  - [x] Narrow objective with enough families can reach high confidence
+  - [x] Broad essential objective requires its configured evidence policy
+  - [x] Triaged objective is excluded or labeled separately
+  - [x] Slow but correct work affects fluency confidence, not raw correctness
+- [x] Task: Implement time-aware evidence confidence
+  - [x] Add timing/fluency confidence as a separate dimension
+  - [x] Keep retention strength separate from fluency
+  - [x] Keep practice coverage separate from retention and fluency
+- [x] Task: Integrate with objective practice policy
+  - [x] Respect priority values: essential, supporting, extension, triaged
+  - [x] Respect expected problem-family counts per objective
+  - [x] Avoid global card-count assumptions across objectives
+- [x] Task: Add reporting-ready view models
+  - [x] Provide fields for student progress summaries
+  - [x] Provide fields for teacher diagnostics
+  - [x] Include explanations for low confidence and missing baselines
+- [x] Task: Measure - Phase Completion Verification 'Objective Proficiency and Fluency Signals' (Protocol in workflow.md)
+
+## Phase 5: UI Integration, Validation, and Handoff [COMPLETE]
+
+- [x] Task: Write student and teacher display tests
+  - [x] Test student copy does not create speed pressure
+  - [x] Test teacher copy distinguishes retention, coverage, and fluency
+  - [x] Test missing baseline states render clearly
+- [x] Task: Implement minimal UI surfaces
+  - [x] Add student-facing fluency/progress language only where useful
+  - [x] Add teacher-facing diagnostics for slow reliable timing and baseline gaps
+  - [x] Avoid leaderboards or comparative speed rankings
+- [x] Task: Run validation commands
+  - [x] Run focused baseline/rating/proficiency tests
+  - [x] Run relevant dashboard/view-model tests
+  - [x] Run `npm run lint`
+  - [x] Run `npm run typecheck` or document known pre-existing failures
+- [x] Task: Update Measure planning artifacts
+  - [x] Mark completed tasks and phases in this plan
+  - [x] Update `measure/tracks.md`
+  - [x] Update `measure/current_directive.md` if this becomes active work
+- [x] Task: Measure - Phase Completion Verification 'UI Integration, Validation, and Handoff' (Protocol in workflow.md)

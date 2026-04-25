@@ -1,0 +1,79 @@
+# Implementation Plan — Supporting Activity Components
+
+## Phase 1: Comprehension Quiz
+
+- [x] Task: Implement `comprehension-quiz` base component
+    - [x] Write tests: renders multiple_choice, true_false, short_answer, select_all question types
+    - [x] Write tests: teaching mode shows correct answers highlighted; read-only
+    - [x] Implement `components/activities/quiz/ComprehensionQuiz.tsx` — teaching mode
+
+- [x] Task: Add guided and practice modes to `ComprehensionQuiz`
+    - [x] Write tests: guided — one-at-a-time; immediate feedback; one retry before reveal
+    - [x] Write tests: practice — all shown; feedback only after batch submit
+    - [x] Write tests: score computed correctly for all question types (including select_all partial credit)
+    - [x] Implement guided and practice mode state machines
+
+- [x] Task: Implement quiz submission envelope
+    - [x] Write tests: envelope includes per-question answer, correctness, retry count, total score
+    - [x] Implement `buildQuizSubmission()`; register in activity registry
+
+- [x] Task: Measure — Phase Completion Verification 'Comprehension Quiz' (Protocol in workflow.md)
+
+## Phase 2: Fill-in-the-Blank
+
+- [x] Task: Implement `fill-in-the-blank` base component
+    - [x] Write tests: parses template string with `{{blank:id}}` markers; renders inline blanks
+    - [x] Write tests: teaching mode shows blanks pre-filled as highlighted labels
+    - [x] Implement `components/activities/blanks/FillInTheBlank.tsx` — teaching mode [8b325bc]
+
+- [x] Task: Add guided and practice modes to `FillInTheBlank`
+    - [x] Write tests: guided — immediate per-blank feedback on submit; incorrect blanks show correct answer
+    - [x] Write tests: practice — all blanks, feedback only after full submit
+    - [x] Write tests: `MathInputField` used for expression blanks; plain text for word blanks
+    - [x] Implement guided and practice modes
+
+- [x] Task: Implement optional word bank drag-and-drop
+    - [x] Write tests: word bank items drag into blanks; blank shows dragged term; can be cleared
+    - [x] Implement word bank panel using `@hello-pangea/dnd` (already in dependencies) [44c2f06]
+
+- [x] Task: Implement fill-in submission envelope
+    - [x] Write tests: envelope includes per-blank answer, correctness, word bank usage flag
+    - [x] Implement `buildFillInSubmission()`; register in activity registry
+
+- [x] Task: Measure — Phase Completion Verification 'Fill-in-the-Blank' (Protocol in workflow.md) [checkpoint: 8d11e71]
+
+## Phase 3: Rate-of-Change Calculator
+
+- [x] Task: Implement `rate-of-change-calculator` teaching mode
+    - [x] Write tests: `from_equation` — formula shown, f(a) and f(b) computed and labeled
+    - [x] Write tests: `from_table` — table rows highlighted; formula applied
+    - [x] Write tests: `from_graph` — graph data shown; estimation and exact value labeled
+    - [x] Implement `components/activities/roc/RateOfChangeCalculator.tsx` — teaching mode [21d95a2]
+
+- [x] Task: Add guided and practice modes
+    - [x] Write tests: guided — student identifies a, f(a), b, f(b) in sub-steps; each validated
+    - [x] Write tests: practice — student enters full calculation and final answer
+    - [x] Implement guided and practice modes; reuse `MathInputField` for value entry
+
+- [x] Task: Implement submission and register
+    - [x] Write tests: envelope includes identified values, step correctness, final answer
+    - [x] Register in activity registry
+
+- [x] Task: Measure — Phase Completion Verification 'Rate-of-Change Calculator' (Protocol in workflow.md) [checkpoint: 58fe51a]
+
+## Phase 4: Discriminant Analyzer
+
+- [x] Task: Implement `discriminant-analyzer` teaching mode
+    - [x] Write tests: renders equation → labeled a, b, c → formula → computed value → classification
+    - [x] Implement `components/activities/discriminant/DiscriminantAnalyzer.tsx` — teaching mode
+
+- [x] Task: Add guided and practice modes
+    - [x] Write tests: guided — stepped (identify → compute → classify); each sub-step validated
+    - [x] Write tests: practice — full computation; batch validated on submit
+    - [x] Implement guided and practice modes
+
+- [x] Task: Implement submission and register
+    - [x] Write tests: envelope includes coefficient identification, discriminant value, classification
+    - [x] Register in activity registry
+
+- [x] Task: Measure — Phase Completion Verification 'Discriminant Analyzer' (Protocol in workflow.md)

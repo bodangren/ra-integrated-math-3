@@ -73,7 +73,7 @@ Each class period should be labeled as one of:
 
 If a class period is labeled `instruction`, it must include:
 
-1. A **class objective** that matches an objective in `conductor/course-objectives.md`
+1. A **class objective** that matches an objective in `measure/course-objectives.md`
 2. A reference to the **source textbook lesson** (`curriculum/modules/module-*-lesson-*`)
 3. The specific **worked examples** used in that class period
 4. ALEKS SRS practice references from `curriculum/aleks/` when aligned ALEKS topics are available
@@ -206,7 +206,7 @@ For module-level class-period planning, the canonical source of truth should be 
 
 Those audited plan documents should be kept aligned with:
 
-- `conductor/course-objectives.md`
+- `measure/course-objectives.md`
 - `curriculum/modules/module-*-lesson-*`
 - `curriculum/aleks/problem-type-registry.md`
 - `curriculum/aleks/module-*.md`

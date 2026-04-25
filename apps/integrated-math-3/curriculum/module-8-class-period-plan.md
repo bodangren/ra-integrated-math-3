@@ -7,7 +7,7 @@ It should be treated as the canonical planning source for Module 8 class periods
 It follows the planning model in `curriculum/course-spec.md`:
 
 - the **class period** is the atomic planning unit
-- `instruction` days must map to `conductor/course-objectives.md`
+- `instruction` days must map to `measure/course-objectives.md`
 - `instruction` days must name the specific worked examples they use
 - `mastery`, `jigsaw`, `review`, and `test` days are marked primarily by day type
 

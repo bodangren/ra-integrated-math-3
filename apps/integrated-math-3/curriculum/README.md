@@ -37,5 +37,5 @@ The audit writes `curriculum/implementation/audit/latest.json` and checks curric
 - `convex/schema.ts` stores lessons in the `lessons` table with `unitNumber` (1-9) and `orderIndex`
 - Lesson slugs follow the pattern `{unitNumber}-{lessonNumber}` (e.g., `1-1`, `5-3`)
 - The `competency_standards` table maps to module-level skills
-- `conductor/product.md` references this folder for the curriculum definition
+- `measure/product.md` references this folder for the curriculum definition
 - Activity implementations should use `aleks/problem-type-registry.md` family keys as the curriculum-facing vocabulary for reusable practice and assessment types

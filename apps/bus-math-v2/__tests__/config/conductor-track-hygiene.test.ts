@@ -2,11 +2,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-// TODO(monorepo): skipped — conductor paths resolve relative to BM2 cwd; needs monorepo-aware path
-describe.skip('Conductor track hygiene', () => {
+// TODO(monorepo): skipped — measure paths resolve relative to BM2 cwd; needs monorepo-aware path
+describe.skip('Measure track hygiene', () => {
   it('does not keep the same track id in both active and archived directories', () => {
-    const tracksDir = path.resolve(process.cwd(), 'conductor/tracks');
-    const archiveDir = path.resolve(process.cwd(), 'conductor/archive');
+    const tracksDir = path.resolve(process.cwd(), 'measure/tracks');
+    const archiveDir = path.resolve(process.cwd(), 'measure/archive');
 
     const activeTrackIds = new Set(
       fs.readdirSync(tracksDir, { withFileTypes: true })
@@ -24,7 +24,7 @@ describe.skip('Conductor track hygiene', () => {
 
   it('does not list completed tracks inside the active execution queue', () => {
     const tracksRegistry = fs.readFileSync(
-      path.resolve(process.cwd(), 'conductor/tracks.md'),
+      path.resolve(process.cwd(), 'measure/tracks.md'),
       'utf8',
     );
 

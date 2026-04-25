@@ -1,0 +1,24 @@
+Use the measure skill to implement one phase of a track.
+
+Step 1: Load Context. Read `measure/current_directive.md`, `measure/tech-debt.md`, `measure/lessons-learned.md`, `measure/tracks.md`.
+
+Step 2: Resume or Plan.
+- If there is an `[~] In Progress` phase, finish it. Do not start a new phase.
+- If no incomplete phases, define exactly ONE new track serving `current_directive.md`. Create track artifacts.
+
+2.1 Review the work in the previous phase and check-fix before moving onto the new phase in step 3. 
+
+Step 3: Implement a SINGLE PHASE autonomously with TDD (Red-Green-Refactor). Use appropriate skills for all implementation.
+- For each task: attach git notes per measure protocol, merge changes, and push.
+
+Step 4: Verify. Run full test suite, run build, correct any build errors.
+
+Step 5: Finalize.
+- Update `tech-debt.md` and `lessons-learned.md`. If either exceeds 50 lines, trim aggressively to get back under budget.
+- Commit with a note and push phase checkpoint. Put your model name in the commit subject line.
+CRITICAL:
+1. All shell commands MUST use non-interactive flags (--yes, --no-interactive, etc.). Unattended run only.
+2. DO NOT ask the user any questions or for any intervention. This is an autonomous run.
+3. Respect the case of file paths. This is a unix system and case matters.
+4. Do not create or work on tracks marked DEFERRED in tracks.md. If a track is marked [x] in tracks.md, treat it as complete even if its plan.md has pending tasks.
+

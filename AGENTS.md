@@ -1,28 +1,50 @@
 # AGENTS -- Integrated Math 3
 
-This project uses the **conductor** skill for spec-driven development.
-Follow Conductor tracks and the workflow in `conductor/workflow.md`.
+## Measure Workflow
+
+All development runs through the **Measure** spec-driven development framework exclusively. At the start of every session:
+
+1. Load the `measure` skill
+2. Read `measure/index.md` to understand the project context
+3. Follow the workflow defined in `measure/workflow.md`
+
+Key reference files:
+- `measure/tracks.md` — Active work registry
+- `measure/tracks/<track_id>/plan.md` — Task checklist
+- `measure/product.md` — Product vision
+- `measure/tech-stack.md` — Technology choices
+- `measure/lessons-learned.md` — Project memory
+- `measure/tech-debt.md` — Known shortcuts
+
+Never start significant work without an active track. Always update `measure/tracks.md` and the current track's `plan.md` before and after work.
+
+
+This project uses the **measure** skill for spec-driven development.
+Follow Measure tracks and the workflow in `measure/workflow.md`.
+
 
 ## Scope
 
-- Edit only `apps/integrated-math-3/`. The sibling `bus-math-v2/` is reference-only.
-- Do not port business-domain components (accounting, spreadsheets, simulations) from the template.
+- Edit `apps/integrated-math-3/` and `apps/bus-math-v2/` — both are first-class apps in this monorepo.
+- Shared code lives in `packages/` and must not import from `apps/` or `convex/_generated/`.
+- Each app owns its own design system, curriculum, and domain-specific components.
 
 ## Practice Contract
 
 Activities implement the `practice.v1` contract from bus-math-v2.
-See `conductor/practice-component-contract.md` for the full spec.
+See `measure/practice-component-contract.md` for the full spec.
 
 ## Where to Look
 
 | What | Where |
 |------|-------|
-| Architecture, auth, routing | `conductor/architecture.md` |
-| Tech stack and dev commands | `conductor/tech-stack.md` |
+| Architecture, auth, routing | `measure/architecture.md` |
+| Tech stack and dev commands | `measure/tech-stack.md` |
 | Curriculum (9 modules, 52 lessons) | `apps/integrated-math-3/curriculum/` |
-| Product scope and features | `conductor/product.md` |
-| Active tracks and plans | `conductor/tracks.md` |
-| Practice/activity contract | `conductor/practice-component-contract.md` |
+| Product scope and features | `measure/product.md` (IM3) or `apps/bus-math-v2/product.md` (BM2) |
+| Active tracks and plans | `measure/tracks.md` |
+| Practice/activity contract | `measure/practice-component-contract.md` |
+| Design system (per-app) | `apps/<app-name>/DESIGN.md` — each app owns its own design tokens, palette, and component patterns. See `measure/index.md` "Design Definitions" table for the full list. |
 
 ## Guardrails
 
@@ -30,7 +52,7 @@ See `conductor/practice-component-contract.md` for the full spec.
 - No destructive git commands (`reset --hard`, `checkout -- <file>`, `push --force`).
 - TDD: write/adjust tests first, run `npm run lint` and relevant tests before each commit.
 - Always run `npx tsc --noEmit` in addition to `npm run build` — vinext build does not enforce TypeScript types.
-- Report discovered bugs/tech debt in Conductor planning artifacts.
+- Report discovered bugs/tech debt in Measure planning artifacts.
 
 <!-- convex-ai-start -->
 This project uses [Convex](https://convex.dev) as its backend.

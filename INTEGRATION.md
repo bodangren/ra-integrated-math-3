@@ -37,7 +37,7 @@ ra-integrated-math-3/          # Monorepo root
 │   ├── study-hub-core/        # Flashcard/review session primitives, shuffle utilities
 │   ├── teacher-reporting-core/ # Gradebook, course overview, competency heatmap, CSV export
 │   └── workbook-pipeline/     # Workbook filename, manifest, and path utilities
-├── conductor/                  # Conductor planning docs
+├── measure/                    # Measure spec-driven development framework
 └── README.md                   # Project overview
 ```
 

@@ -378,7 +378,7 @@ writeJson(path.join(practiceDir, 'activity-map.json'), {
   generatedFrom: [
     'curriculum/module-*-class-period-plan.md',
     'curriculum/aleks/module-*.md',
-    'conductor/practice-component-contract.md',
+    'measure/practice-component-contract.md',
   ],
   activities,
   proposedComponentKeyGaps: [

@@ -4,7 +4,7 @@ A Convex-backed interactive digital textbook for high school Integrated Math 3. 
 
 ## Monorepo Structure
 
-This repo uses npm workspaces. The IM3 app lives in `apps/integrated-math-3/` and shared packages will live in `packages/`. Conductor planning docs remain at the repo root in `conductor/`.
+This repo uses npm workspaces. The IM3 app lives in `apps/integrated-math-3/` and shared packages will live in `packages/`. Measure planning docs remain at the repo root in `measure/`.
 
 ```
 ra-integrated-math-3/          # Monorepo root
@@ -25,7 +25,7 @@ ra-integrated-math-3/          # Monorepo root
 │   ├── study-hub-core/         # Flashcard/review session primitives, shuffle utilities
 │   ├── teacher-reporting-core/ # Gradebook, course overview, competency heatmap, CSV export
 │   └── workbook-pipeline/      # Workbook filename, manifest, and path utilities
-├── conductor/                  # Spec-driven development docs
+├── measure/                  # Spec-driven development docs
 └── README.md
 ```
 
@@ -63,7 +63,7 @@ This project doubles as a **course template**: Next.js App Router + Convex backe
 | 8 | Inferential Statistics | 5 |
 | 9 | Trigonometric Functions | 7 |
 
-See `conductor/product.md` for the full lesson-by-lesson breakdown with learning objectives.
+See `measure/product.md` for the full lesson-by-lesson breakdown with learning objectives.
 
 ## Demo Credentials
 
@@ -202,18 +202,18 @@ Or from the monorepo root:
 
 ## Documentation
 
-Canonical project docs live in `conductor/`:
+Canonical project docs live in `measure/`:
 
-- `conductor/product.md` — Product scope, curriculum, and feature definitions
-- `conductor/architecture.md` — Backend/frontend architecture reference
-- `conductor/tech-stack.md` — Technology choices and rationale
-- `conductor/tech-specs.md` — Technical specifications
-- `conductor/workflow.md` — Development workflow and quality gates
-- `conductor/tracks.md` — Active and completed implementation tracks
+- `measure/product.md` — Product scope, curriculum, and feature definitions
+- `measure/architecture.md` — Backend/frontend architecture reference
+- `measure/tech-stack.md` — Technology choices and rationale
+- `measure/tech-specs.md` — Technical specifications
+- `measure/workflow.md` — Development workflow and quality gates
+- `measure/tracks.md` — Active and completed implementation tracks
 
 ## Contributing
 
-This project uses the Conductor skill for spec-driven development. See `AGENTS.md` for AI agent guidelines.
+This project uses the Measure skill for spec-driven development. See `AGENTS.md` for AI agent guidelines.
 
 ## License
 

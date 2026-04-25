@@ -18,7 +18,7 @@ describe.skip('Cloudflare launch hardening', () => {
   });
 
   it('documents the required launch secrets, seeding, deployment, and verification steps', () => {
-    const checklistSource = read('conductor/docs/architecture/cloudflare-launch-checklist.md');
+    const checklistSource = read('measure/docs/architecture/cloudflare-launch-checklist.md');
 
     expect(checklistSource).toContain('NEXT_PUBLIC_CONVEX_URL');
     expect(checklistSource).toContain('CONVEX_DEPLOY_KEY');
@@ -32,8 +32,8 @@ describe.skip('Cloudflare launch hardening', () => {
   });
 
   it('links the launch checklist from the active deployment docs', () => {
-    const architectureDoc = read('conductor/architecture.md');
-    const runtimeDoc = read('conductor/docs/architecture/runtime.md');
+    const architectureDoc = read('measure/architecture.md');
+    const runtimeDoc = read('measure/docs/architecture/runtime.md');
 
     expect(architectureDoc).toContain('cloudflare-launch-checklist');
     expect(runtimeDoc).toContain('cloudflare-launch-checklist');
