@@ -12,6 +12,14 @@
     "ws:bm2:lint": "npm run --workspace=apps/bus-math-v2 lint 2>/dev/null || npm run lint --prefix apps/bus-math-v2",
     "ws:bm2:test": "npm run --workspace=apps/bus-math-v2 test 2>/dev/null || npm run test --prefix apps/bus-math-v2",
     "ws:bm2:typecheck": "npm run --workspace=apps/bus-math-v2 typecheck 2>/dev/null || npx tsc --noEmit --project apps/bus-math-v2/tsconfig.json",
-    "ws:bm2:build": "npm run --workspace=apps/bus-math-v2 build 2>/dev/null || npm run build --prefix apps/bus-math-v2"
+    "ws:bm2:build": "npm run --workspace=apps/bus-math-v2 build 2>/dev/null || npm run build --prefix apps/bus-math-v2",
+    "ws:im2:lint": "npm run --workspace=apps/integrated-math-2 lint 2>/dev/null || npm run lint --prefix apps/integrated-math-2",
+    "ws:im2:test": "npm run --workspace=apps/integrated-math-2 test 2>/dev/null || npm run test --prefix apps/integrated-math-2",
+    "ws:im2:typecheck": "npm run --workspace=apps/integrated-math-2 typecheck 2>/dev/null || npx tsc --noEmit --project apps/integrated-math-2/tsconfig.json",
+    "ws:im2:build": "npm run --workspace=apps/integrated-math-2 build 2>/dev/null || npm run build --prefix apps/integrated-math-2",
+    "ws:pc:lint": "npm run --workspace=apps/pre-calculus lint 2>/dev/null || npm run lint --prefix apps/pre-calculus",
+    "ws:pc:test": "npm run --workspace=apps/pre-calculus test 2>/dev/null || npm run test --prefix apps/pre-calculus",
+    "ws:pc:typecheck": "npm run --workspace=apps/pre-calculus typecheck 2>/dev/null || npx tsc --noEmit --project apps/pre-calculus/tsconfig.json",
+    "ws:pc:build": "npm run --workspace=apps/pre-calculus build 2>/dev/null || npm run build --prefix apps/pre-calculus"
   }
 }
