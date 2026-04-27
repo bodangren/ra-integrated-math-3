@@ -12,7 +12,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
 
 - [x] **Track: BM2 Deactivated-User Access**
    *Swap JWT-only auth for active-credential verification on all 10 BM2 API endpoints to revoke access on deactivation*
-   *Link: [./measure/tracks/bm2-deactivated-user-access_20260423/](./measure/tracks/bm2-deactivated-user-access_20260423/)*
+   *Link: [./measure/archive/bm2-deactivated-user-access_20260423/](./measure/archive/bm2-deactivated-user-access_20260423/)*
     - Phase 1: Swap Auth Helpers and Update Tests [x] (review-20: added workbooks + pdfs routes missed in initial sweep)
 
 - [x] **[URGENT] Fix: Promise Type Mismatch in PhaseCompleteButton.test.tsx** — **COMPLETED**
@@ -139,7 +139,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
 
 - [x] **Track: Harden Manual Component Approval**
      *Complete trustworthy manual approval hardening: real example/practice queue coverage, deterministic hashes, harness-gated approval, and Convex integration tests*
-     *Link: [./measure/tracks/harden-manual-approval_20260415/](./measure/tracks/harden-manual-approval_20260415/)*
+     *Link: [./measure/archive/harden-manual-approval_20260415/](./measure/archive/harden-manual-approval_20260415/)*
      - Phase 1: Queue Coverage and Real Review Targets [COMPLETE]
      - Phase 2: Content Hashing and Stale Approval [COMPLETE]
      - Phase 3: Harness Data and Approval Gating [COMPLETE]
@@ -183,7 +183,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
 
 - [x] **Track: Module 4 Curriculum Seed**
       *Seed Module 4 inverses and radical functions lessons (4-1 through 4-6) into Convex database*
-      *Link: [./measure/tracks/module-4-seed_20260415/](./measure/tracks/module-4-seed_20260415/)*
+      *Link: [./measure/archive/module-4-seed_20260415/](./measure/archive/module-4-seed_20260415/)*
       - Phase 1: Seed Lesson 4-1 [COMPLETE]
       - Phase 2: Seed Lesson 4-2 [COMPLETE]
       - Phase 3: Seed Lesson 4-3 [COMPLETE]
@@ -194,7 +194,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
 
 - [x] **Track: Module 5 Curriculum Seed**
       *Seed Module 5 exponential functions and geometric series lessons (5-1 through 5-5) into Convex database*
-      *Link: [./measure/tracks/module-5-seed_20260415/](./measure/tracks/module-5-seed_20260415/)*
+      *Link: [./measure/archive/module-5-seed_20260415/](./measure/archive/module-5-seed_20260415/)*
       - Phase 1: Seed Lesson 5-1 [COMPLETE]
       - Phase 2: Seed Lesson 5-2 [COMPLETE]
       - Phase 3: Seed Lesson 5-3 [COMPLETE]
@@ -214,7 +214,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
 
 - [x] **Track: Module 7 Curriculum Seed**
       *Seed Module 7 rational functions and equations lessons (7-1 through 7-6) into Convex database*
-      *Link: [./measure/tracks/module-7-seed_20260415/](./measure/tracks/module-7-seed_20260415/)*
+      *Link: [./measure/archive/module-7-seed_20260415/](./measure/archive/module-7-seed_20260415/)*
       - Phase 1: Seed Lesson 7-1 [COMPLETE]
       - Phase 2: Seed Lesson 7-2 [COMPLETE]
       - Phase 3: Seed Lesson 7-3 [COMPLETE]
@@ -235,7 +235,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
 
 - [x] **Track: Module 9 Curriculum Seed**
         *Seed Module 9 trigonometric functions lessons (9-1 through 9-7) into Convex database*
-        *Link: [./measure/tracks/module-9-seed_20260415/](./measure/tracks/module-9-seed_20260415/)*
+        *Link: [./measure/archive/module-9-seed_20260415/](./measure/archive/module-9-seed_20260415/)*
         - Phase 1: Seed Lesson 9-1 [COMPLETE]
         - Phase 2: Seed Lesson 9-2 [COMPLETE]
         - Phase 3: Seed Lesson 9-3 [COMPLETE]
@@ -258,7 +258,7 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
 - [x] **Track: Practice Timing Baselines** — **COMPLETED**
         *Build timing baselines and time-aware SRS evidence features after reliable practice timing telemetry exists*
         *Depends on: Practice Timing Telemetry and stable practice problem-family identifiers*
-        *Link: [./measure/tracks/practice-timing-baselines_20260415/](./measure/tracks/practice-timing-baselines_20260415/)
+*Link: [./measure/archive/practice-timing-baselines_20260415/](./measure/archive/practice-timing-baselines_20260415/)
         - Phase 1: Baseline and Feature Model [COMPLETE]
         - Phase 2: Baseline Persistence and Aggregation [COMPLETE]
         - Phase 3: Time-Aware SRS Rating Adapter [COMPLETE]
@@ -267,12 +267,12 @@ Tracks 1+4 unlock Track 8; Track 8 unlocks Tracks 9+10.
 
 - [x] **Track: Fix submitReviewHandler componentKind Derivation**
       *Derive componentKind from placement.phaseType on write path to prevent permanent isStale mismatches*
-      *Link: [./measure/tracks/fix-submit-review-handler-component-kind_20260416/](./measure/tracks/fix-submit-review-handler-component-kind_20260416/)*
+      *Link: [./measure/archive/fix-submit-review-handler-component-kind_20260416/](./measure/archive/fix-submit-review-handler-component-kind_20260416/)*
       - Phase 1: Fix componentKind Derivation [COMPLETE]
 
 - [x] **Track: CCSS Standards Seeding for M1-M5** — **COMPLETED**
       *Add missing CCSS standards to seed-standards.ts and build lesson_standards links for modules 1-5*
-      *Link: [./measure/tracks/ccss-standards-seeding-m1-m5_20260416/](./measure/tracks/ccss-standards-seeding-m1-m5_20260416/)*
+      *Link: [./measure/archive/ccss-standards-seeding-m1-m5_20260416/](./measure/archive/ccss-standards-seeding-m1-m5_20260416/)*
       - Phase 1: Analyze and Document Existing Standards Coverage [COMPLETE]
       - Phase 2: Add Missing CCSS Standards to seed-standards.ts [COMPLETE]
       - Phase 3: Add lesson_standards Links for M1-M5 [COMPLETE]
@@ -322,7 +322,7 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
 - [x] **Track 5: Convex SRS Schema and Review Log** — **COMPLETED**
        *Add srs_cards, srs_review_log, srs_sessions tables; implement CardStore/ReviewLogStore adapters backed by Convex*
        *Depends on: Wave 1 (Tracks 1, 2, 4)*
-       *Link: [./measure/tracks/convex-srs-schema_20260416/](./measure/tracks/convex-srs-schema_20260416/)*
+       *Link: [./measure/archive/convex-srs-schema_20260416/](./measure/archive/convex-srs-schema_20260416/)*
        - Phase 1: Convex Schema Definitions [COMPLETE] [checkpoint: 3073154]
        - Phase 2: CardStore Adapter [COMPLETE] [checkpoint: e0d54c7]
         - Phase 3: ReviewLogStore Adapter [COMPLETE] [checkpoint: aaa6c10]
@@ -346,7 +346,7 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
 - [x] **Track 8: Daily Practice Queue Engine** — **COMPLETE**
        *Query SRS cards from Convex; apply queue ordering with session limits; resolve items to activities; manage session lifecycle*
        *Depends on: Wave 2 (Track 5)*
-       *Link: [./measure/tracks/daily-practice-queue_20260416/](./measure/tracks/daily-practice-queue_20260416/)*
+       *Link: [./measure/archive/daily-practice-queue_20260416/](./measure/archive/daily-practice-queue_20260416/)*
         - Phase 1: Queue Query Implementation [COMPLETE]
         - Phase 2: Queue Item Resolution [COMPLETE]
         - Phase 3: Session Lifecycle [COMPLETE]
@@ -358,7 +358,7 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
 - [x] **Track 10: Objective Proficiency Measurement** — **COMPLETED**
        *Upgrade objective-proficiency.ts to use FSRS stability from card states; build aggregation pipeline; student/teacher proficiency queries*
        *Depends on: Wave 2 (Track 5)*
-       *Link: [./measure/tracks/objective-proficiency_20260416/](./measure/tracks/objective-proficiency_20260416/)*
+       *Link: [./measure/archive/objective-proficiency_20260416/](./measure/archive/objective-proficiency_20260416/)*
          - Phase 1: FSRS Stability Normalization [COMPLETE] [checkpoint: 2f6fe7b]
          - Phase 2: Card-to-Evidence Aggregation [COMPLETE] [checkpoint: 6f8d690]
          - Phase 3: Objective Proficiency Query [COMPLETE] [checkpoint: 3092c86]
@@ -369,7 +369,7 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
 - [x] **Track 9: Student Daily Practice Experience** — **COMPLETE**
           *Student daily practice page, session flow, card rendering with activity components, submission with timing, completion states*
           *Depends on: Tracks 6, 8 (Wave 3)*
-          *Link: [./measure/tracks/student-daily-practice_20260416/](./measure/tracks/student-daily-practice_20260416/)*
+          *Link: [./measure/archive/student-daily-practice_20260416/](./measure/archive/student-daily-practice_20260416/)*
            - Phase 1: Daily Practice Page and Session Loading [COMPLETE] [checkpoint: 6b5ab71]
            - Phase 2: Card Rendering and Activity Integration [COMPLETE] [checkpoint: d9d842e]
            - Phase 3: Submission and SRS Update Flow [COMPLETE] [checkpoint: b41dcc5]
@@ -380,7 +380,7 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
 - [x] **Track 11: Teacher SRS Dashboard and Interventions** — **COMPLETED**
        *Class health overview, weak objectives panel, struggling students, misconception diagnostics, basic interventions*
        *Depends on: Track 10 (Wave 4)*
-       *Link: [./measure/tracks/teacher-srs-dashboard_20260416/](./measure/tracks/teacher-srs-dashboard_20260416/)*
+       *Link: [./measure/archive/teacher-srs-dashboard_20260416/](./measure/archive/teacher-srs-dashboard_20260416/)*
         - Phase 1: Class Health Queries [COMPLETE]
         - Phase 2: Weak Objectives and Struggling Students [COMPLETE]
         - Phase 3: Misconception Diagnostics [COMPLETE]
@@ -403,7 +403,7 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
 
 - [x] **Track: Error Analysis Unit Tests**
       *Add unit tests for error-analysis module — 8 untested exported functions with aggregation logic*
-      *Link: [./measure/tracks/error-analysis-unit-tests_20260416/](./measure/tracks/error-analysis-unit-tests_20260416/)*
+      *Link: [./measure/archive/error-analysis-unit-tests_20260416/](./measure/archive/error-analysis-unit-tests_20260416/)*
       - Phase 1: Test Infrastructure and Authorization Tests [COMPLETE]
       - Phase 2: Aggregation Function Tests [COMPLETE]
       - Phase 3: Summary Assembly and View Builder Tests [COMPLETE]
@@ -411,13 +411,13 @@ Implementation order: **Wave 0 done → Wave 1 (parallel) → Wave 2 → Wave 3 
 
 - [x] **Track: SRS Queue Performance Fixes** — **COMPLETED**
        *Fix critical N+1 query patterns in SRS daily practice queue: batch policy resolution, bulk practice item and activity lookups, and bound unbounded card collection*
-       *Link: [./measure/tracks/srs-queue-performance_20260417/](./measure/tracks/srs-queue-performance_20260417/)*
+       *Link: [./measure/archive/srs-queue-performance_20260417/](./measure/archive/srs-queue-performance_20260417/)*
        - Phase 1: Batch Queue Resolution and Bound Card Queries [COMPLETE]
        - Phase 2: Verification and Handoff [COMPLETE]
 
 - [x] **Track: PracticeSessionProvider sessionId Fix** — **COMPLETED**
        *Fix PracticeSessionProvider to send sessionId with completion, preventing wrong-session completion race conditions*
-       *Link: [./measure/tracks/practice-session-provider-sessionid_20260417/](./measure/tracks/practice-session-provider-sessionid_20260417/)*
+       *Link: [./measure/archive/practice-session-provider-sessionid_20260417/](./measure/archive/practice-session-provider-sessionid_20260417/)*
        - Phase 1: Wire sessionId Through Completion Flow [COMPLETE]
 
 ## BM2 Alignment Tracks
@@ -438,14 +438,14 @@ Tracks ported from `bus-math-v2` per the BM2 Alignment Report. Ordered by recomm
 
 - [x] **Track: Practice Test Engine** — **COMPLETED**
       *Port 6-phase test runner, question banks for M1-M9, score persistence, post-answer feedback, test selection UI*
-      *Link: [./measure/tracks/practice-test-engine_20260416/](./measure/tracks/practice-test-engine_20260416/)*
+      *Link: [./measure/archive/practice-test-engine_20260416/](./measure/archive/practice-test-engine_20260416/)*
       - Phase 1: Data Structures and Question Banks [COMPLETE]
       - Phase 2: Convex Schema and Persistence [COMPLETE]
       - Phase 3: Test Engine UI [COMPLETE] [checkpoint: fd61fbf]
 
 - [x] **Track: Teacher Gradebook & Competency Heatmaps**
        *Port course overview grid, unit gradebook, competency heatmaps with CCSS standards, submission detail modal, reporting drill-down IA*
-       *Link: [./measure/tracks/teacher-gradebook-heatmaps_20260416/](./measure/tracks/teacher-gradebook-heatmaps_20260416/)*
+       *Link: [./measure/archive/teacher-gradebook-heatmaps_20260416/](./measure/archive/teacher-gradebook-heatmaps_20260416/)*
        - Phase 1: Pure Logic — Gradebook and Overview [COMPLETE] [checkpoint: 074cee1]
        - Phase 2: Convex Queries for Reporting [COMPLETE] [checkpoint: e753143]
        - Phase 3: UI Components [COMPLETE] [checkpoint: 47afac5]
@@ -455,14 +455,14 @@ Tracks ported from `bus-math-v2` per the BM2 Alignment Report. Ordered by recomm
 
 - [x] **Track: Student Study Hub — Flashcards & SRS Review**
        *Port BaseReviewSession, FlashcardPlayer, ReviewSession with FSRS scheduling, IM3 glossary, term mastery tracking*
-       *Link: [./measure/tracks/study-hub-flashcards_20260416/](./measure/tracks/study-hub-flashcards_20260416/)*
+       *Link: [./measure/archive/study-hub-flashcards_20260416/](./measure/archive/study-hub-flashcards_20260416/)*
         - Phase 1: Glossary and SRS Core [COMPLETE] [checkpoint: 7902acf]
         - Phase 2: Convex Tables and Mutations [COMPLETE] [checkpoint: b3e8ccd]
         - Phase 3: UI Components and Routes [COMPLETE] [checkpoint: 47afac5]
 
 - [x] **Track: Student Study Hub — Matching & Speed Round Games**
       *Port click-based matching game and timed speed round game, reusing IM3 glossary*
-      *Link: [./measure/tracks/student-study-hub-games_20260419/](./measure/tracks/student-study-hub-games_20260419/)*
+      *Link: [./measure/archive/student-study-hub-games_20260419/](./measure/archive/student-study-hub-games_20260419/)*
       - Phase 1: Matching Game [COMPLETE]
       - Phase 2: Speed Round Game [COMPLETE]
       - Phase 3: Adoption (pending - requires game routes/pages in IM3)
@@ -471,11 +471,11 @@ Tracks ported from `bus-math-v2` per the BM2 Alignment Report. Ordered by recomm
 
 - [x] **Track: AI Tutoring — Lesson Chatbot** — **DEFERRED**
      *Deferred: will be brought in from another repo during monorepo conversion*
-     *Link: [./measure/tracks/ai-chatbot_20260416/](./measure/tracks/ai-chatbot_20260416/)*
+     *Link: [./measure/archive/ai-chatbot_20260416/](./measure/archive/ai-chatbot_20260416/)*
 
 - [x] **Track: Workbook System & Artifact Pipeline** — **DEFERRED**
      *Deferred: will be brought in from another repo during monorepo conversion*
-     *Link: [./measure/tracks/workbook-system_20260416/](./measure/tracks/workbook-system_20260416/)*
+     *Link: [./measure/archive/workbook-system_20260416/](./measure/archive/workbook-system_20260416/)*
 
 ## Migration Prerequisite Cleanup (2026-04-17)
 
@@ -485,7 +485,7 @@ Tracks ported from `bus-math-v2` per the BM2 Alignment Report. Ordered by recomm
 
 - [x] **Track: CCSS Standards Seeding for M6-M9** — **COMPLETED**
        *Audit module 6-9 lesson-standard coverage and reconcile any missing competency standards/descriptions.*
-       *Link: [./measure/tracks/ccss-standards-seeding-m6-m9_20260417/](./measure/tracks/ccss-standards-seeding-m6-m9_20260417/)*
+       *Link: [./measure/archive/ccss-standards-seeding-m6-m9_20260417/](./measure/archive/ccss-standards-seeding-m6-m9_20260417/)*
        - Phase 1: Coverage Audit [COMPLETE]
        - Phase 2: Reconciliation and Seed Updates [COMPLETE]
        - Phase 3: Validation and Handoff [COMPLETE]
@@ -501,7 +501,7 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 - [x] **Track: Monorepo Readiness Gate** — **COMPLETE**
       *Lock migration prerequisites, ownership, rollback protocol, and tooling decision.*
-      *Link: [./measure/tracks/monorepo-readiness_20260417/](./measure/tracks/monorepo-readiness_20260417/)*
+      *Link: [./measure/archive/monorepo-readiness_20260417/](./measure/archive/monorepo-readiness_20260417/)*
       - Phase 1: Audit and Triage [COMPLETE]
       - Phase 2: Tooling and Governance Decision [COMPLETE]
       - Phase 3: Measure Control Artifacts [COMPLETE]
@@ -510,21 +510,21 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 - [x] **Track: Monorepo Tooling Shell** — **COMPLETE**
      *Create root workspace shell, task fanout scripts, and package template without moving apps yet.*
-     *Link: [./measure/tracks/monorepo-tooling-shell_20260417/](./measure/tracks/monorepo-tooling-shell_20260417/)*
+     *Link: [./measure/archive/monorepo-tooling-shell_20260417/](./measure/archive/monorepo-tooling-shell_20260417/)*
      - Phase 1: Root Workspace Setup [COMPLETE]
      - Phase 2: Package Template and Guard Scripts [COMPLETE]
      - Phase 3: Baseline Validation [COMPLETE]
 
 - [x] **Track: Move IM3 App to apps/integrated-math-3** — **COMPLETED**
        *Relocate IM3 app paths and update local scripts/config while preserving runtime behavior.*
-       *Link: [./measure/tracks/move-im3-app-to-apps_20260417/](./measure/tracks/move-im3-app-to-apps_20260417/)*
+       *Link: [./measure/archive/move-im3-app-to-apps_20260417/](./measure/archive/move-im3-app-to-apps_20260417/)*
        - Phase 1: Mechanical Move [COMPLETE]
        - Phase 2: CI and Tooling Path Fixes [COMPLETE]
        - Phase 3: Post-Move Validation [COMPLETE] (2026-04-18)
 
 - [x] **Track: Monorepo Boundary Guardrails**
      *Add automated checks preventing shared packages from depending on app-owned paths.*
-     *Link: [./measure/tracks/monorepo-boundary-guards_20260417/](./measure/tracks/monorepo-boundary-guards_20260417/)*
+     *Link: [./measure/archive/monorepo-boundary-guards_20260417/](./measure/archive/monorepo-boundary-guards_20260417/)*
      - Phase 1: Define Guard Rules [COMPLETE]
      - Phase 2: CI Integration [COMPLETE]
      - Phase 3: Proof and Handoff [COMPLETE]
@@ -533,40 +533,40 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 - [x] **Track: Extract Practice Core Package** — **COMPLETED**
      *Extract practice contract, timing, baseline, and rating primitives into package.*
-     *Link: [./measure/tracks/extract-practice-core_20260417/](./measure/tracks/extract-practice-core_20260417/)*
+     *Link: [./measure/archive/extract-practice-core_20260417/](./measure/archive/extract-practice-core_20260417/)*
      - Phase 1: Scaffold and Extract [COMPLETE]
      - Phase 2: Reconcile BM2 Deltas [COMPLETE]
      - Phase 3: IM3 Import Migration and Verification [COMPLETE]
 
  - [x] **Track: Extract SRS Engine Package** — **COMPLETED**
       *Extract scheduler/review/queue core, keeping app-specific persistence adapters local.*
-      *Link: [./measure/tracks/extract-srs-engine_20260417/](./measure/tracks/extract-srs-engine_20260417/)*
+      *Link: [./measure/archive/extract-srs-engine_20260417/](./measure/archive/extract-srs-engine_20260417/)*
       - Phase 1: Scaffold and Extract [COMPLETE]
       - Phase 2: Reconcile and Harden [COMPLETE]
       - Phase 3: IM3 Migration and Validation [COMPLETE]
 
  - [x] **Track: Extract Core Auth + Convex Infrastructure** — **COMPLETED**
       *Extract shared auth/session/password/guard helpers and shared Convex wrapper factories in one coordinated infra track.*
-      *Link: [./measure/tracks/extract-core-auth-convex_20260417/](./measure/tracks/extract-core-auth-convex_20260417/)*
+      *Link: [./measure/archive/extract-core-auth-convex_20260417/](./measure/archive/extract-core-auth-convex_20260417/)*
 
 ### Wave 3 — Runtime and Approval Packages
 
 - [x] **Track: Extract Activity Runtime Package** — **COMPLETED**
       *Extract lesson/phase/runtime contracts while keeping activity implementations app-local.*
-      *Link: [./measure/tracks/extract-activity-runtime_20260417/](./measure/tracks/extract-activity-runtime_20260417/)*
+      *Link: [./measure/archive/extract-activity-runtime_20260417/](./measure/archive/extract-activity-runtime_20260417/)*
       - Phase 1: Package Extraction [COMPLETE]
       - Phase 2: IM3 Migration [COMPLETE]
       - Phase 3: Verification and Handoff [COMPLETE]
 
 - [x] **Track: Extract Component Approval Package**
       *Extract review queue/hash/harness approval primitives to shared package.*
-      *Link: [./measure/tracks/extract-component-approval_20260417/](./measure/tracks/extract-component-approval_20260417/)*
+      *Link: [./measure/archive/extract-component-approval_20260417/](./measure/archive/extract-component-approval_20260417/)*
       - Phase 1: Extract Core Primitives [COMPLETE]
       - Phase 2: Reconcile and Integrate [COMPLETE]
 
 - [x] **Track: Extract Graphing Core Package**
        *Extract graphing math/parser primitives while preserving course-specific configs locally.*
-       *Link: [./measure/tracks/extract-graphing-core_20260417/](./measure/tracks/extract-graphing-core_20260417/)*
+       *Link: [./measure/archive/extract-graphing-core_20260417/](./measure/archive/extract-graphing-core_20260417/)*
        - Phase 1: Extract Utility Primitives [COMPLETE]
        - Phase 2: Reconcile Deltas [COMPLETE]
        - Phase 3: IM3 Migration and Verification [COMPLETE]
@@ -575,7 +575,7 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 - [x] **Track: App Import Migration** — **COMPLETED**
        *Delete duplicate code in lib/auth/, lib/srs/, lib/practice/, lib/convex/ and rewire all imports to @math-platform/* packages.*
-       *Link: [./measure/tracks/app-import-migration_20260418/](./measure/tracks/app-import-migration_20260418/)*
+       *Link: [./measure/archive/app-import-migration_20260418/](./measure/archive/app-import-migration_20260418/)*
        - Phase 1: lib/auth/ Migration [COMPLETE]
        - Phase 2: lib/practice/ Migration [COMPLETE]
        - Phase 3: lib/srs/ Migration [COMPLETE]
@@ -587,21 +587,21 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 - [x] **Track: Move BM2 App to apps/bus-math-v2** — **COMPLETED**
       *Relocate BM2 app while preserving business-domain modules and deployment behavior.*
-      *Link: [./measure/tracks/move-bm2-app-to-apps_20260417/](./measure/tracks/move-bm2-app-to-apps_20260417/)*
+      *Link: [./measure/archive/move-bm2-app-to-apps_20260417/](./measure/archive/move-bm2-app-to-apps_20260417/)*
       - Phase 1: Mechanical BM2 Move [COMPLETE]
       - Phase 2: Config and Workflow Updates [COMPLETE]
       - Phase 3: Cross-App Verification [COMPLETE] [checkpoint: 9877509]
 
 - [x] **Track: BM2 Consume Core Packages** — **COMPLETE**
        *Replace duplicated BM2 core imports with shared practice/srs/auth/convex packages.*
-       *Link: [./measure/tracks/bm2-consume-core-packages_20260417/](./measure/tracks/bm2-consume-core-packages_20260417/)*
+       *Link: [./measure/archive/bm2-consume-core-packages_20260417/](./measure/archive/bm2-consume-core-packages_20260417/)*
        - Phase 1: Practice and SRS Adoption [COMPLETE] - practice imports migrated to @math-platform/practice-core; SRS imports verified (71 tests pass)
        - Phase 2: Auth and Convex Adoption [COMPLETE] - middleware migrated; server.ts remains local
        - Phase 3: Cleanup and Verification [COMPLETE] - import redirects complete; full pruning deferred (requires audit)
 
 - [x] **Track: BM2 Consume Runtime Packages** — **COMPLETE**
       *Adopt shared runtime/approval/graphing package APIs where boundaries are clean.*
-      *Link: [./measure/tracks/bm2-consume-runtime-packages_20260417/](./measure/tracks/bm2-consume-runtime-packages_20260417/)*
+      *Link: [./measure/archive/bm2-consume-runtime-packages_20260417/](./measure/archive/bm2-consume-runtime-packages_20260417/)*
       - Phase 1: Activity Runtime Adoption [COMPLETE] - architectural incompatibility documented (BM2 registry is BM2-specific)
       - Phase 2: Component Approval Adoption [COMPLETE] - content-hash migrated; 19 tests pass
       - Phase 3: Graphing Core Adoption [COMPLETE] - linear/quadratic parsers migrated; 89 tests pass
@@ -610,7 +610,7 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 - [x] **Track: BM2 SRS Contract Migration** — **COMPLETE**
        *Migrate BM2 legacy SRS contract (card: Record, numeric timestamps) to FSRS-aligned contract in @math-platform/srs-engine.*
-       *Link: [./measure/tracks/bm2-srs-contract-migration_20260418/](./measure/tracks/bm2-srs-contract-migration_20260418/)*
+       *Link: [./measure/archive/bm2-srs-contract-migration_20260418/](./measure/archive/bm2-srs-contract-migration_20260418/)*
        - Phase 1: Contract Rewrite [COMPLETE]
          - Contract types migrated to srs-engine package types
          - Build passes (verified)
@@ -629,32 +629,32 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 - [x] **Track: Extract Practice Test Engine Package**
       *Extract test-runner primitives and adopt in both apps while keeping banks local.*
-      *Link: [./measure/tracks/extract-practice-test-engine_20260417/](./measure/tracks/extract-practice-test-engine_20260417/)*
+      *Link: [./measure/archive/extract-practice-test-engine_20260417/](./measure/archive/extract-practice-test-engine_20260417/)*
       - Phase 1: Package Extraction [COMPLETE]
       - Phase 2: App Adoption [COMPLETE] - reconciled package API to match IM3 format; updated BM2 component to use new shuffleAnswers signature
 
 - [x] **Track: Extract Study Hub Core Package**
       *Extract flashcard/review/game core primitives while keeping glossary data local.*
-      *Link: [./measure/tracks/extract-study-hub-core_20260417/](./measure/tracks/extract-study-hub-core_20260417/)*
+      *Link: [./measure/archive/extract-study-hub-core_20260417/](./measure/archive/extract-study-hub-core_20260417/)*
       - Phase 1: Extract Shared Study Primitives [COMPLETE]
       - Phase 2: Adopt in IM3 [COMPLETE] - BaseReviewSession imports migrated to package; FlashcardPlayer/ReviewSession updated
 
 - [x] **Track: Extract Teacher Reporting Core Package**
       *Extract pure gradebook/reporting logic while keeping Convex queries app-local.*
-      *Link: [./measure/tracks/extract-teacher-reporting-core_20260417/](./measure/tracks/extract-teacher-reporting-core_20260417/)*
+      *Link: [./measure/archive/extract-teacher-reporting-core_20260417/](./measure/archive/extract-teacher-reporting-core_20260417/)*
       - Phase 1: Pure Logic Extraction [COMPLETE]
       - Phase 2: Adoption in IM3/BM2 [COMPLETE] - IM3 fully migrated; BM2 partial (gradebook has BM2-specific extensions)
 
 - [x] **Track: Extract AI Tutoring Package and Adopt in IM3** — **COMPLETED**
       *Extract BM2 tutoring primitives and complete IM3 chatbot via package imports.*
-      *Link: [./measure/tracks/extract-ai-tutoring-and-adopt-im3_20260417/](./measure/tracks/extract-ai-tutoring-and-adopt-im3_20260417/)]
+      *Link: [./measure/archive/extract-ai-tutoring-and-adopt-im3_20260417/](./measure/archive/extract-ai-tutoring-and-adopt-im3_20260417/)]
       - Phase 1: Package Extraction from BM2 [COMPLETE]
       - Phase 2: BM2 Adoption [COMPLETE]
       - Phase 3: IM3 Adoption [COMPLETE] — chatbot route, component, rate limits, Convex schema
 
 - [x] **Track: Extract Workbook Pipeline Package and Adopt in IM3** — **COMPLETED**
       *Extract BM2 workbook pipeline primitives and complete IM3 workbook via package imports.*
-      *Link: [./measure/tracks/extract-workbook-pipeline-and-adopt-im3_20260417/](./measure/tracks/extract-workbook-pipeline-and-adopt-im3_20260417/)*
+      *Link: [./measure/archive/extract-workbook-pipeline-and-adopt-im3_20260417/](./measure/archive/extract-workbook-pipeline-and-adopt-im3_20260417/)*
       - Phase 1: Extract BM2 Workbook Pipeline Primitives [COMPLETE]
       - Phase 2: BM2 Adoption [COMPLETE]
       - Phase 3: IM3 Adoption and Completion [COMPLETE]
@@ -663,42 +663,42 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 - [x] **Track: Monorepo CI and Deploy Hardening** — **COMPLETED**
       *Finalize root CI matrix, boundary checks, and per-app deploy path correctness.*
-      *Link: [./measure/tracks/monorepo-ci-deploy-hardening_20260417/](./measure/tracks/monorepo-ci-deploy-hardening_20260417/)*
+      *Link: [./measure/archive/monorepo-ci-deploy-hardening_20260417/](./measure/archive/monorepo-ci-deploy-hardening_20260417/)*
       - Phase 1: CI Pipeline Matrix [COMPLETE]
       - Phase 2: Deploy and Convex Paths [COMPLETE]
       - Phase 3: Reliability Validation [COMPLETE]
 
 - [x] **Track: Monorepo Docs and Cleanup** — **COMPLETED**
       *Finalize integration docs, remove shims, and reconcile stale path references.*
-      *Link: [./measure/tracks/monorepo-docs-and-cleanup_20260417/](./measure/tracks/monorepo-docs-and-cleanup_20260417/)*
+      *Link: [./measure/archive/monorepo-docs-and-cleanup_20260417/](./measure/archive/monorepo-docs-and-cleanup_20260417/)*
       - Phase 1: Author Final Documentation [COMPLETE]
       - Phase 2: Remove Migration Residue [COMPLETE] (validation scans confirmed clean)
       - Phase 3: Final Validation and Handoff [COMPLETE]
 
 - [x] **Track: IM3 Chatbot Security Fixes** — **COMPLETED**
       *Fix two critical security issues: (1) add lesson enrollment authorization check, (2) sanitize teacher-authored content before AI prompt injection.*
-      *Link: [./measure/tracks/im3-chatbot-security_20260419/](./measure/tracks/im3-chatbot-security_20260419/)*
+      *Link: [./measure/archive/im3-chatbot-security_20260419/](./measure/archive/im3-chatbot-security_20260419/)*
       - Phase 1: Lesson Enrollment Authorization Check [COMPLETE]
       - Phase 2: Prompt Injection Sanitization [COMPLETE]
 
 - [x] **Track: IM3 Chatbot Provider Memoization** — **COMPLETED**
       *Memoize resolveOpenRouterProviderFromEnv to reuse provider across requests and add AbortSignal support for client disconnect handling*
-      *Link: [./measure/tracks/im3-chatbot-provider-memoization_20260419/](./measure/tracks/im3-chatbot-provider-memoization_20260419/)*
+      *Link: [./measure/archive/im3-chatbot-provider-memoization_20260419/](./measure/archive/im3-chatbot-provider-memoization_20260419/)*
       - Phase 1: Memoize Provider and Add AbortSignal Support [COMPLETE]
 
 - [x] **Track: Fix Misconception Summary N+1 Query** — **COMPLETED**
   *Fix critical N+1 sequential query in getMisconceptionSummaryHandler using Promise.all parallelization*
-  *Link: [./measure/tracks/fix-misconception-summary-n1_20260419/](./measure/tracks/fix-misconception-summary-n1_20260419/)*
+  *Link: [./measure/archive/fix-misconception-summary-n1_20260419/](./measure/archive/fix-misconception-summary-n1_20260419/)*
 
 - [x] **Track: practice-core Package Testing** — **COMPLETED**
   *Add package-level unit tests to practice-core for contract.ts, srs-rating.ts, and timing-baseline.ts*
-  *Link: [./measure/tracks/practice-core-testing_20260419/](./measure/tracks/practice-core-testing_20260419/)*
+  *Link: [./measure/archive/practice-core-testing_20260419/](./measure/archive/practice-core-testing_20260419/)*
 
 ## Teacher Assignment UI (2026-04-19)
 
 - [x] **Track: Teacher Lesson Assignment UI** — **COMPLETED**
   *Build UI for teachers to assign lessons to their classes, populating class_lessons table*
-  *Link: [./measure/tracks/teacher-lesson-assignment-ui_20260419/](./measure/tracks/teacher-lesson-assignment-ui_20260419/)*
+  *Link: [./measure/archive/teacher-lesson-assignment-ui_20260419/](./measure/archive/teacher-lesson-assignment-ui_20260419/)*
   - Phase 1: Convex Queries [COMPLETE]
   - Phase 2: Convex Mutations [COMPLETE]
   - Phase 3: Teacher UI [COMPLETE]
@@ -706,13 +706,13 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 - [x] **Track: Seed Class Lessons for Demo** — **COMPLETED**
   *Seed class_lessons entries for demo environment — assigns Module 1 lessons to demo class*
-  *Link: [./measure/tracks/seed-class-lessons_20260419/](./measure/tracks/seed-class-lessons_20260419/)*
+  *Link: [./measure/archive/seed-class-lessons_20260419/](./measure/archive/seed-class-lessons_20260419/)*
   - Phase 1: Seed Mutation and Demo Wiring [COMPLETE]
   - Phase 2: Verification [COMPLETE]
 
  - [x] **Track: Monorepo Tech Debt Triage & Resolution** — **COMPLETED**
       *Investigate and resolve all 45 open tech debt items to solidify monorepo migration — triage, fix, or close each item*
-      *Link: [./measure/tracks/monorepo-tech-debt-triage_20260422/](./measure/tracks/monorepo-tech-debt-triage_20260422/)*
+      *Link: [./measure/archive/monorepo-tech-debt-triage_20260422/](./measure/archive/monorepo-tech-debt-triage_20260422/)*
        - Phase 1: BM2 TypeScript & Runtime Correctness [x] [checkpoint: e0d36db]
       - Phase 2: SRS & Practice Correctness [x]
       - Phase 3: N+1 Query Performance [x]
@@ -732,11 +732,11 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 - [x] **Track: Fix getTeacherClassProficiencyHandler N+1 Queries** — **COMPLETED**
       *Pre-fetch problem_families, timing_baselines, activity_submissions, competency_standards, objective_policies outside S×O loop to reduce ~1800 queries to O(1) pre-fetches*
-      *Link: [./measure/tracks/teacher-class-proficiency-n1_20260424/](./measure/tracks/teacher-class-proficiency-n1_20260424/)*
+      *Link: [./measure/archive/teacher-class-proficiency-n1_20260424/](./measure/archive/teacher-class-proficiency-n1_20260424/)*
 
 - [x] **Track: Lesson Version Query Optimization** — **COMPLETED**
       *Fix N+1 query patterns in public.ts getCurriculum/getUnitSummaries and isStudentEnrolledInClassForLesson via batched parallel queries*
-      *Link: [./measure/tracks/lesson_version_query_optimization_20260424/](./measure/tracks/lesson_version_query_optimization_20260424/)*
+      *Link: [./measure/archive/lesson_version_query_optimization_20260424/](./measure/archive/lesson_version_query_optimization_20260424/)*
       - Phase 1: Curriculum Query Batching [COMPLETE]
       - Phase 2: Enrollment Query Batching [COMPLETE]
       - Phase 3: Verification [COMPLETE]
