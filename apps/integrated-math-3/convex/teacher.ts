@@ -144,10 +144,13 @@ async function listLatestPublishedLessonVersions(
 
 async function listActivePhaseIds(
   ctx: QueryCtx,
-): Promise<Set<Id<"phase_versions">>> {
-  const lessonIds = (await ctx.db.query("lessons").collect()).map((lesson) => lesson._id);
-  const lessonVersions = await ctx.db.query("lesson_versions").collect();
-  const phaseVersions = await ctx.db.query("phase_versions").collect();
+): Promise<Set<Id<"phase_versions">>>> {
+  const [lessonRows, lessonVersions, phaseVersions] = await Promise.all([
+    ctx.db.query("lessons").collect(),
+    ctx.db.query("lesson_versions").collect(),
+    ctx.db.query("phase_versions").collect(),
+  ]);
+  const lessonIds = lessonRows.map((lesson) => lesson._id);
   return buildPublishedPhaseIdSet({
     lessonIds,
     lessonVersions,
@@ -206,12 +209,14 @@ async function listStudentDetailUnits(
     return [];
   }
 
-  const lessonVersions = await ctx.db.query("lesson_versions").collect();
-  const phaseVersions = await ctx.db.query("phase_versions").collect();
-  const progressRows = await ctx.db
-    .query("student_progress")
-    .withIndex("by_user", (q) => q.eq("userId", studentId as never))
-    .collect();
+  const [lessonVersions, phaseVersions, progressRows] = await Promise.all([
+    ctx.db.query("lesson_versions").collect(),
+    ctx.db.query("phase_versions").collect(),
+    ctx.db
+      .query("student_progress")
+      .withIndex("by_user", (q) => q.eq("userId", studentId as never))
+      .collect(),
+  ]);
 
   return buildPublishedUnitProgressRows({
     lessons: allLessons,
@@ -234,9 +239,11 @@ export const getTeacherDashboardData = internalQuery({
     const studentIds = students.map((s) => s._id);
     const activePhaseIds = await listActivePhaseIds(ctx);
 
-    const lessonVersions = await ctx.db.query("lesson_versions").collect();
-    const phaseVersions = await ctx.db.query("phase_versions").collect();
-    const lessons = await ctx.db.query("lessons").collect();
+    const [lessonVersions, phaseVersions, lessons] = await Promise.all([
+      ctx.db.query("lesson_versions").collect(),
+      ctx.db.query("phase_versions").collect(),
+      ctx.db.query("lessons").collect(),
+    ]);
 
     const phaseVersionLessonMap = new Map<string, string>();
     const lessonVersionLessonMap = new Map<string, string>();
@@ -605,7 +612,18 @@ export async function getTeacherStudentCompetencyDetailHandler(
     displayName: student.displayName ?? null,
   };
 
-  const standards = (await ctx.db.query("competency_standards").collect()).map(
+  const [standards, competencyRows, rawLessonVersions, rawLessons, rawLessonStandards] = await Promise.all([
+    ctx.db.query("competency_standards").collect(),
+    ctx.db
+      .query("student_competency")
+      .withIndex("by_student", (q) => q.eq("studentId", student._id))
+      .collect(),
+    ctx.db.query("lesson_versions").collect(),
+    ctx.db.query("lessons").collect(),
+    ctx.db.query("lesson_standards").collect(),
+  ]);
+
+  const mappedStandards = standards.map(
     (standard) => ({
       id: standard._id,
       code: standard.code,
@@ -616,12 +634,7 @@ export async function getTeacherStudentCompetencyDetailHandler(
     }),
   );
 
-  const competencyRows = (
-    await ctx.db
-      .query("student_competency")
-      .withIndex("by_student", (q) => q.eq("studentId", student._id))
-      .collect()
-  ).map((row) => ({
+  const mappedCompetencyRows = competencyRows.map((row) => ({
     studentId: row.studentId,
     standardId: row.standardId,
     masteryLevel: row.masteryLevel,
@@ -630,7 +643,7 @@ export async function getTeacherStudentCompetencyDetailHandler(
     updatedBy: row.updatedBy ?? null,
   }));
 
-  const rawLessonVersions = (await ctx.db.query("lesson_versions").collect()).map(
+  const mappedLessonVersions = rawLessonVersions.map(
     (version) => ({
       id: version._id,
       lessonId: version.lessonId,
@@ -638,13 +651,13 @@ export async function getTeacherStudentCompetencyDetailHandler(
     }),
   );
 
-  const rawLessons = (await ctx.db.query("lessons").collect()).map((lesson) => ({
+  const mappedLessons = rawLessons.map((lesson) => ({
     id: lesson._id,
     unitNumber: lesson.unitNumber,
     title: lesson.title,
   }));
 
-  const rawLessonStandards = (await ctx.db.query("lesson_standards").collect()).map(
+  const mappedLessonStandards = rawLessonStandards.map(
     (ls) => ({
       standardId: ls.standardId,
       lessonVersionId: ls.lessonVersionId,
@@ -654,11 +667,11 @@ export async function getTeacherStudentCompetencyDetailHandler(
 
   return assembleStudentCompetencyDetail(
     rawStudent,
-    standards,
-    competencyRows,
-    rawLessonStandards,
-    rawLessonVersions,
-    rawLessons,
+    mappedStandards,
+    mappedCompetencyRows,
+    mappedLessonStandards,
+    mappedLessonVersions,
+    mappedLessons,
   );
 }
 

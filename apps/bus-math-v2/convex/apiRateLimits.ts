@@ -76,7 +76,7 @@ export async function checkAndIncrementApiRateLimitHandler(
 
   return {
     allowed: true,
-    remaining: maxRequests - existing.requestCount - 1,
+    remaining: Math.max(0, maxRequests - existing.requestCount - 1),
     windowExpiresAt: existing.windowStart + windowMs,
   };
 }
