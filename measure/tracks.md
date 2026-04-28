@@ -722,9 +722,9 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
         - Phase 7: UI & Minor Items [x]
        - Phase 8: Tech Debt Registry Cleanup & Final Verification [x]
 
-- [x] **Track: Convex Schema Strict Validation**
+- [x] **Track: Convex Schema Strict Validation** — **COMPLETED**
        *Replace 21 v.any() fields in IM3 Convex schema with typed validators and eliminate 5 production as any casts on Convex internal*
-       *Link: [./measure/tracks/convex_schema_strict_validation_20260424/](./measure/tracks/convex_schema_strict_validation_20260424/)*
+       *Link: [./measure/archive/convex_schema_strict_validation_20260424/](./measure/archive/convex_schema_strict_validation_20260424/)*
        - Phase 1: Audit and Type Discovery [COMPLETE]
        - Phase 2: SRS review_log typed validators [COMPLETE] (review-26: extracted shared validators to srs/validators.ts)
        - Phase 3: Eliminate as any casts [DEFERRED]
