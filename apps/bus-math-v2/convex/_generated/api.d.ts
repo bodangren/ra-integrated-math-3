@@ -10,6 +10,7 @@
 
 import type * as activities from "../activities.js";
 import type * as api_ from "../api.js";
+import type * as apiRateLimits from "../apiRateLimits.js";
 import type * as auth from "../auth.js";
 import type * as component_approval_validators from "../component_approval_validators.js";
 import type * as component_approvals from "../component_approvals.js";
@@ -33,6 +34,7 @@ import type {
 declare const fullApi: ApiFromModules<{
   activities: typeof activities;
   api: typeof api_;
+  apiRateLimits: typeof apiRateLimits;
   auth: typeof auth;
   component_approval_validators: typeof component_approval_validators;
   component_approvals: typeof component_approvals;

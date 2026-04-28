@@ -115,14 +115,14 @@ Demo accounts are seeded via `convex/seed.ts`. Run the seed action to create dem
 
    `NEXT_PUBLIC_CONVEX_URL` is typically written by the Convex CLI during local setup. The local default is `http://127.0.0.1:3210`.
 
-6. Start the local stack (from `apps/integrated-math-3/`):
+5. Start the local stack (from `apps/integrated-math-3/`):
    ```bash
    npm run dev:stack
    ```
 
    Use `npm run dev` only when Convex is already running separately.
 
-7. Open [http://localhost:3000](http://localhost:3000).
+6. Open [http://localhost:3000](http://localhost:3000).
 
 ### Environment Variables
 

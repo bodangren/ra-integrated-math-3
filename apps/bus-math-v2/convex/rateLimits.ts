@@ -1,6 +1,5 @@
 import { internalMutation, internalQuery } from "./_generated/server";
 import { v } from "convex/values";
-import type { Id } from "./_generated/dataModel";
 
 const RATE_LIMIT_WINDOW_MS = 60000;
 const MAX_REQUESTS_PER_WINDOW = 5;

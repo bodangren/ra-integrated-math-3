@@ -25,6 +25,7 @@
 - (2026-04-19, review-11) When sanitizing LLM prompt inputs, apply sanitization to ALL user-controllable fields including arrays
 - (2026-04-19, auth-design) Authorization checks must verify specific resource ownership; ensure seeding or fallback exists — empty auth tables block all access silently
 - (2026-04-28, review-23) Rate limiting mutation args must match what routes actually pass — unused required args cause runtime validation failures even when the handler derives the value from auth context
+- (2026-04-29, review-25) Converting Convex public mutations to `internalMutation` requires: (1) updating generated `api.d.ts` with new module import, (2) updating ALL test mock setups from `fetchMutation` + `api.*` to `fetchInternalMutation` + `internal.*`, (3) removing stale `Id` imports from modules that no longer use them
 
 ## Patterns That Worked Well
 
@@ -48,3 +49,4 @@
 - (2026-04-28, review-23) `Math.max(0, ...)` clamp on `remaining` in rate limit handlers prevents negative values when count exceeds max
 - (2026-04-28, review-23) Convex `.unique()` query on non-unique index can throw when concurrent inserts create duplicates — design rate limit upserts defensively
 - (2026-04-28, rate-limiting-race) Fix race condition via try/catch upsert: if insert throws duplicate key error, re-query existing record and patch/increment; check error message for "duplicate" or "unique" keywords
+- (2026-04-29, review-25) WIP commits that change Convex function visibility (public→internal) MUST also update `_generated/api.d.ts` or the entire downstream type tree breaks — always run typecheck after visibility changes

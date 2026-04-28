@@ -293,7 +293,10 @@ describe('POST /api/phases/complete', () => {
     expect(response.status).toBe(200);
     const body = await response.json();
     expect(body.message).toMatch(/idempotent request/i);
-    expect(mockFetchInternalMutation).not.toHaveBeenCalled();
+    expect(mockFetchInternalMutation).not.toHaveBeenCalledWith(
+      'internal.api.completePhaseMutation',
+      expect.anything(),
+    );
   });
 
   it('completes a phase using the claims subject as user id', async () => {

@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockRequireActiveTeacherRequestClaims = vi.fn();
 const mockFetchInternalQuery = vi.fn();
-const mockFetchMutation = vi.fn();
+const mockFetchInternalMutation = vi.fn();
 const mockGenerateAISummary = vi.fn();
 const mockBuildDeterministicSummary = vi.fn();
 const mockResolveAIProviderFromEnv = vi.fn();
@@ -14,13 +14,11 @@ vi.mock('@/lib/auth/server', () => ({
 
 vi.mock('@/lib/convex/server', () => ({
   fetchInternalQuery: mockFetchInternalQuery,
-  fetchMutation: mockFetchMutation,
-  api: {
-    apiRateLimits: {
-      checkAndIncrementApiRateLimit: 'api.apiRateLimits.checkAndIncrementApiRateLimit',
-    },
-  },
+  fetchInternalMutation: mockFetchInternalMutation,
   internal: {
+    apiRateLimits: {
+      checkAndIncrementApiRateLimit: 'internal.apiRateLimits.checkAndIncrementApiRateLimit',
+    },
     teacher: {
       getProfileWithOrg: 'internal.teacher.getProfileWithOrg',
       getSubmissionDetail: 'internal.teacher.getSubmissionDetail',
@@ -100,8 +98,8 @@ describe('GET /api/teacher/ai-error-summary', () => {
     mockResolveAIProviderFromEnv.mockReturnValue(null);
     mockBuildDeterministicSummary.mockReturnValue(DET_SUMMARY);
     mockIsPracticeSubmissionEnvelope.mockReturnValue(true);
-    mockFetchMutation.mockImplementation(async (name: string) => {
-      if (name === 'api.apiRateLimits.checkAndIncrementApiRateLimit') {
+    mockFetchInternalMutation.mockImplementation(async (name: string) => {
+      if (name === 'internal.apiRateLimits.checkAndIncrementApiRateLimit') {
         return { allowed: true, remaining: 29, windowExpiresAt: Date.now() + 60000 };
       }
       return null;

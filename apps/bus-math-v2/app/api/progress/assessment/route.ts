@@ -6,6 +6,7 @@ import { submissionDataSchema } from '@/lib/db/schema/activity-submissions';
 import { selectActivitySchema } from '@/lib/db/schema/validators';
 import { fetchInternalQuery, fetchInternalMutation, internal } from '@/lib/convex/server';
 import { formatRateLimitError } from '@/convex/apiRateLimits';
+import type { Id } from '@/convex/_generated/dataModel';
 import { normalizePracticeSubmissionInput } from '@math-platform/practice-core/contract';
 
 function buildBadRequest(details: Record<string, unknown> | string) {
@@ -27,7 +28,7 @@ export async function POST(request: Request) {
       return claimsOrResponse;
     }
 
-    const userId = claimsOrResponse.sub;
+    const userId = claimsOrResponse.sub as Id<'profiles'>;
 
     let submission;
     try {

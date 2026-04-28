@@ -4,7 +4,6 @@ const mockGetRequestSessionClaims = vi.fn();
 const mockRequireActiveStudentRequestClaims = vi.fn();
 const mockFetchInternalQuery = vi.fn();
 const mockFetchInternalMutation = vi.fn();
-const mockFetchMutation = vi.fn();
 
 vi.mock('@/lib/auth/server', () => ({
   getRequestSessionClaims: mockGetRequestSessionClaims,
@@ -14,13 +13,10 @@ vi.mock('@/lib/auth/server', () => ({
 vi.mock('@/lib/convex/server', () => ({
   fetchInternalQuery: mockFetchInternalQuery,
   fetchInternalMutation: mockFetchInternalMutation,
-  fetchMutation: mockFetchMutation,
-  api: {
-    apiRateLimits: {
-      checkAndIncrementApiRateLimit: 'api.apiRateLimits.checkAndIncrementApiRateLimit',
-    },
-  },
   internal: {
+    apiRateLimits: {
+      checkAndIncrementApiRateLimit: 'internal.apiRateLimits.checkAndIncrementApiRateLimit',
+    },
     activities: {
       getActivityById: 'internal.activities.getActivityById',
       submitAssessment: 'internal.activities.submitAssessment',
@@ -99,10 +95,12 @@ describe('POST /api/progress/assessment', () => {
     });
 
     mockFetchInternalQuery.mockResolvedValue(baseActivity);
-    mockFetchInternalMutation.mockResolvedValue(undefined);
-    mockFetchMutation.mockImplementation(async (name: string) => {
-      if (name === 'api.apiRateLimits.checkAndIncrementApiRateLimit') {
+    mockFetchInternalMutation.mockImplementation(async (name: string) => {
+      if (name === 'internal.apiRateLimits.checkAndIncrementApiRateLimit') {
         return { allowed: true, remaining: 59, windowExpiresAt: Date.now() + 60000 };
+      }
+      if (name === 'internal.activities.submitAssessment') {
+        return undefined;
       }
       return null;
     });

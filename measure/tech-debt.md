@@ -8,7 +8,9 @@
 
 | Item | Sev | Status | Notes |
 |------|-----|--------|-------|
-| BM2 apiRateLimits duplicate-insert race condition | High | Resolved | Fixed via try/catch upsert pattern in checkAndIncrementApiRateLimitHandler (minimax-m2) |
+| BM2 apiRateLimits duplicate-insert race condition | High | Resolved | Fixed via try/catch upsert pattern in checkAndIncrementApiRateLimitHandler |
+| BM2 Convex generated types stale after internalMutation migration | High | Open | apiRateLimits manually added to api.d.ts; rateLimits still shows as public; full regen needed via `npx convex dev` |
+| BM2 chatbot route uses `as any` for rateLimits internal ref | Medium | Open | `(internal as any).rateLimits` cast needed because generated types don't reflect internal conversion |
 | apiRateLimits no stale entry cleanup | Medium | Open | Table grows unbounded; rateLimits.ts and loginRateLimits.ts both have cleanup mutations |
 | SRS CardStore: studentId type mismatch (contract vs schema) | High | Open | 7 bridging casts in convexCardStore.ts; package types need branded string |
 | 21 `v.any()` fields in IM3 Convex schema | Medium | Open | submissionData, props, content, evidence, fsrsState have zero runtime validation |

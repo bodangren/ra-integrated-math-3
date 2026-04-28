@@ -16,13 +16,6 @@ const VALID_IDEMPOTENCY_KEY = '123e4567-e89b-12d3-a456-426614174002';
 describe('POST /api/activities/complete', () => {
   beforeEach(() => {
     mockCompletePhasePost.mockReset();
-    mockFetchMutation.mockReset();
-    mockFetchMutation.mockImplementation(async (name: string) => {
-      if (name === 'api.apiRateLimits.checkAndIncrementApiRateLimit') {
-        return { allowed: true, remaining: 59, windowExpiresAt: Date.now() + 60000 };
-      }
-      return null;
-    });
   });
 
   it('returns 400 for invalid request payloads and does not forward', async () => {
