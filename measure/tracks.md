@@ -734,6 +734,12 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
       - Phase 3: Configuration and Monitoring [COMPLETE] (minimax-m2)
       - Phase 4: Verification [COMPLETE] (minimax-m2)
 
+- [x] **Track: Fix apiRateLimits Race Condition** — **COMPLETED**
+      *Fix concurrent inserts for same user+endpoint creating duplicate records that break .unique() via try/catch upsert pattern*
+      *Link: [./measure/tracks/fix-apiratelimits-race-condition_20260428/](./measure/tracks/fix-apiratelimits-race-condition_20260428/)*
+      - Phase 1: Race Condition Fix [COMPLETE] - 14 tests including concurrent request simulation
+      - Phase 2: Documentation [COMPLETE]
+
 - [x] **Track: Fix getTeacherClassProficiencyHandler N+1 Queries** — **COMPLETED**
       *Pre-fetch problem_families, timing_baselines, activity_submissions, competency_standards, objective_policies outside S×O loop to reduce ~1800 queries to O(1) pre-fetches*
       *Link: [./measure/archive/teacher-class-proficiency-n1_20260424/](./measure/archive/teacher-class-proficiency-n1_20260424/)*

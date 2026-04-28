@@ -44,7 +44,7 @@ Monorepo migration complete (Waves 0-6). All major feature tracks done. Three ne
 - [x] Teacher.ts N+1: listActivePhaseIds, listStudentDetailUnits, getTeacherDashboardData, getTeacherStudentCompetencyDetail — all batched via Promise.all (review-23)
 - [x] apiRateLimits remaining negative clamp — Math.max(0, ...) added (review-23)
 - [x] Wire BM2 apiRateLimits to 5 API routes (complete — all 5 endpoints enforce rate limits)
-- [ ] Fix apiRateLimits race condition (High — duplicate inserts break .unique())
+- [x] Fix apiRateLimits race condition (High — duplicate inserts break .unique())
 - [x] Add DESIGN.md + product.md to IM1
 - [ ] Add .env.example to all apps
 - [ ] Convex schema strict validation (21 v.any() fields)
