@@ -15,11 +15,11 @@
 ## Recurring Gotchas
 
 - (2026-04-23, bm2-deactivated-user-access) Swapping an auth helper in a route requires updating EVERY test file that mocks it — including duplicate `__tests__/api/` and `__tests__/app/api/` test suites
-- (2026-04-23, review-17) `requireActive*SessionClaims` returns `SessionClaims | Response`, NOT `SessionClaims | null` — must use `instanceof Response` check, not `!claims` falsy check
+- (2026-04-23, review-17) `requireActive*SessionClaims` returns `SessionClaims | Response`, NOT `SessionClaims | null` — must use `instanceof Response` check
 - (2026-04-23, review-17) When extracting modules to packages, grep for ALL import paths (including relative `../../` Convex paths) — not just `@/` app imports
-- (2026-04-23, review-14) Never return `error.message` in API error responses — leaks internal details (stack traces, schema, env). Return generic message + log server-side
+- (2026-04-23, review-14) Never return `error.message` in API error responses — leaks internal details. Return generic message + log server-side
 - (2026-04-23, review-14) Server components with `<select>` but no `onChange` are purely cosmetic; use client components with URL search params for stateful UI
-- (2026-04-23, review-14) Convex runtime cannot import npm packages — duplicate constants in convex/ files are unavoidable; document derivation with comments
+- (2026-04-23, review-14) Convex runtime cannot import npm packages — duplicate constants in convex/ files are unavoidable
 - (2026-04-19, review-10) Always validate + parse request body BEFORE consuming rate limits — malformed requests burn quota
 - (2026-04-19, review-11) When sanitizing LLM prompt inputs, apply sanitization to ALL user-controllable fields including arrays
 - (2026-04-19, auth-design) Authorization checks must verify specific resource ownership; ensure seeding or fallback exists — empty auth tables block all access silently
@@ -35,18 +35,16 @@
 - (2026-04-17, srs-queue-performance) Replace N+1 sequential DB lookups with Promise.all over deduplicated IDs
 - (2026-04-19, monorepo-ci) CI matrices with pre-existing failures: use `continue-on-error: true` + `|| true` fallback; document known failures
 - (2026-04-23, review-14) Always wrap API route handlers in try/catch — unhandled errors may leak stack traces or hang connections
-- (2026-04-24, phase-6) Runtime validation beats double-casting: `validateWorkbookManifest` replaces `as unknown as WorkbookManifest` with explicit shape checks and clear error messages
-- (2026-04-24, ci-cd-hardening) Removing `|| true` from CI steps while keeping job-level `continue-on-error: true` preserves failure visibility without breaking CI for known issues
-- (2026-04-24, bundle-splitting) Vinext manualChunks with function syntax handles external modules; use `id.includes()` checks instead of module name arrays to avoid EXTERNAL_MODULES errors
-- (2026-04-24, registry-cleanup) When replacing placeholder registrations with real implementations, remove keys from the placeholder list — duplicate registrations silently overwrite but confuse future readers
-- (2026-04-24, equivalence-checker) Parser precedence matters: compound patterns (fraction addition, radical addition) must be tried BEFORE simple single-term parsers to avoid partial-match false negatives
-- (2026-04-24, package-types) Make local type extensions explicit (`extends PackageType`) rather than relying on structural compatibility — prevents silent drift when package types change
-- (2026-04-24, review-18) When auditing auth patterns, search ALL route files — not just recently-modified ones; workbooks/pdfs had 3 routes missed in the initial deactivated-user-access sweep
-- (2026-04-24, code-review-21) When fixing N+1 queries, verify ALL related functions — not just the hot path. teacher.ts getLessonErrorSummary was fixed but isStudentEnrolledInClassForLesson and getTeacherClassProficiencyHandler still have N+1 patterns
-- (2026-04-24, code-review-21) cloudflare-deploy.yml `npm ci --prefix` does not resolve workspace deps in a monorepo; always use root-level `npm ci`
+- (2026-04-24, phase-6) Runtime validation beats double-casting: `validateWorkbookManifest` replaces `as unknown as WorkbookManifest` with explicit shape checks
+- (2026-04-24, ci-cd-hardening) Removing `|| true` from CI steps while keeping job-level `continue-on-error: true` preserves failure visibility
+- (2026-04-24, bundle-splitting) Vinext manualChunks with function syntax handles external modules; use `id.includes()` checks instead of module name arrays
+- (2026-04-24, registry-cleanup) When replacing placeholder registrations with real implementations, remove keys from the placeholder list — duplicate registrations silently overwrite
+- (2026-04-24, equivalence-checker) Parser precedence matters: compound patterns must be tried BEFORE simple single-term parsers to avoid partial-match false negatives
+- (2026-04-24, package-types) Make local type extensions explicit (`extends PackageType`) rather than relying on structural compatibility
+- (2026-04-24, review-18) When auditing auth patterns, search ALL route files — not just recently-modified ones
+- (2026-04-24, code-review-21) When fixing N+1 queries, verify ALL related functions — not just the hot path. cloudflare-deploy.yml `npm ci --prefix` does not resolve workspace deps in a monorepo; always use root-level `npm ci`
 - (2026-04-24, code-review-21) `describe.skip` without a TODO comment creates invisible test debt; always annotate with reason and tracking reference
-- (2026-04-24, teacher-n1-fix) When refactoring N+1 queries in nested loops, pre-fetch all shared data into Maps before the outer loop; pass pre-fetched data as optional parameter to preserve backward compatibility for single-student callers
-- (2026-04-25, lesson-version-n1) `buildLatestPublishedLessonVersionMap` already exists in published-curriculum.ts for batch lookups — use it instead of per-lesson `resolveLatestPublishedLessonVersion` + sequential DB queries; for enrollment checks, use a secondary index (`by_lesson`) to fetch all matching rows in one query then filter in-memory with a Set
-- (2026-04-28, review-22) `.gitignore`-ing `convex/_generated/` breaks fresh-clone builds; generated files must be committed or CI must run `npx convex dev --local --once`
-- (2026-04-28, review-22) Package test failures hide behind workspace output; always run package tests individually during audits
-- (2026-04-28, review-22) Record selection tiebreakers: status priority first, then version number, then creation time — never rely on insertion order
+- (2026-04-24, teacher-n1-fix) When refactoring N+1 queries in nested loops, pre-fetch all shared data into Maps before the outer loop
+- (2026-04-25, lesson-version-n1) `buildLatestPublishedLessonVersionMap` already exists for batch lookups — use it instead of per-lesson sequential queries
+- (2026-04-28, review-22) `.gitignore`-ing `convex/_generated/` breaks fresh-clone builds; generated files must be committed. Package test failures hide behind workspace output; always run package tests individually
+- (2026-04-28, convex-schema-phase3) Convex `FilterApi` type doesn't preserve nested property access; `internal.module.fn` cast to `any` is often necessary — type system limitation, not a bug

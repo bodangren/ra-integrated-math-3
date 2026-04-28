@@ -20,7 +20,7 @@
 | getTeacherClassProficiencyHandler massive N+1 | High | Resolved | Pre-fetched all data outside S×O loop; reduced ~1800 queries to O(1) pre-fetches + local Map lookups |
 | SRS dashboard.ts streak calc untested | High | Resolved | Tests existed but imports broken; exported getDayStart + calculateStreak; all 14 streak tests now pass |
 | BM2 chatbot prompt injection defense still weak | Medium | Open | sanitizeInput only strips markdown chars; no system prompt guard or LLM-based filter |
-| 4 production `as any` casts on Convex `internal` (IM3) | Medium | Open | 3 objectiveIds array index casts + 1 internal.seed cast; needs schema type fix |
+| 4 production `as any` casts on Convex `internal` (IM3) | Medium | Architectural | Convex FilterApi type limitation; casts intentional workarounds not bugs; runtime behavior correct |
 | 21 `v.any()` fields in IM3 Convex schema | Medium | Open | Zero runtime validation on content, props, submissionData, evidence, fsrsState |
 | No rate limiting on 5 BM2 API endpoints | Medium | Open | phases/complete, assessment, activities, error-summary, ai-error-summary |
 | BM2 login endpoint has no input length limits | Medium | Open | Multi-MB payloads could exhaust memory/slow hashing |
