@@ -1,25 +1,23 @@
 # Current Directive
 
-> Updated: 2026-04-24 (Code review #21 — audit of tech-debt triage Phases 1-6, fixes for deploy config, teacher.ts crash, governance tests)
+> Updated: 2026-04-28 (Code review #22 — audit of scaffolded apps, tech-debt triage, N+1 fixes, streak tests, package health)
 
 ## Mission
 
-Monorepo migration complete (Waves 0-6). All major feature tracks done. Current focus: tech debt reduction (Phase 7 in-progress, Phase 8 pending), then new feature development.
+Monorepo migration complete (Waves 0-6). All major feature tracks done. Three new course apps scaffolded (IM1, IM2, PreCalc). Current focus: finish remaining open tech-debt items, then curriculum authoring for new apps.
 
 ## Priority Order (Execute In This Order)
 
-1. **Monorepo tech-debt triage Phase 7** — UI & Minor Items: SubmissionDetailModal React key, StepByStepper flaky test, versionByLessonId first-version, Convex types regeneration
-2. **Monorepo tech-debt triage Phase 8** — Tech Debt Registry Cleanup & Final Verification: prune tech-debt.md, full monorepo health check
-3. **getTeacherClassProficiencyHandler N+1** — S*O*3 queries (~1800 for 30S/20O); pre-fetch problem_families, baselines, submissions outside loops
-4. **SRS dashboard.ts + reviews.ts test coverage** — streak calculation and review persistence have zero tests
-5. **BM2 rate limiting track** — 5 endpoints lack rate limiting (track created, pending)
-6. **N+1 queries in public.ts** — lesson_versions queried per lesson in getCurriculum and getUnitSummaries
-7. **Convex generated types stale** — 5 production `as any` casts; run `npx convex dev` to regenerate
-8. **RSC bundle optimization** — page chunk 785 KB; vendor-charts 830 KB; needs further code-splitting
-9. **SRS engine studentId type alignment** — Package defines `studentId: string` but Convex uses `Id<"profiles">`; 7 bridging casts
-10. **Equivalence checker negative leading coefficients** — factoredPattern4 regex can't match `(-2x+3)(x+1)`
-11. **Convex schema strict validation track** — 21 v.any() fields + 5 as any casts (track created, pending)
-12. **BM2 governance test re-enablement** — 9 skipped suites need monorepo-aware path fixes
+1. **BM2 rate limiting track** — 5 endpoints lack rate limiting (track created, pending)
+2. **SRS reviews.ts test coverage** — saveReview, getReviewsByCard, getReviewsByStudent have zero tests
+3. **Convex schema strict validation track** — 21 v.any() fields + 4 as any casts (track active, Phase 1 catalogued)
+4. **RSC bundle optimization** — page chunk 891 KB; vendor-charts 830 KB; needs further code-splitting
+5. **SRS engine studentId type alignment** — Package defines `studentId: string` but Convex uses `Id<"profiles">`; 7 bridging casts
+6. **BM2 governance test re-enablement** — 9 skipped suites need monorepo-aware path fixes
+7. **Curriculum content authoring — IM1, IM2, PreCalc** — Seed complete curriculum for all three new apps (depends on activity component extraction)
+8. **Activity component extraction** — Extract generic IM3 activity components to shared package for cross-app reuse
+9. **Equivalence checker symbolic math** — 2 aspirational .todo tests need symbolic math library
+10. **Chatbot prompt injection defense** — sanitizeInput too weak; needs system prompt guard or LLM filter
 
 ## Non-Negotiable Rules
 
@@ -45,18 +43,22 @@ Monorepo migration complete (Waves 0-6). All major feature tracks done. Current 
 - [x] CI: Remove BM2 double-silencing (removed `|| true`; `continue-on-error` preserved)
 - [x] Lazy-load activity components + Suspense boundaries (registry.ts, ActivityRenderer.tsx)
 - [x] Bundle-size CI audit step added to workflow
-- [x] Tech-debt triage Phases 1-6 complete (BM2 TS, SRS correctness, N+1, CI/CD, packages, AI tutoring)
+- [x] Tech-debt triage Phases 1-8 complete (BM2 TS, SRS correctness, N+1, CI/CD, packages, AI tutoring, UI, final verification)
 - [x] Cloudflare deploy: fix partial npm install to root-level npm ci
 - [x] teacher.ts: fix concurrent array mutation and empty activityIds crash
 - [x] BM2 governance tests: add TODO(monorepo) comments to 9 skipped suites
-- [ ] Monorepo tech-debt triage Phase 7 (UI & Minor Items)
-- [ ] Monorepo tech-debt triage Phase 8 (Final Verification)
-- [ ] getTeacherClassProficiencyHandler N+1 (S*O*3 queries)
-- [x] N+1 queries: public.ts lesson_versions per-lesson fetch
-- [ ] SRS engine studentId type alignment (string → branded type)
-- [ ] Convex generated types regeneration
-- [ ] RSC bundle: page chunk 785 KB → < 500 KB
+- [x] getTeacherClassProficiencyHandler N+1 (S*O*3 queries) — pre-fetched all data outside loops
+- [x] N+1 queries: public.ts lesson_versions per-lesson fetch — batched with buildLatestPublishedLessonVersionMap
+- [x] N+1 queries: isStudentEnrolledInClassForLesson — replaced with by_lesson index + Set check
+- [x] SRS dashboard streak tests — exported getDayStart + calculateStreak; 14 tests pass
+- [x] Scaffold IM1, IM2, PreCalc applications — all build, typecheck, lint clean
+- [x] Convex generated types regenerated for all apps; committed to repo
+- [ ] BM2 rate limiting track (5 endpoints)
+- [ ] SRS reviews.ts test coverage
+- [ ] Convex schema strict validation (21 v.any() fields)
+- [ ] RSC bundle: page chunk 891 KB → < 500 KB
 - [ ] BM2 9 governance tests re-enablement
+- [ ] Activity component extraction for cross-app reuse
 
 ## Code Review Summary (2026-04-23 — Review #16)
 
@@ -217,3 +219,48 @@ Comprehensive audit of tech-debt triage Phases 1-6 (BM2 TS fix, SRS correctness,
 | SRS dashboard.ts streak calc: zero test coverage | High | Non-trivial logic needs tests |
 | Rate limiting track modifies BM2 (violates AGENTS.md scope) | Medium | Needs scope decision |
 | BM2 governance tests: all need monorepo-aware path fixes | Medium | TODO comments added; actual fixes deferred
+
+### Code Review Summary (2026-04-28 — Review #22)
+
+Comprehensive audit of the past 6 work phases: scaffolded IM1/IM2/PreCalc apps, monorepo tech-debt triage (Phases 1-8), teacher-class-proficiency N+1 fix, lesson-version query optimization, streak test fixes, and convex schema audit.
+
+### Verification Results
+
+| Check | Result |
+|-------|--------|
+| Typecheck (IM3) | Pass (0 errors) |
+| Typecheck (BM2) | Pass (app code; pre-existing test-file errors) |
+| Typecheck (IM1) | Pass (0 errors) |
+| Typecheck (IM2) | Pass (0 errors) |
+| Typecheck (PreCalc) | Pass (0 errors) |
+| Lint (IM3) | Pass (0 warnings) |
+| Lint (BM2) | Pass (0 warnings) |
+| Lint (IM1/IM2/PC) | Pass (0 warnings) |
+| Tests (IM3) | 3301 passed, 2 todo (272 test files) |
+| Tests (BM2) | 2293 passed, 35 skipped (339 test files) |
+| Tests (packages) | 522 passed (12 packages; teacher-reporting-core was failing) |
+| Build (IM3) | Pass |
+| Build (BM2) | Pass |
+| Build (IM1) | Pass |
+| Build (IM2) | Pass |
+| Build (PreCalc) | Pass |
+
+### Issues Fixed in This Review (Review #22)
+
+| Issue | Severity | Fix |
+|-------|----------|-----|
+| teacher-reporting-core: assembleGradebookRows ignored version number tiebreaker | HIGH | Added version comparison when statuses are equal; 1 failing test now passes |
+| Scaffolded apps missing convex/_generated/ files | HIGH | Generated and committed _generated files for IM1/IM2/PreCalc; all apps build on fresh clone |
+| IM3/PreCalc convex generated types stale | MEDIUM | Regenerated api.d.ts, server.d.ts, dataModel.d.ts for all apps via `npx convex dev --local --once` |
+| workbooks-manifest.json timestamp drift | LOW | Reverted uncommitted timestamp change |
+
+### Issues Found (Deferred)
+
+| Issue | Severity | Notes |
+|-------|----------|-------|
+| 4 production `as any` casts in IM3 convex/ | Medium | 3 objectiveIds array index casts + 1 internal.seed cast; needs schema or type fix |
+| SRS reviews.ts: zero test coverage | Medium | saveReview, getReviewsByCard, getReviewsByStudent untested |
+| BM2 rate limiting: 5 endpoints unprotected | Medium | Track exists; implementation pending |
+| RSC page chunk 891 KB, vendor-charts 830 KB | Medium | Further code-splitting needed |
+| Convex schema: 21 v.any() fields | Medium | Phase 1 catalogued; typed validators pending |
+| Equivalence checker: 2 .todo tests need symbolic math | Low | Pattern-matcher can't handle all cases |

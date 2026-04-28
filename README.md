@@ -9,7 +9,10 @@ This repo uses npm workspaces. The IM3 app lives in `apps/integrated-math-3/` an
 ```
 ra-integrated-math-3/          # Monorepo root
 ├── apps/
-│   ├── integrated-math-3/     # The IM3 application
+│   ├── integrated-math-3/     # Integrated Math 3 (Honors) — primary course
+│   ├── integrated-math-2/     # Integrated Math 2 — scaffolded, curriculum pending
+│   ├── integrated-math-1/     # Integrated Math 1 — scaffolded, curriculum pending
+│   ├── pre-calculus/          # AP Precalculus — scaffolded, curriculum pending
 │   └── bus-math-v2/           # Business Math v2 (reference and migration source)
 ├── packages/
 │   ├── _template/              # Package scaffold template
@@ -199,6 +202,18 @@ Or from the monorepo root:
 | `npm run ws:im3:test` | Run IM3 tests |
 | `npm run ws:im3:typecheck` | Typecheck IM3 |
 | `npm run ws:im3:build` | Build IM3 |
+| `npm run ws:im2:lint` | Lint IM2 |
+| `npm run ws:im2:test` | Run IM2 tests |
+| `npm run ws:im2:typecheck` | Typecheck IM2 |
+| `npm run ws:im2:build` | Build IM2 |
+| `npm run ws:im1:lint` | Lint IM1 |
+| `npm run ws:im1:test` | Run IM1 tests |
+| `npm run ws:im1:typecheck` | Typecheck IM1 |
+| `npm run ws:im1:build` | Build IM1 |
+| `npm run ws:pc:lint` | Lint PreCalc |
+| `npm run ws:pc:test` | Run PreCalc tests |
+| `npm run ws:pc:typecheck` | Typecheck PreCalc |
+| `npm run ws:pc:build` | Build PreCalc |
 
 ## Documentation
 

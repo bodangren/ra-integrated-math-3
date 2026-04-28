@@ -20,7 +20,7 @@
 | getTeacherClassProficiencyHandler massive N+1 | High | Resolved | Pre-fetched all data outside S×O loop; reduced ~1800 queries to O(1) pre-fetches + local Map lookups |
 | SRS dashboard.ts streak calc untested | High | Resolved | Tests existed but imports broken; exported getDayStart + calculateStreak; all 14 streak tests now pass |
 | BM2 chatbot prompt injection defense still weak | Medium | Open | sanitizeInput only strips markdown chars; no system prompt guard or LLM-based filter |
-| 5 production `as any` casts on Convex `internal` (IM3) | Medium | Open | Stale generated types; run npx convex dev to regenerate |
+| 4 production `as any` casts on Convex `internal` (IM3) | Medium | Open | 3 objectiveIds array index casts + 1 internal.seed cast; needs schema type fix |
 | 21 `v.any()` fields in IM3 Convex schema | Medium | Open | Zero runtime validation on content, props, submissionData, evidence, fsrsState |
 | No rate limiting on 5 BM2 API endpoints | Medium | Open | phases/complete, assessment, activities, error-summary, ai-error-summary |
 | BM2 login endpoint has no input length limits | Medium | Open | Multi-MB payloads could exhaust memory/slow hashing |
@@ -41,3 +41,6 @@
 | SubmissionDetailModal: array index used as React key | Low | Resolved | Use `${evidence.componentKey}-${evidence.submittedAt}` as stable key |
 | BM2 activities/complete/route.ts proxies errorPayload.details | Low | Open | Internal API details exposed to client; sanitize upstream response |
 | practice-core: computeBaseRating([]) untested edge case | Low | Open | Empty parts array returns 'Good' — may be unintended |
+| teacher-reporting-core: versionByLessonId ignored version number | Medium | Resolved | Added version tiebreaker when statuses are equal; all 67 tests pass |
+| Scaffolded apps missing convex/_generated/ files | High | Resolved | IM1/IM2/PreCalc generated files force-added; all apps now build on fresh clone |
+| IM3 Convex generated types stale | Medium | Resolved | Regenerated api.d.ts and server.d.ts for all apps (review-22) |

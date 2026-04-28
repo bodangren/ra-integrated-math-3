@@ -47,4 +47,6 @@
 - (2026-04-24, code-review-21) `describe.skip` without a TODO comment creates invisible test debt; always annotate with reason and tracking reference
 - (2026-04-24, teacher-n1-fix) When refactoring N+1 queries in nested loops, pre-fetch all shared data into Maps before the outer loop; pass pre-fetched data as optional parameter to preserve backward compatibility for single-student callers
 - (2026-04-25, lesson-version-n1) `buildLatestPublishedLessonVersionMap` already exists in published-curriculum.ts for batch lookups — use it instead of per-lesson `resolveLatestPublishedLessonVersion` + sequential DB queries; for enrollment checks, use a secondary index (`by_lesson`) to fetch all matching rows in one query then filter in-memory with a Set
-- (2026-04-28, streak-tests) Tests can exist but be broken if they import non-exported functions; vitest shows "cannot find module" but test file still runs — check import resolution first
+- (2026-04-28, review-22) `.gitignore`-ing `convex/_generated/` breaks fresh-clone builds; generated files must be committed or CI must run `npx convex dev --local --once`
+- (2026-04-28, review-22) Package test failures hide behind workspace output; always run package tests individually during audits
+- (2026-04-28, review-22) Record selection tiebreakers: status priority first, then version number, then creation time — never rely on insertion order

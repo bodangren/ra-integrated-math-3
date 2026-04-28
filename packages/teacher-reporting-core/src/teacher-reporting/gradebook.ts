@@ -165,11 +165,19 @@ export function assembleGradebookRows(
     const existing = versionByLessonId.get(lv.lessonId);
     if (!existing) {
       versionByLessonId.set(lv.lessonId, lv.id);
-    } else if (lv.status) {
-      const existingVersion = rawLessonVersions.find(v => v.id === existing);
-      const existingPriority = existingVersion?.status ? (statusPriority[existingVersion.status] ?? 4) : 4;
-      const newPriority = statusPriority[lv.status] ?? 4;
-      if (newPriority < existingPriority) {
+      continue;
+    }
+
+    const existingVersion = rawLessonVersions.find(v => v.id === existing);
+    const existingPriority = existingVersion?.status ? (statusPriority[existingVersion.status] ?? 4) : 4;
+    const newPriority = lv.status ? (statusPriority[lv.status] ?? 4) : 4;
+
+    if (newPriority < existingPriority) {
+      versionByLessonId.set(lv.lessonId, lv.id);
+    } else if (newPriority === existingPriority) {
+      const existingVersionNum = existingVersion?.version ?? 0;
+      const newVersionNum = lv.version ?? 0;
+      if (newVersionNum > existingVersionNum) {
         versionByLessonId.set(lv.lessonId, lv.id);
       }
     }
