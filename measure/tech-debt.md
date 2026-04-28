@@ -8,8 +8,7 @@
 
 | Item | Sev | Status | Notes |
 |------|-----|--------|-------|
-| BM2 apiRateLimits not wired to any routes | Critical | Open | Handler + table exist but none of 5 endpoints call it; also not registered in _generated/api.d.ts |
-| apiRateLimits duplicate-insert race condition | High | Open | Same user+endpoint concurrent mutation both insert; .unique() then throws permanently |
+| BM2 apiRateLimits duplicate-insert race condition | High | Open | Same user+endpoint concurrent mutation both insert; .unique() then throws permanently |
 | apiRateLimits no stale entry cleanup | Medium | Open | Table grows unbounded; rateLimits.ts and loginRateLimits.ts both have cleanup mutations |
 | SRS CardStore: studentId type mismatch (contract vs schema) | High | Open | 7 bridging casts in convexCardStore.ts; package types need branded string |
 | 21 `v.any()` fields in IM3 Convex schema | Medium | Open | submissionData, props, content, evidence, fsrsState have zero runtime validation |

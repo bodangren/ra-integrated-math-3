@@ -8,8 +8,7 @@ Monorepo migration complete (Waves 0-6). All major feature tracks done. Three ne
 
 ## Priority Order (Execute In This Order)
 
-1. **Wire BM2 apiRateLimits to 5 API routes** — Handler exists but is dead code; must register module in Convex and call from each route
-2. **Fix apiRateLimits race condition** — Concurrent inserts for same user+endpoint create duplicate records that permanently break .unique()
+1. **Fix apiRateLimits race condition** — Concurrent inserts for same user+endpoint create duplicate records that permanently break .unique()
 3. **IM1 DESIGN.md and product.md** — IM2/PreCalc have both; IM1 is missing them
 4. **Add .env.example to all apps** — No env reference exists for any app
 5. **Convex schema strict validation** — 21 v.any() fields; priority: submissionData, props, content (user-facing)
@@ -44,7 +43,7 @@ Monorepo migration complete (Waves 0-6). All major feature tracks done. Three ne
 - [x] Review #11-22 fixes (all security, auth, SRS, N+1, objectiveIds, tech-debt triage, scaffolded apps)
 - [x] Teacher.ts N+1: listActivePhaseIds, listStudentDetailUnits, getTeacherDashboardData, getTeacherStudentCompetencyDetail — all batched via Promise.all (review-23)
 - [x] apiRateLimits remaining negative clamp — Math.max(0, ...) added (review-23)
-- [ ] Wire BM2 apiRateLimits to 5 API routes (Critical — currently dead code)
+- [x] Wire BM2 apiRateLimits to 5 API routes (complete — all 5 endpoints enforce rate limits)
 - [ ] Fix apiRateLimits race condition (High — duplicate inserts break .unique())
 - [ ] Add DESIGN.md + product.md to IM1
 - [ ] Add .env.example to all apps
@@ -87,7 +86,6 @@ Comprehensive audit of the past 6 work phases: rate limiting Phase 1, convex sch
 
 | Issue | Severity | Notes |
 |-------|----------|-------|
-| BM2 apiRateLimits not wired to any routes | CRITICAL | Handler exists but no route calls it; also not in _generated/api.d.ts |
 | apiRateLimits duplicate-insert race condition | HIGH | Concurrent mutations can create duplicate records breaking .unique() permanently |
 | apiRateLimits no stale entry cleanup | MEDIUM | Table grows unbounded unlike other rate limit modules |
 | IM1 missing DESIGN.md and product.md | HIGH | IM2/PreCalc have both; IM1 has neither |

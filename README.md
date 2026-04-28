@@ -202,6 +202,10 @@ Or from the monorepo root:
 | `npm run ws:im3:test` | Run IM3 tests |
 | `npm run ws:im3:typecheck` | Typecheck IM3 |
 | `npm run ws:im3:build` | Build IM3 |
+| `npm run ws:bm2:lint` | Lint BM2 |
+| `npm run ws:bm2:test` | Run BM2 tests |
+| `npm run ws:bm2:typecheck` | Typecheck BM2 |
+| `npm run ws:bm2:build` | Build BM2 |
 | `npm run ws:im2:lint` | Lint IM2 |
 | `npm run ws:im2:test` | Run IM2 tests |
 | `npm run ws:im2:typecheck` | Typecheck IM2 |
