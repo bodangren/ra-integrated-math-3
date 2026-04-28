@@ -41,7 +41,7 @@
 - (2026-04-24, registry-cleanup) When replacing placeholder registrations with real implementations, remove keys from the placeholder list — duplicate registrations silently overwrite
 - (2026-04-24, equivalence-checker) Parser precedence matters: compound patterns must be tried BEFORE simple single-term parsers to avoid partial-match false negatives
 - (2026-04-24, package-types) Make local type extensions explicit (`extends PackageType`) rather than relying on structural compatibility
-- (2026-04-24, review-18) When auditing auth patterns, search ALL route files — not just recently-modified ones
+- (2026-04-28, rate-limiting) Use composite index `[userId, endpoint]` for API rate limiting table; allows per-user-per-endpoint tracking without cross-contamination
 - (2026-04-24, code-review-21) When fixing N+1 queries, verify ALL related functions — not just the hot path. cloudflare-deploy.yml `npm ci --prefix` does not resolve workspace deps in a monorepo; always use root-level `npm ci`
 - (2026-04-24, code-review-21) `describe.skip` without a TODO comment creates invisible test debt; always annotate with reason and tracking reference
 - (2026-04-24, teacher-n1-fix) When refactoring N+1 queries in nested loops, pre-fetch all shared data into Maps before the outer loop
