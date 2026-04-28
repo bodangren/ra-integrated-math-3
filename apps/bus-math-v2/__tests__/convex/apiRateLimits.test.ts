@@ -1,13 +1,19 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import { checkAndIncrementApiRateLimitHandler, RATE_LIMIT_CONFIG } from "../../convex/apiRateLimits";
+import { checkAndIncrementApiRateLimitHandler, RATE_LIMIT_CONFIG, logRateLimitViolation } from "../../convex/apiRateLimits";
 
 const mockInsert = vi.fn();
 const mockPatch = vi.fn();
 const mockUnique = vi.fn();
 const mockQuery = vi.fn();
 const mockWithIndex = vi.fn();
+const mockConsoleError = vi.fn();
 
 const mockGetUserIdentity = vi.fn().mockResolvedValue({ email: "test@example.com" });
+
+vi.stubGlobal('console', {
+  ...console,
+  error: mockConsoleError,
+});
 
 function createMockCtx(profileId: `p${string}` = "test-profile-id") {
   mockUnique.mockResolvedValue(null);
@@ -101,6 +107,7 @@ describe("apiRateLimits handler", () => {
         requestCount: RATE_LIMIT_CONFIG["phases/complete"].maxRequests,
         windowStart: now,
       });
+      mockConsoleError.mockClear();
 
       const result = await checkAndIncrementApiRateLimitHandler(ctx as never, {
         userId: "test-user-id" as `p${string}`,
@@ -110,6 +117,11 @@ describe("apiRateLimits handler", () => {
       expect(result.allowed).toBe(false);
       expect(result.remaining).toBe(0);
       expect(mockPatch).not.toHaveBeenCalled();
+      expect(mockConsoleError).toHaveBeenCalledTimes(1);
+      const loggedObj = JSON.parse(mockConsoleError.mock.calls[0][0] as string);
+      expect(loggedObj.type).toBe("RATE_LIMIT_VIOLATION");
+      expect(loggedObj.endpoint).toBe("phases/complete");
+      expect(loggedObj.userId).toBe("test-user-id");
     });
 
     it("resets window when expired", async () => {
@@ -196,5 +208,83 @@ describe("RATE_LIMIT_CONFIG", () => {
     expect(RATE_LIMIT_CONFIG["activities/complete"].maxRequests).toBe(60);
     expect(RATE_LIMIT_CONFIG["teacher/error-summary"].maxRequests).toBe(120);
     expect(RATE_LIMIT_CONFIG["teacher/ai-error-summary"].maxRequests).toBe(30);
+  });
+
+  it("each endpoint has distinct configurable limits applied correctly", async () => {
+    const ctx = createMockCtx();
+    mockUnique.mockResolvedValue(null);
+    mockConsoleError.mockClear();
+
+    const endpoints: Array<{ endpoint: keyof typeof RATE_LIMIT_CONFIG; limit: number }> = [
+      { endpoint: "phases/complete", limit: 60 },
+      { endpoint: "assessment", limit: 60 },
+      { endpoint: "activities/complete", limit: 60 },
+      { endpoint: "teacher/error-summary", limit: 120 },
+      { endpoint: "teacher/ai-error-summary", limit: 30 },
+    ];
+
+    for (const { endpoint, limit } of endpoints) {
+      mockInsert.mockClear();
+      mockUnique.mockResolvedValue(null);
+
+      const result = await checkAndIncrementApiRateLimitHandler(ctx as never, {
+        userId: "test-user-id" as `p${string}`,
+        endpoint,
+      });
+
+      expect(result.allowed).toBe(true);
+      expect(result.remaining).toBe(limit - 1);
+      expect(mockInsert).toHaveBeenCalledWith("api_rate_limits", expect.objectContaining({
+        requestCount: 1,
+        endpoint,
+      }));
+    }
+  });
+});
+
+describe("logRateLimitViolation", () => {
+  beforeEach(() => {
+    mockConsoleError.mockClear();
+  });
+
+  it("logs structured JSON with all violation details", async () => {
+    const userId = "test-profile-id" as `p${string}`;
+    const endpoint = "phases/complete";
+    const requestCount = 60;
+    const windowExpiresAt = Date.now() + 60000;
+
+    await logRateLimitViolation(userId, endpoint, requestCount, windowExpiresAt);
+
+    expect(mockConsoleError).toHaveBeenCalledTimes(1);
+    const loggedObj = JSON.parse(mockConsoleError.mock.calls[0][0] as string);
+
+    expect(loggedObj.type).toBe("RATE_LIMIT_VIOLATION");
+    expect(loggedObj.timestamp).toBeDefined();
+    expect(loggedObj.userId).toBe(userId);
+    expect(loggedObj.endpoint).toBe(endpoint);
+    expect(loggedObj.requestCount).toBe(requestCount);
+    expect(loggedObj.limit).toBe(60);
+    expect(loggedObj.windowMs).toBe(60000);
+    expect(loggedObj.windowExpiresAt).toBeDefined();
+    expect(loggedObj.retryAfterSec).toBeGreaterThan(0);
+  });
+
+  it("logs different limits for different endpoints", async () => {
+    const endpoints: Array<{ endpoint: "teacher/ai-error-summary"; expectedLimit: number }> = [
+      { endpoint: "teacher/ai-error-summary", expectedLimit: 30 },
+    ];
+
+    for (const { endpoint, expectedLimit } of endpoints) {
+      mockConsoleError.mockClear();
+      await logRateLimitViolation(
+        "test-id" as `p${string}`,
+        endpoint,
+        expectedLimit,
+        Date.now() + 60000
+      );
+
+      const loggedObj = JSON.parse(mockConsoleError.mock.calls[0][0] as string);
+      expect(loggedObj.limit).toBe(expectedLimit);
+    }
   });
 });

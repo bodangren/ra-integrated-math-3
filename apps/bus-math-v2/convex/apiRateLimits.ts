@@ -62,6 +62,12 @@ export async function checkAndIncrementApiRateLimitHandler(
   }
 
   if (existing.requestCount >= maxRequests) {
+    await logRateLimitViolation(
+      args.userId,
+      args.endpoint,
+      existing.requestCount,
+      existing.windowStart + windowMs
+    );
     return {
       allowed: false,
       remaining: 0,
@@ -155,6 +161,29 @@ export const getApiRateLimitStatus = query({
     };
   },
 });
+
+export async function logRateLimitViolation(
+  userId: Id<"profiles">,
+  endpoint: ApiEndpoint,
+  requestCount: number,
+  windowExpiresAt: number
+): Promise<void> {
+  const config = RATE_LIMIT_CONFIG[endpoint];
+  const now = Date.now();
+  console.error(
+    JSON.stringify({
+      type: "RATE_LIMIT_VIOLATION",
+      timestamp: new Date(now).toISOString(),
+      userId,
+      endpoint,
+      requestCount,
+      limit: config?.maxRequests,
+      windowMs: config?.windowMs,
+      windowExpiresAt: new Date(windowExpiresAt).toISOString(),
+      retryAfterSec: Math.max(1, Math.ceil((windowExpiresAt - now) / 1000)),
+    })
+  );
+}
 
 export function formatRateLimitError(
   windowExpiresAt: number

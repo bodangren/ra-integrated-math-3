@@ -11,6 +11,7 @@
 - (2026-04-19, srs-queries) N+1 sequential loops in Convex queries cause timeouts; use `Promise.all` + Map for O(1) lookup
 - (2026-04-23, n1-fixes) Batch all phase section lookups via Promise.all; pre-fetch competency standards before objective loops; batch student SRS cards+reviews in parallel
 - (2026-04-23, review-18) Convex `.eq()` on multi-entry array index expects single element, NOT array — `q.eq("objectiveIds", string)` not `q.eq("objectiveIds", string[])`. The `as unknown as string[]` cast silently breaks queries returning 0 results
+- (2026-04-28, review-23) Independent `.collect()` calls should always be wrapped in `Promise.all` — sequential awaits on independent queries add unnecessary round-trip latency in Convex
 
 ## Recurring Gotchas
 
@@ -23,12 +24,14 @@
 - (2026-04-19, review-10) Always validate + parse request body BEFORE consuming rate limits — malformed requests burn quota
 - (2026-04-19, review-11) When sanitizing LLM prompt inputs, apply sanitization to ALL user-controllable fields including arrays
 - (2026-04-19, auth-design) Authorization checks must verify specific resource ownership; ensure seeding or fallback exists — empty auth tables block all access silently
+- (2026-04-28, review-23) Rate limiting code that isn't wired to routes is dead code — always verify end-to-end integration exists, not just handler implementation
 
 ## Patterns That Worked Well
 
 - (2026-04-05, setup) Existing `lib/` modules are pure functions with clear types — excellent for testing
 - (2026-04-16, srs-product-contract) Single canonical contract module with re-exports; downstream imports from one surface
 - (2026-04-23, review-14) URL search params + client component selector pattern works well for server-rendered pages needing client interactivity
+- (2026-04-28, review-23) `Promise.all` for independent Convex `.collect()` calls reduces sequential round-trips to single parallel batch
 
 ## Planning Improvements
 
@@ -42,9 +45,5 @@
 - (2026-04-24, equivalence-checker) Parser precedence matters: compound patterns must be tried BEFORE simple single-term parsers to avoid partial-match false negatives
 - (2026-04-24, package-types) Make local type extensions explicit (`extends PackageType`) rather than relying on structural compatibility
 - (2026-04-28, rate-limiting) Use composite index `[userId, endpoint]` for API rate limiting table; allows per-user-per-endpoint tracking without cross-contamination
-- (2026-04-24, code-review-21) When fixing N+1 queries, verify ALL related functions — not just the hot path. cloudflare-deploy.yml `npm ci --prefix` does not resolve workspace deps in a monorepo; always use root-level `npm ci`
-- (2026-04-24, code-review-21) `describe.skip` without a TODO comment creates invisible test debt; always annotate with reason and tracking reference
-- (2026-04-24, teacher-n1-fix) When refactoring N+1 queries in nested loops, pre-fetch all shared data into Maps before the outer loop
-- (2026-04-25, lesson-version-n1) `buildLatestPublishedLessonVersionMap` already exists for batch lookups — use it instead of per-lesson sequential queries
-- (2026-04-28, review-22) `.gitignore`-ing `convex/_generated/` breaks fresh-clone builds; generated files must be committed. Package test failures hide behind workspace output; always run package tests individually
-- (2026-04-28, convex-schema-phase3) Convex `FilterApi` type doesn't preserve nested property access; `internal.module.fn` cast to `any` is often necessary — type system limitation, not a bug
+- (2026-04-28, review-23) `Math.max(0, ...)` clamp on `remaining` in rate limit handlers prevents negative values when count exceeds max
+- (2026-04-28, review-23) Convex `.unique()` query on non-unique index can throw when concurrent inserts create duplicates — design rate limit upserts defensively

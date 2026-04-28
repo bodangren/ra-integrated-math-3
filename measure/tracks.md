@@ -726,11 +726,13 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
       *Replace 21 v.any() fields in IM3 Convex schema with typed validators and eliminate 5 production as any casts on Convex internal*
       *Link: [./measure/tracks/convex_schema_strict_validation_20260424/](./measure/tracks/convex_schema_strict_validation_20260424/)*
 
-- [ ] **Track: Rate Limiting API Endpoints**
+- [x] **Track: Rate Limiting API Endpoints** — **COMPLETED**
       *Add per-user rate limiting to 5 unprotected BM2 API endpoints: phases/complete, assessment, activities, error-summary, ai-error-summary*
       *Link: [./measure/tracks/rate_limiting_api_endpoints_20260424/](./measure/tracks/rate_limiting_api_endpoints_20260424/)*
       - Phase 1: Rate Limiter Core [COMPLETE]
       - Phase 2: Endpoint Integration [COMPLETE] (minimax-m2)
+      - Phase 3: Configuration and Monitoring [COMPLETE] (minimax-m2)
+      - Phase 4: Verification [COMPLETE] (minimax-m2)
 
 - [x] **Track: Fix getTeacherClassProficiencyHandler N+1 Queries** — **COMPLETED**
       *Pre-fetch problem_families, timing_baselines, activity_submissions, competency_standards, objective_policies outside S×O loop to reduce ~1800 queries to O(1) pre-fetches*

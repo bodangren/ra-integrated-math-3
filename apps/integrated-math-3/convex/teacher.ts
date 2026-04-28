@@ -144,7 +144,7 @@ async function listLatestPublishedLessonVersions(
 
 async function listActivePhaseIds(
   ctx: QueryCtx,
-): Promise<Set<Id<"phase_versions">>>> {
+): Promise<Set<Id<"phase_versions">>> {
   const [lessonRows, lessonVersions, phaseVersions] = await Promise.all([
     ctx.db.query("lessons").collect(),
     ctx.db.query("lesson_versions").collect(),
