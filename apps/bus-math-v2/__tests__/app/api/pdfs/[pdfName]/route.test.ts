@@ -18,7 +18,7 @@ const { GET } = await import('../../../../../app/api/pdfs/[pdfName]/route');
 function makeRequest(pdfName: string) {
   return new Request(`http://localhost/api/pdfs/${pdfName}`, {
     method: 'GET',
-  });
+  }) as unknown as import('next/server').NextRequest;
 }
 
 describe('GET /api/pdfs/[pdfName]', () => {

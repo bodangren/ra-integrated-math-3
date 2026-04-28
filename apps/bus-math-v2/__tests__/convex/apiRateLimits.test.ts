@@ -1,4 +1,5 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
+import type { Id } from "../../convex/_generated/dataModel";
 import { checkAndIncrementApiRateLimitHandler, RATE_LIMIT_CONFIG, logRateLimitViolation } from "../../convex/apiRateLimits";
 
 const mockInsert = vi.fn();
@@ -15,7 +16,7 @@ vi.stubGlobal('console', {
   error: mockConsoleError,
 });
 
-function createMockCtx(profileId: `p${string}` = "test-profile-id") {
+function createMockCtx(profileId: Id<"profiles"> = "test-profile-id" as unknown as Id<"profiles">) {
   mockUnique.mockResolvedValue(null);
   mockWithIndex.mockReturnValue({ unique: mockUnique });
 
@@ -57,7 +58,7 @@ describe("apiRateLimits handler", () => {
       mockUnique.mockResolvedValue(null);
 
       const result = await checkAndIncrementApiRateLimitHandler(ctx as never, {
-        userId: "test-user-id" as `p${string}`,
+        userId: "test-user-id" as unknown as Id<"profiles">,
         endpoint: "phases/complete",
       });
 
@@ -85,7 +86,7 @@ describe("apiRateLimits handler", () => {
       });
 
       const result = await checkAndIncrementApiRateLimitHandler(ctx as never, {
-        userId: "test-user-id" as `p${string}`,
+        userId: "test-user-id" as unknown as Id<"profiles">,
         endpoint: "phases/complete",
       });
 
@@ -110,7 +111,7 @@ describe("apiRateLimits handler", () => {
       mockConsoleError.mockClear();
 
       const result = await checkAndIncrementApiRateLimitHandler(ctx as never, {
-        userId: "test-user-id" as `p${string}`,
+        userId: "test-user-id" as unknown as Id<"profiles">,
         endpoint: "phases/complete",
       });
 
@@ -137,7 +138,7 @@ describe("apiRateLimits handler", () => {
       });
 
       const result = await checkAndIncrementApiRateLimitHandler(ctx as never, {
-        userId: "test-user-id" as `p${string}`,
+        userId: "test-user-id" as unknown as Id<"profiles">,
         endpoint: "phases/complete",
       });
 
@@ -154,7 +155,7 @@ describe("apiRateLimits handler", () => {
       const ctx = createMockCtx();
 
       const result = await checkAndIncrementApiRateLimitHandler(ctx as never, {
-        userId: "test-user-id" as `p${string}`,
+        userId: "test-user-id" as unknown as Id<"profiles">,
         endpoint: "unknown/endpoint" as any,
       });
 
@@ -168,7 +169,7 @@ describe("apiRateLimits handler", () => {
       mockUnique.mockResolvedValue(null);
 
       const assessmentResult = await checkAndIncrementApiRateLimitHandler(ctx as never, {
-        userId: "test-user-id" as `p${string}`,
+        userId: "test-user-id" as unknown as Id<"profiles">,
         endpoint: "assessment",
       });
       expect(assessmentResult.remaining).toBe(RATE_LIMIT_CONFIG.assessment.maxRequests - 1);
@@ -177,7 +178,7 @@ describe("apiRateLimits handler", () => {
       mockUnique.mockResolvedValue(null);
 
       const aiErrorResult = await checkAndIncrementApiRateLimitHandler(ctx as never, {
-        userId: "test-user-id" as `p${string}`,
+        userId: "test-user-id" as unknown as Id<"profiles">,
         endpoint: "teacher/ai-error-summary",
       });
       expect(aiErrorResult.remaining).toBe(
@@ -228,7 +229,7 @@ describe("RATE_LIMIT_CONFIG", () => {
       mockUnique.mockResolvedValue(null);
 
       const result = await checkAndIncrementApiRateLimitHandler(ctx as never, {
-        userId: "test-user-id" as `p${string}`,
+        userId: "test-user-id" as unknown as Id<"profiles">,
         endpoint,
       });
 
@@ -248,7 +249,7 @@ describe("logRateLimitViolation", () => {
   });
 
   it("logs structured JSON with all violation details", async () => {
-    const userId = "test-profile-id" as `p${string}`;
+    const userId = "test-profile-id" as unknown as Id<"profiles">;
     const endpoint = "phases/complete";
     const requestCount = 60;
     const windowExpiresAt = Date.now() + 60000;
@@ -277,7 +278,7 @@ describe("logRateLimitViolation", () => {
     for (const { endpoint, expectedLimit } of endpoints) {
       mockConsoleError.mockClear();
       await logRateLimitViolation(
-        "test-id" as `p${string}`,
+        "test-id" as unknown as Id<"profiles">,
         endpoint,
         expectedLimit,
         Date.now() + 60000

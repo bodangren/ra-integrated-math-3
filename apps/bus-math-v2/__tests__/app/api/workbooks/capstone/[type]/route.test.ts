@@ -169,7 +169,7 @@ describe('GET /api/workbooks/capstone/[type]', () => {
 
     const response = await GET(
       buildRequest('http://localhost/api/workbooks/capstone/admin'),
-      buildContext('admin')
+      buildContext('admin' as 'student')
     );
 
     expect(response.status).toBe(400);

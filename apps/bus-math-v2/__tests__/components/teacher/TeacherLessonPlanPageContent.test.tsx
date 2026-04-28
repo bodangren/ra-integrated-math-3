@@ -22,6 +22,13 @@ describe('TeacherLessonPlanPageContent', () => {
       title: 'Test Lesson',
       unitNumber: 1,
       lessonNumber: 1,
+      slug: 'test-lesson',
+      description: null,
+      learningObjectives: null,
+      orderIndex: 1,
+      metadata: null,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     phases: [],
     lessonNumber: 1,
@@ -30,6 +37,7 @@ describe('TeacherLessonPlanPageContent', () => {
     previousLessonHref: null,
     nextLessonHref: null,
     empty: true,
+    backHref: '',
   };
 
   it('renders full breadcrumb chain for lesson report', () => {

@@ -23,7 +23,7 @@ const { GET } = await import(
   '@/app/api/workbooks/[unit]/[lesson]/[type]/route'
 );
 
-function buildContext(unit: string, lesson: string, type: string) {
+function buildContext(unit: string, lesson: string, type: 'student' | 'teacher') {
   return {
     params: Promise.resolve({ unit, lesson, type }),
   };

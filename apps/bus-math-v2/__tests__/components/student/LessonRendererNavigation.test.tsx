@@ -39,7 +39,7 @@ const mockLesson = {
   metadata: null,
 };
 
-const mockPhases = [
+const mockPhases: Phase[] = [
   {
     id: 'phase-1',
     phaseNumber: 1,
@@ -49,7 +49,6 @@ const mockPhases = [
         type: 'markdown',
         id: 'block-1',
         content: 'Welcome to the lesson',
-        required: false,
       },
     ],
     estimatedMinutes: 10,
@@ -63,7 +62,7 @@ const mockPhases = [
       {
         type: 'activity',
         id: 'block-2',
-        content: { activityId: 'test-activity' },
+        activityId: 'test-activity',
         required: true,
       },
     ],
@@ -113,14 +112,14 @@ describe('LessonRenderer', () => {
         ],
       };
 
-      const explorePhases = [
+      const explorePhases: Phase[] = [
         {
           id: 'phase-explore',
           phaseNumber: 1,
           title: 'Explore Phase',
           contentBlocks: [{ type: 'markdown', id: 'block-1', content: 'Explore this concept' }],
           estimatedMinutes: 10,
-          metadata: { phaseType: 'explore' },
+          metadata: { phaseType: 'intro' },
         },
         {
           id: 'phase-2',
@@ -156,7 +155,7 @@ describe('LessonRenderer', () => {
         ],
       };
 
-      const nonSkippablePhases = [
+      const nonSkippablePhases: Phase[] = [
         {
           id: 'phase-1',
           phaseNumber: 1,
@@ -201,14 +200,14 @@ describe('LessonRenderer', () => {
         ],
       };
 
-      const discoursePhases = [
+      const discoursePhases: Phase[] = [
         {
           id: 'phase-discourse',
           phaseNumber: 1,
           title: 'Discourse Phase',
           contentBlocks: [{ type: 'markdown', id: 'block-1', content: 'Discuss this concept' }],
           estimatedMinutes: 10,
-          metadata: { phaseType: 'discourse' },
+          metadata: { phaseType: 'reflection' },
         },
         {
           id: 'phase-2',
@@ -254,7 +253,9 @@ describe('LessonRenderer', () => {
     it('shows recommended lesson link when available', () => {
       const recommendedLesson = {
         slug: 'next-lesson',
-        actionLabel: 'Continue to Next Lesson',
+        actionLabel: 'Start Lesson' as const,
+        unitNumber: 1,
+        title: 'Next Lesson',
       };
 
       render(
@@ -268,8 +269,8 @@ describe('LessonRenderer', () => {
         />
       );
 
-      expect(screen.getByText('Continue to Next Lesson')).toBeInTheDocument();
-      const nextLessonLink = screen.getByText('Continue to Next Lesson').closest('a');
+      expect(screen.getByText('Start Lesson')).toBeInTheDocument();
+      const nextLessonLink = screen.getByText('Start Lesson').closest('a');
       expect(nextLessonLink).toHaveAttribute('href', '/student/lesson/next-lesson');
     });
   });

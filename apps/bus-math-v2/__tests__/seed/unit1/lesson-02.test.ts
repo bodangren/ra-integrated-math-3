@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { LESSON_02_SEED_DATA } from '../../../supabase/seed/unit1/lesson-02';
 
-function totalsForNotebookActivity(activity: { props: { items: Array<{ amount: number; category: 'asset' | 'liability' | 'equity' }> } }) {
+function totalsForNotebookActivity(activity: { props: { items: ReadonlyArray<{ amount: number; category: 'asset' | 'liability' | 'equity' }> } }) {
   return activity.props.items.reduce(
     (totals, item) => {
       totals[item.category] += item.amount;

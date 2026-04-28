@@ -140,10 +140,10 @@ describe('useStudy hooks', () => {
       term_zh: '资产',
       def_en: 'An economic resource owned by a business',
       def_zh: '企业拥有的经济资源',
-      unitNumber: 1,
-      topic: 'accounting-basics',
+      units: [1],
+      topics: ['accounting-basics'],
       synonyms: [],
-      relatedTerms: [],
+      related: [],
     };
 
     it('returns en_to_en mode', () => {

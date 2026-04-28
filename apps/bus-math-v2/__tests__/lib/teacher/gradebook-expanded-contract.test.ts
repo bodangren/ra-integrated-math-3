@@ -29,8 +29,8 @@ describe('Gradebook Contract - Independent Practice and Assessment', () => {
         id: 'sub-1',
         userId: 'student-1',
         activityId: 'activity-1',
-        mode: 'independent_practice',
-        status: 'submitted',
+        mode: 'independent_practice' as const,
+        status: 'submitted' as const,
         score: 8,
         maxScore: 10,
         gradedAt: 1234567890,
@@ -63,8 +63,8 @@ describe('Gradebook Contract - Independent Practice and Assessment', () => {
         id: 'sub-1',
         userId: 'student-1',
         activityId: 'activity-1',
-        mode: 'independent_practice',
-        status: 'graded',
+        mode: 'independent_practice' as const,
+        status: 'graded' as const,
         score: 7,
         maxScore: 10,
         gradedAt: 1234567890,
@@ -95,8 +95,8 @@ describe('Gradebook Contract - Independent Practice and Assessment', () => {
         id: 'sub-1',
         userId: 'student-1',
         activityId: 'activity-1',
-        mode: 'assessment',
-        status: 'graded',
+        mode: 'assessment' as const,
+        status: 'graded' as const,
         score: 9,
         maxScore: 10,
         gradedAt: 1234567890,
@@ -128,8 +128,8 @@ describe('Gradebook Contract - Independent Practice and Assessment', () => {
           id: 'sub-1',
           userId: 'student-1',
           activityId: 'activity-1',
-          mode: 'independent_practice',
-          status: 'submitted',
+          mode: 'independent_practice' as const,
+          status: 'submitted' as const,
           score: 8,
           maxScore: 10,
           gradedAt: null,
@@ -138,8 +138,8 @@ describe('Gradebook Contract - Independent Practice and Assessment', () => {
           id: 'sub-2',
           userId: 'student-1',
           activityId: 'activity-2',
-          mode: 'assessment',
-          status: 'graded',
+          mode: 'assessment' as const,
+          status: 'graded' as const,
           score: 9,
           maxScore: 10,
           gradedAt: 1234567890,
@@ -185,8 +185,8 @@ describe('Gradebook Contract - Independent Practice and Assessment', () => {
 
   describe('gradebook cell semantics', () => {
     it('should derive lesson completion status from phase statuses', () => {
-      const phases = ['completed', 'completed', 'not_started', 'not_started', 'not_started', 'not_started'];
-      const status = computeLessonStatus(phases);
+      const phases = ['completed', 'completed', 'not_started', 'not_started', 'not_started', 'not_started'] as const;
+      const status = computeLessonStatus(phases as unknown as import('@/lib/teacher/gradebook').PhaseProgressStatus[]);
       expect(status).toBe('in_progress');
     });
 
@@ -209,8 +209,8 @@ describe('Gradebook Contract - Independent Practice and Assessment', () => {
         id: 'sub-1',
         userId: 'student-1',
         activityId: 'activity-1',
-        mode: 'independent_practice',
-        status: 'submitted',
+        mode: 'independent_practice' as const,
+        status: 'submitted' as const,
         score: 10,
         maxScore: 10,
         gradedAt: 1234567890,
@@ -241,8 +241,8 @@ describe('Gradebook Contract - Independent Practice and Assessment', () => {
         id: 'sub-1',
         userId: 'student-1',
         activityId: 'activity-1',
-        mode: 'independent_practice',
-        status: 'submitted',
+        mode: 'independent_practice' as const,
+        status: 'submitted' as const,
         score: 8,
         maxScore: 10,
         gradedAt: 1234567890,
@@ -271,8 +271,8 @@ describe('Gradebook Contract - Independent Practice and Assessment', () => {
         id: 'sub-1',
         userId: 'student-1',
         activityId: 'activity-1',
-        mode: 'assessment',
-        status: 'graded',
+        mode: 'assessment' as const,
+        status: 'graded' as const,
         score: 9,
         maxScore: 10,
         gradedAt: 1234567890,

@@ -89,7 +89,6 @@ export async function checkAndIncrementApiRateLimitHandler(
 
 export const checkAndIncrementApiRateLimit = mutation({
   args: {
-    userId: v.string(),
     endpoint: v.string(),
   },
   handler: async (ctx, args) => {
