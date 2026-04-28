@@ -47,3 +47,4 @@
 - (2026-04-28, rate-limiting) Use composite index `[userId, endpoint]` for API rate limiting table; allows per-user-per-endpoint tracking without cross-contamination
 - (2026-04-28, review-23) `Math.max(0, ...)` clamp on `remaining` in rate limit handlers prevents negative values when count exceeds max
 - (2026-04-28, review-23) Convex `.unique()` query on non-unique index can throw when concurrent inserts create duplicates — design rate limit upserts defensively
+- (2026-04-28, rate-limiting-race) Fix race condition via try/catch upsert: if insert throws duplicate key error, re-query existing record and patch/increment; check error message for "duplicate" or "unique" keywords

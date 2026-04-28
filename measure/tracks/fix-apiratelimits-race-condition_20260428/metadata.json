@@ -1,0 +1,11 @@
+{
+  "id": "fix-apiratelimits-race-condition_20260428",
+  "title": "Fix apiRateLimits Race Condition",
+  "severity": "high",
+  "status": "in_progress",
+  "created": "2026-04-28",
+  "phase": 1,
+  "dependencies": [],
+  "tags": ["bm2", "rate-limiting", "concurrency", "bug-fix"],
+  "description": "Fix concurrent inserts for same user+endpoint creating duplicate records that break .unique()"
+}

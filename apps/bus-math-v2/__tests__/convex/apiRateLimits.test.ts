@@ -50,6 +50,12 @@ function createMockCtx(profileId: Id<"profiles"> = "test-profile-id" as unknown 
 describe("apiRateLimits handler", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockInsert.mockReset();
+    mockPatch.mockReset();
+    mockUnique.mockReset();
+    mockQuery.mockReset();
+    mockInsert.mockResolvedValue("new-entry-id");
+    mockPatch.mockResolvedValue(undefined);
   });
 
   describe("checkAndIncrementApiRateLimitHandler", () => {
@@ -184,6 +190,63 @@ describe("apiRateLimits handler", () => {
       expect(aiErrorResult.remaining).toBe(
         RATE_LIMIT_CONFIG["teacher/ai-error-summary"].maxRequests - 1
       );
+    });
+    it("handles concurrent requests gracefully - second request catches duplicate and patches", async () => {
+      const now = Date.now();
+      const ctx = createMockCtx();
+
+      mockUnique
+        .mockResolvedValueOnce(null)
+        .mockResolvedValueOnce({
+          _id: "existing-id",
+          userId: "test-user-id",
+          endpoint: "phases/complete",
+          requestCount: 1,
+          windowStart: now,
+        });
+
+      mockInsert.mockRejectedValueOnce(new Error("duplicate key value violates unique constraint"));
+
+      const result = await checkAndIncrementApiRateLimitHandler(ctx as never, {
+        userId: "test-user-id" as unknown as Id<"profiles">,
+        endpoint: "phases/complete",
+      });
+
+      expect(result.allowed).toBe(true);
+      expect(result.remaining).toBe(RATE_LIMIT_CONFIG["phases/complete"].maxRequests - 2);
+      expect(mockInsert).toHaveBeenCalledTimes(1);
+      expect(mockPatch).toHaveBeenCalledWith("existing-id", {
+        requestCount: 2,
+        updatedAt: expect.any(Number),
+      });
+    });
+
+    it("handles concurrent requests where second insert fails and record is at limit", async () => {
+      const now = Date.now();
+      const ctx = createMockCtx();
+
+      mockUnique
+        .mockResolvedValueOnce(null)
+        .mockResolvedValueOnce({
+          _id: "existing-id",
+          userId: "test-user-id",
+          endpoint: "phases/complete",
+          requestCount: 60,
+          windowStart: now,
+        });
+
+      mockInsert.mockRejectedValueOnce(new Error("duplicate key value violates unique constraint"));
+      mockConsoleError.mockClear();
+
+      const result = await checkAndIncrementApiRateLimitHandler(ctx as never, {
+        userId: "test-user-id" as unknown as Id<"profiles">,
+        endpoint: "phases/complete",
+      });
+
+      expect(result.allowed).toBe(false);
+      expect(result.remaining).toBe(0);
+      expect(mockPatch).not.toHaveBeenCalled();
+      expect(mockConsoleError).toHaveBeenCalledTimes(1);
     });
   });
 });

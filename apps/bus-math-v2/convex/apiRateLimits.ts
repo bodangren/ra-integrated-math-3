@@ -25,7 +25,7 @@ export async function checkAndIncrementApiRateLimitHandler(
   const { windowMs, maxRequests } = config;
   const now = Date.now();
 
-  const existing = await ctx.db
+  let existing = await ctx.db
     .query("api_rate_limits")
     .withIndex("by_user_and_endpoint", (q) =>
       q.eq("userId", args.userId).eq("endpoint", args.endpoint)
@@ -33,19 +33,35 @@ export async function checkAndIncrementApiRateLimitHandler(
     .unique();
 
   if (!existing) {
-    await ctx.db.insert("api_rate_limits", {
-      userId: args.userId,
-      endpoint: args.endpoint,
-      requestCount: 1,
-      windowStart: now,
-      createdAt: now,
-      updatedAt: now,
-    });
-    return {
-      allowed: true,
-      remaining: maxRequests - 1,
-      windowExpiresAt: now + windowMs,
-    };
+    try {
+      await ctx.db.insert("api_rate_limits", {
+        userId: args.userId,
+        endpoint: args.endpoint,
+        requestCount: 1,
+        windowStart: now,
+        createdAt: now,
+        updatedAt: now,
+      });
+      return {
+        allowed: true,
+        remaining: maxRequests - 1,
+        windowExpiresAt: now + windowMs,
+      };
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      if (!message.includes("duplicate") && !message.includes("unique")) {
+        throw e;
+      }
+      existing = await ctx.db
+        .query("api_rate_limits")
+        .withIndex("by_user_and_endpoint", (q) =>
+          q.eq("userId", args.userId).eq("endpoint", args.endpoint)
+        )
+        .unique();
+      if (!existing) {
+        throw new Error("Rate limit record disappeared after concurrent insert");
+      }
+    }
   }
 
   if (now - existing.windowStart >= windowMs) {
