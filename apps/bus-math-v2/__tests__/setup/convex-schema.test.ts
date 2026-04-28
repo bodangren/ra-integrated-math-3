@@ -5,10 +5,10 @@ describe('Convex Schema Translation', () => {
   it('should export a valid convex schema with all expected tables', () => {
     // Convex's defineSchema returns a schema object with a tables property
     expect(schema).toBeDefined();
-    
-    // Verify table count after login rate limits table addition
+
+    // Verify table count after api_rate_limits table addition
     const tableNames = Object.keys(schema.tables);
-    expect(tableNames.length).toBe(35);
+    expect(tableNames.length).toBe(36);
 
     // Check study tables
     expect(tableNames).toContain('study_preferences');
@@ -27,11 +27,14 @@ describe('Convex Schema Translation', () => {
     // Check login rate limits table
     expect(tableNames).toContain('login_rate_limits');
 
+    // Check api rate limits table
+    expect(tableNames).toContain('api_rate_limits');
+
     // Check SRS tables
     expect(tableNames).toContain('srs_cards');
     expect(tableNames).toContain('srs_review_log');
     expect(tableNames).toContain('srs_interventions');
-    
+
     // Check some specific core tables
     expect(tableNames).toContain('organizations');
     expect(tableNames).toContain('profiles');
