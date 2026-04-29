@@ -19,7 +19,7 @@ export async function checkAndIncrementApiRateLimitHandler(
 ) {
   const config = RATE_LIMIT_CONFIG[args.endpoint];
   if (!config) {
-    return { allowed: true, remaining: Infinity, windowExpiresAt: 0 };
+    return { allowed: false, remaining: 0, windowExpiresAt: 0 };
   }
 
   const { windowMs, maxRequests } = config;
@@ -106,12 +106,18 @@ export async function checkAndIncrementApiRateLimitHandler(
 export const checkAndIncrementApiRateLimit = internalMutation({
   args: {
     userId: v.id("profiles"),
-    endpoint: v.string(),
+    endpoint: v.union(
+      v.literal("phases/complete"),
+      v.literal("assessment"),
+      v.literal("activities/complete"),
+      v.literal("teacher/error-summary"),
+      v.literal("teacher/ai-error-summary"),
+    ),
   },
   handler: async (ctx, args) => {
     return checkAndIncrementApiRateLimitHandler(ctx, {
       userId: args.userId,
-      endpoint: args.endpoint as ApiEndpoint,
+      endpoint: args.endpoint,
     });
   },
 });
@@ -119,10 +125,16 @@ export const checkAndIncrementApiRateLimit = internalMutation({
 export const getApiRateLimitStatus = internalQuery({
   args: {
     userId: v.id("profiles"),
-    endpoint: v.string(),
+    endpoint: v.union(
+      v.literal("phases/complete"),
+      v.literal("assessment"),
+      v.literal("activities/complete"),
+      v.literal("teacher/error-summary"),
+      v.literal("teacher/ai-error-summary"),
+    ),
   },
   handler: async (ctx, args) => {
-    const config = RATE_LIMIT_CONFIG[args.endpoint as ApiEndpoint];
+    const config = RATE_LIMIT_CONFIG[args.endpoint];
     if (!config) {
       return { remaining: Infinity, windowExpiresAt: 0, isLimited: false };
     }

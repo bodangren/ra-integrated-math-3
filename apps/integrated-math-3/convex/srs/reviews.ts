@@ -1,10 +1,44 @@
 import { internalMutation, internalQuery } from "../_generated/server";
 import { v } from "convex/values";
+import type { MutationCtx, QueryCtx } from "../_generated/server";
+import type { Id } from "../_generated/dataModel";
 import {
   srsCardStatePickValidator,
   srsEvidenceValidator,
   srsRatingValidator,
 } from "./validators";
+
+export async function saveReviewHandler(
+  ctx: MutationCtx,
+  args: {
+    reviewId?: string;
+    cardId: Id<"srs_cards">;
+    studentId: Id<"profiles">;
+    rating: "Again" | "Hard" | "Good" | "Easy";
+    submissionId?: string;
+    evidence: { action: "teacher_reset"; objectiveId: string } | { baseRating: "Again" | "Hard" | "Good" | "Easy"; timingAdjusted: boolean; reasons: string[]; misconceptionTags?: string[] };
+    stateBefore: { stability: number; difficulty: number; state: "new" | "learning" | "review" | "relearning"; reps: number; lapses: number };
+    stateAfter: { stability: number; difficulty: number; state: "new" | "learning" | "review" | "relearning"; reps: number; lapses: number };
+    reviewedAt: string;
+  }
+) {
+  const reviewedAtMs = new Date(args.reviewedAt).getTime();
+  if (Number.isNaN(reviewedAtMs)) {
+    throw new Error(`Invalid reviewedAt date: ${args.reviewedAt}`);
+  }
+  const id = await ctx.db.insert("srs_review_log", {
+    cardId: args.cardId,
+    studentId: args.studentId,
+    rating: args.rating,
+    reviewId: args.reviewId,
+    submissionId: args.submissionId,
+    evidence: args.evidence,
+    stateBefore: args.stateBefore,
+    stateAfter: args.stateAfter,
+    reviewedAt: reviewedAtMs,
+  });
+  return id;
+}
 
 export const saveReview = internalMutation({
   args: {
@@ -18,82 +52,75 @@ export const saveReview = internalMutation({
     stateAfter: srsCardStatePickValidator,
     reviewedAt: v.string(),
   },
-  handler: async (ctx, args) => {
-    const reviewedAtMs = new Date(args.reviewedAt).getTime();
-    if (Number.isNaN(reviewedAtMs)) {
-      throw new Error(`Invalid reviewedAt date: ${args.reviewedAt}`);
-    }
-    const id = await ctx.db.insert("srs_review_log", {
-      cardId: args.cardId,
-      studentId: args.studentId,
-      rating: args.rating,
-      reviewId: args.reviewId,
-      submissionId: args.submissionId,
-      evidence: args.evidence,
-      stateBefore: args.stateBefore,
-      stateAfter: args.stateAfter,
-      reviewedAt: reviewedAtMs,
-    });
-    return id;
-  },
+  handler: saveReviewHandler,
 });
+
+export async function getReviewsByCardHandler(
+  ctx: QueryCtx,
+  args: { cardId: Id<"srs_cards"> }
+) {
+  const reviews = await ctx.db
+    .query("srs_review_log")
+    .withIndex("by_card", (q) =>
+      q.eq("cardId", args.cardId)
+    )
+    .collect();
+  return reviews
+    .sort((a, b) => a.reviewedAt - b.reviewedAt)
+    .map((review) => ({
+      reviewId: review.reviewId ?? review._id,
+      cardId: review.cardId,
+      studentId: review.studentId,
+      rating: review.rating,
+      submissionId: review.submissionId ?? "",
+      evidence: review.evidence,
+      stateBefore: review.stateBefore,
+      stateAfter: review.stateAfter,
+      reviewedAt: new Date(review.reviewedAt).toISOString(),
+    }));
+}
 
 export const getReviewsByCard = internalQuery({
   args: { cardId: v.id("srs_cards") },
-  handler: async (ctx, args) => {
-    const reviews = await ctx.db
-      .query("srs_review_log")
-      .withIndex("by_card", (q) =>
-        q.eq("cardId", args.cardId)
-      )
-      .collect();
-    return reviews
-      .sort((a, b) => a.reviewedAt - b.reviewedAt)
-      .map((review) => ({
-        reviewId: review.reviewId ?? review._id,
-        cardId: review.cardId,
-        studentId: review.studentId,
-        rating: review.rating,
-        submissionId: review.submissionId ?? "",
-        evidence: review.evidence,
-        stateBefore: review.stateBefore,
-        stateAfter: review.stateAfter,
-        reviewedAt: new Date(review.reviewedAt).toISOString(),
-      }));
-  },
+  handler: getReviewsByCardHandler,
 });
+
+export async function getReviewsByStudentHandler(
+  ctx: QueryCtx,
+  args: { studentId: Id<"profiles">; since?: string }
+) {
+  let sinceMs: number | undefined;
+  if (args.since) {
+    sinceMs = new Date(args.since).getTime();
+    if (Number.isNaN(sinceMs)) {
+      throw new Error(`Invalid since date: ${args.since}`);
+    }
+  }
+  const reviews = await ctx.db
+    .query("srs_review_log")
+    .withIndex("by_student", (q) =>
+      q.eq("studentId", args.studentId)
+    )
+    .collect();
+  return reviews
+    .filter((review) =>
+      sinceMs === undefined ? true : review.reviewedAt >= sinceMs
+    )
+    .sort((a, b) => a.reviewedAt - b.reviewedAt)
+    .map((review) => ({
+      reviewId: review.reviewId ?? review._id,
+      cardId: review.cardId,
+      studentId: review.studentId,
+      rating: review.rating,
+      submissionId: review.submissionId ?? "",
+      evidence: review.evidence,
+      stateBefore: review.stateBefore,
+      stateAfter: review.stateAfter,
+      reviewedAt: new Date(review.reviewedAt).toISOString(),
+    }));
+}
 
 export const getReviewsByStudent = internalQuery({
   args: { studentId: v.id("profiles"), since: v.optional(v.string()) },
-  handler: async (ctx, args) => {
-    let sinceMs: number | undefined;
-    if (args.since) {
-      sinceMs = new Date(args.since).getTime();
-      if (Number.isNaN(sinceMs)) {
-        throw new Error(`Invalid since date: ${args.since}`);
-      }
-    }
-    const reviews = await ctx.db
-      .query("srs_review_log")
-      .withIndex("by_student", (q) =>
-        q.eq("studentId", args.studentId)
-      )
-      .collect();
-    return reviews
-      .filter((review) =>
-        sinceMs === undefined ? true : review.reviewedAt >= sinceMs
-      )
-      .sort((a, b) => a.reviewedAt - b.reviewedAt)
-      .map((review) => ({
-        reviewId: review.reviewId ?? review._id,
-        cardId: review.cardId,
-        studentId: review.studentId,
-        rating: review.rating,
-        submissionId: review.submissionId ?? "",
-        evidence: review.evidence,
-        stateBefore: review.stateBefore,
-        stateAfter: review.stateAfter,
-        reviewedAt: new Date(review.reviewedAt).toISOString(),
-      }));
-  },
+  handler: getReviewsByStudentHandler,
 });

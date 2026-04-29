@@ -232,13 +232,7 @@ export async function getCardHandler(
   ctx: QueryCtx,
   args: { id: string }
 ) {
-  let cardId: Id<"srs_cards">;
-  try {
-    cardId = args.id as Id<"srs_cards">;
-  } catch {
-    return null;
-  }
-  const card = await ctx.db.get(cardId);
+  const card = await ctx.db.get(args.id as Id<"srs_cards">);
   if (!card) return null;
   return mapDbCardToContract(card);
 }
@@ -301,15 +295,12 @@ export const getDueCards = internalQuery({
     asOfDate: v.string(),
   },
   handler: async (ctx, args) => {
-    const asOfMs = new Date(args.asOfDate).getTime();
     const cards = await ctx.db
       .query("srs_cards")
       .withIndex("by_student_and_due", (q) =>
-        q.eq("studentId", args.studentId)
+        q.eq("studentId", args.studentId).lte("dueDate", args.asOfDate)
       )
       .collect();
-    return cards
-      .filter((card) => new Date(card.dueDate).getTime() <= asOfMs)
-      .map(mapDbCardToContract);
+    return cards.map(mapDbCardToContract);
   },
 });

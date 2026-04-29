@@ -2,9 +2,9 @@ import { describe, it, expect, vi } from 'vitest';
 import type { Id } from '@/convex/_generated/dataModel';
 import type { MutationCtx, QueryCtx } from '@/convex/_generated/server';
 import {
-  saveReview,
-  getReviewsByCard,
-  getReviewsByStudent,
+  saveReviewHandler,
+  getReviewsByCardHandler,
+  getReviewsByStudentHandler,
 } from '@/convex/srs/reviews';
 
 interface MockReviewDbRecord {
@@ -19,10 +19,6 @@ interface MockReviewDbRecord {
   stateAfter: { stability: number; difficulty: number; state: 'new' | 'learning' | 'review' | 'relearning'; reps: number; lapses: number };
   reviewedAt: number;
 }
-
-const saveReviewHandler = saveReview as any;
-const getReviewsByCardHandler = getReviewsByCard as any;
-const getReviewsByStudentHandler = getReviewsByStudent as any;
 
 function makeMockMutationCtx(overrides: {
   insertId?: Id<'srs_review_log'>;
@@ -66,9 +62,9 @@ describe('saveReview', () => {
 
     const reviewData = {
       reviewId: 'rev-1',
-      cardId: 'card-1',
-      studentId: 'student-1',
-      rating: 'Good',
+      cardId: 'card-1' as Id<'srs_cards'>,
+      studentId: 'student-1' as Id<'profiles'>,
+      rating: 'Good' as const,
       submissionId: 'sub-1',
       evidence: {
         baseRating: 'Good' as const,
@@ -130,9 +126,9 @@ describe('saveReview', () => {
     const ctx = { db } as unknown as MutationCtx;
 
     const reviewData = {
-      cardId: 'card-1',
-      studentId: 'student-1',
-      rating: 'Hard',
+      cardId: 'card-1' as Id<'srs_cards'>,
+      studentId: 'student-1' as Id<'profiles'>,
+      rating: 'Hard' as const,
       evidence: {
         baseRating: 'Hard' as const,
         timingAdjusted: true,
@@ -184,9 +180,9 @@ describe('saveReview', () => {
 
     const reviewData = {
       reviewId: 'rev-2',
-      cardId: 'card-2',
-      studentId: 'student-2',
-      rating: 'Again',
+      cardId: 'card-2' as Id<'srs_cards'>,
+      studentId: 'student-2' as Id<'profiles'>,
+      rating: 'Again' as const,
       evidence: {
         action: 'teacher_reset' as const,
         objectiveId: 'obj-123',
@@ -273,7 +269,7 @@ describe('getReviewsByCard', () => {
     const { db } = makeMockQueryCtx({ reviews });
     const ctx = { db } as unknown as QueryCtx;
 
-    const result = await getReviewsByCardHandler(ctx, { cardId: 'card-1' });
+    const result = await getReviewsByCardHandler(ctx, { cardId: 'card-1' as Id<'srs_cards'> });
 
     expect(result).toHaveLength(2);
     expect(result[0].reviewId).toBe('rev-1');
@@ -286,7 +282,7 @@ describe('getReviewsByCard', () => {
     const { db } = makeMockQueryCtx({ reviews: [] });
     const ctx = { db } as unknown as QueryCtx;
 
-    const result = await getReviewsByCardHandler(ctx, { cardId: 'card-nonexistent' });
+    const result = await getReviewsByCardHandler(ctx, { cardId: 'card-nonexistent' as Id<'srs_cards'> });
 
     expect(result).toHaveLength(0);
   });
@@ -311,7 +307,7 @@ describe('getReviewsByCard', () => {
     const { db } = makeMockQueryCtx({ reviews: [dbReview] });
     const ctx = { db } as unknown as QueryCtx;
 
-    const result = await getReviewsByCardHandler(ctx, { cardId: 'card-1' });
+    const result = await getReviewsByCardHandler(ctx, { cardId: 'card-1' as Id<'srs_cards'> });
 
     expect(result).toHaveLength(1);
     expect(result[0].reviewId).toBe('review-1');
@@ -367,7 +363,7 @@ describe('getReviewsByStudent', () => {
     const { db } = makeMockQueryCtx({ reviews });
     const ctx = { db } as unknown as QueryCtx;
 
-    const result = await getReviewsByStudentHandler(ctx, { studentId: 'student-1' });
+    const result = await getReviewsByStudentHandler(ctx, { studentId: 'student-1' as Id<'profiles'> });
 
     expect(result).toHaveLength(2);
     expect(result[0].reviewId).toBe('rev-1');
@@ -413,7 +409,7 @@ describe('getReviewsByStudent', () => {
     const ctx = { db } as unknown as QueryCtx;
 
     const since = '2026-04-29T11:00:00.000Z';
-    const result = await getReviewsByStudentHandler(ctx, { studentId: 'student-1', since });
+    const result = await getReviewsByStudentHandler(ctx, { studentId: 'student-1' as Id<'profiles'>, since });
 
     expect(result).toHaveLength(1);
     expect(result[0].reviewId).toBe('rev-2');
@@ -423,7 +419,7 @@ describe('getReviewsByStudent', () => {
     const { db } = makeMockQueryCtx({ reviews: [] });
     const ctx = { db } as unknown as QueryCtx;
 
-    const result = await getReviewsByStudentHandler(ctx, { studentId: 'student-nonexistent' });
+    const result = await getReviewsByStudentHandler(ctx, { studentId: 'student-nonexistent' as Id<'profiles'> });
 
     expect(result).toHaveLength(0);
   });
@@ -446,7 +442,7 @@ describe('getReviewsByStudent', () => {
     const { db } = makeMockQueryCtx({ reviews: [dbReview] });
     const ctx = { db } as unknown as QueryCtx;
 
-    const result = await getReviewsByStudentHandler(ctx, { studentId: 'student-1' });
+    const result = await getReviewsByStudentHandler(ctx, { studentId: 'student-1' as Id<'profiles'> });
 
     expect(result).toHaveLength(1);
     expect(result[0].reviewId).toBe('review-1');
