@@ -25,5 +25,6 @@ export {
 export {
   detectPromptInjection,
   isInjectionAttempt,
+  normalizeInput,
   type InjectionDetection,
 } from './prompt-guard';

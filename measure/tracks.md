@@ -798,9 +798,14 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 - [x] **Track: RSC Bundle Optimization** — **COMPLETED**
      *Reduce RSC entry page chunk from 891 KB to 354 KB via vendor chunking (lucide-react, zod, @radix-ui, clsx, monorepo packages)*
      *Link: [./tracks/rsc_bundle_optimization_20260429/](./tracks/rsc_bundle_optimization_20260429/)*
-     - Phase 1: Analyze and Document [COMPLETE]
-     - Phase 2: Apply Code-Splitting [COMPLETE]
-     - Phase 3: Verify (354 KB < 500 KB target) [COMPLETE]
+      - Phase 1: Analyze and Document [COMPLETE]
+      - Phase 2: Apply Code-Splitting [COMPLETE]
+      - Phase 3: Verify (354 KB < 500 KB target) [COMPLETE]
+
+- [~] **Track: Prompt Guard Hardening**
+     *Fix critical prompt injection defense vulnerabilities: Unicode/homoglyph normalization and regex false positive restructuring*
+     *Link: [./tracks/prompt_guard_hardening_20260429/](./tracks/prompt_guard_hardening_20260429/)*
+      - Phase 1: Unicode Normalization
 
 - [x] **Track: SRS saveCards Batch Mutation** — **COMPLETED**
       *Batch saveCards lookups and writes via Promise.all to eliminate 2N sequential DB operations*

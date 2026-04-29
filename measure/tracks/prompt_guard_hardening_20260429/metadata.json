@@ -1,0 +1,9 @@
+{
+  "trackId": "prompt_guard_hardening_20260429",
+  "title": "Prompt Guard Hardening",
+  "description": "Fix critical prompt injection defense vulnerabilities: Unicode/homoglyph normalization and regex false positive restructuring",
+  "status": "active",
+  "createdAt": "2026-04-29",
+  "dependsOn": [],
+  "priority": "high"
+}
