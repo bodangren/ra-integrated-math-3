@@ -1,19 +1,19 @@
 # Implementation Plan: Activity Component Extraction
 
-## Phase 1: Package Scaffold and Core Types
+## Phase 1: Package Scaffold and Core Types [checkpoint: f62ebef]
 
-- [ ] Task: Create `packages/activity-components/` scaffold
-    - [ ] Initialize package with `package.json`, `tsconfig.json`, `vitest.config.ts`
-    - [ ] Set up `src/` directory structure: `components/`, `registry/`, `schemas/`, `renderer/`, `types/`
-    - [ ] Configure build (vinext library mode or tsc)
-- [ ] Task: Extract shared types to package
-    - [ ] Move `ActivityComponentProps` interface to `src/types/index.ts`
-    - [ ] Resolve flat vs nested prop interface inconsistency (standardize on flat)
-    - [ ] Export `ActivityMode`, `ActivityType` from `@math-platform/activity-runtime`
-    - [ ] Write tests for type exports
-- [ ] Task: Extract registry to package
-    - [ ] Move `registerActivity`, `getActivityComponent`, `getRegisteredActivityKeys`, `clearActivityRegistry` to `src/registry/index.ts`
-    - [ ] Write unit tests for registry API
+- [x] Task: Create `packages/activity-components/` scaffold [f62ebef]
+    - [x] Initialize package with `package.json`, `tsconfig.json`, `vitest.config.ts`
+    - [x] Set up `src/` directory structure: `components/`, `registry/`, `schemas/`, `renderer/`, `types/`
+    - [x] Configure build (tsc --noEmit)
+- [x] Task: Extract shared types to package [f62ebef]
+    - [x] Move `ActivityComponentProps` interface to `src/types/index.ts`
+    - [x] Resolve flat vs nested prop interface inconsistency (standardize on nested canonical form)
+    - [x] Export `ActivityMode` from `@math-platform/activity-runtime` (via types)
+    - [x] Write tests for type exports
+- [x] Task: Extract registry to package [f62ebef]
+    - [x] Move `registerActivity`, `getActivityComponent`, `getRegisteredActivityKeys`, `clearActivityRegistry` to `src/registry/index.ts`
+    - [x] Write unit tests for registry API
 
 ## Phase 2: Extract Activity Components
 
