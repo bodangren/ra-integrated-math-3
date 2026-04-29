@@ -1,6 +1,7 @@
 import type { SrsReviewLogEntry, SrsRating, ReviewLogStore } from "@math-platform/srs-engine";
 import { internal } from "../../convex/_generated/api";
 import { type MutationCtx } from "../../convex/_generated/server";
+import { type Id } from "../../convex/_generated/dataModel";
 
 export class ConvexReviewLogStore implements ReviewLogStore {
   private ctx: MutationCtx;
@@ -12,8 +13,8 @@ export class ConvexReviewLogStore implements ReviewLogStore {
   async saveReview(entry: SrsReviewLogEntry): Promise<void> {
     await this.ctx.runMutation(internal.srs.reviews.saveReview, {
       reviewId: entry.reviewId,
-      cardId: entry.cardId,
-      studentId: entry.studentId,
+      cardId: entry.cardId as Id<"srs_cards">,
+      studentId: entry.studentId as Id<"profiles">,
       rating: entry.rating,
       submissionId: entry.submissionId,
       evidence: entry.evidence,
@@ -25,7 +26,7 @@ export class ConvexReviewLogStore implements ReviewLogStore {
 
   async getReviewsByCard(cardId: string): Promise<SrsReviewLogEntry[]> {
     const result = await this.ctx.runQuery(internal.srs.reviews.getReviewsByCard, {
-      cardId,
+      cardId: cardId as Id<"srs_cards">,
     });
     return result.map((r) => ({ ...r, rating: r.rating as SrsRating }));
   }
@@ -37,7 +38,7 @@ export class ConvexReviewLogStore implements ReviewLogStore {
     const result = await this.ctx.runQuery(
       internal.srs.reviews.getReviewsByStudent,
       {
-        studentId,
+        studentId: studentId as Id<"profiles">,
         since,
       }
     );

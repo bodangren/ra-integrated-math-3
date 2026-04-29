@@ -15,6 +15,7 @@ import type * as auth from "../auth.js";
 import type * as component_approval_validators from "../component_approval_validators.js";
 import type * as component_approvals from "../component_approvals.js";
 import type * as dashboardHelpers from "../dashboardHelpers.js";
+import type * as loginRateLimits from "../loginRateLimits.js";
 import type * as practice_submission from "../practice_submission.js";
 import type * as public_ from "../public.js";
 import type * as rateLimits from "../rateLimits.js";
@@ -39,6 +40,7 @@ declare const fullApi: ApiFromModules<{
   component_approval_validators: typeof component_approval_validators;
   component_approvals: typeof component_approvals;
   dashboardHelpers: typeof dashboardHelpers;
+  loginRateLimits: typeof loginRateLimits;
   practice_submission: typeof practice_submission;
   public: typeof public_;
   rateLimits: typeof rateLimits;

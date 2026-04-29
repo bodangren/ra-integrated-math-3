@@ -178,7 +178,7 @@ export async function resetStudentCardsHandler(
     await ctx.db.insert("srs_review_log", {
       cardId: card._id,
       studentId: args.studentId,
-      rating: "manual_reset",
+      rating: "Again",
       evidence: { action: "teacher_reset", objectiveId: args.objectiveId },
       stateBefore: {
         stability: card.stability,

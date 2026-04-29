@@ -13,6 +13,7 @@ const mockQuery = vi.fn();
 const mockWithIndex = vi.fn();
 const mockUnique = vi.fn();
 const mockCollect = vi.fn();
+const mockFilter = vi.fn();
 const mockInsert = vi.fn().mockResolvedValue('new_id_123');
 const mockPatch = vi.fn().mockResolvedValue(undefined);
 const mockDelete = vi.fn().mockResolvedValue(undefined);
@@ -29,7 +30,8 @@ function createMockCtx(
 
   mockUnique.mockResolvedValue(null);
   mockCollect.mockResolvedValue([]);
-  mockWithIndex.mockReturnValue({ unique: mockUnique, collect: mockCollect });
+  mockFilter.mockReturnValue({ take: vi.fn().mockResolvedValue([]) });
+  mockWithIndex.mockReturnValue({ unique: mockUnique, collect: mockCollect, filter: mockFilter });
 
   mockQuery.mockImplementation((table: string) => {
     if (table === 'profiles') {
@@ -45,7 +47,7 @@ function createMockCtx(
         }),
       };
     }
-    return { withIndex: mockWithIndex, collect: mockCollect };
+    return { withIndex: mockWithIndex, collect: mockCollect, filter: mockFilter };
   });
 
   return {
@@ -200,7 +202,7 @@ describe('loginRateLimits handler', () => {
       const now = Date.now();
       const staleThreshold = now - LOGIN_STALE_ENTRY_THRESHOLD_MS;
 
-      const entries = [
+      const staleEntries = [
         {
           _id: 'stale_1' as never,
           ipHash: 'ip1',
@@ -217,28 +219,19 @@ describe('loginRateLimits handler', () => {
           createdAt: staleThreshold - 2000,
           updatedAt: staleThreshold - 2000,
         },
-        {
-          _id: 'valid_1' as never,
-          ipHash: 'ip3',
-          requestCount: 3,
-          windowStart: now - 1000,
-          createdAt: now - 1000,
-          updatedAt: now - 1000,
-        },
       ];
-      mockCollect.mockResolvedValue(entries);
+      mockFilter.mockReturnValue({ take: vi.fn().mockResolvedValue(staleEntries) });
 
       const result = await cleanupStaleLoginRateLimitsHandler(ctx as never);
 
       expect(result.deletedCount).toBe(2);
       expect(mockDelete).toHaveBeenCalledWith('stale_1' as never);
       expect(mockDelete).toHaveBeenCalledWith('stale_2' as never);
-      expect(mockDelete).not.toHaveBeenCalledWith('valid_1' as never);
     });
 
     it('returns zero when no stale entries exist', async () => {
       const ctx = createMockCtx('admin');
-      mockCollect.mockResolvedValue([]);
+      mockFilter.mockReturnValue({ take: vi.fn().mockResolvedValue([]) });
 
       const result = await cleanupStaleLoginRateLimitsHandler(ctx as never);
 

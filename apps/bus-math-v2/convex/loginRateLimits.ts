@@ -98,10 +98,11 @@ export async function cleanupStaleLoginRateLimitsHandler(ctx: MutationCtx) {
   const identity = await ctx.auth.getUserIdentity();
   if (!identity) throw new Error('Unauthenticated');
   if (!identity.email) throw new Error('No email in identity');
+  const email = identity.email;
 
   const profile = await ctx.db
     .query('profiles')
-    .withIndex('by_username', (q) => q.eq('username', identity.email))
+    .withIndex('by_username', (q) => q.eq('username', email))
     .unique();
   if (!profile || profile.role !== 'admin') {
     throw new Error('Unauthorized: admin only');

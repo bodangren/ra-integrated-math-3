@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { resolveOpenRouterProviderFromEnv, assembleLessonChatbotContext } from '@math-platform/ai-tutoring';
 import { buildPublishedCurriculumManifest } from '@/lib/curriculum/published-manifest';
 import { fetchInternalMutation, internal } from '@/lib/convex/server';
+import type { Id } from '@/convex/_generated/dataModel';
 
 interface ChatbotRequest {
   lessonId: string;
@@ -50,7 +51,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
   }
 
-  const userId = session.sub;
+  const userId = session.sub as Id<"profiles">;
 
   try {
     const rateLimitResult = await fetchInternalMutation(

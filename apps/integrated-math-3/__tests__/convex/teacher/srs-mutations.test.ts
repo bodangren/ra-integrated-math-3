@@ -463,7 +463,7 @@ describe('resetStudentCardsHandler', () => {
     expect(mockInsert).toHaveBeenCalledWith('srs_review_log', expect.objectContaining({
       cardId,
       studentId,
-      rating: 'manual_reset',
+      rating: 'Again',
       evidence: expect.objectContaining({ action: 'teacher_reset' }),
     }));
   });
