@@ -5,8 +5,7 @@
 
 ## Architecture & Design
 
-- (2026-04-19, srs-queries) N+1 sequential loops in Convex queries cause timeouts; use `Promise.all` + Map for O(1) lookup
-- (2026-04-23, n1-fixes) Batch all phase section lookups via Promise.all; pre-fetch competency standards before objective loops; batch student SRS cards+reviews in parallel
+- (2026-04-19, srs-queries) N+1 sequential loops in Convex queries cause timeouts; use Promise.all + Map for O(1) lookup. For teacher-class queries, fetch ALL cards/reviews/submissions broadly then group by studentId in memory — never query per-student in a loop.
 - (2026-04-23, review-18) Convex `.eq()` on multi-entry array index expects single element, NOT array — `q.eq("objectiveIds", string)` not `q.eq("objectiveIds", string[])`. The `as unknown as string[]` cast silently breaks queries returning 0 results
 - (2026-04-28, review-23) Independent `.collect()` calls should always be wrapped in `Promise.all` — sequential awaits on independent queries add unnecessary round-trip latency in Convex
 
