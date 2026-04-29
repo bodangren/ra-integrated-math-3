@@ -37,7 +37,7 @@
 | reviews.ts handler functions not exported for testing | Medium | Resolved | Extracted and exported saveReviewHandler, getReviewsByCardHandler, getReviewsByStudentHandler (review-29) |
 | Prompt guard regex false positives on common English | High | Resolved | Removed optional trailing group from pattern 1, added plural forms, changed .* to .+, added keyword proximity detection (prompt_guard_hardening_20260429) |
 | Prompt guard no Unicode/homoglyph normalization | High | Resolved | Added normalizeInput() with NFC normalization, zero-width char stripping, Cyrillic/fullwidth mapping (prompt_guard_hardening_20260429) |
-| processReview.ts no studentId cross-validation | High | Open | cardState.studentId and reviewEntry.studentId accepted independently; mismatch creates corrupt data |
+| processReview.ts no studentId cross-validation | High | Resolved | Added validation at handler start; throws error on mismatch (2026-04-29) |
 | cards.ts updatedAt inconsistent (Date.now vs caller) | Medium | Open | Updates use Date.now() but inserts use caller-provided timestamp |
 | srs_reviews by_student index unused for date range | Low | Open | getReviewsByStudent filters in JS; needs by_student_and_reviewed_at index |
 | objectiveProficiency full table scan of activity_submissions | Medium | Open | O(total_submissions) regardless of class size; needs index or batched per-student queries |

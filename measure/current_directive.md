@@ -71,8 +71,7 @@ Monorepo migration complete (Waves 0-6). All major feature tracks done. Three ne
 - [x] BM2 apiRateLimits: endpoint arg `v.string()` → `v.union(v.literal(...))`, deny-by-default (review-29)
 - [x] reviews.ts: extract and export handler functions for direct testing without `as any` (review-29)
 - [x] Prompt guard Unicode normalization and regex restructuring (prompt_guard_hardening_20260429)
-- [ ] processReview.ts studentId cross-validation
-- [ ] processReview.ts studentId cross-validation
+- [x] processReview.ts studentId cross-validation (added validation, mismatch throws error)
 - [ ] teacher/srs_queries.ts: N+1 parallel fan → broader batched queries
 - [ ] BM2 9 governance tests re-enablement
 - [ ] Rate limiter test coverage (IM3 + BM2 chatbot)
