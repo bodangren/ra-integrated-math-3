@@ -777,6 +777,12 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
   *IM3: 267/267 pass. BM2: Convex generated type stubs added; 28 pre-existing infra failures remain (outside spec scope).*
   *Link: [./measure/archive/harden-test-suite_20260419/](./measure/archive/harden-test-suite_20260419/)*
 
+## Tech Debt Resolution (2026-04-29)
+
+- [ ] **Track: Monorepo Tech Debt Resolution**
+  *Resolve all 24 open/partial tech debt items, add missing test coverage, and implement metrics/monitoring guardrails*
+  *Link: [./tracks/tech-debt-resolution_20260429/](./tracks/tech-debt-resolution_20260429/)*
+
 ## Upcoming Tracks
 
 - [x] **Track: SRS reviews.ts Test Coverage** — **COMPLETED**
