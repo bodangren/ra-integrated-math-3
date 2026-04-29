@@ -12,7 +12,7 @@
 | apiRateLimits no stale entry cleanup | Medium | Open | Table grows unbounded; rateLimits.ts and loginRateLimits.ts both have cleanup mutations |
 | SRS CardStore: studentId type mismatch (contract vs schema) | High | Partial | Package uses `string` but Convex uses `Id<...>`; bridging casts in convexReviewLogStore.ts still needed (review-27) |
 | 16 `v.any()` fields in IM3 Convex schema | Medium | Partial | Down from 21; srs_review_log fully typed; srs_cards state + rating now use shared validators; remaining: submissionData, props, content, fsrsState, config, and 10 metadata fields |
-| BM2 chatbot prompt injection defense still weak | Medium | Open | sanitizeInput only strips markdown chars; no system prompt guard or LLM-based filter |
+| BM2 chatbot prompt injection defense still weak | Medium | Resolved | Added detectPromptInjection with 6 pattern categories; system/user message separation; comprehensive tests (chatbot_prompt_guard_20260425) |
 | BM2 login endpoint has no input length limits | Medium | Open | Multi-MB payloads could exhaust memory/slow hashing |
 | No unique constraints on rate limit tables | High | Open | Convex indexes aren't unique; try/catch upsert handles concurrent inserts but duplicates can still be created |
 | Rate limiters duplicated across IM3/BM2 | Medium | Open | Same logic diverges; should extract to shared package |

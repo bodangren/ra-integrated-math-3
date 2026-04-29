@@ -1,24 +1,24 @@
 # Chatbot Prompt Injection Defense - Implementation Plan
 
-## Phase 1: Core Injection Detection
-- [~] Write failing tests for detectPromptInjection utility
-- [ ] Implement detectPromptInjection with pattern matching for common injection techniques
-- [ ] Verify tests pass
+## Phase 1: Core Injection Detection [checkpoint: da51d9c]
+- [x] Write failing tests for detectPromptInjection utility
+- [x] Implement detectPromptInjection with pattern matching for common injection techniques
+- [x] Verify tests pass
 
-## Phase 2: BM2 Integration
-- [ ] Update BM2 route to use system/user message separation
-- [ ] Integrate prompt injection detection before AI call
-- [ ] Add tests for injection detection in BM2 route
-- [ ] Verify BM2 tests pass
+## Phase 2: BM2 Integration [checkpoint: da51d9c]
+- [x] Update BM2 route to use system/user message separation
+- [x] Integrate prompt injection detection before AI call
+- [x] Add tests for injection detection in BM2 route
+- [x] Verify BM2 tests pass
 
-## Phase 3: IM3 Integration
-- [ ] Update IM3 route to use system/user message separation
-- [ ] Integrate prompt injection detection before AI call
-- [ ] Add tests for injection detection in IM3 route
-- [ ] Verify IM3 tests pass
+## Phase 3: IM3 Integration [checkpoint: da51d9c]
+- [x] Update IM3 route to use system/user message separation
+- [x] Integrate prompt injection detection before AI call
+- [x] Add tests for injection detection in IM3 route
+- [x] Verify IM3 tests pass
 
-## Phase 4: Polish
-- [ ] Update tech-debt.md
-- [ ] Update lessons-learned.md
-- [ ] Final verification (build, typecheck, lint)
-- [ ] Commit and push
+## Phase 4: Polish [checkpoint: da51d9c]
+- [x] Update tech-debt.md
+- [x] Update lessons-learned.md
+- [x] Final verification (build, typecheck, lint)
+- [x] Commit and push
