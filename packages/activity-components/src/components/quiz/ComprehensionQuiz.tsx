@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { MathInputField } from '../algebraic/MathInputField';
 import { buildPracticeSubmissionEnvelope } from '@math-platform/practice-core/contract';
 
-type QuestionType = 'multiple_choice' | 'true_false' | 'short_answer' | 'select_all';
+export type QuestionType = 'multiple_choice' | 'true_false' | 'short_answer' | 'select_all';
 
-interface Question {
+export interface Question {
   id: string;
   type: QuestionType;
   prompt: string;
@@ -15,7 +15,7 @@ interface Question {
   explanation?: string;
 }
 
-interface ComprehensionQuizProps {
+export interface ComprehensionQuizProps {
   activityId: string;
   mode: 'teaching' | 'guided' | 'practice';
   questions: Question[];

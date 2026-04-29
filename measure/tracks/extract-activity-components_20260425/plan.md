@@ -15,32 +15,32 @@
     - [x] Move `registerActivity`, `getActivityComponent`, `getRegisteredActivityKeys`, `clearActivityRegistry` to `src/registry/index.ts`
     - [x] Write unit tests for registry API
 
-## Phase 2: Extract Activity Components
+## Phase 2: Extract Activity Components [checkpoint: 85d06ef]
 
-- [ ] Task: Extract ComprehensionQuiz component
-    - [ ] Move `ComprehensionQuiz.tsx` and `ComprehensionQuizActivity.tsx` to `src/components/quiz/`
-    - [ ] Move Zod schema to `src/schemas/comprehension-quiz.schema.ts`
-    - [ ] Write tests for component rendering and schema validation
-- [ ] Task: Extract FillInTheBlank component
-    - [ ] Move `FillInTheBlank.tsx` and `FillInTheBlankActivity.tsx` to `src/components/blanks/`
-    - [ ] Move Zod schema to `src/schemas/fill-in-the-blank.schema.ts`
-    - [ ] Write tests
-- [ ] Task: Extract RateOfChangeCalculator component
-    - [ ] Move `RateOfChangeCalculator.tsx` and `RateOfChangeCalculatorActivity.tsx` to `src/components/roc/`
-    - [ ] Move Zod schema to `src/schemas/rate-of-change.schema.ts`
-    - [ ] Write tests
-- [ ] Task: Extract DiscriminantAnalyzer component
-    - [ ] Move `DiscriminantAnalyzer.tsx` and `DiscriminantAnalyzerActivity.tsx` to `src/components/discriminant/`
-    - [ ] Move Zod schema to `src/schemas/discriminant.schema.ts`
-    - [ ] Write tests
-- [ ] Task: Extract StepByStepSolver component
-    - [ ] Move `StepByStepper.tsx`, `MathInputField.tsx`, `StepByStepSolverActivity.tsx` to `src/components/algebraic/`
-    - [ ] Move Zod schema to `src/schemas/step-by-step-solver.schema.ts`
-    - [ ] Write tests
-- [ ] Task: Extract GraphingExplorer component
-    - [ ] Move `GraphingExplorer.tsx`, `GraphingExplorerActivity.tsx`, `GraphingCanvas.tsx`, `HintPanel.tsx`, `InterceptIdentification.tsx`, `InteractiveTableOfValues.tsx` to `src/components/graphing/`
-    - [ ] Move Zod schema to `src/schemas/graphing-explorer.schema.ts`
-    - [ ] Write tests
+- [x] Task: Extract ComprehensionQuiz component [85d06ef]
+    - [x] Move `ComprehensionQuiz.tsx` and `ComprehensionQuizActivity.tsx` to `src/components/quiz/`
+    - [x] Move Zod schema to `src/schemas/comprehension-quiz.schema.ts`
+    - [x] Write tests for component rendering and schema validation
+- [x] Task: Extract FillInTheBlank component [85d06ef]
+    - [x] Move `FillInTheBlank.tsx` and `FillInTheBlankActivity.tsx` to `src/components/blanks/`
+    - [x] Move Zod schema to `src/schemas/fill-in-the-blank.schema.ts`
+    - [x] Write tests
+- [x] Task: Extract RateOfChangeCalculator component [85d06ef]
+    - [x] Move `RateOfChangeCalculator.tsx` and `RateOfChangeCalculatorActivity.tsx` to `src/components/roc/`
+    - [x] Move Zod schema to `src/schemas/rate-of-change.schema.ts`
+    - [x] Write tests
+- [x] Task: Extract DiscriminantAnalyzer component [85d06ef]
+    - [x] Move `DiscriminantAnalyzer.tsx` and `DiscriminantAnalyzerActivity.tsx` to `src/components/discriminant/`
+    - [x] Move Zod schema to `src/schemas/discriminant.schema.ts`
+    - [x] Write tests
+- [x] Task: Extract StepByStepSolver component [85d06ef]
+    - [x] Move `StepByStepper.tsx`, `MathInputField.tsx`, `StepByStepSolverActivity.tsx` to `src/components/algebraic/`
+    - [x] Move Zod schema to `src/schemas/step-by-step-solver.schema.ts`
+    - [x] Write tests
+- [x] Task: Extract GraphingExplorer component [85d06ef]
+    - [x] Move `GraphingExplorer.tsx`, `GraphingExplorerActivity.tsx`, `GraphingCanvas.tsx`, `HintPanel.tsx`, `InterceptIdentification.tsx`, `InteractiveTableOfValues.tsx` to `src/components/graphing/`
+    - [x] Move Zod schema to `src/schemas/graphing-explorer.schema.ts`
+    - [x] Write tests
 
 ## Phase 3: Extract ActivityRenderer
 
