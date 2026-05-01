@@ -1,0 +1,334 @@
+{
+  "schemaVersion": "ap-precalculus-ced-topic-index.v1",
+  "generatedBy": "scripts/extract-curriculum-sources.mjs",
+  "source": {
+    "title": "AP® Precalculus Course and Exam Description",
+    "url": "https://apcentral.collegeboard.org/media/pdf/ap-precalculus-course-and-exam-description.pdf",
+    "localPdf": "source/originals/ap-precalculus-course-and-exam-description.pdf",
+    "pages": 195
+  },
+  "units": [
+    {
+      "unit": 1,
+      "title": "Polynomial and Rational Functions",
+      "examStatus": "assessed-on-ap-exam",
+      "examWeighting": "30-40%",
+      "pacing": "6-8 weeks",
+      "topics": [
+        {
+          "id": "1.1",
+          "title": "Change in Tandem"
+        },
+        {
+          "id": "1.2",
+          "title": "Rates of Change"
+        },
+        {
+          "id": "1.3",
+          "title": "Rates of Change in Linear and Quadratic Functions"
+        },
+        {
+          "id": "1.4",
+          "title": "Polynomial Functions and Rates of Change"
+        },
+        {
+          "id": "1.5",
+          "title": "Polynomial Functions and Complex Zeros"
+        },
+        {
+          "id": "1.6",
+          "title": "Polynomial Functions and End Behavior"
+        },
+        {
+          "id": "1.7",
+          "title": "Rational Functions and End Behavior"
+        },
+        {
+          "id": "1.8",
+          "title": "Rational Functions and Zeros"
+        },
+        {
+          "id": "1.9",
+          "title": "Rational Functions and Vertical Asymptotes"
+        },
+        {
+          "id": "1.10",
+          "title": "Rational Functions and Holes"
+        },
+        {
+          "id": "1.11",
+          "title": "Equivalent Representations of Polynomial and Rational Expressions"
+        },
+        {
+          "id": "1.12",
+          "title": "Transformations of Functions"
+        },
+        {
+          "id": "1.13",
+          "title": "Function Model Selection and Assumption Articulation"
+        },
+        {
+          "id": "1.14",
+          "title": "Function Model Construction and Application"
+        }
+      ]
+    },
+    {
+      "unit": 2,
+      "title": "Exponential and Logarithmic Functions",
+      "examStatus": "assessed-on-ap-exam",
+      "examWeighting": "27-40%",
+      "pacing": "6-9 weeks",
+      "topics": [
+        {
+          "id": "2.1",
+          "title": "Change in Arithmetic and Geometric Sequences"
+        },
+        {
+          "id": "2.2",
+          "title": "Change in Linear and Exponential Functions"
+        },
+        {
+          "id": "2.3",
+          "title": "Exponential Functions"
+        },
+        {
+          "id": "2.4",
+          "title": "Exponential Function Manipulation"
+        },
+        {
+          "id": "2.5",
+          "title": "Exponential Function Context and Data Modeling"
+        },
+        {
+          "id": "2.6",
+          "title": "Competing Function Model Validation"
+        },
+        {
+          "id": "2.7",
+          "title": "Function Composition"
+        },
+        {
+          "id": "2.8",
+          "title": "Inverse Functions"
+        },
+        {
+          "id": "2.9",
+          "title": "Logarithmic Expressions"
+        },
+        {
+          "id": "2.10",
+          "title": "Inverses of Exponential Functions"
+        },
+        {
+          "id": "2.11",
+          "title": "Logarithmic Functions"
+        },
+        {
+          "id": "2.12",
+          "title": "Logarithmic Function Manipulation"
+        },
+        {
+          "id": "2.13",
+          "title": "Exponential and Logarithmic Equations and Inequalities"
+        },
+        {
+          "id": "2.14",
+          "title": "Logarithmic Function Context and Data Modeling"
+        },
+        {
+          "id": "2.15",
+          "title": "Semi-log Plots"
+        }
+      ]
+    },
+    {
+      "unit": 3,
+      "title": "Trigonometric and Polar Functions",
+      "examStatus": "assessed-on-ap-exam",
+      "examWeighting": "30-35%",
+      "pacing": "7-10 weeks",
+      "topics": [
+        {
+          "id": "3.1",
+          "title": "Periodic Phenomena"
+        },
+        {
+          "id": "3.2",
+          "title": "Sine, Cosine, and Tangent"
+        },
+        {
+          "id": "3.3",
+          "title": "Sine and Cosine Function Values"
+        },
+        {
+          "id": "3.4",
+          "title": "Sine and Cosine Function Graphs"
+        },
+        {
+          "id": "3.5",
+          "title": "Sinusoidal Functions"
+        },
+        {
+          "id": "3.6",
+          "title": "Sinusoidal Function Transformations"
+        },
+        {
+          "id": "3.7",
+          "title": "Sinusoidal Function Context and Data Modeling"
+        },
+        {
+          "id": "3.8",
+          "title": "The Tangent Function"
+        },
+        {
+          "id": "3.9",
+          "title": "Inverse Trigonometric Functions"
+        },
+        {
+          "id": "3.10",
+          "title": "Trigonometric Equations and Inequalities"
+        },
+        {
+          "id": "3.11",
+          "title": "The Secant, Cosecant, and Cotangent Functions"
+        },
+        {
+          "id": "3.12",
+          "title": "Equivalent Representations of Trigonometric Functions"
+        },
+        {
+          "id": "3.13",
+          "title": "Trigonometry and Polar Coordinates"
+        },
+        {
+          "id": "3.14",
+          "title": "Polar Function Graphs"
+        },
+        {
+          "id": "3.15",
+          "title": "Rates of Change in Polar Functions"
+        }
+      ]
+    },
+    {
+      "unit": 4,
+      "title": "Functions Involving Parameters, Vectors, and Matrices",
+      "examStatus": "not-assessed-on-ap-exam",
+      "examWeighting": "0%",
+      "pacing": "7 weeks",
+      "topics": [
+        {
+          "id": "4.1",
+          "title": "Parametric Functions"
+        },
+        {
+          "id": "4.2",
+          "title": "Parametric Functions Modeling Planar Motion"
+        },
+        {
+          "id": "4.3",
+          "title": "Parametric Functions and Rates of Change"
+        },
+        {
+          "id": "4.4",
+          "title": "Parametrically Defined Circles and Lines"
+        },
+        {
+          "id": "4.5",
+          "title": "Implicitly Defined Functions"
+        },
+        {
+          "id": "4.6",
+          "title": "Conic Sections"
+        },
+        {
+          "id": "4.7",
+          "title": "Parametrization of Implicitly Defined Functions"
+        },
+        {
+          "id": "4.8",
+          "title": "Vectors"
+        },
+        {
+          "id": "4.9",
+          "title": "Vector-Valued Functions"
+        },
+        {
+          "id": "4.10",
+          "title": "Matrices"
+        },
+        {
+          "id": "4.11",
+          "title": "The Inverse and Determinant of a Matrix"
+        },
+        {
+          "id": "4.12",
+          "title": "Linear Transformations and Matrices"
+        },
+        {
+          "id": "4.13",
+          "title": "Matrices as Functions"
+        },
+        {
+          "id": "4.14",
+          "title": "Matrices Modeling Contexts"
+        }
+      ]
+    }
+  ],
+  "mathematicalPractices": [
+    {
+      "id": "practice-1",
+      "name": "Procedural and Symbolic Fluency",
+      "skills": [
+        "1.A",
+        "1.B",
+        "1.C"
+      ]
+    },
+    {
+      "id": "practice-2",
+      "name": "Multiple Representations",
+      "skills": [
+        "2.A",
+        "2.B"
+      ]
+    },
+    {
+      "id": "practice-3",
+      "name": "Communication and Reasoning",
+      "skills": [
+        "3.A",
+        "3.B",
+        "3.C"
+      ]
+    }
+  ],
+  "freeResponseModels": [
+    {
+      "id": "frq-1",
+      "taskModel": "Function Concepts",
+      "calculator": "graphing-calculator-required",
+      "unitFocus": "Units 1-2"
+    },
+    {
+      "id": "frq-2",
+      "taskModel": "Modeling a Non-Periodic Context",
+      "calculator": "graphing-calculator-required",
+      "unitFocus": "Units 1-2"
+    },
+    {
+      "id": "frq-3",
+      "taskModel": "Modeling a Periodic Context",
+      "calculator": "graphing-calculator-not-allowed",
+      "unitFocus": "Unit 3"
+    },
+    {
+      "id": "frq-4",
+      "taskModel": "Symbolic Manipulations",
+      "calculator": "graphing-calculator-not-allowed",
+      "unitFocus": "Units 2-3"
+    }
+  ]
+}

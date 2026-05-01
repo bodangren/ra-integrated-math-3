@@ -1,6 +1,6 @@
 {
   "schemaVersion": "precalculus-curriculum-exceptions.v1",
-  "updatedAt": "2026-05-01T02:34:24Z",
+  "updatedAt": "2026-05-01T02:52:46Z",
   "sources": {
     "ced": "https://apcentral.collegeboard.org/media/pdf/ap-precalculus-course-and-exam-description.pdf",
     "cedClarificationGuidance": "https://apcentral.collegeboard.org/media/pdf/ap-precalculus-ced-clarification-and-guidance.pdf",
@@ -35,11 +35,27 @@
     },
     {
       "id": "ced-extraction-not-yet-normalized",
+      "status": "resolved",
+      "severity": "phase-2-complete",
+      "sourceStatus": "normalized-source-artifacts-created",
+      "summary": "The official CED and clarification PDFs now have normalized source artifacts under curriculum/source/college-board/.",
+      "plannedHandling": "Future unit/topic source files should consume source/college-board/ced-topic-index.json and reference source/college-board/clarification-guidance.md for errata."
+    },
+    {
+      "id": "ced-learning-objective-ek-detail-deferred",
       "status": "open",
-      "severity": "phase-2-pending",
-      "sourceStatus": "official-source-reference-known",
-      "summary": "The official CED and clarification URLs are identified, but normalized source artifacts have not yet been generated under curriculum/source/.",
-      "plannedHandling": "Phase 2 should create deterministic normalized source artifacts before unit/topic source files or implementation packages are generated."
+      "severity": "phase-3-detail",
+      "sourceStatus": "topic-index-normalized-detail-pending",
+      "summary": "Phase 2 normalized the official topic, practice, exam, and FRQ backbone. Full learning-objective and essential-knowledge details still need per-topic source files in Phase 3.",
+      "plannedHandling": "When creating topics/unit-*-topic-*.md, preserve CED learning objectives and essential knowledge with source page references and clarification links."
+    },
+    {
+      "id": "passwater-extraction-quality-limitations",
+      "status": "open",
+      "severity": "manual-review-required",
+      "sourceStatus": "normalized-summary-created",
+      "summary": "Passwater PDFs are readable and summarized, but diagrams, graphs, formula layout, tables, and embedded worksheet structures require manual review before lesson authoring.",
+      "plannedHandling": "Use the normalized source/passwater/unit-*.md files as planning indexes, then verify graphs, diagrams, and math layout against the original PDFs during class-period and lesson authoring."
     }
   ]
 }
