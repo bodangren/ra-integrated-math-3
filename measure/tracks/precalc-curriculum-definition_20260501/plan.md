@@ -47,17 +47,17 @@
 
 ## Phase 3: Unit, Lesson, and Class-Period Planning
 
-- [x] Task: Write structural validation tests for curriculum artifacts
+- [x] Task: Write structural validation tests for curriculum artifacts [c8c8e68]
     - [x] Validate required Precalculus curriculum directories and files
     - [x] Validate unit/topic counts against source evidence and documented exceptions
     - [x] Validate AP topic numbering and titles align to the CED-derived source artifact
     - [x] Validate learning-objective and essential-knowledge references are present for source-backed AP topics
     - [x] Validate class-period plans include required fields for instruction and non-instruction days
-- [x] Task: Create unit and lesson/topic source layer
+- [x] Task: Create unit and lesson/topic source layer [c8c8e68]
     - [x] Create unit summary files for available source-backed units
     - [x] Create lesson/topic source files preserving AP topic numbering, CED titles, learning objectives, essential knowledge, and local Passwater source titles
     - [x] Include examples and assessment artifacts as references, not necessarily fully authored app phases
-- [x] Task: Create class-period plans
+- [x] Task: Create class-period plans [c8c8e68]
     - [x] Create `unit-*-class-period-plan.md` files for source-backed units
     - [x] Map topics to instruction, practice, review, quiz/test, and AP task-model days
     - [x] Keep class-period planning aligned with `course-spec.md`
