@@ -850,6 +850,10 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
      *Create minimal runnable shell for apps/integrated-math-2/ — config, Convex schema, design system (IM3 orange), auth, layout, landing page, seed data (13 units, ~67 lessons)*
      *Link: [./archive/scaffold-im2_20260425/](./archive/scaffold-im2_20260425/)*
 
+- [ ] **Track: Integrated Math 2 Curriculum Definition**
+     *Define the canonical IM2 curriculum pipeline from overview and local problem-type PDFs, matching IM3's course/unit/lesson/class-period planning model*
+     *Link: [./tracks/im2-curriculum-definition_20260501/](./tracks/im2-curriculum-definition_20260501/)*
+
 ## Integrated Math 1
 
 - [x] **Track: Scaffold Integrated Math 1 Application** — **COMPLETED**
