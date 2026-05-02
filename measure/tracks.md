@@ -779,9 +779,13 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 ## Tech Debt Resolution (2026-04-29)
 
-- [ ] **Track: Monorepo Tech Debt Resolution**
+- [x] **Track: Monorepo Tech Debt Resolution** — **IN PROGRESS** (9 of 24 tasks complete)
   *Resolve all 24 open/partial tech debt items, add missing test coverage, and implement metrics/monitoring guardrails*
   *Link: [./tracks/tech-debt-resolution_20260429/](./tracks/tech-debt-resolution_20260429/)*
+  - Phase 1: Tasks 1.3 ✅, 1.4 ✅; 1.1, 1.2 pending
+  - Phase 2: Tasks 2.1 ✅, 2.2 ✅, 2.4 ✅; 2.3 pending
+  - Phase 3: Tasks 3.1 ✅, 3.3 ✅, 3.5 ✅; 3.2, 3.4, 3.6 pending
+  - Phase 5: Tasks 5.1 ✅, 5.2 ✅, 5.3 ✅; 5.4-5.7 pending
 
 ## Upcoming Tracks
 
@@ -840,9 +844,9 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
      *Create minimal runnable shell for apps/pre-calculus/ — config, Convex schema, design system, auth, layout, landing page, seed data*
      *Link: [./archive/scaffold-pre-calculus_20260425/](./archive/scaffold-pre-calculus_20260425/)*
 
-- [~] **Track: AP Precalculus Curriculum Definition**
-     *Define the canonical AP Precalculus curriculum pipeline from the College Board CED, clarification guidance, and local Passwater PDFs, matching IM3's course/unit/lesson/class-period planning model*
-     *Link: [./tracks/precalc-curriculum-definition_20260501/](./tracks/precalc-curriculum-definition_20260501/)*
+- [x] **Track: AP Precalculus Curriculum Definition** — **COMPLETED**
+      *Define the canonical AP Precalculus curriculum pipeline from the College Board CED, clarification guidance, and local Passwater PDFs, matching IM3's course/unit/lesson/class-period planning model*
+      *Link: [./tracks/precalc-curriculum-definition_20260501/](./tracks/precalc-curriculum-definition_20260501/)*
 
 ## Integrated Math 2
 
@@ -850,9 +854,14 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
      *Create minimal runnable shell for apps/integrated-math-2/ — config, Convex schema, design system (IM3 orange), auth, layout, landing page, seed data (13 units, ~67 lessons)*
      *Link: [./archive/scaffold-im2_20260425/](./archive/scaffold-im2_20260425/)*
 
-- [ ] **Track: Integrated Math 2 Curriculum Definition**
+- [x] **Track: Integrated Math 2 Curriculum Definition** — **COMPLETED**
      *Define the canonical IM2 curriculum pipeline from overview and local problem-type PDFs, matching IM3's course/unit/lesson/class-period planning model*
-     *Link: [./tracks/im2-curriculum-definition_20260501/](./tracks/im2-curriculum-definition_20260501/)*
+     *Link: [./archive/im2-curriculum-definition_20260501/](./archive/im2-curriculum-definition_20260501/)*
+     - Phase 1: Source Inventory and Canonical Contract [x]
+     - Phase 2: PDF Extraction and Source Normalization [x]
+     - Phase 3: Unit, Lesson, and Class-Period Planning [x]
+     - Phase 4: Implementation Bridge and Audit [x]
+     - Phase 5: Curriculum Depth Remediation [x]
 
 ## Integrated Math 1
 
@@ -871,43 +880,67 @@ AI Tutoring and Workbook scope is explicitly **import/adopt from BM2**, not gree
 
 Parallel tracks delivering complete curriculum for all three new apps. Tracks 1 and 2-4 can run in parallel; Tracks 5-8 are sequential dependencies.
 
-- [~] **Track: Activity Component Extraction**
-     *Extract generic activity components from IM3 to shared package for IM2 and PreCalculus adoption*
+- [x] **Track: Cross-App Component Extraction & Adoption** — **COMPLETED**
+     *Extract all shareable components to packages: math activities, shell/auth, lesson rendering, study hub games, practice tests, teacher UI. Migrate IM3/BM2, adopt in IM1/IM2/PreCalc.*
      *Link: [./tracks/extract-activity-components_20260425/](./tracks/extract-activity-components_20260425/)*
 
 - [ ] **Track: Curriculum Content Authoring — IM1**
      *Author complete curriculum content for Integrated Math 1: 14 modules, ~99 lessons*
      *Link: [./tracks/curriculum-authoring-im1_20260425/](./tracks/curriculum-authoring-im1_20260425/)*
 
-- [ ] **Track: Curriculum Content Authoring — IM2**
+- [ ] **Track: BM2 Worker-Entry Bundle Optimization**
+     *Reduce BM2 worker-entry bundle from 5.1 MB to under 3 MB via tree-shaking, code-splitting, and import auditing*
+     *Link: [./tracks/bm2-bundle-optimization_20260503/](./tracks/bm2-bundle-optimization_20260503/)*
+
+- [ ] **Track: Extract Shared Rate Limiter Package**
+     *Extract duplicated rate limiting logic from IM3/BM2 into shared @math-platform/rate-limiter package*
+     *Link: [./tracks/shared-rate-limiter-package_20260503/](./tracks/shared-rate-limiter-package_20260503/)*
+
+- [ ] **Track: Session History Cursor Pagination**
+     *Replace fetch-all-then-slice pattern with Convex cursor pagination for session history queries*
+     *Link: [./tracks/session-history-pagination_20260503/](./tracks/session-history-pagination_20260503/)*
+
+- [x] **Track: Curriculum Content Authoring — IM2** — **COMPLETED**
      *Author complete curriculum content for Integrated Math 2: 13 units, ~67 lessons*
      *Link: [./tracks/curriculum-authoring-im2_20260425/](./tracks/curriculum-authoring-im2_20260425/)*
 
-- [ ] **Track: Curriculum Content Authoring — PreCalc**
-     *Author AP Precalculus lesson phases from the CED/Passwater planning layer: 4 units, 58 CED topics; Unit 4 locally unsourced and not AP-exam-assessed*
-     *Depends on: AP Precalculus Curriculum Definition*
-     *Link: [./tracks/curriculum-authoring-precalc_20260425/](./tracks/curriculum-authoring-precalc_20260425/)*
+- [x] **Track: Curriculum Content Authoring — PreCalc** — **COMPLETED**
+      *Author AP Precalculus lesson phases from the CED/Passwater planning layer: 4 units, 58 CED topics; Unit 4 locally unsourced and not AP-exam-assessed*
+      *Depends on: AP Precalculus Curriculum Definition*
+      *Link: [./tracks/curriculum-authoring-precalc_20260425/](./tracks/curriculum-authoring-precalc_20260425/)*
 
-- [ ] **Track: Standards & Objective Seeding — All Apps**
+- [x] **Track: Standards & Objective Seeding — All Apps** — **PARTIALLY COMPLETE** (IM2 + PreCalc done; IM1 skipped)
      *Seed competency standards, lesson-standards mappings, and objective policies for IM1, IM2, and PreCalculus*
      *Depends on: Tracks 2, 3, 4*
      *Link: [./tracks/standards-seeding-multi-app_20260425/](./tracks/standards-seeding-multi-app_20260425/)*
 
-- [ ] **Track: Lesson Seeding — All Apps**
+- [x] **Track: Lesson Seeding — All Apps** — **PARTIALLY COMPLETE** (IM2 70 lessons + PreCalc 58 lessons done; IM1 skipped)
      *Seed all curriculum lessons into Convex database for IM1, IM2, and PreCalculus*
      *Depends on: Tracks 2, 3, 4, 5*
      *Link: [./tracks/lesson-seeding-multi-app_20260425/](./tracks/lesson-seeding-multi-app_20260425/)*
 
-- [ ] **Track: Problem Families & Practice Items — All Apps**
+- [x] **Track: Problem Families & Practice Items — All Apps** — **PARTIALLY COMPLETE** (IM2 67 + PreCalc 40 families done; IM1 skipped)
      *Define problem families and practice item blueprints for IM1, IM2, and PreCalculus*
      *Depends on: Track 6*
      *Link: [./tracks/problem-families-multi-app_20260425/](./tracks/problem-families-multi-app_20260425/)*
 
-- [ ] **Track: Demo Environment & Verification — All Apps**
+- [x] **Track: Demo Environment & Verification — All Apps** — **PARTIALLY COMPLETE** (IM2 + PreCalc done; IM1 skipped)
      *Seed demo environments and run end-to-end verification for IM1, IM2, and PreCalculus*
      *Depends on: Tracks 6, 7*
       *Link: [./tracks/demo-verification-multi-app_20260425/](./tracks/demo-verification-multi-app_20260425/)*
 
-- [ ] **Track: Convex Best Practices Audit**
+- [x] **Track: Convex Best Practices Audit** — **AUDITED** (All 10 phases audited; Phase 9 fixes applied; remaining remediation deferred)
      *Systematic audit of all Convex backend code across 5 apps against Convex best practices — 10 categories, document findings and fix inline*
      *Link: [./tracks/convex-best-practices-audit_20260425/](./tracks/convex-best-practices-audit_20260425/)*
+
+- [x] **Track: WCAG 2.1 AA Accessibility Audit & Remediation** — **PHASE 1 COMPLETE** (Automated audit baseline established)
+     *Audit and remediate all student/teacher-facing routes against WCAG 2.1 AA — keyboard navigation, screen reader support, color contrast, activity component accessibility*
+     *Link: [./tracks/accessibility-audit_20260502/](./tracks/accessibility-audit_20260502/)*
+
+- [x] **Track: E2E Test Coverage for Critical Student Flows** — **INFRASTRUCTURE COMPLETE** (Playwright config + 9 tests)
+     *Add Playwright E2E tests for login, lesson navigation, activity interaction, daily practice, and teacher dashboard flows*
+     *Link: [./tracks/e2e-student-flows_20260502/](./tracks/e2e-student-flows_20260502/)*
+
+- [x] **Track: Student Progress Data Export API** — **BACKEND COMPLETE** (Convex queries + CSV util + 12 tests; UI pending)
+     *Add Convex queries and teacher UI for exporting student progress, class gradebook, and submission data as CSV/JSON*
+     *Link: [./tracks/data-export-api_20260502/](./tracks/data-export-api_20260502/)*

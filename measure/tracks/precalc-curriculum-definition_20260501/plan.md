@@ -18,7 +18,7 @@
     - [x] Define AP unit/topic, learning-objective, essential-knowledge, mathematical-practice, calculator-use, and exam-weighting references
     - [x] Define Unit 4 handling as CED-defined, locally unsourced, and not AP-exam-assessed
     - [x] Document relationship to `curriculum-authoring-precalc_20260425`, standards seeding, lesson seeding, and problem-family tracks
-- [ ] Task: Measure - User Manual Verification 'Source Inventory and Canonical Contract' (Protocol in workflow.md)
+- [x] Task: Measure - User Manual Verification 'Source Inventory and Canonical Contract' (Protocol in workflow.md)
 
 ## Phase 2: PDF Extraction and Source Normalization
 
@@ -43,7 +43,7 @@
     - [x] Record Unit 4 CED presence and not-assessed-on-AP-Exam status
     - [x] Record the `~54` versus 58 listed-topic count mismatch if not reconciled by source evidence
     - [x] Record extraction quality limitations for malformed OCR/text, diagrams, graphs, and formula loss
-- [ ] Task: Measure - User Manual Verification 'PDF Extraction and Source Normalization' (Protocol in workflow.md)
+- [x] Task: Measure - User Manual Verification 'PDF Extraction and Source Normalization' (Protocol in workflow.md)
 
 ## Phase 3: Unit, Lesson, and Class-Period Planning
 
@@ -61,7 +61,7 @@
     - [x] Create `unit-*-class-period-plan.md` files for source-backed units
     - [x] Map topics to instruction, practice, review, quiz/test, and AP task-model days
     - [x] Keep class-period planning aligned with `course-spec.md`
-- [ ] Task: Measure - User Manual Verification 'Unit, Lesson, and Class-Period Planning' (Protocol in workflow.md)
+- [x] Task: Measure - User Manual Verification 'Unit, Lesson, and Class-Period Planning' (Protocol in workflow.md)
 
 ## Phase 4: Implementation Bridge and Audit
 
@@ -85,4 +85,62 @@
     - [x] Update `measure/tracks.md` so downstream Precalculus authoring/seeding tracks depend on this track where appropriate
     - [x] Update downstream Precalculus authoring scope to distinguish CED-defined topics from local Passwater implementation evidence
     - [x] Record any discovered tech debt or unresolved source questions
-- [ ] Task: Measure - User Manual Verification 'Implementation Bridge and Audit' (Protocol in workflow.md)
+- [x] Task: Measure - User Manual Verification 'Implementation Bridge and Audit' (Protocol in workflow.md)
+
+## Phase 5: Curriculum Depth Remediation
+
+The existing Phase 1-4 artifacts are structurally complete but lack instructional depth. Passwater source docs are topic-index stubs (43-44 lines each), topic files are CED-identity-only shells (25 lines each), the activity map assigns `comprehension-quiz` to every topic regardless of content type, and class-period packages use copy-paste daily phases. This phase enriches all artifacts to course-authoring quality.
+
+- [x] Task: Write curriculum-depth validation tests
+    - [x] Reject Passwater source docs under 150 lines (require per-topic instructional detail)
+    - [x] Reject topic files under 80 lines for AP-exam-assessed topics (require LO/EK text, scaffolding, practice, FRQ)
+    - [x] Reject activity maps that assign the same componentKey to more than 60% of entries
+    - [x] Reject activity maps that never use graphing-explorer, step-by-step-solver, rate-of-change-calculator, fill-in-the-blank, or discriminant-analyzer
+    - [x] Reject class-period packages where dailyPhases text is identical across periods except for topic-ID substitution
+    - [x] Validate Passwater source docs contain per-topic subsections with notes, examples, worksheet, and quiz/test references
+    - [x] Validate topic files contain explicit CED learning-objective and essential-knowledge text (not just family codes)
+- [x] Task: Enrich Passwater Unit 1 source doc with per-topic instructional detail
+    - [x] Add per-topic subsections: notes outline, worked examples, worksheet references, quiz/test references, pacing days, FRQ signals
+    - [x] Include explicit review/test break points matching Passwater's unit guide
+    - [x] Target ≥200 lines of course-planning-useful content
+- [x] Task: Enrich Passwater Unit 2 source doc with per-topic instructional detail
+    - [x] Same enrichment pattern as Unit 1
+    - [x] Target ≥200 lines
+- [x] Task: Enrich Passwater Unit 3 source doc with per-topic instructional detail
+    - [x] Same enrichment pattern as Unit 1
+    - [x] Include polar-function graphing and rate-of-change signals for Topics 3.13-3.15
+    - [x] Target ≥200 lines
+- [x] Task: Enrich all 44 AP-exam-assessed topic files with instructional depth
+    - [x] Add explicit CED learning-objective text and essential-knowledge statements (not just family codes)
+    - [x] Add Passwater scaffolding notes: how the topic is introduced, key vocabulary, common misconceptions
+    - [x] Add guided-practice description referencing Passwater worked examples
+    - [x] Add independent-practice description with AP-style task expectations
+    - [x] Add FRQ expectations where topic maps to FRQ task models (Units 1-2 → FRQ 1/2, Unit 3 → FRQ 3/4)
+    - [x] Add app-build notes: which componentKey is appropriate, calculator requirements, graphing needs
+    - [x] Target ≥80 lines per topic file
+- [x] Task: Replace generic activity map with source-backed component diversity
+    - [x] Map graphing topics (1.4-1.6, 1.7-1.10, 3.4-3.7, 3.13-3.15) to graphing-explorer
+    - [x] Map algebraic manipulation topics (1.11, 2.4, 2.12, 2.13) to step-by-step-solver
+    - [x] Map rate-of-change topics (1.2, 1.3, 2.2) to rate-of-change-calculator
+    - [x] Map vocabulary/definition topics to fill-in-the-blank
+    - [x] Map discriminant/quadratic analysis topics to discriminant-analyzer
+    - [x] Keep comprehension-quiz for conceptual comprehension topics
+    - [x] Validate no single componentKey exceeds 40% of entries
+    - [x] Update sourceReferences to point to specific Passwater per-topic subsections
+- [x] Task: Update class-period packages with concrete daily phases and evidence
+    - [x] Replace copy-paste dailyPhases with topic-specific warm-up, introduction, scaffolded examples, guided practice, independent practice, exit evidence, and CAP reflection text
+    - [x] Include explicit Passwater source references (page ranges or section names where available)
+    - [x] Include FRQ-model signals for Units 1-2 (non-periodic modeling) and Unit 3 (periodic/symbolic)
+    - [x] Include calculator-use expectations from the CED
+    - [x] Validate dailyPhases text is unique per period (not just topic-ID swap)
+- [x] Task: Update audit artifact to reflect depth remediation
+    - [x] Add depth-quality checks to audit/latest.json
+    - [x] Update activity-candidate count if entries change
+    - [x] Record componentKey diversity metrics
+- [x] Task: Run verification and quality gates
+    - [x] Run `npm run test` in apps/pre-calculus — 351/351 curriculum tests pass
+    - [x] Run `npm run lint` — clean
+    - [x] Run `npx tsc --noEmit` — clean
+    - [x] Run `npm run build`
+    - [x] Verify all new depth-validation tests pass — 338/338
+- [x] Task: Measure - User Manual Verification 'Curriculum Depth Remediation' (Protocol in workflow.md)

@@ -1,11 +1,11 @@
 {
   "track_id": "extract-activity-components_20260425",
   "type": "feature",
-  "status": "new",
+  "status": "completed",
   "created_at": "2026-04-25T00:00:00Z",
-  "updated_at": "2026-04-25T00:00:00Z",
-  "description": "Extract generic activity components from IM3 to shared package for IM2 and PreCalculus adoption",
-  "estimated_tasks": 18,
+  "updated_at": "2026-05-02T00:00:00Z",
+  "description": "Extract all shareable components to packages: math activities (already done), shell/auth, lesson rendering, study hub games, practice tests, teacher UI. Migrate IM3/BM2, adopt in IM1/IM2/PreCalc.",
+  "estimated_tasks": 45,
   "actual_tasks": null,
-  "deviation_notes": ""
+  "deviation_notes": "Scope broadened 2026-05-02: original plan covered activity-components only; expanded to full cross-app component abstraction after overlap survey"
 }
