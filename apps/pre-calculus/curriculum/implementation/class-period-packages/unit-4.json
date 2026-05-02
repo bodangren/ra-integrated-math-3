@@ -1,0 +1,934 @@
+{
+  "schemaVersion": "class-period-package.v1",
+  "unit": 4,
+  "generatedFrom": "curriculum/unit-4-class-period-plan.md",
+  "sourcePriority": [
+    "curriculum/source/college-board/ced-topic-index.json",
+    "curriculum/source/college-board/clarification-guidance.md",
+    "curriculum/modules/unit-04-parameters-vectors-matrices/lesson-4-*/lesson.md"
+  ],
+  "periods": [
+    {
+      "periodId": "u04-p01",
+      "unit": 4,
+      "period": 1,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.1",
+        "title": "Parametric Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.1.A",
+        "essentialKnowledgeFamily": "4.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_1",
+      "dailyPhases": {
+        "warmUp": "A drone launches from the ground. Its horizontal position is x(t) = 4t and vertical position is y(t) = -16t² + 32t. Ask: 'Where is the drone at t=0, t=1, t=2? Neither equation alone tells the full story — what do we need?'",
+        "topicIntroduction": "Define parametric function as a pair of equations x=f(t), y=g(t) sharing a parameter t. Introduce vocabulary: parameter, parametric curve, eliminate the parameter. Key distinction: parametric curves can loop, backtrack, and cross themselves — unlike y=f(x).",
+        "scaffoldedExamples": "Lesson 4-1 Example 1: Given x=2t+1, y=t²-3, build table for t=-1,0,1,2,3 and plot points. Example 2: Eliminate the parameter — solve x=2t+1 for t, substitute into y to get y=(x-1)²/4-3.",
+        "guidedPractice": "Given x=3-t and y=t²+1, find (x,y) when t=-2,0,3. Then eliminate the parameter: solve for t from the x equation, substitute into y. Students work with sentence frame: 'Solving x=___ for t gives t=___, so y=___.'",
+        "independentPractice": "Problem 1: Create a table and sketch x=cos(t), y=sin(t) for t=0, π/2, π, 3π/2, 2π. What shape? Problem 2: Eliminate the parameter from x=5-2t, y=3t+1. Problem 3: Is the circle curve a function of x? Why or why not?",
+        "exitEvidence": "Eliminate the parameter from x=t-4 and y=t². Show work.",
+        "capReflection": "What persistence move did you make when the algebra for eliminating the parameter was unfamiliar?"
+      }
+    },
+    {
+      "periodId": "u04-p02",
+      "unit": 4,
+      "period": 2,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.1",
+        "title": "Parametric Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.1.A",
+        "essentialKnowledgeFamily": "4.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_1",
+      "dailyPhases": {
+        "warmUp": "Given the parametric equations x=2t+1, y=t²-3 from yesterday. 'Without building a table, what is the Cartesian equation? What shape is the curve?'",
+        "topicIntroduction": "Reinforce elimination technique with nonlinear x equations. Discuss what information is lost when converting from parametric to Cartesian: direction of motion and timing. Parametric form preserves the 'process' of tracing the curve.",
+        "scaffoldedExamples": "Given x=t², y=t+1: solve x=t² gives t=±√x, so y=±√x+1 — two branches. Given x=3cos(t), y=3sin(t): eliminate using cos²+sin²=1 to get x²+y²=9, a circle.",
+        "guidedPractice": "Eliminate the parameter from x=t³, y=t². Discuss: does this produce a function? What is the domain? Students compare parametric vs resulting Cartesian representation.",
+        "independentPractice": "Problem 1: Eliminate the parameter from x=√t, y=2t+1 for t≥0. Problem 2: Given x=eᵗ, y=e²ᵗ, eliminate the parameter. Problem 3: For x=cos(t), y=sin(t), explain what the Cartesian equation x²+y²=1 loses about the curve.",
+        "exitEvidence": "Given x=t²+1 and y=3t, eliminate the parameter. Is the resulting equation a function? Explain.",
+        "capReflection": "What adaptability move did you make when the parametric equations required different elimination strategies?"
+      }
+    },
+    {
+      "periodId": "u04-p03",
+      "unit": 4,
+      "period": 3,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.2",
+        "title": "Parametric Functions Modeling Planar Motion",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.2.A",
+        "essentialKnowledgeFamily": "4.2.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_2",
+      "dailyPhases": {
+        "warmUp": "A soccer ball is kicked. Its position is x(t)=20t horizontally and y(t)=-16t²+30t vertically. 'Where is the ball after 1 second? Why do we need both equations?'",
+        "topicIntroduction": "Parametric functions model planar motion by separating horizontal and vertical components. Standard form: x(t)=x₀+vₓt, y(t)=y₀+vᵧt+½at². Horizontal motion is linear (no air resistance); vertical is quadratic (gravity). Domain restriction on t reflects physical constraints.",
+        "scaffoldedExamples": "Lesson 4-2 Example: Ball launched from origin with x(t)=12t, y(t)=-16t²+20t. (a) Position at t=1: (12, 4). (b) Landing: set y=0, solve -16t²+20t=0 → t=0 or t=1.25. (c) Landing position: x(1.25)=15, so (15, 0).",
+        "guidedPractice": "Projectile with x(t)=8t, y(t)=-16t²+24t. Find position at t=0.5. Then find when it lands and where. Students set y=0 and solve, then evaluate x at that time.",
+        "independentPractice": "Problem 1: Model rocket with x(t)=6t, y(t)=-16t²+48t. Find maximum height and time. Problem 2: Ball thrown from (2,5) with x(t)=2+10t, y(t)=5-16t²+8t. When does it hit the ground? Problem 3: Two objects move with x₁=3t, y₁=4t and x₂=12-3t, y₂=8t. When and where do they meet?",
+        "exitEvidence": "For x(t)=15t and y(t)=-16t²+30t, find the landing position of the projectile.",
+        "capReflection": "What courage move did you make when setting up the equation to find when the object lands?"
+      }
+    },
+    {
+      "periodId": "u04-p04",
+      "unit": 4,
+      "period": 4,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.2",
+        "title": "Parametric Functions Modeling Planar Motion",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.2.A",
+        "essentialKnowledgeFamily": "4.2.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_2",
+      "dailyPhases": {
+        "warmUp": "Two projectiles: Object A has x(t)=5t, y(t)=-16t²+40t. Object B has x(t)=10-3t, y(t)=-16t²+20t. 'How would you determine if they ever occupy the same position?'",
+        "topicIntroduction": "Extend planar motion to multi-object problems and maximum height. Maximum height occurs at vertex of the vertical parabola: t=-b/(2a) for y(t)=at²+bt+c. Collision requires solving x₁(t)=x₂(t) and y₁(t)=y₂(t) simultaneously.",
+        "scaffoldedExamples": "Max height for y=-16t²+48t: vertex at t=-48/(2·(-16))=1.5s. Max height = y(1.5)=-16(2.25)+48(1.5)=-36+72=36 feet. Verify: at t=1.4 and t=1.6, height is less than 36.",
+        "guidedPractice": "A model rocket has x(t)=6t, y(t)=-16t²+64t. Find the time and height of maximum. Students compute vertex, verify with nearby t-values.",
+        "independentPractice": "Problem 1: Ball launched from (0,0) with x(t)=18t, y(t)=-16t²+32t. Find max height, time of flight, and landing position. Problem 2: Two drones: Drone 1 has x₁=4t, y₁=20t-16t². Drone 2 has x₂=50-6t, y₂=24t-16t². At what time are they at the same height? Problem 3: A ball is thrown from a 40-foot platform: x(t)=10t, y(t)=40-16t²+24t. When does it hit the ground?",
+        "exitEvidence": "A projectile has x(t)=8t, y(t)=-16t²+48t. State the maximum height and the time it occurs.",
+        "capReflection": "What persistence did you show when working through the vertex calculation for maximum height?"
+      }
+    },
+    {
+      "periodId": "u04-p05",
+      "unit": 4,
+      "period": 5,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.3",
+        "title": "Parametric Functions and Rates of Change",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.3.A",
+        "essentialKnowledgeFamily": "4.3.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_3",
+      "dailyPhases": {
+        "warmUp": "A particle moves with x(t)=t², y(t)=2t+1. 'Between t=1 and t=3, how fast does it move horizontally? Vertically? These are separate questions — each coordinate has its own rate of change.'",
+        "topicIntroduction": "Average rate of change for parametric functions: compute Δx/Δt and Δy/Δt separately. These tell how fast x and y change per unit of t. Interpret signs: Δx/Δt>0 means moving right; Δy/Δt>0 means moving up.",
+        "scaffoldedExamples": "Lesson 4-3 Example: x(t)=t², y(t)=2t+1. On [1,3]: Δx/Δt = (9-1)/(3-1)=4, Δy/Δt = (7-3)/(3-1)=2. Interpretation: moving right 4 units per second, up 2 units per second.",
+        "guidedPractice": "For x(t)=3t-1, y(t)=t², find Δx/Δt and Δy/Δt on [0,2]. Students compute each coordinate's change, then interpret the rates verbally.",
+        "independentPractice": "Problem 1: x(t)=cos(t), y(t)=sin(t) on [0, π/2]. Compute Δx/Δt and Δy/Δt. Problem 2: x(t)=t³-t, y(t)=t². Find average rates on [1, 2]. Problem 3: At what t-values would Δy/Δt=0? What does this mean for the path?",
+        "exitEvidence": "For x(t)=4t, y(t)=t²-3, find Δx/Δt and Δy/Δt on [1,3].",
+        "capReflection": "What adaptability move did you make when computing rates for two coordinates independently?"
+      }
+    },
+    {
+      "periodId": "u04-p06",
+      "unit": 4,
+      "period": 6,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.3",
+        "title": "Parametric Functions and Rates of Change",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.3.A",
+        "essentialKnowledgeFamily": "4.3.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_3",
+      "dailyPhases": {
+        "warmUp": "From yesterday: Δx/Δt and Δy/Δt give separate rates. 'But what if we want the slope of the curve itself in the xy-plane? How do y-changes relate to x-changes?'",
+        "topicIntroduction": "The slope of a parametric curve: dy/dx = (Δy/Δt)/(Δx/Δt). This ratio removes t and gives the rate y changes relative to x. When Δx/Δt=0, the tangent is vertical (undefined slope). Use smaller intervals to approximate instantaneous slope.",
+        "scaffoldedExamples": "Lesson 4-3 Example: x(t)=t², y(t)=2t+1. Find slope at t=3 using interval [2,3]: Δx/Δt=(9-4)/1=5, Δy/Δt=(7-5)/1=2, so dy/dx=2/5=0.4. At t=3, the path has slope 0.4.",
+        "guidedPractice": "For x(t)=3t-1, y(t)=t², find dy/dx over [0,2]. Students compute Δx/Δt and Δy/Δt, then take the ratio. Interpret: 'The curve rises 2 units for every 3 units it runs.'",
+        "independentPractice": "Problem 1: x(t)=cos(t), y(t)=sin(t) on [0, π/2]. Find dy/dx. Problem 2: x(t)=t³-t, y(t)=t². Approximate dy/dx at t=2 using [1.5, 2]. Problem 3: At what t-values would dy/dx=0 (horizontal tangent)? At what t-values is dy/dx undefined (vertical tangent)?",
+        "exitEvidence": "For x(t)=4t, y(t)=t²-3, find dy/dx on [1,3].",
+        "capReflection": "What reasoning helped you connect the ratio dy/dx to the visual slope of the curve?"
+      }
+    },
+    {
+      "periodId": "u04-p07",
+      "unit": 4,
+      "period": 7,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.4",
+        "title": "Parametrically Defined Circles and Lines",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.4.A",
+        "essentialKnowledgeFamily": "4.4.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_4",
+      "dailyPhases": {
+        "warmUp": "The line through (2,3) with slope -4. 'Write this line in y=mx+b form. Can we represent it parametrically instead — using a parameter t to trace along the line?'",
+        "topicIntroduction": "Parametric equation of a line: given point (x₀,y₀) and direction ⟨a,b⟩: x=x₀+at, y=y₀+bt. As t increases, the point moves along the line. The slope is b/a (when a≠0). Direction vector encodes both slope and orientation.",
+        "scaffoldedExamples": "Lesson 4-4 Example 2: Line through (2,3) with direction ⟨-1,4⟩: x=2-t, y=3+4t. Verify: at t=0, point is (2,3). Slope = 4/(-1)=-4. Example: Line through (5,1) and (8,7): direction = ⟨3,6⟩, so x=5+3t, y=1+6t.",
+        "guidedPractice": "Write parametric equations for the line through (-1,4) with slope 2/3. Direction vector is ⟨3,2⟩. Students convert from slope to direction vector, then write parametric form.",
+        "independentPractice": "Problem 1: Write parametric equations for the line through (5,1) and (8,7). Problem 2: Eliminate the parameter from x=3-2t, y=1+5t to find the Cartesian equation. Problem 3: Given x=2+at, y=3+bt, find a and b if the slope is -1/2 and the line passes through (2,3) at t=0.",
+        "exitEvidence": "Write parametric equations for the line through (1,-2) with direction ⟨4,3⟩. State the slope.",
+        "capReflection": "What courage did you show in converting between slope and direction vector form?"
+      }
+    },
+    {
+      "periodId": "u04-p08",
+      "unit": 4,
+      "period": 8,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.4",
+        "title": "Parametrically Defined Circles and Lines",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.4.A",
+        "essentialKnowledgeFamily": "4.4.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_4",
+      "dailyPhases": {
+        "warmUp": "The equation x²+y²=25 describes a circle of radius 5. 'Can you write y as a function of x? Why not? What limitation does this create, and how might parametric form help?'",
+        "topicIntroduction": "Parametric equation of a circle: center (h,k), radius r → x=h+r·cos(t), y=k+r·sin(t). As t goes 0 to 2π, the point traces the circle counterclockwise. A circle cannot be written as y=f(x) — parametric form bypasses this limitation.",
+        "scaffoldedExamples": "Lesson 4-4 Example 1: Circle of radius 3 centered at (1,-2): x=1+3cos(t), y=-2+3sin(t). Verify: (x-1)²+(y+2)²=9cos²t+9sin²t=9. Eliminate the parameter from x=h+r·cos(t), y=k+r·sin(t): (x-h)²+(y-k)²=r².",
+        "guidedPractice": "Write parametric equations for a circle of radius 4 centered at the origin. Then verify by eliminating the parameter. Students practice the cos/sin template and verification.",
+        "independentPractice": "Problem 1: A circle has x=2cos(t), y=2sin(t)+3. Find its center and radius. Problem 2: Write parametric equations for a circle of radius 6 centered at (-2,5). Problem 3: Eliminate the parameter from x=1+3cos(t), y=-2+3sin(t) to recover the standard form.",
+        "exitEvidence": "Write parametric equations for a circle of radius 5 centered at (3, -1).",
+        "capReflection": "What persistence did you show when connecting the parametric circle to the standard equation?"
+      }
+    },
+    {
+      "periodId": "u04-p09",
+      "unit": 4,
+      "period": 9,
+      "dayType": "quiz",
+      "notes": "Quiz on parametric block (Topics 4.1-4.4)",
+      "nonInstructionArtifact": {
+        "artifactType": "quiz",
+        "source": "CED-only",
+        "cedScope": "4.1–4.4",
+        "evidence": "Quiz covering parametric functions, planar motion, rates of change, and parametrically defined circles and lines"
+      }
+    },
+    {
+      "periodId": "u04-p10",
+      "unit": 4,
+      "period": 10,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.5",
+        "title": "Implicitly Defined Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.5.A",
+        "essentialKnowledgeFamily": "4.5.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_5",
+      "dailyPhases": {
+        "warmUp": "The equation x²+y²=1 relates x and y but does not isolate y. 'If you solve for y, what do you get? Is it a single function?' — leads to y=±√(1-x²), two functions.",
+        "topicIntroduction": "Implicitly defined function: F(x,y)=0 relating x and y without isolating either. An implicit equation may define zero, one, or multiple functions. The circle x²+y²=25 defines upper semicircle y=√(25-x²) and lower semicircle y=-√(25-x²).",
+        "scaffoldedExamples": "Lesson 4-5 Example 2: Solve x²+4y²=16 for y. 4y²=16-x² → y²=(16-x²)/4 → y=±√((16-x²)/4). Two explicit functions result — upper and lower half of ellipse.",
+        "guidedPractice": "Solve x²+y²=49 explicitly for y. How many functions result? Discuss: which function represents the upper half? The lower half? What is the domain of each?",
+        "independentPractice": "Problem 1: The curve x²-y²=4 passes through (√5,1). Solve for y explicitly. Problem 2: The curve xy=6 passes through (2,3). Solve for y explicitly. Problem 3: Explain why x²+y²=-1 has no real points. What does this tell about when implicit equations define curves?",
+        "exitEvidence": "Solve 9x²+16y²=144 for y explicitly. How many functions result?",
+        "capReflection": "What adaptability did you show when implicit equations required creative algebraic manipulation?"
+      }
+    },
+    {
+      "periodId": "u04-p11",
+      "unit": 4,
+      "period": 11,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.5",
+        "title": "Implicitly Defined Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.5.A",
+        "essentialKnowledgeFamily": "4.5.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_5",
+      "dailyPhases": {
+        "warmUp": "The curve x²+y²=9 passes through (0,3). 'Without solving for y explicitly, can you estimate the slope of the curve at this point using nearby points?'",
+        "topicIntroduction": "Estimating slope on implicit curves: choose nearby points on the curve and compute Δy/Δx. This approximate slope converges to the true tangent slope. Domain and range constraints: not all x-values produce real y-values (e.g., x restricted to [-5,5] for x²+y²=25).",
+        "scaffoldedExamples": "Lesson 4-5 Example 1: x²+y²=9 at (0,3). Choose x=1: y=±√8≈±2.83. Using upper branch point (1,2.83): slope ≈ (2.83-3)/(1-0)=-0.17. Using x=-1: slope ≈ (2.83-3)/(-1-0)=0.17. Average ≈ 0 — horizontal tangent at the top.",
+        "guidedPractice": "x²+y²=4 passes through (2,0). Estimate the slope using x=1.5. Students find the corresponding y-value on the upper branch and compute Δy/Δx.",
+        "independentPractice": "Problem 1: xy=6 passes through (2,3). Find a nearby point at x=2.1 and estimate the slope at (2,3). Problem 2: x²-y²=4 passes through (√5,1). Estimate the slope using x=2.5. Problem 3: For which x-values does x²+y²=25 have real y-values? What is the domain?",
+        "exitEvidence": "x²+y²=1 passes through (√2/2, √2/2). Estimate the slope at this point using x=0.6.",
+        "capReflection": "What persistence did you show when the nearby-point method required careful arithmetic?"
+      }
+    },
+    {
+      "periodId": "u04-p12",
+      "unit": 4,
+      "period": 12,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.6",
+        "title": "Conic Sections",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.6.A",
+        "essentialKnowledgeFamily": "4.6.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_6",
+      "dailyPhases": {
+        "warmUp": "Display four equations: x²+y²=9, x²/9+y²/4=1, y=2x², x²/4-y²/9=1. 'Sort these into groups. What pattern do you notice within each group?'",
+        "topicIntroduction": "Conic sections: circle (equal coefficients), ellipse (addition, different denominators), parabola (one squared term), hyperbola (subtraction between squared terms). Standard form reveals center, axes, and shape.",
+        "scaffoldedExamples": "Lesson 4-6 Example 1: 4x²+9y²=36 → divide by 36 → x²/9+y²/4=1. Ellipse centered at origin, a=3, b=2. Intercepts at (±3,0) and (0,±2). Table of standard forms for all four conic types.",
+        "guidedPractice": "Classify 9x²+16y²=144 as a conic section and find its intercepts. Students divide by 144 to get standard form, identify type, and find intercepts.",
+        "independentPractice": "Problem 1: x²/25+y²/16=1 — identify conic and all intercepts. Problem 2: y²-9x²=81 — classify this conic. Problem 3: Which conic type has only one squared variable? Which has opposite signs on squared terms?",
+        "exitEvidence": "Classify 25x²+4y²=100 as a conic section and state its center.",
+        "capReflection": "What reasoning strategy helped you distinguish between ellipse and hyperbola?"
+      }
+    },
+    {
+      "periodId": "u04-p13",
+      "unit": 4,
+      "period": 13,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.6",
+        "title": "Conic Sections",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.6.A",
+        "essentialKnowledgeFamily": "4.6.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_6",
+      "dailyPhases": {
+        "warmUp": "The equation x²+y²-4x+6y-12=0 is not in standard form. 'Can you identify the conic type? What additional steps are needed to find the center and radius?'",
+        "topicIntroduction": "Completing the square to convert general form Ax²+By²+Cx+Dy+E=0 to standard form. Strategy: group x terms, group y terms, complete the square for each, rearrange to standard form.",
+        "scaffoldedExamples": "Lesson 4-6 Guided Problem 2: x²+y²-4x+6y-12=0. Group: (x²-4x)+(y²+6y)=12. Complete: (x²-4x+4)+(y²+6y+9)=12+4+9=25. Standard: (x-2)²+(y+3)²=25. Center (2,-3), radius 5.",
+        "guidedPractice": "Convert x²+y²+8x-10y+5=0 to standard form. Students group, complete the square, identify center and radius.",
+        "independentPractice": "Problem 1: x²+y²+8x-10y+5=0 — complete the square, find center and radius. Problem 2: x²+4y²-6x+16y+21=0 — complete the square, identify as ellipse. Problem 3: y²-4x+8y+20=0 — complete the square for y only (parabola).",
+        "exitEvidence": "Convert x²+y²-6x+2y+6=0 to standard form. Identify center and radius.",
+        "capReflection": "What adaptability did you show when completing the square required adding different constants for x and y terms?"
+      }
+    },
+    {
+      "periodId": "u04-p14",
+      "unit": 4,
+      "period": 14,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.6",
+        "title": "Conic Sections",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.6.A",
+        "essentialKnowledgeFamily": "4.6.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_6",
+      "dailyPhases": {
+        "warmUp": "Classify these quickly: (a) 3x²+3y²=27, (b) 2x²-5y²=20, (c) 7x²+2y²=14, (d) y=5x²-3x. 'What shortcut lets you classify without completing the square?'",
+        "topicIntroduction": "Quick classification from Ax²+By²+Cx+Dy+E=0: A=B≠0 → circle. A≠B, same sign → ellipse. One of A,B is 0 → parabola. Opposite signs → hyperbola. Completing the square still needed for detailed features but not for type.",
+        "scaffoldedExamples": "Lesson 4-6 Example 2: x²-4y²+6x+8y+5=0. A=1, B=-4 (opposite signs) → hyperbola. Complete the square: (x+3)²-4(y-1)²=0 → degenerate case (two intersecting lines). Discuss degenerate conics.",
+        "guidedPractice": "Mixed classification set: (a) x²/16-y²/25=1, (b) 4x²+4y²-16=0, (c) y²+6y-x+5=0, (d) 5x²+3y²=60. Classify each by coefficient comparison, then verify by converting to standard form for one example.",
+        "independentPractice": "Problem 1: 4x²-y²+2x-4y+7=0 — classify and explain. Problem 2: x²+y²-2x+4y-4=0 — classify, complete the square, find center and radius. Problem 3: 9x²+4y²-36=0 — classify and find all intercepts. Problem 4: Create your own equation for a hyperbola centered at (1,-2).",
+        "exitEvidence": "Classify 3x²-2y²+6x-8=0 by comparing coefficients. State the conic type.",
+        "capReflection": "What courage did you show in tackling the degenerate conic case from the worked example?"
+      }
+    },
+    {
+      "periodId": "u04-p15",
+      "unit": 4,
+      "period": 15,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.7",
+        "title": "Parametrization of Implicitly Defined Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.7.A",
+        "essentialKnowledgeFamily": "4.7.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_7",
+      "dailyPhases": {
+        "warmUp": "We know x=cos(t), y=sin(t) traces x²+y²=1. 'Can we use a similar strategy to parametrize the ellipse x²/9+y²/4=1? What trig identity connects these forms?'",
+        "topicIntroduction": "Parametrizing implicit curves: match trig identities to equation structure. Ellipse x²/a²+y²/b²=1 → x=a·cos(t), y=b·sin(t) using cos²+sin²=1. General strategy: identify conic type, choose matching identity, scale and shift.",
+        "scaffoldedExamples": "Lesson 4-7 Example 1: x²/16+y²/25=1. a=4, b=5: x=4cos(t), y=5sin(t), 0≤t≤2π. Verify: (4cos t)²/16+(5sin t)²/25=cos²t+sin²t=1. ✓ Lesson 4-7 Example 2: (x-1)²+(y+3)²=9 → x=1+3cos(t), y=-3+3sin(t).",
+        "guidedPractice": "Parametrize x²/36+y²/49=1. Students identify a=6, b=7, write x=6cos(t), y=7sin(t), verify by substitution.",
+        "independentPractice": "Problem 1: Parametrize 9x²+4y²=36. Problem 2: A circle has center (3,-2) and passes through (6,-2). Write parametric equations. Problem 3: Can x²/a²+y²/b²=1 use x=a·sin(t), y=b·cos(t) instead? Does it trace the same curve?",
+        "exitEvidence": "Parametrize x²/9+y²/16=1.",
+        "capReflection": "What persistence did you show when matching the trig identity to the conic structure?"
+      }
+    },
+    {
+      "periodId": "u04-p16",
+      "unit": 4,
+      "period": 16,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.7",
+        "title": "Parametrization of Implicitly Defined Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.7.A",
+        "essentialKnowledgeFamily": "4.7.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_7",
+      "dailyPhases": {
+        "warmUp": "x²+y²-6x+4y+4=0 — 'This is not in standard form. What steps must happen before you can parametrize this curve?'",
+        "topicIntroduction": "Parametrizing shifted conics: first complete the square to find center (h,k) and semi-axes, then apply x=h+a·cos(t), y=k+b·sin(t). Hyperbolas use sec²-tan²=1 identity but are beyond the scope of full treatment here.",
+        "scaffoldedExamples": "Lesson 4-7 Guided Problem 2: x²+y²-6x+4y+4=0. Complete the square: (x²-6x+9)+(y²+4y+4)=-4+9+4=9. (x-3)²+(y+2)²=9. Circle, center (3,-2), r=3: x=3+3cos(t), y=-2+3sin(t).",
+        "guidedPractice": "Parametrize x²+4y²-4x+8y+4=0. Students complete the square for both x and y, identify as ellipse, write parametric equations.",
+        "independentPractice": "Problem 1: Parametrize 4x²+y²-16x+6y+21=0 (complete the square, identify ellipse). Problem 2: Parametrize x²+y²+10x-2y+17=0 (circle). Problem 3: Explain why a hyperbola x²/a²-y²/b²=1 can use x=a·sec(t), y=b·tan(t). Verify using sec²-tan²=1.",
+        "exitEvidence": "Parametrize (x+1)²/4+(y-3)²/9=1.",
+        "capReflection": "What adaptability did you show when the equation required completing the square before parametrization?"
+      }
+    },
+    {
+      "periodId": "u04-p17",
+      "unit": 4,
+      "period": 17,
+      "dayType": "test",
+      "notes": "Test on implicit/conic/parametrization block (Topics 4.5-4.7)",
+      "nonInstructionArtifact": {
+        "artifactType": "test",
+        "source": "CED-only",
+        "cedScope": "4.5–4.7",
+        "evidence": "Test covering implicitly defined functions, conic sections, and parametrization of implicit curves"
+      }
+    },
+    {
+      "periodId": "u04-p18",
+      "unit": 4,
+      "period": 18,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.8",
+        "title": "Vectors",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.8.A",
+        "essentialKnowledgeFamily": "4.8.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_8",
+      "dailyPhases": {
+        "warmUp": "A hiker walks 3 miles east and 4 miles north. 'How far is she from the starting point? The direct distance is 5 miles — but the displacement has both magnitude AND direction. A single number cannot capture both.'",
+        "topicIntroduction": "Vector: quantity with magnitude and direction, written ⟨a,b⟩ in component form. Magnitude: |v|=√(a²+b²). Operations: addition (component-wise), scalar multiplication (distribute), subtraction (add the negative). Geometric meaning: addition = tip-to-tail.",
+        "scaffoldedExamples": "Lesson 4-8 Example 1: u=⟨3,-4⟩, v=⟨-1,7⟩. (a) u+v=⟨2,3⟩. (b) |u|=√(9+16)=5. (c) Unit vector in direction v: |v|=√50=5√2, so v̂=⟨-1/(5√2), 7/(5√2)⟩=⟨-√2/10, 7√2/10⟩.",
+        "guidedPractice": "Find u+v and |u+v| for u=⟨5,2⟩, v=⟨-3,4⟩. Then find 3u-2v for u=⟨1,-1⟩, v=⟨4,3⟩. Students practice component operations and magnitude computation.",
+        "independentPractice": "Problem 1: Displacement vector with magnitude 10 and direction angle θ=60°. Find component form. Problem 2: Find magnitude and direction angle of ⟨-6,8⟩. Problem 3: v=⟨3,-1⟩, find the unit vector in the direction of v.",
+        "exitEvidence": "Find the magnitude of ⟨7,-24⟩ and the direction angle.",
+        "capReflection": "What courage did you show when the component arithmetic involved fractions or radicals?"
+      }
+    },
+    {
+      "periodId": "u04-p19",
+      "unit": 4,
+      "period": 19,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.8",
+        "title": "Vectors",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.8.A",
+        "essentialKnowledgeFamily": "4.8.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_8",
+      "dailyPhases": {
+        "warmUp": "Given v=⟨3,-4⟩. 'What is the unit vector in this direction? What does it mean geometrically to have magnitude 1?'",
+        "topicIntroduction": "Unit vectors and direction angle. Standard unit vectors i=⟨1,0⟩, j=⟨0,1⟩. Any vector v=⟨a,b⟩ can be written as ai+bj. Direction angle: θ=arctan(b/a), adjusted for quadrant. Converting between magnitude-angle and component form: ⟨r·cos θ, r·sin θ⟩.",
+        "scaffoldedExamples": "Direction angle of ⟨3,4⟩: θ=arctan(4/3)≈53.13° (first quadrant). Direction angle of ⟨-3,4⟩: θ=180°-arctan(4/3)≈126.87° (second quadrant). Converting: vector with magnitude 8 and angle 30° → ⟨8cos30°, 8sin30°⟩=⟨4√3, 4⟩.",
+        "guidedPractice": "Find the unit vector and direction angle of ⟨-5,12⟩. Students compute magnitude, divide components by magnitude for unit vector, compute arctan with quadrant adjustment.",
+        "independentPractice": "Problem 1: Express v=⟨6,-8⟩ in terms of i and j. Find its unit vector. Problem 2: A force has magnitude 15 N at angle 150°. Find component form. Problem 3: Two vectors u and v have |u|=3, |v|=4, and the angle between them is 60°. Can you find |u+v|? (Hint: law of cosines or parallelogram.)",
+        "exitEvidence": "Find the direction angle of ⟨-7,-24⟩ and the unit vector in that direction.",
+        "capReflection": "What persistence did you show when computing direction angles in different quadrants?"
+      }
+    },
+    {
+      "periodId": "u04-p20",
+      "unit": 4,
+      "period": 20,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.9",
+        "title": "Vector-Valued Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.9.A",
+        "essentialKnowledgeFamily": "4.9.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_9",
+      "dailyPhases": {
+        "warmUp": "A drone's position is x(t)=4t, y(t)=-16t²+32t. 'Instead of two separate equations, what if we packaged them into one object that outputs a vector? This is a vector-valued function.'",
+        "topicIntroduction": "Vector-valued function: r(t)=⟨f(t), g(t)⟩ maps scalar t to a vector output. Equivalent to parametric function (x(t), y(t)) but uses vector notation. Evaluating: substitute t into both components. Position vector represents object location at time t.",
+        "scaffoldedExamples": "Lesson 4-9 Example: r(t)=⟨t², 2t-1⟩. r(0)=⟨0,-1⟩, r(1)=⟨1,1⟩, r(3)=⟨9,5⟩. Graph: plot each output point, connect to trace path. Each point is the tip of the position vector from the origin.",
+        "guidedPractice": "Let r(t)=⟨3t+1, t²⟩. Find r(2) and r(5). Students substitute into both components and plot the resulting points.",
+        "independentPractice": "Problem 1: r(t)=⟨cos(t), sin(t)⟩. Evaluate r(0), r(π/2), r(π). What curve do these lie on? Problem 2: r(t)=⟨t³-t, 2t+1⟩. Evaluate at t=-1, 0, 1, 2 and sketch the path. Problem 3: Explain how r(t) relates to parametric functions. What is the advantage of vector notation?",
+        "exitEvidence": "Let r(t)=⟨5-t, t²-4⟩. Find r(1).",
+        "capReflection": "What adaptability did you show when transitioning from separate x(t), y(t) notation to vector-valued function notation?"
+      }
+    },
+    {
+      "periodId": "u04-p21",
+      "unit": 4,
+      "period": 21,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.9",
+        "title": "Vector-Valued Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.9.A",
+        "essentialKnowledgeFamily": "4.9.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_9",
+      "dailyPhases": {
+        "warmUp": "r(t)=⟨t², 2t-1⟩. 'We found r(1)=⟨1,1⟩ and r(3)=⟨9,5⟩. How far did the object move between t=1 and t=3? The displacement is a vector, not a scalar.'",
+        "topicIntroduction": "Displacement vector: r(t₂)-r(t₁) gives the change in position. Average rate of change: (r(t₂)-r(t₁))/(t₂-t₁) is the average velocity vector with components Δx/Δt and Δy/Δt. This connects vector-valued functions to rates of change from Topic 4.3.",
+        "scaffoldedExamples": "Lesson 4-9 Example: r(t)=⟨t², 2t-1⟩. Displacement from t=1 to t=3: r(3)-r(1)=⟨9-1, 5-1⟩=⟨8,4⟩. Average rate of change: ⟨8,4⟩/2=⟨4,2⟩. Interpretation: on average, moves 4 units right and 2 units up per unit of t.",
+        "guidedPractice": "For r(t)=⟨3t+1, t²⟩, find the displacement from t=2 to t=5 and the average rate of change on [2,5]. Students compute r(5)-r(2), then divide by 3.",
+        "independentPractice": "Problem 1: r(t)=⟨cos(t), sin(t)⟩. Find displacement and average velocity from t=0 to t=π/2. Problem 2: r(t)=⟨t³-t, 2t+1⟩. Find displacement from t=-1 to t=2. Problem 3: A particle has r(t)=⟨5t, -16t²+20t⟩. Find the average velocity vector on [0,1]. Interpret each component.",
+        "exitEvidence": "Let r(t)=⟨5-t, t²-4⟩. Find the average rate of change on [1,3].",
+        "capReflection": "What persistence did you show when computing vector differences and interpreting the result?"
+      }
+    },
+    {
+      "periodId": "u04-p22",
+      "unit": 4,
+      "period": 22,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.8",
+        "title": "Vectors",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.8.A",
+        "essentialKnowledgeFamily": "4.8.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_8",
+      "dailyPhases": {
+        "warmUp": "A plane flies with airspeed ⟨120,0⟩ in a wind of ⟨-20,30⟩. 'What is the resultant velocity? Vectors model forces, velocities, and displacements in real-world contexts.'",
+        "topicIntroduction": "Vector applications: combining forces or velocities, navigation problems, displacement from a sequence of movements. Resultant vector = sum of component vectors. Equilibrium: sum of force vectors = ⟨0,0⟩.",
+        "scaffoldedExamples": "Boat crossing a river: boat velocity ⟨0,5⟩ (5 m/s across), river current ⟨3,0⟩ (3 m/s downstream). Resultant: ⟨3,5⟩. Speed = √(9+25)=√34≈5.83 m/s. Direction: arctan(5/3)≈59° from downstream. Three forces on an object: F₁=⟨4,2⟩, F₂=⟨-1,5⟩, F₃=⟨-3,-7⟩. Net force: ⟨0,0⟩ — equilibrium.",
+        "guidedPractice": "A hiker walks 2 km east, then 3 km north, then 1 km west. Represent as vectors ⟨2,0⟩, ⟨0,3⟩, ⟨-1,0⟩. Resultant displacement: ⟨1,3⟩. Distance from start: √10≈3.16 km. Direction: arctan(3/1)≈71.6° north of east.",
+        "independentPractice": "Problem 1: Two forces act on an object: F₁=⟨6,8⟩ N and F₂=⟨-3,4⟩ N. Find the net force and its magnitude. Problem 2: A plane needs to fly due north at 200 mph, but wind blows from the west at 30 mph. What heading and airspeed should the plane use? Problem 3: Three displacement vectors: A=⟨5,2⟩, B=⟨-3,7⟩, C=⟨x,-9⟩. Find x if the total displacement is ⟨4,0⟩.",
+        "exitEvidence": "Two forces F₁=⟨3,-4⟩ and F₂=⟨-1,6⟩ act on an object. Find the magnitude of the net force.",
+        "capReflection": "What courage did you show when translating a word problem into vector form?"
+      }
+    },
+    {
+      "periodId": "u04-p23",
+      "unit": 4,
+      "period": 23,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.10",
+        "title": "Matrices",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.10.A",
+        "essentialKnowledgeFamily": "4.10.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_10",
+      "dailyPhases": {
+        "warmUp": "Sports enrollment grid: Soccer (Freshmen 24, Sophs 31), Track (18, 27), Swim (12, 15). 'This rectangular array of numbers is a matrix. How is it organized? What information does each position hold?'",
+        "topicIntroduction": "Matrix: rectangular array of numbers in rows and columns. Dimensions: m×n (m rows, n columns). Element aᵢⱼ is the entry in row i, column j. Row matrix (1×n), column matrix (m×1). Addition: add corresponding entries (same dimensions required). Scalar multiplication: multiply every entry by the scalar.",
+        "scaffoldedExamples": "Lesson 4-10 Example 1: A=[[2,-1],[0,3]], B=[[4,1],[-2,5]]. A+B=[[6,0],[-2,8]]. 2A-B=[[0,-3],[2,1]]. Verify each entry individually.",
+        "guidedPractice": "Compute [[3,0],[-1,2]] + [[-1,5],[4,-3]]. Then compute 3·[[1,-2],[3,0]]. Students practice entry-wise addition and scalar multiplication.",
+        "independentPractice": "Problem 1: A=[[1,-2],[3,0]]. Find 3A. Problem 2: Explain why [1,2,3]·[[4,5],[6,7]] (the matrix product) would require checking dimensions. Problem 3: Create a 2×3 matrix representing test scores (3 students, 2 tests). Add it to another 2×3 matrix of retake scores.",
+        "exitEvidence": "Compute [[2,-3],[1,4]] + [[5,1],[-2,3]].",
+        "capReflection": "What adaptability did you show when tracking row and column indices?"
+      }
+    },
+    {
+      "periodId": "u04-p24",
+      "unit": 4,
+      "period": 24,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.10",
+        "title": "Matrices",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.10.A",
+        "essentialKnowledgeFamily": "4.10.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_10",
+      "dailyPhases": {
+        "warmUp": "Can we multiply two matrices? 'With numbers, 3×4=4×3. Does matrix multiplication work the same way?' Consider A=[[1,2],[3,4]] and B=[[0,1],[-1,2]].",
+        "topicIntroduction": "Matrix multiplication: A×B defined when columns of A = rows of B. Entry (i,j) = dot product of row i of A and column j of B. AB≠BA in general (not commutative). A 2×2 by 2×2 yields 2×2. A 2×2 by 2×1 yields 2×1.",
+        "scaffoldedExamples": "Lesson 4-10 Example 2: A=[[1,3],[2,-1]], B=[[4],[5]]. AB=[[1(4)+3(5)],[2(4)+(-1)(5)]]=[[19],[3]]. Verify: row 1 of A dot column 1 of B = 1·4+3·5=19.",
+        "guidedPractice": "Compute [[1,2],[3,4]]·[[0,1],[-1,2]]. Entry (1,1)=1(0)+2(-1)=-2. Entry (1,2)=1(1)+2(2)=5. Students compute all four entries of the 2×2 product.",
+        "independentPractice": "Problem 1: A=[[2,1],[0,-1]], B=[[3],[4]]. Find AB. Problem 2: Compute [[1,0],[0,1]]·[[5,3],[2,7]]. What happens when you multiply by the identity matrix? Problem 3: Show that [[1,2],[3,4]]·[[0,1],[-1,2]] ≠ [[0,1],[-1,2]]·[[1,2],[3,4]].",
+        "exitEvidence": "Compute [[2,-3],[1,4]]·[[5],[-2]].",
+        "capReflection": "What courage did you show when the dot product calculations got complex?"
+      }
+    },
+    {
+      "periodId": "u04-p25",
+      "unit": 4,
+      "period": 25,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.11",
+        "title": "The Inverse and Determinant of a Matrix",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.11.A",
+        "essentialKnowledgeFamily": "4.11.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_11",
+      "dailyPhases": {
+        "warmUp": "For numbers, 5×(1/5)=1 — the reciprocal undoes multiplication. 'Can matrices do the same? What would A×A⁻¹=I mean? Not every matrix has a reciprocal — what determines which ones do?'",
+        "topicIntroduction": "Identity matrix I=[[1,0],[0,1]] (matrix equivalent of 1). Inverse matrix A⁻¹ satisfies AA⁻¹=A⁻¹A=I. Determinant: det(A)=ad-bc for [[a,b],[c,d]]. det(A)=0 → singular (no inverse). det(A)≠0 → non-singular (inverse exists). Geometric meaning: zero determinant collapses space.",
+        "scaffoldedExamples": "Lesson 4-11 Example 1: A=[[3,1],[2,4]]. det(A)=3(4)-1(2)=12-2=10≠0. A⁻¹=(1/10)·[[4,-1],[-2,3]]=[[0.4,-0.1],[-0.2,0.3]]. Verify: AA⁻¹=[[1,0],[0,1]]. ✓",
+        "guidedPractice": "Find the determinant of [[5,-2],[3,1]]. Then find the inverse of [[2,0],[1,3]] if it exists. Students compute det, check if nonzero, apply inverse formula.",
+        "independentPractice": "Problem 1: Does [[4,-1],[-8,2]] have an inverse? Justify using the determinant. Problem 2: Find A⁻¹ for A=[[1,2],[3,7]]. Verify by computing AA⁻¹. Problem 3: If det(A)=5 and det(B)=-2, what is det(AB)? (Hint: det(AB)=det(A)·det(B).)",
+        "exitEvidence": "Find the determinant of [[7,2],[-3,5]] and state whether the inverse exists.",
+        "capReflection": "What persistence did you show when verifying the inverse by matrix multiplication?"
+      }
+    },
+    {
+      "periodId": "u04-p26",
+      "unit": 4,
+      "period": 26,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.11",
+        "title": "The Inverse and Determinant of a Matrix",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.11.A",
+        "essentialKnowledgeFamily": "4.11.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_11",
+      "dailyPhases": {
+        "warmUp": "A=[[6,3],[4,2]]. 'Compute the determinant. What does the result tell you about this matrix?' det=12-12=0 → singular, no inverse.",
+        "topicIntroduction": "Reinforce determinant and inverse computation with varied examples. Singular matrices arise when rows (or columns) are proportional. Determinant properties: det(A⁻¹)=1/det(A), det(AB)=det(A)·det(B), det(cA)=cⁿdet(A) for n×n. Geometric interpretation: |det(A)| is the area scaling factor.",
+        "scaffoldedExamples": "B=[[6,3],[4,2]] → det(B)=0 (second row is 2/3 of first row). C=[[2,1],[1,3]] → det(C)=6-1=5. C⁻¹=(1/5)·[[3,-1],[-1,2]]=[[0.6,-0.2],[-0.2,0.4]]. Verify CC⁻¹=I.",
+        "guidedPractice": "Determine which matrices from a set of four are invertible by computing determinants only (no need to compute inverses). Students race to classify singular vs non-singular.",
+        "independentPractice": "Problem 1: Find the inverse of [[5,3],[2,4]] and verify. Problem 2: If A⁻¹=[[2,-1],[3,1]], find A by computing (A⁻¹)⁻¹. Problem 3: For what value of k is [[k,2],[3,6]] singular? Problem 4: If a 2×2 matrix has det=3, what is det(A⁻¹)?",
+        "exitEvidence": "Is [[8,4],[6,3]] invertible? Justify with the determinant.",
+        "capReflection": "What adaptability did you show when determining singularity without computing the full inverse?"
+      }
+    },
+    {
+      "periodId": "u04-p27",
+      "unit": 4,
+      "period": 27,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.12",
+        "title": "Linear Transformations and Matrices",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.12.A",
+        "essentialKnowledgeFamily": "4.12.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_12",
+      "dailyPhases": {
+        "warmUp": "Stretch a rubber sheet by doubling width and halving height. Rotate a shape 90°. Reflect across the y-axis. 'Each operation transforms every point in the plane. Can a 2×2 matrix represent these?'",
+        "topicIntroduction": "A 2×2 matrix A represents a linear transformation: [x';y']=A·[x;y]. Common transformations: reflection over x-axis [[1,0],[0,-1]], reflection over y-axis [[-1,0],[0,1]], horizontal stretch by k [[k,0],[0,1]], vertical stretch by k [[1,0],[0,k]], rotation by θ [[cos θ,-sin θ],[sin θ,cos θ]].",
+        "scaffoldedExamples": "Lesson 4-12 Example 1: Reflect triangle with vertices (1,2),(3,1),(2,4) over x-axis. Matrix [[1,0],[0,-1]]: (1,2)→(1,-2), (3,1)→(3,-1), (2,4)→(2,-4). Example 2: A=[[2,0],[0,3]] stretches x by 2 and y by 3. det(A)=6 → area multiplied by 6.",
+        "guidedPractice": "Apply [[0,-1],[1,0]] to the point (3,1). What transformation is this? Students multiply and recognize 90° rotation. Find area scaling factor for [[4,1],[2,3]].",
+        "independentPractice": "Problem 1: Square with vertices (0,0),(1,0),(1,1),(0,1) transformed by A=[[2,0],[0,1]]. Find image vertices and area. Problem 2: Write the matrix for reflection over y=x. Apply to (3,-2). Problem 3: If det(A)=0, what happens to area? What does this mean geometrically?",
+        "exitEvidence": "The transformation [[1,0],[0,-1]] maps (a,b) to what point? What type of transformation is this?",
+        "capReflection": "What reasoning helped you connect the matrix entries to the geometric transformation?"
+      }
+    },
+    {
+      "periodId": "u04-p28",
+      "unit": 4,
+      "period": 28,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.12",
+        "title": "Linear Transformations and Matrices",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.12.A",
+        "essentialKnowledgeFamily": "4.12.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_12",
+      "dailyPhases": {
+        "warmUp": "A=[[2,0],[0,3]] has det(A)=6. 'What does the number 6 mean geometrically? If you transform a triangle with area 5, what is the area of the image?'",
+        "topicIntroduction": "Determinant as area scaling factor: |det(A)| = ratio of image area to pre-image area. det(A)>0 preserves orientation; det(A)<0 reverses orientation. det(A)=0 collapses all area to zero (maps plane to a line or point). Combine transformations: rotation then stretch vs stretch then rotation — order matters.",
+        "scaffoldedExamples": "Triangle with vertices (0,0),(4,0),(0,3) has area 6. Transform by A=[[2,1],[0,3]]: (0,0)→(0,0), (4,0)→(8,0), (0,3)→(3,9). Image area = ½|8·9-0·3|=36. Check: det(A)=2(3)-1(0)=6. 6×6=36. ✓",
+        "guidedPractice": "A unit square (area 1) is transformed by A=[[3,2],[1,4]]. Find the image area using det(A). Students compute det, then verify by transforming vertices and computing image area.",
+        "independentPractice": "Problem 1: A circle of area π is transformed by A=[[2,0],[0,5]]. What is the area of the image? Problem 2: If the image of a shape has area 20 and det(A)=4, what was the original area? Problem 3: Two transformations: A=[[2,0],[0,1]] (stretch x by 2) and B=[[1,0],[0,3]] (stretch y by 3). Find det(AB) and det(BA). Are they equal?",
+        "exitEvidence": "A triangle has area 10. After transformation by A, the image has area 35. What is |det(A)|?",
+        "capReflection": "What adaptability did you show when using the determinant shortcut instead of transforming all vertices?"
+      }
+    },
+    {
+      "periodId": "u04-p29",
+      "unit": 4,
+      "period": 29,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.13",
+        "title": "Matrices as Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.13.A",
+        "essentialKnowledgeFamily": "4.13.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_13",
+      "dailyPhases": {
+        "warmUp": "A 2×2 matrix takes input vector ⟨x,y⟩ and produces output ⟨x',y'⟩. 'This is exactly what a function does — maps inputs to outputs. What function concepts can we apply? Domain? Range? One-to-one?'",
+        "topicIntroduction": "Matrix as function T(v)=Av from R² to R². Domain: all of R². Range: all outputs Av. If det(A)≠0, range is all of R² (onto). If det(A)=0, range collapses to a line or origin. One-to-one ↔ det(A)≠0. Onto ↔ det(A)≠0. Determinant connects algebraic invertibility to geometric non-collapse.",
+        "scaffoldedExamples": "A=[[1,2],[0,1]]. det(A)=1≠0 → one-to-one and onto. B=[[4,2],[2,1]]. det(B)=4(1)-2(2)=0 → not one-to-one, not onto. Check: row 2 = ½·row 1, so B maps the plane to a line.",
+        "guidedPractice": "Determine if A=[[4,2],[2,1]] has an inverse. Is the transformation one-to-one? Students compute det, conclude det=0, and explain geometric meaning.",
+        "independentPractice": "Problem 1: A=[[0,-1],[1,0]] (90° rotation). Find A⁴ and interpret. (Hint: four 90° rotations = full turn.) Problem 2: Is the transformation T(v)=[[3,0],[0,0]]v one-to-one? What does it do geometrically? Problem 3: Explain why det(A)=0 means T is not one-to-one. Give an example of two different inputs mapping to the same output.",
+        "exitEvidence": "For A=[[2,1],[4,2]], state whether the transformation T(v)=Av is one-to-one. Justify using the determinant.",
+        "capReflection": "What persistence did you show when connecting determinant properties to function properties?"
+      }
+    },
+    {
+      "periodId": "u04-p30",
+      "unit": 4,
+      "period": 30,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.13",
+        "title": "Matrices as Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.13.A",
+        "essentialKnowledgeFamily": "4.13.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_13",
+      "dailyPhases": {
+        "warmUp": "T₁ is represented by A=[[2,0],[0,1]] (stretch x by 2). T₂ is represented by B=[[1,0],[0,-1]] (reflect over x-axis). 'What happens when we apply T₁ then T₂? The composite transformation has its own matrix — how do we find it?'",
+        "topicIntroduction": "Composition of transformations: apply T₁ (matrix A) then T₂ (matrix B) → composite is BA (note order: B·A, not A·B). Inverse transformation: A⁻¹ undoes T. Function composition concepts transfer directly to matrix multiplication.",
+        "scaffoldedExamples": "Lesson 4-13 Example 1: A=[[1,2],[0,1]], B=[[3,0],[0,1]]. T₂∘T₁: BA=[[3,0],[0,1]]·[[1,2],[0,1]]=[[3,6],[0,1]]. Verify with v=⟨1,1⟩: T₁(v)=⟨3,1⟩, T₂(⟨3,1⟩)=⟨9,1⟩. BA·v=[[3,6],[0,1]]·[1;1]=[9;1]. ✓",
+        "guidedPractice": "A=[[2,0],[0,1]] (stretch x by 2), B=[[1,0],[0,-1]] (reflect over x-axis). Find BA = 'stretch then reflect.' Students compute BA and verify with a test vector.",
+        "independentPractice": "Problem 1: A=[[0,-1],[1,0]] (90° rotation). Compute A², A³, A⁴. Interpret each. Problem 2: T₁ is horizontal stretch by 3, T₂ is reflection over y=x. Find the composite matrix T₂∘T₁. Problem 3: Find the matrix for 'rotate 90°, then stretch horizontally by 2' and compare to 'stretch horizontally by 2, then rotate 90°.' Are they the same?",
+        "exitEvidence": "Find the matrix representing a horizontal stretch by 2 followed by a vertical stretch by 3.",
+        "capReflection": "What adaptability did you show when remembering the order of matrix multiplication for composition?"
+      }
+    },
+    {
+      "periodId": "u04-p31",
+      "unit": 4,
+      "period": 31,
+      "dayType": "test",
+      "notes": "Test on matrix block (Topics 4.10-4.13)",
+      "nonInstructionArtifact": {
+        "artifactType": "test",
+        "source": "CED-only",
+        "cedScope": "4.10–4.13",
+        "evidence": "Test covering matrices, determinants, inverses, linear transformations, and matrices as functions"
+      }
+    },
+    {
+      "periodId": "u04-p32",
+      "unit": 4,
+      "period": 32,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.14",
+        "title": "Matrices Modeling Contexts",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.14.A",
+        "essentialKnowledgeFamily": "4.14.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_14",
+      "dailyPhases": {
+        "warmUp": "A store sells two products. Monday: 10 of A, 5 of B. Tuesday: 8 of A, 12 of B. Product A costs $3, B costs $7. 'Can a single matrix multiplication compute revenue for each day?'",
+        "topicIntroduction": "Matrices model real-world problems with multiple inputs and outputs. Revenue model: S=[[10,5],[8,12]] (sales), P=[[3],[7]] (prices). R=SP=[[65],[108]] (revenue per day). Systems of equations: Ax=b can be written as a matrix equation and solved with x=A⁻¹b.",
+        "scaffoldedExamples": "Lesson 4-14 Example: Bakery — cookies use 2 flour + 1 sugar, cake uses 3 flour + 2 sugar. Have 14 flour, 9 sugar. System: 2x+3y=14, x+2y=9. Matrix: [[2,3],[1,2]]·[[x],[y]]=[[14],[9]]. det(A)=1. A⁻¹=[[2,-3],[-1,2]]. Solution: x=1, y=4.",
+        "guidedPractice": "School tickets: adult $8, student $5. Friday: 120 adult, 80 student. Saturday: 95 adult, 110 student. Write matrix equation for revenue each day: R=[[120,80],[95,110]]·[[8],[5]]. Compute.",
+        "independentPractice": "Problem 1: Farmer plants corn (4 labor, 2 water) and wheat (3 labor, 3 water). Has 24 labor, 18 water. Set up and solve using matrices. Problem 2: Verify solution by substitution. Problem 3: Explain why A⁻¹ cannot solve a system where det(A)=0. What does this mean geometrically?",
+        "exitEvidence": "Write the system 5x-2y=11, x+3y=7 as a matrix equation Ax=b.",
+        "capReflection": "What courage did you show when translating the word problem into matrix form?"
+      }
+    },
+    {
+      "periodId": "u04-p33",
+      "unit": 4,
+      "period": 33,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "4.14",
+        "title": "Matrices Modeling Contexts",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "not-assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "4.14.A",
+        "essentialKnowledgeFamily": "4.14.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "CED-only",
+      "problemFamily": "u04_4_14",
+      "dailyPhases": {
+        "warmUp": "System: 3x+y=10, x+2y=9. 'Write as Ax=b. Find A⁻¹. Solve for x and y using x=A⁻¹b. Verify by substituting back.'",
+        "topicIntroduction": "Solving systems with matrix inverse: x=A⁻¹b. Modeling strategy: (1) identify quantities, organize into matrices, (2) set up Ax=b, (3) solve by multiplying by A⁻¹. Review: this works only when det(A)≠0. Connect to earlier topics — systems are functions with multiple inputs/outputs.",
+        "scaffoldedExamples": "Solve 3x+y=10, x+2y=9. A=[[3,1],[1,2]], b=[[10],[9]]. det(A)=6-1=5. A⁻¹=(1/5)[[2,-1],[-1,3]]. x=A⁻¹b=(1/5)[[2·10+(-1)·9],[-1·10+3·9]]=[11/5;17/5]=[2.2;3.4]. Verify: 3(2.2)+3.4=10 ✓, 2.2+2(3.4)=9 ✓.",
+        "guidedPractice": "Solve the system from Lesson 4-14 independent practice (farmer problem) using A⁻¹. Students set up A and b, compute inverse, solve, and verify.",
+        "independentPractice": "Problem 1: A factory makes widgets (2 machine-hours, 1 labor-hour) and gadgets (1 machine-hour, 3 labor-hours). Available: 16 machine-hours, 18 labor-hours. Set up and solve. Problem 2: Two investment accounts: Account A earns 5%, Account B earns 8%. Total investment $10,000, total interest $680. Set up and solve as a matrix equation. Problem 3: When would you choose the matrix method over substitution or elimination? Discuss advantages.",
+        "exitEvidence": "Given A=[[4,1],[2,3]] and b=[[15],[13]], solve Ax=b using A⁻¹.",
+        "capReflection": "What persistence did you show throughout the matrix modeling process — from setup through verification?"
+      }
+    },
+    {
+      "periodId": "u04-p34",
+      "unit": 4,
+      "period": 34,
+      "dayType": "test",
+      "notes": "Final Unit 4 test covering all 14 CED topics",
+      "nonInstructionArtifact": {
+        "artifactType": "test",
+        "source": "CED-only",
+        "cedScope": "4.1–4.14",
+        "evidence": "Final Unit 4 test covering parametric functions, planar motion, rates of change, parametric circles/lines, implicit functions, conic sections, parametrization, vectors, vector-valued functions, matrices, determinants/inverses, linear transformations, matrices as functions, and matrices modeling contexts"
+      }
+    }
+  ]
+}

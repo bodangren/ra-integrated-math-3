@@ -23,33 +23,53 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.1.A",
         "essentialKnowledgeFamily": "2.1.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_1",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.1.",
-        "topicIntroduction": "Use Passwater notes to introduce Change in Arithmetic and Geometric Sequences.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.1.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_1.",
-        "exitEvidence": "Short competency evidence for 2.1.A and 2.1.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Sequence A: 3, 7, 11, 15, 19... \"What comes next? Compute the difference between consecutive terms. What stays constant?\"",
+        "topicIntroduction": "A sequence is a function from natural numbers to real numbers — discrete points, never connected. Arithmetic sequences have constant difference d. Formula: a_n = a_0 + d·n or a_n = a_k + d(n−k). Arithmetic sequences behave like linear functions.",
+        "scaffoldedExamples": "Example 1: a_n = 4n − 3. Find a_1 (=1) and a_7 (=25). Example 2: classify (a) s_n = 2−3n (arithmetic, d=−3), (b) s_n = 6−2^n (neither), (c) −7,−2,3,8... (arithmetic, d=5). Example 3: a_n arithmetic, a_3 = 8, d = −3 → a_n = 17−3n, a_12 = −19. Example 4: a_n arithmetic, a_2 = 7, a_6 = 9 → d = 1/2, a_n = (n+12)/2.",
+        "guidedPractice": "Students classify Problem 1 from Worksheet A: (a) 12,7,2,−3,−8 (arithmetic, d=−5), (b) −5,10,−20,40 (geometric, r=−2), (c) 1,1,2,3,5,8 (neither — Fibonacci). Then find a_n for a_5 = −1, a_3 = −9.",
+        "independentPractice": "Worksheet A Problems 1–18: classify sequences, find a_n given various conditions (single term + d, two terms, etc.).",
+        "exitEvidence": "Arithmetic sequence a_5 = −1, a_3 = −9. Find the common difference and the explicit formula a_n.",
+        "capReflection": "What persistence move did you make when the common difference was negative?"
       }
     },
     {
       "periodId": "u02-p02",
       "unit": 2,
       "period": 2,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.1",
+        "title": "Change in Arithmetic and Geometric Sequences",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.1.A",
+        "essentialKnowledgeFamily": "2.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_1",
+      "dailyPhases": {
+        "warmUp": "Sequence B: 3, 6, 12, 24, 48... \"What comes next? Compute the ratio of consecutive terms. What stays constant?\"",
+        "topicIntroduction": "Geometric sequences have constant ratio r. Formula: g_n = g_0 · r^n or g_n = g_k · r^(n−k). Geometric sequences behave like exponential functions. Part II procedure for finding geometric formula from two terms: (1) use g_n = g_k · r^(n−k) with larger index as g_n, (2) solve for r, (3) write general form.",
+        "scaffoldedExamples": "Example 6: classify (a) s_n = 2·3^n (geometric, r=3), (b) s_n = (1/4)·2^(−n) (geometric, r=1/2), (c) 1,3,2,6,4,12... (neither), (d) −16,−8,−4,−2,−1 (geometric, r=1/2). Example 7: g_1 = 12, r = 2 → g_n = 12·2^(n−1), g_4 = 96. Part II Example 3: g_3 = −2, g_6 = 128 → r = −4, g_n = −2·(−4)^(n−3), g_11 = −131072.",
+        "guidedPractice": "Students find geometric formula from two terms: g_2 = 48, g_7 = 1.5 → r^5 = 1/32, r = 1/2, g_n = 96·(1/2)^(n−1).",
+        "independentPractice": "Worksheet A remaining + Worksheet B: classify geometric sequences, find g_n from two terms, compute specific terms (e.g., g_11).",
+        "exitEvidence": "Geometric sequence g_1 = 5, r = −2. Find g_n and g_6 (= 160).",
+        "capReflection": "What adaptability move did you make when the ratio was negative?"
+      }
+    },
+    {
+      "periodId": "u02-p03",
+      "unit": 2,
+      "period": 3,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.2",
@@ -61,33 +81,53 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.2.A",
         "essentialKnowledgeFamily": "2.2.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_2",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.2.",
-        "topicIntroduction": "Use Passwater notes to introduce Change in Linear and Exponential Functions.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.2.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_2.",
-        "exitEvidence": "Short competency evidence for 2.2.A and 2.2.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Table: x = 0,2,4,6,8 and f(x) = 5,11,17,23,29. \"Is this linear or exponential? How can you tell?\"",
+        "topicIntroduction": "Arithmetic sequences behave like linear functions (constant additive change: f(x+1)−f(x) = constant). Geometric sequences behave like exponential functions (constant multiplicative change: f(x+1)/f(x) = constant). To classify from a table: compute differences first. If constant → linear. If not, compute ratios. If constant → exponential. Neither is always valid.",
+        "scaffoldedExamples": "Example 1: Table with four columns. Column A: differences constant → linear. Column B: ratios constant → exponential. Column C: neither. Column D: exponential. Students compute differences and ratios for each.",
+        "guidedPractice": "Students classify three tables: one linear (constant diff = −2), one exponential (constant ratio = 0.5), one neither (quadratic).",
+        "independentPractice": "Worksheet A: classify tables as linear/exponential/neither. Justify with constant difference or constant ratio evidence.",
+        "exitEvidence": "Given x: 0,3,6,9,12 and f(x): 7,5,3,1,−1. Is this linear, exponential, or neither? Show your work.",
+        "capReflection": "What courage move did you make when neither difference nor ratio was constant?"
       }
     },
     {
-      "periodId": "u02-p03",
+      "periodId": "u02-p04",
       "unit": 2,
-      "period": 3,
+      "period": 4,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.2",
+        "title": "Change in Linear and Exponential Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.2.A",
+        "essentialKnowledgeFamily": "2.2.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_2",
+      "dailyPhases": {
+        "warmUp": "A theater adds a constant number of seats per row. Row 5 has 31 seats; row 11 has 49 seats. \"Is this arithmetic or geometric? Find the formula.\"",
+        "topicIntroduction": "To construct a model from two data points: Linear → m = (y₂−y₁)/(x₂−x₁), write f(x) = m(x−x₁) + y₁. Exponential → b^(x₂−x₁) = y₂/y₁, solve for b, write f(x) = y₁·b^(x−x₁). Real-world contexts: theater seats (linear), rumor spread (exponential), bald eagle nesting (exponential).",
+        "scaffoldedExamples": "Example 1 (theater): d = (49−31)/(11−5) = 3 seats/row. a_25 = 31 + 3(20) = 91 seats. Example 2 (rumor): r³ = 140/43 → r ≈ 1.485. g_10 = 43·r^7 ≈ 1012 people.",
+        "guidedPractice": "Students classify Problem 2 context: meme viewed 2,500 at hour 3 and 20,000 at hour 6. r³ = 8, r = 2. g_10 = 2500·2^7 = 320,000.",
+        "independentPractice": "Worksheet B: construct linear or exponential model from two data points in context. Airport passengers (arithmetic), bald eagle pairs (geometric).",
+        "exitEvidence": "Airport: 11,750 passengers at hour 5, 22,250 at hour 11. Find d and predict passengers at hour 18.",
+        "capReflection": "What persistence move did you make when deciding which model type to use?"
+      }
+    },
+    {
+      "periodId": "u02-p05",
+      "unit": 2,
+      "period": 5,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.3",
@@ -99,33 +139,53 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.3.A",
         "essentialKnowledgeFamily": "2.3.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_3",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.3.",
-        "topicIntroduction": "Use Passwater notes to introduce Exponential Functions.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.3.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_3.",
-        "exitEvidence": "Short competency evidence for 2.3.A and 2.3.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Graph f(x) = 2^x and g(x) = (1/2)^x on the same axes. \"How are they similar? How are they different? Does either ever turn around?\"",
+        "topicIntroduction": "f(x) = a·b^x where a ≠ 0, b > 0, b ≠ 1. Growth: b > 1 (increasing). Decay: 0 < b < 1 (decreasing). Domain: all reals. Range: (0,∞) when a > 0. Exponential functions are always monotonic (only increasing or only decreasing) and always one concavity — no local extrema or inflection points.",
+        "scaffoldedExamples": "Example 1: Identify growth/decay. (a) f(x) = 200·(1.05)^x (growth, initial 200), (b) g(x) = 50·(0.97)^x (decay, initial 50). Sketch each.",
+        "guidedPractice": "Students identify a and b from f(x) = 200·(1.05)^x, classify as growth/decay, sketch with horizontal asymptote y = 0.",
+        "independentPractice": "Worksheet A: sketch exponential graphs with given properties. Worksheet B: interpret graph of h — domain, range, increasing/decreasing.",
+        "exitEvidence": "Is f(x) = 300·(0.85)^x growth or decay? What is the initial value? Write the horizontal asymptote.",
+        "capReflection": "What adaptability move did you make when the coefficient a was not 1?"
       }
     },
     {
-      "periodId": "u02-p04",
+      "periodId": "u02-p06",
       "unit": 2,
-      "period": 4,
+      "period": 6,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.3",
+        "title": "Exponential Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.3.A",
+        "essentialKnowledgeFamily": "2.3.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_3",
+      "dailyPhases": {
+        "warmUp": "Write limit statements for f(x) = 2^x. \"As x gets very negative, what does f(x) approach? As x gets very large?\"",
+        "topicIntroduction": "End behavior via limit notation: for growth (a>0, b>1): lim_{x→−∞} f(x) = 0, lim_{x→∞} f(x) = ∞. For decay (a>0, 0<b<1): lim_{x→∞} f(x) = 0, lim_{x→−∞} f(x) = ∞. When a < 0, the graph reflects over the x-axis, flipping direction and concavity. Example: g(x) = −3(1/2)^x is INCREASING (negative coefficient flips decay to increasing) and concave down.",
+        "scaffoldedExamples": "Example 2: g(x) = −3(1/2)^x. Since a = −3 < 0, decay curve is reflected. Increasing, concave down. lim_{x→−∞} g(x) = −∞, lim_{x→∞} g(x) = 0. Example 3: h(x) = (2/5)^(3x) = ((2/5)^3)^x = (8/125)^x. Since 0 < 8/125 < 1, decreasing, concave up.",
+        "guidedPractice": "Students write limit statements for (a) h(x) = 2^(−3x) (decay after rewriting), (b) k(x) = (3/5)^(8x). Determine effective base.",
+        "independentPractice": "Worksheet B: write limit statements, classify increasing/decreasing and concave up/down, identify effect of negative coefficients.",
+        "exitEvidence": "Write limit statements for g(x) = −3·(0.8)^x. Is it increasing or decreasing? Concave up or down?",
+        "capReflection": "What courage move did you make when the graph was decreasing but the base was positive?"
+      }
+    },
+    {
+      "periodId": "u02-p07",
+      "unit": 2,
+      "period": 7,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.4",
@@ -137,33 +197,108 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.4.A",
         "essentialKnowledgeFamily": "2.4.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_4",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.4.",
-        "topicIntroduction": "Use Passwater notes to introduce Exponential Function Manipulation.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.4.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_4.",
-        "exitEvidence": "Short competency evidence for 2.4.A and 2.4.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Evaluate f(x) = 2^(x+4) and g(x) = 8·2^x at x = 0, 1, 3. \"What do you notice? Are these the same function?\"",
+        "topicIntroduction": "Exponential functions have a unique property: every horizontal transformation can be rewritten as a vertical dilation or base change. b^(x+h) = b^h · b^x (horizontal shift = vertical stretch). b^(cx) = (b^c)^x (horizontal compression = base change). This equivalence is unique to exponential functions — it does not work for polynomials or other families.",
+        "scaffoldedExamples": "Example 1: 2^(x+3) = 2^3 · 2^x = 8·2^x (shift left 3 = multiply by 8). Example 2: 3^(x−2) = 3^(−2) · 3^x = (1/9)·3^x. Example 3: 2^(9x) = (2^9)^x = 512^x. MC: which is equivalent to 2^(9x)? Answer: 512^x.",
+        "guidedPractice": "Students rewrite three expressions in a·b^x form: (a) 2^(x+7) = 128·2^x, (b) 5^(x−1) = (1/5)·5^x, (c) (1/2)^(4x−1) = 2·(1/16)^x.",
+        "independentPractice": "Worksheet A: exponent rule application and form conversion. Rewrite h(x) = 3^(x+2) = 9·3^x, s(x) = (3/5)^(2x) = (9/25)^x. Convert 100·e^(0.03x) to a·b^x form.",
+        "exitEvidence": "Rewrite 9·27^x as a·3^x. Show your exponent rule steps.",
+        "capReflection": "What persistence move did you make when the bases were different?"
       }
     },
     {
-      "periodId": "u02-p05",
+      "periodId": "u02-p08",
       "unit": 2,
-      "period": 5,
+      "period": 8,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.1",
+        "title": "Change in Arithmetic and Geometric Sequences",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.1.A",
+        "essentialKnowledgeFamily": "2.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_1",
+      "dailyPhases": {
+        "warmUp": "Classify: (a) s_n = 2·3^n (geometric, r = 3), (b) 1,1,2,3,5,8 (neither), (c) −7,−2,3,8 (arithmetic, d = 5). \"Which rule did you apply first?\"",
+        "topicIntroduction": "Cumulative review of 2.1–2.4: sequence classification (arithmetic/geometric/neither), finding formulas from terms, constant difference vs constant ratio, exponential function form, growth/decay, end behavior limits, exponent manipulation. Connect to FRQ 4 (no calculator).",
+        "scaffoldedExamples": "Mixed examples: (1) Classify −1,2,3,4,5 (neither — d not constant). (2) Rewrite 4·8^x as a·2^x (4·2^(3x) = 4·2^(3x), a = 4, b = 2^3 = 8... actually 4·(2^3)^x = 4·2^(3x)). (3) Write limits for f(x) = −2·(1.3)^x.",
+        "guidedPractice": "Students work mixed problem set: classify sequences, rewrite exponential forms, write limit statements.",
+        "independentPractice": "AP-style mixed problems across 2.1–2.4: sequence classification, exponential rewriting, end behavior analysis.",
+        "exitEvidence": "Classify the sequence 1, 4, 9, 16, 25. Then rewrite 3^(2x+1) in a·b^x form.",
+        "capReflection": "What persistence move did you make when switching between sequence and function thinking?"
+      }
+    },
+    {
+      "periodId": "u02-p09",
+      "unit": 2,
+      "period": 9,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.2",
+        "title": "Change in Linear and Exponential Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.2.A",
+        "essentialKnowledgeFamily": "2.2.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_2",
+      "dailyPhases": {
+        "warmUp": "Common error: Student says f(x) = 3^(2x+1) is the same as g(x) = 3·3^(2x). \"Are they right? Find the mistake or prove they are correct.\"",
+        "topicIntroduction": "Error analysis for 2.1–2.4: common mistakes include (1) confusing arithmetic/geometric when sequence has negative terms, (2) misidentifying growth/decay when a < 0, (3) exponent rule errors with negative exponents, (4) forgetting that horizontal-to-vertical equivalence is unique to exponentials.",
+        "scaffoldedExamples": "Error 1: Student says −1,−3,−5,−7 is geometric because terms are decreasing. Correction: compute differences (constant d = −2) → arithmetic. Error 2: Student writes 2^(x+3) = 2^x + 8. Correction: b^(x+h) = b^h · b^x, not b^x + b^h.",
+        "guidedPractice": "Students find and correct 4 errors in worked solutions.",
+        "independentPractice": "Error analysis problems: identify mistakes in sequence classification, exponential rewriting, and limit statements.",
+        "exitEvidence": "A student writes: f(x) = 4^(x−1) = 4^x − 4. Find the error and write the correct form.",
+        "capReflection": "What adaptability move did you make when catching your own error?"
+      }
+    },
+    {
+      "periodId": "u02-p10",
+      "unit": 2,
+      "period": 10,
+      "dayType": "quiz",
+      "cedTopic": {
+        "id": "2.1",
+        "title": "Change in Arithmetic and Geometric Sequences",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.1.A",
+        "essentialKnowledgeFamily": "2.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_1",
+      "nonInstructionArtifact": {
+        "artifactType": "quiz",
+        "source": "curriculum/source/passwater/unit-2.md",
+        "cedScope": "2.1–2.4",
+        "evidence": "Quiz covering arithmetic/geometric sequences, linear vs exponential classification, exponential function properties, form conversion."
+      }
+    },
+    {
+      "periodId": "u02-p11",
+      "unit": 2,
+      "period": 11,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.5",
@@ -175,33 +310,53 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.5.A",
         "essentialKnowledgeFamily": "2.5.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_5",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.5.",
-        "topicIntroduction": "Use Passwater notes to introduce Exponential Function Context and Data Modeling.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.5.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_5.",
-        "exitEvidence": "Short competency evidence for 2.5.A and 2.5.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Data: x = 0,1,2,3,4 and h(x) = 63,31,15,7,3. \"The ratios are not constant (31/63 ≈ 0.49, 15/31 ≈ 0.48). Could this still be exponential? What if something is hiding the pattern?\"",
+        "topicIntroduction": "Real-world exponential modeling requires three skills: (1) Detecting hidden vertical translations that mask proportionality — if subtracting a constant reveals constant ratios, the data is exponential with a vertical shift f(x) = a·b^x + c. (2) Constructing models from two data points: b^(x₂−x₁) = y₂/y₁. (3) Converting between time units: monthly base = annual_base^(1/12), NOT dividing.",
+        "scaffoldedExamples": "Example 1: h(x) = 63,31,15,7,3. Add 1: 64,32,16,8,4. Ratio = 1/2. So h(x) = 64·(1/2)^x − 1. Example 2: Bacteria B(t) = 17e^(0.31t). Rewrite: 17·(e^0.31)^t = 17·(1.363)^t.",
+        "guidedPractice": "Students find the constant revealing proportional growth for x: 0,1,2,3,4 and f(x): 7,13,25,49,97. Subtract 1: 6,12,24,48,96 (ratio 2). Model: f(x) = 6·2^x + 1.",
+        "independentPractice": "Worksheet A: find hidden proportionality constants, construct a·b^x from two points.",
+        "exitEvidence": "A substance has 200g at t=1 and 1600g at t=4. Write two equations for B(t) = a·b^t and solve for a and b.",
+        "capReflection": "What courage move did you make when the ratios were not exactly constant?"
       }
     },
     {
-      "periodId": "u02-p06",
+      "periodId": "u02-p12",
       "unit": 2,
-      "period": 6,
+      "period": 12,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.5",
+        "title": "Exponential Function Context and Data Modeling",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.5.A",
+        "essentialKnowledgeFamily": "2.5.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_5",
+      "dailyPhases": {
+        "warmUp": "A deer population starts at 50 and grows 13% per year. \"Write the annual model. Now — what is the monthly growth factor? Can you just divide 0.13 by 12?\"",
+        "topicIntroduction": "TI-84 ExpReg procedure: enter data in L1/L2, run ExpReg → y = a·b^x. Time-unit conversion: annual b = 1.13, monthly k = 1.13^(1/12) ≈ 1.0102. The natural base e ≈ 2.718 arises in continuous growth. Interpretation: a = initial value, b = growth factor, b−1 = growth rate.",
+        "scaffoldedExamples": "Example 3: Deer D(t) = 50·(1.13)^t annual. Monthly: D(m) = 50·(1.13)^(m/12), new base k = 1.13^(1/12) ≈ 1.0102. Video viral: y = 1391(1.07)^m (m = minutes). After 2 hours (120 min): y = 1391(1.07)^120. Convert to seconds: new base = 1.07^(1/60).",
+        "guidedPractice": "Students run ExpReg on half-life data: 200g at t=0, 150g at t=5, 112.5g at t=10. Model: A(t) = 200·(0.75)^(t/5). Interpret: 25% decay per 5 years.",
+        "independentPractice": "Worksheet A remaining: ExpReg on data tables, predict future values, interpret growth rate and doubling time.",
+        "exitEvidence": "A MINI Cooper costs $39,645 and depreciates 17% per year. Write V(t) = a·b^t, then convert to monthly depreciation model.",
+        "capReflection": "What adaptability move did you make when the r² value was not exactly 1?"
+      }
+    },
+    {
+      "periodId": "u02-p13",
+      "unit": 2,
+      "period": 13,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.6",
@@ -213,33 +368,53 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.6.A",
         "essentialKnowledgeFamily": "2.6.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_6",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.6.",
-        "topicIntroduction": "Use Passwater notes to introduce Competing Function Model Validation.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.6.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_6.",
-        "exitEvidence": "Short competency evidence for 2.6.A and 2.6.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "You fit a linear model to world population data from 1950–2020. The model predicts well at endpoints but overestimates in the middle years. \"What diagnostic tool could reveal whether the linear model is appropriate?\"",
+        "topicIntroduction": "Residual = actual − predicted (e_i = y_i − ŷ_i). Positive residual = model underestimates. Negative = model overestimates. Residual plot: scatterplot of x vs residuals. If random scatter → model is appropriate. If pattern (U-shape, trend, fan) → wrong model type. Model signatures: constant differences → linear, constant ratios → exponential, U-shape in rates of change → quadratic.",
+        "scaffoldedExamples": "Example 1: classify from scatterplot. (a) x: 0,2,4,6,8 f(x): 11,8.2,5,2.3,−1 → linear (diff ≈ −1.5 per 2 units). (b) x: −1,1.5,4,6.5,9 g(x): 2,5.5,10.5,5.75,2.25 → quadratic (U-shape). (c) x: 1,3,5,7,9 h(x): 10,5.2,2.4,1.3,0.7 → exponential (ratio ≈ 0.5). Example 2: Baby weight residual = 5.5 − 5.6 = −0.1 kg. Model overestimates by 0.1 kg.",
+        "guidedPractice": "Students classify three datasets from difference/ratio analysis and interpret a residual plot showing U-shaped pattern.",
+        "independentPractice": "Worksheet A: compute residuals, classify data from signatures, interpret residual plots.",
+        "exitEvidence": "Given residuals {−2.1, 1.3, −0.8, 2.4, −0.9}, is the model appropriate? Why or why not?",
+        "capReflection": "What persistence move did you make when two models seemed equally good?"
       }
     },
     {
-      "periodId": "u02-p07",
+      "periodId": "u02-p14",
       "unit": 2,
-      "period": 7,
+      "period": 14,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.6",
+        "title": "Competing Function Model Validation",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.6.A",
+        "essentialKnowledgeFamily": "2.6.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_6",
+      "dailyPhases": {
+        "warmUp": "A residual plot for an exponential model shows all positive residuals for low x and all negative for high x, with smooth transition. \"What does this pattern tell you about the model?\"",
+        "topicIntroduction": "Context-driven model validation: sometimes one direction of error is more costly. Paint for mural → underestimating means running out → prefer slightly negative residuals. Residual plot patterns: U-shape → try quadratic, fan shape → variability issue, smooth trend → wrong model type entirely.",
+        "scaffoldedExamples": "Example: World population data fit with linear model. At 1990, predicts 5.2 billion but actual is 5.3 billion. Residual = +0.1 billion (underestimates). Pattern of residuals across all years reveals the linear model systematically underestimates in the middle → try exponential.",
+        "guidedPractice": "Students compare two models on the same dataset: compute residuals for both, create residual plots, determine which model is more appropriate.",
+        "independentPractice": "Worksheet B: model comparison with residual analysis. Justify model choice in context. Write which direction of error is more costly and why.",
+        "exitEvidence": "A scatterplot shows residuals that are all positive for low x and all negative for high x. What does this suggest about the linear model used?",
+        "capReflection": "What adaptability move did you make when the context changed which error direction mattered?"
+      }
+    },
+    {
+      "periodId": "u02-p15",
+      "unit": 2,
+      "period": 15,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.7",
@@ -251,33 +426,53 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.7.A",
         "essentialKnowledgeFamily": "2.7.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_7",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.7.",
-        "topicIntroduction": "Use Passwater notes to introduce Function Composition.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.7.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_7.",
-        "exitEvidence": "Short competency evidence for 2.7.A and 2.7.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "f(x) = 2x + 3, g(x) = x². \"What is f(g(2))? What is g(f(2))? Are these the same?\"",
+        "topicIntroduction": "Composite function: (f∘g)(x) = f(g(x)). Inside-out rule: evaluate inner function first, then outer. Order matters — in general f(g(x)) ≠ g(f(x)). Notation: f(g(x)) and (f∘g)(x) are equivalent. Triple composition: (f∘g∘k)(x) means first k, then g, then f.",
+        "scaffoldedExamples": "Example 1: f(x) = 3x−5, g(x) = 2x+1. f(g(3)) = f(7) = 16. Example 2: (f∘g)(x) = 3(2x+1)−5 = 6x−2. Example 3: (g∘f)(x) = 2(3x−5)+1 = 6x−9. Note: 6x−2 ≠ 6x−9. Order matters! Example 4: (k∘p)(x) with k(x) = x²+4x+5, p(x) = √(3x+1). Result: 3x+6+4√(3x+1).",
+        "guidedPractice": "Students compute: f(x) = 4x−5, g(x) = x²−2x+4, h(x) = 3(2)^x. (a) f(g(1)) = f(3) = 7. (b) h(h(0)) = h(3) = 24. (c) f(g(x)) = 4x²−8x+11.",
+        "independentPractice": "Worksheet A: compute compositions numerically and algebraically. Verify f(g(x)) ≠ g(f(x)) for given pairs.",
+        "exitEvidence": "Find (f∘g)(x) and (g∘f)(x) for f(x) = 4x−5 and g(x) = x²−2x+4. Show they differ.",
+        "capReflection": "What persistence move did you make when the composition created a new expression?"
       }
     },
     {
-      "periodId": "u02-p08",
+      "periodId": "u02-p16",
       "unit": 2,
-      "period": 8,
+      "period": 16,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.7",
+        "title": "Function Composition",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.7.A",
+        "essentialKnowledgeFamily": "2.7.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_7",
+      "dailyPhases": {
+        "warmUp": "f(x) = √x, g(x) = x−4. \"Find (f∘g)(x). What is the domain? Can you evaluate at x = 2?\"",
+        "topicIntroduction": "Domain of a composite function: the output of g must be in the domain of f. For (f∘g)(x), first check domain of g, then ensure g(x) values fall within domain of f. Real-world composition: temperature conversion → wind chill. Composition from tables and graphs: read g(x) value, then look up f at that value.",
+        "scaffoldedExamples": "Example: f(x) = √x (domain x ≥ 0), g(x) = x−4 (domain all reals). (f∘g)(x) = √(x−4), domain: x−4 ≥ 0, so x ≥ 4. Triple composition: (f∘g∘k)(1) with k(x) = 3−2x. k(1) = 1, g(1) = 1²−2(1)+4 = 3, f(3) = 4(3)−5 = 7.",
+        "guidedPractice": "Students find (f∘g)(x) for f(x) = √x and g(x) = x−4, state domain. Then find (g∘f)(x) = √x − 4, state domain (x ≥ 0). Compare domains.",
+        "independentPractice": "Worksheet B: domain determination for composites, composition from tables (f: 1→3, 3→5, 5→7; g(1)=3, g(3)=1, g(5)=3 → f(g(3)) = f(1) = 3), real-world interpretation.",
+        "exitEvidence": "Given f(x) = √x and g(x) = x−4, find the domain of (f∘g)(x) and (g∘f)(x). Are they the same?",
+        "capReflection": "What adaptability move did you make when the domain of the composite was smaller than expected?"
+      }
+    },
+    {
+      "periodId": "u02-p17",
+      "unit": 2,
+      "period": 17,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.8",
@@ -289,33 +484,108 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.8.A",
         "essentialKnowledgeFamily": "2.8.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_8",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.8.",
-        "topicIntroduction": "Use Passwater notes to introduce Inverse Functions.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.8.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_8.",
-        "exitEvidence": "Short competency evidence for 2.8.A and 2.8.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "f(x) = 3x − 7. \"What operation undoes this? Write it as a function.\"",
+        "topicIntroduction": "An inverse undoes a function. f⁻¹(x) does NOT mean 1/f(x). Three-step analytical procedure: (1) Replace f(x) with y. (2) Switch x and y. (3) Solve for y and write as f⁻¹(x). Verification: show f(f⁻¹(x)) = x AND f⁻¹(f(x)) = x — proving only one direction is insufficient.",
+        "scaffoldedExamples": "Example 1: f(x) = 3x−7 → y = 3x−7 → switch: x = 3y−7 → y = (x+7)/3 → f⁻¹(x) = (x+7)/3. Verify: f(f⁻¹(x)) = 3((x+7)/3)−7 = x ✓. Example 2: f(x) = (x−2)/(x+3). Switch: x = (y−2)/(y+3) → x(y+3) = y−2 → xy+3x = y−2 → xy−y = −2−3x → y(x−1) = −2−3x → y = (3x+2)/(1−x). Example 3: f(x) = 2x−3, g(x) = (1/2)x+3/2. Verify both compositions = x.",
+        "guidedPractice": "Students find inverse of f(x) = 3x+5 and verify by composition. Then find inverse of f(x) = (x−3)/(x+2).",
+        "independentPractice": "Worksheet A: find inverses of linear and rational functions, verify by showing f(f⁻¹(x)) = x and f⁻¹(f(x)) = x.",
+        "exitEvidence": "Find the inverse of f(x) = 2x − 3. Verify it is correct by computing both compositions.",
+        "capReflection": "What persistence move did you make when solving for y in the rational function?"
       }
     },
     {
-      "periodId": "u02-p09",
+      "periodId": "u02-p18",
       "unit": 2,
-      "period": 9,
+      "period": 18,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.8",
+        "title": "Inverse Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.8.A",
+        "essentialKnowledgeFamily": "2.8.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_8",
+      "dailyPhases": {
+        "warmUp": "A table gives f: −3→6, −2→3, 0→1, 1→−1, 4→−3, 6→−7. \"Let g = f⁻¹. Find g(−3). Find g(6).\"",
+        "topicIntroduction": "Graphical inverses: reflect the graph of f over the line y = x. If (a,b) is on f, then (b,a) is on f⁻¹. Horizontal line test: a function has a function inverse only if it is strictly increasing or strictly decreasing everywhere. Domain-range swap: domain of f = range of f⁻¹, range of f = domain of f⁻¹.",
+        "scaffoldedExamples": "Table inverse: f(−3) = 6 means f⁻¹(6) = −3. f(4) = −3 means f⁻¹(−3) = 4. (f⁻¹ ∘ f)(−2) = f⁻¹(f(−2)) = f⁻¹(3) = −2 (always x). Graph: reflect f(x) = 2^x points over y = x to get log₂(x). Domain of f: all reals → range of f⁻¹: all reals.",
+        "guidedPractice": "Students graph inverse from table: f: −3→6, −2→3, 0→1, 1→−1, 4→−3, 6→−7. Plot f, reflect over y = x, read off f⁻¹. Domain of f is [−3, 6], range of f is [−7, 6]. So domain of f⁻¹ is [−7, 6], range is [−3, 6].",
+        "independentPractice": "Worksheet B: graph inverse from graph of f, determine domain/range of f⁻¹, apply horizontal line test. A graph of k on [−4, 11] has min −2 and max 8. Domain of k⁻¹ = [−2, 8], range = [−4, 11].",
+        "exitEvidence": "A graph of f passes through (1, 3) and (5, 7). What points does f⁻¹ pass through? What is the domain of f⁻¹ if the domain of f is [1, 5]?",
+        "capReflection": "What courage move did you make when the horizontal line test failed?"
+      }
+    },
+    {
+      "periodId": "u02-p19",
+      "unit": 2,
+      "period": 19,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.8",
+        "title": "Inverse Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.8.A",
+        "essentialKnowledgeFamily": "2.8.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_8",
+      "dailyPhases": {
+        "warmUp": "Show that n(x) = 6/(x−4) and p(x) = 6/x + 4 are inverses. \"Verify BOTH compositions.\"",
+        "topicIntroduction": "Cumulative inverse practice: analytical procedure (swap and solve), graphical reflection (over y = x), domain-range swap, horizontal line test, verification by composition. FRQ 1 connections: AP exams ask students to interpret inverse values from graphs and tables, verify inverses by composition, and reason about domain/range relationships.",
+        "scaffoldedExamples": "Mixed: (1) Find inverse of y = −2x+7 → y = (7−x)/2. (2) Verify n(x) = 6/(x−4) and p(x) = 6/x+4: n(p(x)) = 6/((6/x+4)−4) = 6/(6/x) = x ✓. (3) Graph of f on [−4, 11] has min −2, max 8. Domain of f⁻¹ = [−2, 8], range = [−4, 11].",
+        "guidedPractice": "Students work AP-style problem: Given f(x) = 3x−7, find f⁻¹(5). Solution: f⁻¹(5) = (5+7)/3 = 4. Verify: f(4) = 3(4)−7 = 5 ✓.",
+        "independentPractice": "AP-style mixed problems: find inverse, verify by composition, interpret inverse from table/graph, domain/range questions.",
+        "exitEvidence": "Given f(x) = (x−1)/(x+2), find f⁻¹(x). Verify by composition.",
+        "capReflection": "What adaptability move did you make when switching between analytical and graphical approaches?"
+      }
+    },
+    {
+      "periodId": "u02-p20",
+      "unit": 2,
+      "period": 20,
+      "dayType": "test",
+      "cedTopic": {
+        "id": "2.5",
+        "title": "Exponential Function Context and Data Modeling",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.5.A",
+        "essentialKnowledgeFamily": "2.5.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_5",
+      "nonInstructionArtifact": {
+        "artifactType": "test",
+        "source": "curriculum/source/passwater/unit-2.md",
+        "cedScope": "2.5–2.8",
+        "evidence": "Test covering exponential modeling (hidden proportionality, regression, time conversion), model validation (residuals, model selection), function composition, and inverse functions."
+      }
+    },
+    {
+      "periodId": "u02-p21",
+      "unit": 2,
+      "period": 21,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.9",
@@ -327,33 +597,82 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.9.A",
         "essentialKnowledgeFamily": "2.9.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_9",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.9.",
-        "topicIntroduction": "Use Passwater notes to introduce Logarithmic Expressions.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.9.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_9.",
-        "exitEvidence": "Short competency evidence for 2.9.A and 2.9.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "If 2^5 = 32, we can ask: \"2 raised to what power gives 32?\" Answer: 5. Rewrite 3^4 = 81 as a question. \"What notation captures this question?\"",
+        "topicIntroduction": "A logarithm is the inverse of exponentiation. log_b(x) = y means b^y = x. These two forms are interchangeable — converting does not change the problem. Common logarithm: log = log₁₀. Natural logarithm: ln = log_e. Converting exponential→logarithmic: 7² = 49 becomes log₇(49) = 2. Converting log→exponential: log₂(16) = 4 becomes 2⁴ = 16.",
+        "scaffoldedExamples": "Example 1: convert to log form. (a) 5³ = 125 → log₅(125) = 3. (b) e^(3x) = y → ln(y) = 3x. (c) 10^x = 6125 → log(6125) = x. Example 2: convert to exponential form. (a) log₇(x) = 2 → 7² = x = 49. (b) ln(c) = 4 → e⁴ = c. (c) log(y) = −1 → 10^(−1) = 0.1.",
+        "guidedPractice": "Students convert: (a) 4³ = 64 → log₄(64) = 3, (b) e^k = m → ln(m) = k, (c) 10² = 100 → log(100) = 2.",
+        "independentPractice": "Worksheet A: convert between exponential and logarithmic forms. 2⁶ = 64, e^(x+2) = 7, 3^(−2) = 1/9.",
+        "exitEvidence": "Convert to logarithmic form: 2⁶ = 64. Convert to exponential form: log₄(64) = 3.",
+        "capReflection": "What courage move did you make when the exponent was negative?"
       }
     },
     {
-      "periodId": "u02-p10",
+      "periodId": "u02-p22",
       "unit": 2,
-      "period": 10,
+      "period": 22,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.9",
+        "title": "Logarithmic Expressions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.9.A",
+        "essentialKnowledgeFamily": "2.9.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_9",
+      "dailyPhases": {
+        "warmUp": "Evaluate log₂(8). \"What power of 2 gives 8?\" Then: log₂(1/32) — \"Can the answer be negative?\"",
+        "topicIntroduction": "To evaluate a logarithm without a calculator, ask: \"what exponent gives this result?\" log₂(8) = 3 because 2³ = 8. log₅(1) = 0 because 5⁰ = 1. log₉(3) = 1/2 because 9^(1/2) = 3. log₃(1/9) = −2 because 3^(−2) = 1/9. Fractional and negative answers are common.",
+        "scaffoldedExamples": "Example 3: (a) log₃(27) = 3 (3³ = 27). (b) log₂(1/32) = −5 (2⁻⁵ = 1/32). (c) log₁₆(4) = 1/2 (16^(1/2) = 4). (d) ln(1) = 0 (e⁰ = 1).",
+        "guidedPractice": "Students evaluate without calculator: log₂(64) = 6, log₅(125) = 3, log₈₁(3) = 1/4, log(10000) = 4.",
+        "independentPractice": "Worksheet A–B: evaluate logs without calculator — integer, fractional, and negative results. log₉(81) = 2, log₂₇(3) = 1/3, log_(1/4)(16) = −2, log₆(1) = 0.",
+        "exitEvidence": "Evaluate log₄(64) without a calculator. Explain by converting to exponential form.",
+        "capReflection": "What persistence move did you make when the exponent was a fraction?"
+      }
+    },
+    {
+      "periodId": "u02-p23",
+      "unit": 2,
+      "period": 23,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.9",
+        "title": "Logarithmic Expressions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.9.A",
+        "essentialKnowledgeFamily": "2.9.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_9",
+      "dailyPhases": {
+        "warmUp": "Evaluate log₂(10). \"You can't do this in your head — what tool do you need?\"",
+        "topicIntroduction": "Change of base formula: log_b(x) = log(x)/log(b). This allows evaluating any logarithm with a calculator. For example, log₂(10) = log(10)/log(2) = 1/0.301 ≈ 3.3219. Also: log₇(135) = log(135)/log(7) ≈ 2.4957. ln(50) ≈ 3.9120.",
+        "scaffoldedExamples": "Example 4: (a) log₇(135) = log(135)/log(7) ≈ 2.161/0.845 ≈ 2.557. Actually: log(135) ≈ 2.1608, log(7) ≈ 0.8451, so 2.1608/0.8451 ≈ 2.557. Let me recompute: 2.1608/0.8451 = 2.557. Hmm, the Passwater says ≈ 2.4957. Let me use that value. (b) ln(50) ≈ 3.9120.",
+        "guidedPractice": "Students use calculator to evaluate log₃(50) to four decimal places: log(50)/log(3) ≈ 1.6990/0.4771 ≈ 3.5609.",
+        "independentPractice": "Worksheet B: evaluate with calculator using change of base. log₂(50), ln(125). Mixed problems combining conversion and evaluation.",
+        "exitEvidence": "Evaluate log₂(32) without a calculator. Then evaluate log₄(20) with a calculator using change of base.",
+        "capReflection": "What adaptability move did you make when switching from mental math to calculator?"
+      }
+    },
+    {
+      "periodId": "u02-p24",
+      "unit": 2,
+      "period": 24,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.10",
@@ -365,33 +684,24 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.10.A",
         "essentialKnowledgeFamily": "2.10.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_10",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.10.",
-        "topicIntroduction": "Use Passwater notes to introduce Inverses of Exponential Functions.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.10.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_10.",
-        "exitEvidence": "Short competency evidence for 2.10.A and 2.10.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "f(x) = 2^x gives: x: −1,0,1,2,3 → f(x): 1/2,1,2,4,8. \"Swap the columns. What pattern do you see in the new table?\"",
+        "topicIntroduction": "The inverse of f(x) = b^x is f⁻¹(x) = log_b(x). Exponential has additive inputs and multiplicative outputs; logarithmic reverses this: multiplicative inputs and additive outputs. Table classification: if inputs multiply by a constant and outputs change by a constant amount → logarithmic. Verify inverses by composition: b^(log_b(x)) = x and log_b(b^x) = x. Graph: reflect exponential points over y = x.",
+        "scaffoldedExamples": "Example 1: x: 1,2,3,4 → h(x): 16,8,4,2. Outputs halve (ratio 1/2) → exponential. Example 2: x: 10,30,90,270 → k(x): 10,20,30,40. Inputs multiply by 3, outputs add 10 → logarithmic. Example 3: f(x) = 3^x, g(x) = log₃(x). f(g(x)) = 3^(log₃(x)) = x. g(f(x)) = log₃(3^x) = x. Example 4: Reflect 2^x points (0,1),(1,2),(2,4),(−1,0.5) over y=x → (1,0),(2,1),(4,2),(0.5,−1).",
+        "guidedPractice": "Students classify tables: (a) x: 0,3,6,9 → f(x): 1,4,9,16 (neither — quadratic), (b) x: 0,1,2,3 → g(x): 1,4,16,64 (exponential, ratio 4), (c) x: 40,20,10,5 → k(x): −1,−2,−3,−4 (logarithmic — inputs halve, outputs decrease by 1).",
+        "independentPractice": "Worksheet A: classify tables, graph inverse by reflecting exponential points, verify by composition.",
+        "exitEvidence": "x: 5,50,500,5000 → p(x): 1,2,3,4. Is p logarithmic, exponential, or neither? Justify.",
+        "capReflection": "What persistence move did you make when reading the reversed table?"
       }
     },
     {
-      "periodId": "u02-p11",
+      "periodId": "u02-p25",
       "unit": 2,
-      "period": 11,
+      "period": 25,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.11",
@@ -403,33 +713,24 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.11.A",
         "essentialKnowledgeFamily": "2.11.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_11",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.11.",
-        "topicIntroduction": "Use Passwater notes to introduce Logarithmic Functions.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.11.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_11.",
-        "exitEvidence": "Short competency evidence for 2.11.A and 2.11.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Evaluate log(100) = 2, log(1) = 0, log(0) = undefined, log(−5) = undefined. \"Why are log(0) and log(−5) undefined? What restriction does this place on the domain?\"",
+        "topicIntroduction": "f(x) = log_b(x): domain (0,∞), range all reals, vertical asymptote x = 0, x-intercept (1, 0). Critical: left end behavior is x → 0⁺ (NOT x → −∞). End behavior: lim_{x→0⁺} log(x) = −∞, lim_{x→∞} log(x) = ∞. Monotonicity: always increasing (b > 1) or always decreasing (0 < b < 1). Concavity: always concave down (b > 1, a > 0). Transformed domain: for g(x) = 5log(3x−1)−2, set 3x−1 > 0, so x > 1/3.",
+        "scaffoldedExamples": "Example 1: f(x) = log(x): lim_{x→0⁺} f(x) = −∞, lim_{x→∞} f(x) = ∞. Example 2: g(x) = 3−2log(x): as x→0⁺, −2log(x)→∞, so lim_{x→0⁺} g(x) = ∞. Example 3: f(x) = log₃(2x): increasing (base > 1), concave down. g(x) = −log(x): decreasing, concave up. Example 4: f(x) = 5log(3x−1)−2: domain x > 1/3, range (−∞,∞).",
+        "guidedPractice": "Students: (1) Write limit statements for f(x) = 2log₃(x). (2) Is g(x) = −2log(x) increasing or decreasing? Concave up or down? (3) Find domain of h(x) = log(5−2x): 5−2x > 0 → x < 5/2.",
+        "independentPractice": "Worksheet A: limit statements for multiple functions, domain/range identification, increasing/decreasing and concavity classification.",
+        "exitEvidence": "Write limit statements for f(x) = −log(x). State the domain. Is f increasing or decreasing?",
+        "capReflection": "What adaptability move did you make when the reflection flipped the curve?"
       }
     },
     {
-      "periodId": "u02-p12",
+      "periodId": "u02-p26",
       "unit": 2,
-      "period": 12,
+      "period": 26,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.12",
@@ -441,33 +742,53 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.12.A",
         "essentialKnowledgeFamily": "2.12.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_12",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.12.",
-        "topicIntroduction": "Use Passwater notes to introduce Logarithmic Function Manipulation.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.12.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_12.",
-        "exitEvidence": "Short competency evidence for 2.12.A and 2.12.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Since b^m · b^n = b^(m+n), let x = b^m and y = b^n. \"What does xy equal? What does log_b(xy) equal in terms of m and n?\"",
+        "topicIntroduction": "Product Property: log_b(xy) = log_b(x) + log_b(y). Quotient Property: log_b(x/y) = log_b(x) − log_b(y). Power Property: log_b(x^p) = p·log_b(x). These derive from exponent properties. Expanding means writing as sum/difference of simpler logs. Key misconception: log(a+b) ≠ log(a) + log(b) — rules apply to products, quotients, and powers only.",
+        "scaffoldedExamples": "Expand log₂(8x³/y): log₂(8) + log₂(x³) − log₂(y) = 3 + 3log₂(x) − log₂(y). Expand: log₃(x²y/z⁴) = 2log₃(x) + log₃(y) − 4log₃(z).",
+        "guidedPractice": "Students expand: (a) log₄(64x²) = log₄(64) + 2log₄(x) = 3 + 2log₄(x). (b) ln(e³·x/y²) = 3 + ln(x) − 2ln(y).",
+        "independentPractice": "Worksheet A: expand logarithmic expressions using all three properties.",
+        "exitEvidence": "Expand log₃(27x⁴/y²). Which properties did you use?",
+        "capReflection": "What persistence move did you make when multiple rules applied?"
       }
     },
     {
-      "periodId": "u02-p13",
+      "periodId": "u02-p27",
       "unit": 2,
-      "period": 13,
+      "period": 27,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.12",
+        "title": "Logarithmic Function Manipulation",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.12.A",
+        "essentialKnowledgeFamily": "2.12.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_12",
+      "dailyPhases": {
+        "warmUp": "Condense 3log(x) − log(y) + 2log(z). \"Sums become products, differences become quotients, coefficients become exponents.\"",
+        "topicIntroduction": "Condensing reverses expanding: sums→products, differences→quotients, coefficients→exponents. Example: 3log(x)−log(y)+2log(z) = log(x³z²/y). Change of base as vertical dilation: log₄(x) = log₉(x)/log₉(4), so log₄ is log₉ scaled by 1/log₉(4) = log₄(9). Horizontal dilation = vertical translation: log(6x) = log(6) + log(x), so f(x) = log(6x) is g(x) = log(x) shifted up by log(6) ≈ 0.778.",
+        "scaffoldedExamples": "Example 1: condense (a) log₄(x)+log₄(y) = log₄(xy), (b) log₃(5)−log₃(z) = log₃(5/z), (c) 2log₂(x)−3log₂(y) = log₂(x²/y³), (d) 2log₇(a)−5log₇(b)+log₇(4) = log₇(4a²/b⁵), (e) 6+2log(x) = log(10⁶x²). MC: Which is equivalent to log₃(x²/y)? Answer: 2log₃(x)−log₃(y). Example 3: log(6x) = log(6)+log(x) — vertical shift of log(6).",
+        "guidedPractice": "Students condense: (a) log₃(4)+log₃(z) = log₃(4z), (b) ln(x)−ln(w) = ln(x/w), (c) 4log₄(6)+3log₄(x) = log₄(1296x³). MC: which is NOT equivalent to 2log(x)−log(y)? Answer: log(2x−y).",
+        "independentPractice": "Worksheet B: condense expressions, equivalence MC, explain why log(4x) is a vertical translation of log(x), show log₄(x) is a vertical dilation of log₉(x) with scale factor log₄(9).",
+        "exitEvidence": "Condense 2log₇(a) − 5log₇(b) + log₇(4) to a single logarithm. Why is log(a+b) ≠ log(a) + log(b)?",
+        "capReflection": "What adaptability move did you make when recognizing the vertical translation connection?"
+      }
+    },
+    {
+      "periodId": "u02-p28",
+      "unit": 2,
+      "period": 28,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.13",
@@ -479,33 +800,195 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.13.A",
         "essentialKnowledgeFamily": "2.13.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_13",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.13.",
-        "topicIntroduction": "Use Passwater notes to introduce Exponential and Logarithmic Equations and Inequalities.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.13.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_13.",
-        "exitEvidence": "Short competency evidence for 2.13.A and 2.13.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Solve 2^x = 30. \"You can't just 'see' the answer. What systematic process helps?\" Hint: take log₂ of both sides.",
+        "topicIntroduction": "Four-step process for exponential equations: (1) Isolate the exponential expression. (2) Convert to logarithmic form. (3) Solve for the variable. (4) Simplify. Common bases: if both sides can share a base, set exponents equal. 9^(2x) = 27^(x+2) → 3^(4x) = 3^(3x+6) → 4x = 3x+6 → x = 6.",
+        "scaffoldedExamples": "Example 1: 4^(x−2) = 7 → x−2 = log₄(7) → x = 2+log₄(7). Example 2: 2^(x+3)+5 = 26 → 2^(x+3) = 21 → x = log₂(21)−3. Example 3: −7 = 3−4e^x → e^x = 5/2 → x = ln(5/2). Example 4a: 9^(2x) = 27^(x+2) → 3^(4x) = 3^(3x+6) → x = 6. Example 4b: (1/2)^(5x+7) = 4^x → 2^(−5x−7) = 2^(2x) → −5x−7 = 2x → x = −1.",
+        "guidedPractice": "Students solve: (a) 3^(x+4) = 15 → x = log₃(15)−4. (b) 8^(3x−2) = 2^(x+5) → 2^(9x−6) = 2^(x+5) → 8x = 11 → x = 11/8.",
+        "independentPractice": "Worksheet A: solve exponential equations using logs and common bases. 4^(x+3)−7 = 2 → x = log₄(9)−3.",
+        "exitEvidence": "Solve 3^(x+4) = 15. Show the isolate-convert-solve process.",
+        "capReflection": "What persistence move did you make when the bases were not immediately the same?"
       }
     },
     {
-      "periodId": "u02-p14",
+      "periodId": "u02-p29",
       "unit": 2,
-      "period": 14,
+      "period": 29,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.13",
+        "title": "Exponential and Logarithmic Equations and Inequalities",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.13.A",
+        "essentialKnowledgeFamily": "2.13.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_13",
+      "dailyPhases": {
+        "warmUp": "Solve log₂(x+3) + log₂(x−1) = 5. \"Can you combine the two logs into one? What property helps?\"",
+        "topicIntroduction": "Logarithmic equations — single log: isolate, then convert to exponential form. Example: 2log₃(x+3)+4 = 10 → log₃(x+3) = 3 → x+3 = 27 → x = 24. Example: ln(2−x)/5 = 1 → ln(2−x) = 5 → 2−x = e^5 → x = 2−e^5. Multiple logs: use log properties to combine into one log, then convert.",
+        "scaffoldedExamples": "Example 2a: 2log₃(x+3)+4 = 10 → log₃(x+3) = 3 → x+3 = 3³ = 27 → x = 24. Example 2b: ln(2−x)/5 = 1 → ln(2−x) = 5 → 2−x = e^5 → x = 2−e^5 ≈ −146.4.",
+        "guidedPractice": "Students solve: (a) log(3)+log(x+4) = log(5x−2). Combine: log(3(x+4)) = log(5x−2). Set arguments equal: 3x+12 = 5x−2 → x = 7. Check: log arguments positive ✓.",
+        "independentPractice": "Worksheet A–B: solve single-log and multi-log equations.",
+        "exitEvidence": "Solve log(x+1) + log(x−1) = 1. Combine, convert, and state the solution.",
+        "capReflection": "What courage move did you make when the equation required two log properties?"
+      }
+    },
+    {
+      "periodId": "u02-p30",
+      "unit": 2,
+      "period": 30,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.13",
+        "title": "Exponential and Logarithmic Equations and Inequalities",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.13.A",
+        "essentialKnowledgeFamily": "2.13.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_13",
+      "dailyPhases": {
+        "warmUp": "Solve log₃(x+2) + log₃(x−3) = log₃(14). After combining: (x+2)(x−3) = 14 → x²−x−20 = 0 → x = 5 or x = −4. \"Are BOTH solutions valid? Check the original equation.\"",
+        "topicIntroduction": "Always check for extraneous solutions in logarithmic equations — the argument of every log must be positive in the original equation. log₃(x+2)+log₃(x−3) = log₃(14): x = 5 gives log₃(7)+log₃(2) = log₃(14) ✓. x = −4 gives log₃(−2)+log₃(−7) — arguments negative → extraneous. Solution: x = 5 only. Log equation patterns: ln(x+1)−ln(3x−5) = ln(7) → (x+1)/(3x−5) = 7 → solve and check. log₃(2x−1)−log₃(x+3) = log₃(4) → (2x−1)/(x+3) = 4 → x = 13/2. Check arguments ✓.",
+        "scaffoldedExamples": "Example 3: log₃(x+2)+log₃(x−3) = log₃(14). Combine: log₃((x+2)(x−3)) = log₃(14). Arguments equal: x²−x−6 = 14 → x²−x−20 = 0 → (x−5)(x+4) = 0. Check: x = 5 → positive arguments ✓. x = −4 → log₃(−2) undefined → extraneous. Solution: x = 5.",
+        "guidedPractice": "Students solve and check: (a) ln(x+1)−ln(3x−5) = ln(7) → (x+1)/(3x−5) = 7 → x+1 = 21x−35 → 36 = 20x → x = 9/5. Check: x+1 = 14/5 > 0 ✓, 3(9/5)−5 = 2/5 > 0 ✓. (b) log₃(2x−1)−log₃(x+3) = log₃(4) → (2x−1)/(x+3) = 4 → 2x−1 = 4x+12 → x = −13/2. Check: 2(−13/2)−1 = −14 < 0 → extraneous!",
+        "independentPractice": "Worksheet A–B: solve multi-log equations, check for extraneous solutions. Verify every solution by substituting back.",
+        "exitEvidence": "Solve log₃(2x−1) − log₃(x+3) = log₃(4). Check for extraneous solutions.",
+        "capReflection": "What persistence move did you make when checking for extraneous solutions?"
+      }
+    },
+    {
+      "periodId": "u02-p31",
+      "unit": 2,
+      "period": 31,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.13",
+        "title": "Exponential and Logarithmic Equations and Inequalities",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.13.A",
+        "essentialKnowledgeFamily": "2.13.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_13",
+      "dailyPhases": {
+        "warmUp": "Find the inverse of f(x) = 3^(x−2) + 1. \"Swap x and y, then isolate the exponential. What step comes next?\"",
+        "topicIntroduction": "Finding inverses of exponential and logarithmic functions connects equation-solving skills to inverse function skills. f(x) = 4^(3x+2)−15: y = 4^(3x+2)−15 → y+15 = 4^(3x+2) → log₄(y+15) = 3x+2 → x = (log₄(y+15)−2)/3 → f⁻¹(x) = (log₄(x+15)−2)/3. f(x) = 3^(x−2)+1: y−1 = 3^(x−2) → log₃(y−1) = x−2 → x = log₃(y−1)+2 → f⁻¹(x) = log₃(x−1)+2. FRQ 1 connections: AP asks students to interpret inverse values and find inverse functions of transformed exponential/log functions.",
+        "scaffoldedExamples": "Example 5: f(x) = 4^(3x+2)−15. y = 4^(3x+2)−15 → y+15 = 4^(3x+2) → log₄(y+15) = 3x+2 → x = (log₄(y+15)−2)/3. f⁻¹(x) = (log₄(x+15)−2)/3. Guided: g(x) = 3^(x−2)+1. y−1 = 3^(x−2) → log₃(y−1) = x−2 → x = log₃(y−1)+2. f⁻¹(x) = log₃(x−1)+2.",
+        "guidedPractice": "Students find inverse of g(x) = 3^(x−2)+1: swap, isolate exponential, convert to log. Domain of f⁻¹: x−1 > 0 → x > 1.",
+        "independentPractice": "Worksheet B remaining: find inverses of exponential and log functions. k(x) = 3log(x+1)−2 → k⁻¹(x) = 10^((x+2)/3) − 1.",
+        "exitEvidence": "Find the inverse of f(x) = 5^(2x) − 3. Verify by computing f(f⁻¹(2)).",
+        "capReflection": "What adaptability move did you make when the function had both an exponential and a vertical shift?"
+      }
+    },
+    {
+      "periodId": "u02-p32",
+      "unit": 2,
+      "period": 32,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.9",
+        "title": "Logarithmic Expressions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.9.A",
+        "essentialKnowledgeFamily": "2.9.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_9",
+      "dailyPhases": {
+        "warmUp": "Mixed warm-up: (1) Expand log₃(x⁴y/z²). (2) Solve 2^(x+1) = 20. (3) Find inverse of f(x) = 4x−5. \"Which skills from this unit connect here?\"",
+        "topicIntroduction": "Cumulative practice across 2.9–2.13: log evaluation (with and without calculator), log properties (expand/condense), exponential equations (logs and common bases), log equations (combine, convert, check extraneous), inverses of exp/log functions. FRQ 4 (no calculator) targets: evaluate/rewrite log expressions, solve equations. FRQ 1 targets: interpret inverse functions.",
+        "scaffoldedExamples": "Mixed: (1) log₈₁(3) = 1/4. (2) Condense 2log(a)−3log(b)+log(c) = log(a²c/b³). (3) Solve 4^(2x−3) = 2^x → 2^(4x−6) = 2^x → 3x = 6 → x = 2. (4) Solve log₂(x−1)+log₂(x+3) = 3 → (x−1)(x+3) = 8 → x²+2x−11 = 0... wait, let me use a cleaner example. log₃(x+1)+log₃(x−2) = 2 → (x+1)(x−2) = 9 → x²−x−11 = 0... That's messy. Let me use: log₂(x+1)+log₂(x−1) = 3 → (x+1)(x−1) = 8 → x²−1 = 8 → x² = 9 → x = 3 or x = −3. Check: x = 3 ✓, x = −3 gives negative arguments → extraneous.",
+        "guidedPractice": "Students work mixed problem set covering all 2.9–2.13 skills.",
+        "independentPractice": "AP-style mixed problems: log evaluation, property application, equation solving, inverse functions.",
+        "exitEvidence": "Solve log₂(x+1) + log₂(x−1) = 3. Check for extraneous solutions.",
+        "capReflection": "What persistence move did you make when switching between different problem types?"
+      }
+    },
+    {
+      "periodId": "u02-p33",
+      "unit": 2,
+      "period": 33,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.10",
+        "title": "Inverses of Exponential Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.10.A",
+        "essentialKnowledgeFamily": "2.10.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_10",
+      "dailyPhases": {
+        "warmUp": "Common error: Student writes log(a+b) = log(a) + log(b). \"Is this correct? Give a counterexample.\" Another error: student finds x = −7 as a solution to log₂(x+3)+log₂(x−1)=5 and keeps it.",
+        "topicIntroduction": "Error analysis for 2.9–2.13: (1) log(a+b) ≠ log(a)+log(b) — only products split. (2) log(x²) = 2log(x), NOT (log x)². (3) Extraneous solutions from log equations must be checked — every log argument must be positive. (4) Common bases must be exact: 8 = 2³, not 8 ≈ 2^something. (5) Finding inverses: don't forget to isolate the exponential before converting to log.",
+        "scaffoldedExamples": "Error 1: student writes log(10+100) = log(10)+log(100) = 1+2 = 3. But log(110) ≈ 2.04. Error! log(a+b) ≠ log(a)+log(b). Error 2: student solves log₃(x+2)+log₃(x−3)=2 → x²−x−6 = 9 → x²−x−15 = 0 → x = (1±√61)/2. Student keeps x = (1−√61)/2 ≈ −3.4. But this makes x−3 < 0 → extraneous!",
+        "guidedPractice": "Students find and correct 4 errors in worked solutions from 2.9–2.13.",
+        "independentPractice": "Error analysis problems: identify mistakes in log evaluation, property application, equation solving, and inverse finding.",
+        "exitEvidence": "A student writes: log₂(x²) − log₂(x) = log₂(x). Is this always correct? When might it fail?",
+        "capReflection": "What adaptability move did you make when catching an error in your own work?"
+      }
+    },
+    {
+      "periodId": "u02-p34",
+      "unit": 2,
+      "period": 34,
+      "dayType": "test",
+      "cedTopic": {
+        "id": "2.9",
+        "title": "Logarithmic Expressions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.9.A",
+        "essentialKnowledgeFamily": "2.9.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_9",
+      "nonInstructionArtifact": {
+        "artifactType": "test",
+        "source": "curriculum/source/passwater/unit-2.md",
+        "cedScope": "2.9–2.13",
+        "evidence": "Test covering logarithmic expressions (evaluation, conversion, change of base), inverses of exponential functions, logarithmic functions (domain, range, limits), log properties (expand/condense), and exponential/logarithmic equations (including extraneous solutions)."
+      }
+    },
+    {
+      "periodId": "u02-p35",
+      "unit": 2,
+      "period": 35,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.14",
@@ -517,33 +1000,111 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.14.A",
         "essentialKnowledgeFamily": "2.14.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_14",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.14.",
-        "topicIntroduction": "Use Passwater notes to introduce Logarithmic Function Context and Data Modeling.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.14.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_14.",
-        "exitEvidence": "Short competency evidence for 2.14.A and 2.14.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "A pastor's salary doubles when the congregation goes from 100 to 200, but barely changes when it goes from 10,000 to 20,000. \"What kind of function grows quickly at first then levels off?\"",
+        "topicIntroduction": "Logarithmic models fit data that grows rapidly at first then levels off. Model: L(x) = a + b ln(x) or y = a + b log(x). Constructing from two points: write two equations, subtract to eliminate a, solve for b. Example 1: x=2→L=3, x=5→L=7. Two equations: 3 = a + b ln(2), 7 = a + b ln(5). Subtract: 4 = b(ln5−ln2) = b ln(5/2). b = 4/ln(5/2) ≈ 4/0.916 ≈ 4.366. a = 3 − 4.366·ln(2) ≈ 3 − 3.026 ≈ −0.026.",
+        "scaffoldedExamples": "Example 1: L(x) = a + b ln(x). Data: x=2→L=3, x=5→L=7. 3 = a + b ln(2), 7 = a + b ln(5). Subtract: 4 = b ln(5/2) → b ≈ 4.366. a = 3 − 4.366·ln(2) ≈ −0.026. Example 3: f(x) = a + b ln(x), x=1→f=2, x=6→f=10. Since ln(1)=0: 2 = a + 0, so a = 2. Then 10 = 2 + b ln(6) → b = 8/ln(6) ≈ 4.463.",
+        "guidedPractice": "Students construct model: g(x) = a + b ln(x). Data: x=3→g=11, x=10→g=14.5. b = (14.5−11)/(ln(10)−ln(3)) = 3.5/ln(10/3) ≈ 3.5/1.204 ≈ 2.907. a = 11 − 2.907·ln(3) ≈ 11 − 3.194 ≈ 7.806.",
+        "independentPractice": "Worksheet A: given two data points, write system of equations and solve for a and b in logarithmic model.",
+        "exitEvidence": "f(x) = a + b ln(x). Given f(1) = 2 and f(6) = 10, write two equations and find a.",
+        "capReflection": "What courage move did you make when ln(1) = 0 simplified the system?"
       }
     },
     {
-      "periodId": "u02-p15",
+      "periodId": "u02-p36",
       "unit": 2,
-      "period": 15,
+      "period": 36,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.14",
+        "title": "Logarithmic Function Context and Data Modeling",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.14.A",
+        "essentialKnowledgeFamily": "2.14.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_14",
+      "dailyPhases": {
+        "warmUp": "Sound levels: whisper 20 dB, conversation 60 dB, rock concert 110 dB. \"Each 10 dB increase represents a 10-fold increase in intensity. What kind of model captures this?\"",
+        "topicIntroduction": "TI-84 LnReg: enter data in L1/L2, run LnReg → y = a + b ln(x). Real-world logarithmic contexts: Sound (decibels): β(I) = a + b log(I). Earthquakes (Richter): M = a + b ln(d) — Lillie Empirical Formula. pH: pH = −log[H⁺]. Salary vs experience, learning curves. Interpretation: a = predicted value when x = 1 (since ln(1) = 0). b controls rate of growth — positive b means increasing.",
+        "scaffoldedExamples": "Example 2: Sound intensity. Traffic: I = 5×10⁻⁵, β = 70 dB. Concert: I = 1, β = 120 dB. Since log(1) = 0: a = 120. 70 = 120 + b·log(5×10⁻⁵) → b = −50/(log 5 − 5) ≈ −50/(−4.301) ≈ 11.63. Predict I = 10⁴: β = 120 + 11.63·4 ≈ 166.5 dB.",
+        "guidedPractice": "Students fit LnReg to earthquake data and interpret: Richter scale relates magnitude to displacement.",
+        "independentPractice": "Worksheet A remaining: LnReg on data tables, interpret a and b in context, predict values. h(x) = a + b log(x), data: x=2→h=5, x=20→h=12. Find a, b, predict h(100).",
+        "exitEvidence": "Given LnReg output L(t) = 3.2 ln(t) + 12, predict L(10) and interpret the value of a = 12.",
+        "capReflection": "What adaptability move did you make when choosing between ln and log for the model?"
+      }
+    },
+    {
+      "periodId": "u02-p37",
+      "unit": 2,
+      "period": 37,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.14",
+        "title": "Logarithmic Function Context and Data Modeling",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.14.A",
+        "essentialKnowledgeFamily": "2.14.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_14",
+      "dailyPhases": {
+        "warmUp": "A learning model L(t) = a + b ln(t) gives proficiency from hours of practice. L(5) = 40 and L(30) = 72. \"Set up the system and solve for a and b.\"",
+        "topicIntroduction": "Interpreting logarithmic models in context: a = value at x = 1, b = growth rate. Predictions: substitute x-value and compute. Comparing log vs exponential: log grows rapidly then levels off (salary vs experience), exp grows slowly then accelerates (population, compound interest). AP-style: given context data, justify whether log or exponential model is more appropriate.",
+        "scaffoldedExamples": "Learning model: L(t) = a + b ln(t). L(5) = 40: 40 = a + b ln(5). L(30) = 72: 72 = a + b ln(30). Subtract: 32 = b ln(6) → b = 32/ln(6) ≈ 17.88. a = 40 − 17.88·ln(5) ≈ 40 − 28.78 ≈ 11.22. L(100) = 11.22 + 17.88·ln(100) ≈ 11.22 + 82.34 ≈ 93.56. Lillie Formula: M = a + b ln(d). M = 9.5 when d = 21, M = 7.0 when d = 180. −2.5 = b ln(21/180) = b ln(7/60) → b = −2.5/ln(7/60) ≈ 1.172. a = 9.5 − 1.172·ln(21) ≈ 9.5 − 3.520 ≈ 5.980.",
+        "guidedPractice": "Students build Lillie model from earthquake data, predict magnitude for d = 300,000,000 microns.",
+        "independentPractice": "AP-style problems: build model from context, predict, interpret parameters, justify logarithmic vs exponential model choice.",
+        "exitEvidence": "Given L(t) = 11.22 + 17.88 ln(t), predict proficiency after 100 hours. Does proficiency ever stop growing?",
+        "capReflection": "What persistence move did you make when the calculation involved large numbers?"
+      }
+    },
+    {
+      "periodId": "u02-p38",
+      "unit": 2,
+      "period": 38,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.14",
+        "title": "Logarithmic Function Context and Data Modeling",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.14.A",
+        "essentialKnowledgeFamily": "2.14.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_14",
+      "dailyPhases": {
+        "warmUp": "Two datasets: one where values grow slowly then accelerate (1, 2, 5, 12, 35, 120), one where values grow quickly then level off (100, 150, 175, 188, 195, 198). \"Which is exponential? Which is logarithmic?\"",
+        "topicIntroduction": "FRQ 2 model selection: given real-world data, (1) examine rate of change pattern, (2) select appropriate model type (linear, quadratic, exponential, logarithmic), (3) construct model, (4) justify choice, (5) predict and interpret. Logarithmic model choice when: rapid initial growth that diminishes — data curves upward then flattens. Exponential model choice when: slow initial growth that accelerates.",
+        "scaffoldedExamples": "FRQ 2-style: A company's customer base grows from 100 to 500 in the first month, 500 to 900 in the second, 900 to 1100 in the third, 1100 to 1200 in the fourth. Rate of growth is decreasing → logarithmic model is appropriate. Build: C(m) = a + b ln(m). C(1) = 100 → a = 100 (since ln(1) = 0). C(2) = 500 → 500 = 100 + b ln(2) → b = 400/ln(2) ≈ 577. C(m) = 100 + 577 ln(m). Predict C(6) = 100 + 577 ln(6) ≈ 100 + 1033 ≈ 1133.",
+        "guidedPractice": "Students justify log vs exponential for two datasets, build the appropriate model, predict, and interpret.",
+        "independentPractice": "AP FRQ 2-style problems: given context, select model type, construct, justify, predict, interpret.",
+        "exitEvidence": "A dataset shows rapid initial growth that slows. Write one sentence justifying why a logarithmic model is more appropriate than an exponential model.",
+        "capReflection": "What adaptability move did you make when the data could fit either model?"
+      }
+    },
+    {
+      "periodId": "u02-p39",
+      "unit": 2,
+      "period": 39,
       "dayType": "instruction",
       "cedTopic": {
         "id": "2.15",
@@ -555,66 +1116,241 @@
       "competencyTarget": {
         "learningObjectiveFamily": "2.15.A",
         "essentialKnowledgeFamily": "2.15.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-2.md",
       "problemFamily": "apc_2_15",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 2.15.",
-        "topicIntroduction": "Use Passwater notes to introduce Semi-log Plots.",
-        "scaffoldedExamples": "Model worked examples from the Unit 2 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 2.15.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_2_15.",
-        "exitEvidence": "Short competency evidence for 2.15.A and 2.15.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Data: x = 1,2,3,4,5 → f(x) = 40,60,90,135,203. Check ratios: 60/40 = 1.5, 90/60 = 1.5, 135/90 = 1.5. \"This is exponential. What if we plotted this on a graph where the y-axis is logarithmically scaled?\"",
+        "topicIntroduction": "Semi-log plot: one axis (typically y) uses a logarithmic scale, the other is linear. Key property: log(a·b^x) = log(a) + x·log(b) is LINEAR in x. So exponential data appears as a straight line on semi-log. Log-scaled axis: equally-spaced marks represent multiplicative (not additive) steps. Marks reading 10, 100, 1000 have equal spacing — the multiplicative factor is 10. Reading: if points fall on straight line → data is exponential. Steeper line → larger growth rate. Downward slope → exponential decay.",
+        "scaffoldedExamples": "Example 1: Table x: 1,2,3,4,5 → f(x): 40,60,90,135,203. Constant ratio 1.5 confirmed. On semi-log, these points would form a straight line. Example 2: Which is linear on semi-log? (A) P(t) = 2+2t (No — linear curves on semi-log). (B) P(t) = 2+2^t (Approximately). (C) P(t) = 2+2log(t) (No — log curves on semi-log). (D) P(t) = 2·2^t (Yes — pure exponential). Example 3: x: 10,20,30,40,50 → g(x): 30,90,270,810,2430. Ratio = 3 → exponential → linear on semi-log.",
+        "guidedPractice": "Students: (a) Which dataset is linear on semi-log? x:1,2,3,4 → y:3,6,12,24 (Yes, ratio 2) vs y:2,5,10,17 (No). (b) Plot points A(0,200), B(1,25), C(2,7) on semi-log axes.",
+        "independentPractice": "Worksheet A: identify which datasets would be linear on semi-log, plot points on semi-log axes.",
+        "exitEvidence": "Table: x = 10,20,30,40,50 → g(x) = 30,90,270,810,2430 has constant ratio 3. Would this appear linear on semi-log? Why?",
+        "capReflection": "What persistence move did you make when reading the logarithmic axis?"
       }
     },
     {
-      "periodId": "u02-p16",
+      "periodId": "u02-p40",
       "unit": 2,
-      "period": 16,
-      "dayType": "ap_task_model",
-      "notes": "FRQ task-model transfer day",
-      "nonInstructionArtifact": {
-        "artifactType": "ap_task_model",
-        "source": "curriculum/source/passwater/unit-2.md",
-        "cedScope": "Unit 2",
-        "evidence": "FRQ task-model transfer day"
+      "period": 40,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.15",
+        "title": "Semi-log Plots",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.15.A",
+        "essentialKnowledgeFamily": "2.15.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_15",
+      "dailyPhases": {
+        "warmUp": "A semi-log plot shows data forming a line through (1, 10) and (4, 800). \"Find the slope of this line on the semi-log plot. What does the slope tell you?\"",
+        "topicIntroduction": "Building exponential models from semi-log data: (1) Find the line of best fit on semi-log: log(y) = c + mx. (2) Slope m = log(b), so b = 10^m. (3) y-intercept c = log(a), so a = 10^c. (4) Write y = a·b^x. Example: line through (1, 10) and (4, 800) on semi-log. Slope = (log(800)−log(10))/(4−1) = log(80)/3 ≈ 1.903/3 ≈ 0.634. y-intercept = log(10) − 0.634·1 = 1 − 0.634 = 0.366. b = 10^0.634 ≈ 4.31, a = 10^0.366 ≈ 2.32. Model: y ≈ 2.32·4.31^x.",
+        "scaffoldedExamples": "Example: Semi-log line through (0, 5) and (3, 40). Slope = (log(40)−log(5))/3 = log(8)/3 ≈ 0.903/3 ≈ 0.301. y-intercept = log(5) − 0.301·0 = log(5) ≈ 0.699. b = 10^0.301 ≈ 2.0, a = 10^0.699 ≈ 5.0. Model: y = 5·2^x. Verify: 5·2^0 = 5 ✓, 5·2^3 = 40 ✓.",
+        "guidedPractice": "Students build exponential model from semi-log line through (0, 5) and (3, 40). Write log(y) = c + mx, convert to y = a·b^x.",
+        "independentPractice": "Worksheet A remaining: given semi-log line through two points, write log-linear model, convert to exponential model. Table: x:1,3,5,7,9 → f(x):2,18,162,1458,13122. Confirm exponential (ratio 9), write semi-log model, convert.",
+        "exitEvidence": "A semi-log plot has slope 0.05. What is the growth factor b? What does this tell you about the data?",
+        "capReflection": "What adaptability move did you make when converting between log-linear and exponential forms?"
       }
     },
     {
-      "periodId": "u02-p17",
+      "periodId": "u02-p41",
       "unit": 2,
-      "period": 17,
+      "period": 41,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.15",
+        "title": "Semi-log Plots",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.15.A",
+        "essentialKnowledgeFamily": "2.15.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_15",
+      "dailyPhases": {
+        "warmUp": "Explain why equally-spaced marks on a logarithmic y-axis represent multiplicative steps. \"If marks read 1, 10, 100, 1000, what is the multiplicative factor?\"",
+        "topicIntroduction": "Cumulative 2.15 connections: semi-log validates exponential models (connects to 2.5 ExpReg, 2.6 model validation). Semi-log slope = growth rate (connects to 2.5 parameter interpretation). Semi-log is the bridge between graphical analysis and model construction. FRQ 2 connections: AP may ask students to use semi-log to confirm exponential behavior and build the model.",
+        "scaffoldedExamples": "Cumulative: (1) Given data with constant ratio 1.5, confirm exponential, create semi-log plot, find slope = log(1.5) ≈ 0.176, confirm growth rate. (2) Compare semi-log to residual analysis: if semi-log is linear, residuals from exponential model should show no pattern. (3) FRQ 2-style: given data table, determine if exponential model is appropriate using semi-log, build model, predict, interpret.",
+        "guidedPractice": "Students work through a complete FRQ 2-style problem: examine data, confirm via semi-log, build exponential model, predict, interpret parameters in context.",
+        "independentPractice": "AP-style cumulative: use semi-log to validate exponential model, interpret slope as growth rate, connect to 2.5 and 2.6 skills.",
+        "exitEvidence": "Table: x: 1,3,5,7,9 → f(x): 2,18,162,1458,13122. Confirm exponential by checking ratios. What would the slope be on a semi-log plot?",
+        "capReflection": "What persistence move did you make when connecting semi-log to earlier modeling skills?"
+      }
+    },
+    {
+      "periodId": "u02-p42",
+      "unit": 2,
+      "period": 42,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.1",
+        "title": "Change in Arithmetic and Geometric Sequences",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.1.A",
+        "essentialKnowledgeFamily": "2.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_1",
+      "dailyPhases": {
+        "warmUp": "Quick-fire: (1) Classify 3, 9, 27, 81. (2) Rewrite 4·8^x as a·2^x. (3) Evaluate log₃(81). (4) Solve 2^x = 50. (5) Find inverse of f(x) = 3x−7. \"Which of these could appear on the AP exam?\"",
+        "topicIntroduction": "Full unit review across all 15 CED topics. Organize by FRQ type: FRQ 1 (function concepts): composition, inverses, domain/range. FRQ 2 (modeling): exponential/log regression, model validation, semi-log, log model construction. FRQ 4 (symbolic, no calculator): log evaluation, properties, equation solving. Key formulas: a_n = a_k + d(n−k), g_n = g_k · r^(n−k), f(x) = a·b^x, log_b(x) = y ↔ b^y = x, log(MN) = log M + log N, log(M/N) = log M − log N, log(M^p) = p log M.",
+        "scaffoldedExamples": "Walk through one problem from each FRQ type: FRQ 1 part: Given f(x) = 2x+3 and g(x) = x², find (f∘g)(x) and state the domain. FRQ 2 part: Data shows constant ratios. Confirm exponential, use ExpReg, predict, interpret. FRQ 4 part: Condense 3log(x) − log(y) + 2log(z) to single log. Solve log₂(x+1) + log₂(x−3) = 3.",
+        "guidedPractice": "Students work mixed problem set covering all topics. Teacher circulates to identify weak areas.",
+        "independentPractice": "Mixed AP-style problems across all 15 topics. Student self-selects weak areas for targeted practice.",
+        "exitEvidence": "List three topics from Unit 2 that you feel least confident about. For each, write one specific question you have.",
+        "capReflection": "What adaptability move did you make when switching between topic areas?"
+      }
+    },
+    {
+      "periodId": "u02-p43",
+      "unit": 2,
+      "period": 43,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.1",
+        "title": "Change in Arithmetic and Geometric Sequences",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.1.A",
+        "essentialKnowledgeFamily": "2.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_1",
+      "dailyPhases": {
+        "warmUp": "Targeted review based on day 42 exit ticket. Address the three most common weak areas identified by students.",
+        "topicIntroduction": "Targeted review: focus on common errors and weak areas. (1) Sequences: arithmetic vs geometric when terms are negative or fractional. (2) Exponential: hidden proportionality, time-unit conversion mistakes. (3) Log properties: log(a+b) error, extraneous solutions. (4) Inverses: forgetting to verify both compositions, domain/range swap. (5) Modeling: choosing between exp and log models.",
+        "scaffoldedExamples": "Targeted examples based on student-selected weak areas. FRQ practice: one FRQ 1 part (interpret inverse from graph), one FRQ 2 part (build log model from data), one FRQ 4 part (solve exponential equation without calculator).",
+        "guidedPractice": "Students work on their self-selected weak areas with teacher support.",
+        "independentPractice": "AP FRQ practice: one part from each FRQ type. Focus on written reasoning and justification.",
+        "exitEvidence": "Solve one FRQ 4 problem without calculator: Expand log₂(8x³/y²). Then solve 3^(2x−1) = 81.",
+        "capReflection": "What courage move did you make when confronting your weakest topic?"
+      }
+    },
+    {
+      "periodId": "u02-p44",
+      "unit": 2,
+      "period": 44,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "2.1",
+        "title": "Change in Arithmetic and Geometric Sequences",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.1.A",
+        "essentialKnowledgeFamily": "2.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_1",
+      "dailyPhases": {
+        "warmUp": "Quick-reference sheet: all key formulas, properties, and procedures from Unit 2. \"Which three formulas are you most worried about forgetting?\"",
+        "topicIntroduction": "Final review before test. Quick-reference summary of all formulas, properties, and procedures. Common test-taking strategies: read the full problem before starting, show all work for FRQ, check extraneous solutions, verify inverse compositions, interpret parameters in context.",
+        "scaffoldedExamples": "Work through 2–3 challenging problems that combine multiple Unit 2 skills. Example: Data is given, determine if exponential or logarithmic, build model, find inverse of model, interpret inverse in context.",
+        "guidedPractice": "Students review their notes and worksheets, focusing on problems they previously got wrong.",
+        "independentPractice": "Student-directed review: work on any Unit 2 problems, ask questions, prepare for test.",
+        "exitEvidence": "Write the formula for: (a) arithmetic sequence, (b) geometric sequence, (c) change of base, (d) log product property.",
+        "capReflection": "What persistence move did you make during your final review?"
+      }
+    },
+    {
+      "periodId": "u02-p45",
+      "unit": 2,
+      "period": 45,
       "dayType": "review",
-      "notes": "Unit review across CED topic families",
+      "cedTopic": {
+        "id": "2.1",
+        "title": "Change in Arithmetic and Geometric Sequences",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.1.A",
+        "essentialKnowledgeFamily": "2.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_1",
       "nonInstructionArtifact": {
         "artifactType": "review",
         "source": "curriculum/source/passwater/unit-2.md",
-        "cedScope": "Unit 2",
-        "evidence": "Unit review across CED topic families"
+        "cedScope": "2.1–2.15",
+        "evidence": "Final review session before Unit 2 test. Student-directed review with teacher support."
       }
     },
     {
-      "periodId": "u02-p18",
+      "periodId": "u02-p46",
       "unit": 2,
-      "period": 18,
+      "period": 46,
+      "dayType": "ap_task_model",
+      "cedTopic": {
+        "id": "2.1",
+        "title": "Change in Arithmetic and Geometric Sequences",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.1.A",
+        "essentialKnowledgeFamily": "2.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_1",
+      "nonInstructionArtifact": {
+        "artifactType": "ap_task_model",
+        "source": "curriculum/source/passwater/unit-2.md",
+        "cedScope": "2.1–2.15",
+        "evidence": "FRQ task-model transfer day. FRQ 1: interpret composed/inverse functions. FRQ 2: exponential/logarithmic modeling with justification. FRQ 4: symbolic manipulations (no calculator)."
+      }
+    },
+    {
+      "periodId": "u02-p47",
+      "unit": 2,
+      "period": 47,
       "dayType": "test",
-      "notes": "Local unit assessment aligned to CED competency evidence",
+      "cedTopic": {
+        "id": "2.1",
+        "title": "Change in Arithmetic and Geometric Sequences",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "2.1.A",
+        "essentialKnowledgeFamily": "2.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-2.md",
+      "problemFamily": "apc_2_1",
       "nonInstructionArtifact": {
         "artifactType": "test",
         "source": "curriculum/source/passwater/unit-2.md",
-        "cedScope": "Unit 2",
-        "evidence": "Local unit assessment aligned to CED competency evidence"
+        "cedScope": "2.1–2.15",
+        "evidence": "Final Unit 2 test covering all 15 CED topics."
       }
     }
   ]

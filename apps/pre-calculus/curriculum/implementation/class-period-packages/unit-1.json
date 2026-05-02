@@ -23,33 +23,82 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.1.A",
         "essentialKnowledgeFamily": "1.1.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_1",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.1.",
-        "topicIntroduction": "Use Passwater notes to introduce Change in Tandem.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.1.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_1.",
-        "exitEvidence": "Short competency evidence for 1.1.A and 1.1.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Table with t: 0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0 and h(t): 6, 30, 42, 42, 30, 6, -30. Ask: 'As t increases from 0 to 1.5, what happens to h(t)? As t increases from 2.0 to 3.0?'",
+        "topicIntroduction": "Introduce covariation: two quantities changing together. Define function as each input mapped to exactly one output. Vocabulary: independent variable (domain), dependent variable (range), increasing, decreasing, constant. Four representations: graphical, analytical, numerical, verbal.",
+        "scaffoldedExamples": "Passwater Examples 1-4: Example 1 (empty vase with water at constant rate, match to four graph choices). Example 2 (piecewise function g on [-4, 6], identify increasing intervals). Example 3 (graph of f with dashed midline, five points A-E — on interval B to C, is f positive/negative and increasing/decreasing?). Example 4 (same graph, interval A to B).",
+        "guidedPractice": "Students use sentence frames: 'As x increases from ___ to ___, y increases/decreases/remains constant by approximately ___.' Apply to temperature table: T(h) at hours 6, 8, 10, 12, 14, 16, 18.",
+        "independentPractice": "Given table of p(x) at x = 1, 3, 5, 7, 9: identify intervals where p is increasing, decreasing, or constant. Over which interval does p show the greatest rate of change? Justify.",
+        "exitEvidence": "Table of m(x) at x = 0, 2, 4, 6, 8. Identify one interval where m is increasing and one where m is decreasing. Describe tandem change on [0, 4] using sentence frame.",
+        "capReflection": "What persistence move did you make when the pattern was unclear?"
       }
     },
     {
       "periodId": "u01-p02",
       "unit": 1,
       "period": 2,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.1",
+        "title": "Change in Tandem",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.1.A",
+        "essentialKnowledgeFamily": "1.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_1",
+      "dailyPhases": {
+        "warmUp": "Review: 'What is the critical difference between saying f is increasing and saying f is positive?' Recall Passwater's key note: these are VERY different statements.",
+        "topicIntroduction": "Review covariation language. Introduce rate of change sign on intervals. Critical distinction: 'f is increasing' describes direction of output, NOT position. A function can be increasing while negative. Always use intervals with the input variable.",
+        "scaffoldedExamples": "Passwater Examples 5-8: Example 5 (graph with six labeled points A-F — 'On which interval is f negative and decreasing?'). Examples 6-8: multiple-choice on rate of change being positive/negative, increasing/decreasing, concavity on various intervals. AP note: FRQ3 will appear exactly like Example 3.",
+        "guidedPractice": "Students analyze a new graph with midline and labeled points. For each interval, state whether f is positive/negative and increasing/decreasing. Describe how the rate of change is changing.",
+        "independentPractice": "Worksheet A Problems 1-9: Graph of f with midline and five points A-E. (i) Multiple choice on f being positive/negative and increasing/decreasing on interval C to D. (ii) Describe rate of change on interval C to D. Problems 4-8: six-point graph, identify intervals. Problem 9: sketch a function that is positive and increasing, then negative and decreasing.",
+        "exitEvidence": "Given a piecewise function graph, identify one interval where f is positive and increasing and state the sign of the rate of change.",
+        "capReflection": "What courage move did you make when the rate of change sign was hard to determine?"
+      }
+    },
+    {
+      "periodId": "u01-p03",
+      "unit": 1,
+      "period": 3,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.1",
+        "title": "Change in Tandem",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.1.A",
+        "essentialKnowledgeFamily": "1.1.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_1",
+      "dailyPhases": {
+        "warmUp": "Error analysis: 'A student says a function that is decreasing must have negative outputs. What is wrong with this reasoning?'",
+        "topicIntroduction": "Synthesis day: connect covariation to sign of rate of change. Review the graphical behavior table: increasing/decreasing describe direction; concave up/down describe how the rate of change itself changes. Preview connection to Topics 1.2-1.3.",
+        "scaffoldedExamples": "AP-style problems combining graphical and verbal descriptions. Given a piecewise function, write precise interval descriptions using input variable notation. Identify common errors: confusing 'f is increasing' with 'f is positive.'",
+        "guidedPractice": "Students work in pairs on mixed problems: given graph descriptions, match to correct interval notation. Given interval descriptions, sketch possible graphs.",
+        "independentPractice": "Mixed practice: given piecewise function graph, write interval descriptions using precise language. Problem: 'On which intervals is f negative and decreasing? On which intervals is the rate of change positive and increasing?'",
+        "exitEvidence": "Write two true statements about a given function graph: one about position (positive/negative) and one about direction (increasing/decreasing).",
+        "capReflection": "What adaptability move did you make when the graph had more features than expected?"
+      }
+    },
+    {
+      "periodId": "u01-p04",
+      "unit": 1,
+      "period": 4,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.2",
@@ -61,33 +110,82 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.2.A",
         "essentialKnowledgeFamily": "1.2.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_2",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.2.",
-        "topicIntroduction": "Use Passwater notes to introduce Rates of Change.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.2.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_2.",
-        "exitEvidence": "Short competency evidence for 1.2.A and 1.2.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Town population at 5-year intervals: 2000→12,400; 2005→15,800; 2010→18,600; 2015→20,200. 'How fast is the population growing per year between 2000 and 2005?'",
+        "topicIntroduction": "Connect 'rate of change' to 'slope.' Roller coaster analogy: going up = positive, going down = negative, at peak/valley = zero. Average rate of change formula: (f(b)−f(a))/(b−a). Secant line connection: slope of secant = AROC. Cannot find rate of change at a point in AP Precalculus (that requires calculus).",
+        "scaffoldedExamples": "Example 1: Graph with points A, B, C — determine sign of rate of change at each. Example 2: secant line concept. Example 3: compute AROC from table (population: 12,400, 15,800, 18,600, 20,200 over 5-year intervals → 680, 560, 320 people/year — growth slowing).",
+        "guidedPractice": "Students compute AROC of f(x) = x² on [1, 4]: f(1)=1, f(4)=16, AROC = 15/3 = 5. Interpret: 'The function increases by an average of 5 units per 1-unit increase in x.' Then compute AROC of g(x) = 3x−7 on [2, 6].",
+        "independentPractice": "Find AROC of f(x) = x² + 2x on [1, 3] and interpret. Car distance: d(1)=30, d(4)=150 miles. Find AROC and explain in context. AROC of k on [2, 5] is −4; if k(2) = 10, find k(5).",
+        "exitEvidence": "Find the average rate of change of g(x) = 3x−7 on [2, 6] and state what it means.",
+        "capReflection": "What persistence move did you make when the numbers looked messy?"
       }
     },
     {
-      "periodId": "u01-p03",
+      "periodId": "u01-p05",
       "unit": 1,
-      "period": 3,
+      "period": 5,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.2",
+        "title": "Rates of Change",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.2.A",
+        "essentialKnowledgeFamily": "1.2.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_2",
+      "dailyPhases": {
+        "warmUp": "Life expectancy data at 50-year intervals from 1800-2000. 'Over which interval is the average rate of change in life expectancy the greatest?'",
+        "topicIntroduction": "Compare rates of change at distinct points on a curve — which point has a greater rate of change? Real-world positive/negative rate scenarios: money in vending machine vs items remaining, days since flu season vs people infected, Teslas on road vs years, gas remaining vs miles driven.",
+        "scaffoldedExamples": "Example 5: Compare rates of change at two distinct points on a curve. Example 6: Life expectancy table — greatest AROC interval. Worksheet A: n(x) = x²−4, AROC over [a,b]. Worksheet B Problem 5: g(x) = 3x³−2x+5, compute AROC over narrowing intervals [0.5,1.5], [0.8,1.2], [0.9,1.1], [0.99,1.01] — estimate instantaneous rate at x=1.",
+        "guidedPractice": "Students work through real-world scenarios: determine if two variables have positive or negative rate of change. Flu cases vs days (negative AROC), Teslas vs years (positive AROC).",
+        "independentPractice": "Worksheet A: AROC computations for given functions. Worksheet B Problems 1-4: real-world positive/negative rate scenarios. Problem 5: narrowing intervals for g(x) = 3x³−2x+5. Problem 6: graph with points A, B, C, D — rank rates from least to greatest.",
+        "exitEvidence": "Graph of f with three points. Rank the rate of change at each point from least to greatest. Justify.",
+        "capReflection": "What courage move did you make when comparing rates of change at very close intervals?"
+      }
+    },
+    {
+      "periodId": "u01-p06",
+      "unit": 1,
+      "period": 6,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.2",
+        "title": "Rates of Change",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.2.A",
+        "essentialKnowledgeFamily": "1.2.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_2",
+      "dailyPhases": {
+        "warmUp": "Compute AROC of C(t) = 500(1.08)^t from t = 2 to t = 5. Interpret with units.",
+        "topicIntroduction": "Additional AROC practice from graphs and tables (Worksheets C-E). Ranking rates of change at multiple points on a curve. Connecting AROC to concavity preview — if AROCs over equal intervals are increasing, the graph is concave up.",
+        "scaffoldedExamples": "Worksheets C-E problems: AROC calculations from graphs, tables, and equations. Comparing AROCs at multiple labeled points. Ranking from least to greatest.",
+        "guidedPractice": "Students solve AROC problems from multiple representations: given a graph with four points, compute and rank AROCs. Given a table, compute AROCs over different intervals and compare.",
+        "independentPractice": "Worksheet C-E: Rate of change calculations and comparisons from graphs and tables. Problem: given a graph of distance vs time for a car trip, describe where the car is speeding up and slowing down using AROC language.",
+        "exitEvidence": "A function has AROCs of 2, 4, 6, 8 over four equal-width intervals. Is the function linear, quadratic, or neither? Justify.",
+        "capReflection": "What adaptability move did you make when the graph was harder to read than the table?"
+      }
+    },
+    {
+      "periodId": "u01-p07",
+      "unit": 1,
+      "period": 7,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.3",
@@ -99,33 +197,136 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.3.A",
         "essentialKnowledgeFamily": "1.3.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_3",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.3.",
-        "topicIntroduction": "Use Passwater notes to introduce Rates of Change in Linear and Quadratic Functions.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.3.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_3.",
-        "exitEvidence": "Short competency evidence for 1.3.A and 1.3.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Table: x: 1, 2, 4, 8 → f(x): 4, 7, 10, 13. Output differences are all 3. 'Does that mean f is linear?' Check input intervals: 2−1=1, 4−2=2, 8−4=4 — unequal!",
+        "topicIntroduction": "Linear functions: constant AROC over equal-length intervals (slope is the same everywhere). Quadratic functions: AROCs change linearly — successive differences form an arithmetic sequence. Second differences are constant. Critical: input intervals MUST be equal length.",
+        "scaffoldedExamples": "Example 1: f(x) = 3x+7, AROC = 3 over any interval. Example 2: g(x) = x², AROCs over [0,1],[1,2],[2,3],[3,4] = 1,3,5,7 (linear sequence, confirming quadratic). Key insight: for g(x) = x², AROCs over equal-width intervals of 2: −4, 0, 4, 8 — each increases by 4.",
+        "guidedPractice": "Students compute AROCs for a new quadratic over three consecutive equal-width intervals and verify the rates form an arithmetic sequence. Then check a table with unequal intervals — can we determine function type?",
+        "independentPractice": "Given tables, compute AROC over each interval. Determine if constant (linear) or changing linearly (quadratic). Compare linear vs quadratic graphs side by side. Verify that equal-length input intervals are required.",
+        "exitEvidence": "Given h(x) = 2x²−x+1, compute AROC on [0,1] and [1,2]. Are they equal? What does this tell you?",
+        "capReflection": "What adaptability move did you make when the pattern was not what you expected?"
       }
     },
     {
-      "periodId": "u01-p04",
+      "periodId": "u01-p08",
       "unit": 1,
-      "period": 4,
+      "period": 8,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.3",
+        "title": "Rates of Change in Linear and Quadratic Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.3.A",
+        "essentialKnowledgeFamily": "1.3.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_3",
+      "dailyPhases": {
+        "warmUp": "Concavity definitions: concave up = AROCs are increasing (graph curves up like a cup). Concave down = AROCs are decreasing (graph curves down like a frown). 'Which concavity goes with positive second differences?'",
+        "topicIntroduction": "Concavity connection: concave up = AROCs increasing = positive second differences. Concave down = AROCs decreasing = negative second differences. Example 3: tables with unequal intervals — cannot determine function type even if output differences look patterned.",
+        "scaffoldedExamples": "Example: x: 1, 1.1, 1.2, 1.3 → k(x): 4, 1, −1, −2. Differences: −3, −2, −1. These are increasing (from −3 to −2 to −1), so function is concave up. Example: x: 0, 2, 4, 6, 8 → q(x): 0, 5, 8, 9, 8. Differences: 5, 3, 1, −1. Second differences: −2, −2, −2. Could be quadratic, concave down.",
+        "guidedPractice": "Students compute successive differences and second differences for multiple tables. Determine concavity. Verify equal-length input intervals before concluding.",
+        "independentPractice": "Worksheet A: Given tables, compute differences. Determine if linear, quadratic, or neither. Worksheet B: Compare linear vs quadratic graphs side by side, identify concavity.",
+        "exitEvidence": "x: 2, 4, 6, 8 → f(x): 3, 7, 13, 21. Could f be quadratic? Justify using differences.",
+        "capReflection": "What persistence move did you make when the second differences were not exactly constant?"
+      }
+    },
+    {
+      "periodId": "u01-p09",
+      "unit": 1,
+      "period": 9,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.3",
+        "title": "Rates of Change in Linear and Quadratic Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.3.A",
+        "essentialKnowledgeFamily": "1.3.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_3",
+      "dailyPhases": {
+        "warmUp": "x: 1, 3, 5, 7, 9 → f(x): -2, -5, -4, 1, 10. Compute successive differences. Could f be linear? Quadratic?",
+        "topicIntroduction": "Deeper application: connect concavity to second differences. Identify function type from AROC patterns over equal-width intervals. AP-style: 'Is the function concave up or concave down? Justify your answer.'",
+        "scaffoldedExamples": "Worksheet C problems: concavity analysis from tables. Problem: x: 1, 3, 5, 7 → h(x): -1, 1, 2, 2. Determine if concave up, down, or neither. Connect to rate of change language from Topic 1.1.",
+        "guidedPractice": "Students work through mixed problems combining Topics 1.1-1.3: describe function behavior from a table, compute AROCs, determine concavity, justify with second differences.",
+        "independentPractice": "Worksheet C: Concavity analysis. Problem: given a table of a quadratic function, compute the second differences and predict the next two values. Problem: given AROCs of 2, 5, 8 over equal-width intervals, what type of function could this be?",
+        "exitEvidence": "A function has AROCs of −1, 2, 5, 8 over four equal-width intervals. Is it concave up or concave down? What is the second difference?",
+        "capReflection": "What courage move did you make when the justification required precise mathematical language?"
+      }
+    },
+    {
+      "periodId": "u01-p10",
+      "unit": 1,
+      "period": 10,
+      "dayType": "review",
+      "cedTopic": {
+        "id": "1.1-1.3",
+        "title": "Review: Change in Tandem, Rates of Change, Linear and Quadratic ROC",
+        "source": "curriculum/source/passwater/unit-1.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.1.A-1.3.A",
+        "essentialKnowledgeFamily": "1.1.A.*-1.3.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_1,apc_1_2,apc_1_3",
+      "dailyPhases": {
+        "warmUp": "Mixed retrieval: compute AROC of f(x) = x²−3x on [1, 4]. Then determine if a table with constant second differences could be quadratic.",
+        "topicIntroduction": "Review stations covering: (1) covariation language and interval descriptions, (2) AROC computation and interpretation, (3) linear vs quadratic rate patterns and second differences.",
+        "scaffoldedExamples": "Station 1: piecewise function graph — describe intervals using precise language. Station 2: compute AROC from tables and graphs. Station 3: determine function type from difference patterns.",
+        "guidedPractice": "Students rotate through review stations in small groups, checking answers at each station.",
+        "independentPractice": "Mixed AP-style problems across Topics 1.1-1.3. Cumulative review: 'On which interval is f increasing and concave down? Compute the AROC and justify.'",
+        "exitEvidence": "Given a graph, write one statement about direction (increasing/decreasing) and one about concavity (concave up/down).",
+        "capReflection": "What persistence move did you make when connecting concepts across all three topics?"
+      }
+    },
+    {
+      "periodId": "u01-p11",
+      "unit": 1,
+      "period": 11,
+      "dayType": "quiz",
+      "cedTopic": {
+        "id": "1.1-1.3",
+        "title": "Quiz: Change in Tandem, Rates of Change, Linear and Quadratic ROC",
+        "source": "curriculum/source/passwater/unit-1.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.1.A-1.3.A",
+        "essentialKnowledgeFamily": "1.1.A.*-1.3.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_1,apc_1_2,apc_1_3",
+      "notes": "Quiz 1.1-1.3: covariation language, AROC computation and interpretation, linear vs quadratic rate patterns, second differences, concavity analysis.",
+      "nonInstructionArtifact": {
+        "artifactType": "quiz",
+        "source": "curriculum/source/passwater/unit-1.md",
+        "cedScope": "1.1-1.3",
+        "evidence": "Local quiz aligned to CED competencies for Topics 1.1-1.3"
+      }
+    },
+    {
+      "periodId": "u01-p12",
+      "unit": 1,
+      "period": 12,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.4",
@@ -137,33 +338,82 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.4.A",
         "essentialKnowledgeFamily": "1.4.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_4",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.4.",
-        "topicIntroduction": "Use Passwater notes to introduce Polynomial Functions and Rates of Change.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.4.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_4.",
-        "exitEvidence": "Short competency evidence for 1.4.A and 1.4.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "f(x) = -2x⁵ + 3x³ - x + 6. 'What is the highest power of x? What is its coefficient?' These two pieces of information control the overall shape.",
+        "topicIntroduction": "Polynomial definition: f(x) = aₙxⁿ + ... + a₁x + a₀. Degree = highest power. Leading coefficient = aₙ. Leading term = aₙxⁿ. Turning points: at most n−1. Relative extrema: where function switches between increasing and decreasing. Absolute extrema: global max/min. Points of inflection: where concavity changes.",
+        "scaffoldedExamples": "Example 1: f(x) = 3x⁴ + 2x - 7 → LC: 3, Degree: 4. y = ½x - 7x³ + 11 → rewrite: -7x³ + ½x + 11 → LC: -7, Degree: 3. Example 2: Graph of polynomial g with labeled points — identify relative min (x=1, switches dec→inc), relative max (x=4, switches inc→dec). g(1) is absolute min.",
+        "guidedPractice": "Students identify polynomial features from a graph: degree, leading coefficient sign, turning points, intervals of increase/decrease, extrema, inflection points.",
+        "independentPractice": "Identify polynomial features from a graph: degree, LC sign, turning points. Does f(x) = x⁴ − 3x⁵ + x + 6 have an absolute min, max, or neither? Leading term is −3x⁵, odd degree, negative LC — has global max but no global min.",
+        "exitEvidence": "The graph of a cubic function has a local max at (−1, 4) and local min at (3, −2). Describe the intervals of increase and decrease.",
+        "capReflection": "What persistence move did you make when the graph had more turning points than expected?"
       }
     },
     {
-      "periodId": "u01-p05",
+      "periodId": "u01-p13",
       "unit": 1,
-      "period": 5,
+      "period": 13,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.4",
+        "title": "Polynomial Functions and Rates of Change",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.4.A",
+        "essentialKnowledgeFamily": "1.4.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_4",
+      "dailyPhases": {
+        "warmUp": "Four graphs displayed. 'Which ones could be polynomial functions? How do you know?' Polynomials are smooth and continuous — no sharp corners, no breaks.",
+        "topicIntroduction": "Rate of change language on intervals: 'positive and increasing' = rising and getting steeper. 'Positive and decreasing' = rising but flattening. 'Negative and decreasing' = falling and getting steeper. 'Negative and increasing' = falling but leveling off. Example 3: on interval (3,4), graph is rising (positive ROC) but flattening (ROC decreasing).",
+        "scaffoldedExamples": "Example 3: describe ROC on interval (3, 4) — positive and decreasing. Example 4: f(x) = -3x⁴, leading term -3x⁴, even degree negative LC → both ends go to −∞.",
+        "guidedPractice": "Students describe rate of change on specific intervals using the four-quadrant language (positive/negative × increasing/decreasing).",
+        "independentPractice": "Worksheet A: Describe intervals of increase/decrease, identify local extrema. Worksheet B: Match polynomial equations to graphs. Sketch a polynomial with two inflection points, one absolute max, no absolute min.",
+        "exitEvidence": "On which interval is f increasing and the graph of f concave down? Use a given graph to identify.",
+        "capReflection": "What adaptability move did you make when the ROC was changing direction mid-interval?"
+      }
+    },
+    {
+      "periodId": "u01-p14",
+      "unit": 1,
+      "period": 14,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.4",
+        "title": "Polynomial Functions and Rates of Change",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.4.A",
+        "essentialKnowledgeFamily": "1.4.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_4",
+      "dailyPhases": {
+        "warmUp": "Sketch a polynomial with one relative max, one relative minimum, and two points of inflection. Label each feature.",
+        "topicIntroduction": "Mixed polynomial feature analysis: combine degree, leading coefficient, extrema, inflection points, and rate of change language. Connect to concavity from Topic 1.3. AP-style: 'Describe intervals where f is increasing and concave down.'",
+        "scaffoldedExamples": "AP-style problems: given a polynomial graph, write a complete description — degree (from turning points), extrema (coordinates), inflection points, intervals of increase/decrease, concavity on each interval.",
+        "guidedPractice": "Students work through mixed problems combining all polynomial features: identify degree, extrema, inflection, then describe ROC on specific intervals.",
+        "independentPractice": "Given polynomial graph, write complete description. Error analysis: 'A student says a degree 4 polynomial can have 5 turning points. Is this possible?' Problem: on h(x) on [-1,7], find open intervals where the rate of change is positive and decreasing.",
+        "exitEvidence": "Sketch a polynomial with degree 3, one relative max, one relative min, and no absolute extrema. Explain why no absolute extrema exist.",
+        "capReflection": "What courage move did you make when asked to combine multiple features into a single description?"
+      }
+    },
+    {
+      "periodId": "u01-p15",
+      "unit": 1,
+      "period": 15,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.5",
@@ -175,33 +425,82 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.5.A",
         "essentialKnowledgeFamily": "1.5.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_5",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.5.",
-        "topicIntroduction": "Use Passwater notes to introduce Polynomial Functions and Complex Zeros.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.5.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_5.",
-        "exitEvidence": "Short competency evidence for 1.5.A and 1.5.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Solve x² + 1 = 0. 'Does this equation have a solution? What kind?' Introduces the need for complex numbers.",
+        "topicIntroduction": "Fundamental Theorem of Algebra: degree n polynomial has exactly n zeros (counting multiplicity, including complex). Complex Conjugate Zeros Theorem: if a+bi is a zero, so is a−bi. Multiplicity and graph behavior: odd multiplicity → graph crosses x-axis (mult 1 = clean cross, mult 3+ = S-shape inflection). Even multiplicity → graph tangent (touches and bounces back).",
+        "scaffoldedExamples": "Example 1: f(x) = -2x³(x+1)(x−4)² → degree 6. Zeros: x=0 (mult 3, crosses with inflection), x=-1 (mult 1, crosses cleanly), x=4 (mult 2, tangent/bounces). Example 2: x=i√3 is a zero → conjugate x=−i√3 is also zero. Graph shows 3 real zeros, so total = 2 complex + 3 real = least degree 5.",
+        "guidedPractice": "Students find zeros of g(x) = x³−4x = x(x−2)(x+2). All multiplicity 1 (odd), so graph crosses at every zero. State degree, number of zeros, and behavior at each.",
+        "independentPractice": "g(x) = -2x(x−5)³(x+1)². Find all zeros with multiplicity and describe graph behavior at each. A polynomial has zeros x=3 (mult 2), x=3i, x=4−i. What is the least possible degree?",
+        "exitEvidence": "Find all zeros of f(x) = x³−4x with multiplicity. State whether graph crosses or is tangent at each zero.",
+        "capReflection": "What courage move did you make when the numbers involved imaginary units?"
       }
     },
     {
-      "periodId": "u01-p06",
+      "periodId": "u01-p16",
       "unit": 1,
-      "period": 6,
+      "period": 16,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.5",
+        "title": "Polynomial Functions and Complex Zeros",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.5.A",
+        "essentialKnowledgeFamily": "1.5.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_5",
+      "dailyPhases": {
+        "warmUp": "Given that 2+i is a zero of f(x) = x³−6x²+13x−10, what must also be a zero? Why?",
+        "topicIntroduction": "Complex zeros: given one complex zero, find all zeros using conjugate pairs and synthetic division. Form quadratic factor from conjugate pair: (x−(2+i))(x−(2−i)) = x²−4x+5. Then divide the polynomial by this quadratic to find remaining real zeros. Calculator verification: graph shows only real zeros; complex zeros do not appear on the graph.",
+        "scaffoldedExamples": "Example: 2+i is zero of x³−6x²+13x−10. Conjugate 2−i is also zero. Quadratic factor: x²−4x+5. Divide: (x³−6x²+13x−10) ÷ (x²−4x+5) = x−2. All zeros: 2+i, 2−i, 2.",
+        "guidedPractice": "Students factor a polynomial completely given one complex zero. Use conjugate pair to form quadratic factor, then divide to find remaining zeros.",
+        "independentPractice": "Worksheet A-C: Finding zeros given one complex zero, verifying with calculator. Factor polynomials completely using known complex zeros. Problem: given that 3-2i is a zero of p(x) = x⁴−6x³+14x²−6x+13, find all zeros.",
+        "exitEvidence": "Given that 1+i is a zero of f(x) = x³−3x²+4x−2, find all zeros.",
+        "capReflection": "What persistence move did you make when the synthetic division had complex intermediate steps?"
+      }
+    },
+    {
+      "periodId": "u01-p17",
+      "unit": 1,
+      "period": 17,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.5",
+        "title": "Polynomial Functions and Complex Zeros",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.5.A",
+        "essentialKnowledgeFamily": "1.5.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_5",
+      "dailyPhases": {
+        "warmUp": "Solve (x−3)(x+1)(x+4) > 0. 'Where do we start?' Find the zeros first.",
+        "topicIntroduction": "Sign chart method (4 steps): (1) solve f(x)=0 to find all real zeros, (2) place zeros on number line creating intervals, (3) test a value in each interval to determine sign, (4) write solution in interval notation. Rational Root Theorem: possible rational zeros = factors of constant / factors of leading coefficient.",
+        "scaffoldedExamples": "Example 3: solve (x−3)(x+1)(x+4) > 0. Roots: x=-4, -1, 3. Test intervals: (−∞,−4): test x=-5 → (−)(−)(−) = negative. (−4,−1): test x=-2 → (−)(+)(−) = positive. (−1,3): test x=0 → (−)(+)(+) = negative. (3,∞): test x=4 → (+)(+)(+) = positive. Solution: (−4,−1) ∪ (3,∞).",
+        "guidedPractice": "Students solve (x+2)²(x−5) ≤ 0 using sign chart. Root at x=-2 (even — tangent) and x=5 (odd — crosses). Include endpoints where f(x)=0.",
+        "independentPractice": "Worksheet D-E: Sign chart problems. Solve polynomial inequalities. Apply Rational Root Theorem: list all possible rational zeros of f(x) = 2x³−3x²+5x−6. Solve (x+3)(x−1)(x−2) < 0.",
+        "exitEvidence": "Solve (x+4)/(x−2) ≤ 0 (preview of rational inequalities). Show sign chart with critical values.",
+        "capReflection": "What adaptability move did you make when the inequality was ≤ instead of <?"
+      }
+    },
+    {
+      "periodId": "u01-p18",
+      "unit": 1,
+      "period": 18,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.6",
@@ -213,33 +512,107 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.6.A",
         "essentialKnowledgeFamily": "1.6.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_6",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.6.",
-        "topicIntroduction": "Use Passwater notes to introduce Polynomial Functions and End Behavior.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.6.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_6.",
-        "exitEvidence": "Short competency evidence for 1.6.A and 1.6.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "As x gets very large (x=1000, x=1,000,000), what happens to f(x) = 3x²−5? What about g(x) = -x³+100x?",
+        "topicIntroduction": "End behavior determined entirely by leading term aₙxⁿ. Step 1 — RIGHT side (x→∞): positive LC → up (lim = ∞), negative LC → down (lim = −∞). Step 2 — LEFT side (x→−∞): even degree → same direction as right, odd degree → opposite. Four patterns table: even+/even−/odd+/odd−.",
+        "scaffoldedExamples": "Example 1a: f(x) = 4x⁵, odd degree, positive LC → right up, left down. lim(x→∞) = ∞, lim(x→−∞) = −∞. Example 1b: g(x) = ½x⁴, even, positive → both up. Example 1c: y = -2(x+3)⁶, leading term -2x⁶, even, negative → both down. Example 3: f(x) = -3x⁴+x−7, even, negative → lim(x→−∞) = −∞, lim(x→∞) = −∞.",
+        "guidedPractice": "Students write limit statements for g(x) = -2x⁴+x−3 (even, negative → both ends down). Sketch a polynomial where lim(x→−∞) = −∞ and lim(x→∞) = ∞ (odd, positive LC).",
+        "independentPractice": "Describe end behavior and write limit statements for f(x) = -4x³+2x−1. Find leading term of k(x) = 8x²+4−x⁵ (−x⁵, odd, negative). Match four graphs to four equations based on end behavior.",
+        "exitEvidence": "Without graphing, describe end behavior of g(x) = 4x⁶−2x³+1. Write limit statements.",
+        "capReflection": "What persistence move did you make when the leading coefficient was negative?"
       }
     },
     {
-      "periodId": "u01-p07",
+      "periodId": "u01-p19",
       "unit": 1,
-      "period": 7,
+      "period": 19,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.6",
+        "title": "Polynomial Functions and End Behavior",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.6.A",
+        "essentialKnowledgeFamily": "1.6.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_6",
+      "dailyPhases": {
+        "warmUp": "h(x) = 3−x⁵. 'The leading term is not obvious. Rewrite in standard form.' 3−x⁵ = -x⁵+3. Leading term: -x⁵.",
+        "topicIntroduction": "Hidden leading terms: rewrite in standard form first. Factored form: multiply leading terms to find the overall leading term. m(x) = 2x(x−1)(6−x) → 2x·x·(−x) = -2x³. Match four polynomial functions to graphs based on end behavior analysis alone.",
+        "scaffoldedExamples": "Example 2a: h(x) = 3−x⁵ = -x⁵+3 → odd, negative → right down, left up. Example 2b: k(x) = 8x²+4−x⁵ → -x⁵ → odd, negative. Example 2c: m(x) = 2x(x−1)(6−x) → -2x³ → odd, negative. Match four polynomials to four graphs.",
+        "guidedPractice": "Students identify leading terms from factored form and match to graphs. Write limit statements for each.",
+        "independentPractice": "Worksheet A: Describe end behavior of given polynomials (some in standard form, some in factored form). Worksheet B: Match polynomials to graphs using end behavior. Write limit statements for each.",
+        "exitEvidence": "Write limit statements for f(x) = -2x⁴+x−3.",
+        "capReflection": "What adaptability move did you make when the polynomial was given in factored form?"
+      }
+    },
+    {
+      "periodId": "u01-p20",
+      "unit": 1,
+      "period": 20,
+      "dayType": "review",
+      "cedTopic": {
+        "id": "1.1-1.6",
+        "title": "Review: Polynomial and Rational Functions Part 1",
+        "source": "curriculum/source/passwater/unit-1.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.1.A-1.6.A",
+        "essentialKnowledgeFamily": "1.1.A.*-1.6.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_1,apc_1_2,apc_1_3,apc_1_4,apc_1_5,apc_1_6",
+      "dailyPhases": {
+        "warmUp": "Cumulative retrieval: describe end behavior of f(x) = -3x⁵+2x³−x+1. Find zeros of g(x) = x(x−2)²(x+3) with multiplicity.",
+        "topicIntroduction": "Passwater review stations A-D covering all polynomial topics: (A) covariation and rate of change, (B) linear/quadratic rate patterns, (C) polynomial features and complex zeros, (D) end behavior and limit statements.",
+        "scaffoldedExamples": "Station problems: given polynomial graph, write complete description (degree, extrema, zeros, end behavior, concavity intervals). Given one complex zero, find all zeros.",
+        "guidedPractice": "Students rotate through review stations. Check answers at each station before moving on.",
+        "independentPractice": "Mixed AP-style problems across Topics 1.1-1.6. Focus on FRQ 1 patterns: interpreting graphical/numerical/analytical function information.",
+        "exitEvidence": "Identify all features of a polynomial: degree, leading coefficient, zeros with multiplicity, end behavior, intervals of increase/decrease.",
+        "capReflection": "What courage move did you make when combining multiple skills in a single problem?"
+      }
+    },
+    {
+      "periodId": "u01-p21",
+      "unit": 1,
+      "period": 21,
+      "dayType": "test",
+      "cedTopic": {
+        "id": "1.1-1.6",
+        "title": "Test: Change in Tandem through Polynomial End Behavior",
+        "source": "curriculum/source/passwater/unit-1.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.1.A-1.6.A",
+        "essentialKnowledgeFamily": "1.1.A.*-1.6.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_1,apc_1_2,apc_1_3,apc_1_4,apc_1_5,apc_1_6",
+      "notes": "Test 1.1-1.6: covariation, AROC, linear/quadratic rates, polynomial features, complex zeros with multiplicity, end behavior and limit statements.",
+      "nonInstructionArtifact": {
+        "artifactType": "test",
+        "source": "curriculum/source/passwater/unit-1.md",
+        "cedScope": "1.1-1.6",
+        "evidence": "Local test aligned to CED competencies for Topics 1.1-1.6"
+      }
+    },
+    {
+      "periodId": "u01-p22",
+      "unit": 1,
+      "period": 22,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.7",
@@ -251,33 +624,82 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.7.A",
         "essentialKnowledgeFamily": "1.7.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_7",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.7.",
-        "topicIntroduction": "Use Passwater notes to introduce Rational Functions and End Behavior.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.7.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_7.",
-        "exitEvidence": "Short competency evidence for 1.7.A and 1.7.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "f(x) = (3x²+4)/(x²−1). 'As x gets very large, both numerator and denominator grow like x². What does the fraction approach?' Preview: compare degrees.",
+        "topicIntroduction": "Rational functions: p(x)/q(x). End behavior depends on comparing n (numerator degree) and d (denominator degree). Case I: n=d → HA at y=a/b (ratio of leading coefficients). Case II: n<d → HA at y=0 (denominator dominates). Case III: n>d → no HA; if n=d+1 exactly, slant asymptote exists.",
+        "scaffoldedExamples": "Example 1a: f(x) = (3x²+4x−7)/(5x²−3) → n=2, d=2 → Case I → HA y=3/5. Example 1b: y = (2x−5)/(x²+3x+2) → n=1, d=2 → Case II → HA y=0. Example 1c: g(x) = (2x²−4)/(5x+9) → n=2, d=1 → Case III, slant (n=d+1). Example 1d: k(x) = 3/(x²+3x−7) → n=0, d=2 → Case II → HA y=0.",
+        "guidedPractice": "Students find horizontal asymptotes for three rational functions by comparing degrees and leading coefficients. Classify which case applies.",
+        "independentPractice": "Find HA of y = (3x²−1)/(2x²+5x+7). Find HA of h(x) = (4x²−5x−2)/(x³+6x). Does y = (3x²+1)/(x−1) have a horizontal or slant asymptote? Explain.",
+        "exitEvidence": "Find the horizontal asymptote of h(x) = (7x²−3)/(2x²+5x−1) or state none exists.",
+        "capReflection": "What persistence move did you make when the degrees were the same?"
       }
     },
     {
-      "periodId": "u01-p08",
+      "periodId": "u01-p23",
       "unit": 1,
-      "period": 8,
+      "period": 23,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.7",
+        "title": "Rational Functions and End Behavior",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.7.A",
+        "essentialKnowledgeFamily": "1.7.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_7",
+      "dailyPhases": {
+        "warmUp": "Write limit statements for f(x) = (2x³+4x−1)/(6x³−x²+4). n=3, d=3 → HA y=2/6=1/3. Both limits approach 1/3.",
+        "topicIntroduction": "Limit statements for rational functions: connect HA to lim(x→∞) and lim(x→−∞). Slant asymptote when n=d+1: perform polynomial long division, quotient is the slant asymptote. Example 3: which functions have a slant asymptote parallel to y=½x? Only those where n=d+1 and leading coefficient ratio = 1/2.",
+        "scaffoldedExamples": "Example 2: Write limit statements for g(x) = (5x²−8x+9)/(2x³+x−1) → HA y=0, both limits = 0. h(x) = (−3x⁴−x²+x)/(x³+4x+4) → n=4, d=3, n>d+1 → leading ratio is −3x, as x→∞, h(x)→−∞.",
+        "guidedPractice": "Students write limit statements for three rational functions, identifying HA or slant asymptote for each.",
+        "independentPractice": "Worksheet A: Find HA, classify end behavior. Worksheet B: Find slant asymptotes for n=d+1 cases. Write limit statements for each.",
+        "exitEvidence": "Does f(x) = (5x²+3)/(2x²−1) have a horizontal or slant asymptote? Write equation and limit statements.",
+        "capReflection": "What adaptability move did you make when the function had no horizontal asymptote?"
+      }
+    },
+    {
+      "periodId": "u01-p24",
+      "unit": 1,
+      "period": 24,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.7",
+        "title": "Rational Functions and End Behavior",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.7.A",
+        "essentialKnowledgeFamily": "1.7.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_7",
+      "dailyPhases": {
+        "warmUp": "Error analysis: 'A student says f(x) = (2x+1)/(x−3) has HA y=0 because the numerator has lower degree.' Is this correct? n=1, d=1 → same degree → HA y=2/1=2, not 0.",
+        "topicIntroduction": "Mixed rational end behavior: combine all three cases. Compare HA across multiple functions. AP-style: 'Write limit statements and identify the horizontal asymptote.' Common mistake: trying to divide every term instead of just comparing leading terms.",
+        "scaffoldedExamples": "Mixed problems: classify end behavior, find HAs and slant asymptotes, write limit statements. Compare: f(x) = (3x²+1)/(2x²−5) has HA y=3/2; g(x) = (3x²+1)/(2x³−5) has HA y=0.",
+        "guidedPractice": "Students work through error analysis problems: identify mistakes in HA calculations, correct them, and explain.",
+        "independentPractice": "Mixed practice: classify end behavior of five rational functions. Write limit statements. Problem: rank three rational functions by their HA values.",
+        "exitEvidence": "Given f(x) = (ax²+b)/(cx²+d), for what values of a and c would the HA be y=3?",
+        "capReflection": "What courage move did you make when two different functions had the same HA?"
+      }
+    },
+    {
+      "periodId": "u01-p25",
+      "unit": 1,
+      "period": 25,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.8",
@@ -289,33 +711,82 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.8.A",
         "essentialKnowledgeFamily": "1.8.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_8",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.8.",
-        "topicIntroduction": "Use Passwater notes to introduce Rational Functions and Zeros.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.8.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_8.",
-        "exitEvidence": "Short competency evidence for 1.8.A and 1.8.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "f(x) = (x−2)/((x+6)(x−3)). 'Before doing any algebra: where is f(x) = 0? Where is it undefined?' Zeros from numerator, undefined from denominator.",
+        "topicIntroduction": "Rational function zeros: numerator = 0 AND denominator ≠ 0. If a zero of numerator also makes denominator zero, it is NOT a zero of f. Passwater's 7-step method for rational inequalities: (1) get 0 on one side, (2) write as single fraction, (3) set numerator and denominator to 0 for critical values, (4) create sign chart, (5) mark denominator zeros as never included, (6) test each interval, (7) write solution.",
+        "scaffoldedExamples": "Example 1: solve (x−2)/((x+6)(x−3)) ≥ 0. Numerator zero: x=2. Denominator zeros: x=-6, x=3. Sign chart with critical values -6, 2, 3. Test intervals. Include x=2 (≥0). Exclude x=-6 and x=3 (undefined). Solution: (−∞,−6) ∪ [2,3).",
+        "guidedPractice": "Students solve the same inequality step-by-step, building the sign chart together. Then try: find zeros of f(x) = (x²−9)/(x²−4x+3). Numerator zeros: ±3. Denominator zeros: 1, 3. x=3 makes both zero → not a zero of f. Only zero: x=-3.",
+        "independentPractice": "Find zeros with domain restrictions. Solve (2x)/(x+1) < 0. Identify all zeros and undefined values, build sign chart.",
+        "exitEvidence": "Find all zeros of r(x) = (x²−5x+6)/(x²−4) and state the domain.",
+        "capReflection": "What persistence move did you make when the numerator and denominator shared a zero?"
       }
     },
     {
-      "periodId": "u01-p09",
+      "periodId": "u01-p26",
       "unit": 1,
-      "period": 9,
+      "period": 26,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.8",
+        "title": "Rational Functions and Zeros",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.8.A",
+        "essentialKnowledgeFamily": "1.8.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_8",
+      "dailyPhases": {
+        "warmUp": "Example 2: solve (x²−4)/(x²−10x+25) < 0. Factor: (x−2)(x+2)/(x−5)². Numerator zeros: -2, 2. Denominator zero: 5 (excluded).",
+        "topicIntroduction": "Factoring both numerator and denominator for rational inequality solving. Domain restrictions: exclude denominator zeros from solution sets. EK 1.8.A.3: denominator zeros are NEVER included in solution sets.",
+        "scaffoldedExamples": "Example 2 continued: sign chart with critical values -2, 2, 5. Test: (−∞,−2) negative, (−2,2) positive, (2,5) negative, (5,∞) negative. Solution: (−2,2). Find zeros of f(x) = (x²−9)/(x²−2x−15) = (x−3)(x+3)/((x−5)(x+3)). Cancel (x+3): simplified is (x−3)/(x−5). Zero at x=3 (valid, not a denominator zero).",
+        "guidedPractice": "Students find zeros of f(x) = (x²−9)/(x²−2x−15), factor both, check for canceling factors.",
+        "independentPractice": "Worksheet A: Find zeros with domain restrictions. Problem: Find zeros of f(x) = (x²−9)/(x²−2x−15). State domain. Watch for factors that cancel.",
+        "exitEvidence": "Find the zeros of y = (3x²+x−2)/((x−1)(x+5)). Factor numerator: (3x−2)(x+1). Check domain restrictions.",
+        "capReflection": "What adaptability move did you make when a factor appeared in both numerator and denominator?"
+      }
+    },
+    {
+      "periodId": "u01-p27",
+      "unit": 1,
+      "period": 27,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.8",
+        "title": "Rational Functions and Zeros",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.8.A",
+        "essentialKnowledgeFamily": "1.8.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_8",
+      "dailyPhases": {
+        "warmUp": "Solve ((x−1)(x+2)²)/(x−2) ≥ 0. Numerator zeros: x=1, x=-2 (even multiplicity). Denominator zero: x=2 (never included).",
+        "topicIntroduction": "Even multiplicity at critical values: if a factor appears to an even power, the sign does NOT change across that critical value. Connecting zeros to domain restrictions in rational inequalities.",
+        "scaffoldedExamples": "Problem: Solve ((x−1)(x+2)²)/(x−2) ≥ 0. At x=-2, even multiplicity means the expression equals 0 (included in ≥0). Sign chart: critical values -2, 1, 2. At x=-2, sign doesn't change. Solution includes x=-2 and x=1 (both zeros).",
+        "guidedPractice": "Students work through problems with even multiplicity. Solve 1/(x−1)² ≤ 0 — is this possible? (x−1)² is always positive, so 1/(x−1)² is always positive. Solution: empty set.",
+        "independentPractice": "Worksheet B: Solve rational inequalities using sign charts. Even multiplicity problems. Solve (x+4)/(x−2) ≤ 0 with sign chart. Explain why each endpoint is included or excluded.",
+        "exitEvidence": "Solve (x+4)/(x−2) ≤ 0. Show sign chart with all critical values marked.",
+        "capReflection": "What courage move did you make when the solution set was empty?"
+      }
+    },
+    {
+      "periodId": "u01-p28",
+      "unit": 1,
+      "period": 28,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.9",
@@ -327,33 +798,82 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.9.A",
         "essentialKnowledgeFamily": "1.9.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_9",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.9.",
-        "topicIntroduction": "Use Passwater notes to introduce Rational Functions and Vertical Asymptotes.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.9.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_9.",
-        "exitEvidence": "Short competency evidence for 1.9.A and 1.9.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Graph f(x) = 1/x on calculator. 'What happens as x approaches 0 from the left? From the right?' The graph shoots toward infinity — vertical asymptote. Now consider g(x) = (x²−4)/(x−2). What happens at x=2? Is it the same?",
+        "topicIntroduction": "Vertical asymptote: denominator zero where factor does NOT cancel with numerator. 4-step process: (1) factor both numerator and denominator, (2) cancel common factors, (3) remaining denominator zeros are VAs, (4) write one-sided limit statements.",
+        "scaffoldedExamples": "Example 1: f(x) = (x−2)(x+3)/((x+3)(x−5)). Cancel (x+3): simplified is (x−2)/(x−5). VA at x=5 (remaining denominator zero). The canceled factor (x+3) produces a hole at x=-3 (Topic 1.10). Example 3: g(x) = (x−1)(x+2)/(x−1)². Cancel one (x−1): simplified is (x+2)/(x−1). One (x−1) remains → VA at x=1.",
+        "guidedPractice": "Students find VAs of p(x) = (x²−1)/(x+1)². Factor: (x−1)(x+1)/(x+1)². Cancel one (x+1): simplified is (x−1)/(x+1). VA at x=-1.",
+        "independentPractice": "Find all VAs of f(x) = (x−1)(x−5)/((x−5)(x+2)). State one-sided limit statements at each VA. Find all VAs of f(x) = (2x+6)/(x−3) and write lim(x→3⁻) and lim(x→3⁺).",
+        "exitEvidence": "Find vertical asymptotes of k(x) = (x²+1)/(x²−x−6) and describe behavior near each.",
+        "capReflection": "What persistence move did you make when the factorization was tricky?"
       }
     },
     {
-      "periodId": "u01-p10",
+      "periodId": "u01-p29",
       "unit": 1,
-      "period": 10,
+      "period": 29,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.9",
+        "title": "Rational Functions and Vertical Asymptotes",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.9.A",
+        "essentialKnowledgeFamily": "1.9.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_9",
+      "dailyPhases": {
+        "warmUp": "Write one-sided limit statements for g(x) = (x−2)(x+4)/((x−2)(x−3)). First cancel (x−2). VA at x=3. Test values on either side.",
+        "topicIntroduction": "One-sided limit statements at each VA: test values on either side to determine ±∞ direction. Example 2: at x=2, test x=1.9 → numerator (0.9)(4.9)>0, denominator -0.1<0 → f(1.9)<0. Test x=2.1 → numerator (1.1)(5.1)>0, denominator 0.1>0 → f(2.1)>0. Therefore: lim(x→2⁻) = −∞, lim(x→2⁺) = +∞.",
+        "scaffoldedExamples": "Example 2: Write one-sided limits for f(x) = (x−1)(x+3)/(x−2). VA at x=2. Test values: f(1.9)<0, f(2.1)>0. lim(x→2⁻) = −∞, lim(x→2⁺) = +∞. Example 3: partial cancellation still leaves VA.",
+        "guidedPractice": "Students write one-sided limits for g(x) = (x²−9)/(x²−x−6) = (x−3)(x+3)/((x−3)(x+1)). Cancel (x−3): VA at x=-1. Test values near x=-1.",
+        "independentPractice": "Worksheet A-B: VA identification and limit statements. Write one-sided limits at each VA. Problem: write equation of rational function with VA at x=1 where lim(x→1⁻)=−∞ and lim(x→1⁺)=+∞, and a hole at x=3.",
+        "exitEvidence": "Find all VAs of g(x) = (x²−9)/(x²−x−6). Write one-sided limit statements at each.",
+        "capReflection": "What courage move did you make when testing values near the asymptote?"
+      }
+    },
+    {
+      "periodId": "u01-p30",
+      "unit": 1,
+      "period": 30,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.9",
+        "title": "Rational Functions and Vertical Asymptotes",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.9.A",
+        "essentialKnowledgeFamily": "1.9.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_9",
+      "dailyPhases": {
+        "warmUp": "Find all VAs of h(x) = 1/(x³+4x). Factor denominator: x(x²+4). Which factor produces a real zero? x=0 only (x²+4=0 has complex solutions).",
+        "topicIntroduction": "Worksheet C: Solving rational inequalities using VA analysis. Connecting VAs to sign charts — VAs create the boundaries for sign chart intervals. Construct a rational function with specified VA behavior.",
+        "scaffoldedExamples": "Rational inequality using VA analysis: solve 1/(x−3) > 0. VA at x=3. Sign chart: for x<3, 1/(negative) = negative. For x>3, 1/(positive) = positive. Solution: (3,∞). Construct: rational function with VA at x=1 where lim(x→1⁻)=−∞, lim(x→1⁺)=+∞, and a hole at x=3.",
+        "guidedPractice": "Students solve rational inequalities using VA analysis. Connect to sign chart method from Topic 1.5/1.8.",
+        "independentPractice": "Worksheet C: Rational inequality problems using VA analysis. Construct a rational function with specified VA behavior and a hole at x=3.",
+        "exitEvidence": "Construct a rational function with VA at x=-2 (both sides → +∞) and a zero at x=1.",
+        "capReflection": "What adaptability move did you make when constructing the function?"
+      }
+    },
+    {
+      "periodId": "u01-p31",
+      "unit": 1,
+      "period": 31,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.10",
@@ -365,33 +885,82 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.10.A",
         "essentialKnowledgeFamily": "1.10.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_10",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.10.",
-        "topicIntroduction": "Use Passwater notes to introduce Rational Functions and Holes.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.10.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_10.",
-        "exitEvidence": "Short competency evidence for 1.10.A and 1.10.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "f(x) = (x²−4)/(x−2). Factor numerator: (x−2)(x+2)/(x−2). After canceling, simplified form is x+2. But is f(2) defined? Calculator gives error. Simplified form gives 4. This 'missing point' is a hole.",
+        "topicIntroduction": "Holes (removable discontinuities): factor cancels completely in numerator and denominator. x-coordinate = value making canceled factor zero. y-coordinate = evaluate simplified form at that value. Holes vs VAs comparison table: hole = factor cancels, both sides equal (finite). VA = factor does not cancel, sides diverge to ±∞.",
+        "scaffoldedExamples": "Example 1: f(x) = (x−2)(x+3)/((x+3)(x−5)). Cancel (x+3): simplified is (x−2)/(x−5). x=-3: factor canceled → hole. y-coordinate: (-3−2)/(-3−5) = -5/-8 = 5/8. Hole at (-3, 5/8). x=5: factor remains → VA at x=5.",
+        "guidedPractice": "Students classify denominator zeros for g(x) = (x²−5x+6)/(x−2) = (x−2)(x−3)/(x−2). Cancel (x−2): simplified is x−3. Hole at x=2, y=2−3=-1. Hole at (2,-1). No VA.",
+        "independentPractice": "Worksheet A: Identify holes and calculate coordinates. Worksheet B: Rewrite in simplified form, identify all discontinuities. Find all holes and VAs of f(x) = (x−1)(x−5)/((x−5)(x+2)).",
+        "exitEvidence": "Find the hole in g(x) = (x³−8)/(x−2). Factor: (x−2)(x²+2x+4)/(x−2). Hole at x=2, y=4+4+4=12.",
+        "capReflection": "What courage move did you make when you realized a 'disappearing' factor means a hole, not an asymptote?"
       }
     },
     {
-      "periodId": "u01-p11",
+      "periodId": "u01-p32",
       "unit": 1,
-      "period": 11,
+      "period": 32,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.10",
+        "title": "Rational Functions and Holes",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.10.A",
+        "essentialKnowledgeFamily": "1.10.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_10",
+      "dailyPhases": {
+        "warmUp": "Classify: g(x) = (x−2)(x+4)/((x−2)(x−3)). Cancel (x−2): simplified is (x+4)/(x−3). Since (x−2) canceled completely, both limits at x=2 are equal. Evaluate simplified at x=2: 6/(-1)=-6. Hole at (2,-6). VA at x=3.",
+        "topicIntroduction": "Distinguishing holes from VAs: always factor completely first. Partial powers: (x−2)² in numerator, (x−1) in denominator. Cancel one (x−2): simplified is (x−2)/(x−1). One (x−1) remains → VA at x=-1. (x−2) fully canceled → hole at x=2, y=0.",
+        "scaffoldedExamples": "Example 2: y = (x+1)(x−2)²/((x−2)(x+1)²). Cancel one (x−2) and one (x+1): simplified is (x−2)/(x+1). x=2: fully canceled → hole at (2,0). x=-1: (x+1) remains → VA at x=-1. Example 3: construct function with hole at x=3, VAs at x=1 and x=-4: f(x) = (x−3)/((x−3)(x−1)(x+4)).",
+        "guidedPractice": "Students distinguish holes from VAs in three rational functions. Construct a rational function with hole at x=1 and VA at x=4 where lim(x→4⁻)=+∞, lim(x→4⁺)=−∞.",
+        "independentPractice": "Worksheet A-B: Identify holes and calculate coordinates. Rewrite in simplified form. Construct rational function with holes at x=2 and x=5, VA at x=0, zero at x=1.",
+        "exitEvidence": "Classify: f(x) = (x−3)(x+1)/(x−3) has a ___ at x=___. g(x) = (x+2)/(x−3) has a ___ at x=___.",
+        "capReflection": "What adaptability move did you make when a factor appeared with different powers in numerator and denominator?"
+      }
+    },
+    {
+      "periodId": "u01-p33",
+      "unit": 1,
+      "period": 33,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.10",
+        "title": "Rational Functions and Holes",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.10.A",
+        "essentialKnowledgeFamily": "1.10.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_10",
+      "dailyPhases": {
+        "warmUp": "Find all zeros, holes, and VAs of f(x) = (x−1)(x−5)/((x−5)(x+2)). Factor, cancel, classify each feature.",
+        "topicIntroduction": "Mixed practice: classify all discontinuities of rational functions (holes, VAs, domain). Connect to Topic 1.8 (zeros where numerator = 0 and denominator ≠ 0) and Topic 1.9 (VAs where denominator = 0 and factor doesn't cancel). Complete rational function analysis: zeros, holes, VAs, domain, end behavior.",
+        "scaffoldedExamples": "Complete analysis of f(x) = (x−1)(x−5)/((x−5)(x+2)). Cancel (x−5): simplified is (x−1)/(x+2). Zeros: x=1 (numerator zero, not a denominator zero). Holes: x=5 (canceled), y=(5−1)/(5+2)=4/7. VAs: x=-2. Domain: all reals except x=5 and x=-2.",
+        "guidedPractice": "Students work through complete rational function analysis: given equation, list all features in order. Construct function with zeros at x=1, hole at x=2, VA at x=0.",
+        "independentPractice": "Mixed problems: find all zeros, holes, VAs of given rational functions. Construct rational function with specified features. How many VAs and holes does f(x) = (x²−6x+3)/((x²−2)(x²−3x−5)²) have?",
+        "exitEvidence": "Write a rational function that has zeros at x=-1 and x=3, a hole at x=2, and a VA at x=4.",
+        "capReflection": "What persistence move did you make when tracking all the features at once?"
+      }
+    },
+    {
+      "periodId": "u01-p34",
+      "unit": 1,
+      "period": 34,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.11",
@@ -403,33 +972,136 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.11.A",
         "essentialKnowledgeFamily": "1.11.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_11",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.11.",
-        "topicIntroduction": "Use Passwater notes to introduce Equivalent Representations of Polynomial and Rational Expressions.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.11.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_11.",
-        "exitEvidence": "Short competency evidence for 1.11.A and 1.11.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "f(x) = (x³−x)/(x²−1). Write in three forms: factored, expanded, simplified. 'What does each form reveal?'",
+        "topicIntroduction": "Equivalent representations: factored form → zeros, holes, VAs. Expanded form → coefficients, degree. Graph → visual features. Long division for slant asymptotes: f(x)/g(x) = q(x) + r(x)/g(x). Binomial Theorem: (a+b)ⁿ with Pascal's Triangle coefficients.",
+        "scaffoldedExamples": "Example 1: h(x) = (x²−4)/(x²+7x+10) = (x−2)(x+2)/((x+2)(x+5)). Cancel (x+2): hole at x=-2, y=-4/3. VA at x=-5. Zero at x=2. Example 2: Long division of (x²+6x+5)/(2x+1). Quotient: x/2+11/4, remainder 9/4. Slant asymptote: y=x/2+11/4. Example 3: Expand (x+2)⁵ using Pascal's Triangle row 5: 1,5,10,10,5,1 → x⁵+10x⁴+40x³+80x²+80x+32.",
+        "guidedPractice": "Students use long division to find slant asymptote of f(x) = (x²−6x+7)/(x−1). Divide and identify quotient as slant asymptote.",
+        "independentPractice": "Convert between forms. Use long division for slant asymptote of r(x) = (2x²+4x+7)/(6x−5). Expand (x+5)⁶: what is the coefficient of x⁴? Use C(6,2)·5² = 15·25 = 375.",
+        "exitEvidence": "Use long division to find slant asymptote of f(x) = (2x²+3x−1)/(x+4).",
+        "capReflection": "What persistence move did you make when the long division produced fractions?"
       }
     },
     {
-      "periodId": "u01-p12",
+      "periodId": "u01-p35",
       "unit": 1,
-      "period": 12,
+      "period": 35,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.11",
+        "title": "Equivalent Representations of Polynomial and Rational Expressions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.11.A",
+        "essentialKnowledgeFamily": "1.11.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_11",
+      "dailyPhases": {
+        "warmUp": "Analyze d(x) = (2x²+4x+1)/(2x−1). Does it have a horizontal or slant asymptote? n=2, d=1 → slant (n=d+1). How many VAs? How many holes?",
+        "topicIntroduction": "Convert between representations and reconstruct equation from graph features. Problem: given graph with zero at x=-1, hole at x=3, VA at x=2, HA at y=1, write a possible equation. Must include (x+1) in numerator for zero, (x−3) in both for hole, (x−2) in denominator for VA, and equal degrees with leading coefficient ratio 1 for HA.",
+        "scaffoldedExamples": "Given graph features: zero at x=-1 → factor (x+1) in numerator only. Hole at x=3 → factor (x−3) in both. VA at x=2 → factor (x−2) in denominator only. HA y=1 → equal degrees, leading coeff ratio 1. Possible: f(x) = (x+1)(x−3)/((x−3)(x−2)).",
+        "guidedPractice": "Students reconstruct equations from graph features. Convert between factored and expanded forms.",
+        "independentPractice": "Worksheet A-B: Convert forms, identify features from each representation. Problem: f(x) = (x²+x−2)/(x²−2x−3), provide complete analysis — factored form, zeros, holes, VAs, HAs, domain, sketch.",
+        "exitEvidence": "Given a graph of a rational function with a zero at x=3 and a hole at x=-1, write a possible factored form.",
+        "capReflection": "What adaptability move did you make when multiple equations could match the same graph?"
+      }
+    },
+    {
+      "periodId": "u01-p36",
+      "unit": 1,
+      "period": 36,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.11",
+        "title": "Equivalent Representations of Polynomial and Rational Expressions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.11.A",
+        "essentialKnowledgeFamily": "1.11.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_11",
+      "dailyPhases": {
+        "warmUp": "f(x) = (x²+x−2)/(x²−2x−3). Factor completely: (x+2)(x−1)/((x−3)(x+1)). No common factors. List all features.",
+        "topicIntroduction": "Worksheet C: comprehensive equivalent representation problems. Connect to all previous rational function topics. AP-style: 'Given the graph, write a possible equation in factored form.' Full analysis: factored form, expanded form, zeros, holes, VAs, HAs, slant asymptote, domain, sketch.",
+        "scaffoldedExamples": "Complete analysis of f(x) = (x²+x−2)/(x²−2x−3) = (x+2)(x−1)/((x−3)(x+1)). Zeros: x=-2, x=1. No holes (no common factors). VAs: x=3, x=-1. HA: n=d=2 → y=1/1=1. Domain: all reals except x=3 and x=-1.",
+        "guidedPractice": "Students provide complete analysis for two rational functions: identify all features from the equation, then sketch the graph.",
+        "independentPractice": "Worksheet C: Full analysis — factored form, expanded form, zeros, holes, VAs, HAs, slant asymptote, domain, sketch. Multiple functions requiring long division and equivalent form conversion.",
+        "exitEvidence": "Given a rational function equation, list all features: zeros, holes, VAs, HA or slant, domain.",
+        "capReflection": "What courage move did you make when the complete analysis required tracking many features?"
+      }
+    },
+    {
+      "periodId": "u01-p37",
+      "unit": 1,
+      "period": 37,
+      "dayType": "review",
+      "cedTopic": {
+        "id": "1.7-1.11",
+        "title": "Review: Rational Functions",
+        "source": "curriculum/source/passwater/unit-1.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.7.A-1.11.A",
+        "essentialKnowledgeFamily": "1.7.A.*-1.11.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_7,apc_1_8,apc_1_9,apc_1_10,apc_1_11",
+      "dailyPhases": {
+        "warmUp": "Cumulative retrieval: find all features of f(x) = (x²−4)/(x²+7x+10). Zeros, holes, VAs, HA.",
+        "topicIntroduction": "Passwater review A-B. Cumulative review of all rational function topics plus equivalent representations: end behavior, zeros with domain restrictions, VAs with one-sided limits, holes, equivalent forms, long division, Binomial Theorem.",
+        "scaffoldedExamples": "Review stations: (1) rational end behavior and limit statements, (2) rational inequality solving with sign charts, (3) complete rational function analysis including holes and VAs.",
+        "guidedPractice": "Students rotate through review stations, checking answers at each.",
+        "independentPractice": "Mixed AP-style problems across Topics 1.7-1.11. FRQ 1 and FRQ 2 task model practice.",
+        "exitEvidence": "Write a complete description of a rational function given its graph.",
+        "capReflection": "What persistence move did you make when reviewing five topics at once?"
+      }
+    },
+    {
+      "periodId": "u01-p38",
+      "unit": 1,
+      "period": 38,
+      "dayType": "test",
+      "cedTopic": {
+        "id": "1.7-1.11",
+        "title": "Test: Rational Functions",
+        "source": "curriculum/source/passwater/unit-1.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.7.A-1.11.A",
+        "essentialKnowledgeFamily": "1.7.A.*-1.11.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_7,apc_1_8,apc_1_9,apc_1_10,apc_1_11",
+      "notes": "Test 1.7-1.11: rational end behavior, zeros, VAs, holes, equivalent representations, long division, Binomial Theorem.",
+      "nonInstructionArtifact": {
+        "artifactType": "test",
+        "source": "curriculum/source/passwater/unit-1.md",
+        "cedScope": "1.7-1.11",
+        "evidence": "Local test aligned to CED competencies for Topics 1.7-1.11"
+      }
+    },
+    {
+      "periodId": "u01-p39",
+      "unit": 1,
+      "period": 39,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.12",
@@ -441,33 +1113,82 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.12.A",
         "essentialKnowledgeFamily": "1.12.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_12",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.12.",
-        "topicIntroduction": "Use Passwater notes to introduce Transformations of Functions.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.12.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_12.",
-        "exitEvidence": "Short competency evidence for 1.12.A and 1.12.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "f(3) = 5. What is g(3) when g(x) = 2f(x)−1? g(3) = 2(5)−1 = 9. What about g(3) when g(x) = f(x+2)? g(3) = f(5).",
+        "topicIntroduction": "Transformations: vertical translation f(x)+k (up k), horizontal translation f(x+h) (left h), vertical dilation a·f(x) (stretch by |a|), horizontal dilation f(bx) (compress by |1/b|), reflections (a<0 → x-axis, b<0 → y-axis). General form: a·f(b(x−h))+k. Transformation order: horizontal first (translate, then dilate), then vertical (dilate, then translate).",
+        "scaffoldedExamples": "Describe transformations from f(x) = x³ to g(x) = -2(x+1)³−4. Rewrite: g(x) = -2f(x+1)−4. Horizontal shift left 1, vertical stretch by 2, reflect over x-axis, vertical shift down 4.",
+        "guidedPractice": "Students describe transformations step by step: f(x) = x² → g(x) = 3(x−2)²+1. Shift right 2, stretch vertically by 3, shift up 1.",
+        "independentPractice": "Describe all transformations from f(x) = 1/x to g(x) = -3/(x−2)+1. Describe transformations for five different parent functions.",
+        "exitEvidence": "Describe all transformations from f(x) = √x to g(x) = -½√(x+3)−2.",
+        "capReflection": "What persistence move did you make when the order of transformations mattered?"
       }
     },
     {
-      "periodId": "u01-p13",
+      "periodId": "u01-p40",
       "unit": 1,
-      "period": 13,
+      "period": 40,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.12",
+        "title": "Transformations of Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.12.A",
+        "essentialKnowledgeFamily": "1.12.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_12",
+      "dailyPhases": {
+        "warmUp": "f has domain [-6, 9] and range [-8, 10), increasing on [-6, 1] and [5, 9), decreasing on [1, 5]. Find domain and range of q(x) = 4−2n(5−x).",
+        "topicIntroduction": "Domain and range under transformations. Point mapping: (p,q) on f maps to (p/b−c/b, aq+d) on g. Example 1: g(x) = 2f(x−1)+3 with f domain [-4,6] and range [-2,5]. Domain of g: x−1∈[-4,6] → x∈[-3,7]. Range: 2·[-2,5]+3 = [-1,13]. Point mapping: (4,2) on f → (5,7) on g.",
+        "scaffoldedExamples": "Example 1: g(x) = 2f(x−1)+3. Domain [-3,7], range [-1,13]. g(0) = 2f(−1)+3. Example 3: p is cubic with table values. m(x) = -3p(x+4). Zero of m: p(x+4)=0 when x+4=2, so x=-2. AROC of m over [0,2]: m(0)=-3p(4)=-9, m(2)=-3p(6)=-21. AROC = (-21−(-9))/(2-0) = -6.",
+        "guidedPractice": "Students compute domain and range of transformed functions. Map key points from f to g. Given table of f-values, compute g-values.",
+        "independentPractice": "Worksheet A-B: Find domain and range of g(x) = -2f(x−1)+3 when f has domain [-3,5] and range [0,8]. Map key points. Compute transformed function values from a table.",
+        "exitEvidence": "If f has domain [-3,5] and range [0,8], find domain and range of g(x) = -2f(x−1)+3.",
+        "capReflection": "What adaptability move did you make when tracking domain and range simultaneously?"
+      }
+    },
+    {
+      "periodId": "u01-p41",
+      "unit": 1,
+      "period": 41,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.12",
+        "title": "Transformations of Functions",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.12.A",
+        "essentialKnowledgeFamily": "1.12.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_12",
+      "dailyPhases": {
+        "warmUp": "f(x) = -2(x+3)²(x−1). Let g(x) = f(−x). g(x) = -2(−x+3)²(−x−1). Zeros: -x+3=0 → x=3. -x-1=0 → x=-1.",
+        "topicIntroduction": "Complex transformations: g(x) = f(−x) reflects over y-axis. Combined transformations on polynomial and rational graphs. Describe the transformation from f to g when g(x) = -f(2x+4)+1. Rewrite: g(x) = -f(2(x+2))+1. Horizontal shift left 2, horizontal compression by 1/2, reflect over x-axis, vertical shift up 1.",
+        "scaffoldedExamples": "Example 2: g(x) = f(−x) applied to f(x) = -2(x+3)²(x−1). Zeros of g: x=3, x=-1. Combined transformation problem: g(x) = 4−2f(5−x). Domain: 5−x ∈ [-6,9] → x ∈ [-4,11].",
+        "guidedPractice": "Students work through MEGA worksheet problems: transformations across polynomial, rational, and piecewise functions.",
+        "independentPractice": "Worksheet C + MEGA worksheet (11 pages): comprehensive transformation practice across all function types. Sketch g(x) = ½f(x+2)+5 by mapping key points from f. Problem: match equations to transformed graphs.",
+        "exitEvidence": "Describe all transformations from f to g when g(x) = -f(2x+4)+1.",
+        "capReflection": "What courage move did you make when the MEGA worksheet combined everything you've learned?"
+      }
+    },
+    {
+      "periodId": "u01-p42",
+      "unit": 1,
+      "period": 42,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.13",
@@ -479,33 +1200,53 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.13.A",
         "essentialKnowledgeFamily": "1.13.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_13",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.13.",
-        "topicIntroduction": "Use Passwater notes to introduce Function Model Selection and Assumption Articulation.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.13.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_13.",
-        "exitEvidence": "Short competency evidence for 1.13.A and 1.13.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "Baby weight data: t (weeks): 4, 5, 6, 8, 12 → W(t) (kg): 4.2, 4.4, 4.8, 5.1, 5.7. First differences: 0.2, 0.4, 0.3, 0.6. 'Are these approximately constant?'",
+        "topicIntroduction": "Model selection via successive differences. Residual = y−ŷ. Positive residual = model underestimates; negative = overestimates. Residual plot: no pattern = good fit; pattern = poor fit. Interpolation (within range) vs extrapolation (beyond range). Model selection framework: (1) scatter pattern, (2) successive differences, (3) function type, (4) justify in writing.",
+        "scaffoldedExamples": "Example 1: Baby weight data. First differences approximately constant → linear model. W(t) = 0.186t+3.487. Predict at t=10: W(10) = 5.347 kg (interpolation). Residual at t=5: actual 4.4, predicted 4.417, residual = -0.017 (model slightly overestimates).",
+        "guidedPractice": "Baby that was 7.5 weeks old had residual of -0.7 kg. Model: W(t) = 0.186t+3.487. What was actual weight? Actual = Predicted + Residual = W(7.5) + (-0.7) = 4.882 - 0.7 = 4.182 kg.",
+        "independentPractice": "Justin Kickoff data rises then falls → quadratic model appropriate. UK female doctors: first differences approximately constant → linear. Compute residuals and interpret.",
+        "exitEvidence": "Given exponential regression output, state two assumptions the model makes about data beyond the given range.",
+        "capReflection": "What courage move did you make when the model did not fit perfectly?"
       }
     },
     {
-      "periodId": "u01-p14",
+      "periodId": "u01-p43",
       "unit": 1,
-      "period": 14,
+      "period": 43,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.13",
+        "title": "Function Model Selection and Assumption Articulation",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.13.A",
+        "essentialKnowledgeFamily": "1.13.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_13",
+      "dailyPhases": {
+        "warmUp": "A residual plot shows points curving upward then downward. What does this suggest about the model type? The model is missing curvature — a higher-degree model may be better.",
+        "topicIntroduction": "Model selection framework: scatter pattern → successive differences → function type → justify. Amazon stock data: t: 0, 1, 13.5, 19, 26.5, 31.5, 35 → A(t): 87.58, 124.15, 164.61, 185.97, 152.60, 122.42, 90.98. Data rises then falls → cubic or quadratic appropriate. FRQ Task Model 2 alignment: construct model, state assumptions, predict, interpret limitations.",
+        "scaffoldedExamples": "Amazon stock analysis: examine rate of change pattern. Data rises to a peak around t=19 then falls. First differences go positive then negative → cubic model captures this well. Justify model choice in writing.",
+        "guidedPractice": "Students justify model selection for two datasets, stating what evidence supports their choice. Residual analysis: compute residual for a given data point.",
+        "independentPractice": "Worksheet A-B: Model selection and assumption writing. Problem 5 (Worksheet B) aligns with FRQ Task Model 2: construct model, state assumptions, predict, interpret limitations. Model predicts value of 42.5 where actual is 39.8. Compute residual: 39.8−42.5 = -2.7. Model overestimates.",
+        "exitEvidence": "Given a data table, which model type is most appropriate? Justify in one sentence using evidence from the data pattern.",
+        "capReflection": "What adaptability move did you make when two model types seemed equally plausible?"
+      }
+    },
+    {
+      "periodId": "u01-p44",
+      "unit": 1,
+      "period": 44,
       "dayType": "instruction",
       "cedTopic": {
         "id": "1.14",
@@ -517,66 +1258,130 @@
       "competencyTarget": {
         "learningObjectiveFamily": "1.14.A",
         "essentialKnowledgeFamily": "1.14.A.*",
-        "mathematicalPractices": [
-          "1.A",
-          "1.B",
-          "1.C",
-          "2.A",
-          "2.B",
-          "3.A",
-          "3.B",
-          "3.C"
-        ]
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
       },
       "passwaterSource": "curriculum/source/passwater/unit-1.md",
       "problemFamily": "apc_1_14",
       "dailyPhases": {
-        "warmUp": "Retrieve prerequisite representations connected to Topic 1.14.",
-        "topicIntroduction": "Use Passwater notes to introduce Function Model Construction and Application.",
-        "scaffoldedExamples": "Model worked examples from the Unit 1 Passwater source.",
-        "guidedPractice": "Students complete scaffolded examples aligned to CED Topic 1.14.",
-        "independentPractice": "Students complete AP-style practice mapped to apc_1_14.",
-        "exitEvidence": "Short competency evidence for 1.14.A and 1.14.A.*.",
-        "capReflection": "Students identify a courage, adaptability, or persistence move from the period."
+        "warmUp": "TI-84 regression steps review: enter data in L1/L2, run CubicReg, store equation in Y1. 'What does r² tell us?'",
+        "topicIntroduction": "Four components of every regression problem: (1) select and justify model type, (2) write regression equation, (3) predict (state interpolation or extrapolation), (4) evaluate appropriateness. Extrapolation warnings: cubic end behavior → ±∞, unrealistic for bounded quantities like population. Always ask: does the prediction make sense in context?",
+        "scaffoldedExamples": "Example 1: Baby weight W(t) = 0.186t+3.487. Predict at t=10: interpolation (10 is within 4≤t≤12). Example 2: Federal Funds Rate cubic regression. Predict at t=8: extrapolation. Is this useful long-term? No — cubic goes to ±∞ but interest rates can't be arbitrarily large. Example 3: UK doctors F(t) = 1.06t+23.8. Predict for 2021 (t=33): extrapolation, but reasonable because linear trend is stable.",
+        "guidedPractice": "Students run regression on Federal Funds Rate data (logarithmic model) and natural gas production data (polynomial model). Interpret outputs.",
+        "independentPractice": "Natural gas consumption: t: 0, 10, 22, 30, 37 → N(t): 12.4, 21.8, 20.4, 19.3, 22.6. Cubic regression. Predict for t=7 (interpolation). Amazon stock at t=16: interpolation. Actual $168.61, model predicts $159.40, residual = $9.21.",
+        "exitEvidence": "Given a cubic regression for a dataset, use it to predict f(10) and state one limitation of the model.",
+        "capReflection": "What persistence move did you make when the r² value was low?"
       }
     },
     {
-      "periodId": "u01-p15",
+      "periodId": "u01-p45",
       "unit": 1,
-      "period": 15,
-      "dayType": "ap_task_model",
-      "notes": "FRQ task-model transfer day",
-      "nonInstructionArtifact": {
-        "artifactType": "ap_task_model",
-        "source": "curriculum/source/passwater/unit-1.md",
-        "cedScope": "Unit 1",
-        "evidence": "FRQ task-model transfer day"
+      "period": 45,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.14",
+        "title": "Function Model Construction and Application",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.14.A",
+        "essentialKnowledgeFamily": "1.14.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_14",
+      "dailyPhases": {
+        "warmUp": "UK doctors model: F(t) = 1.06t+23.8. Predicted percentage for 2021 (t=33): F(33) = 58.78%. Actual was 55%. Residual = 55−58.78 = -3.78%. 'Does the linear model remain appropriate?'",
+        "topicIntroduction": "Model appropriateness evaluation. Linear extrapolation is reasonable when trend is stable and prediction isn't far beyond data range. Residual = actual−predicted. Systematic residual patterns suggest model type change. Interpolation vs extrapolation reliability assessment.",
+        "scaffoldedExamples": "Example 3: UK doctors F(t) = 1.06t+23.8. Actual 2021: 55%. Residual: -3.78%. The model slightly overestimates but linear trend is stable — model remains appropriate for near-term prediction. A cubic model predicts population will be negative in 2080: this tells us cubic is inappropriate for long-term extrapolation of bounded quantities.",
+        "guidedPractice": "Students evaluate extrapolation reliability for two scenarios: (1) linear model predicting 5 years beyond data, (2) cubic model predicting 50 years beyond data.",
+        "independentPractice": "Worksheet A-B: Model construction, prediction, interpretation. UK doctors → rational function model. Evaluate extrapolation reliability. Model predicts 95,000 registered voters in 2035 from data spanning 2000-2020. Model is quadratic — evaluate appropriateness.",
+        "exitEvidence": "A cubic model predicts the population will be negative in 2080. What does this tell you about the model's appropriateness?",
+        "capReflection": "What adaptability move did you make when evaluating whether extrapolation was reasonable?"
       }
     },
     {
-      "periodId": "u01-p16",
+      "periodId": "u01-p46",
       "unit": 1,
-      "period": 16,
+      "period": 46,
+      "dayType": "instruction",
+      "cedTopic": {
+        "id": "1.14",
+        "title": "Function Model Construction and Application",
+        "source": "curriculum/source/college-board/ced-topic-index.json",
+        "errata": "curriculum/source/college-board/clarification-guidance.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.14.A",
+        "essentialKnowledgeFamily": "1.14.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_14",
+      "dailyPhases": {
+        "warmUp": "Using the linear regression W(t) = 0.186t+3.487, predict weight at t=3 weeks. Is this interpolation or extrapolation? t=3 is below the data range [4,12] — extrapolation below the range.",
+        "topicIntroduction": "FRQ 2 task model full practice: given dataset, select model type, run regression, predict, state assumptions, evaluate appropriateness. Connect modeling to polynomial and rational function features from Topics 1.1-1.12. Complete FRQ-style response with all four components.",
+        "scaffoldedExamples": "Full FRQ 2 practice: Amazon stock data. (1) Select cubic model (data rises then falls). (2) Run CubicReg, write equation. (3) Predict at t=16 (interpolation — reliable) and t=50 (extrapolation — unreliable, cubic end behavior → −∞). (4) Evaluate: interpolation at t=16 is reasonable; extrapolation to t=50 is not because stock prices are bounded.",
+        "guidedPractice": "Students write complete FRQ 2 responses: model selection justification, regression equation, predictions with interpolation/extrapolation labels, appropriateness evaluation with reasoning.",
+        "independentPractice": "FRQ-style problem: given dataset, write a complete response including model selection, regression, prediction, and evaluation. Time management: practice writing under AP exam time constraints.",
+        "exitEvidence": "Write one sentence justifying model choice and one sentence evaluating the appropriateness of a prediction.",
+        "capReflection": "What courage move did you make when writing a complete FRQ response under time pressure?"
+      }
+    },
+    {
+      "periodId": "u01-p47",
+      "unit": 1,
+      "period": 47,
       "dayType": "review",
-      "notes": "Unit review across CED topic families",
-      "nonInstructionArtifact": {
-        "artifactType": "review",
+      "cedTopic": {
+        "id": "1.1-1.14",
+        "title": "Final Review: All Unit 1 Topics",
         "source": "curriculum/source/passwater/unit-1.md",
-        "cedScope": "Unit 1",
-        "evidence": "Unit review across CED topic families"
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.1.A-1.14.A",
+        "essentialKnowledgeFamily": "1.1.A.*-1.14.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_1,apc_1_2,apc_1_3,apc_1_4,apc_1_5,apc_1_6,apc_1_7,apc_1_8,apc_1_9,apc_1_10,apc_1_11,apc_1_12,apc_1_13,apc_1_14",
+      "dailyPhases": {
+        "warmUp": "Full unit retrieval: identify all features of f(x) = (x²−4)/(x²+7x+10). Describe transformations from f(x)=x³ to g(x)=-2(x+1)³−4.",
+        "topicIntroduction": "Full unit review. Passwater review stations covering all 14 topics. Focus on polynomial and rational function features, transformations, and modeling.",
+        "scaffoldedExamples": "Station 1: polynomial features (degree, zeros, end behavior, concavity). Station 2: rational function analysis (zeros, holes, VAs, HA). Station 3: transformations and domain/range. Station 4: FRQ 2 modeling practice.",
+        "guidedPractice": "Students rotate through review stations, identifying areas where they need more practice.",
+        "independentPractice": "Cumulative problem set: identify all features of a rational function, describe transformations, build a regression model, evaluate extrapolation. Mixed MCQ and FRQ practice.",
+        "exitEvidence": "Write a one-paragraph summary of the most challenging concept from Unit 1 and how you will prepare for it on the test.",
+        "capReflection": "What persistence move has been most valuable throughout Unit 1?"
       }
     },
     {
-      "periodId": "u01-p17",
+      "periodId": "u01-p48",
       "unit": 1,
-      "period": 17,
+      "period": 48,
       "dayType": "test",
-      "notes": "Local unit assessment aligned to CED competency evidence",
+      "cedTopic": {
+        "id": "1.1-1.14",
+        "title": "Final Unit 1 Test",
+        "source": "curriculum/source/passwater/unit-1.md",
+        "examStatus": "assessed-on-ap-exam"
+      },
+      "competencyTarget": {
+        "learningObjectiveFamily": "1.1.A-1.14.A",
+        "essentialKnowledgeFamily": "1.1.A.*-1.14.A.*",
+        "mathematicalPractices": ["1.A", "1.B", "1.C", "2.A", "2.B", "3.A", "3.B", "3.C"]
+      },
+      "passwaterSource": "curriculum/source/passwater/unit-1.md",
+      "problemFamily": "apc_1_1,apc_1_2,apc_1_3,apc_1_4,apc_1_5,apc_1_6,apc_1_7,apc_1_8,apc_1_9,apc_1_10,apc_1_11,apc_1_12,apc_1_13,apc_1_14",
+      "notes": "Final Unit 1 test aligned to all 14 CED competencies. Covers polynomial and rational functions, transformations, and modeling.",
       "nonInstructionArtifact": {
         "artifactType": "test",
         "source": "curriculum/source/passwater/unit-1.md",
-        "cedScope": "Unit 1",
-        "evidence": "Local unit assessment aligned to CED competency evidence"
+        "cedScope": "1.1-1.14",
+        "evidence": "Final unit assessment aligned to all CED competencies for Unit 1"
       }
     }
   ]
